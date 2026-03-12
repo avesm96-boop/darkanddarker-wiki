@@ -15,7 +15,7 @@ def _extract_asset_id(ref: dict) -> str | None:
     # AssetPathName format: "/Game/Path/To/AssetName.AssetName"
     # We want the last component after the final dot
     parts = asset_path.split(".")
-    if len(parts) > 0:
+    if len(parts) > 1:
         return parts[-1]
     return None
 

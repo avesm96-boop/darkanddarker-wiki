@@ -23,6 +23,8 @@ def test_combat_run_integration(tmp_path):
     assert "melee_attack" in entity_types
     assert "movement_modifier" in entity_types
     assert "projectile" in entity_types
+    assert "ge_modifier" in entity_types
+    assert "aoe" in entity_types
     movement = tmp_path / "combat" / "movement.json"
     assert movement.exists()
     data = json.loads(movement.read_text(encoding="utf-8"))

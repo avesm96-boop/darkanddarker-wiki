@@ -6,9 +6,10 @@ domain completes — never from worker threads (see core/resolver.py thread
 safety contract).
 
 Usage:
-    py -3 -m pipeline.extract_all                # run all, skip up-to-date domains
-    py -3 -m pipeline.extract_all --force        # re-run everything
-    py -3 -m pipeline.extract_all --domain items # re-run items + all downstream phases
+    py -3 -m pipeline.extract_all                           # run all, skip up-to-date domains
+    py -3 -m pipeline.extract_all --force                   # re-run everything
+    py -3 -m pipeline.extract_all --domain items            # re-run items + all downstream phases
+    py -3 -m pipeline.extract_all --raw /path/raw --out /path/out  # custom paths
 """
 
 from __future__ import annotations
@@ -250,11 +251,15 @@ def run_pipeline(
                     results[domain]["count"] = _count_output_files(domain, extracted_root)
                     results[domain]["summary"] = summary
                     print(f"[{domain}] OK — {results[domain]['count']} files")
-                    resolver.load_domain(domain, extracted_root)
                 except Exception as exc:  # noqa: BLE001
                     results[domain]["status"] = "fail"
                     results[domain]["error"] = str(exc)
                     print(f"[{domain}] FAIL — {exc}", file=sys.stderr)
+
+        # Hydrate resolver after all threads have finished (main-thread-only contract)
+        for domain in domains_to_run:
+            if results[domain]["status"] == "ok":
+                resolver.load_domain(domain, extracted_root)
 
         phase_failed = any(results[d]["status"] == "fail" for d in domains_to_run)
         if phase_failed and abort_from_phase is None:
@@ -288,6 +293,18 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         description="Dark and Darker wiki data extraction pipeline orchestrator."
     )
     parser.add_argument(
+        "--raw",
+        metavar="PATH",
+        default=None,
+        help="Path to the raw FModel export root (default: <repo>/raw).",
+    )
+    parser.add_argument(
+        "--out",
+        metavar="PATH",
+        default=None,
+        help="Path to the extracted output root (default: <repo>/extracted).",
+    )
+    parser.add_argument(
         "--domain",
         metavar="DOMAIN",
         default=None,
@@ -308,8 +325,8 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> None:
     args = _parse_args(argv)
     exit_code = run_pipeline(
-        raw_root=RAW_ROOT,
-        extracted_root=EXTRACTED_ROOT,
+        raw_root=Path(args.raw) if args.raw else RAW_ROOT,
+        extracted_root=Path(args.out) if args.out else EXTRACTED_ROOT,
         force=args.force,
         target_domain=args.domain,
     )

@@ -112,6 +112,8 @@ class TestArgParsing:
         args = _parse_args([])
         assert args.domain is None
         assert args.force is False
+        assert args.raw is None
+        assert args.out is None
 
     def test_force_flag(self):
         args = _parse_args(["--force"])
@@ -127,6 +129,11 @@ class TestArgParsing:
         args = _parse_args(["--force", "--domain", "combat"])
         assert args.force is True
         assert args.domain == "combat"
+
+    def test_raw_and_out_flags(self):
+        args = _parse_args(["--raw", "/tmp/raw", "--out", "/tmp/out"])
+        assert args.raw == "/tmp/raw"
+        assert args.out == "/tmp/out"
 
 
 def _make_import_side_effect(extracted_root: Path, fail_domain: str | None = None):

@@ -11,7 +11,13 @@ _V2_BASE = "DungeonCrawler/Content/DungeonCrawler/Data/Generated/V2"
 
 
 def run(raw_root: Path, extracted_root: Path) -> dict:
-    """Run all spawns domain extractors. Returns summary of counts."""
+    """Run all spawns domain extractors. Returns summary of counts.
+
+    NOTE: Individual run_* functions each write a partial _index.json as a
+    side-effect (useful for standalone runs / unit tests). This orchestrator
+    overwrites that partial index with a single combined index containing all
+    entity types at the end.
+    """
     print("[spawns] Starting extraction...")
     summary = {}
     all_entities: dict[str, dict] = {}

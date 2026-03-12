@@ -138,6 +138,10 @@ tests/domains/spawns/
 ```
 
 #### `extract_dungeon_grades.py` — `DCDungeonGradeDataAsset`
+
+NOTE: The field is named `DungeonIdTag` (not `IdTag`). `.get()` is used intentionally
+— some grade records may omit this field.
+
 ```python
 {
     "id": obj["Name"],
@@ -216,6 +220,11 @@ tags each entity with `_entity_type` of `floor_portal`, `floor_rule_blizzard`, o
 ```
 
 #### `extract_props_effects.py` — `DCGameplayEffectDataAsset` (Props/PropsEffect/)
+
+NOTE: Same UE5 type as the status domain, but `Props/PropsEffect/` source files only
+carry `EffectClass`, `EventTag`, and `AssetTags`. `Duration` and `TargetType` are
+absent in this sub-directory and intentionally not extracted here.
+
 ```python
 {
     "id": obj["Name"],
@@ -265,7 +274,7 @@ tags each entity with `_entity_type` of `floor_portal`, `floor_rule_blizzard`, o
     "id": obj["Name"],
     "id_tag": resolve_tag(props.get("IdTag")),
     "name": resolve_text(props.get("Name")),
-    "swimming_movement_modifier": resolve_ref(props.get("SwimmingMovementModifier")),
+    "swimming_movement_modifier": _extract_asset_id(props.get("SwimmingMovementModifier")),  # AssetPathName ref
 }
 ```
 
@@ -390,20 +399,36 @@ def run(raw_root, extracted_root):
 
 Each `run_*()` function returns `{id: entity}`. The orchestrator accumulates all
 entities into `all_entities` with `_entity_type` tag, then writes a single combined
-`_index.json` with `{"id", "type", "name"}` per entry. Follows the `classes` domain
-pattern exactly.
+`_index.json` with `{"id", "type"}` per entry (no `name` — many dungeon sub-types
+have no name field). Follows the `combat` domain pattern exactly.
+
+The `run()` return dict uses these summary keys:
+
+```
+"dungeons", "dungeon_types", "dungeon_grades", "dungeon_cards",
+"dungeon_layouts", "dungeon_modules", "floor_rules", "props",
+"props_effects", "props_interacts", "props_skill_checks",
+"map_icons", "vehicles"
+```
 
 ### 5.2 `spawns/__init__.py`
 
 Same pattern. Combined index entries: `{"id", "type"}`.
 
+The `run()` return dict uses these summary keys:
+
+```
+"spawners", "loot_drops", "loot_drop_groups", "loot_drop_rates"
+```
+
 ---
 
 ## 6. `_extract_asset_id` helper
 
-`extract_spawners.py`, `extract_loot_drops.py`, and `extract_loot_drop_groups.py` all
-resolve `{AssetPathName, SubPathString}` references. Each file defines its own local
-`_extract_asset_id()`:
+`extract_dungeons.py`, `extract_spawners.py`, `extract_loot_drops.py`, and
+`extract_loot_drop_groups.py` all resolve `{AssetPathName, SubPathString}` references.
+`extract_vehicles.py` also requires it for `SwimmingMovementModifier`.
+Each of these files defines its own local `_extract_asset_id()`:
 
 ```python
 def _extract_asset_id(ref: dict) -> str | None:

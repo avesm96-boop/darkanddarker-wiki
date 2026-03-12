@@ -158,11 +158,31 @@ NOTE: The field is named `DungeonIdTag` (not `IdTag`). `.get()` is used intentio
 ```
 
 #### `extract_dungeon_layouts.py` — `DCDungeonLayoutDataAsset`
+
+NOTE: `Slots` is a flat array of length `size_x * size_y`. Position of slot at index `i`
+is `(i % size_x, i // size_x)`. Each slot can hold multiple SlotType entries (one per
+possible dungeon configuration). `Module` refs are currently `null` in source data but
+use `_extract_asset_id` for forward-compatibility. `extract_dungeon_layouts.py` requires
+a local `_extract_asset_id()` helper (same as §6).
+
 ```python
 {
     "id": obj["Name"],
     "size_x": (props.get("Size") or {}).get("X"),
     "size_y": (props.get("Size") or {}).get("Y"),
+    "slots": [
+        {
+            "slot_types": [
+                {
+                    "slot_type": st.get("SlotType"),        # "EDCDungeonLayoutSlotType::Xxx"
+                    "module_id": _extract_asset_id(st.get("Module")),  # AssetPathName ref or null
+                    "rotation": st.get("Rotation"),         # "EDCDungeonModuleRotation::Xxx"
+                }
+                for st in (slot.get("SlotTypes") or [])
+            ]
+        }
+        for slot in (props.get("Slots") or [])
+    ],
 }
 ```
 
@@ -425,10 +445,11 @@ The `run()` return dict uses these summary keys:
 
 ## 6. `_extract_asset_id` helper
 
-`extract_dungeons.py`, `extract_spawners.py`, `extract_loot_drops.py`, and
-`extract_loot_drop_groups.py` all resolve `{AssetPathName, SubPathString}` references.
-`extract_vehicles.py` also requires it for `SwimmingMovementModifier`.
-Each of these files defines its own local `_extract_asset_id()`:
+`extract_dungeons.py`, `extract_dungeon_layouts.py`, `extract_spawners.py`,
+`extract_loot_drops.py`, and `extract_loot_drop_groups.py` all resolve
+`{AssetPathName, SubPathString}` references. `extract_vehicles.py` also requires it
+for `SwimmingMovementModifier`. Each of these files defines its own local
+`_extract_asset_id()`:
 
 ```python
 def _extract_asset_id(ref: dict) -> str | None:

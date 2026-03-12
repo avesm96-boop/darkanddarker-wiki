@@ -40,12 +40,12 @@ def run(raw_root: Path, extracted_root: Path) -> dict:
     # written by individual run_status_effects calls above)
     combined_index = [
         {
-            "id": v["id"],
+            "id": k,
             "category": v["category"],
             "event_tag": v.get("event_tag"),
             "asset_tags": v.get("asset_tags"),
         }
-        for v in all_effects.values()
+        for k, v in all_effects.items()
     ]
     Writer(extracted_root).write_index("status", combined_index)
 

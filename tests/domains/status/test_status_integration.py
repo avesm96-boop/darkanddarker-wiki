@@ -22,3 +22,5 @@ def test_status_run_integration(tmp_path):
     categories = {e["category"] for e in data["entries"]}
     assert "player" in categories
     assert "monster" in categories
+    assert "in_water" in categories
+    assert "item_cosmetic" in categories

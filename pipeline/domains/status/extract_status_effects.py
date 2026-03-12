@@ -55,10 +55,11 @@ def run_status_effects(status_dir: Path, category: str, extracted_root: Path) ->
         if not result:
             continue
         status_id = result["id"]
-        effects[status_id] = result
-        writer.write_entity("status", status_id, result, source_files=[str(f)])
+        namespaced_key = f"{category}/{status_id}"
+        effects[namespaced_key] = result
+        writer.write_entity("status", namespaced_key, result, source_files=[str(f)])
         index_entries.append({
-            "id": status_id,
+            "id": namespaced_key,
             "category": category,
             "event_tag": result.get("event_tag"),
             "asset_tags": result.get("asset_tags"),

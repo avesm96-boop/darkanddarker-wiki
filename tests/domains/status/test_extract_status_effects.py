@@ -60,7 +60,7 @@ def test_run_status_effects_writes_entity_and_index(tmp_path):
     result = run_status_effects(
         status_dir=status_dir, category="player", extracted_root=extracted
     )
-    entity = extracted / "status" / "Id_ActorStatusEffect_Haste.json"
+    entity = extracted / "status" / "player" / "Id_ActorStatusEffect_Haste.json"
     assert entity.exists()
     data = json.loads(entity.read_text(encoding="utf-8"))
     assert data["category"] == "player"
@@ -68,4 +68,20 @@ def test_run_status_effects_writes_entity_and_index(tmp_path):
     assert "_meta" in data
     index = extracted / "status" / "_index.json"
     assert index.exists()
-    assert "Id_ActorStatusEffect_Haste" in result
+    assert "player/Id_ActorStatusEffect_Haste" in result
+
+
+def test_extract_status_effect_in_water_category(tmp_path):
+    f = make_status_file(tmp_path, "Id_ActorStatusEffect_InWater_Slow")
+    result = extract_status_effect(f, category="in_water")
+    assert result is not None
+    assert result["category"] == "in_water"
+    assert result["id"] == "Id_ActorStatusEffect_InWater_Slow"
+
+
+def test_extract_status_effect_item_cosmetic_category(tmp_path):
+    f = make_status_file(tmp_path, "Id_ActorStatusEffect_Cosmetic_Glow")
+    result = extract_status_effect(f, category="item_cosmetic")
+    assert result is not None
+    assert result["category"] == "item_cosmetic"
+    assert result["id"] == "Id_ActorStatusEffect_Cosmetic_Glow"

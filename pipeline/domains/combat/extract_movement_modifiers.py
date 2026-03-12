@@ -60,7 +60,8 @@ def run_movement_modifiers(mm_dir: Path, extracted_root: Path) -> dict:
             for mm_id, v in modifiers.items()
         }
     }
-    writer.write_system("combat", "movement", system_data, source_files=[str(f) for f in files])
+    if modifiers:
+        writer.write_system("combat", "movement", system_data, source_files=[str(f) for f in files])
 
     print(f"  [movement_modifiers] Extracted {len(modifiers)} modifiers")
     return modifiers

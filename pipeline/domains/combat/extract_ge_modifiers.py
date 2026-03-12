@@ -32,7 +32,7 @@ def extract_ge_modifier(file_path: Path) -> dict | None:
 
 def run_ge_modifiers(ge_dir: Path, extracted_root: Path) -> dict:
     """Extract all GEModifier files → extracted/combat/<id>.json + _index.json."""
-    files = find_files(str(Path(ge_dir) / "*.json"))
+    files = find_files(str(Path(ge_dir) / "Id_GEModifier_*.json"))
     print(f"  [ge_modifiers] Found {len(files)} files")
 
     writer = Writer(extracted_root)

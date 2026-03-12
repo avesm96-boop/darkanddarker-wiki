@@ -37,11 +37,11 @@ def extract_achievement(file_path: Path) -> dict | None:
     props = get_properties(obj)
     return {
         "id": obj["Name"],
-        "enabled": props.get("Enable", False),
+        "enabled": props.get("Enable", False),  # UE5 key is "Enable"; absent means disabled
         "listing_order": props.get("ListingOrder"),
         "main_category": _strip_enum(props.get("MainCategory")),
         "main_category_text": resolve_text(props.get("MainCategoryText")),
-        "name": resolve_text(props.get("Name")),
+        "display_name": resolve_text(props.get("Name")),
         "description": resolve_text(props.get("Description")),
         "objective_ids": [_extract_asset_id(ref) for ref in (props.get("ObjectiveId") or [])],
         "sequence_group_order": props.get("SequenceGroupOrder"),

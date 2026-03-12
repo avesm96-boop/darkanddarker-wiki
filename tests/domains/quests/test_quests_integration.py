@@ -46,7 +46,7 @@ def test_achievement_entity_structure(tmp_path):
     achievement_files = sorted((tmp_path / "quests").glob("Achievement_*.json"))
     assert achievement_files, "expected at least one achievement entity file"
     entity = json.loads(achievement_files[0].read_text(encoding="utf-8"))
-    for key in ("id", "enabled", "name", "main_category", "description", "objective_ids"):
+    for key in ("id", "enabled", "display_name", "main_category", "description", "objective_ids"):
         assert key in entity, f"achievement entity missing key: {key}"
 
 

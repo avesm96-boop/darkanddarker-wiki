@@ -31,7 +31,7 @@ def test_extract_achievement_returns_id_and_fields(tmp_path):
     assert result["listing_order"] == 139
     assert result["main_category"] == "Arena"
     assert result["main_category_text"] == "Arena"
-    assert result["name"] == "First Blood"
+    assert result["display_name"] == "First Blood"
     assert result["description"] == "Win an Arena match for the first time."
     assert result["objective_ids"] == ["Objective_GameResult_12"]
     assert result["sequence_group_order"] == 1
@@ -65,7 +65,7 @@ def test_run_achievements_writes_entity_and_index(tmp_path):
     assert entity.exists()
     data = json.loads(entity.read_text(encoding="utf-8"))
     assert data["id"] == "Achievement_Arena_01"
-    assert data["name"] == "First Blood"
+    assert data["display_name"] == "First Blood"
     assert data["objective_ids"] == ["Objective_GameResult_12"]
     assert "_meta" in data
     index = extracted / "quests" / "_index.json"

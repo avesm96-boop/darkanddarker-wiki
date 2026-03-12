@@ -3,6 +3,7 @@ import logging
 from pathlib import Path
 
 from pipeline.core.reader import load, find_files, get_properties
+from pipeline.core.normalizer import resolve_text
 from pipeline.core.writer import Writer
 
 logger = logging.getLogger(__name__)
@@ -30,6 +31,11 @@ def extract_quest(file_path: Path) -> dict | None:
     props = get_properties(obj)
     return {
         "id": obj["Name"],
+        "title_text": resolve_text(props.get("TitleText")),
+        "greeting_text": resolve_text(props.get("GreetingText")),
+        "complete_text": resolve_text(props.get("CompleteText")),
+        "quest_reward": _extract_asset_id(props.get("QuestReward")),
+        "quest_contents": [_extract_asset_id(ref) for ref in (props.get("QuestContents") or [])],
         "required_quest": _extract_asset_id(props.get("RequiredQuest")),
         "required_level": props.get("RequiredLevel"),
     }

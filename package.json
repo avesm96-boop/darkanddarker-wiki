@@ -1,0 +1,23 @@
+{
+  "name": "darkanddarker-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dark and Darker community wiki — game data pipeline, wiki website, and standalone tools",
+  "workspaces": [
+    "website"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=website",
+    "build": "npm run build --workspace=website",
+    "pipeline": "python pipeline/extract_all.py",
+    "pipeline:items": "python pipeline/extract_items.py",
+    "pipeline:classes": "python pipeline/extract_classes.py",
+    "pipeline:monsters": "python pipeline/extract_monsters.py",
+    "pipeline:gameplay": "python pipeline/extract_gameplay.py",
+    "pipeline:economy": "python pipeline/extract_economy.py",
+    "pipeline:maps": "python pipeline/extract_maps.py",
+    "pipeline:engine": "python pipeline/extract_engine.py"
+  },
+  "keywords": ["dark-and-darker", "wiki", "game-data"],
+  "license": "MIT"
+}

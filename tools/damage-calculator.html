@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damage Calculator — Dark and Darker Wiki</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; color: #e0e0e0; background: #1a1a2e; }
+    h1 { margin-bottom: 1rem; color: #c9a44a; }
+    label { display: block; margin-top: 1rem; font-weight: 600; }
+    input, select { width: 100%; padding: 0.5rem; margin-top: 0.25rem; border: 1px solid #444; border-radius: 4px; background: #16213e; color: #e0e0e0; }
+    button { margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #c9a44a; color: #1a1a2e; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #d4b45c; }
+    #result { margin-top: 1.5rem; padding: 1rem; background: #16213e; border-radius: 4px; font-size: 1.25rem; }
+  </style>
+</head>
+<body>
+  <h1>Damage Calculator</h1>
+  <p>Estimate damage output based on weapon stats and target defenses.</p>
+
+  <label for="baseDamage">Base Weapon Damage</label>
+  <input type="number" id="baseDamage" value="30">
+
+  <label for="additionalDamage">Additional Damage (flat bonuses)</label>
+  <input type="number" id="additionalDamage" value="0">
+
+  <label for="targetDefense">Target Physical Defense Rating</label>
+  <input type="number" id="targetDefense" value="0">
+
+  <label for="damageType">Damage Type</label>
+  <select id="damageType">
+    <option value="physical">Physical</option>
+    <option value="magical">Magical</option>
+    <option value="true">True</option>
+  </select>
+
+  <button onclick="calculate()">Calculate</button>
+  <div id="result"></div>
+
+  <script>
+    // TODO: Replace with actual game formulas once extracted from pipeline data.
+    // This is a placeholder using a simplified defense reduction model.
+    function calculate() {
+      const base = Number(document.getElementById('baseDamage').value);
+      const additional = Number(document.getElementById('additionalDamage').value);
+      const defense = Number(document.getElementById('targetDefense').value);
+      const type = document.getElementById('damageType').value;
+
+      let raw = base + additional;
+      let final;
+
+      if (type === 'true') {
+        final = raw;
+      } else {
+        // Simplified reduction: defense / (defense + 100) as damage reduction %
+        const reduction = defense / (defense + 100);
+        final = Math.max(1, Math.round(raw * (1 - reduction)));
+      }
+
+      document.getElementById('result').innerHTML =
+        `<strong>Estimated Damage:</strong> ${final}` +
+        `<br><small>Raw: ${raw} | Reduction: ${type === 'true' ? 'none' : Math.round((defense / (defense + 100)) * 100) + '%'}</small>`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+  {
+    "Type": "UserDefinedEnum",
+    "Name": "E_TestEnum",
+    "Names": {
+      "E_TestEnum::NewEnumerator0": 0,
+      "E_TestEnum::NewEnumerator1": 1,
+      "E_TestEnum::_MAX": 2
+    },
+    "Properties": {}
+  }
+]

@@ -1,0 +1,237 @@
+{
+  "_meta": {
+    "extractedFrom": [
+      "raw/DungeonCrawler/Content/DungeonCrawler/Data/Generated/V2/PlayerCharacter/PlayerCharacterEffect/",
+      "raw/DungeonCrawler/Content/DungeonCrawler/Data/Generated/V2/Constant/Constant/Id_Constant_*MaxMoveSpeed.json",
+      "raw/DungeonCrawler/Content/DungeonCrawler/Data/Generated/V2/MovementModifier/MovementModifier/",
+      "raw/DungeonCrawler/Content/DungeonCrawler/Data/Generated/V2/ActorStatus/StatusEffect/Id_ActorStatusEffect_Sprint.json",
+      "raw/DungeonCrawler/Content/DungeonCrawler/Data/Generated/V2/Skill/Skill/Id_Skill_Sprint.json",
+      "raw/DungeonCrawler/Content/DungeonCrawler/Data/Generated/V2/ItemProperty/ItemPropertyType/",
+      "raw/DungeonCrawler/Content/DungeonCrawler/Core/GameplayAbilitySystem/GameplayEffect/Item/ItemProperty/GE_ItemPropertyMoveSpeed.json"
+    ],
+    "notes": [
+      "All classes share the same MoveSpeedBase = 300 and MaxMoveSpeed cap = 330.",
+      "Speed formula (reconstructed): FinalSpeed = clamp(MoveSpeedBase + MoveSpeedAdd, 0, MaxMoveSpeed) * (1 + MoveSpeedMod/100) * activeMovementMultipliers.",
+      "MoveSpeedArmorPenalty is a separate UI-tracking attribute that records the cumulative armor speed cost without being consumed by the final formula directly.",
+      "MovementModifiers (multipliers) are applied stacked — e.g., Crouch + BackwardMove = 0.65 * 0.8 = 0.52x.",
+      "Haste MoveSpeedMod=50 interpreted as +50 speed modifier units. The formula meaning (+50% vs +50 flat) is encoded in blueprint logic and not directly readable from data assets.",
+      "Sprint adds +10 flat MoveSpeedAdd (not a percentage), only to Fighter and GrandMaster Fighter.",
+      "Armor items set MoveSpeed via GE_ItemPropertyMoveSpeed, which writes to both MoveSpeedBase (the primary additive channel) and MoveSpeedArmorPenalty (the UI tracking channel) simultaneously.",
+      "ValueRatio = 0.001 is used for MoveSpeedBonus item properties, converting stored integer values to float multipliers (e.g., stored 1000 = 1.0 = 100%)."
+    ]
+  },
+
+  "baseMovementSpeeds": {
+    "_note": "All player classes initialize with the same MoveSpeedBase. Per-class max caps are all 330. Source: PlayerCharacterEffect files + Constant files.",
+    "Fighter":    { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Barbarian":  { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Rogue":      { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Ranger":     { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Wizard":     { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Cleric":     { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Bard":       { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Warlock":    { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Druid":      { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "Sorcerer":   { "MoveSpeedBase": 300, "MaxMoveSpeedCap": 330 },
+    "_globalConstants": {
+      "CharacterBaseMoveSpeed": 300,
+      "CharacterMaxMoveSpeed": 330
+    }
+  },
+
+  "movementModifiers": {
+    "_note": "DCMovementModifierDataAsset multipliers. Applied multiplicatively on top of the computed speed. Multiply=0.0 means immobile. JumpZMultiply affects jump height. Multiple modifiers stack multiplicatively.",
+    "states": {
+      "Crouch": {
+        "multiply": 0.65,
+        "jumpZMultiply": 0.0,
+        "effectiveSpeedPct": "65%",
+        "note": "Player-activated crouch. Reduces speed to 65% of current."
+      },
+      "Walk": {
+        "multiply": 0.4,
+        "jumpZMultiply": 0.0,
+        "effectiveSpeedPct": "40%",
+        "note": "Toggled walk mode (hold-walk key). Very slow but quiet movement.",
+        "triggerEvent": "Ability.Player.Movement.Walk.Start"
+      },
+      "BackwardMove": {
+        "multiply": 0.8,
+        "jumpZMultiply": 0.0,
+        "effectiveSpeedPct": "80%",
+        "note": "Penalty when moving backwards."
+      },
+      "DoubleJump": {
+        "multiply": 0.75,
+        "jumpZMultiply": 0.0,
+        "effectiveSpeedPct": "75%",
+        "note": "During double-jump animation (horizontal speed reduction)."
+      },
+      "Airborne": {
+        "multiply": 0.0,
+        "jumpZMultiply": 0.0,
+        "gravityScaleMultiply": 0.001,
+        "note": "Airborne state. No horizontal control; near-zero gravity scale override."
+      },
+      "Levitation": {
+        "multiply": 0.0,
+        "jumpZMultiply": 0.0,
+        "gravityScaleMultiply": 0.1,
+        "note": "Levitation spell state. Player cannot horizontally move; reduced gravity.",
+        "cancelOnEvent": "Event.Attack.Hit"
+      },
+      "Landed": {
+        "_note": "Id_MovementModifier_Landed exists but Multiply not explicitly set — no landing penalty."
+      },
+      "Wet": {
+        "multiply": null,
+        "jumpZMultiply": 0.7,
+        "note": "Being wet reduces jump height to 70% but does NOT slow horizontal movement."
+      },
+      "StickyTar": {
+        "multiply": 0.35,
+        "jumpZMultiply": 0.0,
+        "effectiveSpeedPct": "35%",
+        "note": "Tar flask / sticky tar area. Severe 65% speed reduction."
+      },
+      "Swimming": {
+        "_note": "Id_MovementModifier_Swimming exists. Separate from SwimSprint.",
+        "sourceFile": "Id_MovementModifier_Swimming.json"
+      },
+      "SwimSprint": {
+        "multiply": 1.15,
+        "jumpZMultiply": 0.0,
+        "effectiveSpeedPct": "115%",
+        "note": "Speed boost while sprinting in water.",
+        "triggerEvent": "Event.InWater.Enter"
+      },
+      "BoatBackwardMove": {
+        "multiply": 0.85,
+        "jumpZMultiply": 0.0,
+        "note": "Slower than regular backward movement while on boat."
+      }
+    },
+    "actionStates": {
+      "_note": "Modifiers applied during weapon actions (attacks, blocks, casting, equipping). These stack with stance modifiers. All have JumpZMultiply=0.",
+      "Equip": {
+        "multiply": 0.9,
+        "note": "Drawing or equipping a weapon. 10% speed penalty."
+      },
+      "Wear": {
+        "multiply": 0.65,
+        "note": "Putting on armor. Matches crouch speed — significant penalty during equip animation."
+      },
+      "SkillCasting": {
+        "sourceFile": "Id_MovementModifier_SkillCasting.json",
+        "note": "Generic skill casting state."
+      }
+    }
+  },
+
+  "sprintSystem": {
+    "_note": "Sprint is NOT a MovementModifier multiplier. It is a timed DCGameplayEffectDataAsset that adds flat MoveSpeedAdd. Source: Id_ActorStatusEffect_Sprint.json + Id_Skill_Sprint.json.",
+    "availableTo": ["Fighter", "GrandMaster_Fighter"],
+    "mechanismType": "flatMoveSpeedAdd",
+    "MoveSpeedAdd": 10,
+    "durationMs": 2000,
+    "cooldownMs": 28000,
+    "tag": "State.ActorStatus.Buff.MoveSpeed.Sprint",
+    "effectiveBoost": "+10 units on top of current MoveSpeedBase (300 base = ~3.3% relative boost)",
+    "note": "Sprint is an active skill, not a passive sprint toggle. Available exclusively to Fighter. Applies a flat +10 MoveSpeedAdd for 2 seconds with a 28-second cooldown."
+  },
+
+  "crouchSpeedPenalty": {
+    "multiplier": 0.65,
+    "effectiveSpeedAtBase": 195,
+    "note": "Crouch reduces speed to 65%. At base 300: 300 * 0.65 = 195 units. Stacks multiplicatively with backward movement: 0.65 * 0.8 = 0.52x (156 units at base).",
+    "source": "Id_MovementModifier_Crouch.json"
+  },
+
+  "armorWeightSystem": {
+    "_note": "Armor items apply a MoveSpeed penalty directly to the DCAttributeSet.MoveSpeedBase attribute via GE_ItemPropertyMoveSpeed. A parallel DCAttributeSet.MoveSpeedArmorPenalty attribute tracks the cumulative penalty for UI display. There is NO tiered encumbrance system or weight class found in raw data.",
+    "mechanism": "Per-item flat value applied via GE_ItemPropertyMoveSpeed → additive on MoveSpeedBase + parallel write to MoveSpeedArmorPenalty",
+    "itemPropertyTypes": {
+      "Effect_MoveSpeed": {
+        "gameplayEffect": "GE_ItemPropertyMoveSpeed",
+        "affectedAttributes": ["MoveSpeedBase", "MoveSpeedArmorPenalty"],
+        "operationType": "Additive",
+        "valueType": "flat integer (negative = penalty, positive = bonus)",
+        "setByCallerTags": ["Data.SetByCaller.MoveSpeedBase", "Data.SetByCaller.MoveSpeedArmorPenalty"],
+        "examples": {
+          "AdventurerBoots_tier1": "+6 (boots improve MoveSpeedBase)",
+          "BloodwovenRobe_tier1": "-5 (robe penalizes MoveSpeedBase)"
+        }
+      },
+      "Effect_MoveSpeedAdd": {
+        "gameplayEffect": "GE_ItemPropertyMoveSpeedAdd",
+        "affectedAttributes": ["MoveSpeedAdd"],
+        "operationType": "Additive",
+        "valueType": "flat integer",
+        "enchantGem": "BlueSapphire"
+      },
+      "Effect_MoveSpeedBonus": {
+        "gameplayEffect": "GE_ItemPropertyMoveSpeedBonus",
+        "affectedAttributes": ["MoveSpeedMod"],
+        "operationType": "Additive",
+        "valueType": "integer * 0.001 = float (e.g., stored 500 = 0.5 modifier)",
+        "valueRatio": 0.001,
+        "enchantGem": "BlueSapphire"
+      }
+    },
+    "analysis": "Because MoveSpeedArmorPenalty is written separately from (but equal to) the item's MoveSpeedBase delta, the UI can display total armor speed cost without needing to subtract a base value. The actual movement speed uses only MoveSpeedBase in the final computation."
+  },
+
+  "notableStatusEffects": {
+    "_note": "Speed-affecting actor status effects. MoveSpeedMod values are applied to the DCAttributeSet.MoveSpeedMod attribute.",
+    "Haste": {
+      "MoveSpeedMod": 50,
+      "ActionSpeed": 100,
+      "SpellCastingSpeed": 100,
+      "durationMs": 6000,
+      "tag": "State.ActorStatus.Buff.Haste",
+      "note": "Major speed buff. MoveSpeedMod+50 + full action speed boost. 6 second duration."
+    },
+    "Sprint": {
+      "MoveSpeedAdd": 10,
+      "durationMs": 2000,
+      "tag": "State.ActorStatus.Buff.MoveSpeed.Sprint",
+      "note": "Fighter exclusive. See sprintSystem for full details."
+    },
+    "Kinesthesia_Perk": {
+      "type": "MovementModifier",
+      "multiply": 1.15,
+      "tag": "State.ActorStatus.Buff.Kinesthesia",
+      "note": "Passive perk that provides a persistent 15% movement multiplier when active.",
+      "source": "Id_MovementModifier_Perk_Kinesthesia.json"
+    }
+  },
+
+  "attributeSchema": {
+    "_note": "Attributes in DCAttributeSet relevant to movement. All are additive-stacked from gameplay effects.",
+    "MoveSpeedBase": "Core movement speed. Initialized to class base (300). Modified additively by items (armor = negative, boots = positive) and other effects.",
+    "MoveSpeedMod": "Percentage modifier. Stacks additively across sources. Applied as multiplier in final formula.",
+    "MoveSpeedAdd": "Flat speed bonus. Added after base calculation. Used by Sprint (+10) and enchanted items.",
+    "MoveSpeedArmorPenalty": "UI-tracking attribute mirroring the cumulative armor speed penalty. Not part of the primary movement formula — exists so the HUD can report 'penalty from armor' independently.",
+    "MaxMoveSpeed": "Per-class speed cap constant (330 for all classes). Final computed speed is clamped to this."
+  },
+
+  "formulaAnalysis": {
+    "reconstructedFormula": "FinalSpeed = clamp( (MoveSpeedBase + MoveSpeedAdd) * (1 + MoveSpeedMod / 100), 0, MaxMoveSpeed ) * product(activeMovementModifier.Multiply)",
+    "confidenceLevel": "medium",
+    "caveats": [
+      "Exact formula order is in Blueprint C++ logic (GA_Sprint, GE_Haste) — not directly readable from data assets.",
+      "MoveSpeedMod semantic (percent vs flat) is inferred from context: ValueRatio=0.001 on items and Haste value=50 suggest it is a percentage stored as integer.",
+      "Whether MaxMoveSpeed cap is applied before or after MovementModifier multipliers is unknown from data alone.",
+      "MoveSpeedArmorPenalty may or may not be additively included in FinalSpeed; evidence suggests it is a shadow attribute for UI."
+    ],
+    "exampleCalculation": {
+      "scenario": "Rogue base, wearing BloodwovenRobe (-5 MoveSpeed), crouching, moving backward",
+      "MoveSpeedBase": "300 - 5 = 295",
+      "MoveSpeedAdd": 0,
+      "MoveSpeedMod": 0,
+      "preCapSpeed": 295,
+      "movementMultipliers": "0.65 (crouch) * 0.8 (backward) = 0.52",
+      "finalSpeed": "295 * 0.52 = 153.4 units"
+    }
+  }
+}

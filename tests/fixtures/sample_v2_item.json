@@ -1,0 +1,16 @@
+[
+  {
+    "Type": "DCItemDataAsset",
+    "Name": "Id_Item_Longsword",
+    "Properties": {
+      "Item": {
+        "ItemId": {
+          "ObjectName": "Id_Item_Longsword",
+          "ObjectPath": "/Game/Data/Item/Id_Item_Longsword.0"
+        },
+        "ItemName": { "LocalizedString": "Longsword" },
+        "MaxStack": 1
+      }
+    }
+  }
+]

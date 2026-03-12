@@ -1,0 +1,12 @@
+[
+  {
+    "Type": "DCItemDataAsset",
+    "Name": "Id_Item_A",
+    "Properties": { "Item": { "MaxStack": 1 } }
+  },
+  {
+    "Type": "DCItemDataAsset",
+    "Name": "Id_Item_B",
+    "Properties": { "Item": { "MaxStack": 99 } }
+  }
+]

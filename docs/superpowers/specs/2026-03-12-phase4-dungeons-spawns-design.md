@@ -114,7 +114,7 @@ tests/domains/spawns/
     "id_tag": resolve_tag(props["IdTag"]),
     "name": resolve_text(props["Name"]),
     "game_types": props.get("GameTypes") or [],        # list of "EGameType::Xxx" strings
-    "default_dungeon_grade": props.get("DefaultDungeonGrade"),
+    "default_dungeon_grade": props.get("DefaultDungeonGrade"),  # plain integer, not AssetPathName
     "floor": props.get("floor"),
     "floor_rule": _extract_asset_id(props.get("FloorRule")),  # AssetPathName ref
     "triumph_exp": props.get("TriumphExp"),

@@ -94,17 +94,7 @@ export default function MonstersPage() {
   const [showFilters, setShowFilters] = useState(false);
 
   // Fetch data
-  useEffect(() => {
-    fetch("/data/monsters.json")
-      .then((r) => {
-        if (!r.ok) throw new Error("fetch failed");
-        return r.json();
-      })
-      .then(setData)
-      .catch(() => setError(true));
-  }, []);
-
-  const retry = useCallback(() => {
+  const loadData = useCallback(() => {
     setError(false);
     setData(null);
     fetch("/data/monsters.json")
@@ -115,6 +105,8 @@ export default function MonstersPage() {
       .then(setData)
       .catch(() => setError(true));
   }, []);
+
+  useEffect(() => { loadData(); }, [loadData]);
 
   // All types for filter dropdown
   const allTypes = useMemo(() => {
@@ -154,15 +146,13 @@ export default function MonstersPage() {
 
   // Sort handler
   const handleSort = useCallback((key: SortKey) => {
-    setSortKey((prev) => {
-      if (prev === key) {
-        setSortDir((d) => (d === "asc" ? "desc" : "asc"));
-      } else {
-        setSortDir(key === "name" ? "asc" : "desc");
-      }
-      return key;
-    });
-  }, []);
+    if (key === sortKey) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortDir(key === "name" ? "asc" : "desc");
+      setSortKey(key);
+    }
+  }, [sortKey]);
 
   // Sort arrow indicator
   const sortArrow = (key: SortKey) => {
@@ -226,7 +216,7 @@ export default function MonstersPage() {
           </div>
           <div className={styles.errorState}>
             <p className={styles.errorText}>Failed to load bestiary data</p>
-            <button className={styles.retryButton} onClick={retry}>Retry</button>
+            <button className={styles.retryButton} onClick={loadData}>Retry</button>
           </div>
         </div>
       </div>

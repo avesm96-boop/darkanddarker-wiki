@@ -377,7 +377,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: var(--nav-h);
+  padding-top: 0;
 }
 
 .hero-bg {
@@ -564,7 +564,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   border-bottom: 1px solid rgba(201, 168, 76, 0.15);
   padding: 10px 0;
   position: relative;
-  z-index: 100;
+  z-index: 50;
+  margin-top: var(--nav-h);
 }
 
 .notice-inner {

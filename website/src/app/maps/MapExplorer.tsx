@@ -6,7 +6,7 @@ export default function MapExplorer() {
   return (
     <div className={styles.container}>
       <iframe
-        src="/maps-viewer/crypt.html"
+        src="/maps-viewer/crypt"
         className={styles.viewer}
         title="Crypt Module Map Viewer"
       />

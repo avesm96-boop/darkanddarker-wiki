@@ -157,16 +157,24 @@ export default function MarketDashboard({ trending, loading }: Props) {
       }}>
         <p style={{ marginBottom: 8 }}>
           <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>How we handle fake prices:</strong>{" "}
-          The marketplace often has troll listings (items posted at 1g or 99,999g) and RMT listings
-          that massively skew the average. We detect these by looking at the gap between the cheapest
-          and most expensive listing in each time window. When that gap is extreme, we ignore the
-          outliers and estimate what the item actually trades for based on real transactions. Hover
-          over any column header for details on what it shows.
+          The marketplace has many troll listings (items at 1g) and RMT listings (items at 99,999g)
+          that ruin the average. We automatically strip the most extreme prices from each time window
+          to get closer to what the item actually trades for. However, some items (especially currency
+          items like Silver Coin) have so many fake listings that even cleaned averages may be off.
+          For those items, the <strong style={{ fontStyle: "normal" }}>&quot;Lowest Now&quot;</strong> column
+          is the most reliable — it shows the real cheapest price on the market right now, with
+          troll prices filtered out.
+        </p>
+        <p style={{ marginBottom: 8 }}>
+          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>What to trust most:</strong>{" "}
+          &quot;Lowest Now&quot; is always real-time and outlier-filtered from 50 live listings.
+          The averages (7d, 24h, Current) are best for items with clean trading patterns
+          (like Wolf Pelt, Bone Powder). For RMT-heavy items, focus on &quot;Lowest Now&quot; instead.
         </p>
         <p>
           Market data is provided by DarkerDB and updates every few hours.
-          For real-time prices, use the <strong style={{ fontStyle: "normal" }}>Search</strong> tab
-          which shows live marketplace listings.
+          Hover over column headers for details. Use the <strong style={{ fontStyle: "normal" }}>Search</strong> tab
+          for real-time listing prices.
         </p>
       </div>
     </div>

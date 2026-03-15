@@ -101,31 +101,45 @@ export interface CleanPricePoint extends PricePoint {
 }
 
 function typicalPrice(p: PricePoint): number {
-  // Both min and max can be trolled (1g listings, 99999g RMT).
-  // Strategy: use avg as baseline, but clamp it when outliers are detected.
+  // The API gives avg/min/max per time bucket. Both ends can be trolled:
+  // - Low trolls: items listed at 0-1g
+  // - High trolls/RMT: items listed at 50,000-100,000g
   //
-  // If max is extreme (>10x min), high outliers are pulling avg up.
-  // If min is extreme (<avg/10), low outliers are pulling avg down.
-  // In both cases, the true price is somewhere between min and avg.
+  // Strategy: score how polluted the data is and pick the best estimate.
   //
-  // We use: median estimate = (min + avg) / 2, but only when data is polluted.
-  // For clean data, avg is reliable.
+  // Key insight: if min is near zero but avg is high, the min is a troll.
+  // If max is extremely high but avg is moderate, the max is a troll/RMT.
+  // The avg itself is our best signal UNLESS it's been pulled way up by
+  // extreme max values.
 
-  const spread = p.max / Math.max(p.min, 1);
+  if (p.volume === 0) return 0;
 
-  if (spread > 20) {
-    // Heavy pollution on both ends — use geometric mean of min and avg
-    // as a robust central estimate, but floor at min and cap at avg
-    const estimate = Math.sqrt(p.min * p.avg);
-    return Math.round(Math.max(estimate, p.min));
+  // With only avg/min/max/volume, we can't compute a true median.
+  // Strategy: iteratively remove the influence of the single largest
+  // outlier from the total, up to 3 times.
+  //
+  // clean_avg = (avg * vol - max) / (vol - 1)
+  //
+  // After cleaning, if result is still wildly above min, the data
+  // has systemic pollution (many fake listings) and we fall back to
+  // the live "Lowest Now" price (computed separately from 50 listings).
+  // In that case we return the raw avg — the caller's "currentLowest"
+  // from live listings will be the reliable number.
+
+  let cleanTotal = p.avg * p.volume;
+  let cleanVol = p.volume;
+  let currentMax = p.max;
+  let currentAvg = p.avg;
+
+  for (let iter = 0; iter < 3; iter++) {
+    if (currentMax <= currentAvg * 3 || cleanVol <= 1) break;
+    cleanTotal -= currentMax;
+    cleanVol -= 1;
+    currentAvg = cleanTotal / cleanVol;
+    currentMax = currentAvg * 2;
   }
 
-  if (p.max >= p.avg * 3) {
-    // High-end outliers only — avg is inflated, true price closer to min
-    return Math.round((p.min + p.avg) / 2);
-  }
-
-  return Math.round(p.avg);
+  return Math.round(currentAvg);
 }
 
 function cleanHistory(points: PricePoint[]): CleanPricePoint[] {

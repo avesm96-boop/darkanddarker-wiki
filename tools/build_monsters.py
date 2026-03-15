@@ -28,6 +28,7 @@ STATUS_ICON_OUT = ROOT / "website" / "public" / "icons" / "status"
 RAW_LOOTDROP_DIR = ROOT / "raw" / "DungeonCrawler" / "Content" / "DungeonCrawler" / "Data" / "Generated" / "V2" / "LootDrop"
 RAW_ITEM_DIR = ROOT / "raw" / "DungeonCrawler" / "Content" / "DungeonCrawler" / "Data" / "Generated" / "V2" / "Item" / "Item"
 EXTRACTED_AOE_DIR = ROOT / "extracted" / "combat"
+EXTRACTED_DUNGEON_DIR = ROOT / "extracted" / "dungeons"
 OUTPUT_FILE = ROOT / "website" / "public" / "data" / "monsters.json"
 
 # Map directory names to dungeon display names
@@ -264,12 +265,61 @@ def find_base_effect_file(raw_monster_data: dict) -> str | None:
     return None
 
 
-def build_monster_spawn_map() -> dict[str, set[str]]:
-    """Build a mapping of monster spawner name -> set of dungeon display names.
+def _load_module_display_names() -> dict[str, str]:
+    """Load module directory name -> display name from extracted dungeon data."""
+    names: dict[str, str] = {}
+    if not EXTRACTED_DUNGEON_DIR.exists():
+        return names
+    for f in EXTRACTED_DUNGEON_DIR.glob("Id_DungeonModule_*.json"):
+        data = load_json(f)
+        if not data:
+            continue
+        module_id = data.get("id", "").replace("Id_DungeonModule_", "")
+        display = data.get("name", "")
+        if module_id and display:
+            names[module_id.lower()] = display
+    return names
+
+
+def _resolve_module_name(module_dir: str, module_names: dict[str, str]) -> str:
+    """Resolve a module directory name to its in-game display name."""
+    key = module_dir.lower()
+    if key in module_names:
+        return module_names[key]
+
+    # Try stripping _Center, _02, _01 suffixes
+    base = re.sub(r"_(?:Center|Edge)(?:_\d+)?$", "", module_dir)
+    base = re.sub(r"_\d+$", "", base)
+    if base.lower() in module_names:
+        return module_names[base.lower()]
+
+    # Try stripping dungeon prefix (Cave_, Inferno_)
+    for prefix in ("Cave_", "Inferno_", "IceCave_", "Ruins_", "Crypt_", "ShipGraveyard_"):
+        if module_dir.startswith(prefix):
+            stripped = module_dir[len(prefix):]
+            if stripped.lower() in module_names:
+                return module_names[stripped.lower()]
+
+    # Fallback: clean up the directory name itself
+    clean = module_dir
+    for prefix in ("Cave_", "Inferno_", "IceCave_", "Ruins_", "Crypt_"):
+        if clean.startswith(prefix):
+            clean = clean[len(prefix):]
+    clean = re.sub(r"_(?:Center|Edge)(?:_\d+)?$", "", clean)
+    clean = re.sub(r"_\d+$", "", clean)
+    clean = re.sub(r"([a-z])([A-Z])", r"\1 \2", clean)
+    clean = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", clean)
+    return clean.replace("_", " ").strip()
+
+
+def build_monster_spawn_map() -> dict[str, set[tuple[str, str]]]:
+    """Build a mapping of monster spawner name -> set of (dungeon, module) pairs.
 
     Scans all map module files for references to Id_Spawner_New_Monster_* assets.
+    Module names are resolved to in-game display names from extracted dungeon data.
     """
-    result: dict[str, set[str]] = {}
+    module_names = _load_module_display_names()
+    result: dict[str, set[tuple[str, str]]] = {}
     for dir_name, dungeon_name in MAP_DIR_TO_DUNGEON.items():
         dungeon_path = RAW_MAPS_DIR / dir_name
         if not dungeon_path.exists():
@@ -280,9 +330,19 @@ def build_monster_spawn_map() -> dict[str, set[str]]:
                     text = f.read()
             except Exception:
                 continue
-            for m in re.finditer(r"Id_Spawner_New_Monster_(\w+)", text):
-                spawner_name = m.group(1)
-                result.setdefault(spawner_name, set()).add(dungeon_name)
+
+            spawners = re.findall(r"Id_Spawner_New_Monster_(\w+)", text)
+            if not spawners:
+                continue
+
+            # Determine module from file path: {Dungeon}/{Slot}/{ModuleDir}/...
+            rel = json_file.relative_to(dungeon_path)
+            parts = rel.parts
+            module_dir = parts[1] if len(parts) > 2 else parts[0] if len(parts) > 1 else ""
+            module_display = _resolve_module_name(module_dir, module_names) if module_dir else ""
+
+            for spawner_name in spawners:
+                result.setdefault(spawner_name, set()).add((dungeon_name, module_display))
     return result
 
 
@@ -979,11 +1039,19 @@ def main():
         # Find spawn locations for this monster
         # Try matching spawner names to this monster's base name
         dungeons: set[str] = set()
+        spawn_locations: list[dict] = []
+        seen_spawns: set[tuple[str, str]] = set()
         base_lower = base_name.lower()
-        for spawner_name, dungeon_set in spawner_dungeon_map.items():
+        for spawner_name, location_set in spawner_dungeon_map.items():
             mapped = map_spawner_to_monster_id(spawner_name)
             if mapped.lower() == base_lower:
-                dungeons.update(dungeon_set)
+                for dungeon, module in location_set:
+                    dungeons.add(dungeon)
+                    key = (dungeon, module)
+                    if key not in seen_spawns and module:
+                        seen_spawns.add(key)
+                        spawn_locations.append({"dungeon": dungeon, "module": module})
+        spawn_locations.sort(key=lambda s: (s["dungeon"], s["module"]))
 
         # Extract extended data
         status_effects, icons = extract_status_effects(image_folder)
@@ -1001,6 +1069,7 @@ def main():
             "creature_types": creature_types,
             "image": image_folder,
             "dungeons": sorted(dungeons),
+            "spawn_locations": spawn_locations,
             "grades": grades,
             "attacks": list(all_attacks.values()),
             "status_effects": status_effects,

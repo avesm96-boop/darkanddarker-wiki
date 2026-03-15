@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T16:08:34.814786+00:00",
+  "generated_at": "2026-03-15T16:34:53.191903+00:00",
   "monsters": [
     {
       "slug": "abomination",
@@ -12,6 +12,20 @@
       "image": "Abomination",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Stairway"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        }
       ],
       "grades": {
         "Common": {
@@ -225,6 +239,12 @@
       "image": "AncientStingray",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -1022,6 +1042,16 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -1088,6 +1118,12 @@
       "image": "Banshee",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall A"
+        }
       ],
       "grades": {
         "Common": {
@@ -1280,6 +1316,7 @@
       ],
       "image": "Banshee",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -1356,6 +1393,20 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Village"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ocean Volcano"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Empty Module"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -1411,6 +1462,12 @@
       "image": "Bladehand",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        }
       ],
       "grades": {
         "Common": {
@@ -2305,6 +2362,12 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -2360,6 +2423,16 @@
       "image": "Bluemarlin",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Island A"
+        }
       ],
       "grades": {
         "Common": {
@@ -2427,6 +2500,7 @@
       "creature_types": [],
       "image": "Skeleton",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -2481,6 +2555,12 @@
       "image": "CaveTroll",
       "dungeons": [
         "Goblin Cave"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town B"
+        }
       ],
       "grades": {
         "Common": {
@@ -2757,6 +2837,20 @@
       "dungeons": [
         "Inferno"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 50,
@@ -3007,6 +3101,24 @@
       "dungeons": [
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Barbican"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Passage Outer"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stables"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 15,
@@ -3240,6 +3352,20 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sea Fortress A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 25,
@@ -3434,6 +3560,7 @@
       "creature_types": [],
       "image": "Skeleton",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -3493,6 +3620,36 @@
       "image": "Cuttlefish",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Village"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mermaid Tomb"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ocean Volcano"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Twin Chamber"
+        }
       ],
       "grades": {
         "Common": {
@@ -3577,6 +3734,12 @@
       "image": "Cyclops",
       "dungeons": [
         "Goblin Cave"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        }
       ],
       "grades": {
         "Common": {
@@ -3828,6 +3991,48 @@
         "Goblin Cave",
         "Inferno"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tunnels"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Cave"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Den"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -4012,6 +4217,184 @@
         "Inferno",
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Altar Room AB"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Armory"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Atrium"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Barracks"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Altar"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Chapel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cliffs"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Complex Halls"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Hallways"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "High Priests"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Lightless Tomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Long Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mad Corridors"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mini Wheel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Pyramid"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Ramparts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Skeleton Rooms"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Swamp"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Treasure Room"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Vault"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wheel"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Ants Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town B"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Pathway"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut C"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Maze"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Pyramid"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Sanctum"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Tunnel"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Castle"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood River"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Corner"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Outer Cemetery"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Watering Hole"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -4180,6 +4563,36 @@
       "image": "DemonBat",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Bat Roost"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood River"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Mouth"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Obelisk"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Waiting Room"
+        }
       ],
       "grades": {
         "Common": {
@@ -4376,6 +4789,36 @@
       "image": "Demon",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Platforms"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Den"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Throne"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Stairway"
+        }
       ],
       "grades": {
         "Common": {
@@ -4586,6 +5029,24 @@
       "image": "CentaurDemon",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood River"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Den"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Waiting Room"
+        }
       ],
       "grades": {
         "Common": {
@@ -4802,6 +5263,64 @@
       "dungeons": [
         "Inferno"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood River"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Platforms"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Den"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Throne"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Drain"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Corner"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Stairway"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Obelisk"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Waiting Room"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -5000,6 +5519,68 @@
       "dungeons": [
         "Inferno"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Castle"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Prison"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood River"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Platforms"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Den"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Throne"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Stairway"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Waiting Room"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -5154,6 +5735,20 @@
       "image": "DemonFly",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Drain"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        }
       ],
       "grades": {
         "Common": {
@@ -5356,6 +5951,36 @@
       "image": "Wolf",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Chaple"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Square B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stables"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Wolf Den"
+        }
       ],
       "grades": {
         "Common": {
@@ -5562,6 +6187,20 @@
       "image": "Dreadspine",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Prison"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Throne"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        }
       ],
       "grades": {
         "Common": {
@@ -5806,6 +6445,24 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Anvil Outpost"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Broken Stonebridge"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Collapsed Dig Site"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Mining Passage"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -5977,6 +6634,28 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Anvil Outpost"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Broken Stonebridge"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Collapsed Dig Site"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Lava Crossway"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Mining Passage"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -6144,6 +6823,12 @@
       "image": "Dwarf",
       "dungeons": [
         "Firedeep"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Lava Crossway"
+        }
       ],
       "grades": {
         "Common": {
@@ -6350,6 +7035,24 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Anvil Outpost"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Broken Stonebridge"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Collapsed Dig Site"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Mining Passage"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -6515,6 +7218,12 @@
       "image": "FireColossus",
       "dungeons": [
         "Firedeep"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Magma Falls"
+        }
       ],
       "grades": {
         "Common": {
@@ -6849,6 +7558,12 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Molten Pit"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -7019,6 +7734,20 @@
       "image": "FireLizard",
       "dungeons": [
         "Firedeep"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Anvil Outpost"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Blaze Tunnel"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Molten Pit"
+        }
       ],
       "grades": {
         "Common": {
@@ -7197,6 +7926,20 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Broken Stonebridge"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Magma Falls"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Molten Pit"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -7369,6 +8112,16 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Lava Crossway"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Magma Falls"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -7527,6 +8280,36 @@
       "image": "Demon",
       "dungeons": [
         "Ice Abyss"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Hound Vale"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Shallow Valley"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        }
       ],
       "grades": {
         "Common": {
@@ -7699,6 +8482,7 @@
       ],
       "image": "FrostWyvern",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -7802,6 +8586,28 @@
       "image": "FrostGiant",
       "dungeons": [
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Barricade"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Dual Caverns"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Narrow Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Spiral"
+        }
       ],
       "grades": {
         "Common": {
@@ -8005,6 +8811,20 @@
       "dungeons": [
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Swamp"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Icicle Cave"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Spiral"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 25,
@@ -8176,6 +8996,36 @@
       "image": "Demon",
       "dungeons": [
         "Ice Abyss"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Hound Vale"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        }
       ],
       "grades": {
         "Common": {
@@ -8356,6 +9206,32 @@
       "dungeons": [
         "Ice Abyss"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Teeth"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -8535,6 +9411,108 @@
       "dungeons": [
         "Ice Abyss",
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Reversed Pyramid"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cabin Raft"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Pathway"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Guardpost"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hive"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut B"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Maze"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Narrow Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Pyramid"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Sanctum"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Tunnel"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Watchtower"
+        }
       ],
       "grades": {
         "Common": {
@@ -8724,6 +9702,76 @@
         "Ice Abyss",
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Reversed Pyramid"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Shallow Valley"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -8908,6 +9956,44 @@
         "Ice Abyss",
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hive"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut C"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Spiral"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -9085,6 +10171,108 @@
         "Ice Abyss",
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Teeth"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Reversed Pyramid"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cabin Raft"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Pathway"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Guardpost"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut B"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Maze"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Pyramid"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Sanctum"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Tunnel"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Watchtower"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -9198,6 +10386,104 @@
       "dungeons": [
         "Ice Abyss",
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frostwoven Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Shallow Valley"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Frozen Lake"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Guardpost"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hive"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut B"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Pyramid"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Watchtower"
+        }
       ],
       "grades": {
         "Common": {
@@ -9319,6 +10605,80 @@
       "dungeons": [
         "Ice Abyss",
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frostwoven Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Shallow Valley"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cabin Raft"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hive"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut C"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Watchtower"
+        }
       ],
       "grades": {
         "Common": {
@@ -9515,6 +10875,76 @@
         "Ice Abyss",
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frostwoven Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Hound Vale"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -9708,6 +11138,40 @@
       "dungeons": [
         "Ice Abyss",
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cabin Raft"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Frozen Lake"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Quarry"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Sanctum"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Watchtower"
+        }
       ],
       "grades": {
         "Common": {
@@ -9913,6 +11377,20 @@
       "image": "Wolf",
       "dungeons": [
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Frozen Lake"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Wolf Cave"
+        }
       ],
       "grades": {
         "Common": {
@@ -10123,6 +11601,12 @@
       "image": "FrostWyvern",
       "dungeons": [
         "Ice Abyss"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        }
       ],
       "grades": {
         "Common": {
@@ -10750,6 +12234,72 @@
         "Ice Abyss",
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frostwoven Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Reversed Pyramid"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hive"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 15,
@@ -10875,6 +12425,36 @@
       "image": "FrozenGhost",
       "dungeons": [
         "Ice Abyss"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Teeth"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Shallow Valley"
+        }
       ],
       "grades": {
         "Common": {
@@ -11073,6 +12653,12 @@
       "image": "GhostKing",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Dark Ritual Room"
+        }
       ],
       "grades": {
         "Common": {
@@ -11277,6 +12863,24 @@
       "image": "Ghoul",
       "dungeons": [
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Bat Roost"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Prison"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        }
       ],
       "grades": {
         "Common": {
@@ -11485,6 +13089,84 @@
         "Ice Cavern",
         "Ruins",
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Ants Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tombs"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Cave"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Swamp"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Spiral"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Castle Armory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forsaken Cloister"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Elephant Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -11710,6 +13392,44 @@
       "dungeons": [
         "Goblin Cave"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Ants Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Pit Hall"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tunnels"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley B"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 10,
@@ -11901,6 +13621,112 @@
         "Inferno",
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Admirer's Room"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cistern"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Complex Halls"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Hall E"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Large Room Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mimic Lair"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Sewers"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Skeleton Rooms"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Trap Hall A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tunnels"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Cave"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Den"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Gate"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Mouth"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Spider Lair"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bath House"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Refectory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Wolf Den"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -12058,6 +13884,20 @@
       "image": "GiantJellyfish",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -12269,6 +14109,7 @@
       ],
       "image": "GiantJellyfish",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -12406,6 +14247,24 @@
       "dungeons": [
         "Goblin Cave",
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Hidden Altar"
+        }
       ],
       "grades": {
         "Common": {
@@ -12623,6 +14482,16 @@
       "image": "GiantWorm",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Forest Path"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Square A"
+        }
       ],
       "grades": {
         "Common": {
@@ -12859,6 +14728,36 @@
       "dungeons": [
         "Goblin Cave"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Mine"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley A"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -13062,6 +14961,40 @@
       "dungeons": [
         "Goblin Cave"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Pit Hall"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tunnels"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Mine"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town A"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -13255,6 +15188,20 @@
       "image": "Goblin",
       "dungeons": [
         "Goblin Cave"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        }
       ],
       "grades": {
         "Common": {
@@ -13462,6 +15409,68 @@
       "dungeons": [
         "Goblin Cave"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Ants Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Pit Hall"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tunnels"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Mole Tunnel"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley B"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -13638,6 +15647,68 @@
       "image": "Goblin",
       "dungeons": [
         "Goblin Cave"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Ants Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Pit Hall"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tombs"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tunnels"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Mine"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley B"
+        }
       ],
       "grades": {
         "Common": {
@@ -13862,6 +15933,36 @@
       "dungeons": [
         "Ice Abyss"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Glacial Pass"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Hound Vale"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 15,
@@ -13963,6 +16064,28 @@
       "image": "LivingArmor",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Castle Armory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall C"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Refectory"
+        }
       ],
       "grades": {
         "Common": {
@@ -14087,6 +16210,20 @@
       "image": "Harpy",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Chaple"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        }
       ],
       "grades": {
         "Common": {
@@ -14262,6 +16399,28 @@
       "dungeons": [
         "Inferno"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Corner"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -14433,6 +16592,16 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Rock Island"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -14501,6 +16670,72 @@
       "dungeons": [
         "Ice Abyss",
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frostwoven Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Reversed Pyramid"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hive"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        }
       ],
       "grades": {
         "Common": {
@@ -14707,6 +16942,68 @@
         "Ice Abyss",
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frostwoven Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Hound Vale"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Monoliths"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Frozen Lake"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Guardpost"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hive"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Hut C"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Quarry"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -14891,6 +17188,40 @@
       "dungeons": [
         "Ice Abyss"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Charnel House"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "False Throne"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frozen Hold"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Grand Hollow"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Hound Vale"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Imp Ritual Rooms"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Staircase Hill"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -15070,6 +17401,56 @@
       "image": "Kobold",
       "dungeons": [
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Swamp"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Dual Caverns"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Four Route"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Frozen Lake"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Icicle Cave"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Narrow Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Quarry"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Spiral"
+        }
       ],
       "grades": {
         "Common": {
@@ -15264,6 +17645,60 @@
       "image": "Kobold",
       "dungeons": [
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Barricade"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Swamp"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Dual Caverns"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Four Route"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Frozen Lake"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Icicle Cave"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Narrow Bridge"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Quarry"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Spiral"
+        }
       ],
       "grades": {
         "Common": {
@@ -15481,6 +17916,24 @@
       "dungeons": [
         "Ice Abyss"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Pillars"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Shallow Valley"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -15663,6 +18116,16 @@
       "image": "Ifrit",
       "dungeons": [
         "Firedeep"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Blaze Tunnel"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Magma Falls"
+        }
       ],
       "grades": {
         "Common": {
@@ -15874,6 +18337,12 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Burning Court"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -16047,6 +18516,20 @@
       "dungeons": [
         "Firedeep"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Burning Court"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Magma Falls"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Molten Pit"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -16219,6 +18702,20 @@
       "image": "LavaTurtle",
       "dungeons": [
         "Firedeep"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Firedeep",
+          "module": "Burning Court"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Collapsed Dig Site"
+        },
+        {
+          "dungeon": "Firedeep",
+          "module": "Lava Crossway"
+        }
       ],
       "grades": {
         "Common": {
@@ -16398,6 +18895,12 @@
       "dungeons": [
         "Crypt"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Dark Ritual Room A"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 100,
@@ -16574,6 +19077,28 @@
       "image": "LivingArmor",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Castle Armory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall C"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Refectory"
+        }
       ],
       "grades": {
         "Common": {
@@ -16802,6 +19327,28 @@
         "Inferno",
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Inferno",
+          "module": "Drain"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bath House"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Chaple"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Graveyard"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -17001,6 +19548,68 @@
       "dungeons": [
         "Goblin Cave"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Ants Nest"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Pit Hall"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tombs"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Tunnels"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Mine"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Town B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley B"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 15,
@@ -17127,6 +19736,48 @@
       "image": "Mermaid",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Village"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mermaid Tomb"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Rest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Spawning Pool"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Starfish Valley"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sunken Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Undersea Cave A"
+        }
       ],
       "grades": {
         "Common": {
@@ -17316,6 +19967,16 @@
       "image": "MermaidCorpse",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mermaid Tomb"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        }
       ],
       "grades": {
         "Common": {
@@ -17521,6 +20182,12 @@
       "dungeons": [
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Forest B"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 50,
@@ -17610,6 +20277,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Elite": {
           "adv_point": 4,
@@ -17686,6 +20354,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Elite": {
           "adv_point": 4,
@@ -17762,6 +20431,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Elite": {
           "adv_point": 20,
@@ -17838,6 +20508,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -17952,6 +20623,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -18066,6 +20738,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Elite": {
           "adv_point": 4,
@@ -18142,6 +20815,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -18256,6 +20930,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Elite": {
           "adv_point": 4,
@@ -18332,6 +21007,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Elite": {
           "adv_point": 4,
@@ -18408,6 +21084,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -18522,6 +21199,52 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Coral Forest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Island A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mermaid Tomb"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Empty Module"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Spawning Pool"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Undersea Cave A"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -18603,6 +21326,276 @@
         "Inferno",
         "Ruins",
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Admirer's Room"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Armory"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Altar"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cliffs"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Complex Halls"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Dark Priests"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Death Hall"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Dungeon"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Fishing Grounds"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Four Rooms"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Guard Posts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Hall E"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Lightless Chamber"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Maze"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mimic Lair"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mini Wheel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mummy Chest"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Old Tomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Pyramid"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Sewers"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Storeroom"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Swamp"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Tombs"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Vault"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wheel"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Rooms"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Cave"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Sinking Pillars"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Pathway"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Guardpost"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Maze"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Pyramid"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Quarry"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Columns"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood River"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Platforms"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Gate"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Mouth"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bath House"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Chaple"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "End Wall"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest Path"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forsaken Cloister"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Hidden Altar"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stables"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Watering Hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Elephant Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -18909,6 +21902,12 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -18965,6 +21964,12 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -19020,6 +22025,44 @@
       "image": "Octopus",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Coral Forest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mermaid Tomb"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ocean Volcano"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Spawning Pool"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sunken Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        }
       ],
       "grades": {
         "Common": {
@@ -19101,6 +22144,20 @@
       "image": "Slime",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Forest Path"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Slime Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Well"
+        }
       ],
       "grades": {
         "Common": {
@@ -19227,6 +22284,20 @@
       "image": "PinchclawCrab",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ocean Volcano"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Rock Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -19390,6 +22461,32 @@
       "image": "Pirate",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Hanging Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Rock Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sailor\u2019s Inn"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sea Fortress A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -19588,6 +22685,20 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Hanging Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -19766,6 +22877,7 @@
       ],
       "image": "Pirate",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -19923,6 +23035,48 @@
       "image": "Pirate",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Circle Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Island A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Village"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Hanging Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Rock Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sailor\u2019s Inn"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sea Fortress A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -20114,6 +23268,48 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Circle Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Island A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Village"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Hanging Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Rock Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sailor\u2019s Inn"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sea Fortress A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -20287,6 +23483,24 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Circle Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Coral Forest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Twin Chamber"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -20377,6 +23591,20 @@
       "image": "RuinsGolem",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Passage Inner"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Square A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        }
       ],
       "grades": {
         "Common": {
@@ -20619,6 +23847,12 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Twin Chamber"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -20674,6 +23908,20 @@
       "image": "Wolf",
       "dungeons": [
         "Ice Cavern"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Frozen Lake"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Wolf Cave"
+        }
       ],
       "grades": {
         "Common": {
@@ -20782,6 +24030,12 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -20837,6 +24091,32 @@
       "image": "Harpy",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Hanging Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ocean Volcano"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Rock Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Empty Module"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        }
       ],
       "grades": {
         "Common": {
@@ -20993,6 +24273,52 @@
       "image": "SeaPiranha",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Village"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mermaid Tomb"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ocean Volcano"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Pirate Prison"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Rest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Spawning Pool"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Starfish Valley"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Undersea Cave A"
+        }
       ],
       "grades": {
         "Common": {
@@ -21158,6 +24484,36 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Coral Forest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mermaid Tomb"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Spawning Pool"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sunken Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -21233,6 +24589,12 @@
       "image": "Zombie",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Skull Island"
+        }
       ],
       "grades": {
         "Common": {
@@ -21431,6 +24793,16 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Empty Module"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Undersea Cave A"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -21490,6 +24862,272 @@
         "Inferno",
         "Ruins",
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Altar Room AB"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Armory"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Atrium"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Blindfall Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Chapel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Complex Halls"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Dark Magic Library"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Death Hall"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Dungeon"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Guard Posts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Long Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Old Tomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Prisons B"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Ramparts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Sanctum"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Storeroom"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Swamp"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Trap Hall A"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Trap Hall B"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Treasure Room"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wheel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wraith Lair"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bat Roost"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Castle"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Prison"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood River"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Platforms"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Den"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Gate"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Throne"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Drain"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Stairway"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Obelisk"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Camp"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bath House"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Castle Armory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Destroyed Tower"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "End Wall"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest Path"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forsaken Cloister"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Hidden Altar"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Refectory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Slime Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Square B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stables"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stones"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Watchtower"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Pirate Prison"
+        }
       ],
       "grades": {
         "Common": {
@@ -21704,6 +25342,56 @@
         "Inferno",
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Blindfall Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Coffin Rooms"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Death Hall"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Twin Cemeteries"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Obelisk"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Destroyed Tower"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -21902,6 +25590,88 @@
         "Inferno",
         "Ruins",
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Barracks"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Blindfall Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Death Hall"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "High Priests"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mini Wheel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Old Tomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Vault"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wheel"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Cave Pathway"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Maze"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Watchtower"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Castle"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Destroyed Tower"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forsaken Cloister"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Pirate Prison"
+        }
       ],
       "grades": {
         "Common": {
@@ -22111,6 +25881,32 @@
         "Crypt",
         "Inferno"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Altar Room AB"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Blindfall Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Ramparts"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -22285,6 +26081,244 @@
         "Inferno",
         "Ruins",
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Altar Room AB"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Armory"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Atrium"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Barracks"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Catacomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cemetery"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Chapel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Circular"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cliffs"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Complex Halls"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cross Road"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Death Hall"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Fishing Grounds"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Hall E"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Hallways"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "High Priests"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Large Room Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Lightless Tomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Long Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Prisons B"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Skeleton Rooms"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Storeroom"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Swamp"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Trap Hall A"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Treasure Room"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Twin Cemeteries"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wheel"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Throne"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Corner"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Camp"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Barbican"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bath House"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Castle Armory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Destroyed Tower"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest Path"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forsaken Cloister"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Graveyard"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall C"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Hidden Altar"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Outer Cemetery"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Square A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stables"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stones"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Watering Hole"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Well"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Pirate Prison"
+        }
       ],
       "grades": {
         "Common": {
@@ -22491,6 +26525,7 @@
       ],
       "image": "Skeleton",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -22697,6 +26732,164 @@
         "Ruins",
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Atrium"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cemetery"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Chapel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Circular"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Dark Magic Library"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Dark Priests"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Death Hall"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Fishing Grounds"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mini Wheel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Ramparts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Storeroom"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Swamp"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Tombs"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wheel"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Rooms"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Path A"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Prison"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Judgement Road"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Corner"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Ritual Rooms"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Chaple"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Graveyard"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall C"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Keep"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Slime Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stones"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Pirate Prison"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -22901,6 +27094,7 @@
       ],
       "image": "Skeleton",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -22990,6 +27184,52 @@
       "dungeons": [
         "Crypt",
         "Inferno"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Blindfall Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Coffin Rooms"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Ramparts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Twin Cemeteries"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Doom Cage"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Obelisk"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        }
       ],
       "grades": {
         "Common": {
@@ -23203,6 +27443,128 @@
         "Ruins",
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Atrium"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Blindfall Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Rooms"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Spider Cave"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bat Roost"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Throne"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Drain"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Obelisk"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Camp"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bandit Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Barbican"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bath House"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Destroyed Tower"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall C"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Hidden Altar"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Outer Cemetery"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Square B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Tower Bridge"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Watering Hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Pirate Prison"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Starfish Valley"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -23414,6 +27776,12 @@
       "image": "Skeleton",
       "dungeons": [
         "Crypt"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Dark Ritual Room A"
+        }
       ],
       "grades": {
         "Common": {
@@ -23895,6 +28263,20 @@
       "dungeons": [
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Forest Path"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Slime Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Well"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -24097,6 +28479,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 5,
@@ -24173,6 +28556,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 4,
@@ -24249,6 +28633,7 @@
       ],
       "image": "Mimic",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": 2,
@@ -24323,6 +28708,7 @@
       ],
       "image": "Specter",
       "dungeons": [],
+      "spawn_locations": [],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -24390,6 +28776,12 @@
       "image": "SpectralKnight",
       "dungeons": [
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Barbican"
+        }
       ],
       "grades": {
         "Common": {
@@ -25252,6 +29644,44 @@
         "Inferno",
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Corridors"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Hallways"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Swamp"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cave Hideout A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Maze A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Stone Graves A"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Mouth"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Hidden Altar"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": null,
@@ -25431,6 +29861,48 @@
       "image": "Tidewalker",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Circle Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Island A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mist Watch"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Empty Module"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sunken Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Twin Chamber"
+        }
       ],
       "grades": {
         "Common": {
@@ -25624,6 +30096,28 @@
       "image": "Tidewalker",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Circle Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Coral Forest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mist Watch"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Twin Chamber"
+        }
       ],
       "grades": {
         "Common": {
@@ -25820,6 +30314,28 @@
       "dungeons": [
         "Ship Graveyard"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Empty Module"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Twin Chamber"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -26007,6 +30523,56 @@
       "image": "Tidewalker",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Abandoned Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Circle Island"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Coral Forest"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Flipped Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Floating Island A"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Hanging Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Mist Watch"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Empty Module"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sunken Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Twin Chamber"
+        }
       ],
       "grades": {
         "Common": {
@@ -26197,6 +30763,40 @@
       "dungeons": [
         "Ice Abyss"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Death Pit"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Demonic Den"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Dividing Hill"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Frost Maw"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Ice Maze"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Reversed Pyramid"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Shallow Valley"
+        },
+        {
+          "dungeon": "Ice Abyss",
+          "module": "Wyvern Lair"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 50,
@@ -26384,6 +30984,24 @@
       "image": "WhiteShark",
       "dungeons": [
         "Ship Graveyard"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Blue hole"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Ship Graveyard Blandhand Refuge"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Sunken Ship"
+        },
+        {
+          "dungeon": "Ship Graveyard",
+          "module": "Trench"
+        }
       ],
       "grades": {
         "Common": {
@@ -26579,6 +31197,24 @@
       "dungeons": [
         "Ruins"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ruins",
+          "module": "Forest A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest Path"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Well"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Wolf Den"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 1,
@@ -26752,6 +31388,72 @@
         "Crypt",
         "Inferno",
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Blindfall Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Death Hall"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Great Walkway"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Guard Posts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mini Wheel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Old Tomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Sanctum"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Vault"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Wraith Lair"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Castle"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Death Platforms"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Mouth"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Stairway"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Barbican"
+        }
       ],
       "grades": {
         "Common": {
@@ -26992,6 +31694,28 @@
       "dungeons": [
         "Ice Cavern"
       ],
+      "spawn_locations": [
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Four Route"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Icicle Cave"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Mountain Pass"
+        },
+        {
+          "dungeon": "Ice Cavern",
+          "module": "Tunnel"
+        }
+      ],
       "grades": {
         "Common": {
           "adv_point": 35,
@@ -27176,6 +31900,196 @@
         "Goblin Cave",
         "Inferno",
         "Ruins"
+      ],
+      "spawn_locations": [
+        {
+          "dungeon": "Crypt",
+          "module": "Admirer's Room"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cage"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Catacomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Altar"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Center Bridge"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cistern"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Cliffs"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Complex Halls"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Dungeon"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Fishing Grounds"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Four Rooms"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Hallways"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Large Room Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Mini Wheel"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Old Tomb"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Pit"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Ramparts"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Sanctum"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Sewers"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Tombs"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Trap Hall B"
+        },
+        {
+          "dungeon": "Crypt",
+          "module": "Underground Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Altar"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Cavern Lake B"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Bandits"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Goblin Prisons A"
+        },
+        {
+          "dungeon": "Goblin Cave",
+          "module": "Valley A"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bat Roost"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Blood Castle"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Bloody Falls"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Demon Mouth"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Drain"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellcross Bridge"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Hellwind"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Lava Corner"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Obelisk"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Painful Steps"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Spider Lair"
+        },
+        {
+          "dungeon": "Inferno",
+          "module": "Waiting Room"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Bath House"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Destroyed Tower"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Fallen Forest"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Forest A"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Greathall B"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Refectory"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Stables"
+        },
+        {
+          "dungeon": "Ruins",
+          "module": "Watering Hole"
+        }
       ],
       "grades": {
         "Common": {

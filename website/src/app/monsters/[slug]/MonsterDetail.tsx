@@ -67,6 +67,7 @@ interface Monster {
   creature_types: string[];
   image: string;
   dungeons: string[];
+  spawn_locations?: { dungeon: string; module: string }[];
   grades: Record<string, MonsterGrade>;
   attacks: Attack[];
   status_effects?: StatusEffect[];
@@ -744,6 +745,33 @@ function StatsTab({
                 </tr>
               </tbody>
             </table>
+          </div>
+        </>
+      )}
+
+      {/* Spawn Locations */}
+      {monster.spawn_locations && monster.spawn_locations.length > 0 && (
+        <>
+          <h3 className={styles.sectionTitle} style={{ marginTop: 28 }}>Spawn Locations</h3>
+          <div className={styles.spawnLocations}>
+            {(() => {
+              // Group by dungeon
+              const grouped: Record<string, string[]> = {};
+              for (const loc of monster.spawn_locations) {
+                if (!grouped[loc.dungeon]) grouped[loc.dungeon] = [];
+                grouped[loc.dungeon].push(loc.module);
+              }
+              return Object.entries(grouped).sort(([a], [b]) => a.localeCompare(b)).map(([dungeon, modules]) => (
+                <div key={dungeon} className={styles.spawnDungeon}>
+                  <div className={styles.spawnDungeonName}>{dungeon}</div>
+                  <div className={styles.spawnModules}>
+                    {modules.sort().map((mod, i) => (
+                      <span key={i} className={styles.spawnModule}>{mod}</span>
+                    ))}
+                  </div>
+                </div>
+              ));
+            })()}
           </div>
         </>
       )}

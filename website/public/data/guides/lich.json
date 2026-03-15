@@ -1,0 +1,187 @@
+{
+ "slug": "lich",
+ "overview": "The Lich is an Undead boss found in the Crypt dungeon. It is a spell-casting necromancer that uses a combination of ranged projectile attacks, curse mechanics, undead summoning, and a devastating Frenzy AoE ability. Its AI alternates between ranged bombardment with Normal and Strong Attack projectiles, curse phases that force players into specific positioning, soul absorption for healing, and summoning up to 8 undead minions. The Lich checks its HP ratio to decide when to enter curse states, making the fight progressively more dangerous as its health drops.",
+
+ "phases": [
+ {
+ "name": "Ranged Attack Phase",
+ "description": "The Lich opens combat with ranged projectile attacks. Normal Attack fires a charged projectile from its staff (head hitbox, fire power 2), while Strong Attack launches a homing projectile that pierces obstacles (body hitbox, homing acceleration 100,000, pierce count 1). Both projectiles explode on impact with AoE splash damage via SphereOverlapActors.",
+ "icon": "attack"
+ },
+ {
+ "name": "Curse Phase",
+ "description": "When the Lich's HP ratio drops past certain thresholds, it enters a Curse State which randomly selects between Curse of Gathering or Curse of Isolation. Curse of Gathering forces players to group up at a marked location, while Curse of Isolation separates them. Both curses place marks on players that apply timed effects and deal damage if conditions are not met.",
+ "icon": "special"
+ },
+ {
+ "name": "Summoning Phase",
+ "description": "The Lich uses Resurrection Summonee to raise up to 8 undead minions, including both Archers and Guardmen. It tracks the current player count and adjusts summoning accordingly. Summoned minions receive a stance effect and a gameplay tag marking them as resurrected, preventing double-resurrection.",
+ "icon": "summon"
+ },
+ {
+ "name": "Soul Absorption Phase",
+ "description": "Getting Soul fires multiple homing projectiles that target players. On hit, the Lich absorbs the soul — this is a charged ranged attack that spawns projectiles with randomized offset rotations and applies gameplay effects to targets.",
+ "icon": "special"
+ },
+ {
+ "name": "Frenzy Phase",
+ "description": "Frenzy is the Lich's most dangerous ability. It spawns DeathSwarm AoE zones at random reachable positions around its location using navigation queries. It applies gameplay effects to all summoned minions and uses damage containers on hit targets. The Lich triggers visual effects during this phase and checks gameplay tags on targets to determine effect application.",
+ "icon": "special"
+ },
+ {
+ "name": "Close Combat Fallback",
+ "description": "When players close to melee range, the Lich uses Close Attack — a defensive knockback that performs a sphere overlap check around itself, finds all player characters, calculates direction vectors, and force-pushes them away. This is defensive, not a primary damage source.",
+ "icon": "move"
+ }
+ ],
+
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ { "name": "Frenzy (DeathSwarm AoE)", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Spawns multiple DeathSwarm AoE zones at random reachable positions around the Lich. Applies effects to all caught players and empowers summoned minions. AoE positions use navigation queries — they only spawn on walkable ground." }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ { "name": "Strong Attack (Homing Projectile)", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Homing projectile with 100,000 acceleration. Pierces 1 obstacle. Targets body hitbox. Explodes on impact dealing AoE splash. Fire power: 2." },
+ { "name": "Getting Soul", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Multi-fire homing projectile attack. Spawns multiple projectiles with randomized pitch and yaw offsets targeting each player. Applies gameplay effects on hit." }
+ ]
+ },
+ {
+ "tier": "Standard",
+ "color": "#d9bc6a",
+ "attacks": [
+ { "name": "Normal Attack (Charged Projectile)", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Charged ranged projectile from staff. Targets head hitbox. Non-homing but tracks your position during the charge phase (RotateToActor). Explodes on impact with AoE splash." },
+ { "name": "Curse of Gathering Mark", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Timed mark that detonates if players haven't grouped up within the timer. Uses sphere overlap for gathering validation." },
+ { "name": "Curse of Isolation Mark", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Timed mark forcing players apart. Detonates if players haven't separated. Inverse logic of Gathering — checks that players are NOT overlapping." }
+ ]
+ },
+ {
+ "tier": "Utility",
+ "color": "#8a7048",
+ "attacks": [
+ { "name": "Close Attack (Knockback)", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Melee-range defensive ability. Sphere overlap check, finds all nearby players, force-pushes them away. Impact power: 5." },
+ { "name": "Resurrection Summonee", "ratio": 0, "damage_common": 0, "damage_elite": 0, "note": "Summons up to 8 undead minions (Archers and Guardmen). Applies stance effect to summons. Tags resurrected minions to prevent re-summoning." }
+ ]
+ }
+ ],
+
+ "combo_flow": {
+ "description": "The Lich's AI uses a behavior tree that selects abilities based on HP ratio thresholds, range checks, and cooldowns. It chains abilities in priority order rather than deterministic combos — curse phases trigger at HP breakpoints, and ability selection uses random chance within those phases.",
+ "chains": [
+ { "from": "HP Threshold Drop", "to": ["CurseState"], "note": "When HP ratio drops past a threshold, the Lich enters CurseState which randomly selects between Curse of Gathering or Curse of Isolation." },
+ { "from": "CurseState", "to": ["Curse of Gathering", "Curse of Isolation"], "note": "Uses random float comparison to pick which curse to cast." },
+ { "from": "Curse of Gathering", "to": ["Gathering Mark"], "note": "After the curse animation, the Mark ability applies the actual timed effect to players via sphere overlap." },
+ { "from": "Curse of Isolation", "to": ["Isolation Mark"], "note": "After the curse animation, the Mark ability applies the separation requirement with the same timer-based system." },
+ { "from": "Ranged (Any Distance)", "to": ["Normal Attack", "Strong Attack"], "note": "Normal Attack is a charged straight shot. Strong Attack is a homing projectile that pierces. Both fire from the staff." },
+ { "from": "Low HP / Pressure", "to": ["Resurrection Summonee", "Getting Soul", "Frenzy"], "note": "At lower HP, the Lich summons minions, absorbs souls for sustain, or enters Frenzy to blanket the arena with DeathSwarm AoE." },
+ { "from": "Player in Melee Range", "to": ["Close Attack"], "note": "When players get too close, the Lich pushes them away with force-move knockback." }
+ ]
+ },
+
+ "status_effects_detail": [
+ {
+ "name": "Curse of Gathering",
+ "type": "debuff",
+ "duration": "Timed",
+ "stacks": 1,
+ "description": "Marks players and requires them to group up at a specific location within the timer. If players are not gathered when the timer runs out (validated via sphere overlap check), the curse detonates dealing damage.",
+ "counter": "Group up with your teammates at the marked location before the timer expires. All marked players must be within range of each other."
+ },
+ {
+ "name": "Curse of Isolation",
+ "type": "debuff",
+ "duration": "Timed",
+ "stacks": 1,
+ "description": "The inverse of Gathering — marks players and requires them to spread apart. If players remain too close when it expires, the curse detonates. Uses sphere overlap with inverse logic (checking that players are NOT overlapping).",
+ "counter": "Spread away from your teammates when this curse is active. Make sure you are outside the overlap detection radius before the timer expires."
+ },
+ {
+ "name": "DeathSwarm",
+ "type": "debuff",
+ "duration": "AoE zone duration",
+ "stacks": 1,
+ "description": "Area-of-effect zones spawned during Frenzy phase at random reachable positions around the Lich. Placed using navigation validation, meaning they only spawn on walkable ground. Applies damage and effects to players standing in them.",
+ "counter": "Move out of the AoE zones immediately. They spawn at random positions but only on navigable ground — watch the floor for visual indicators."
+ }
+ ],
+
+ "strategies": [
+ {
+ "title": "Understand the Curse Mechanic — Gather or Scatter",
+ "priority": "critical",
+ "description": "The Lich's CurseState uses HP ratio thresholds to trigger curse phases. It randomly picks between Curse of Gathering (group up) and Curse of Isolation (spread out). Both apply timed marks that detonate if conditions aren't met. Watch for the casting animation — Gathering and Isolation have different tells. React immediately: if Gathering, stack on the mark; if Isolation, spread to maximum distance."
+ },
+ {
+ "title": "Dodge the Homing Strong Attack",
+ "priority": "critical",
+ "description": "Strong Attack fires a homing projectile with 100,000 acceleration that pierces obstacles. It targets your body hitbox and explodes with AoE splash on impact. Unlike Normal Attack which is a straight charged shot, this projectile actively tracks you. Use pillars and line-of-sight breaks, but remember it pierces one obstacle — don't assume you're safe behind a single wall."
+ },
+ {
+ "title": "Watch for Frenzy at Low HP",
+ "priority": "critical",
+ "description": "Frenzy spawns multiple DeathSwarm AoE zones at random reachable positions around the Lich using navigation queries. It also applies effects to summoned minions. This is the Lich's most lethal phase — keep moving and don't stand still. The AoE zones only spawn on walkable ground, so watch the floor."
+ },
+ {
+ "title": "Exploit Divine Damage Weakness",
+ "priority": "high",
+ "description": "The Lich has -250 Divine Magical Reduction, meaning it takes significantly increased damage from Divine sources. Cleric spells and other Divine abilities are extremely strong in this fight. Conversely, it has +500 Evil Magical Reduction, making Evil damage largely ineffective."
+ },
+ {
+ "title": "Kill Summoned Minions Before They Overwhelm",
+ "priority": "high",
+ "description": "The Lich can summon up to 8 undead minions (Archers and Guardmen) via Resurrection Summonee. It checks gameplay tags to avoid re-summoning already active minions, meaning it will keep summoning until it hits 8 living adds. Clear summons quickly to prevent the arena from becoming unmanageable."
+ },
+ {
+ "title": "Stay at Range — Avoid the Knockback",
+ "priority": "high",
+ "description": "Close Attack is the Lich's melee-range defensive ability. It performs a sphere overlap, finds all nearby players, and force-pushes them away. This can disrupt your positioning during curse phases. Melee players should engage carefully and be prepared for forced repositioning."
+ },
+ {
+ "title": "Avoid Evil Damage — It Resists It",
+ "priority": "medium",
+ "description": "With +500 Evil Magical Reduction, the Lich is highly resistant to Evil-type damage. Warlock and other Evil-based damage dealers will see drastically reduced effectiveness. Swap to physical or Divine damage if possible."
+ },
+ {
+ "title": "High Impact Values (999/999)",
+ "priority": "medium",
+ "description": "With 999 Impact Resistance and 999 Impact Endurance, the Lich is has high Impact values (ImpactResistance 999, MaxImpactEndurance 999). ImpactResistance 999, MaxImpactEndurance 999."
+ },
+ {
+ "title": "Projectile Reduction is High — Use Melee or Magic",
+ "priority": "medium",
+ "description": "The Lich has 250 Projectile Reduction, making ranged physical projectile attacks significantly weaker. Spells and melee attacks bypass this reduction entirely. Rangers and projectile-based classes will deal reduced damage."
+ },
+ {
+ "title": "Normal Attack Tracks During Charge — Sidestep Late",
+ "priority": "medium",
+ "description": "Normal Attack uses RotateToActor during its charge phase, meaning the Lich tracks your position while winding up. The projectile itself is not homing, so the key is to sidestep at the last moment after the charge completes but before the projectile fires. Early dodging just lets it re-aim."
+ }
+ ],
+
+ "elite_differences": [
+ "45% more HP (2,000 → 2,900)",
+ "50% more physical damage (40 → 60)",
+ "25% faster base movement speed (200 → 250)",
+ "Dedicated Elite behavior tree with potentially more aggressive ability sequencing",
+ "Distinct Elite visual materials (helmet, body, robe)",
+ "Same resistances, magic resistance (124), and projectile reduction (250)",
+ "Same 13 abilities available in both grades",
+ "Higher XP reward (15 → 20)"
+ ],
+
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180° peripheral vision with 1500 unit sight radius and 4000 unit lose-sight radius",
+ "damage_sense": true,
+ "damage_description": "Always reacts to being hit — taking damage immediately alerts the Lich to the attacker's position",
+ "hearing": true,
+ "hearing_description": "Detects both neutral and friendly sound sources, meaning stealth approaches may still be detected through noise",
+ "stuck_tracking": false,
+ "stuck_description": "No explicit stuck tracking in the Lich's AI"
+ }
+}

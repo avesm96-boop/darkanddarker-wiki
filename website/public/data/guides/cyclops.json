@@ -1,0 +1,272 @@
+{
+ "slug": "cyclops",
+ "overview": "The Cyclops is a Humanoid/Beast boss found in Goblin Cave. It is a massive, powerful melee combatant that uses club swings, ground stomps, soil throwing, and falling rock projectiles. Its behavior tree is HP-gated — when health drops below 33%, it enters a Riot phase where it thrashes wildly with increased aggression. The Elite variant gains Petrification, a laser-based eye beam that turns players to stone.",
+ "phases": [
+ {
+ "name": "Normal Phase (HP > 33%)",
+ "description": "The Cyclops selects attacks based on target proximity. If an enemy is within 500 units and the stomp timer is ready, it stomps. If enemies are within 600 units, it uses combo attacks (Combo1/Combo2/Combo3 chosen randomly at equal ~33% rates) or Sprinkle Soil. At range, it uses Run And Swing to close distance. Between attacks, it increments a Phase counter by 350-400 and stomps when the counter exceeds a threshold.",
+ "icon": "attack"
+ },
+ {
+ "name": "Riot Phase (HP <= 33%)",
+ "description": "When HP drops to 33% or below, the AI checks the HPRatio blackboard value and triggers the Riot ability (Skill.Eleven.On). The Cyclops enters a prolonged rampage animation dealing 1800 ratio damage repeatedly. The Phase counter decreases by 1000 during Riot, resetting the attack cycle. Riot reads HPRatio from the blackboard and tracks start HP to determine when to exit.",
+ "icon": "special"
+ },
+ {
+ "name": "Stomp Cycle",
+ "description": "Stomp uses a cooldown timer (State.Monster.AI.Timer.One). When the timer expires and a target is within 350 units, the Cyclops stomps dealing 2200 ratio damage in a 300-unit damage radius, plus applies a slow debuff in a wider 450-unit radius. The stomp also triggers Sprinkle Soil (Skill.Fourteen) and adds a new timer cooldown.",
+ "icon": "special"
+ },
+ {
+ "name": "Petrification Phase (Elite Only)",
+ "description": "The Elite Cyclops gains access to Petrification (Skill.Fifteen.On), a laser eye beam attack (AM_Cyclops_Combat_Attack_Lazer) with a rotation speed of 8.0. It checks enemies in range and applies the Petrification status effect, which completely immobilizes the target. This ability checks HPRatio and is gated by conditions in the Elite behavior tree.",
+ "icon": "special"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "Stomp",
+ "ratio": 2200,
+ "damage_common": 193.6,
+ "damage_elite": 233.2,
+ "note": "Ground slam with 300-unit damage radius and 450-unit slow radius. Triggered when stomp timer is off cooldown and target is within 350 units. Highest single-hit damage in the Cyclops arsenal."
+ },
+ {
+ "name": "Riot",
+ "ratio": 1800,
+ "damage_common": 158.4,
+ "damage_elite": 190.8,
+ "note": "Enraged rampage triggered at 33% HP. The Cyclops thrashes wildly in a 400-unit XY range, dealing massive repeated damage. Uses MonsterCantStuck melee data — it cannot be interrupted during this phase."
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Sprinkle Soil",
+ "ratio": 1700,
+ "damage_common": 149.6,
+ "damage_elite": 180.2,
+ "note": "Throws soil in a 1200-unit range, 40-degree cone angle, aimed 20 degrees forward. Applies Blinker debuff (screen obstruction). Has a 700-unit XY and 200-unit Z launch that knocks players back."
+ },
+ {
+ "name": "Combo2 / Combo2From1 / Combo2From3",
+ "ratio": 1600,
+ "damage_common": 140.8,
+ "damage_elite": 169.6,
+ "note": "The hardest-hitting combo swing. Can be used as a standalone attack or chained from Combo1 or Combo3. All combo variants use MonsterCantStuck melee data."
+ },
+ {
+ "name": "Combo3 / Combo3From1 / Combo3From2",
+ "ratio": 1500,
+ "damage_common": 132,
+ "damage_elite": 159,
+ "note": "Second-hardest combo swing. Chains from Combo1 or Combo2 with higher rotation speed (8.0) for better tracking."
+ }
+ ]
+ },
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "Combo1 / Combo1From2 / Combo1From3",
+ "ratio": 1100,
+ "damage_common": 96.8,
+ "damage_elite": 116.6,
+ "note": "The lightest combo swing. Used as an opener with 7.0 rotation speed. Chains from Combo2 or Combo3. Selected at ~34% probability alongside the other two combo starters."
+ },
+ {
+ "name": "Run And Swing",
+ "ratio": 1000,
+ "damage_common": 88,
+ "damage_elite": 106,
+ "note": "Charge attack used when targets are beyond melee range. Has 5.0 rotation speed and MonsterCantStuck data. Used at 70% probability when enemies are within 600 units."
+ }
+ ]
+ },
+ {
+ "tier": "Ranged",
+ "color": "#5588dd",
+ "attacks": [
+ {
+ "name": "Falling Rock",
+ "ratio": 200,
+ "damage_common": 17.6,
+ "damage_elite": 21.2,
+ "note": "Projectile attack that spawns rocks from the ceiling. The Cyclops calculates ceiling height and spawn locations relative to player positions. Shadows appear on the ground before rocks land. Low damage per rock but covers area."
+ }
+ ]
+ },
+ {
+ "tier": "Utility",
+ "color": "#8a7048",
+ "attacks": [
+ {
+ "name": "Falling Rock Shadow",
+ "ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Shadow indicators on the ground marking where falling rocks will land. No damage — purely a visual warning system. The Cyclops spawns shadows at target locations and random locations around the center point."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "The Cyclops AI uses a combo system where Combo1, Combo2, and Combo3 can chain into each other. The initial combo is chosen randomly (34%/33%/33% split for Skill.One/Skill.Four/Skill.Seven). After each combo hit, the Combo_Parent blueprint checks if enemies are still in range and uses a RandomFloat to decide whether to chain into another combo attack or end the sequence.",
+ "chains": [
+ {
+ "from": "Combo1 (Skill.One)",
+ "to": [
+ "Combo2From1 (Skill.Four)",
+ "Combo3From1 (Skill.Seven)"
+ ],
+ "note": "After the lightest swing, chains into the heavier Combo2 or Combo3. RandomBool determines which follow-up is selected. Checks if enemies remain in range before chaining."
+ },
+ {
+ "from": "Combo2 (Skill.Four)",
+ "to": [
+ "Combo1From2 (Skill.One)",
+ "Combo3From2 (Skill.Seven)"
+ ],
+ "note": "After the heaviest combo swing, can chain down to Combo1 or across to Combo3."
+ },
+ {
+ "from": "Combo3 (Skill.Seven)",
+ "to": [
+ "Combo1From3 (Skill.One)",
+ "Combo2From3 (Skill.Four)"
+ ],
+ "note": "After the second-heaviest swing, branches to either Combo1 or Combo2."
+ },
+ {
+ "from": "Stomp",
+ "to": [
+ "Sprinkle Soil",
+ "Timer Cooldown"
+ ],
+ "note": "Stomp always chains into Sprinkle Soil and adds a timer tag preventing immediate re-use."
+ },
+ {
+ "from": "Close Range (< 500u)",
+ "to": [
+ "Stomp (if timer ready)",
+ "Combo Chain (if timer not ready)"
+ ],
+ "note": "At close range, Stomp has priority if the cooldown timer has expired. 70% probability check gates the stomp path."
+ },
+ {
+ "from": "Mid Range (< 600u)",
+ "to": [
+ "Run And Swing (70%)",
+ "Sprinkle Soil (30%)"
+ ],
+ "note": "At mid range, Run And Swing is the primary gap-closer at 70% probability. Sprinkle Soil is the alternative."
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "Blinker",
+ "type": "debuff",
+ "duration": "Duration-based (Tag Only)",
+ "stacks": 1,
+ "description": "Applied by Sprinkle Soil attack. A visual obstruction effect — dirt/debris covers the player's screen, reducing visibility. Uses the GE_Dur_TagOnly parent class, meaning it applies a gameplay tag for a set duration without modifying attributes directly. Stacking is AggregateByTarget with a limit of 1 — cannot stack, only refreshes.",
+ "counter": "Dodge the Sprinkle Soil cone (40-degree angle, 1200-unit range). The attack has a fixed forward direction of 20 degrees, so sidestepping works. If hit, wait for the duration to expire — there is no early removal mechanic."
+ },
+ {
+ "name": "Petrification",
+ "type": "debuff",
+ "duration": "Duration-based (Tag Only)",
+ "stacks": 1,
+ "description": "Applied by the Elite-only Petrification laser eye beam. Completely immobilizes the target — the player cannot move, attack, or use abilities while petrified. Uses GE_Dur_TagOnly parent class. The laser has rotation speed 8.0 and sweeps across the arena. Stacking is AggregateByTarget with limit 1. The ability casts to BP_Cyclops_Elite specifically.",
+ "counter": "Only the Elite Cyclops uses this attack. Break line of sight or get behind the Cyclops when you see the laser animation start (AM_Cyclops_Combat_Attack_Lazer). The beam rotates at speed 8.0, so continuous lateral movement can outpace it at sufficient distance."
+ },
+ {
+ "name": "Slow",
+ "type": "debuff",
+ "duration": "Duration-based (MoveSpeed Reduce)",
+ "stacks": 1,
+ "description": "Applied by the Stomp attack in a 450-unit radius (larger than the 300-unit damage radius). Inherits from GE_Dur_MoveSpeedModReduce — directly reduces the player's movement speed. Stacking is AggregateByTarget with limit 1. Has TargetTagRequirements component for conditional application.",
+ "counter": "Stay beyond 450 units when the Cyclops stomps. Note the slow radius is 50% larger than the damage radius — you can be slowed without taking stomp damage. Getting slowed near the Cyclops is extremely dangerous as it enables follow-up Sprinkle Soil or combo hits."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Stomp Is the Deadliest Attack — Stay Beyond 350 Units",
+ "priority": "critical",
+ "description": "Stomp deals 2200 ratio damage (193.6 Common / 233.2 Elite) and is triggered when the target is within 350 units and the stomp timer has expired. The damage radius is 300 units with an additional slow zone at 450 units. Keep your distance during the stomp cooldown window — the AI specifically checks MaxDistance of 350 before committing to this attack."
+ },
+ {
+ "title": "33% HP Triggers Riot — Prepare for the Enrage",
+ "priority": "critical",
+ "description": "The behavior tree checks HPRatio against a 33% threshold (BTD_CheckFloatAttributeCondition with CompareWith NewEnumerator3). When triggered, the Cyclops enters Riot mode — a 1800 ratio rampage with 400-unit range that cannot be interrupted (MonsterCantStuck). Have your escape planned before pushing the boss below this threshold. The Riot ability tracks its start HP and checks remaining HP to determine when to end."
+ },
+ {
+ "title": "Light Magic and Dark Magic Are Highly Effective",
+ "priority": "high",
+ "description": "The Cyclops has LightMagicalReduction of -2000 (takes 20% extra Light damage) and DarkMagicalReduction of -250 (takes 2.5% extra Dark damage). Fire and Evil magic are resisted at +500 each. Clerics, Warlocks, and other Light/Dark damage dealers have a significant advantage in this fight."
+ },
+ {
+ "title": "High Impact Values (999/999)",
+ "priority": "high",
+ "description": "With 999 ImpactResistance and 999 MaxImpactEndurance, the Cyclops is has high Impact values (ImpactResistance 999, MaxImpactEndurance 999). Every attack uses Id_MeleeAttack_GA_MonsterCantStuck data. Do not rely on interrupts — focus purely on damage output and avoidance."
+ },
+ {
+ "title": "Sidestep Sprinkle Soil — It Has a Narrow Cone",
+ "priority": "high",
+ "description": "Sprinkle Soil has a 40-degree Apply Angle aimed 20 degrees forward with 1200-unit range. This is a relatively narrow frontal cone. Moving to the side easily avoids it. Getting hit applies Blinker (screen obstruction) which can lead to being caught by follow-up attacks. The attack also launches players with 700 XY / 200 Z force."
+ },
+ {
+ "title": "Exploit the Stomp Cooldown Timer",
+ "priority": "high",
+ "description": "Stomp is gated by State.Monster.AI.Timer.One — after each stomp, a cooldown timer prevents immediate re-use. The AI checks this tag before allowing the stomp branch. During the cooldown, the Cyclops falls back to combo attacks at close range. This is your safest window to deal melee damage."
+ },
+ {
+ "title": "Watch the Ground for Falling Rock Shadows",
+ "priority": "medium",
+ "description": "Falling Rocks are spawned at calculated positions — the ability traces the ceiling height above target locations and spawns shadow indicators before rocks drop. The shadows appear at both targeted (player) positions and random surrounding locations. Each rock only deals 200 ratio (17.6/21.2 damage), but getting hit by multiple rocks adds up."
+ },
+ {
+ "title": "Combo Attacks Have Equal Probability — Expect Any Variant",
+ "priority": "medium",
+ "description": "The behavior tree selects the initial combo randomly: Combo1 at 34%, Combo2 at 33%, Combo3 at 33%. After the initial hit, combos chain into each other based on RandomBool checks and enemy range validation. Each combo can chain 2-3 times before the AI resets. The chain can include any mix — expect damage ranging from 1100 to 1600 ratio per hit."
+ },
+ {
+ "title": "Projectile Damage is Heavily Reduced",
+ "priority": "medium",
+ "description": "The Cyclops has ProjectileReductionMod of 300 — ranged physical projectile damage is reduced by 30%. Melee-focused classes have better damage efficiency. Ranged players should prioritize magical damage over physical projectiles."
+ },
+ {
+ "title": "Elite Petrification Can Be Outrun at Distance",
+ "priority": "medium",
+ "description": "The Elite Petrification laser has a rotation speed of 8.0 degrees per tick. At close range, the sweep is nearly impossible to avoid, but at maximum range the angular velocity translates to slow linear movement. Keep distance when you see the laser charge animation (AM_Cyclops_Combat_Attack_Lazer) and run perpendicular to the beam."
+ }
+ ],
+ "elite_differences": [
+ "50% more HP (4,136 -> 6,193)",
+ "20% more physical damage (88 -> 106)",
+ "12% faster movement speed (250 -> 280 MoveSpeedBase)",
+ "Same Action Speed penalty (-200) on both grades",
+ "Gains Petrification ability — laser eye beam that immobilizes players (Elite-only, Skill.Fifteen.On)",
+ "Separate behavior tree (BT_Cyclops_Elite) with additional HP-gated branches and Petrification integration",
+ "Same resistances, same impact immunity (999/999), same projectile reduction (300)",
+ "Higher XP reward (12 -> 15)"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180-degree peripheral vision with 1500-unit sight radius and 4000-unit lose-sight radius — it sees in a full frontal hemisphere but cannot detect targets directly behind it",
+ "damage_sense": true,
+ "damage_description": "AISenseConfig_Damage is configured — the Cyclops always reacts to taking damage regardless of facing direction",
+ "hearing": true,
+ "hearing_description": "AISenseConfig_Hearing is configured — reacts to sound stimuli in the arena, preventing stealthy approaches",
+ "stuck_tracking": false,
+ "stuck_description": "No explicit stuck counter in the behavior tree, but all melee attacks use MonsterCantStuck data to prevent the Cyclops from getting stuck during attack animations"
+ }
+}

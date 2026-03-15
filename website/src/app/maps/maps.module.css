@@ -1,0 +1,12 @@
+.container {
+  padding-top: var(--nav-h);
+  height: 100vh;
+  background: var(--bg-deep);
+}
+
+.viewer {
+  width: 100%;
+  height: calc(100vh - var(--nav-h));
+  border: none;
+  display: block;
+}

@@ -121,6 +121,7 @@ export default function MonstersPage() {
     if (!data) return [];
     const q = search.toLowerCase();
     let list = data.monsters.filter((m) => {
+      if (m.name.startsWith("DesignData")) return false;
       if (q && !m.name.toLowerCase().includes(q)) return false;
       if (classFilter !== "All" && m.class_type !== classFilter) return false;
       if (typeFilter !== "All" && !m.creature_types.includes(typeFilter)) return false;
@@ -232,7 +233,7 @@ export default function MonstersPage() {
           <span className="section-label">Bestiary</span>
           <h1 className="section-title">Monsters</h1>
           <p className="section-desc">
-            {data!.monsters.length} creatures with stats, attacks, and spawn locations.
+            {filtered.length} creatures with stats, attacks, and spawn locations.
           </p>
           <div className={styles.headerDivider} />
         </div>

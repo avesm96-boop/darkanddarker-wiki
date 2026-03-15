@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crypt Map — Dark and Darker</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #080604;
+  --bg-glass:    rgba(14,12,8,0.82);
+  --bg-card:     rgba(18,16,10,0.9);
+  --bg-card-h:   rgba(24,20,12,0.95);
+  --bg-input:    rgba(10,8,4,0.9);
+  --border:      rgba(201,168,76,0.12);
+  --border-h:    rgba(201,168,76,0.25);
+  --border-glow: rgba(201,168,76,0.35);
+  --accent:      #c9a84c;
+  --accent-b:    #dcc06a;
+  --accent-d:    #7a5c24;
+  --text:        #ede4cc;
+  --text-s:      #bfa968;
+  --text-m:      #7a6038;
+  --text-d:      #3d2e14;
+  --red:         #d44;
+  --green:       #5b5;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  font-size: 13px;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ══════════ TOP BAR ══════════ */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 100;
+}
+.topbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+}
+
+/* Map selector */
+.map-select {
+  position: relative;
+}
+.map-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 4px 28px 4px 10px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--accent-b);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%237a5c24' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 10px;
+}
+.map-select select:hover { border-color: var(--border-h); }
+.map-select select:focus { border-color: var(--accent-d); box-shadow: 0 0 8px rgba(201,168,76,0.1); }
+.map-select select option {
+  background: #12100a;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding: 4px;
+}
+
+/* Grade pills */
+.grade-pills { display: flex; gap: 0; }
+.grade-pill {
+  padding: 4px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-m);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.grade-pill:first-child { border-radius: 6px 0 0 6px; }
+.grade-pill:last-child  { border-radius: 0 6px 6px 0; }
+.grade-pill:not(:last-child) { border-right: none; }
+.grade-pill:hover { color: var(--text-s); background: rgba(201,168,76,0.05); }
+.grade-pill.active {
+  background: rgba(201,168,76,0.12);
+  color: var(--accent-b);
+  border-color: var(--border-h);
+  box-shadow: 0 0 8px rgba(201,168,76,0.1);
+}
+
+/* Search */
+.search-box {
+  position: relative;
+  flex: 0 1 240px;
+}
+.search-box input {
+  width: 100%;
+  padding: 5px 28px 5px 10px;
+  font-size: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-box input:focus { border-color: var(--accent-d); }
+.search-box input::placeholder { color: var(--text-d); }
+.search-clear {
+  display: none;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-d);
+  font-size: 14px;
+  line-height: 1;
+}
+.search-badge {
+  display: none;
+  font-size: 10px;
+  color: var(--accent-d);
+  font-family: 'Rajdhani', sans-serif;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+.search-badge.active { display: inline; }
+
+/* Location filter */
+.loc-pills { display: flex; gap: 0; }
+.loc-pill {
+  padding: 4px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-m);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.loc-pill:first-child { border-radius: 6px 0 0 6px; }
+.loc-pill:last-child  { border-radius: 0 6px 6px 0; }
+.loc-pill:not(:last-child) { border-right: none; }
+.loc-pill:hover { color: var(--text-s); }
+.loc-pill.active { background: rgba(201,168,76,0.08); color: var(--accent); border-color: var(--accent-d); }
+
+/* Luck */
+.luck-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-m);
+  white-space: nowrap;
+}
+.luck-wrap input[type=range] { width: 60px; accent-color: var(--accent); cursor: pointer; }
+.luck-val { color: var(--accent-d); font-size: 11px; min-width: 18px; }
+
+.topbar-spacer { flex: 1; }
+
+/* ══════════ LAYER BAR (floating) ══════════ */
+.layer-dock {
+  position: fixed;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  padding: 4px 6px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  z-index: 90;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.layer-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s;
+}
+.layer-btn:hover { background: rgba(201,168,76,0.06); }
+.layer-btn.active { background: rgba(201,168,76,0.1); border-color: var(--border-h); }
+.layer-btn .layer-icon {
+  width: 16px; height: 16px;
+  border-radius: 3px;
+  opacity: 0.3;
+  transition: opacity 0.15s;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.layer-btn.active .layer-icon { opacity: 1; }
+.layer-btn .layer-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-d);
+  transition: color 0.15s;
+}
+.layer-btn.active .layer-name { color: var(--text-s); }
+
+/* ══════════ GALLERY ══════════ */
+#main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 44px;
+  scrollbar-width: thin;
+  scrollbar-color: #2a1e0a #08060400;
+}
+#main::-webkit-scrollbar { width: 6px; }
+#main::-webkit-scrollbar-thumb { background: #2a1e0a; border-radius: 3px; }
+#main::-webkit-scrollbar-track { background: transparent; }
+
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 16px 20px 40px;
+}
+
+/* Module cards */
+.module-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.module-card:hover {
+  border-color: var(--border-h);
+  box-shadow: 0 4px 24px rgba(201,168,76,0.06);
+  transform: translateY(-1px);
+}
+.module-card.highlight {
+  border-color: var(--accent);
+  box-shadow: 0 0 30px rgba(201,168,76,0.15);
+}
+
+.module-card-header {
+  display: flex;
+  align-items: center;
+  padding: 7px 12px;
+  background: rgba(201,168,76,0.03);
+  border-bottom: 1px solid var(--border);
+}
+.module-card-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.03em;
+}
+.module-card-badge {
+  margin-left: auto;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.module-card-badge.center { background: rgba(201,168,76,0.1); color: var(--accent); }
+.module-card-badge.edge   { background: rgba(220,80,80,0.1); color: var(--red); }
+
+.module-card-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #060408;
+}
+.module-card-map img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* ══════════ SPAWN MARKERS ══════════ */
+.spawn-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  z-index: 2;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 0;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+}
+.spawn-dot:hover {
+  z-index: 10;
+  transform: translate(-50%, -50%) scale(1.35);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)) brightness(1.15);
+}
+.spawn-dot.search-hl { outline: 2px solid var(--accent); outline-offset: 1px; z-index: 5; }
+
+/* Spawn type colors (for fallback) */
+.sd-Monster        { background-color: #e05555; }
+.sd-TreasureHoard  { background-color: #ffcc00; }
+.sd-MarvelousChest { background-color: #ff88ff; }
+.sd-GoldChest      { background-color: #ffd700; }
+.sd-OrnateChest    { background-color: #cc88ff; }
+.sd-SpecialChest   { background-color: #ff9944; }
+.sd-WoodChest      { background-color: #a0784c; }
+.sd-SimpleChest    { background-color: #888; }
+.sd-Chest          { background-color: #88bbff; }
+.sd-Coffin         { background-color: #9b7653; }
+.sd-Equipment      { background-color: #5588dd; }
+.sd-Consumable     { background-color: #55c075; }
+.sd-Valuable       { background-color: #aabb55; }
+.sd-Herb           { background-color: #44cc88; }
+.sd-QuestItem      { background-color: #ffaa44; }
+.sd-Trap           { background-color: #ff5555; }
+.sd-Portal         { background-color: #aa55ff; }
+.sd-Interact       { background-color: #55aaff; }
+.sd-Container      { background-color: #888; }
+.sd-PlayerSpawn    { background-color: #c9a84c; }
+.sd-NPC            { background-color: #55c075; }
+.sd-Altar          { background-color: #d4a017; }
+.sd-StairUp        { background-color: #4488cc; }
+.sd-StairDown      { background-color: #cc4444; }
+
+/* SVG icon markers */
+.spawn-dot.sd-Monster        { width: 14px; height: 14px; background-image: url('./spawn-icons/monster.svg'); }
+.spawn-dot.sd-TreasureHoard  { width: 18px; height: 18px; background-image: url('./spawn-icons/treasure-hoard.svg'); }
+.spawn-dot.sd-MarvelousChest { width: 15px; height: 13px; background-image: url('./spawn-icons/marvelous-chest.svg'); }
+.spawn-dot.sd-GoldChest      { width: 13px; height: 11px; background-image: url('./spawn-icons/gold-chest.svg'); }
+.spawn-dot.sd-OrnateChest    { width: 12px; height: 10px; background-image: url('./spawn-icons/ornate-chest.svg'); }
+.spawn-dot.sd-SpecialChest   { width: 11px; height: 9px;  background-image: url('./spawn-icons/special-chest.svg'); }
+.spawn-dot.sd-WoodChest      { width: 10px; height: 8px;  background-image: url('./spawn-icons/wood-chest.svg'); }
+.spawn-dot.sd-SimpleChest    { width: 9px;  height: 8px;  background-image: url('./spawn-icons/simple-chest.svg'); }
+.spawn-dot.sd-Chest          { width: 9px;  height: 8px;  background-image: url('./spawn-icons/chest.svg'); }
+.spawn-dot.sd-Coffin         { width: 8px;  height: 12px; background-image: url('./spawn-icons/coffin.svg'); }
+.spawn-dot.sd-Equipment      { width: 10px; height: 10px; background-image: url('./spawn-icons/equipment.svg'); }
+.spawn-dot.sd-Consumable     { width: 9px;  height: 9px;  background-image: url('./spawn-icons/consumable.svg'); }
+.spawn-dot.sd-Valuable       { width: 8px;  height: 8px;  background-image: url('./spawn-icons/valuable.svg'); }
+.spawn-dot.sd-QuestItem      { width: 12px; height: 12px; background-image: url('./spawn-icons/quest-item.svg'); }
+.spawn-dot.sd-Herb           { width: 9px;  height: 9px;  background-image: url('./spawn-icons/herb.svg'); }
+.spawn-dot.sd-Trap           { width: 11px; height: 11px; background-image: url('./spawn-icons/trap.svg'); }
+.spawn-dot.sd-Portal         { width: 10px; height: 10px; background-image: url('./spawn-icons/portal.svg'); }
+.spawn-dot.sd-Interact       { width: 8px;  height: 8px;  background-image: url('./spawn-icons/interact.svg'); }
+.spawn-dot.sd-Container      { width: 6px;  height: 6px;  background-image: url('./spawn-icons/container.svg'); }
+.spawn-dot.sd-PlayerSpawn    { width: 13px; height: 15px; background-image: url('./spawn-icons/player-spawn.svg'); }
+.spawn-dot.sd-NPC            { width: 11px; height: 11px; background-image: url('./spawn-icons/npc.svg'); }
+.spawn-dot.sd-Altar          { width: 20px; height: 20px; background-image: url('./spawn-icons/altar.png'); image-rendering: auto; }
+.spawn-dot.sd-StairUp        { width: 18px; height: 18px; background-image: url('./spawn-icons/stair-up.png'); image-rendering: auto; }
+.spawn-dot.sd-StairDown      { width: 18px; height: 18px; background-image: url('./spawn-icons/stair-down.png'); image-rendering: auto; }
+
+/* ══════════ TOOLTIP ══════════ */
+#tooltip {
+  position: fixed;
+  display: none;
+  background: rgba(8,6,4,0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-h);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text);
+  pointer-events: none;
+  z-index: 9999;
+  max-width: 280px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+#tooltip .tt-name { font-family: 'Cinzel', Georgia, serif; font-weight: 600; font-size: 13px; letter-spacing: 0.03em; }
+#tooltip .tt-label { color: var(--text-s); font-size: 11px; }
+#tooltip .tt-chance { color: var(--text-m); font-size: 10px; margin-top: 2px; }
+#tooltip .tt-variants { margin-top: 4px; }
+#tooltip .tt-variant-row { display: flex; justify-content: space-between; gap: 10px; font-size: 10px; color: var(--text-s); padding: 1px 0; }
+#tooltip .tt-variant-pct { color: var(--accent-d); font-family: monospace; }
+
+/* ══════════ LOOT PANEL ══════════ */
+#loot-panel {
+  position: fixed;
+  top: 0; right: -380px;
+  width: 380px;
+  height: 100vh;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.5);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+#loot-panel.open { right: 0; }
+
+.lp-header {
+  display: flex; align-items: center; padding: 12px 16px;
+  border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.lp-title {
+  font-family: 'Cinzel', Georgia, serif; font-size: 15px; font-weight: 600;
+  color: var(--accent-b); letter-spacing: 0.04em; flex: 1;
+}
+.lp-close {
+  width: 24px; height: 24px; border: 1px solid var(--border); border-radius: 5px;
+  background: transparent; color: var(--text-m); font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all 0.1s;
+}
+.lp-close:hover { background: rgba(201,168,76,0.08); color: var(--text); border-color: var(--accent-d); }
+
+.lp-body {
+  flex: 1; overflow-y: auto; padding: 12px;
+  scrollbar-width: thin; scrollbar-color: #2a1e0a transparent;
+}
+.lp-body::-webkit-scrollbar { width: 5px; }
+.lp-body::-webkit-scrollbar-thumb { background: #2a1e0a; border-radius: 3px; }
+
+.lp-group { margin-bottom: 12px; background: rgba(18,16,10,0.6); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.lp-group-header { padding: 6px 10px; background: rgba(201,168,76,0.03); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.lp-group-name { font-family: 'Cinzel', Georgia, serif; font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+.lp-pool { padding: 6px 10px; border-bottom: 1px solid rgba(201,168,76,0.04); }
+.lp-pool:last-child { border-bottom: none; }
+.lp-pool-name { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.lp-rate-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; margin-bottom: 3px; background: var(--bg-input); }
+.rarity-0{background:#333}.rarity-1{background:#666}.rarity-2{background:#aaa}.rarity-3{background:#3c3}.rarity-4{background:#55f}.rarity-5{background:#c5f}.rarity-6{background:#fa0}.rarity-7{background:#f55}.rarity-8{background:#f0f}
+.lp-rate-labels { display: flex; flex-wrap: wrap; gap: 2px 8px; font-size: 9px; color: var(--text-m); }
+.lp-rate-label span { font-family: monospace; }
+.lp-items-toggle { font-size: 10px; color: var(--accent-d); cursor: pointer; margin-top: 4px; user-select: none; }
+.lp-items-toggle:hover { color: var(--accent); }
+.lp-item-list { display: none; margin-top: 4px; padding: 4px 6px; background: var(--bg-input); border-radius: 4px; max-height: 120px; overflow-y: auto; font-size: 10px; color: var(--text-s); line-height: 1.6; scrollbar-width: thin; scrollbar-color: #2a1e0a transparent; }
+.lp-item-list.open { display: block; }
+.lp-variant-section { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.lp-variant-row { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-s); padding: 2px 0; }
+.lp-variant-pct { color: var(--accent-d); font-family: monospace; font-size: 11px; min-width: 40px; text-align: right; }
+.lp-variant-bar { flex: 1; height: 4px; border-radius: 2px; background: var(--bg-input); overflow: hidden; }
+.lp-variant-bar-fill { height: 100%; background: var(--accent-d); border-radius: 2px; }
+.lp-spawn-chance { font-size: 10px; color: var(--text-m); padding: 4px 10px; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- ══════════ TOP BAR ══════════ -->
+<div class="topbar">
+  <div class="map-select">
+    <select id="map-select" onchange="if(this.value)window.location.href=this.value">
+      <option value="crypt.html" selected>Crypt</option>
+      <option value="cave.html">Goblin Cave</option>
+      <option value="ruins.html">Ruins</option>
+      <option value="inferno.html">Inferno</option>
+      <option value="icecavern.html">Ice Cavern</option>
+      <option value="iceabyss.html">Ice Abyss</option>
+      <option value="firedeep.html">Firedeep</option>
+      <option value="shipgraveyard.html">Ship Graveyard</option>
+    </select>
+  </div>
+  <div class="topbar-divider"></div>
+  <div class="grade-pills">
+    <button class="grade-pill" data-grade="1022">Adventure</button>
+    <button class="grade-pill" data-grade="2022">Normal</button>
+    <button class="grade-pill active" data-grade="3022">High Roller</button>
+  </div>
+  <div class="topbar-divider"></div>
+  <div class="loc-pills">
+    <button class="loc-pill active" data-loc="all">All</button>
+    <button class="loc-pill" data-loc="Center">Center</button>
+    <button class="loc-pill" data-loc="Edge">Edge</button>
+  </div>
+  <div class="topbar-divider"></div>
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search spawns..." autocomplete="off">
+    <div class="search-clear" id="search-clear">&times;</div>
+  </div>
+  <span class="search-badge" id="search-mode"></span>
+  <div class="topbar-spacer"></div>
+  <div class="luck-wrap">
+    <span>Luck</span>
+    <input type="range" id="luck-slider" min="0" max="50" step="5" value="0">
+    <span class="luck-val" id="luck-value">0</span>
+  </div>
+</div>
+
+<!-- ══════════ LAYER DOCK ══════════ -->
+<div class="layer-dock" id="layer-bar"></div>
+
+<!-- ══════════ GALLERY ══════════ -->
+<div id="main">
+  <div id="gallery"></div>
+</div>
+
+<!-- Tooltip -->
+<div id="tooltip">
+  <div class="tt-name"></div>
+  <div class="tt-label"></div>
+  <div class="tt-chance"></div>
+  <div class="tt-variants"></div>
+</div>
+
+<!-- Loot Panel -->
+<div id="loot-panel">
+  <div class="lp-header">
+    <div class="lp-title" id="lp-title">Loot Details</div>
+    <button class="lp-close" id="lp-close">&times;</button>
+  </div>
+  <div class="lp-body" id="lp-body"></div>
+</div>
+
+<!-- Data files -->
+<script src="./display_names.js"></script>
+<script src="./spawn_data_crypt.js"></script>
+<script src="./loot_data_crypt.js"></script>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// MODULE DISPLAY NAMES (in-game names)
+// ═══════════════════════════════════════════════════════════════════════
+const MODULE_NAMES = {
+  'AdmirerRoom': "Admirer's Room", 'AltarRoomAB': 'Altar Room', 'Armory': 'Armory',
+  'Atrium': 'Atrium', 'Barracks': 'Barracks', 'BlindfallPit': 'Blindfall Pit',
+  'Catacomb': 'Catacomb', 'Cemetery_01': 'Twin Cemeteries', 'Cemetery_02': 'Coffin Rooms',
+  'Cemetery_03': 'Cemetery', 'CenterTower': 'Wheel', 'Chapel': 'Chapel',
+  'Cistern': 'Cistern', 'CliffBridge': 'Cliffs', 'ComplexHalls': 'Gated Rooms',
+  'Connector_01': 'Hall E', 'Connector_Trap_01': 'Trap Hall A', 'Connector_Trap_02': 'Trap Hall B',
+  'CorridorCrypt': 'Corridors', 'CorridorofDarkPriests': 'Dark Priests', 'CrossRoad': 'Cross Road',
+  'DarkMagicLibrary_Center': 'Dark Magic Library', 'DarkRitualRoom_01': 'Ritual Room',
+  'DeathHall': 'Death Hall', 'Dungeon': 'Crypt Dungeons', 'EightToOne_01': 'Mummy Chest',
+  'EightToOne_02': 'Wraith Lair', 'FishingGround': 'Fishing Grounds', 'FourRooms': 'Four Rooms',
+  'FourWayConnect': 'Center Altar', 'GreatWalkway': 'The Great Walkway', 'GuardPost': 'Guard Posts',
+  'HBridge': 'Center Bridge', 'Hallways': 'Hallways', 'HighPriestOssuary': 'High Priests',
+  'LargeRoomPit': 'Broken Bridge', 'LightlessChamber': 'Lightless Chamber',
+  'LightlessTomb': 'Lightless Tomb', 'LowPyramid': 'Pyramid', 'MadCorridors': 'Mad Corridors',
+  'Maze': 'Maze', 'MimicRoom': 'Mimic Lair', 'OldTomb': 'Old Tomb', 'OssuaryEdge': 'Circular',
+  'Prison_01': 'Prisons B', 'Ramparts': 'Ramparts', 'Sanctum': 'Sanctum', 'Sewers': 'Sewers',
+  'SingleLogBridge': 'Long Bridge', 'SkeletonPit': 'Skeleton Rooms', 'Storeroom': 'Storeroom',
+  'Swamp': 'Swamp', 'TheCage': 'Cage', 'TheMiniWheel': 'Mini Wheel', 'ThePit': 'Pit',
+  'Tomb_Center': 'Tombs', 'TorchboundVault': 'Torchbound Vault', 'TreasureRoom_01': 'Treasure Room',
+  'UndergroundAltar': 'Underground Altar', 'Vault': 'Vault',
+};
+
+// ═══════════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════════
+const CT_LUCK_GRADE = [
+  [1,0.95,0.9,0.85,0.8,0.75,0.7,0.65,0.6,0.55,0.5],
+  [1,0.95,0.9,0.85,0.8,0.75,0.7,0.65,0.6,0.55,0.5],
+  [1,0.975,0.95,0.925,0.9,0.875,0.85,0.825,0.8,0.775,0.75],
+  [1,1,1,1,1,1,1,1,1,1,1],
+  [1,1.143,1.27,1.383,1.481,1.563,1.631,1.684,1.721,1.744,1.752],
+  [1,1.301,1.57,1.807,2.013,2.188,2.33,2.441,2.521,2.568,2.584],
+  [1,1.433,1.82,2.162,2.458,2.709,2.914,3.073,3.188,3.256,3.28],
+  [1,1.514,1.973,2.379,2.73,3.028,3.271,3.461,3.596,3.678,3.705],
+  [1,1.61,2.156,2.637,3.055,3.408,3.697,3.922,4.083,4.18,4.213]
+];
+function getLuckMult(lg,luck){if(luck<=0||lg<0||lg>8)return 1;const i=Math.min(luck*2,10),lo=Math.floor(i),hi=Math.min(lo+1,10),f=i-lo;return CT_LUCK_GRADE[lg][lo]+f*(CT_LUCK_GRADE[lg][hi]-CT_LUCK_GRADE[lg][lo]);}
+let playerLuck = 0;
+let currentGrade = 3022;
+const GRADE_LABELS = { 1022: 'Adventure', 2022: 'Normal', 3022: 'High Roller' };
+const RARITY_NAMES = ['Nothing','Poor','Common','Uncommon','Rare','Epic','Legendary','Unique','Artifact'];
+let locationFilter = 'all';
+let searchQuery = '';
+
+// ── Layer system ──
+const LAYERS = {
+  monsters:  { label: 'Monsters',  color: '#e05555', icon: './spawn-icons/monster.svg',        on: true,  cats: ['Monster'] },
+  chests:    { label: 'Chests',    color: '#ffd700', icon: './spawn-icons/gold-chest.svg',      on: true,  cats: ['TreasureHoard','MarvelousChest','GoldChest','OrnateChest','SpecialChest','WoodChest','SimpleChest','Chest'] },
+  traps:     { label: 'Traps',    color: '#ff5555', icon: './spawn-icons/trap.svg',             on: false, cats: ['Trap'] },
+  landmarks: { label: 'Landmarks', color: '#d4a017', icon: './spawn-icons/altar.png',           on: false, cats: ['Altar','StairUp','StairDown'] },
+  quests:    { label: 'Quests',   color: '#ffaa44', icon: './spawn-icons/quest-item.svg',       on: true,  cats: ['QuestItem','Herb'] },
+  coffins:   { label: 'Coffins',  color: '#9b7653', icon: './spawn-icons/coffin.svg',           on: false, cats: ['Coffin'] },
+  loot:      { label: 'Loot',     color: '#aabb55', icon: './spawn-icons/valuable.svg',         on: false, cats: ['Valuable','Equipment','Consumable'] },
+  environ:   { label: 'Other',    color: '#aa55ff', icon: './spawn-icons/portal.svg',           on: false, cats: ['Portal','Interact','Container','PlayerSpawn','NPC'] },
+};
+
+const CAT_TO_LAYER = {};
+for (const [lk, layer] of Object.entries(LAYERS)) {
+  for (const cat of layer.cats) CAT_TO_LAYER[cat] = lk;
+}
+
+const CAT_LABELS = {
+  Monster:'Monster', TreasureHoard:'Treasure Hoard', MarvelousChest:'Marvelous Chest',
+  GoldChest:'Gold Chest', OrnateChest:'Ornate Chest', SpecialChest:'Special Chest',
+  WoodChest:'Wood Chest', SimpleChest:'Simple Chest', Chest:'Chest', Coffin:'Coffin',
+  Equipment:'Equipment', Consumable:'Consumable', Valuable:'Valuable', QuestItem:'Quest Item',
+  Herb:'Herbs', Altar:'Altar', StairUp:'Stairs Up', StairDown:'Stairs Down',
+  NPC:'NPC', Trap:'Trap', Portal:'Portal', Interact:'Interactive', Container:'Container',
+  PlayerSpawn:'Player Spawn',
+};
+
+function dn(name) { return (typeof DISPLAY_NAMES!=='undefined'&&DISPLAY_NAMES[name])||''; }
+function variantLabel(vn) {
+  const vd = dn(vn);
+  if (!vd) return vn;
+  const grade = vn.match(/\s+(Common|Elite|Nightmare|Unique)$/);
+  return grade ? vd + ' (' + grade[1] + ')' : (vd !== vn ? vd : vn);
+}
+function isCatVisible(cat) { const lk = CAT_TO_LAYER[cat]; return lk ? LAYERS[lk].on : false; }
+function moduleName(dir) { return MODULE_NAMES[dir] || dir.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2'); }
+
+const IMG_BASE = '/data/map-tiles/Crypt/';
+
+function uuToPercent(ux, uy, mod) {
+  const uu = mod.uu || 3200, ox = mod.ox || 0, oy = mod.oy || 0, half = uu / 2;
+  return [(uy - oy + half) / uu * 100, (half - (ux - ox)) / uu * 100];
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// GRADE / LOOT HELPERS
+// ═══════════════════════════════════════════════════════════════════════
+function getVid(sidIdx) {
+  if (typeof SPAWN_VID !== 'undefined' && SPAWN_VID[currentGrade]) {
+    const vid = SPAWN_VID[currentGrade][sidIdx];
+    return (vid !== undefined && vid >= 0) ? vid : -1;
+  }
+  return -1;
+}
+function getLootData() {
+  return (typeof LOOT_BY_GRADE !== 'undefined' && LOOT_BY_GRADE[currentGrade]) ? LOOT_BY_GRADE[currentGrade] : null;
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// LAYER BAR
+// ═══════════════════════════════════════════════════════════════════════
+function buildLayerBar() {
+  const bar = document.getElementById('layer-bar');
+  bar.innerHTML = '';
+  for (const [lk, layer] of Object.entries(LAYERS)) {
+    const btn = document.createElement('div');
+    btn.className = 'layer-btn' + (layer.on ? ' active' : '');
+    btn.innerHTML =
+      `<div class="layer-icon" style="background:${layer.color};background-image:url('${layer.icon}');background-size:contain;background-repeat:no-repeat;background-position:center;"></div>` +
+      `<div class="layer-name">${layer.label}</div>`;
+    btn.addEventListener('click', () => {
+      layer.on = !layer.on;
+      btn.classList.toggle('active', layer.on);
+      updateDotVisibility();
+    });
+    bar.appendChild(btn);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// GALLERY
+// ═══════════════════════════════════════════════════════════════════════
+function buildGallery() {
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = '';
+  for (const name of Object.keys(CRYPT_MODULES).sort()) {
+    const mod = CRYPT_MODULES[name];
+    if (locationFilter !== 'all' && mod.location !== locationFilter) continue;
+    if (searchQuery && !name.toLowerCase().includes(searchQuery) && !moduleName(name).toLowerCase().includes(searchQuery)) continue;
+
+    const card = document.createElement('div');
+    card.className = 'module-card';
+    card.dataset.module = name;
+
+    const header = document.createElement('div');
+    header.className = 'module-card-header';
+    header.innerHTML =
+      `<div class="module-card-title">${moduleName(name)}</div>` +
+      `<div class="module-card-badge ${mod.location.toLowerCase()}">${mod.location}</div>`;
+    card.appendChild(header);
+
+    const mapDiv = document.createElement('div');
+    mapDiv.className = 'module-card-map';
+
+    const img = document.createElement('img');
+    img.src = IMG_BASE + mod.img + '.png';
+    img.alt = moduleName(name);
+    img.loading = 'lazy';
+    img.onerror = function() {
+      this.style.display = 'none';
+      this.parentElement.style.background = 'linear-gradient(135deg, #0d0d15 0%, #1a1a28 100%)';
+    };
+    mapDiv.appendChild(img);
+
+    for (const [cat, spawns] of Object.entries(mod.spawns)) {
+      for (const s of spawns) {
+        const [lx, ly, sname, vid, gcPct10, sidIdx] = s;
+        const [px, py] = uuToPercent(lx, ly, mod);
+        const dot = document.createElement('div');
+        dot.className = `spawn-dot sd-${cat}`;
+        dot.style.left = px + '%';
+        dot.style.top = py + '%';
+        dot.style.display = isCatVisible(cat) ? '' : 'none';
+        dot._cat = cat;
+        dot._name = sname;
+        dot._sidIdx = sidIdx;
+        dot._gc = gcPct10;
+        dot._label = CAT_LABELS[cat] || cat;
+        mapDiv.appendChild(dot);
+      }
+    }
+
+    mapDiv.addEventListener('mouseover', onDotMouseOver);
+    mapDiv.addEventListener('mouseout', onDotMouseOut);
+    mapDiv.addEventListener('mousemove', onDotMouseMove);
+    mapDiv.addEventListener('click', onDotClick);
+
+    card.appendChild(mapDiv);
+    gallery.appendChild(card);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// DOT VISIBILITY
+// ═══════════════════════════════════════════════════════════════════════
+let spawnSearch = '';
+function updateDotVisibility() {
+  const sq = spawnSearch;
+  for (const dot of document.querySelectorAll('.spawn-dot')) {
+    const catVis = isCatVisible(dot._cat);
+    let searchVis = true;
+    dot.classList.remove('search-hl');
+    if (sq) {
+      const n = (dot._name||'').toLowerCase(), d = dn(dot._name).toLowerCase();
+      let match = n.includes(sq) || d.includes(sq);
+      if (!match) { const vid = getVid(dot._sidIdx); if(vid>=0&&SPAWN_VARIANTS[vid]) for(const[vn]of SPAWN_VARIANTS[vid][1]){if(vn.toLowerCase().includes(sq)||dn(vn).toLowerCase().includes(sq)){match=true;break;}} }
+      if (match) dot.classList.add('search-hl'); else searchVis = false;
+    }
+    dot.style.display = (catVis && searchVis) ? '' : 'none';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TOOLTIP
+// ═══════════════════════════════════════════════════════════════════════
+const tooltip = document.getElementById('tooltip');
+let ttRaf = 0;
+
+function showTooltip(e, name, label, sidIdx, gcPct10) {
+  const ttName = tooltip.querySelector('.tt-name');
+  const ttLabel = tooltip.querySelector('.tt-label');
+  const ttChance = tooltip.querySelector('.tt-chance');
+  const ttVars = tooltip.querySelector('.tt-variants');
+  const d = dn(name);
+  ttName.textContent = d || name;
+  ttLabel.textContent = d ? name + ' — ' + label : label;
+  ttVars.innerHTML = '';
+  // Calculate real spawn chance: group chance * variant overall chance
+  const groupMult = gcPct10 / 1000;
+  const vid = getVid(sidIdx);
+  let spawnPct = groupMult * 100;
+  if (vid >= 0 && SPAWN_VARIANTS[vid]) {
+    const [overallPct10, variants] = SPAWN_VARIANTS[vid];
+    spawnPct = (overallPct10 / 10) * groupMult;
+    ttChance.textContent = spawnPct < 100 ? 'Spawn chance: ' + (spawnPct < 1 ? '<1' : spawnPct.toFixed(1)) + '%' : '';
+    if (variants.length > 1) {
+      for (const [vname, sel] of variants) {
+        const row = document.createElement('div');
+        row.className = 'tt-variant-row';
+        row.innerHTML = '<span>'+variantLabel(vname)+'</span><span class="tt-variant-pct">'+(sel/10).toFixed(1)+'%</span>';
+        ttVars.appendChild(row);
+      }
+    }
+  } else {
+    ttChance.textContent = spawnPct < 100 ? 'Spawn chance: ' + spawnPct.toFixed(1) + '%' : '';
+  }
+  tooltip.style.display = 'block';
+  positionTooltip(e);
+}
+function positionTooltip(e) {
+  const x = e.clientX+14, y = e.clientY+14, w = tooltip.offsetWidth, h = tooltip.offsetHeight;
+  tooltip.style.left = (x+w > window.innerWidth ? e.clientX-w-8 : x) + 'px';
+  tooltip.style.top = (y+h > window.innerHeight ? e.clientY-h-8 : y) + 'px';
+}
+function hideTooltip() { tooltip.style.display = 'none'; }
+function onDotMouseOver(e) { if (e.target.classList.contains('spawn-dot')) showTooltip(e, e.target._name, e.target._label, e.target._sidIdx, e.target._gc); }
+function onDotMouseOut(e) { if (e.target.classList.contains('spawn-dot')) hideTooltip(); }
+function onDotMouseMove(e) { if (tooltip.style.display!=='none' && !ttRaf) { ttRaf=requestAnimationFrame(()=>{positionTooltip(e);ttRaf=0;}); } }
+
+// ═══════════════════════════════════════════════════════════════════════
+// LOOT PANEL
+// ═══════════════════════════════════════════════════════════════════════
+const lootPanel = document.getElementById('loot-panel');
+const lpTitle = document.getElementById('lp-title');
+const lpBody = document.getElementById('lp-body');
+document.getElementById('lp-close').addEventListener('click', () => lootPanel.classList.remove('open'));
+
+function onDotClick(e) {
+  const dot = e.target;
+  if (!dot.classList.contains('spawn-dot') || dot._sidIdx < 0) return;
+  const sid = LOOT_SID[dot._sidIdx];
+  if (sid) openLootPanel(sid, dot._name, dot._sidIdx, dot._gc);
+}
+
+function openLootPanel(sid, name, sidIdx, gc) {
+  const ld = getLootData(); if (!ld) return;
+  const groups = ld.MAP[sid]; if (!groups) return;
+  lootPanel._currentSid = sid; lootPanel._currentName = name;
+  lootPanel._currentSidIdx = sidIdx; lootPanel._currentGc = gc;
+  lpTitle.textContent = dn(name) || name || sid;
+  lpBody.innerHTML = '';
+  // Calculate real spawn chance incorporating variant overall probability
+  {
+    const groupMult = (gc !== undefined) ? gc / 1000 : 1;
+    let realPct = groupMult * 100;
+    if (sidIdx !== undefined) {
+      const vid = getVid(sidIdx);
+      if (vid >= 0 && SPAWN_VARIANTS[vid]) realPct = (SPAWN_VARIANTS[vid][0] / 10) * groupMult;
+    }
+    if (realPct < 100) { const sc=document.createElement('div'); sc.className='lp-spawn-chance'; sc.textContent='Spawn chance: '+(realPct < 1 ? '<1' : realPct.toFixed(1))+'%'; lpBody.appendChild(sc); }
+  }
+  if (sidIdx !== undefined) {
+    const vid = getVid(sidIdx);
+    if (vid >= 0 && SPAWN_VARIANTS[vid]) {
+      const [,variants] = SPAWN_VARIANTS[vid];
+      if (variants.length > 1 || (variants.length===1 && variants[0][1]<1000)) {
+        const vs=document.createElement('div'); vs.className='lp-variant-section';
+        vs.innerHTML='<div style="font-size:10px;color:var(--text-m);margin-bottom:4px;font-family:Rajdhani,sans-serif;letter-spacing:0.05em;text-transform:uppercase">Variants</div>';
+        for (const [vn,sel] of variants) {
+          const vl=variantLabel(vn); const pct=(sel/10).toFixed(1);
+          const r=document.createElement('div'); r.className='lp-variant-row';
+          r.innerHTML='<span class="lp-variant-pct">'+pct+'%</span><div class="lp-variant-bar"><div class="lp-variant-bar-fill" style="width:'+pct+'%"></div></div><span>'+vl+'</span>';
+          vs.appendChild(r);
+        }
+        lpBody.appendChild(vs);
+      }
+    }
+  }
+  for (const [varName, groupIdx] of groups) renderLootGroup(varName, groupIdx, ld);
+  lootPanel.classList.add('open');
+}
+
+function renderLootGroup(varName, groupIdx, ld) {
+  const group = ld.GROUPS[groupIdx]; if (!group) return;
+  const div = document.createElement('div'); div.className = 'lp-group';
+  const hdr = document.createElement('div'); hdr.className = 'lp-group-header';
+  const vd = dn(varName);
+  hdr.innerHTML = '<div class="lp-group-name">'+(vd||varName||'Loot Group')+(vd&&vd!==varName?' <small style="color:var(--text-m);font-size:10px;text-transform:none">('+varName+')</small>':'')+'</div>';
+  div.appendChild(hdr);
+  for (const [poolIdx, rateIdx, count] of group) {
+    const pool = LOOT_POOLS[poolIdx], rates = ld.RATES[rateIdx];
+    if (!pool || !rates) continue;
+    const pDiv = document.createElement('div'); pDiv.className = 'lp-pool';
+    const pName = document.createElement('div'); pName.className = 'lp-pool-name';
+    pName.textContent = pool[0] + (count > 1 ? ` (x${count})` : '');
+    pDiv.appendChild(pName);
+    const modRates = rates.map((r, g) => r * getLuckMult(g, playerLuck));
+    const total = modRates.reduce((a, b) => a + b, 0);
+    const hasGrades = typeof LOOT_ITEM_GRADES !== 'undefined';
+    const hasFR = typeof LOOT_FIXED_RARITY !== 'undefined';
+    let allFixed = false;
+    if (pool[1] && pool[1].length > 0) {
+      allFixed = pool[1].every(idx => (hasGrades && LOOT_ITEM_GRADES[idx] !== undefined) || (hasFR && LOOT_FIXED_RARITY[idx] !== undefined));
+    }
+    const getGrade = (idx) => (hasGrades && LOOT_ITEM_GRADES[idx]) || (hasFR && LOOT_FIXED_RARITY[idx]) || undefined;
+    if (total > 0 && allFixed && pool[1].length > 0) {
+      const gradeItems = {};
+      for (const idx of pool[1]) { const g = getGrade(idx); if (!gradeItems[g]) gradeItems[g] = []; gradeItems[g].push(idx); }
+      let nothingRate = 0;
+      for (let g = 0; g < 9; g++) { if (!gradeItems[g]) nothingRate += modRates[g]; }
+      const nothingPct = nothingRate / total * 100;
+      const labels = document.createElement('div'); labels.className = 'lp-rate-labels'; labels.style.flexDirection = 'column';
+      if (nothingPct > 0.01) labels.innerHTML += '<div style="color:var(--text-d)">Nothing <span>' + nothingPct.toFixed(1) + '%</span></div>';
+      for (const [g, idxs] of Object.entries(gradeItems).sort((a,b) => a[0]-b[0])) {
+        const gradePct = modRates[g] / total * 100;
+        const perItem = gradePct / idxs.length;
+        for (const idx of idxs) {
+          const nm = LOOT_ITEMS[idx] || '?'; const id = dn(nm);
+          labels.innerHTML += '<div>' + (id || nm) + ' <span style="color:var(--text-m)">(' + RARITY_NAMES[g] + ')</span> <span>' + perItem.toFixed(1) + '%</span></div>';
+        }
+      }
+      pDiv.appendChild(labels);
+    } else if (total > 0) {
+      const bar = document.createElement('div'); bar.className = 'lp-rate-bar';
+      for (let i = 0; i < 9; i++) { if (modRates[i] > 0) { const seg = document.createElement('div'); seg.className = 'rarity-' + i; seg.style.width = (modRates[i]/total*100)+'%'; bar.appendChild(seg); } }
+      pDiv.appendChild(bar);
+      const labels = document.createElement('div'); labels.className = 'lp-rate-labels';
+      for (let i = 0; i < 9; i++) { if (modRates[i] > 0) labels.innerHTML += `<div>${RARITY_NAMES[i]} <span>${(modRates[i]/total*100).toFixed(2)}%</span></div>`; }
+      pDiv.appendChild(labels);
+      if (pool[1] && pool[1].length > 0) {
+        const toggle = document.createElement('div'); toggle.className = 'lp-items-toggle';
+        toggle.textContent = `Show items (${pool[1].length})`;
+        const itemList = document.createElement('div'); itemList.className = 'lp-item-list';
+        for (const idx of pool[1]) { const nm = LOOT_ITEMS[idx]||'?'; const id = dn(nm); const fr = getGrade(idx); itemList.textContent += (id||nm)+(id&&id!==nm?' ('+nm+')':'')+(fr?' ('+RARITY_NAMES[fr]+')':'')+'\n'; }
+        toggle.addEventListener('click', () => { itemList.classList.toggle('open'); toggle.textContent = itemList.classList.contains('open') ? `Hide items (${pool[1].length})` : `Show items (${pool[1].length})`; });
+        pDiv.appendChild(toggle); pDiv.appendChild(itemList);
+      }
+    }
+    div.appendChild(pDiv);
+  }
+  lpBody.appendChild(div);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// EVENT HANDLERS
+// ═══════════════════════════════════════════════════════════════════════
+document.querySelector('.grade-pills').addEventListener('click', e => {
+  const btn = e.target.closest('.grade-pill'); if (!btn) return;
+  const grade = parseInt(btn.dataset.grade); if (grade === currentGrade) return;
+  currentGrade = grade;
+  document.querySelectorAll('.grade-pill').forEach(b => b.classList.toggle('active', parseInt(b.dataset.grade) === grade));
+  lootPanel.classList.remove('open'); hideTooltip();
+});
+
+document.getElementById('luck-slider').addEventListener('input', e => {
+  playerLuck = parseInt(e.target.value) / 10;
+  document.getElementById('luck-value').textContent = playerLuck.toFixed(1);
+  if (lootPanel.classList.contains('open') && lootPanel._currentSid)
+    openLootPanel(lootPanel._currentSid, lootPanel._currentName, lootPanel._currentSidIdx, lootPanel._currentGc);
+});
+
+document.querySelector('.loc-pills')?.addEventListener('click', e => {
+  const btn = e.target.closest('.loc-pill'); if (!btn) return;
+  locationFilter = btn.dataset.loc;
+  document.querySelectorAll('.loc-pill').forEach(b => b.classList.toggle('active', b.dataset.loc === locationFilter));
+  buildGallery();
+});
+
+function handleSearch() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  let isSpawnSearch = false;
+  if (q) {
+    outer: for (const mod of Object.values(CRYPT_MODULES)) {
+      for (const spawns of Object.values(mod.spawns)) {
+        for (const s of spawns) {
+          const n=(s[2]||'').toLowerCase(), d=dn(s[2]).toLowerCase();
+          if (n.includes(q)||d.includes(q)) { isSpawnSearch=true; break outer; }
+        }
+      }
+    }
+  }
+  const badge = document.getElementById('search-mode');
+  if (isSpawnSearch) {
+    spawnSearch = q; searchQuery = '';
+    let cnt = 0;
+    for (const dot of document.querySelectorAll('.spawn-dot')) {
+      const n=(dot._name||'').toLowerCase(), d=dn(dot._name).toLowerCase();
+      let match = n.includes(q)||d.includes(q);
+      if (!match) { const vid=getVid(dot._sidIdx); if(vid>=0&&SPAWN_VARIANTS[vid]) for(const[vn]of SPAWN_VARIANTS[vid][1]){if(vn.toLowerCase().includes(q)||dn(vn).toLowerCase().includes(q)){match=true;break;}} }
+      if (match) cnt++;
+    }
+    badge.textContent = cnt + ' spawn' + (cnt!==1?'s':'') + ' found'; badge.classList.add('active');
+  } else {
+    spawnSearch = ''; searchQuery = q;
+    badge.classList.remove('active');
+  }
+  updateDotVisibility();
+  if (!isSpawnSearch) buildGallery();
+}
+document.getElementById('search').addEventListener('input', handleSearch);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { lootPanel.classList.remove('open'); document.getElementById('search').value = ''; handleSearch(); }
+  else if (e.key === 'f' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); document.getElementById('search').focus(); }
+});
+
+const searchInput = document.getElementById('search');
+const searchClear = document.getElementById('search-clear');
+searchInput.addEventListener('input', () => { searchClear.style.display = searchInput.value ? 'block' : 'none'; });
+searchClear.addEventListener('click', () => { searchInput.value = ''; searchClear.style.display = 'none'; handleSearch(); searchInput.focus(); });
+
+// ═══════════════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════════════
+buildLayerBar();
+buildGallery();
+</script>
+</body>
+</html>

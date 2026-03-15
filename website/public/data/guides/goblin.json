@@ -1,0 +1,327 @@
+{
+ "slug": "goblin",
+ "overview": "Goblins are a family of Normal-class Humanoid/Beast enemies found exclusively in Goblin Cave. The family includes five variants: Goblin Warrior (melee sword fighter with counter-attacks), Goblin Axeman (melee axe wielder with combo chains), Goblin Archer (ranged bow attacker), Goblin Bolaslinger (ranged slow-applying bola thrower), and Goblin Mage (ranged caster with homing curse projectiles and ally-buffing). All goblins share the same creature types (Humanoid, Beast), negative base Magical Reduction (-250), and come in Common, Elite, and Nightmare grades. Their AI uses behavior trees with probability-based conditional actions, flee phases when threatened, and interaction phases for idle behaviors. As a group they represent the introductory dungeon enemies, but their variety means encounters often mix ranged, melee, and support threats simultaneously.",
+ "phases": [
+ {
+ "name": "Idle / Interaction Phase",
+ "description": "When not in combat, goblins enter an Interaction Phase where they perform idle behaviors (Interaction 1 and 2). Warriors and Archers have a formal InteractionPhase ability that manages this state. They remain in this state until a player enters their sight radius (800 units) or they take damage.",
+ "icon": "idle"
+ },
+ {
+ "name": "Combat / Attack Phase",
+ "description": "Upon detecting a target, melee goblins (Warrior, Axeman) enter an AttackPhase ability that selects from their attack pool using RandomInteger. The Warrior randomly selects from 5 attacks, while the Axeman picks between Attack1 (single swing) and Attack2 (combo chain of 2-3 hits). Ranged goblins (Archer, Bolaslinger, Mage) use projectile-based attacks with rotation tracking toward the target.",
+ "icon": "attack"
+ },
+ {
+ "name": "Conditional Action Phase",
+ "description": "During combat, the behavior tree runs conditional checks with probability gates (BTD_ProbabilitySuccess). The Warrior checks if the target is in range (BTD_TargetIsInRange) before executing skill actions. Nightmare Warrior gains a CounterAttack ability that triggers reactively when hit, with a rotation speed of 10 for fast tracking.",
+ "icon": "special"
+ },
+ {
+ "name": "Flee Phase",
+ "description": "When conditions are met (likely low health or overwhelming threat), goblins enter a FleePhase. Warriors have a dedicated FleePhase ability with two flee variants (Flee 1, Flee 2) that are selected based on gameplay tag checks. Other variants have a single Flee ability. The flee behavior causes them to disengage and run away from the player.",
+ "icon": "move"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Heavy Melee",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Warrior CounterAttack",
+ "ratio": 1600,
+ "damage_common": 38.4,
+ "damage_elite": 49.6,
+ "note": "Nightmare-only reactive counter. Triggers when hit. 1600 ratio at impact power 4. Uses MonsterMeleeAttackBaseWithOptions with rotation speed 10 for fast tracking."
+ },
+ {
+ "name": "Warrior Attack 1-4",
+ "ratio": 1500,
+ "damage_common": 36,
+ "damage_elite": 46.5,
+ "note": "Standard sword strikes. 1500 ratio at impact power 3. Randomly selected from pool of 4 attacks via AttackPhase."
+ },
+ {
+ "name": "Warrior Attack 5",
+ "ratio": 1200,
+ "damage_common": 28.8,
+ "damage_elite": 37.2,
+ "note": "Weaker fifth attack variant. 1200 ratio at impact power 3. Lower damage than the other four attacks."
+ },
+ {
+ "name": "Axeman Attack1",
+ "ratio": 1500,
+ "damage_common": 21,
+ "damage_elite": 33,
+ "note": "Single heavy axe swing. 1500 ratio at impact power 3. Quick standalone attack."
+ },
+ {
+ "name": "Axeman Attack2 Chain (x3)",
+ "ratio": 1300,
+ "damage_common": 18.2,
+ "damage_elite": 28.6,
+ "note": "Per-hit in a 2-3 hit combo chain. 1300 ratio each at impact power 4 (higher stagger). Uses Combo Triggered boolean to chain Attack2_1 into Attack2_2 into Attack2_3. Nightmare adds a third hit."
+ }
+ ]
+ },
+ {
+ "tier": "Ranged Physical",
+ "color": "#5588dd",
+ "attacks": [
+ {
+ "name": "Archer Attack 1-3",
+ "ratio": 1500,
+ "damage_common": 18,
+ "damage_elite": 30,
+ "note": "Arrow shots. 1500 ratio at impact power 3. Uses MonsterProjectileAttackBase. Parent ability has phase tracking for attack selection. Arrows apply poison."
+ },
+ {
+ "name": "Archer QuickShot",
+ "ratio": 1500,
+ "damage_common": 42,
+ "damage_elite": 42,
+ "note": "Nightmare-only rapid shot. 1500 ratio with rotation speed 4 and fire power 5. Uses head hitbox targeting. Fires from Socket_Arrow_Root."
+ },
+ {
+ "name": "Bolaslinger Attack 1-3",
+ "ratio": 2600,
+ "damage_common": 28.6,
+ "damage_elite": 46.8,
+ "note": "Bola throw. Very high 2600 ratio at impact power 3. Despite low base weapon damage, the high ratio compensates. Applies movement slow debuff."
+ }
+ ]
+ },
+ {
+ "tier": "Magical",
+ "color": "#9966cc",
+ "attacks": [
+ {
+ "name": "Goblin Mage Curse",
+ "ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Homing curse projectile (BP_GoblinMage_Curse). 0 damage ratio means damage is applied via the curse debuff effect, not direct hit. Projectile has homing acceleration of 2300 and uses Set Fire Angle for spread patterns based on distance to target. Fires from hand_fire socket."
+ },
+ {
+ "name": "Goblin Mage Nightmare Channeling",
+ "ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Nightmare-only enhanced curse. Uses a channeling system with Fire Count tracking and a timer-based loop to fire multiple projectiles. Projectile spawns use BP_GoblinMage_Curse_Strong variant. Ends channeling on target death."
+ }
+ ]
+ },
+ {
+ "tier": "Support",
+ "color": "#44aa44",
+ "attacks": [
+ {
+ "name": "Goblin Mage CastingBuff",
+ "ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Area-of-effect buff for nearby goblin allies. Uses SphereOverlapActors to find friendlies, then applies GE_GoblinMage_Buff which adds MoveSpeedAdd and ActionSpeed via SetByCaller magnitudes. Also runs DCDamageExecCalculation. Triggered by Ability.Monster.Skill.Two.On tag."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "Goblins use relatively simple attack selection compared to bosses. Melee goblins pick attacks randomly from their pool, while the Axeman has a true combo chain system. Ranged goblins cycle through their attack variants based on phase counters that increment after each shot.",
+ "chains": [
+ {
+ "from": "Warrior AttackPhase",
+ "to": [
+ "Attack 1",
+ "Attack 2",
+ "Attack 3",
+ "Attack 4",
+ "Attack 5"
+ ],
+ "note": "Random selection via RandomInteger. All attacks are independent with no chaining. Attack 5 has a lower damage ratio (1200 vs 1500)."
+ },
+ {
+ "from": "Warrior Damaged (Nightmare)",
+ "to": [
+ "CounterAttack"
+ ],
+ "note": "Reactive counter triggered when taking damage in Nightmare grade. Fast rotation speed (10) for aggressive tracking."
+ },
+ {
+ "from": "Axeman AttackPhase",
+ "to": [
+ "Attack1",
+ "Attack2_1"
+ ],
+ "note": "Selects between standalone swing or combo starter."
+ },
+ {
+ "from": "Axeman Attack2_1",
+ "to": [
+ "Attack2_2"
+ ],
+ "note": "First combo hit chains into second via Combo Triggered boolean."
+ },
+ {
+ "from": "Axeman Attack2_2",
+ "to": [
+ "Attack2_3"
+ ],
+ "note": "Second chains into third. Nightmare adds Attack2_3; Common/Elite have only 2 hits in the chain."
+ },
+ {
+ "from": "Archer AttackPhase",
+ "to": [
+ "Attack1",
+ "Attack2",
+ "Attack3"
+ ],
+ "note": "Uses phase counter (Get_BB_Phase) and RandomIntegerInRange for selection. Nightmare variant checks for BP_GoblinArcher_Nightmare cast to enable QuickShot."
+ },
+ {
+ "from": "Mage Attack",
+ "to": [
+ "Curse Projectile"
+ ],
+ "note": "Fires homing curse. Set Fire Angle function calculates projectile spread based on distance, firing multiple projectiles with random angular offsets at higher phases."
+ },
+ {
+ "from": "Mage CastingBuff",
+ "to": [
+ "Attack"
+ ],
+ "note": "After buffing allies, the mage returns to its attack cycle."
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "Goblin Warrior Poison",
+ "type": "debuff",
+ "duration": "Duration with periodic ticks",
+ "stacks": 1,
+ "description": "Applied on Warrior melee hits. Uses GE_DurPeriod_Calculation base class meaning it applies periodic damage over a duration. Stacks aggregate by target with a limit of 1 (refreshes duration on reapplication, does not stack multiple instances).",
+ "counter": "Avoid getting hit repeatedly. Since it refreshes rather than stacks, the total poison damage is capped. Healing or poison resistance mitigates it."
+ },
+ {
+ "name": "Goblin Archer Poison",
+ "type": "debuff",
+ "duration": "Duration with periodic ticks",
+ "stacks": 1,
+ "description": "Applied on arrow hits. Same GE_DurPeriod_Calculation base as Warrior poison. Single stack limit, aggregates by target.",
+ "counter": "Block or dodge arrows. Shields are particularly effective since Archer projectile reduction modifier is 150."
+ },
+ {
+ "name": "Goblin Axeman Poison",
+ "type": "debuff",
+ "duration": "Duration with periodic ticks",
+ "stacks": 1,
+ "description": "Applied on axe hits. Identical mechanics to Warrior and Archer poison variants. Single stack limit.",
+ "counter": "Space out engagements to let the poison expire before re-engaging."
+ },
+ {
+ "name": "Bolaslinger Slow",
+ "type": "debuff",
+ "duration": "On hit (instant slow)",
+ "stacks": 1,
+ "description": "Applied by bola projectile. Inherits from GE_HitSlow base class. Reduces movement speed on hit. Blocked by State.Immune.Debuff.MoveSpeed tag and removed if that immunity is gained.",
+ "counter": "Classes or abilities with movement speed immunity negate this entirely. Otherwise, dodge the slow-moving bola projectile."
+ },
+ {
+ "name": "Bolaslinger Slow (Nightmare)",
+ "type": "debuff",
+ "duration": "Duration-based",
+ "stacks": 3,
+ "description": "Enhanced Nightmare version. Uses GE_Dur_MoveSpeedModReduce base instead of HitSlow. Can stack up to 3 times (vs 1 for normal). Has full tag-based immunity checking: blocked by State.Immune.Debuff.MoveSpeed on application, removed if immunity gained during effect.",
+ "counter": "This stacks 3 times making it significantly more dangerous. Prioritize killing Nightmare Bolaslingers first or use movement speed immunity abilities."
+ },
+ {
+ "name": "Goblin Mage Curse (Debuff)",
+ "type": "debuff",
+ "duration": "Duration-based",
+ "stacks": 1,
+ "description": "Applied by the Mage's homing curse projectile. Uses GE_Dur_MoveSpeedModReduce base class to reduce movement speed. Single stack. Blocked by State.Immune.Debuff.MoveSpeed.",
+ "counter": "Sidestep the homing projectile or use movement immunity. The projectile has high homing (2300 acceleration) but can be outmaneuvered around corners."
+ },
+ {
+ "name": "Goblin Mage Buff (Ally Buff)",
+ "type": "buff",
+ "duration": "Duration-based",
+ "stacks": 1,
+ "description": "Cast on nearby goblin allies via CastingBuff ability. Adds MoveSpeedAdd and ActionSpeed to affected goblins via SetByCaller magnitudes. Also runs a DCDamageExecCalculation. This makes buffed goblins faster and attack more quickly. Single stack, aggregates by target.",
+ "counter": "Kill the Goblin Mage first. The buff makes all nearby goblins faster and more aggressive. The Mage has slower base movement (100-160 vs 200-260) making it easier to chase down."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Kill the Mage First",
+ "priority": "critical",
+ "description": "The Goblin Mage buffs nearby allies with increased MoveSpeed and ActionSpeed, making the entire pack more dangerous. It also has the slowest base movement speed (100 Common, 130 Elite, 160 Nightmare) compared to other goblins (200-260), making it the easiest to catch. Its curse projectile applies movement slow, further compounding the threat. Eliminating the Mage removes both the ally buff and the homing curse pressure."
+ },
+ {
+ "title": "Watch for Bolaslinger Nightmare Slow Stacks",
+ "priority": "high",
+ "description": "Nightmare Bolaslingers can stack their movement slow up to 3 times, compared to just 1 stack for Common/Elite. With 2600 damage ratio on each throw, they also hit surprisingly hard despite their low base weapon damage (11/18/26). Getting triple-stacked while surrounded by melee goblins is extremely dangerous."
+ },
+ {
+ "title": "Nightmare Warriors Counter-Attack When Hit",
+ "priority": "high",
+ "description": "Nightmare Goblin Warriors gain a CounterAttack ability that triggers reactively when they take damage. This counter has a 1600 damage ratio (higher than their normal 1500) with impact power 4 (higher stagger) and fast rotation tracking (speed 10). Do not mindlessly trade blows with Nightmare Warriors -- attack and immediately prepare to block or dodge the counter."
+ },
+ {
+ "title": "Exploit Negative Magic Resistance",
+ "priority": "high",
+ "description": "All goblins have -250 base Magical Reduction, meaning they take significantly increased magic damage. Magic-focused classes and spells are extremely effective. Note that they resist Fire, Ice, and Dark magic (+250 each) while being neutral to Light, Divine, Evil, and Earth. Pure magical damage and Light/Divine are the best magical options."
+ },
+ {
+ "title": "Axeman Combos are Predictable",
+ "priority": "medium",
+ "description": "The Goblin Axeman's Attack2 chain (1300 ratio x2-3 hits) uses a Combo Triggered boolean. If the first hit connects, the follow-ups will come. The chain has higher impact power (4 vs 3) meaning more stagger. Block the first swing and the combo breaks, or dodge backward after the first hit. Nightmare adds a third hit to the chain."
+ },
+ {
+ "title": "Dodge Mage Curses Around Corners",
+ "priority": "medium",
+ "description": "The Goblin Mage fires homing curse projectiles (BP_GoblinMage_Curse) with 2300 homing acceleration magnitude. While they track aggressively, they can be broken by line-of-sight around corners and obstacles. The Nightmare variant uses channeling to fire multiple projectiles in sequence, making corner-dodging even more important."
+ },
+ {
+ "title": "Low Impact Resistance Makes Staggering Easy",
+ "priority": "medium",
+ "description": "Most goblins have only 3 Impact Resistance and 3-4 Impact Endurance (Mage has 4/5). High-impact weapons can stagger-lock them effectively. The Warrior's slightly higher endurance (4) means it takes one more hit to stagger than Archers, Axemen, or Bolaslingers."
+ },
+ {
+ "title": "Shield Against Archers -- Projectile Reduction 150",
+ "priority": "medium",
+ "description": "All goblins have 150 Projectile Reduction Modifier, meaning projectile attacks deal reduced damage to them. However, players should use shields against Goblin Archers since their 1500 ratio arrows deal solid damage and apply poison. Blocking negates both the damage and the poison application."
+ },
+ {
+ "title": "Goblins Flee -- Chase or Let Them Go",
+ "priority": "low",
+ "description": "All goblin variants have flee abilities. Warriors have two flee variants selected by gameplay tag checks. When a goblin flees, it disengages and runs. Chasing fleeing goblins can pull you into other groups. Sometimes it is safer to let them go and clear the immediate area first."
+ },
+ {
+ "title": "Nightmare Archers Have QuickShot",
+ "priority": "medium",
+ "description": "Nightmare Goblin Archers gain QuickShot -- a rapid fire ability with fire power 5 and head hitbox targeting. This makes Nightmare Archers significantly more dangerous than their Common/Elite counterparts. Combined with their higher weapon damage (28), faster action speed (+200), and faster movement (260), they become priority targets."
+ }
+ ],
+ "elite_differences": [
+ "Goblin Warrior: HP 44 -> 114 -> 184, Weapon Damage 24 -> 31 -> 38, Move Speed 200 -> 230 -> 260, Action Speed 0 -> +100 -> +200. Nightmare gains CounterAttack ability.",
+ "Goblin Archer: HP 44 -> 114 -> 184, Weapon Damage 12 -> 20 -> 28, Move Speed 200 -> 230 -> 260, Action Speed 0 -> +100 -> +200. Nightmare gains QuickShot (rapid fire with fire power 5).",
+ "Goblin Axeman: HP 0 (base only) -> 60 -> 120, Weapon Damage 14 -> 22 -> 30, Move Speed 200 -> 230 -> 260, Action Speed 0 -> +100 -> +200. Nightmare adds Attack2_3 (third combo hit).",
+ "Goblin Bolaslinger: HP 0 (base only) -> 60 -> 120, Weapon Damage 11 -> 18 -> 26, Move Speed 200 -> 230 -> 260, Action Speed 0 -> +100 -> +200. Nightmare slow stacks to 3 (vs 1 for Common/Elite) and uses duration-based slow instead of hit-slow.",
+ "Goblin Mage: HP 35 -> 105 -> 175, Weapon Damage 20 -> 27 -> 34, Move Speed 100 -> 130 -> 160, Action Speed 0 -> +100 -> +200. Nightmare gains channeled multi-projectile attack with BP_GoblinMage_Curse_Strong.",
+ "All variants: Adventure Points scale 1 -> 2 -> 3, XP scales 3 -> 4 -> 5 across grades.",
+ "Elite and Nightmare: +100/+200 Action Speed respectively means attacks come out noticeably faster.",
+ "Nightmare: All variants gain enhanced or entirely new abilities -- this is the biggest jump in difficulty."
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180-degree peripheral vision with 800 unit sight radius and 1800 unit lose-sight radius. Cannot see directly behind.",
+ "damage_sense": true,
+ "damage_description": "Has AISenseConfig_Damage -- always reacts to being hit regardless of facing direction. Warriors have a dedicated Damaged ability that can trigger CounterAttack in Nightmare.",
+ "hearing": true,
+ "hearing_description": "Has AISenseConfig_Hearing -- reacts to loud noises like footsteps, combat sounds, and spells. Can detect players before visual contact.",
+ "stuck_tracking": false,
+ "stuck_description": "No explicit stuck tracking found in goblin behavior trees. Simple AI uses probability-based action selection rather than complex pathfinding recovery."
+ }
+}

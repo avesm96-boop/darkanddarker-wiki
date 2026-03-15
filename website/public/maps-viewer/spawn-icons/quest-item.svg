@@ -1,0 +1,9 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+  <path d='M6 1L18 1L23 12L18 23L6 23L1 12Z' fill='#dd8822' stroke='#aa5500' stroke-width='.7'/>
+  <rect x='9' y='4' width='6' height='12' rx='1' fill='white' opacity='.88'/>
+  <path d='M9 6.5C9 5.5 10 4 12 4H15V6H9Z' fill='white' opacity='.4'/>
+  <path d='M15 15.5C15 16.5 14 18 12 18H9V16H15Z' fill='white' opacity='.4'/>
+  <line x1='10' y1='8' x2='14' y2='8' stroke='#dd8822' stroke-width='.6' opacity='.5'/>
+  <line x1='10' y1='10' x2='13' y2='10' stroke='#dd8822' stroke-width='.6' opacity='.5'/>
+  <line x1='10' y1='12' x2='14' y2='12' stroke='#dd8822' stroke-width='.6' opacity='.5'/>
+</svg>

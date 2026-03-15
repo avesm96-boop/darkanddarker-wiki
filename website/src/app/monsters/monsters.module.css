@@ -124,7 +124,7 @@
 
 .gridRow {
   display: grid;
-  grid-template-columns: 40px 1fr 80px 90px 60px 60px 60px 60px auto;
+  grid-template-columns: 40px 1fr 96px 90px 60px 60px 60px 60px 140px;
   align-items: center;
   padding: 0 12px;
 }
@@ -197,6 +197,7 @@
 
 .cell {
   padding: 10px 8px;
+  min-width: 0;
 }
 
 .cellCenter {
@@ -223,6 +224,9 @@
   letter-spacing: 0.04em;
   text-decoration: none;
   transition: color var(--t-fast);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dataRow:hover .monsterName {
@@ -235,10 +239,12 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 2px 8px;
+  padding: 2px 0;
   border-radius: 1px;
   font-family: var(--font-heading);
   white-space: nowrap;
+  width: 72px;
+  text-align: center;
 }
 
 .classBadgeNormal {
@@ -265,6 +271,11 @@
 .typeText {
   font-size: 0.75rem;
   color: var(--text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  padding-left: 4px;
 }
 
 .statValue {
@@ -285,6 +296,10 @@
 .dungeonText {
   font-size: 0.75rem;
   color: var(--text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
 
 /* === States === */
@@ -371,7 +386,7 @@
 @media (max-width: 1024px) {
   .gridRow {
     /* Portrait | Name | Class | Type | HP | DMG | Dungeon */
-    grid-template-columns: 40px 1fr 80px 80px 50px 50px auto;
+    grid-template-columns: 40px 1fr 90px 80px 50px 50px 120px;
   }
 
   .colSpeed,

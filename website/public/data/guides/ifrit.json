@@ -1,0 +1,175 @@
+{
+ "slug": "ifrit",
+ "overview": "Ifrit is a SubBoss-class Elemental/Humanoid monster found in Firedeep. 3 grades: Common, Elite, Nightmare. Base stats (Common): 750 HP, 28 physical damage, 100 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 8 attacks, 0 combo chains. Highest damage: Melee Attack3 at 150% ratio (420 base damage). Nightmare gains 3 exclusive abilityies: Fireball Nightmare, Melee Attack3, Melee Attack3 From 2.",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "6 melee attacks. Melee Attack1 (130%), Melee Attack1 Combo (110%), Melee Attack2 (120%), and more.",
+ "icon": "attack"
+ },
+ {
+ "name": "Ranged Attacks",
+ "description": "2 ranged attacks. Fireball (0%), Fireball Nightmare (0%).",
+ "icon": "special"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Melee Attack3",
+ "damage_ratio": 1500,
+ "damage_common": 420,
+ "damage_elite": 510,
+ "note": "150% damage ratio, impact power 7.",
+ "damage_nightmare": 570
+ },
+ {
+ "name": "Melee Attack3 From 2",
+ "damage_ratio": 1500,
+ "damage_common": 420,
+ "damage_elite": 510,
+ "note": "150% damage ratio, impact power 7.",
+ "damage_nightmare": 570
+ }
+ ]
+ },
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "Melee Attack1",
+ "damage_ratio": 1300,
+ "damage_common": 364,
+ "damage_elite": 442,
+ "note": "130% damage ratio, impact power 7.",
+ "damage_nightmare": 494
+ },
+ {
+ "name": "Melee Attack1 Combo",
+ "damage_ratio": 1100,
+ "damage_common": 308,
+ "damage_elite": 374,
+ "note": "110% damage ratio, impact power 7.",
+ "damage_nightmare": 418
+ },
+ {
+ "name": "Melee Attack2",
+ "damage_ratio": 1200,
+ "damage_common": 336,
+ "damage_elite": 408,
+ "note": "120% damage ratio, impact power 7.",
+ "damage_nightmare": 456
+ },
+ {
+ "name": "Melee Attack2 Combo",
+ "damage_ratio": 1000,
+ "damage_common": 280,
+ "damage_elite": 340,
+ "note": "100% damage ratio, impact power 7.",
+ "damage_nightmare": 380
+ }
+ ]
+ },
+ {
+ "tier": "Utility",
+ "color": "#5588dd",
+ "attacks": [
+ {
+ "name": "Fireball",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "0% damage ratio, impact power 4.",
+ "damage_nightmare": 0
+ },
+ {
+ "name": "Fireball Nightmare",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "0% damage ratio, impact power 4.",
+ "damage_nightmare": 0
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "1 combo chains across 1 entry points. Attacks chain from one to the next based on the AI's positioning and target state.",
+ "chains": [
+ {
+ "from": "",
+ "to": [
+ "Melee Attack3"
+ ],
+ "note": "",
+ "grades": [
+ "Nightmare"
+ ]
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "Fireball Burn",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Fireball Burn icon on your status bar."
+ },
+ {
+ "name": "Sword Burn",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Sword Burn icon on your status bar."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Elemental Weakness: Ice",
+ "priority": "high",
+ "description": "Significant elemental weaknesses: Ice (-3000). Negative reduction values mean incoming damage of that type is amplified."
+ },
+ {
+ "title": "Resists: Fire",
+ "priority": "high",
+ "description": "Elemental resistances: Fire (+500). Positive reduction values reduce incoming damage of that type."
+ },
+ {
+ "title": "Nightmare Gains: Fireball Nightmare, Melee Attack3, Melee Attack3 From 2",
+ "priority": "medium",
+ "description": "Nightmare grade has 3 exclusive abilities not present in lower grades: Fireball Nightmare, Melee Attack3, Melee Attack3 From 2. These change the fight dynamics in Nightmare.",
+ "grades": [
+ "Nightmare"
+ ]
+ }
+ ],
+ "elite_differences": [
+ "20% more HP (750 → 900) in Elite",
+ "21% more physical damage (28 → 34) in Elite",
+ "Move speed 100 → 125 in Elite",
+ "XP reward 8 → 9 in Elite",
+ "73% more HP (750 → 1300) in Nightmare",
+ "36% more physical damage (28 → 38) in Nightmare",
+ "Move speed 100 → 150 in Nightmare",
+ "ActionSpeed 0 → 50 in Nightmare — attacks animate faster",
+ "XP reward 8 → 10 in Nightmare",
+ "Nightmare gains 3 exclusive abilities: Fireball Nightmare, Melee Attack3, Melee Attack3 From 2"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard boss perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": true,
+ "stuck_description": "Has stuck-detection failsafes in behavior tree."
+ }
+}

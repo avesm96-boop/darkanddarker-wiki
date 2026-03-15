@@ -1,0 +1,7 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+  <rect x='1' y='1' width='22' height='22' rx='3' fill='#666' stroke='#444' stroke-width='.8'/>
+  <rect x='6' y='4' width='12' height='16' rx='2' fill='white' opacity='.82'/>
+  <line x1='6' y1='8' x2='18' y2='8' stroke='#666' stroke-width='.8' opacity='.6'/>
+  <line x1='6' y1='16' x2='18' y2='16' stroke='#666' stroke-width='.8' opacity='.6'/>
+  <ellipse cx='12' cy='4' rx='6' ry='1.5' fill='white' opacity='.3'/>
+</svg>

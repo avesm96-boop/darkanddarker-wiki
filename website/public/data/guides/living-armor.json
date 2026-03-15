@@ -1,0 +1,141 @@
+{
+ "slug": "living-armor",
+ "overview": "Living Armor is a Normal-class Construct/Undead monster found in Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): 200 HP, 22 physical damage, 120 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 8 attacks, 0 combo chains. Highest damage: Guard Attack1 at 180% ratio (396 base damage). Nightmare gains 5 exclusive abilityies: Slash Attack Combo R, Slash Attack Combo L, Guard, Guard Attack1, Guard Attack2.",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "8 melee attacks. Slash Attack R (150%), Slash Attack L (150%), Slash Attack R Combo (150%), and more.",
+ "icon": "attack"
+ },
+ {
+ "name": "Special Abilities",
+ "description": "2 special abilities. Guard Attack1 (180%), Guard Attack2 (180%).",
+ "icon": "special"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Slash Attack R",
+ "damage_ratio": 1500,
+ "damage_common": 330,
+ "damage_elite": 420,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 525
+ },
+ {
+ "name": "Slash Attack L",
+ "damage_ratio": 1500,
+ "damage_common": 330,
+ "damage_elite": 420,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 525
+ },
+ {
+ "name": "Slash Attack R Combo",
+ "damage_ratio": 1500,
+ "damage_common": 330,
+ "damage_elite": 420,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 525
+ },
+ {
+ "name": "Slash Attack L Combo",
+ "damage_ratio": 1500,
+ "damage_common": 330,
+ "damage_elite": 420,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 525
+ },
+ {
+ "name": "Slash Attack Combo R",
+ "damage_ratio": 1500,
+ "damage_common": 330,
+ "damage_elite": 420,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 525
+ },
+ {
+ "name": "Slash Attack Combo L",
+ "damage_ratio": 1500,
+ "damage_common": 330,
+ "damage_elite": 420,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 525
+ },
+ {
+ "name": "Guard Attack1",
+ "damage_ratio": 1800,
+ "damage_common": 396,
+ "damage_elite": 504,
+ "note": "180% damage ratio, impact power 4.",
+ "damage_nightmare": 630
+ },
+ {
+ "name": "Guard Attack2",
+ "damage_ratio": 1800,
+ "damage_common": 396,
+ "damage_elite": 504,
+ "note": "180% damage ratio, impact power 4.",
+ "damage_nightmare": 630
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [],
+ "strategies": [
+ {
+ "title": "Elemental Weakness: Earth",
+ "priority": "high",
+ "description": "Significant elemental weaknesses: Earth (-4000). Negative reduction values mean incoming damage of that type is amplified."
+ },
+ {
+ "title": "Resists: Fire, Ice",
+ "priority": "high",
+ "description": "Elemental resistances: Fire (+500), Ice (+500). Positive reduction values reduce incoming damage of that type."
+ },
+ {
+ "title": "Projectile Reduction: 150",
+ "priority": "medium",
+ "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+ },
+ {
+ "title": "Nightmare Gains: Slash Attack Combo R, Slash Attack Combo L, Guard, Guard Attack1, Guard Attack2",
+ "priority": "medium",
+ "description": "Nightmare grade has 5 exclusive abilities not present in lower grades: Slash Attack Combo R, Slash Attack Combo L, Guard, Guard Attack1, Guard Attack2. These change the fight dynamics in Nightmare.",
+ "grades": [
+ "Nightmare"
+ ]
+ }
+ ],
+ "elite_differences": [
+ "25% more HP (200 → 250) in Elite",
+ "27% more physical damage (22 → 28) in Elite",
+ "Move speed 120 → 150 in Elite",
+ "ActionSpeed 0 → 50 in Elite — attacks animate faster",
+ "XP reward 3 → 4 in Elite",
+ "50% more HP (200 → 300) in Nightmare",
+ "59% more physical damage (22 → 35) in Nightmare",
+ "Move speed 120 → 180 in Nightmare",
+ "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
+ "XP reward 3 → 5 in Nightmare",
+ "Nightmare gains 5 exclusive abilities: Slash Attack Combo R, Slash Attack Combo L, Guard, Guard Attack1, Guard Attack2"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard monster perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": false,
+ "stuck_description": "Standard AI navigation."
+ }
+}

@@ -1,0 +1,269 @@
+{
+ "slug": "fire-colossus",
+ "overview": "The Fire Colossus is a Boss-class monster found in the Firedeep dungeon. It is a massive Construct/Spirit/Elemental hybrid and the tankiest boss in the game with 6,000 HP (Common) or 8,500 HP (Elite). This is a multi-phase fight — the Colossus transitions through Phase 1, Phase 2, and Phase 3 via SetPhase2 and SetPhase3 abilities, unlocking new attack variants at each stage. Its AI uses a directional coverage system with LookingRight and LookingLeft swings at 60, 120, and 180 degree arcs, meaning it can sweep in virtually any direction. It attacks from both standing and prone positions, summons lava eruptions for area denial, and triggers ground explosions. With 999 Impact Resistance and 999 Impact Endurance, it has high Impact values. It has extreme fire resistance (+700) but is critically weak to ice magic (-700). It applies LavaDamage (fire DoT) on hit.",
+ "phases": [
+ {
+ "name": "Phase 1 — Standing Assault",
+ "description": "The Colossus begins the fight in Phase 1, using its full repertoire of standing attacks. FaceDownSlam strikes in four cardinal directions (Front, Back, Left, Right) at 1700 damage ratio. RightHandForwardSwing (1300 ratio) and RightHandCrossSwing (1600 ratio) cover the frontal arc. LookingRight and LookingLeft swings at 60, 120, and 180 degree angles (1300 ratio each) provide 360-degree coverage. RightFootStomping (2500 ratio) is its most devastating single attack. TwoHandsGroundStrike (1700 ratio) punishes players directly beneath it.",
+ "icon": "attack"
+ },
+ {
+ "name": "Phase 2 — Escalation",
+ "description": "When the Colossus reaches a health threshold, it triggers SetPhase2 to transition into Phase 2. This unlocks Phase2 variants of its key attacks — RightHandForwardSwing Phase2 (1300 ratio), RightHandCrossSwing Phase2 (1600 ratio), LookingRight/LeftSwing 60/120/180 Phase2 (1300 ratio), and SwingingFromPronePosition Phase2 (1600 ratio). Phase 2 attacks may have altered timing, range, or animation properties compared to their Phase 1 counterparts. The Colossus also gains access to OutburstOfAnger, a rage ability that likely accompanies the transition.",
+ "icon": "special"
+ },
+ {
+ "name": "Phase 3 — Final Stand",
+ "description": "At a further health threshold, SetPhase3 triggers the final phase transition. The Colossus enters its most dangerous state. LavaEruption (600 damage ratio) and GroundExplosion (800 damage ratio) become more frequent, creating widespread area denial across the arena. Combined with its Phase 2 attack variants and prone-position attacks, Phase 3 demands perfect positioning and sustained DPS to finish the fight before the arena becomes uninhabitable.",
+ "icon": "special"
+ },
+ {
+ "name": "Prone Position Combat",
+ "description": "The Colossus can attack from a prone position, making it dangerous even when seemingly downed. DownwardStrikeFromPronePosition (1700 ratio) and SwingingFromPronePosition (1600 ratio) punish players who rush in expecting a free damage window. StandUpFromPronePosition signals when it is getting back up. Phase 2 also unlocks SwingingFromPronePosition Phase2 (1600 ratio).",
+ "icon": "move"
+ },
+ {
+ "name": "Area Denial — Lava and Explosions",
+ "description": "The Colossus uses two AOE abilities for area denial. LavaEruption (600 damage ratio, 39/42 actual damage) summons lava from the ground, applying the LavaDamage fire DoT status effect. GroundExplosion (800 damage ratio, 52/56 actual damage) creates a ground-based AOE blast. Both abilities force players to reposition constantly, and in later phases these become more frequent, shrinking the safe zones in the arena.",
+ "icon": "debuff"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "RightFootStomping",
+ "ratio": 2500,
+ "damage_common": 162.5,
+ "damage_elite": 175,
+ "note": "The highest damage single attack in the Colossus arsenal. A massive stomp with impact 7. One of the hardest-hitting melee attacks of any boss in the game. Dodge at all costs."
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "FaceDownSlam (Front/Back/Left/Right)",
+ "ratio": 1700,
+ "damage_common": 110.5,
+ "damage_elite": 119,
+ "note": "Directional slam covering all four cardinal directions. The Colossus selects the slam direction based on target position. Impact 7. Each direction is a separate attack selection, providing full coverage around its body."
+ },
+ {
+ "name": "DownwardStrikeFromPronePosition",
+ "ratio": 1700,
+ "damage_common": 110.5,
+ "damage_elite": 119,
+ "note": "Strikes downward while in prone position. Punishes players who rush in expecting a free damage window when the Colossus is down. Impact 7."
+ },
+ {
+ "name": "TwoHandsGroundStrike",
+ "ratio": 1700,
+ "damage_common": 110.5,
+ "damage_elite": 119,
+ "note": "Both hands slam the ground simultaneously. Impact 7. Hits players directly in front of or beneath the Colossus."
+ },
+ {
+ "name": "RightHandCrossSwing",
+ "ratio": 1600,
+ "damage_common": 104,
+ "damage_elite": 112,
+ "note": "Wide cross-body swing from the right hand. Higher ratio than the forward swing. Impact 7. Phase 2 variant exists with identical ratio."
+ },
+ {
+ "name": "SwingingFromPronePosition",
+ "ratio": 1600,
+ "damage_common": 104,
+ "damage_elite": 112,
+ "note": "Wide swing attack while prone. Impact 7. Has a Phase 2 variant. Another reason not to blindly rush the Colossus when it appears to be down."
+ }
+ ]
+ },
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "RightHandForwardSwing",
+ "ratio": 1300,
+ "damage_common": 84.5,
+ "damage_elite": 91,
+ "note": "Direct forward swing from the right hand. Impact 7. Faster than the cross swing but lower damage. Phase 2 variant exists with identical ratio."
+ },
+ {
+ "name": "LookingRightSwing 60/120/180",
+ "ratio": 1300,
+ "damage_common": 84.5,
+ "damage_elite": 91,
+ "note": "Angular sweep attacks covering 60, 120, and 180 degree arcs to the right. Impact 7. Combined with LookingLeftSwing, provides 360-degree sweep coverage. Phase 2 variants exist for all three angles."
+ },
+ {
+ "name": "LookingLeftSwing 60/120/180",
+ "ratio": 1300,
+ "damage_common": 84.5,
+ "damage_elite": 91,
+ "note": "Angular sweep attacks covering 60, 120, and 180 degree arcs to the left. Impact 7. Mirrors the LookingRightSwing set. Phase 2 variants exist for all three angles."
+ }
+ ]
+ },
+ {
+ "tier": "AOE",
+ "color": "#5588dd",
+ "attacks": [
+ {
+ "name": "GroundExplosion",
+ "ratio": 800,
+ "damage_common": 52,
+ "damage_elite": 56,
+ "note": "Ground-based AOE explosion. Impact 7. Lower per-hit damage but creates area denial. Forces repositioning and can catch grouped players."
+ },
+ {
+ "name": "LavaEruption",
+ "ratio": 600,
+ "damage_common": 39,
+ "damage_elite": 42,
+ "note": "Summons lava from the ground. Impact 7. Lowest direct damage but applies LavaDamage fire DoT status effect. The lingering fire damage adds up significantly over time. Primary area denial tool."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "The Fire Colossus does not use a traditional combo chain system like some bosses. Instead, it selects attacks based on target positioning using its directional coverage system. The LookingRight and LookingLeft swings at 60, 120, and 180 degrees allow it to cover any angle, while FaceDownSlam covers all four cardinal directions. The fight escalates through phase transitions — SetPhase2 and SetPhase3 unlock more dangerous attack variants and increase AOE frequency. The Colossus can also fight from prone position, turning what appears to be a down state into an attack opportunity.",
+ "chains": [
+ {
+ "from": "Phase 1",
+ "to": [
+ "FaceDownSlam (directional)",
+ "RightHandForwardSwing",
+ "RightHandCrossSwing",
+ "LookingRight/LeftSwing (angular)",
+ "RightFootStomping",
+ "TwoHandsGroundStrike",
+ "LavaEruption",
+ "GroundExplosion"
+ ],
+ "note": "Full standing attack repertoire. Attack selection based on target position and angle. Directional slams and angular sweeps provide 360-degree melee coverage."
+ },
+ {
+ "from": "SetPhase2",
+ "to": [
+ "RightHandForwardSwing Phase2",
+ "RightHandCrossSwing Phase2",
+ "LookingRight/LeftSwing Phase2 (all angles)",
+ "SwingingFromPronePosition Phase2",
+ "OutburstOfAnger"
+ ],
+ "note": "Phase 2 transition unlocks enhanced variants of key attacks. OutburstOfAnger may trigger during or accompany the transition."
+ },
+ {
+ "from": "SetPhase3",
+ "to": [
+ "All Phase 2 attacks",
+ "Increased LavaEruption frequency",
+ "Increased GroundExplosion frequency"
+ ],
+ "note": "Final phase escalation. AOE abilities become more frequent, creating intense area denial across the arena."
+ },
+ {
+ "from": "Prone Position",
+ "to": [
+ "DownwardStrikeFromPronePosition",
+ "SwingingFromPronePosition",
+ "StandUpFromPronePosition"
+ ],
+ "note": "The Colossus can attack while prone. Do not assume it is safe to approach a downed Colossus — it strikes from the ground before standing up."
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "LavaDamage",
+ "type": "debuff",
+ "duration": "Damage over time",
+ "stacks": 1,
+ "description": "Fire damage over time applied by LavaEruption and lava ground hazards. Deals sustained fire damage for the duration. Combined with the Colossus's direct melee hits, the DoT adds significant pressure especially in later phases when lava coverage increases.",
+ "counter": "Move out of lava zones immediately. Do not stand in eruption areas even if the initial hit seems low — the DoT accumulates. Bring fire resistance gear or consumables. Clerics and classes with healing over time can mitigate the burn. Prioritize positioning over DPS when lava is active."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "It High Impact Resistance Values",
+ "priority": "critical",
+ "description": "With 999 Impact Resistance and 999 Impact Endurance, the Fire Colossus is completely has high ImpactResistance and MaxImpactEndurance values. Do not waste high-impact abilities hoping to disrupt its attacks. Every ability should be focused on raw damage output. This boss will never flinch."
+ },
+ {
+ "title": "Exploit Ice Magic — Its Only Elemental Weakness",
+ "priority": "critical",
+ "description": "The Fire Colossus has -700 IceMagicalReduction, making ice magic overwhelmingly the most effective damage type. Conversely, it has +700 FireMagicalReduction, making fire damage nearly useless. All other magical resistances are 0. Ice-based builds (Wizard with Ice Bolt, Ice Storm, Blizzard) are the optimal choice. Do not bring fire-based builds to this fight."
+ },
+ {
+ "title": "The Tankiest Boss in the Game — Prepare for a Long Fight",
+ "priority": "critical",
+ "description": "At 6,000 HP (Common) or 8,500 HP (Elite), the Fire Colossus has the highest health pool of any boss. This is a war of attrition. Bring sufficient consumables, manage your resources carefully, and ensure your group has sustained DPS. Running out of healing or mana mid-fight is a death sentence because you cannot burst this boss down quickly."
+ },
+ {
+ "title": "Learn the Directional Coverage — There Are No Permanent Safe Angles",
+ "priority": "critical",
+ "description": "LookingRight and LookingLeft swings at 60, 120, and 180 degrees combined with FaceDownSlam in all four directions means the Colossus can strike at any angle around it. There is no single safe position to stand. Instead, learn the telegraph animations for each directional attack and dodge accordingly. Constantly reposition rather than camping a single angle."
+ },
+ {
+ "title": "Do Not Rush a Prone Colossus",
+ "priority": "high",
+ "description": "Unlike most bosses that are vulnerable when downed, the Fire Colossus attacks from prone position with DownwardStrikeFromPronePosition (1700 ratio, 110.5/119 damage) and SwingingFromPronePosition (1600 ratio, 104/112 damage). Wait for StandUpFromPronePosition animation to confirm it is transitioning back to standing before committing to melee range. Ranged attackers can safely DPS during prone phases."
+ },
+ {
+ "title": "Respect Phase Transitions — They Are Dangerous Moments",
+ "priority": "high",
+ "description": "SetPhase2 and SetPhase3 transitions are signaled by OutburstOfAnger and potentially AOE effects. During transitions, back away and play defensively. Phase 2 unlocks enhanced attack variants, and Phase 3 ramps up AOE frequency. Each transition is a reset point — adjust your positioning and strategy for the new phase rather than maintaining the same approach."
+ },
+ {
+ "title": "Avoid RightFootStomping at All Costs",
+ "priority": "high",
+ "description": "RightFootStomping has a 2500 damage ratio — the highest of any attack in the Colossus arsenal, dealing 162.5 (Common) or 175 (Elite) damage. This is one of the hardest-hitting single melee attacks in the entire game. Learn its telegraph and give it absolute priority in your dodge rotation. Being hit by this attack will likely kill or critically wound any class."
+ },
+ {
+ "title": "Manage Lava Zones — They Shrink Your Arena",
+ "priority": "high",
+ "description": "LavaEruption creates persistent lava zones that apply LavaDamage (fire DoT). In Phase 3, eruption frequency increases dramatically. The effective fighting space shrinks as the fight progresses. Position yourself to keep escape routes open and avoid being cornered between the Colossus and active lava. Fight near the edges of the arena so you have room to retreat."
+ },
+ {
+ "title": "Projectiles Are Heavily Reduced",
+ "priority": "medium",
+ "description": "With 300 ProjectileReductionMod, the Fire Colossus significantly reduces all projectile damage. Physical ranged builds (Ranger, crossbow) are far less effective. Use spell-based attacks instead — particularly ice spells which benefit from the -700 ice weakness. If you must use projectiles, treat them as supplementary damage rather than primary DPS."
+ },
+ {
+ "title": "Slow Movement Is Your Advantage — Use It",
+ "priority": "medium",
+ "description": "The Colossus moves at only 230 (Common) or 240 (Elite) speed, making it one of the slower bosses. You can outrun it to reposition, heal, or avoid AOE zones. However, its massive reach with directional swings means distance is your friend more than circling. Create space when you need to recover, then re-engage on your terms."
+ },
+ {
+ "title": "Elite Has 42% More HP — Group Coordination Is Essential",
+ "priority": "medium",
+ "description": "Elite grade increases HP from 6,000 to 8,500 (a 42% increase), damage from 65 to 70, and speed from 230 to 240. The ActionSpeed also jumps from 0 to 100, meaning the Elite attacks noticeably faster. A well-coordinated group with ice DPS, healing, and proper role distribution is essential for the Elite variant."
+ }
+ ],
+ "elite_differences": [
+ "42% more HP (6,000 -> 8,500)",
+ "7.7% more physical damage (65 -> 70)",
+ "4.3% faster base move speed (230 -> 240)",
+ "ActionSpeed increases from 0 to 100 (significantly faster attack animations)",
+ "Same resistances, impact immunity, and projectile reduction as Common",
+ "Same ability set, phase transitions, and directional coverage",
+ "Higher XP reward (15 -> 20)",
+ "No Nightmare grade exists for this boss"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180-degree peripheral vision — cannot see directly behind",
+ "damage_sense": true,
+ "damage_description": "Always reacts to being hit regardless of facing direction (AISenseConfig_Damage)",
+ "hearing": true,
+ "hearing_description": "Reacts to loud noises in the arena (AISenseConfig_Hearing)",
+ "stuck_tracking": true,
+ "stuck_description": "Behavior tree uses directional checks to select attacks based on target angle. TurnLeft and TurnRight abilities at 60 and 120 degree increments allow the Colossus to reorient toward targets. WakeUp ability handles arena entry and engagement initialization."
+ }
+}

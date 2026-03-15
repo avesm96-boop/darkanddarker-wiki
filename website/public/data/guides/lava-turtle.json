@@ -1,0 +1,116 @@
+{
+ "slug": "lava-turtle",
+ "overview": "Lava Turtle is a Normal-class Beast monster found in Firedeep. 3 grades: Common, Elite, Nightmare. Base stats (Common): 200 HP, 25 physical damage, 70 move speed, ActionSpeed 0. ImpactResistance 8, MaxImpactEndurance 6. 3 attacks, 0 combo chains. Highest damage: Bite at 250% ratio (625 base damage). Nightmare gains 1 exclusive abilityy: Magma Burst.",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "1 melee attacks. Bite (250%).",
+ "icon": "attack"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "Bite",
+ "damage_ratio": 2500,
+ "damage_common": 625,
+ "damage_elite": 700,
+ "note": "250% damage ratio, impact power 0.",
+ "damage_nightmare": 775
+ }
+ ]
+ },
+ {
+ "tier": "Utility",
+ "color": "#5588dd",
+ "attacks": [
+ {
+ "name": "Magma Boulder Shot",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "0% damage ratio, impact power 4.",
+ "damage_nightmare": 0
+ },
+ {
+ "name": "Magma Burst",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "0% damage ratio, impact power 3.",
+ "damage_nightmare": 0
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [
+ {
+ "name": "Magma Damage",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Magma Damage icon on your status bar."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Elemental Weaknesses: Ice, Light, Divine",
+ "priority": "high",
+ "description": "Significant elemental weaknesses: Ice (-3000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
+ },
+ {
+ "title": "Resists: Fire",
+ "priority": "high",
+ "description": "Elemental resistances: Fire (+500). Positive reduction values reduce incoming damage of that type."
+ },
+ {
+ "title": "Projectile Reduction: 150",
+ "priority": "medium",
+ "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+ },
+ {
+ "title": "Highest Damage: Bite (250% ratio)",
+ "priority": "high",
+ "description": "Bite deals 625 damage at base (250% ratio). This is the most dangerous attack to avoid."
+ },
+ {
+ "title": "Nightmare Gains: Magma Burst",
+ "priority": "medium",
+ "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Magma Burst. These change the fight dynamics in Nightmare.",
+ "grades": [
+ "Nightmare"
+ ]
+ }
+ ],
+ "elite_differences": [
+ "15% more HP (200 → 230) in Elite",
+ "12% more physical damage (25 → 28) in Elite",
+ "Move speed 70 → 90 in Elite",
+ "ActionSpeed 0 → 50 in Elite — attacks animate faster",
+ "XP reward 3 → 4 in Elite",
+ "30% more HP (200 → 260) in Nightmare",
+ "24% more physical damage (25 → 31) in Nightmare",
+ "Move speed 70 → 110 in Nightmare",
+ "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
+ "XP reward 3 → 5 in Nightmare",
+ "Nightmare gains 1 exclusive abilities: Magma Burst"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard monster perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": false,
+ "stuck_description": "Standard AI navigation."
+ }
+}

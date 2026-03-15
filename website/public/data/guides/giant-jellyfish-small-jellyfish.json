@@ -1,0 +1,109 @@
+{
+ "slug": "giant-jellyfish-small-jellyfish",
+ "overview": "Giant Jellyfish (Small Jellyfish) is a Normal-class Beast monster. 2 grades: Common, Elite. Base stats (Common): 0 HP, 20 physical damage, 185 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 1 attack, 0 combo chains. Highest damage: Explosion at 100% ratio (200 base damage).",
+ "phases": [
+ {
+ "name": "Special Abilities",
+ "description": "1 special abilities. Explosion (100%).",
+ "icon": "special"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "Explosion",
+ "damage_ratio": 1000,
+ "damage_common": 200,
+ "damage_elite": 230,
+ "note": "100% damage ratio, impact power 4."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [
+ {
+ "name": "Electrified",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. Affects: MoveSpeed.",
+ "counter": "Watch for the Electrified icon on your status bar."
+ },
+ {
+ "name": "Electrified Nightmare",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. Affects: MoveSpeed.",
+ "counter": "Watch for the Electrified Nightmare icon on your status bar."
+ },
+ {
+ "name": "Electrified UI Data",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Electrified UI Data icon on your status bar."
+ },
+ {
+ "name": "Shocked",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Shocked icon on your status bar."
+ },
+ {
+ "name": "Shocked UI Data",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Shocked UI Data icon on your status bar."
+ },
+ {
+ "name": "Static Stun",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. Affects: MoveSpeed.",
+ "counter": "Watch for the Static Stun icon on your status bar."
+ },
+ {
+ "name": "Static Stun UI Data",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Static Stun UI Data icon on your status bar."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Projectile Reduction: 150",
+ "priority": "medium",
+ "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+ }
+ ],
+ "elite_differences": [
+ "15% more physical damage (20 → 23) in Elite",
+ "No Nightmare grade exists"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard monster perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": false,
+ "stuck_description": "Standard AI navigation."
+ }
+}

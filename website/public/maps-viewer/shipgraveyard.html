@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ship Graveyard Map — Dark and Darker</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #080604;
+  --bg-glass:    rgba(14,12,8,0.82);
+  --bg-card:     rgba(18,16,10,0.9);
+  --bg-card-h:   rgba(24,20,12,0.95);
+  --bg-input:    rgba(10,8,4,0.9);
+  --border:      rgba(201,168,76,0.12);
+  --border-h:    rgba(201,168,76,0.25);
+  --border-glow: rgba(201,168,76,0.35);
+  --accent:      #c9a84c;
+  --accent-b:    #dcc06a;
+  --accent-d:    #7a5c24;
+  --text:        #ede4cc;
+  --text-s:      #bfa968;
+  --text-m:      #7a6038;
+  --text-d:      #3d2e14;
+  --red:         #d44;
+  --green:       #5b5;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  font-size: 13px;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ══════════ TOP BAR ══════════ */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 100;
+}
+.topbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+}
+
+/* Map selector */
+.map-select {
+  position: relative;
+}
+.map-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 4px 28px 4px 10px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--accent-b);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%237a5c24' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 10px;
+}
+.map-select select:hover { border-color: var(--border-h); }
+.map-select select:focus { border-color: var(--accent-d); box-shadow: 0 0 8px rgba(201,168,76,0.1); }
+.map-select select option {
+  background: #12100a;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding: 4px;
+}
+
+/* Grade pills */
+.grade-pills { display: flex; gap: 0; }
+.grade-pill {
+  padding: 4px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-m);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.grade-pill:first-child { border-radius: 6px 0 0 6px; }
+.grade-pill:last-child  { border-radius: 0 6px 6px 0; }
+.grade-pill:not(:last-child) { border-right: none; }
+.grade-pill:hover { color: var(--text-s); background: rgba(201,168,76,0.05); }
+.grade-pill.active {
+  background: rgba(201,168,76,0.12);
+  color: var(--accent-b);
+  border-color: var(--border-h);
+  box-shadow: 0 0 8px rgba(201,168,76,0.1);
+}
+
+/* Search */
+.search-box {
+  position: relative;
+  flex: 0 1 240px;
+}
+.search-box input {
+  width: 100%;
+  padding: 5px 28px 5px 10px;
+  font-size: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-box input:focus { border-color: var(--accent-d); }
+.search-box input::placeholder { color: var(--text-d); }
+.search-clear {
+  display: none;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-d);
+  font-size: 14px;
+  line-height: 1;
+}
+.search-badge {
+  display: none;
+  font-size: 10px;
+  color: var(--accent-d);
+  font-family: 'Rajdhani', sans-serif;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+.search-badge.active { display: inline; }
+
+/* Luck */
+.luck-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-m);
+  white-space: nowrap;
+}
+.luck-wrap input[type=range] { width: 60px; accent-color: var(--accent); cursor: pointer; }
+.luck-val { color: var(--accent-d); font-size: 11px; min-width: 18px; }
+
+.topbar-spacer { flex: 1; }
+
+/* ══════════ LAYER BAR (floating) ══════════ */
+.layer-dock {
+  position: fixed;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  padding: 4px 6px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  z-index: 90;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.layer-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s;
+}
+.layer-btn:hover { background: rgba(201,168,76,0.06); }
+.layer-btn.active { background: rgba(201,168,76,0.1); border-color: var(--border-h); }
+.layer-btn .layer-icon {
+  width: 16px; height: 16px;
+  border-radius: 3px;
+  opacity: 0.3;
+  transition: opacity 0.15s;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.layer-btn.active .layer-icon { opacity: 1; }
+.layer-btn .layer-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-d);
+  transition: color 0.15s;
+}
+.layer-btn.active .layer-name { color: var(--text-s); }
+
+/* ══════════ VIEWPORT (pan/zoom) ══════════ */
+#viewport {
+  position: fixed;
+  top: 44px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: var(--bg);
+  cursor: grab;
+}
+#viewport.dragging { cursor: grabbing; }
+#scene {
+  transform-origin: 0 0;
+  will-change: transform;
+}
+#map-wrap {
+  position: relative;
+  width: 1778px;
+  height: 1773px;
+}
+#map-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+/* Module overlays */
+.module-zone {
+  position: absolute;
+  border: 1px dashed rgba(201,168,76,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.module-zone:hover {
+  border-color: rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.04);
+}
+.module-zone-label {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(201,168,76,0.4);
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.module-zone:hover .module-zone-label {
+  color: rgba(201,168,76,0.7);
+}
+
+/* ══════════ SPAWN MARKERS ══════════ */
+.spawn-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  z-index: 2;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 0;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+}
+.spawn-dot:hover {
+  z-index: 10;
+  transform: translate(-50%, -50%) scale(1.35);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)) brightness(1.15);
+}
+.spawn-dot.hidden { display: none; }
+.spawn-dot.search-hl { outline: 2px solid var(--accent); outline-offset: 1px; z-index: 5; }
+
+/* Spawn type colors (for fallback) */
+.sd-Monster        { background-color: #e05555; }
+.sd-TreasureHoard  { background-color: #ffcc00; }
+.sd-MarvelousChest { background-color: #ff88ff; }
+.sd-GoldChest      { background-color: #ffd700; }
+.sd-OrnateChest    { background-color: #cc88ff; }
+.sd-SpecialChest   { background-color: #ff9944; }
+.sd-Chest          { background-color: #88bbff; }
+.sd-SimpleChest    { background-color: #888; }
+.sd-Coffin         { background-color: #9b7653; }
+.sd-Equipment      { background-color: #5588dd; }
+.sd-Consumable     { background-color: #55c075; }
+.sd-Valuable       { background-color: #aabb55; }
+.sd-Herb           { background-color: #44cc88; }
+.sd-Ore            { background-color: #44cc88; }
+.sd-Gathering      { background-color: #44cc88; }
+.sd-QuestItem      { background-color: #ffaa44; }
+.sd-Trap           { background-color: #ff5555; }
+.sd-Portal         { background-color: #aa55ff; }
+.sd-Interact       { background-color: #55aaff; }
+.sd-Container      { background-color: #888; }
+.sd-PlayerSpawn    { background-color: #c9a84c; }
+.sd-NPC            { background-color: #55c075; }
+
+/* SVG icon markers */
+.spawn-dot.sd-Monster        { width: 14px; height: 14px; background-image: url('./spawn-icons/monster.svg'); }
+.spawn-dot.sd-TreasureHoard  { width: 18px; height: 18px; background-image: url('./spawn-icons/treasure-hoard.svg'); }
+.spawn-dot.sd-MarvelousChest { width: 15px; height: 13px; background-image: url('./spawn-icons/marvelous-chest.svg'); }
+.spawn-dot.sd-GoldChest      { width: 13px; height: 11px; background-image: url('./spawn-icons/gold-chest.svg'); }
+.spawn-dot.sd-OrnateChest    { width: 12px; height: 10px; background-image: url('./spawn-icons/ornate-chest.svg'); }
+.spawn-dot.sd-SpecialChest   { width: 11px; height: 9px;  background-image: url('./spawn-icons/special-chest.svg'); }
+.spawn-dot.sd-SimpleChest    { width: 9px;  height: 8px;  background-image: url('./spawn-icons/simple-chest.svg'); }
+.spawn-dot.sd-Chest          { width: 9px;  height: 8px;  background-image: url('./spawn-icons/chest.svg'); }
+.spawn-dot.sd-Coffin         { width: 8px;  height: 12px; background-image: url('./spawn-icons/coffin.svg'); }
+.spawn-dot.sd-Equipment      { width: 10px; height: 10px; background-image: url('./spawn-icons/equipment.svg'); }
+.spawn-dot.sd-Consumable     { width: 9px;  height: 9px;  background-image: url('./spawn-icons/consumable.svg'); }
+.spawn-dot.sd-Valuable       { width: 8px;  height: 8px;  background-image: url('./spawn-icons/valuable.svg'); }
+.spawn-dot.sd-QuestItem      { width: 12px; height: 12px; background-image: url('./spawn-icons/quest-item.svg'); }
+.spawn-dot.sd-Herb           { width: 9px;  height: 9px;  background-image: url('./spawn-icons/herb.svg'); }
+.spawn-dot.sd-Ore            { width: 9px;  height: 9px;  background-image: url('./spawn-icons/herb.svg'); }
+.spawn-dot.sd-Gathering      { width: 9px;  height: 9px;  background-image: url('./spawn-icons/herb.svg'); }
+.spawn-dot.sd-Trap           { width: 11px; height: 11px; background-image: url('./spawn-icons/trap.svg'); }
+.spawn-dot.sd-Portal         { width: 10px; height: 10px; background-image: url('./spawn-icons/portal.svg'); }
+.spawn-dot.sd-Interact       { width: 8px;  height: 8px;  background-image: url('./spawn-icons/interact.svg'); }
+.spawn-dot.sd-Container      { width: 6px;  height: 6px;  background-image: url('./spawn-icons/container.svg'); }
+.spawn-dot.sd-PlayerSpawn    { width: 13px; height: 15px; background-image: url('./spawn-icons/player-spawn.svg'); }
+.spawn-dot.sd-NPC            { width: 11px; height: 11px; background-image: url('./spawn-icons/npc.svg'); }
+
+/* ══════════ TOOLTIP ══════════ */
+#tooltip {
+  position: fixed;
+  display: none;
+  background: rgba(8,6,4,0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-h);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text);
+  pointer-events: none;
+  z-index: 9999;
+  max-width: 280px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+#tooltip .tt-name { font-family: 'Cinzel', Georgia, serif; font-weight: 600; font-size: 13px; letter-spacing: 0.03em; }
+#tooltip .tt-label { color: var(--text-s); font-size: 11px; }
+#tooltip .tt-chance { color: var(--text-m); font-size: 10px; margin-top: 2px; }
+#tooltip .tt-variants { margin-top: 4px; }
+#tooltip .tt-variant-row { display: flex; justify-content: space-between; gap: 10px; font-size: 10px; color: var(--text-s); padding: 1px 0; }
+#tooltip .tt-variant-pct { color: var(--accent-d); font-family: monospace; }
+
+/* ══════════ LOOT PANEL ══════════ */
+#loot-panel {
+  position: fixed;
+  top: 0; right: -380px;
+  width: 380px;
+  height: 100vh;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.5);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+#loot-panel.open { right: 0; }
+
+.lp-header {
+  display: flex; align-items: center; padding: 12px 16px;
+  border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.lp-title {
+  font-family: 'Cinzel', Georgia, serif; font-size: 15px; font-weight: 600;
+  color: var(--accent-b); letter-spacing: 0.04em; flex: 1;
+}
+.lp-close {
+  width: 24px; height: 24px; border: 1px solid var(--border); border-radius: 5px;
+  background: transparent; color: var(--text-m); font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all 0.1s;
+}
+.lp-close:hover { background: rgba(201,168,76,0.08); color: var(--text); border-color: var(--accent-d); }
+
+.lp-body {
+  flex: 1; overflow-y: auto; padding: 12px;
+  scrollbar-width: thin; scrollbar-color: #2a1e0a transparent;
+}
+.lp-body::-webkit-scrollbar { width: 5px; }
+.lp-body::-webkit-scrollbar-thumb { background: #2a1e0a; border-radius: 3px; }
+
+.lp-group { margin-bottom: 12px; background: rgba(18,16,10,0.6); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.lp-group-header { padding: 6px 10px; background: rgba(201,168,76,0.03); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+.lp-group-name { font-family: 'Cinzel', Georgia, serif; font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+.lp-pool { padding: 6px 10px; border-bottom: 1px solid rgba(201,168,76,0.04); }
+.lp-pool:last-child { border-bottom: none; }
+.lp-pool-name { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.lp-rate-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; margin-bottom: 3px; background: var(--bg-input); }
+.rarity-0{background:#333}.rarity-1{background:#666}.rarity-2{background:#aaa}.rarity-3{background:#3c3}.rarity-4{background:#55f}.rarity-5{background:#c5f}.rarity-6{background:#fa0}.rarity-7{background:#f55}.rarity-8{background:#f0f}
+.lp-rate-labels { display: flex; flex-wrap: wrap; gap: 2px 8px; font-size: 9px; color: var(--text-m); }
+.lp-rate-label span { font-family: monospace; }
+.lp-items-toggle { font-size: 10px; color: var(--accent-d); cursor: pointer; margin-top: 4px; user-select: none; }
+.lp-items-toggle:hover { color: var(--accent); }
+.lp-item-list { display: none; margin-top: 4px; padding: 4px 6px; background: var(--bg-input); border-radius: 4px; max-height: 120px; overflow-y: auto; font-size: 10px; color: var(--text-s); line-height: 1.6; scrollbar-width: thin; scrollbar-color: #2a1e0a transparent; }
+.lp-item-list.open { display: block; }
+.lp-variant-section { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.lp-variant-row { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-s); padding: 2px 0; }
+.lp-variant-pct { color: var(--accent-d); font-family: monospace; font-size: 11px; min-width: 40px; text-align: right; }
+.lp-variant-bar { flex: 1; height: 4px; border-radius: 2px; background: var(--bg-input); overflow: hidden; }
+.lp-variant-bar-fill { height: 100%; background: var(--accent-d); border-radius: 2px; }
+.lp-spawn-chance { font-size: 10px; color: var(--text-m); padding: 4px 10px; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- ══════════ TOP BAR ══════════ -->
+<div class="topbar">
+  <div class="map-select">
+    <select id="map-select" onchange="if(this.value)window.location.href=this.value">
+      <option value="crypt.html">Crypt</option>
+      <option value="cave.html">Goblin Cave</option>
+      <option value="ruins.html">Ruins</option>
+      <option value="inferno.html">Inferno</option>
+      <option value="icecavern.html">Ice Cavern</option>
+      <option value="iceabyss.html">Ice Abyss</option>
+      <option value="firedeep.html">Firedeep</option>
+      <option value="shipgraveyard.html" selected>Ship Graveyard</option>
+    </select>
+  </div>
+  <div class="topbar-divider"></div>
+  <div class="grade-pills">
+    <button class="grade-pill" data-grade="1031">Adventure</button>
+    <button class="grade-pill" data-grade="2031">Normal</button>
+    <button class="grade-pill active" data-grade="3031">High Roller</button>
+  </div>
+  <div class="topbar-divider"></div>
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search spawns..." autocomplete="off">
+    <div class="search-clear" id="search-clear">&times;</div>
+  </div>
+  <span class="search-badge" id="search-mode"></span>
+  <div class="topbar-spacer"></div>
+  <div class="luck-wrap">
+    <span>Luck</span>
+    <input type="range" id="luck-slider" min="0" max="50" step="5" value="0">
+    <span class="luck-val" id="luck-value">0</span>
+  </div>
+</div>
+
+<!-- ══════════ LAYER DOCK ══════════ -->
+<div class="layer-dock" id="layer-bar"></div>
+
+<!-- ══════════ VIEWPORT ══════════ -->
+<div id="viewport">
+  <div id="scene">
+    <div id="map-wrap">
+      <img src="/data/map-tiles/ShipGraveyard.png" alt="Ship Graveyard World Map" draggable="false">
+      <div id="modules-layer"></div>
+      <div id="spawns-layer"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div id="tooltip">
+  <div class="tt-name"></div>
+  <div class="tt-label"></div>
+  <div class="tt-chance"></div>
+  <div class="tt-variants"></div>
+</div>
+
+<!-- Loot Panel -->
+<div id="loot-panel">
+  <div class="lp-header">
+    <div class="lp-title" id="lp-title">Loot Details</div>
+    <button class="lp-close" id="lp-close">&times;</button>
+  </div>
+  <div class="lp-body" id="lp-body"></div>
+</div>
+
+<!-- Data files -->
+<script src="./display_names.js"></script>
+<script src="./spawn_data_shipgraveyard.js"></script>
+<script src="./loot_data_shipgraveyard.js"></script>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// CONSTANTS
+// ═══════════════════════════════════════════════════════════════════════
+const IMG_W = 1778, IMG_H = 1773;
+const MAP_UU = 22400;
+const OX = IMG_W / 2, OY = IMG_H / 2;
+const SX = IMG_W / MAP_UU, SY = IMG_H / MAP_UU;
+const CELL = 3200;
+
+function worldToImage(wx, wy) {
+  return { x: OX + wy * SX, y: OY - wx * SY };
+}
+
+function rotLocal(lx, ly, deg) {
+  const a = deg % 360;
+  if (a === 0)   return { x: lx, y: ly };
+  if (a === 90)  return { x: -ly, y: lx };
+  if (a === 180) return { x: -lx, y: -ly };
+  if (a === 270) return { x: ly, y: -lx };
+  const r = deg * Math.PI / 180;
+  return { x: lx * Math.cos(r) - ly * Math.sin(r), y: lx * Math.sin(r) + ly * Math.cos(r) };
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// MODULE DATA
+// ═══════════════════════════════════════════════════════════════════════
+const MODULES = [
+  { name: "Hole",             wx:      0, wy:      0, angle:   0 },
+  { name: "Circle Island",    wx:   3200, wy:   9600, angle:   0 },
+  { name: "Flipped Ship",     wx:   9600, wy:      0, angle:  90 },
+  { name: "Starfish Valley",  wx:  -3200, wy:   6400, angle:  90 },
+  { name: "Spawning Pool",    wx:   6400, wy:  -3200, angle:  90 },
+  { name: "Trench",           wx:  -3200, wy:   9600, angle:  90 },
+  { name: "Mist Watch",       wx:      0, wy:  -6400, angle: 180 },
+  { name: "Rock Island",      wx:   3200, wy:  -3200, angle: 180 },
+  { name: "Mermaid Tomb",     wx:   3200, wy:  -6400, angle:   0 },
+  { name: "Sunken Ship",      wx:      0, wy:  -9600, angle:   0 },
+  { name: "Ship Rest",        wx:   6400, wy:      0, angle: 270 },
+  { name: "Coral Forest",     wx:  -6400, wy:  -3200, angle:   0 },
+  { name: "Floating House",   wx:   6400, wy:   9600, angle:  90 },
+  { name: "Sea Fortress",     wx:   6400, wy:   6400, angle:  90 },
+  { name: "Ocean Volcano",    wx:  -9600, wy:  -3200, angle:   0 },
+  { name: "Twin Chamber",     wx:  -3200, wy:  -6400, angle:   0 },
+  { name: "UnderSea Cave",    wx:  -9600, wy:   3200, angle: 270 },
+  { name: "Abandoned Ship",   wx:  -6400, wy:      0, angle: 180, sx: 2, lx: 1600 },
+  { name: "Elephant Island",  wx:      0, wy:   6400, angle: 180, sx: 2, lx: -1600 },
+  { name: "Floating Village", wx:   6400, wy:   3200, angle:  90, sx: 2, ly: -1600, boxYaw: 90 },
+  { name: "Hanging Ship",     wx:   9600, wy:   9600, angle: 180, sy: 2, ly: 1600 },
+  { name: "Bladehand Refuge", wx:   9600, wy:  -9600, angle:  90, sx: 2, sy: 2, lx: 1600, ly: 1600 },
+  { name: "Skull Island",     wx:  -9600, wy:   9600, angle:   0, sx: 2, sy: 2, lx: 1600, ly: -1600 },
+  { name: "Pirate Prison",    wx: -11200, wy: -11200, angle:   0, sx: 2, sy: 2, lx: 3200, ly: 3200 },
+];
+
+// ═══════════════════════════════════════════════════════════════════════
+// SPAWN TYPE → CSS CLASS MAPPING
+// ═══════════════════════════════════════════════════════════════════════
+const TYPE_TO_CSS = {
+  Monster: 'sd-Monster',
+  TreasureHoard: 'sd-TreasureHoard',
+  MarvelousChest: 'sd-MarvelousChest',
+  GoldChest: 'sd-GoldChest',
+  OrnateChest: 'sd-OrnateChest',
+  SpecialChest: 'sd-SpecialChest',
+  Chest: 'sd-Chest',
+  SimpleChest: 'sd-SimpleChest',
+  MermaidCoffin: 'sd-Coffin',
+  GiantClam: 'sd-Chest',
+  Equipment: 'sd-Equipment',
+  Consumable: 'sd-Consumable',
+  Valuable: 'sd-Valuable',
+  QuestItem: 'sd-QuestItem',
+  Herb: 'sd-Herb',
+  Ore: 'sd-Ore',
+  Gathering: 'sd-Gathering',
+  Trap: 'sd-Trap',
+  Portal: 'sd-Portal',
+  Interact: 'sd-Interact',
+  Container: 'sd-Container',
+  PlayerSpawn: 'sd-PlayerSpawn',
+  NPC: 'sd-NPC',
+};
+
+// ═══════════════════════════════════════════════════════════════════════
+// LAYER SYSTEM
+// ═══════════════════════════════════════════════════════════════════════
+const LAYERS = {
+  monsters:  { label: 'Monsters',  icon: './spawn-icons/monster.svg',        on: true,  cats: ['Monster'] },
+  chests:    { label: 'Chests',    icon: './spawn-icons/gold-chest.svg',      on: true,  cats: ['TreasureHoard','MarvelousChest','GoldChest','OrnateChest','SpecialChest','MermaidCoffin','GiantClam','Chest','SimpleChest'] },
+  quests:    { label: 'Quests',    icon: './spawn-icons/quest-item.svg',      on: true,  cats: ['QuestItem','Herb','Ore','Gathering'] },
+  traps:     { label: 'Traps',     icon: './spawn-icons/trap.svg',            on: false, cats: ['Trap'] },
+  loot:      { label: 'Loot',      icon: './spawn-icons/valuable.svg',        on: false, cats: ['Valuable','Equipment','Consumable'] },
+  environ:   { label: 'Other',     icon: './spawn-icons/portal.svg',          on: false, cats: ['Portal','Interact','Container','PlayerSpawn','NPC'] },
+  modules:   { label: 'Modules',   icon: './spawn-icons/altar.png',           on: true,  cats: [] },
+};
+
+const CAT_TO_LAYER = {};
+for (const [lk, layer] of Object.entries(LAYERS)) {
+  for (const cat of layer.cats) CAT_TO_LAYER[cat] = lk;
+}
+
+const CAT_LABELS = {
+  Monster:'Monster', TreasureHoard:'Treasure Hoard', MarvelousChest:'Marvelous Chest',
+  GoldChest:'Gold Chest', OrnateChest:'Ornate Chest', SpecialChest:'Special Chest',
+  Chest:'Chest', SimpleChest:'Simple Chest', MermaidCoffin:'Mermaid Coffin',
+  GiantClam:'Giant Clam', Equipment:'Equipment', Consumable:'Consumable',
+  Valuable:'Valuable', QuestItem:'Quest Item', Herb:'Herbs', Ore:'Ore',
+  Gathering:'Gathering', NPC:'NPC', Trap:'Trap', Portal:'Portal',
+  Interact:'Interactive', Container:'Container', PlayerSpawn:'Player Spawn',
+};
+
+function dn(name) { return (typeof DISPLAY_NAMES !== 'undefined' && DISPLAY_NAMES[name]) || ''; }
+function variantLabel(vn) {
+  const vd = dn(vn);
+  if (!vd) return vn;
+  const grade = vn.match(/\s+(Common|Elite|Nightmare|Unique)$/);
+  return grade ? vd + ' (' + grade[1] + ')' : (vd !== vn ? vd : vn);
+}
+function isCatVisible(cat) { const lk = CAT_TO_LAYER[cat]; return lk ? LAYERS[lk].on : false; }
+
+// ═══════════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════════
+const CT_LUCK_GRADE = [
+  [1,0.95,0.9,0.85,0.8,0.75,0.7,0.65,0.6,0.55,0.5],
+  [1,0.95,0.9,0.85,0.8,0.75,0.7,0.65,0.6,0.55,0.5],
+  [1,0.975,0.95,0.925,0.9,0.875,0.85,0.825,0.8,0.775,0.75],
+  [1,1,1,1,1,1,1,1,1,1,1],
+  [1,1.143,1.27,1.383,1.481,1.563,1.631,1.684,1.721,1.744,1.752],
+  [1,1.301,1.57,1.807,2.013,2.188,2.33,2.441,2.521,2.568,2.584],
+  [1,1.433,1.82,2.162,2.458,2.709,2.914,3.073,3.188,3.256,3.28],
+  [1,1.514,1.973,2.379,2.73,3.028,3.271,3.461,3.596,3.678,3.705],
+  [1,1.61,2.156,2.637,3.055,3.408,3.697,3.922,4.083,4.18,4.213]
+];
+function getLuckMult(lg, luck) {
+  if (luck <= 0 || lg < 0 || lg > 8) return 1;
+  const i = Math.min(luck * 2, 10), lo = Math.floor(i), hi = Math.min(lo + 1, 10), f = i - lo;
+  return CT_LUCK_GRADE[lg][lo] + f * (CT_LUCK_GRADE[lg][hi] - CT_LUCK_GRADE[lg][lo]);
+}
+
+let playerLuck = 0;
+let currentGrade = 3031;
+const RARITY_NAMES = ['Nothing','Poor','Common','Uncommon','Rare','Epic','Legendary','Unique','Artifact'];
+let spawnSearch = '';
+
+// ═══════════════════════════════════════════════════════════════════════
+// LOOT HELPERS (flat, no grade separation)
+// ═══════════════════════════════════════════════════════════════════════
+function getLootData() {
+  return { MAP: LOOT_MAP, GROUPS: LOOT_GROUPS, RATES: LOOT_RATES };
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// PAN / ZOOM
+// ═══════════════════════════════════════════════════════════════════════
+const viewport = document.getElementById('viewport');
+const scene = document.getElementById('scene');
+let zoom = 1, panX = 0, panY = 0;
+let dragging = false, dragStartX = 0, dragStartY = 0, panStartX = 0, panStartY = 0;
+
+function applyTransform() {
+  scene.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+}
+
+function fitMapToView() {
+  const vw = viewport.clientWidth, vh = viewport.clientHeight;
+  const pad = 40;
+  zoom = Math.min((vw - pad * 2) / IMG_W, (vh - pad * 2) / IMG_H);
+  panX = (vw - IMG_W * zoom) / 2;
+  panY = (vh - IMG_H * zoom) / 2;
+  applyTransform();
+}
+
+viewport.addEventListener('mousedown', e => {
+  if (e.button !== 0) return;
+  dragging = true;
+  dragStartX = e.clientX;
+  dragStartY = e.clientY;
+  panStartX = panX;
+  panStartY = panY;
+  viewport.classList.add('dragging');
+  e.preventDefault();
+});
+
+window.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  panX = panStartX + (e.clientX - dragStartX);
+  panY = panStartY + (e.clientY - dragStartY);
+  applyTransform();
+});
+
+window.addEventListener('mouseup', () => {
+  if (dragging) {
+    dragging = false;
+    viewport.classList.remove('dragging');
+  }
+});
+
+viewport.addEventListener('wheel', e => {
+  e.preventDefault();
+  const rect = viewport.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  const wx = (mx - panX) / zoom;
+  const wy = (my - panY) / zoom;
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  const newZoom = Math.max(0.1, Math.min(10, zoom * factor));
+  panX = mx - wx * newZoom;
+  panY = my - wy * newZoom;
+  zoom = newZoom;
+  applyTransform();
+}, { passive: false });
+
+// ═══════════════════════════════════════════════════════════════════════
+// LAYER BAR
+// ═══════════════════════════════════════════════════════════════════════
+function buildLayerBar() {
+  const bar = document.getElementById('layer-bar');
+  bar.innerHTML = '';
+  for (const [lk, layer] of Object.entries(LAYERS)) {
+    const btn = document.createElement('div');
+    btn.className = 'layer-btn' + (layer.on ? ' active' : '');
+    btn.innerHTML =
+      '<div class="layer-icon" style="background-image:url(\'' + layer.icon + '\');"></div>' +
+      '<div class="layer-name">' + layer.label + '</div>';
+    btn.addEventListener('click', () => {
+      layer.on = !layer.on;
+      btn.classList.toggle('active', layer.on);
+      if (lk === 'modules') {
+        document.getElementById('modules-layer').style.display = layer.on ? '' : 'none';
+      } else {
+        updateDotVisibility();
+      }
+    });
+    bar.appendChild(btn);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// MODULE OVERLAYS
+// ═══════════════════════════════════════════════════════════════════════
+function buildModules() {
+  const container = document.getElementById('modules-layer');
+  container.innerHTML = '';
+  for (const mod of MODULES) {
+    const sx = mod.sx || 1, sy = mod.sy || 1;
+    const lx = mod.lx || 0, ly = mod.ly || 0;
+    const rotOff = rotLocal(lx, ly, mod.angle);
+    const center = worldToImage(mod.wx + rotOff.x, mod.wy + rotOff.y);
+    const totalAngle = mod.angle + (mod.boxYaw || 0);
+    let imgW, imgH;
+    if (totalAngle % 360 === 0 || totalAngle % 360 === 180) {
+      imgW = sy * CELL * SX;
+      imgH = sx * CELL * SY;
+    } else {
+      imgW = sx * CELL * SX;
+      imgH = sy * CELL * SY;
+    }
+    const div = document.createElement('div');
+    div.className = 'module-zone';
+    div.style.left = (center.x - imgW / 2) + 'px';
+    div.style.top = (center.y - imgH / 2) + 'px';
+    div.style.width = imgW + 'px';
+    div.style.height = imgH + 'px';
+    const label = document.createElement('div');
+    label.className = 'module-zone-label';
+    label.textContent = mod.name;
+    div.appendChild(label);
+    container.appendChild(div);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// SPAWN DOTS
+// ═══════════════════════════════════════════════════════════════════════
+function buildSpawns() {
+  const container = document.getElementById('spawns-layer');
+  container.innerHTML = '';
+  for (const [type, spawns] of Object.entries(SPAWN_DATA)) {
+    const cssClass = TYPE_TO_CSS[type] || 'sd-Monster';
+    for (const s of spawns) {
+      const [wx, wy, name, vid, gc, sidIdx] = s;
+      const pos = worldToImage(wx, wy);
+      const dot = document.createElement('div');
+      dot.className = 'spawn-dot ' + cssClass;
+      dot.style.left = pos.x + 'px';
+      dot.style.top = pos.y + 'px';
+      dot.style.display = isCatVisible(type) ? '' : 'none';
+      dot._cat = type;
+      dot._name = name;
+      dot._vid = vid;
+      dot._sidIdx = sidIdx;
+      dot._gc = gc;
+      dot._label = CAT_LABELS[type] || type;
+      container.appendChild(dot);
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// DOT VISIBILITY
+// ═══════════════════════════════════════════════════════════════════════
+function updateDotVisibility() {
+  const sq = spawnSearch;
+  for (const dot of document.querySelectorAll('.spawn-dot')) {
+    const catVis = isCatVisible(dot._cat);
+    let searchVis = true;
+    dot.classList.remove('search-hl');
+    if (sq) {
+      const n = (dot._name || '').toLowerCase(), d = dn(dot._name).toLowerCase();
+      let match = n.includes(sq) || d.includes(sq);
+      if (!match && dot._vid >= 0 && SPAWN_VARIANTS[dot._vid]) {
+        for (const [vn] of SPAWN_VARIANTS[dot._vid][1]) {
+          if (vn.toLowerCase().includes(sq) || dn(vn).toLowerCase().includes(sq)) { match = true; break; }
+        }
+      }
+      if (match) dot.classList.add('search-hl'); else searchVis = false;
+    }
+    dot.style.display = (catVis && searchVis) ? '' : 'none';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TOOLTIP
+// ═══════════════════════════════════════════════════════════════════════
+const tooltip = document.getElementById('tooltip');
+let ttRaf = 0;
+
+function showTooltip(e, dot) {
+  const ttName = tooltip.querySelector('.tt-name');
+  const ttLabel = tooltip.querySelector('.tt-label');
+  const ttChance = tooltip.querySelector('.tt-chance');
+  const ttVars = tooltip.querySelector('.tt-variants');
+  const d = dn(dot._name);
+  ttName.textContent = d || dot._name;
+  ttLabel.textContent = d ? dot._name + ' \u2014 ' + dot._label : dot._label;
+  ttVars.innerHTML = '';
+  // Calculate real spawn chance: group chance * variant overall chance
+  const groupMult = dot._gc / 1000;
+  let spawnPct = groupMult * 100;
+  if (dot._vid >= 0 && SPAWN_VARIANTS[dot._vid]) {
+    const [overallPct10, variants] = SPAWN_VARIANTS[dot._vid];
+    spawnPct = (overallPct10 / 10) * groupMult;
+    ttChance.textContent = spawnPct < 100 ? 'Spawn chance: ' + (spawnPct < 1 ? '<1' : spawnPct.toFixed(1)) + '%' : '';
+    if (variants.length > 1) {
+      for (const [vname, sel] of variants) {
+        const row = document.createElement('div');
+        row.className = 'tt-variant-row';
+        row.innerHTML = '<span>' + variantLabel(vname) + '</span><span class="tt-variant-pct">' + (sel / 10).toFixed(1) + '%</span>';
+        ttVars.appendChild(row);
+      }
+    }
+  } else {
+    ttChance.textContent = spawnPct < 100 ? 'Spawn chance: ' + spawnPct.toFixed(1) + '%' : '';
+  }
+  tooltip.style.display = 'block';
+  positionTooltip(e);
+}
+
+function positionTooltip(e) {
+  const x = e.clientX + 14, y = e.clientY + 14, w = tooltip.offsetWidth, h = tooltip.offsetHeight;
+  tooltip.style.left = (x + w > window.innerWidth ? e.clientX - w - 8 : x) + 'px';
+  tooltip.style.top = (y + h > window.innerHeight ? e.clientY - h - 8 : y) + 'px';
+}
+function hideTooltip() { tooltip.style.display = 'none'; }
+
+// Event delegation on spawns-layer
+const spawnsLayer = document.getElementById('spawns-layer');
+spawnsLayer.addEventListener('mouseover', e => {
+  if (e.target.classList.contains('spawn-dot')) showTooltip(e, e.target);
+});
+spawnsLayer.addEventListener('mouseout', e => {
+  if (e.target.classList.contains('spawn-dot')) hideTooltip();
+});
+spawnsLayer.addEventListener('mousemove', e => {
+  if (tooltip.style.display !== 'none' && !ttRaf) {
+    ttRaf = requestAnimationFrame(() => { positionTooltip(e); ttRaf = 0; });
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+// LOOT PANEL
+// ═══════════════════════════════════════════════════════════════════════
+const lootPanel = document.getElementById('loot-panel');
+const lpTitle = document.getElementById('lp-title');
+const lpBody = document.getElementById('lp-body');
+document.getElementById('lp-close').addEventListener('click', () => lootPanel.classList.remove('open'));
+
+spawnsLayer.addEventListener('click', e => {
+  const dot = e.target;
+  if (!dot.classList.contains('spawn-dot') || dot._sidIdx < 0) return;
+  const sid = LOOT_SID[dot._sidIdx];
+  if (sid) openLootPanel(sid, dot._name, dot._vid, dot._gc);
+});
+
+function openLootPanel(sid, name, vid, gc) {
+  const ld = getLootData(); if (!ld) return;
+  const groups = ld.MAP[sid]; if (!groups) return;
+  lootPanel._currentSid = sid;
+  lootPanel._currentName = name;
+  lootPanel._currentVid = vid;
+  lootPanel._currentGc = gc;
+  lpTitle.textContent = dn(name) || name || sid;
+  lpBody.innerHTML = '';
+  {
+    const groupMult = (gc !== undefined) ? gc / 1000 : 1;
+    let realPct = groupMult * 100;
+    if (vid !== undefined && vid >= 0 && SPAWN_VARIANTS[vid]) realPct = (SPAWN_VARIANTS[vid][0] / 10) * groupMult;
+    if (realPct < 100) { const sc=document.createElement('div'); sc.className='lp-spawn-chance'; sc.textContent='Spawn chance: '+(realPct < 1 ? '<1' : realPct.toFixed(1))+'%'; lpBody.appendChild(sc); }
+  }
+  if (vid !== undefined && vid >= 0 && SPAWN_VARIANTS[vid]) {
+    const [, variants] = SPAWN_VARIANTS[vid];
+    if (variants.length > 1 || (variants.length === 1 && variants[0][1] < 1000)) {
+      const vs = document.createElement('div');
+      vs.className = 'lp-variant-section';
+      vs.innerHTML = '<div style="font-size:10px;color:var(--text-m);margin-bottom:4px;font-family:Rajdhani,sans-serif;letter-spacing:0.05em;text-transform:uppercase">Variants</div>';
+      for (const [vn, sel] of variants) {
+        const vl = variantLabel(vn);
+        const pct = (sel / 10).toFixed(1);
+        const r = document.createElement('div');
+        r.className = 'lp-variant-row';
+        r.innerHTML = '<span class="lp-variant-pct">' + pct + '%</span><div class="lp-variant-bar"><div class="lp-variant-bar-fill" style="width:' + pct + '%"></div></div><span>' + vl + '</span>';
+        vs.appendChild(r);
+      }
+      lpBody.appendChild(vs);
+    }
+  }
+  for (const [varName, groupIdx] of groups) renderLootGroup(varName, groupIdx, ld);
+  lootPanel.classList.add('open');
+}
+
+function renderLootGroup(varName, groupIdx, ld) {
+  const group = ld.GROUPS[groupIdx]; if (!group) return;
+  const div = document.createElement('div'); div.className = 'lp-group';
+  const hdr = document.createElement('div'); hdr.className = 'lp-group-header';
+  const vd = dn(varName);
+  hdr.innerHTML = '<div class="lp-group-name">' + (vd || varName || 'Loot Group') + (vd && vd !== varName ? ' <small style="color:var(--text-m);font-size:10px;text-transform:none">(' + varName + ')</small>' : '') + '</div>';
+  div.appendChild(hdr);
+  for (const [poolIdx, rateIdx, count] of group) {
+    const pool = LOOT_POOLS[poolIdx], rates = ld.RATES[rateIdx];
+    if (!pool || !rates) continue;
+    const pDiv = document.createElement('div'); pDiv.className = 'lp-pool';
+    const pName = document.createElement('div'); pName.className = 'lp-pool-name';
+    pName.textContent = pool[0] + (count > 1 ? ' (x' + count + ')' : '');
+    pDiv.appendChild(pName);
+    const modRates = rates.map((r, g) => r * getLuckMult(g, playerLuck));
+    const total = modRates.reduce((a, b) => a + b, 0);
+    const hasGrades = typeof LOOT_ITEM_GRADES !== 'undefined';
+    let allFixed = false;
+    if (hasGrades && pool[1] && pool[1].length > 0) {
+      allFixed = pool[1].every(idx => LOOT_ITEM_GRADES[idx] !== undefined);
+    }
+    if (total > 0 && allFixed && pool[1].length > 0) {
+      // Fixed-rarity items: show actual item drop chances
+      const gradeItems = {};
+      for (const idx of pool[1]) { const g = LOOT_ITEM_GRADES[idx]; if (!gradeItems[g]) gradeItems[g] = []; gradeItems[g].push(idx); }
+      let nothingRate = 0;
+      for (let g = 0; g < 9; g++) { if (!gradeItems[g]) nothingRate += modRates[g]; }
+      const nothingPct = nothingRate / total * 100;
+      const labels = document.createElement('div'); labels.className = 'lp-rate-labels'; labels.style.flexDirection = 'column';
+      if (nothingPct > 0.01) labels.innerHTML += '<div style="color:var(--text-d)">Nothing <span>' + nothingPct.toFixed(1) + '%</span></div>';
+      for (const [g, idxs] of Object.entries(gradeItems).sort((a,b) => a[0]-b[0])) {
+        const gradePct = modRates[g] / total * 100;
+        const perItem = gradePct / idxs.length;
+        for (const idx of idxs) {
+          const nm = LOOT_ITEMS[idx] || '?'; const id = dn(nm);
+          labels.innerHTML += '<div>' + (id || nm) + ' <span style="color:var(--text-m)">(' + RARITY_NAMES[g] + ')</span> <span>' + perItem.toFixed(1) + '%</span></div>';
+        }
+      }
+      pDiv.appendChild(labels);
+    } else if (total > 0) {
+      const bar = document.createElement('div'); bar.className = 'lp-rate-bar';
+      for (let i = 0; i < 9; i++) {
+        if (modRates[i] > 0) { const seg = document.createElement('div'); seg.className = 'rarity-' + i; seg.style.width = (modRates[i] / total * 100) + '%'; bar.appendChild(seg); }
+      }
+      pDiv.appendChild(bar);
+      const labels = document.createElement('div'); labels.className = 'lp-rate-labels';
+      for (let i = 0; i < 9; i++) {
+        if (modRates[i] > 0) labels.innerHTML += '<div>' + RARITY_NAMES[i] + ' <span>' + (modRates[i] / total * 100).toFixed(2) + '%</span></div>';
+      }
+      pDiv.appendChild(labels);
+      if (pool[1] && pool[1].length > 0) {
+        const toggle = document.createElement('div'); toggle.className = 'lp-items-toggle';
+        toggle.textContent = 'Show items (' + pool[1].length + ')';
+        const itemList = document.createElement('div'); itemList.className = 'lp-item-list';
+        for (const idx of pool[1]) {
+          const nm = LOOT_ITEMS[idx] || '?'; const id = dn(nm);
+          const fr = hasGrades && LOOT_ITEM_GRADES[idx];
+          itemList.textContent += (id || nm) + (id && id !== nm ? ' (' + nm + ')' : '') + (fr ? ' (' + RARITY_NAMES[fr] + ')' : '') + '\n';
+        }
+        toggle.addEventListener('click', () => { itemList.classList.toggle('open'); toggle.textContent = itemList.classList.contains('open') ? 'Hide items (' + pool[1].length + ')' : 'Show items (' + pool[1].length + ')'; });
+        pDiv.appendChild(toggle); pDiv.appendChild(itemList);
+      }
+    }
+    div.appendChild(pDiv);
+  }
+  lpBody.appendChild(div);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// EVENT HANDLERS
+// ═══════════════════════════════════════════════════════════════════════
+document.querySelector('.grade-pills').addEventListener('click', e => {
+  const btn = e.target.closest('.grade-pill'); if (!btn) return;
+  const grade = parseInt(btn.dataset.grade); if (grade === currentGrade) return;
+  currentGrade = grade;
+  document.querySelectorAll('.grade-pill').forEach(b => b.classList.toggle('active', parseInt(b.dataset.grade) === grade));
+  lootPanel.classList.remove('open');
+  hideTooltip();
+});
+
+document.getElementById('luck-slider').addEventListener('input', e => {
+  playerLuck = parseInt(e.target.value) / 10;
+  document.getElementById('luck-value').textContent = playerLuck.toFixed(1);
+  if (lootPanel.classList.contains('open') && lootPanel._currentSid)
+    openLootPanel(lootPanel._currentSid, lootPanel._currentName, lootPanel._currentVid, lootPanel._currentGc);
+});
+
+function handleSearch() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const badge = document.getElementById('search-mode');
+  spawnSearch = q;
+  if (q) {
+    let cnt = 0;
+    for (const dot of document.querySelectorAll('.spawn-dot')) {
+      const n = (dot._name || '').toLowerCase(), d = dn(dot._name).toLowerCase();
+      let match = n.includes(q) || d.includes(q);
+      if (!match && dot._vid >= 0 && SPAWN_VARIANTS[dot._vid]) {
+        for (const [vn] of SPAWN_VARIANTS[dot._vid][1]) {
+          if (vn.toLowerCase().includes(q) || dn(vn).toLowerCase().includes(q)) { match = true; break; }
+        }
+      }
+      if (match) cnt++;
+    }
+    badge.textContent = cnt + ' spawn' + (cnt !== 1 ? 's' : '') + ' found';
+    badge.classList.add('active');
+  } else {
+    badge.classList.remove('active');
+  }
+  updateDotVisibility();
+}
+
+document.getElementById('search').addEventListener('input', handleSearch);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    lootPanel.classList.remove('open');
+    document.getElementById('search').value = '';
+    handleSearch();
+  } else if (e.key === 'f' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    document.getElementById('search').focus();
+  } else if (e.key === 'r' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    fitMapToView();
+  }
+});
+
+const searchInput = document.getElementById('search');
+const searchClear = document.getElementById('search-clear');
+searchInput.addEventListener('input', () => { searchClear.style.display = searchInput.value ? 'block' : 'none'; });
+searchClear.addEventListener('click', () => { searchInput.value = ''; searchClear.style.display = 'none'; handleSearch(); searchInput.focus(); });
+
+// ═══════════════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════════════
+buildLayerBar();
+buildModules();
+buildSpawns();
+fitMapToView();
+window.addEventListener('resize', fitMapToView);
+</script>
+</body>
+</html>

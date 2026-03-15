@@ -1,0 +1,134 @@
+{
+ "slug": "ruins-golem",
+ "overview": "Ruins Golem is a SubBoss-class Construct/Elemental monster found in Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): 1500 HP, 28 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 5. 7 attacks, 0 combo chains. Highest damage: Attack6 at 200% ratio (560 base damage).",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "7 melee attacks. Attack1 (150%), Attack2 (180%), Attack3 (180%), and more.",
+ "icon": "attack"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "Attack6",
+ "damage_ratio": 2000,
+ "damage_common": 560,
+ "damage_elite": 760,
+ "note": "200% damage ratio, impact power 6.",
+ "damage_nightmare": 960
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Attack1",
+ "damage_ratio": 1500,
+ "damage_common": 420,
+ "damage_elite": 570,
+ "note": "150% damage ratio, impact power 6.",
+ "damage_nightmare": 720
+ },
+ {
+ "name": "Attack2",
+ "damage_ratio": 1800,
+ "damage_common": 504,
+ "damage_elite": 684,
+ "note": "180% damage ratio, impact power 6.",
+ "damage_nightmare": 864
+ },
+ {
+ "name": "Attack3",
+ "damage_ratio": 1800,
+ "damage_common": 504,
+ "damage_elite": 684,
+ "note": "180% damage ratio, impact power 6.",
+ "damage_nightmare": 864
+ },
+ {
+ "name": "Attack4",
+ "damage_ratio": 1700,
+ "damage_common": 476,
+ "damage_elite": 646,
+ "note": "170% damage ratio, impact power 6.",
+ "damage_nightmare": 816
+ },
+ {
+ "name": "Attack5",
+ "damage_ratio": 1700,
+ "damage_common": 476,
+ "damage_elite": 646,
+ "note": "170% damage ratio, impact power 6.",
+ "damage_nightmare": 816
+ },
+ {
+ "name": "Attack Slam",
+ "damage_ratio": 1900,
+ "damage_common": 532,
+ "damage_elite": 722,
+ "note": "190% damage ratio, impact power 6.",
+ "damage_nightmare": 912
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [
+ {
+ "name": "Lose Balance",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. Affects: MoveSpeed.",
+ "counter": "Watch for the Lose Balance icon on your status bar."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Elemental Weakness: Earth",
+ "priority": "high",
+ "description": "Significant elemental weaknesses: Earth (-4000). Negative reduction values mean incoming damage of that type is amplified."
+ },
+ {
+ "title": "Projectile Reduction: 200",
+ "priority": "medium",
+ "description": "Has 200 ProjectileReductionMod, reducing physical projectile damage."
+ },
+ {
+ "title": "Highest Damage: Attack6 (200% ratio)",
+ "priority": "high",
+ "description": "Attack6 deals 560 damage at base (200% ratio). This is the most dangerous attack to avoid."
+ }
+ ],
+ "elite_differences": [
+ "27% more HP (1500 → 1900) in Elite",
+ "36% more physical damage (28 → 38) in Elite",
+ "Move speed 150 → 180 in Elite",
+ "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+ "XP reward 6 → 7 in Elite",
+ "53% more HP (1500 → 2300) in Nightmare",
+ "71% more physical damage (28 → 48) in Nightmare",
+ "Move speed 150 → 210 in Nightmare",
+ "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+ "XP reward 6 → 8 in Nightmare"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard boss perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": true,
+ "stuck_description": "Has stuck-detection failsafes in behavior tree."
+ }
+}

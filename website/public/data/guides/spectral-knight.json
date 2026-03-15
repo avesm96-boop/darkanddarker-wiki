@@ -1,0 +1,362 @@
+{
+ "slug": "spectral-knight",
+ "overview": "The Spectral Knight is a Boss-class Undead monster found in the Ruins dungeon. It is an extremely fast and aggressive melee combatant with a complex web of chaining attacks that flow seamlessly between slashes, thrusts, charges, and devastating soul-powered strikes. With 320 base move speed (far faster than most bosses), BackSteb repositioning, and FastMove left/right dodges, the Spectral Knight is one of the most mobile bosses in the game. It has 999 Impact Resistance and 999 Impact Endurance, making it has high Impact values. Its Soul attacks (SoulSlash at 3200 ratio, SoulShockwave at 2200 ratio) are among the hardest-hitting abilities of any boss. It deploys a DeadRift AOE zone that slows player movement speed. Its only significant weakness is a -1000 DarkMagicalReduction, making Dark magic highly effective against it.",
+ "phases": [
+ {
+ "name": "Melee Engagement Phase",
+ "description": "The Spectral Knight's primary combat mode uses Slash1 (variants 1 and 2), FrontSlash, and FrontThrust as bread-and-butter melee attacks. Slash1 attacks deal moderate damage (1200 ratio) but serve as combo starters and extenders, chaining into ShoulderCharge, TurnSlash Up, or TurnSlash Down. FrontSlash (1500 ratio) and FrontThrust (1300 ratio) are heavier hits that also branch into multiple follow-ups, creating an unpredictable attack flow.",
+ "icon": "attack"
+ },
+ {
+ "name": "Charge & Rush Phase",
+ "description": "When at range or looking to close distance, the Spectral Knight uses ShoulderCharge (700 ratio) as a gap closer that chains into Slash1, FrontSlash, or FrontThrust. RushThrust (1700 ratio) is a high-damage lunge that chains into TurnSlash variants. These abilities let the knight collapse distance almost instantly, especially dangerous given its 320 base move speed.",
+ "icon": "move"
+ },
+ {
+ "name": "Soul Power Phase",
+ "description": "The Spectral Knight's most devastating attacks channel soul energy. SoulSlash Up/Down (3200 ratio) deals over 200 damage on Common grade and 256 on Elite — enough to one-shot many builds. SoulShockwave (2200 ratio) is a powerful AOE blast. These attacks are the primary threats in the fight and must be dodged at all costs.",
+ "icon": "special"
+ },
+ {
+ "name": "Repositioning Phase",
+ "description": "The Spectral Knight uses BackSteb and FastMove R/L to reposition during combat. BackSteb chains into RushThrust (1700 ratio), making it a deceptive retreat that turns into a powerful counterattack. FastMove R/L also chains into RushThrust, meaning any lateral dodge by the knight can be immediately followed by a high-damage lunge.",
+ "icon": "move"
+ },
+ {
+ "name": "Debuff & AOE Phase",
+ "description": "The Spectral Knight uses Debuff MoveSpeed to slow targets, and deploys DeadRift — an AOE zone effect that creates a persistent area on the ground. DeadRift applies a movement speed slow (DeadRift Slow) to anyone standing in it. Combined with the knight's extreme mobility, being slowed in a DeadRift zone while the knight chains combos is often fatal.",
+ "icon": "debuff"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "SoulSlash Up",
+ "damage_ratio": 3200,
+ "damage_common": 201.6,
+ "damage_elite": 256,
+ "note": "The most devastating attack in the Spectral Knight's arsenal. Massive overhead soul-infused slash that can one-shot many builds. Watch for the distinct soul energy wind-up animation and dodge immediately."
+ },
+ {
+ "name": "SoulSlash Down",
+ "damage_ratio": 3200,
+ "damage_common": 201.6,
+ "damage_elite": 256,
+ "note": "Downward variant of SoulSlash. Same devastating damage as the upward version. Both variants share the same 3200 damage ratio and impact power of 7."
+ },
+ {
+ "name": "SoulShockwave",
+ "damage_ratio": 2200,
+ "damage_common": 138.6,
+ "damage_elite": 176,
+ "note": "AOE soul energy blast with 2200 ratio and impact power 7. Hits in a wider area than the directional SoulSlash attacks, making it harder to dodge by sidestepping alone. Create distance when you see the shockwave wind-up."
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "RushThrust",
+ "damage_ratio": 1700,
+ "damage_common": 107.1,
+ "damage_elite": 136,
+ "note": "High-damage lunging thrust with impact power 7. Chains into TurnSlash Up or TurnSlash Down. Often follows BackSteb or FastMove R/L, making it a punishing counter after repositioning. One of the most dangerous non-Soul attacks."
+ },
+ {
+ "name": "LongRange Transverse",
+ "damage_ratio": 1600,
+ "damage_common": 100.8,
+ "damage_elite": 128,
+ "note": "Horizontal long-range slash with impact power 7. Allows the Spectral Knight to threaten targets outside normal melee range. Do not assume you are safe at medium distance."
+ },
+ {
+ "name": "LongRange Vertically",
+ "damage_ratio": 1600,
+ "damage_common": 100.8,
+ "damage_elite": 128,
+ "note": "Vertical long-range slash with impact power 7. Same reach and damage as the transverse variant but with a vertical arc, making it harder to dodge by ducking or crouching."
+ }
+ ]
+ },
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "FrontSlash",
+ "damage_ratio": 1500,
+ "damage_common": 94.5,
+ "damage_elite": 120,
+ "note": "Powerful frontal slash with impact power 7. Chains into ShoulderCharge, TurnSlash Up/Down, or LeapAttack — one of the most versatile combo starters with four possible follow-ups."
+ },
+ {
+ "name": "LeapAttack",
+ "damage_ratio": 1500,
+ "damage_common": 94.5,
+ "damage_elite": 120,
+ "note": "Airborne leap strike with impact power 7. Same damage as FrontSlash. Closes distance quickly and is difficult to predict due to the vertical movement arc."
+ },
+ {
+ "name": "TurnSlash Up",
+ "damage_ratio": 1400,
+ "damage_common": 88.2,
+ "damage_elite": 112,
+ "note": "Upward turning slash with impact power 6. Chains into FrontSlash or FrontThrust, keeping the combo flowing. Frequently used as a mid-combo connector."
+ },
+ {
+ "name": "TurnSlash Down",
+ "damage_ratio": 1400,
+ "damage_common": 88.2,
+ "damage_elite": 112,
+ "note": "Downward turning slash with impact power 6. Same damage and chain options as TurnSlash Up. The directional variant selected depends on target positioning."
+ },
+ {
+ "name": "FrontThrust",
+ "damage_ratio": 1300,
+ "damage_common": 81.9,
+ "damage_elite": 104,
+ "note": "Forward thrust with impact power 6. Chains into Slash1 variants, feeding back into the combo loop. Narrow hitbox — sidestepping is more effective than backing away."
+ }
+ ]
+ },
+ {
+ "tier": "Moderate",
+ "color": "#8a7048",
+ "attacks": [
+ {
+ "name": "Slash1 1",
+ "damage_ratio": 1200,
+ "damage_common": 75.6,
+ "damage_elite": 96,
+ "note": "Standard slash with impact power 6. Chains into ShoulderCharge, TurnSlash Up, or TurnSlash Down. The most common attack in the knight's rotation and a primary combo extender."
+ },
+ {
+ "name": "Slash1 2",
+ "damage_ratio": 1200,
+ "damage_common": 75.6,
+ "damage_elite": 96,
+ "note": "Second variant of the standard slash. Same damage ratio and chain options as Slash1 1. The variant selected adds animation variety but the threat level is identical."
+ }
+ ]
+ },
+ {
+ "tier": "Utility",
+ "color": "#5588dd",
+ "attacks": [
+ {
+ "name": "ShoulderCharge",
+ "damage_ratio": 700,
+ "damage_common": 44.1,
+ "damage_elite": 56,
+ "note": "Low-damage gap closer with impact power 6. Despite low damage, it is extremely dangerous because it chains into Slash1 1/2, FrontSlash, or FrontThrust — initiating the full combo web. Treat every charge as the start of a lethal combo string."
+ },
+ {
+ "name": "BackSteb",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Repositioning backstep that chains directly into RushThrust (1700 ratio). The knight retreats only to immediately lunge forward with one of its hardest-hitting attacks. Do not chase when it steps back."
+ },
+ {
+ "name": "FastMove R/L",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Lateral repositioning dodge that chains into RushThrust. The knight sidesteps and immediately counters with a 1700-ratio lunge. Punishes players who overcommit to attacks from the side."
+ },
+ {
+ "name": "Debuff MoveSpeed",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Applies a movement speed reduction debuff. Combined with DeadRift slow zones, this stacks to severely cripple player mobility, making it nearly impossible to escape the knight's combo chains."
+ },
+ {
+ "name": "DeadRift (AOE Zone)",
+ "damage_ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "Deploys a persistent AOE zone on the ground. Players standing in the zone receive the DeadRift Slow debuff, reducing movement speed. Forces players to reposition and limits available fighting space in the arena."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "The Spectral Knight has one of the most interconnected combo systems of any boss. Almost every attack chains into at least two follow-ups, creating a web where the knight can continuously flow from one attack to the next without pause. The combo system has no fixed entry point — ShoulderCharge, Slash1, FrontSlash, FrontThrust, BackSteb, and FastMove can all initiate chains. The practical result is that the knight rarely stops attacking once it engages, and players must find windows between combo branches rather than waiting for the combo to end.",
+ "chains": [
+ {
+ "from": "ShoulderCharge",
+ "to": [
+ "Slash1 1",
+ "Slash1 2",
+ "FrontSlash",
+ "FrontThrust"
+ ],
+ "note": "Primary gap closer into the combo web. Low damage (700 ratio) but immediately branches into moderate or strong attacks. The most common engagement opener."
+ },
+ {
+ "from": "Slash1 1/2",
+ "to": [
+ "ShoulderCharge",
+ "TurnSlash Up",
+ "TurnSlash Down"
+ ],
+ "note": "Standard slashes feed back into the combo loop through ShoulderCharge or branch into TurnSlash variants. This creates a repeating Slash -> TurnSlash -> FrontSlash/Thrust cycle."
+ },
+ {
+ "from": "FrontSlash",
+ "to": [
+ "ShoulderCharge",
+ "TurnSlash Up",
+ "TurnSlash Down",
+ "LeapAttack"
+ ],
+ "note": "The most versatile combo node with four possible follow-ups. FrontSlash into LeapAttack is particularly dangerous — two 1500-ratio attacks back to back."
+ },
+ {
+ "from": "FrontThrust",
+ "to": [
+ "Slash1 1",
+ "Slash1 2"
+ ],
+ "note": "Thrust into standard slashes, which then chain into more attacks. Keeps the combo flowing at moderate damage before ramping up."
+ },
+ {
+ "from": "TurnSlash Up/Down",
+ "to": [
+ "FrontSlash",
+ "FrontThrust"
+ ],
+ "note": "TurnSlash variants feed into heavy frontal attacks, creating a mid-combo damage spike. TurnSlash (1400) into FrontSlash (1500) is a dangerous two-hit sequence."
+ },
+ {
+ "from": "RushThrust",
+ "to": [
+ "TurnSlash Up",
+ "TurnSlash Down"
+ ],
+ "note": "High-damage lunge (1700 ratio) chains into TurnSlash variants, which then chain into FrontSlash/FrontThrust. One of the most dangerous combo starters."
+ },
+ {
+ "from": "BackSteb",
+ "to": [
+ "RushThrust"
+ ],
+ "note": "Deceptive retreat into the knight's highest non-Soul damage attack. Do not chase when the knight backsteps — a 1700-ratio lunge is coming immediately."
+ },
+ {
+ "from": "FastMove R/L",
+ "to": [
+ "RushThrust"
+ ],
+ "note": "Lateral dodge into RushThrust. Punishes players who attack from the sides. The knight sidesteps and immediately counters with a devastating lunge."
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "DeadRift",
+ "type": "aoe-zone",
+ "duration": "Persistent zone",
+ "stacks": 1,
+ "description": "A ground-placed AOE zone that lingers in the arena. Players standing within the zone's radius are affected by the DeadRift Slow debuff. The zone restricts available fighting space and punishes stationary play.",
+ "counter": "Immediately move out of the DeadRift zone when it appears. Keep mental track of where zones are placed to avoid backing into them during the knight's combo pressure. Fight near the edges of the arena to maintain escape routes away from zone coverage."
+ },
+ {
+ "name": "DeadRift Slow",
+ "type": "debuff",
+ "duration": "While in zone",
+ "stacks": 1,
+ "description": "Movement speed reduction applied to players standing in a DeadRift zone. Uses the StickyTarSlow icon. Tagged as MoveSpeed debuff. Being slowed while the 320-speed Spectral Knight is chaining combos is extremely dangerous.",
+ "counter": "Exit the DeadRift zone immediately to remove the slow. Do not try to fight inside the zone — the movement speed penalty makes it nearly impossible to dodge the knight's fast combo chains. Prioritize positioning over damage when zones are active."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "It High Impact Resistance Values",
+ "priority": "critical",
+ "description": "With 999 Impact Resistance and 999 Impact Endurance, the Spectral Knight is completely has high ImpactResistance and MaxImpactEndurance values. Do not rely on high-impact weapons or abilities to disrupt its combos. Focus entirely on evasion and finding windows between combo branches."
+ },
+ {
+ "title": "SoulSlash Is a One-Shot Threat — Dodge at All Costs",
+ "priority": "critical",
+ "description": "SoulSlash Up/Down at 3200 damage ratio deals 201.6 damage on Common and 256 on Elite. This is enough to one-shot most builds from full health. When you see the soul energy wind-up animation, immediately dodge or create maximum distance. No amount of armor will reliably survive this hit."
+ },
+ {
+ "title": "Do Not Chase After BackSteb — RushThrust Is Coming",
+ "priority": "critical",
+ "description": "The Spectral Knight's BackSteb always chains into RushThrust (1700 ratio, 107-136 damage). When the knight steps backward, it is baiting you into a devastating counter-lunge. Hold your position and prepare to sidestep the incoming thrust instead of pursuing."
+ },
+ {
+ "title": "Exploit Dark Magic Weakness (-1000 Reduction)",
+ "priority": "high",
+ "description": "The Spectral Knight has -1000 DarkMagicalReduction, making Dark magic the single most effective damage type against it. All other magical resistances are 0 or neutral. Warlock and dark-damage builds deal massively increased damage. This is the strongest exploitable weakness in the fight."
+ },
+ {
+ "title": "Respect Its 320 Base Speed — You Cannot Outrun It",
+ "priority": "high",
+ "description": "At 320 base move speed (360 for Elite), the Spectral Knight is significantly faster than players. Trying to kite or run away is not viable. Instead, focus on lateral movement, sidestepping, and using the knight's combo commitment windows to reposition. The knight is fastest in a straight line — circular movement is more effective."
+ },
+ {
+ "title": "Avoid DeadRift Zones — They Stack With Debuff MoveSpeed",
+ "priority": "high",
+ "description": "DeadRift zones slow your movement speed, and the knight can also apply Debuff MoveSpeed directly. When both are active, your mobility is crippled against a boss that is already faster than you. Keep track of where zones are placed and never fight inside them. Reposition the fight to clear areas of the arena."
+ },
+ {
+ "title": "Punish ShoulderCharge — It Is the Weakest Attack",
+ "priority": "high",
+ "description": "ShoulderCharge deals only 700 ratio (44.1-56 damage) and is the knight's lowest damage attack. If you can dodge the charge itself, there is a brief window before the follow-up attack (Slash1, FrontSlash, or FrontThrust) where you can land a hit. However, do not overcommit — the follow-up comes quickly."
+ },
+ {
+ "title": "Sidestep FrontThrust — Its Hitbox Is Narrow",
+ "priority": "medium",
+ "description": "FrontThrust has a narrow linear hitbox. Sidestepping perpendicular to the knight's facing direction is more effective than backing away. This also applies to RushThrust, which lunges in a straight line. Lateral movement is consistently the best defensive option against thrust attacks."
+ },
+ {
+ "title": "LongRange Attacks Punish Medium Distance",
+ "priority": "medium",
+ "description": "LongRange Transverse and Vertically (1600 ratio, 100-128 damage) let the knight hit targets beyond normal melee range. Do not hover at medium distance thinking you are safe — either be in close to trade hits or far enough away to react to the long-range wind-up. The dead zone at medium range is where these attacks catch players."
+ },
+ {
+ "title": "Projectile Builds Are Viable — 300 Reduction Is Moderate",
+ "priority": "medium",
+ "description": "With 300 ProjectileReductionMod, the Spectral Knight reduces projectile damage but not as heavily as some other bosses. Ranged builds can work if you maintain maximum distance and dodge the knight's gap closers (ShoulderCharge, RushThrust, LeapAttack). However, Dark magic projectiles are still far superior due to the -1000 weakness."
+ },
+ {
+ "title": "Elite Is Faster and Hits Harder — Same Patterns",
+ "priority": "medium",
+ "description": "Elite increases base move speed from 320 to 360 (+12.5%) and adds 100 ActionSpeed, making combos come out noticeably faster. Base damage jumps from 63 to 80 (+27%). The ability set and combo structure are identical — the same dodge timings apply, but the windows are tighter. Practice on Common grade first."
+ },
+ {
+ "title": "The Combo Web Rarely Ends — Find Micro-Windows",
+ "priority": "low",
+ "description": "Almost every attack chains into at least two follow-ups, meaning the knight can attack continuously for extended sequences. Rather than waiting for the combo to fully end, look for micro-windows between individual attacks — especially after TurnSlash variants, which have a brief transition before the next attack in the chain."
+ }
+ ],
+ "elite_differences": [
+ "33% more HP (2,400 -> 3,200)",
+ "27% more physical damage (63 -> 80)",
+ "12.5% faster base move speed (320 -> 360)",
+ "+100 ActionSpeed — combos and attack animations execute faster",
+ "Same resistances, impact immunity, and projectile reduction as Common",
+ "Same ability set and combo structure — no new attacks",
+ "Same Dark magic weakness (-1000 DarkMagicalReduction)",
+ "Higher XP reward (12 -> 15)",
+ "No Nightmare grade exists for Spectral Knight"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180-degree peripheral vision — cannot see directly behind, but BackSteb and FastMove abilities compensate for rear approaches",
+ "damage_sense": true,
+ "damage_description": "Always reacts to being hit regardless of facing direction (AISenseConfig_Damage). Damage from behind often triggers BackSteb into RushThrust counter",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds in the Ruins arena (AISenseConfig_Hearing). Loud abilities and footsteps can draw aggro before visual contact",
+ "stuck_tracking": true,
+ "stuck_description": "Uses FastMove R/L and BackSteb to unstick from walls and corners. ShoulderCharge and RushThrust provide additional repositioning to prevent getting caught on geometry. The complex combo web ensures the knight always has an attack option regardless of position."
+ }
+}

@@ -1,0 +1,7 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+  <circle cx='12' cy='12' r='11' fill='#228866' stroke='#116644' stroke-width='.8'/>
+  <path d='M12 4C8 7 7 11 8 15C9 17 10 19 12 20C14 19 15 17 16 15C17 11 16 7 12 4Z' fill='white' opacity='.88'/>
+  <path d='M12 6V18' stroke='#228866' stroke-width='.8' opacity='.5'/>
+  <path d='M10 10C11 9.5 12 10 12 10' stroke='#228866' stroke-width='.5' fill='none' opacity='.4'/>
+  <path d='M14 13C13 12.5 12 13 12 13' stroke='#228866' stroke-width='.5' fill='none' opacity='.4'/>
+</svg>

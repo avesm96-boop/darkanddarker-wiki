@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 20'>
+  <rect x='.8' y='.8' width='22.4' height='18.4' rx='3.5' fill='#cc44cc' stroke='#802080' stroke-width='.8'/>
+  <path d='M12 3L17 9L12 16L7 9Z' fill='white' opacity='.88'/>
+  <line x1='7' y1='9' x2='17' y2='9' stroke='#cc44cc' stroke-width='.6' opacity='.7'/>
+  <line x1='12' y1='3' x2='12' y2='16' stroke='#cc44cc' stroke-width='.4' opacity='.4'/>
+</svg>

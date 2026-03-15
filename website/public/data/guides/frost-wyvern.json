@@ -1,0 +1,383 @@
+{
+ "slug": "frost-wyvern",
+ "overview": "The Frost Wyvern is a boss-tier Dragon/Beast found in Ice Abyss. It employs a complex combo-driven AI with probability-weighted attack selection, cycling through special patterns (breath attacks, pushing, summon elemental, leap-to-center) before falling into a melee combo loop. Its behavior tree tracks used special patterns to avoid repeats, uses BTD_FrostWyvern_GetProbabilityFromLastSkill (default 33% probability) to weight follow-up attacks, and checks BTD_FrostWyvern_TargetIsCloserToSpawnLocation to decide pushing attacks. The wyvern starts sleeping and must be woken, then alternates between ground-based melee combos, frost breath attacks (both air and ground), leaping strikes, and devastating special abilities including summoning Frost Elementals and wind-force pushing.",
+ "phases": [
+ {
+ "name": "Wake-Up Phase",
+ "description": "The Frost Wyvern begins asleep. Upon detecting a threat via its 180-degree sight, hearing, or damage sense, it performs a WakeUp animation followed by a Battle Cry (Scream). This scream serves as the combat opener before the wyvern becomes active.",
+ "icon": "sleep"
+ },
+ {
+ "name": "Special Pattern Phase",
+ "description": "The AI prioritizes special patterns first, checked via BTD_FrostWyvern_CheckUsedSpecialPattern decorators. Three special pattern slots are evaluated in order — each guarded by gameplay tag checks and a used-pattern tracker to prevent repeats. Specials include: Breath Air/Ground, Breath AirToSide, LeapAttack1ToCenter, LeapAttack3ToCenter, SummonElemental, and Pushing. The wyvern also has a Fly/Landing cycle for aerial repositioning.",
+ "icon": "special"
+ },
+ {
+ "name": "Combo Phase",
+ "description": "After specials are exhausted or unavailable, the AI enters the melee combo loop. Attack selection uses probability checks (BTD_ProbabilitySuccess) and BTD_FrostWyvern_GetProbabilityFromLastSkill (33% default) to weight which combo branch to pick. The wyvern chains attacks based on what it just used — each ability triggers specific follow-up tags to enable the next combo in the chain.",
+ "icon": "attack"
+ },
+ {
+ "name": "Repositioning Phase",
+ "description": "Between attack chains, the wyvern repositions using Turn abilities (45, 90, or 125 degrees left/right) managed by a dedicated BT_FrostWyvern_Turn sub-tree. It also has Buff Movespeed and Buff Movespeed Special abilities that increase its movement speed during transitions. The Fly ability allows vertical repositioning followed by Landing.",
+ "icon": "move"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "Combo LeapAttack3",
+ "ratio": 2200,
+ "damage_common": 836,
+ "damage_elite": 1320,
+ "note": "The highest-damage single hit. A massive leaping slam that chains from TailAttack2, TwoHandAttack, BreathAir, or LeapAttack2. Also available as Special LeapAttack3ToCenter (same ratio)."
+ },
+ {
+ "name": "Combo TwoHandAttack",
+ "ratio": 2000,
+ "damage_common": 760,
+ "damage_elite": 1200,
+ "note": "Devastating overhead two-handed slam. Chains from ForwardAttack L/R, LeapAttack1, or LeapAttack3. One of the hardest-hitting melee attacks."
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Combo TailAttack2",
+ "ratio": 1800,
+ "damage_common": 684,
+ "damage_elite": 1080,
+ "note": "Heavy tail slam. Chains from ForwardAttack L/R, LeapAttack1, or LeapAttack3. Branches into many follow-ups including BreathGround, LeapAttack1/2/3."
+ }
+ ]
+ },
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "Combo ForwardAttack L",
+ "ratio": 1600,
+ "damage_common": 608,
+ "damage_elite": 960,
+ "note": "Left-side forward claw swipe with RotationSpeed 2.0 for tracking. Deals persistent AoE damage via ComponentOverlapActors on a timer. Chains from ForwardAttackR or LeapAttack3."
+ },
+ {
+ "name": "Combo ForwardAttack R",
+ "ratio": 1600,
+ "damage_common": 608,
+ "damage_elite": 960,
+ "note": "Right-side forward claw swipe. Mirror of ForwardAttack L. Chains from ForwardAttackL or LeapAttack3."
+ },
+ {
+ "name": "Combo Breath Ground",
+ "ratio": 1600,
+ "damage_common": 608,
+ "damage_elite": 960,
+ "note": "Frost breath aimed at the ground. Can chain from itself (FlipFlop for alternating direction), TailAttack2, TwoHandAttack, or LeapAttack2. Creates ice hazards."
+ },
+ {
+ "name": "Combo Breath Air",
+ "ratio": 1600,
+ "damage_common": 608,
+ "damage_elite": 960,
+ "note": "Frost breath aimed upward/forward in an arc. Can chain from itself (FlipFlop), TailAttack1, TwoHandAttack, or LeapAttack2. Applies Windforce pushing players."
+ },
+ {
+ "name": "Combo LeapAttack2",
+ "ratio": 1600,
+ "damage_common": 608,
+ "damage_elite": 960,
+ "note": "Mid-tier leaping attack. Chains from TailAttack2, ForwardAttack L/R, or BreathGround. Branches into LeapAttack3 or Breath attacks."
+ },
+ {
+ "name": "Special Breath AirToSide",
+ "ratio": 1600,
+ "damage_common": 608,
+ "damage_elite": 960,
+ "note": "Special sweeping frost breath that arcs to the side. Covers a wide area. One of the three special pattern attacks."
+ },
+ {
+ "name": "Combo TailAttack1",
+ "ratio": 1500,
+ "damage_common": 570,
+ "damage_elite": 900,
+ "note": "Primary tail sweep. Branches into Breath Air or LeapAttack3. Triggers via Skill.One tag."
+ }
+ ]
+ },
+ {
+ "tier": "Moderate",
+ "color": "#88aa44",
+ "attacks": [
+ {
+ "name": "Combo LeapAttack1",
+ "ratio": 1400,
+ "damage_common": 532,
+ "damage_elite": 840,
+ "note": "Short-range leap. Chains from TailAttack2, BreathGround, TwoHandAttack, or ForwardAttack L/R. Also available as Special LeapAttack1ToCenter."
+ },
+ {
+ "name": "Special LeapAttack1ToCenter",
+ "ratio": 1400,
+ "damage_common": 532,
+ "damage_elite": 840,
+ "note": "Special version that specifically leaps to the center of the arena. Used as a repositioning special pattern."
+ }
+ ]
+ },
+ {
+ "tier": "Utility",
+ "color": "#8a7048",
+ "attacks": [
+ {
+ "name": "Special Pushing",
+ "ratio": 0,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "No direct damage but applies massive Windforce knockback (impact_power 999). Pushes all players away. Only used when TargetIsCloserToSpawnLocation check passes — the wyvern pushes players who get too close to its center."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "The Frost Wyvern's AI uses a probability-weighted combo system. After each attack, specific gameplay event tags trigger eligible follow-up attacks. The BTD_FrostWyvern_GetProbabilityFromLastSkill decorator applies a 33% default probability check to branch selection, preventing fully deterministic chains. Each combo ability checks Get_Possible_to_Use_Next_Combo to validate available follow-ups.",
+ "chains": [
+ {
+ "from": "TailAttack1",
+ "to": [
+ "Breath Air",
+ "LeapAttack3"
+ ],
+ "note": "Tail sweep branches into frost breath or the devastating LeapAttack3 finisher."
+ },
+ {
+ "from": "TailAttack2",
+ "to": [
+ "Breath Ground",
+ "LeapAttack1",
+ "LeapAttack2",
+ "LeapAttack3"
+ ],
+ "note": "Heavy tail slam opens the most follow-up options — breath or any leap tier."
+ },
+ {
+ "from": "ForwardAttack L",
+ "to": [
+ "ForwardAttack R",
+ "TailAttack2",
+ "LeapAttack1",
+ "LeapAttack2",
+ "TwoHandAttack"
+ ],
+ "note": "Left swipe can alternate to right, escalate to tail/leap, or commit to TwoHand."
+ },
+ {
+ "from": "ForwardAttack R",
+ "to": [
+ "ForwardAttack L",
+ "TailAttack2",
+ "LeapAttack1",
+ "LeapAttack2",
+ "TwoHandAttack"
+ ],
+ "note": "Mirror of ForwardAttack L chains. Alternating L/R creates sustained pressure."
+ },
+ {
+ "from": "TwoHandAttack",
+ "to": [
+ "Breath Ground",
+ "Breath Air",
+ "LeapAttack1",
+ "LeapAttack3"
+ ],
+ "note": "After the big slam, branches into breath or leap attacks."
+ },
+ {
+ "from": "Breath Ground",
+ "to": [
+ "Breath Ground (FlipFlop)",
+ "LeapAttack1",
+ "LeapAttack2"
+ ],
+ "note": "Can repeat itself with alternating direction or transition to leaps."
+ },
+ {
+ "from": "Breath Air",
+ "to": [
+ "Breath Air (FlipFlop)",
+ "LeapAttack3"
+ ],
+ "note": "Can repeat with direction flip or chain into the devastating LeapAttack3."
+ },
+ {
+ "from": "LeapAttack2",
+ "to": [
+ "Breath Ground",
+ "Breath Air",
+ "LeapAttack3"
+ ],
+ "note": "Mid-leap branches into breath or the big LeapAttack3 finisher."
+ },
+ {
+ "from": "LeapAttack3",
+ "to": [
+ "ForwardAttack L",
+ "ForwardAttack R",
+ "TailAttack2",
+ "TwoHandAttack"
+ ],
+ "note": "After the biggest leap, resets into ground-based melee combos."
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "ExtremeCold",
+ "type": "debuff",
+ "duration": "While in area",
+ "stacks": 1,
+ "description": "Applied by frost breath attacks. Reduces MoveSpeed, making it harder to dodge follow-up attacks. Represented by Icon_Debuff_IceCloudDamage.",
+ "counter": "Move out of breath attack zones immediately. Fire-based damage sources are highly effective against the wyvern (FireMagicalReduction: -250) and may help counteract cold environments."
+ },
+ {
+ "name": "MeleeAttack Slow",
+ "type": "debuff",
+ "duration": "Short",
+ "stacks": 1,
+ "description": "Applied on melee hit (ForwardAttack and other physical strikes). Reduces MoveSpeed. Represented by Icon_Debuff_Blizzard_03.",
+ "counter": "Avoid getting hit by melee attacks. If slowed, maintain distance until the effect wears off. Do not attempt to face-tank combos while slowed."
+ },
+ {
+ "name": "Mark Target",
+ "type": "debuff",
+ "duration": "Until triggered",
+ "stacks": 1,
+ "description": "Marks a player as the wyvern's primary target. Represented by Icon_Debuff_MarkTarget. Likely used by the AI to track and focus attacks on a specific player.",
+ "counter": "If marked, expect focused aggression. Use other party members to draw attention or kite the wyvern through its combo chains."
+ },
+ {
+ "name": "Mark TriggerToPillar",
+ "type": "debuff",
+ "duration": "Until triggered",
+ "stacks": 1,
+ "description": "Marks a player for the Ice Pillar mechanic. When triggered, an ice pillar spawns at or near the marked player's location. Connected to GA_FrostWyvern_IcePillar_ControllExceptionFromBreath — pillar spawning has an exception during breath attacks.",
+ "counter": "When marked with the pillar icon, move away from your team. The ice pillar will spawn at your location — positioning it poorly can block escape routes for the whole party."
+ },
+ {
+ "name": "FrostWarden CurseBeam",
+ "type": "debuff",
+ "duration": "While channeling",
+ "stacks": 1,
+ "description": "Applied by the Demonic Guardians (Frost Warden statues) in the arena — NOT directly by the wyvern. The GA_FrostWyvern_DemonicGuardians_CurseBeam ability fires a beam from BP_Props_FrostWyvern_DemonicGuardians at a target player, with the wyvern referenced as the Summoner.",
+ "counter": "Destroy or avoid the Demonic Guardian statues in the arena. The beam targets a specific player — move behind cover or out of line-of-sight from the statue."
+ },
+ {
+ "name": "Windforce (Pushing)",
+ "type": "debuff",
+ "duration": "During push ability",
+ "stacks": 1,
+ "description": "Applied by Special Pushing and Special Breath Air abilities. Physically pushes players away from the wyvern with impact_power 999. The Pushing ability tracks affected players via Windforce Applied Players array and uses a timer for continuous application.",
+ "counter": "Brace against walls or obstacles when you see the push animation start. The pushing has a start/loop/end phase — the loop continuously applies force. Getting pushed into arena edges or hazards is the real danger."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Exploit Fire and Dark Weakness",
+ "priority": "critical",
+ "description": "The Frost Wyvern has FireMagicalReduction: -250 and DarkMagicalReduction: -250, meaning it takes 250% bonus damage from Fire and Dark magic. It resists Ice (500) and has high ProjectileReductionMod (500). Prioritize Fire and Dark spells over physical ranged attacks. Warlock and Wizard fire spells are extremely effective."
+ },
+ {
+ "title": "LeapAttack3 is the Kill Move — Learn to Dodge It",
+ "priority": "critical",
+ "description": "LeapAttack3 deals 2200% damage ratio — that's 836 damage (Common) or 1320 damage (Elite). It chains from TailAttack2, TwoHandAttack, BreathAir, or LeapAttack2. When you see any of these precursor attacks, be ready to dodge sideways. The leap targets your current position, so lateral movement is key."
+ },
+ {
+ "title": "TwoHandAttack is the Second-Deadliest Hit",
+ "priority": "critical",
+ "description": "At 2000% ratio (760 Common / 1200 Elite), TwoHandAttack is nearly as lethal as LeapAttack3. It chains from ForwardAttack L/R, LeapAttack1, or LeapAttack3. After seeing any forward claw swipe or leap, prepare for this overhead slam."
+ },
+ {
+ "title": "Special Patterns Come First — Count Them",
+ "priority": "high",
+ "description": "The behavior tree checks three special pattern slots before falling into the combo loop. The BTD_FrostWyvern_CheckUsedSpecialPattern decorator ensures each special is used only once per cycle. Track which specials the wyvern has used (breath, pushing, summon) to predict when it will shift to the melee combo phase."
+ },
+ {
+ "title": "Pushing Ability Targets Players Near Center",
+ "priority": "high",
+ "description": "Special Pushing only activates when BTD_FrostWyvern_TargetIsCloserToSpawnLocation returns true — meaning a player is too close to the wyvern's spawn point (arena center). It deals 0 damage but has impact_power 999, pushing players away with windforce. Stay at medium range to avoid triggering this repositioning ability."
+ },
+ {
+ "title": "Frost Elementals Add Pressure — Kill Them Fast",
+ "priority": "high",
+ "description": "Special SummonElemental spawns a BP_FrostElemental at a calculated location near a target player. These adds create additional threats during the already-dangerous fight. Prioritize killing elementals quickly before they stack up, especially since the wyvern will continue attacking while they are active."
+ },
+ {
+ "title": "Breath FlipFlop Means Double Breath",
+ "priority": "medium",
+ "description": "Both Breath Ground and Breath Air have FlipFlop variants that chain from themselves — the wyvern can breath in one direction then immediately flip to breathe in the opposite direction. If you dodge the first breath by going left, the FlipFlop follow-up may sweep right. Don't commit to one side until you confirm the breath has ended."
+ },
+ {
+ "title": "High Impact Values (999/999)",
+ "priority": "medium",
+ "description": "With 999 Impact Resistance and 999 Impact Endurance, the Frost Wyvern is has high ImpactResistance and MaxImpactEndurance values. Every combo will complete once started. Focus on raw damage output rather than trying to stun-lock or interrupt attacks."
+ },
+ {
+ "title": "33% Probability Weights Combo Branches",
+ "priority": "medium",
+ "description": "The BTD_FrostWyvern_GetProbabilityFromLastSkill decorator uses a 33% default probability to gate combo branches. This means after any attack, there's roughly a 1-in-3 chance of each eligible follow-up being selected. Combos are weighted but not fully predictable — always be prepared for multiple possible follow-ups."
+ },
+ {
+ "title": "Avoid Projectile-Heavy Builds",
+ "priority": "medium",
+ "description": "ProjectileReductionMod of 500 means the wyvern has massive projectile damage reduction. Ranged physical builds (Ranger, crossbow Fighter) will deal significantly reduced damage. Melee physical or magic damage (especially Fire/Dark) are far more effective."
+ },
+ {
+ "title": "ForwardAttack L/R Creates Sustained Pressure",
+ "priority": "medium",
+ "description": "ForwardAttack L and R can alternate back and forth indefinitely, creating a rapid left-right claw combo. These attacks have RotationSpeed 2.0 for tracking and deal persistent AoE damage via overlap detection on a timer. Don't stand in front of the wyvern during these alternating swipes — get to the sides or behind."
+ },
+ {
+ "title": "Demonic Guardian Statues Fire Curse Beams",
+ "priority": "high",
+ "description": "The arena contains BP_Props_FrostWyvern_DemonicGuardians statues that fire FrostWarden CurseBeam at players. These are separate from the wyvern's own attacks and can hit you while you're dodging the boss. Be aware of statue positions and avoid their line of sight during the fight."
+ },
+ {
+ "title": "Ice Pillars Spawn on Marked Players",
+ "priority": "medium",
+ "description": "The Mark TriggerToPillar debuff causes ice pillars to spawn at player locations. The GA_FrostWyvern_IcePillar_ControllExceptionFromBreath system prevents pillar spawning during breath attacks. When not in a breath phase, marked players should position pillar spawns away from the team."
+ },
+ {
+ "title": "Elite Breath Attacks Have Dedicated Variants",
+ "priority": "medium",
+ "description": "Elite grade has 'Special Breath Ground Elite' and 'Special Breath Air Elite' — dedicated enhanced versions not present in Common. Expect wider coverage, longer duration, or additional effects from Elite breath attacks compared to their Common counterparts."
+ }
+ ],
+ "elite_differences": [
+ "100% more HP (3,500 -> 7,000)",
+ "58% more physical damage (38 -> 60)",
+ "Same Action Speed (0 for both grades — no speed difference)",
+ "Dedicated Elite breath variants: Special Breath Ground Elite and Special Breath Air Elite replace the Common versions",
+ "Same resistances, same base attributes, same 500 MoveSpeedBase",
+ "Same 999 Impact Resistance and 999 Impact Endurance",
+ "Same combo chains and attack pool — Elite just hits harder with enhanced breath",
+ "Higher XP reward (25 vs 20)",
+ "Same adventure point reward (125)"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180-degree peripheral vision — full frontal hemisphere coverage, blind spot directly behind",
+ "damage_sense": true,
+ "damage_description": "AISenseConfig_Damage is configured — always reacts to being hit regardless of facing direction",
+ "hearing": true,
+ "hearing_description": "AISenseConfig_Hearing is configured — reacts to loud sounds in the arena",
+ "stuck_tracking": true,
+ "stuck_description": "BTD_FrostWyvern_CheckUsedSpecialPattern tracks which special patterns have been used to prevent the AI from getting stuck repeating the same special. GetProbabilityFromLastSkill adjusts combo selection probability based on the last skill used."
+ }
+}

@@ -18,6 +18,21 @@
     "pipeline:maps": "python pipeline/extract_maps.py",
     "pipeline:engine": "python pipeline/extract_engine.py"
   },
-  "keywords": ["dark-and-darker", "wiki", "game-data"],
-  "license": "MIT"
+  "keywords": [
+    "dark-and-darker",
+    "wiki",
+    "game-data"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@types/three": "^0.170.0",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.3.0",
+    "@gltf-transform/extensions": "^4.3.0",
+    "sharp": "^0.34.5"
+  }
 }

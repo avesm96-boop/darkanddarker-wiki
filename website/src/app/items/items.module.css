@@ -1,0 +1,562 @@
+/* ═══════════════════════════════════════════════════════════════
+   Items Page — CSS Module
+   ═══════════════════════════════════════════════════════════════ */
+
+/* === Page Layout === */
+
+.page {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  background: var(--bg-deep);
+}
+
+/* === Hero Header === */
+
+.header {
+  text-align: center;
+  padding: 56px 24px 0;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.headerLabel {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  margin-bottom: 16px;
+  padding: 6px 20px;
+  border: 1px solid var(--border-dim);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--gold-300);
+  text-shadow: var(--glow-text);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.headerDesc {
+  color: var(--text-dim);
+  font-size: 0.9375rem;
+  max-width: 620px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+
+/* === Search Bar === */
+
+.searchWrap {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-700);
+  font-size: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 14px 20px 14px 48px;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-mid);
+  border-radius: 12px;
+  color: var(--text-bright);
+  font-size: 0.9375rem;
+  outline: none;
+  font-family: var(--font-body);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.searchInput:focus {
+  border-color: var(--gold-600);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08), var(--glow-sm);
+}
+
+/* === Suggestions Dropdown === */
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-mid);
+  border-radius: 12px;
+  max-height: 420px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-mid) transparent;
+}
+
+.suggestionItem {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-dim);
+  font-size: 0.8125rem;
+  color: var(--text-bright);
+  gap: 12px;
+  transition: background var(--t-fast);
+}
+
+.suggestionItem:last-child {
+  border-bottom: none;
+}
+
+.suggestionItem:hover {
+  background: rgba(201, 168, 76, 0.06);
+}
+
+.suggestionLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.suggestionRarities {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* === Filter Bar === */
+
+.filterBar {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 20;
+  background: rgba(4, 3, 2, 0.8);
+  border-bottom: 1px solid var(--border-dim);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.filterInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterLabel {
+  font-size: 0.625rem;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.filterSelect {
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-dim);
+  color: var(--text-bright);
+  font-family: var(--font-body);
+  outline: none;
+  cursor: pointer;
+  min-width: 110px;
+  transition: border-color var(--t-fast);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.filterSelect:focus {
+  border-color: var(--gold-600);
+}
+
+.luckValue {
+  font-size: 0.75rem;
+  color: var(--gold-400);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  min-width: 28px;
+  text-align: center;
+}
+
+/* === Results Area === */
+
+.resultsArea {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+/* === Results Header === */
+
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.resultsItemInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.resultsItemName {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--gold-300);
+  letter-spacing: 0.04em;
+}
+
+.resultsCount {
+  font-size: 0.8125rem;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  letter-spacing: 0.06em;
+}
+
+/* === Results Table === */
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-dim);
+  border-radius: 10px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  table-layout: auto;
+}
+
+.th {
+  padding: 12px 10px;
+  text-align: left;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border-mid);
+  cursor: pointer;
+  transition: color var(--t-fast);
+  user-select: none;
+}
+
+.th:hover {
+  color: var(--text-dim);
+}
+
+.thActive {
+  color: var(--gold-500);
+}
+
+.thNoSort {
+  cursor: default;
+}
+
+.thNoSort:hover {
+  color: var(--text-muted);
+}
+
+.tr {
+  border-bottom: 1px solid rgba(201, 168, 76, 0.04);
+  transition: background var(--t-fast);
+}
+
+.tr:hover {
+  background: rgba(201, 168, 76, 0.03);
+}
+
+.td {
+  padding: 10px 10px;
+  vertical-align: top;
+}
+
+.tdDungeon {
+  composes: td;
+  color: var(--text-bright);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tdSource {
+  composes: td;
+  color: var(--text-bright);
+}
+
+.variantLabel {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.tdModules {
+  composes: td;
+  font-size: 0.6875rem;
+  color: var(--text-mid);
+}
+
+.tdPool {
+  composes: td;
+}
+
+.poolName {
+  color: var(--text-mid);
+  font-weight: 500;
+}
+
+.poolSize {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+
+.poolDetail {
+  font-size: 0.625rem;
+  color: var(--gold-600);
+  margin-top: 3px;
+}
+
+/* === Probability Bar === */
+
+.probWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.probText {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  min-width: 65px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.probTextHigh { composes: probText; color: #55c075; }
+.probTextMid  { composes: probText; color: #c9a84c; }
+.probTextLow  { composes: probText; color: #e05555; }
+
+.probBarOuter {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.probBarInner {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s var(--ease);
+}
+
+.probMeta {
+  margin-top: 4px;
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.probSearches {
+  color: var(--gold-600);
+}
+
+/* === Badges === */
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badgeSmall {
+  composes: badge;
+  padding: 1px 6px;
+}
+
+/* === Module expand button === */
+
+.moduleExpandBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gold-600);
+  font-size: 0.625rem;
+  font-weight: 600;
+  padding: 0 4px;
+  font-family: var(--font-heading);
+  transition: color var(--t-fast);
+}
+
+.moduleExpandBtn:hover {
+  color: var(--gold-400);
+}
+
+/* === Empty / Prompt States === */
+
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+}
+
+/* === Loading === */
+
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: var(--nav-h);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--border-dim);
+  border-top: 2px solid var(--gold-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingText {
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+}
+
+/* === Pagination === */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.pageBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-family: var(--font-heading);
+  transition: all var(--t-fast);
+  background: var(--glass-bg);
+  border: 1px solid var(--border-dim);
+  color: var(--text-dim);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.pageBtn:hover:not(:disabled) {
+  border-color: var(--border-mid);
+  color: var(--text-bright);
+  background: var(--glass-bg-h);
+}
+
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pageBtnActive {
+  composes: pageBtn;
+  background: rgba(201, 168, 76, 0.12);
+  border-color: rgba(201, 168, 76, 0.3);
+  color: var(--gold-400);
+  font-weight: 700;
+}
+
+.pageBtnNav {
+  composes: pageBtn;
+  padding: 8px 20px;
+}
+
+/* === Responsive === */
+
+@media (max-width: 768px) {
+  .filterInner {
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .header {
+    padding: 40px 16px 0;
+  }
+
+  .resultsArea {
+    padding: 20px 12px;
+  }
+
+  .probWrap {
+    min-width: 110px;
+  }
+}

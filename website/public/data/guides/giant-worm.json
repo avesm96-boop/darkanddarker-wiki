@@ -1,0 +1,125 @@
+{
+ "slug": "giant-worm",
+ "overview": "Giant Worm is a SubBoss-class Beast/Giant/Insect monster found in Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): 1100 HP, 26 physical damage, 0 move speed, ActionSpeed 0. ImpactResistance 4, MaxImpactEndurance 6. 5 attacks, 0 combo chains. Highest damage: Bite at 180% ratio (468 base damage). Nightmare gains 1 exclusive abilityy: Rush Attack.",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "3 melee attacks. Bite (180%), Swing Body (130%), Rush Attack (170%).",
+ "icon": "attack"
+ },
+ {
+ "name": "Rush / Charge",
+ "description": "1 rush/charge attacks for gap-closing. Rush Attack (170%).",
+ "icon": "move"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Bite",
+ "damage_ratio": 1800,
+ "damage_common": 468,
+ "damage_elite": 558,
+ "note": "180% damage ratio, impact power 6.",
+ "damage_nightmare": 648
+ },
+ {
+ "name": "On Ground",
+ "damage_ratio": 1600,
+ "damage_common": 416,
+ "damage_elite": 496,
+ "note": "160% damage ratio, impact power 7.",
+ "damage_nightmare": 576
+ },
+ {
+ "name": "Sandfang",
+ "damage_ratio": 1800,
+ "damage_common": 468,
+ "damage_elite": 558,
+ "note": "180% damage ratio, impact power 6.",
+ "damage_nightmare": 648
+ },
+ {
+ "name": "Rush Attack",
+ "damage_ratio": 1700,
+ "damage_common": 442,
+ "damage_elite": 527,
+ "note": "170% damage ratio, impact power 6.",
+ "damage_nightmare": 612
+ }
+ ]
+ },
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "Swing Body",
+ "damage_ratio": 1300,
+ "damage_common": 338,
+ "damage_elite": 403,
+ "note": "130% damage ratio, impact power 6.",
+ "damage_nightmare": 468
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [
+ {
+ "name": "Accid",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Accid icon on your status bar."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Elemental Weaknesses: Ice, Earth",
+ "priority": "high",
+ "description": "Significant elemental weaknesses: Ice (-4000), Earth (-4000). Negative reduction values mean incoming damage of that type is amplified."
+ },
+ {
+ "title": "Projectile Reduction: 150",
+ "priority": "medium",
+ "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+ },
+ {
+ "title": "Nightmare Gains: Rush Attack",
+ "priority": "medium",
+ "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Rush Attack. These change the fight dynamics in Nightmare.",
+ "grades": [
+ "Nightmare"
+ ]
+ }
+ ],
+ "elite_differences": [
+ "23% more HP (1100 → 1350) in Elite",
+ "19% more physical damage (26 → 31) in Elite",
+ "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+ "XP reward 6 → 7 in Elite",
+ "45% more HP (1100 → 1600) in Nightmare",
+ "38% more physical damage (26 → 36) in Nightmare",
+ "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
+ "XP reward 6 → 7 in Nightmare",
+ "Nightmare gains 1 exclusive abilities: Rush Attack"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard boss perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": true,
+ "stuck_description": "Has stuck-detection failsafes in behavior tree."
+ }
+}

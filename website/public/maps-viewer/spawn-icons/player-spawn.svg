@@ -1,0 +1,5 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 28'>
+  <path d='M12 27L2 20V5L12 1L22 5V20Z' fill='#b8922c' stroke='#8a6a1a' stroke-width='.8'/>
+  <circle cx='12' cy='9' r='3' fill='white' opacity='.88'/>
+  <path d='M7 16C7 13 9 11 12 11S17 13 17 16V20H7Z' fill='white' opacity='.88'/>
+</svg>

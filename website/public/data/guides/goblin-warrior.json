@@ -1,0 +1,116 @@
+{
+ "slug": "goblin-warrior",
+ "overview": "Goblin Warrior is a Normal-class Humanoid/Beast monster found in Goblin Cave. 3 grades: Common, Elite, Nightmare. Base stats (Common): 44 HP, 24 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 6 attacks, 0 combo chains. Highest damage: Counter Attack at 160% ratio (384 base damage). Nightmare gains 1 exclusive abilityy: Counter Attack.",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "1 melee attacks. Counter Attack (160%).",
+ "icon": "attack"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "",
+ "damage_ratio": 1500,
+ "damage_common": 360,
+ "damage_elite": 465,
+ "note": "150% damage ratio, impact power 3.",
+ "damage_nightmare": 570
+ },
+ {
+ "name": "",
+ "damage_ratio": 1500,
+ "damage_common": 360,
+ "damage_elite": 465,
+ "note": "150% damage ratio, impact power 3.",
+ "damage_nightmare": 570
+ },
+ {
+ "name": "",
+ "damage_ratio": 1500,
+ "damage_common": 360,
+ "damage_elite": 465,
+ "note": "150% damage ratio, impact power 3.",
+ "damage_nightmare": 570
+ },
+ {
+ "name": "",
+ "damage_ratio": 1500,
+ "damage_common": 360,
+ "damage_elite": 465,
+ "note": "150% damage ratio, impact power 3.",
+ "damage_nightmare": 570
+ },
+ {
+ "name": "Counter Attack",
+ "damage_ratio": 1600,
+ "damage_common": 384,
+ "damage_elite": 496,
+ "note": "160% damage ratio, impact power 4.",
+ "damage_nightmare": 608
+ }
+ ]
+ },
+ {
+ "tier": "Strong",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "",
+ "damage_ratio": 1200,
+ "damage_common": 288,
+ "damage_elite": 372,
+ "note": "120% damage ratio, impact power 3.",
+ "damage_nightmare": 456
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [],
+ "strategies": [
+ {
+ "title": "Projectile Reduction: 150",
+ "priority": "medium",
+ "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+ },
+ {
+ "title": "Nightmare Gains: Counter Attack",
+ "priority": "medium",
+ "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Counter Attack. These change the fight dynamics in Nightmare.",
+ "grades": [
+ "Nightmare"
+ ]
+ }
+ ],
+ "elite_differences": [
+ "159% more HP (44 → 114) in Elite",
+ "29% more physical damage (24 → 31) in Elite",
+ "Move speed 200 → 230 in Elite",
+ "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+ "XP reward 3 → 4 in Elite",
+ "318% more HP (44 → 184) in Nightmare",
+ "58% more physical damage (24 → 38) in Nightmare",
+ "Move speed 200 → 260 in Nightmare",
+ "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+ "XP reward 3 → 5 in Nightmare",
+ "Nightmare gains 1 exclusive abilities: Counter Attack"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard monster perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": false,
+ "stuck_description": "Standard AI navigation."
+ }
+}

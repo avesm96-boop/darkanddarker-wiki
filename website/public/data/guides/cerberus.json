@@ -1,0 +1,246 @@
+{
+ "slug": "cerberus",
+ "overview": "Cerberus is a Beast/Demon SubBoss found in Inferno. It uses a two-phase attack system — an AttackPhase for close-range bites and rushes, and an OmenPhase for devastating directional charge attacks. Before combat it sniffs the air to detect targets, and upon engaging it roars to transition into its aggressive stance. The AI checks enemies within range and angle, randomly selecting from Rush or Bite attack groups based on proximity, with the Omen charges being its most dangerous multi-directional rush attacks.",
+ "phases": [
+ {
+ "name": "Peace Phase (Sniffing)",
+ "description": "Before detecting a target, Cerberus patrols in Stance.One and periodically plays a Sniffing animation to sense nearby players. This triggers at 600 unit peace check distance. During this phase it is non-aggressive and can be approached cautiously.",
+ "icon": "idle"
+ },
+ {
+ "name": "Roar Transition",
+ "description": "When Cerberus detects a target and is not yet in Stance.Two, the behavior tree triggers a Roar ability. This serves as the combat opener and stance transition — the Roar has a high rotation speed (5.0), allowing Cerberus to quickly face its target. After roaring, it enters its full combat stance.",
+ "icon": "special"
+ },
+ {
+ "name": "Attack Phase (Bites & Rush)",
+ "description": "The primary melee phase triggered at 350 unit range. The AI checks enemies in range and angle, then randomly selects from either the Rush Attack Tag Group (Omen LC, Omen RC, Omen RL) or the Bite Attack Tag Group (Bite R, Bite L). It uses a Combo Count to track chains and RandomFloat checks to decide between rush and bite branches. Grade type influences attack selection randomness.",
+ "icon": "attack"
+ },
+ {
+ "name": "Omen Phase (Directional Charges)",
+ "description": "Cerberus enters OmenPhase and randomly selects one of three devastating charge attacks — Omen LC (front-left rush), Omen RC (front-right rush), or Omen RL (forward rush). Each Omen attack has a rotation speed of 3.0 and tracks the target during the charge. These are its highest-damage attacks alongside HitDown.",
+ "icon": "special"
+ },
+ {
+ "name": "HitDown (Ground Slam)",
+ "description": "Cerberus rears up and slams down with a massive ground pound. This attack creates a Shock Wave with both a box-shaped and sphere-shaped AoE overlap zone. The HitDown tracks hit actors and applies effect containers to all caught in the blast. This is the single highest damage ratio attack in its arsenal at 2500%.",
+ "icon": "attack"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "HitDown (Ground Slam)",
+ "ratio": 2500,
+ "damage_common": 700,
+ "damage_elite": 775,
+ "note": "Highest damage attack. Slams the ground creating a shock wave with box and sphere AoE zones. Tracks all hit actors. The tell is the rear-up animation before the slam."
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Omen LC (Front-Left Rush)",
+ "ratio": 2400,
+ "damage_common": 672,
+ "damage_elite": 744,
+ "note": "Charges forward-left with rotation speed 3.0. Uses Rush_FL animation. Uses MonsterCantStuck melee data during charge (MonsterCantStuck melee data)."
+ },
+ {
+ "name": "Omen RC (Front-Right Rush)",
+ "ratio": 2400,
+ "damage_common": 672,
+ "damage_elite": 744,
+ "note": "Charges forward-right with rotation speed 3.0. Uses Rush_FR animation. Mirror of Omen LC."
+ },
+ {
+ "name": "Omen RL (Forward Rush)",
+ "ratio": 2400,
+ "damage_common": 672,
+ "damage_elite": 744,
+ "note": "Charges straight forward with rotation speed 3.0. Uses Rush_F animation. The most direct and hardest to dodge laterally."
+ },
+ {
+ "name": "Rush",
+ "ratio": 2400,
+ "damage_common": 672,
+ "damage_elite": 744,
+ "note": "Standard rush attack triggered independently from OmenPhase. Same damage ratio as Omen variants."
+ }
+ ]
+ },
+ {
+ "tier": "Standard",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "Bite R",
+ "ratio": 1800,
+ "damage_common": 504,
+ "damage_elite": 558,
+ "note": "Right-side bite attack with rotation speed 1.0. Uses Bite_R animation. Uses MonsterCantStuck melee data. Triggered from AttackPhase Bite group."
+ },
+ {
+ "name": "Bite L",
+ "ratio": 1800,
+ "damage_common": 504,
+ "damage_elite": 558,
+ "note": "Left-side bite attack with rotation speed 1.0. Uses Bite_L animation. Uses MonsterCantStuck melee data. Mirror of Bite R."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "Cerberus uses a phase-based ability system rather than strict combo chains. The AttackPhase acts as a dispatcher — it checks enemy positions, then selects from Rush or Bite attack groups. OmenPhase similarly dispatches to one of three directional charges. The Combo Count variable tracks how many attacks have been performed in a sequence, and Random checks determine branching between attack types. Grade type (Common/Elite/Nightmare) influences attack selection via a SwitchEnum check.",
+ "chains": [
+ {
+ "from": "Detection (Peace)",
+ "to": [
+ "Sniffing",
+ "Roar (if not in Stance.Two)"
+ ],
+ "note": "At 600 range, Cerberus sniffs. Upon detecting a target, if not already in combat stance, it roars first."
+ },
+ {
+ "from": "Roar",
+ "to": [
+ "AttackPhase",
+ "OmenPhase"
+ ],
+ "note": "After roaring, Cerberus transitions to Stance.Two and begins its combat loops."
+ },
+ {
+ "from": "AttackPhase",
+ "to": [
+ "Bite R",
+ "Bite L",
+ "Omen LC",
+ "Omen RC",
+ "Omen RL"
+ ],
+ "note": "Randomly selects from Bite group (Skill.Six/Seven) or Rush group (Skill.Two/Three/Four) based on range and angle checks."
+ },
+ {
+ "from": "OmenPhase",
+ "to": [
+ "Omen LC",
+ "Omen RC",
+ "Omen RL"
+ ],
+ "note": "Randomly selects one of three directional charge attacks from the Omen Tag Group."
+ },
+ {
+ "from": "Bite R / Bite L",
+ "to": [
+ "AttackPhase",
+ "Turn"
+ ],
+ "note": "After a bite, Cerberus returns to AttackPhase evaluation or turns to reface its target."
+ },
+ {
+ "from": "Omen (any)",
+ "to": [
+ "AttackPhase",
+ "Turn",
+ "RunState"
+ ],
+ "note": "After an Omen charge, Cerberus may reposition, turn to face target, or enter RunState for pursuit."
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "HitDown Shock Wave",
+ "type": "debuff",
+ "duration": "Instant",
+ "stacks": 1,
+ "description": "The HitDown ground slam creates overlapping AoE zones — a box-shaped area and a sphere-shaped area. Players caught in either overlap zone take the full 2500% ratio damage. The shock wave uses ComponentBeginOverlap/EndOverlap events to track who enters and exits the damage zone.",
+ "counter": "Watch for the rear-up animation tell. Dodge backward or sideways out of the AoE zones before the slam lands. The box zone extends further in one axis while the sphere provides radial coverage."
+ },
+ {
+ "name": "RunState Speed Buff",
+ "type": "self-buff",
+ "duration": "While active",
+ "stacks": 1,
+ "description": "Cerberus applies a gameplay effect to itself during RunState (pursuit mode). This likely increases its movement speed beyond its base 200/225/250 values. The effect is tracked via handles and removed when RunState ends.",
+ "counter": "When Cerberus enters RunState, do not try to outrun it in a straight line. Use obstacles and corners to break line of sight and force it out of pursuit."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Exploit Ice and Light Weaknesses",
+ "priority": "critical",
+ "description": "Cerberus has -3000 Ice Magical Reduction and -2000 Light/Divine Magical Reduction. These massive negative values mean ice, light, and divine magic deal enormously amplified damage. Prioritize these damage types — a Cleric's holy spells or a Wizard's ice spells will melt Cerberus far faster than physical attacks."
+ },
+ {
+ "title": "Avoid Fire and Dark Damage",
+ "priority": "high",
+ "description": "Cerberus has +250 Fire Magical Reduction and +500 Dark/Evil Magical Reduction. Fire and dark spells are heavily resisted. Do not waste these damage types on Cerberus — switch to ice, light, or physical damage instead."
+ },
+ {
+ "title": "Dodge the HitDown Ground Slam",
+ "priority": "critical",
+ "description": "HitDown deals 2500% damage ratio — that is 700 damage on Common and 875 on Nightmare. It creates both a box-shaped and sphere-shaped shock wave zone. When you see the rear-up tell animation, immediately dodge backward or sideways. This is its single most lethal attack."
+ },
+ {
+ "title": "Sidestep Omen Charges",
+ "priority": "high",
+ "description": "All three Omen attacks (LC, RC, RL) deal 2400% damage ratio and track the target with rotation speed 3.0 during the charge. However, they commit to a direction — Omen LC charges front-left, RC charges front-right, and RL charges straight forward. Dodge perpendicular to the charge direction. The forward rush (RL) is hardest to dodge laterally."
+ },
+ {
+ "title": "Bites Are the Safest Window",
+ "priority": "high",
+ "description": "Bite attacks deal 1800% ratio (504 Common, 558 Elite) — significantly less than Omen or HitDown. Bites also have a low rotation speed of 1.0, meaning Cerberus turns slowly during them. If you can bait bites instead of charges, you take less damage and have better windows to counterattack."
+ },
+ {
+ "title": "Stay at Medium Range to Control Attack Selection",
+ "priority": "medium",
+ "description": "The AttackPhase uses range and angle checks (Get_Enemies_In_Range_And_Angle_From_Actor) to decide between Rush and Bite groups. The combat acceptance radius is 300 units and ability check distance is 350 units. Staying just outside bite range may force more predictable behavior patterns."
+ },
+ {
+ "title": "Punish the Roar Opening",
+ "priority": "medium",
+ "description": "When Cerberus first enters combat and is not in Stance.Two, it must perform a Roar animation to transition stances. This is a free damage window — the Roar is a montage-based animation that locks Cerberus in place. Rush in and deal as much damage as possible during this opener."
+ },
+ {
+ "title": "Nightmare Grade Is Drastically Faster",
+ "priority": "medium",
+ "description": "Nightmare grade has +200 Action Speed and 250 base Move Speed compared to Common's 0 Action Speed and 200 Move Speed. Attacks come out much faster and Cerberus closes distance quicker. Reaction windows that work on Common will not work on Nightmare — adjust timing accordingly."
+ },
+ {
+ "title": "Projectile Resistance Is High",
+ "priority": "medium",
+ "description": "Cerberus has 200 Projectile Reduction Mod across all grades. Ranged physical projectiles (arrows, bolts) are significantly reduced. Melee or magic damage is preferred over physical ranged attacks."
+ },
+ {
+ "title": "Low Impact Resistance — Stagger Is Possible",
+ "priority": "low",
+ "description": "Unlike many bosses, Cerberus has only 3 Impact Resistance and 6 Max Impact Endurance. This means high-impact weapons can potentially stagger it, interrupting attack animations. Heavy weapons and shield bashes may be able to create additional openings."
+ }
+ ],
+ "elite_differences": [
+ "25% more HP (790 -> 990)",
+ "11% more physical damage (28 -> 31)",
+ "12.5% faster movement (200 -> 225 base Move Speed)",
+ "+100 Action Speed (attacks execute faster)",
+ "Same resistances, attributes, and ability set as Common",
+ "Higher XP reward (8 -> 9)"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180-degree peripheral vision with 1000 unit sight radius and 1500 unit lose-sight radius",
+ "damage_sense": true,
+ "damage_description": "Always reacts to being hit regardless of facing direction",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds — can detect players even outside visual range",
+ "stuck_tracking": false,
+ "stuck_description": "No explicit stuck tracking found — uses MonsterCantStuck melee data on charge attacks to prevent getting caught on geometry"
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "slug": "demon-centaur",
+ "overview": "Demon Centaur is a SubBoss-class Demon/Beast monster found in Inferno. 3 grades: Common, Elite, Nightmare. Base stats (Common): 800 HP, 28 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 5, MaxImpactEndurance 6. 6 attacks, 0 combo chains. Highest damage: Sprint Attack at 220% ratio (616 base damage).",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "5 melee attacks. Attack1 (150%), Attack2 (180%), Attack2 From Idle (180%), and more.",
+ "icon": "attack"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "Sprint Attack",
+ "damage_ratio": 2200,
+ "damage_common": 616,
+ "damage_elite": 924,
+ "note": "220% damage ratio, impact power 7.",
+ "damage_nightmare": 924
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Attack1",
+ "damage_ratio": 1500,
+ "damage_common": 420,
+ "damage_elite": 630,
+ "note": "150% damage ratio, impact power 6.",
+ "damage_nightmare": 630
+ },
+ {
+ "name": "Attack2",
+ "damage_ratio": 1800,
+ "damage_common": 504,
+ "damage_elite": 756,
+ "note": "180% damage ratio, impact power 6.",
+ "damage_nightmare": 756
+ },
+ {
+ "name": "Attack2 From Idle",
+ "damage_ratio": 1800,
+ "damage_common": 504,
+ "damage_elite": 756,
+ "note": "180% damage ratio, impact power 6.",
+ "damage_nightmare": 756
+ },
+ {
+ "name": "Sprint Attack Pierce",
+ "damage_ratio": 1600,
+ "damage_common": 448,
+ "damage_elite": 672,
+ "note": "160% damage ratio, impact power 6.",
+ "damage_nightmare": 672
+ },
+ {
+ "name": "Low Sweep",
+ "damage_ratio": 1800,
+ "damage_common": 504,
+ "damage_elite": 756,
+ "note": "180% damage ratio, impact power 6.",
+ "damage_nightmare": 756
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [],
+ "strategies": [
+ {
+ "title": "Elemental Weaknesses: Ice, Light, Divine",
+ "priority": "high",
+ "description": "Significant elemental weaknesses: Ice (-3000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
+ },
+ {
+ "title": "Resists: Dark, Evil",
+ "priority": "high",
+ "description": "Elemental resistances: Dark (+500), Evil (+500). Positive reduction values reduce incoming damage of that type."
+ },
+ {
+ "title": "Projectile Reduction: 200",
+ "priority": "medium",
+ "description": "Has 200 ProjectileReductionMod, reducing physical projectile damage."
+ },
+ {
+ "title": "Highest Damage: Sprint Attack (220% ratio)",
+ "priority": "high",
+ "description": "Sprint Attack deals 616 damage at base (220% ratio). This is the most dangerous attack to avoid."
+ }
+ ],
+ "elite_differences": [
+ "38% more HP (800 → 1100) in Elite",
+ "50% more physical damage (28 → 42) in Elite",
+ "Move speed 200 → 230 in Elite",
+ "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+ "XP reward 8 → 9 in Elite",
+ "63% more HP (800 → 1300) in Nightmare",
+ "50% more physical damage (28 → 42) in Nightmare",
+ "Move speed 200 → 260 in Nightmare",
+ "ActionSpeed 0 → 150 in Nightmare — attacks animate faster",
+ "XP reward 8 → 10 in Nightmare"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard boss perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": true,
+ "stuck_description": "Has stuck-detection failsafes in behavior tree."
+ }
+}

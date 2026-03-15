@@ -1,0 +1,4773 @@
+{
+  "generated_at": "2026-03-14T08:29:48.761Z",
+  "crypt": {
+    "name": "The Forgotten Castle",
+    "fullName": "The Ruins of Forgotten Castle",
+    "biome": "Crypt",
+    "gridSize": 5,
+    "modules": [
+      {
+        "id": "AdmirerRoom",
+        "name": "Admirer's Room",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "unknown",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": null,
+        "hasLevelAsset": false
+      },
+      {
+        "id": "CryptAltarRoomAB",
+        "name": "Altar Room",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "AltarRoomAB",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Armory",
+        "name": "Armory",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Armory",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_Atrium",
+        "name": "Atrium",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_Atrium",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Barracks",
+        "name": "Barracks",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "unknown",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": null,
+        "hasLevelAsset": false
+      },
+      {
+        "id": "Crypt_BlindfallPit",
+        "name": "Blindfall Pit",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": true,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "RareModule_1x1",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_LargeRoomPit",
+        "name": "Broken Bridge",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": true,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_LargeRoomPit",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "TheCage",
+        "name": "Cage",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "TheCage",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Catacomb",
+        "name": "Catacomb",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Catacomb",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Cemetery_03",
+        "name": "Cemetery",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Cemetery_03",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "FourWayConnect",
+        "name": "Center Altar",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": true,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "FourWayConnect",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "HBridge",
+        "name": "Center Bridge",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "HBridge",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_Chapel",
+        "name": "Chapel",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_Chapel",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "OssuaryEdge",
+        "name": "Circular",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "OssuaryEdge",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Cistern",
+        "name": "Cistern",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": true,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Cistern",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "CliffBridge",
+        "name": "Cliffs",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "CliffBridge",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Cemetery_02",
+        "name": "Coffin Rooms",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Cemetery_02",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "CorridorCrypt",
+        "name": "Corridors",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "CorridorCrypt",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "CrossRoad",
+        "name": "Cross Road",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "CrossRoad",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_Dungeon",
+        "name": "Crypt Dungeons",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_Dungeon",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "DarkMagicLibrary_Center",
+        "name": "Dark Magic Library",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "DarkMagicLibrary_Center",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "CorridorofDarkPriests",
+        "name": "Dark Priests",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "CorridorofDarkPriests",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "DeathHall",
+        "name": "Death Hall",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "DeathHall",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "FishingGround",
+        "name": "Fishing Grounds",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "FishingGround",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_FourRooms",
+        "name": "Four Rooms",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_FourRooms",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "ComplexHall",
+        "name": "Gated Rooms",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "ComplexHall",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "GuardPost",
+        "name": "Guard Posts",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "GuardPost",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Connector_01",
+        "name": "Hall E",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Connector_01",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Hallways",
+        "name": "Hallways",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Hallways",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "HighPriestOssuary",
+        "name": "High Priests",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "unknown",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": null,
+        "hasLevelAsset": false
+      },
+      {
+        "id": "Crypt_LightlessChamber_01",
+        "name": "Lightless Chamber",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": true,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "RareModule_1x1",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_LightlessTomb_01",
+        "name": "Lightless Tomb",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": true,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "RareModule_1x1",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "SingleLogBridge",
+        "name": "Long Bridge",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "SingleLogBridge",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_MadCorridors",
+        "name": "Mad Corridors",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": true,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "RareModule_1x1",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Maze",
+        "name": "Maze",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Maze",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "MimicRoom",
+        "name": "Mimic Lair",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "MimicRoom",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "TheMiniWheel",
+        "name": "Mini Wheel",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "TheMiniWheel",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "EightToOne_01",
+        "name": "Mummy Chest",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "EightToOne_01",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "OldTomb",
+        "name": "Old Tomb",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "OldTomb",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "ThePit",
+        "name": "Pit",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "ThePit",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Prison_01",
+        "name": "Prisons B",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Prison_01",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "LowPyramid",
+        "name": "Pyramid",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "LowPyramid",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_Ramparts",
+        "name": "Ramparts",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_Ramparts",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_DarkRitualRoom_01",
+        "name": "Ritual Room",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": true,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_DarkRitualRoom_01",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Sanctum",
+        "name": "Sanctum",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Sanctum",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Sewers",
+        "name": "Sewers",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Sewers",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "SkeletonPit",
+        "name": "Skeleton Rooms",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "SkeletonPit",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Storeroom",
+        "name": "Storeroom",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Storeroom",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Swamp",
+        "name": "Swamp",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Swamp",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_GreatWalkway",
+        "name": "The Great Walkway",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_GreatWalkway",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Tomb_Center",
+        "name": "Tombs",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Tomb_Center",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Crypt_TorchboundVault",
+        "name": "Torchbound Vault",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": true,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "RareModule_1x1",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Connector_Trap_01",
+        "name": "Trap Hall A",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Connector_Trap_01",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Connector_Trap_02",
+        "name": "Trap Hall B",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "edge",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Connector_Trap_02",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "TreasureRoom_01",
+        "name": "Treasure Room",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": true,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "TreasureRoom_01",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "Cemetery_01",
+        "name": "Twin Cemeteries",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Cemetery_01",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "UndergroundAltar",
+        "name": "Underground Altar",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "unknown",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": null,
+        "hasLevelAsset": false
+      },
+      {
+        "id": "Crypt_Vault",
+        "name": "Vault",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "Crypt_Vault",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "CenterTower",
+        "name": "Wheel",
+        "size": {
+          "X": 2,
+          "Y": 2
+        },
+        "position": "center",
+        "bHasAltar": true,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": true,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "CenterTower",
+        "hasLevelAsset": true
+      },
+      {
+        "id": "EightToOne_02",
+        "name": "Wraith Lair",
+        "size": {
+          "X": 1,
+          "Y": 1
+        },
+        "position": "center",
+        "bHasAltar": false,
+        "bHasBoss": false,
+        "bHasEscapeStairs": false,
+        "bHasEscapePortal": false,
+        "bHasKey": false,
+        "bCornerOnly": false,
+        "bEdgeOnly": false,
+        "bHasDown": false,
+        "bHasEscape": false,
+        "mapImage": "EightToOne_02",
+        "hasLevelAsset": true
+      }
+    ],
+    "layouts": [
+      {
+        "id": "Crypt_5x5_01",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Standard"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_02",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Standard"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_03",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_04",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_05",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_06",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_07",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_08",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_09",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_10",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_11",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_12",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_13",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_14",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_15",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_16",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_17",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_18",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_19",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_20",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_21",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_22",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_23",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_24",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_25",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_26",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_27",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_28",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_29",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_30",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_31",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_32",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_33",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_34",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_35",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_36",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_37",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_38",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_39",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Boss"
+          }
+        ]
+      },
+      {
+        "id": "Crypt_5x5_40",
+        "size": {
+          "X": 5,
+          "Y": 5
+        },
+        "slots": [
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Key"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Down"
+          },
+          {
+            "type": "EscapeStairs"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Boss"
+          },
+          {
+            "type": "Empty"
+          },
+          {
+            "type": "Altar"
+          },
+          {
+            "type": "Escape"
+          },
+          {
+            "type": "Edge"
+          },
+          {
+            "type": "Empty"
+          }
+        ]
+      }
+    ],
+    "dungeons": [
+      {
+        "id": "Id_Dungeon_RandomCrypt_A",
+        "name": "The Ruins of Forgotten Castle - Crypt (Adventure)",
+        "gameTypes": [
+          "EGameType::DungeonSoloAdventure",
+          "EGameType::DungeonDuoAdventure",
+          "EGameType::DungeonTrioAdventure"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomCrypt_AHR",
+        "name": "The Ruins of Forgotten Castle - Crypt (High-Roller Adventure)",
+        "gameTypes": [
+          "EGameType::DungeonTrioAdventureHighRoller"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomCrypt_HR_Duo",
+        "name": "The Ruins of Forgotten Castle - Crypt (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonDuoHighRoller"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomCrypt_HR_Solo",
+        "name": "The Ruins of Forgotten Castle - Crypt (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonSoloHighRoller"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomCrypt_HR_Trio",
+        "name": "The Ruins of Forgotten Castle - Crypt (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonTrioHighRoller"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomCrypt_N_Duo",
+        "name": "The Ruins of Forgotten Castle - Crypt (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonDuoNormal"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomCrypt_N_Solo",
+        "name": "The Ruins of Forgotten Castle - Crypt (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonSoloNormal"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomCrypt_N_Trio",
+        "name": "The Ruins of Forgotten Castle - Crypt (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonTrioNormal"
+        ],
+        "floor": 2
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_A",
+        "name": "The Ruins of Forgotten Castle - Inferno (Adventure)",
+        "gameTypes": [
+          "EGameType::DungeonSoloAdventure",
+          "EGameType::DungeonDuoAdventure",
+          "EGameType::DungeonTrioAdventure"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_AHR",
+        "name": "The Ruins of Forgotten Castle - Inferno (High-Roller Adventure)",
+        "gameTypes": [
+          "EGameType::DungeonTrioAdventureHighRoller"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_HR_Duo",
+        "name": "The Ruins of Forgotten Castle - Inferno (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonDuoHighRoller"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_HR_Solo",
+        "name": "The Ruins of Forgotten Castle - Inferno (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonSoloHighRoller"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_HR_Trio",
+        "name": "The Ruins of Forgotten Castle - Inferno (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonTrioHighRoller"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_N_Duo",
+        "name": "The Ruins of Forgotten Castle - Inferno (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonDuoNormal"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_N_Solo",
+        "name": "The Ruins of Forgotten Castle - Inferno (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonSoloNormal"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomInferno_N_Trio",
+        "name": "The Ruins of Forgotten Castle - Inferno (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonTrioNormal"
+        ],
+        "floor": 3
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_A",
+        "name": "The Ruins of Forgotten Castle - Ruins (Adventure)",
+        "gameTypes": [
+          "EGameType::DungeonSoloAdventure",
+          "EGameType::DungeonDuoAdventure",
+          "EGameType::DungeonTrioAdventure"
+        ],
+        "floor": 1
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_AHR",
+        "name": "The Ruins of Forgotten Castle - Ruins (High-Roller Adventure)",
+        "gameTypes": [
+          "EGameType::DungeonTrioAdventureHighRoller"
+        ],
+        "floor": 1
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_HR_Duo",
+        "name": "The Ruins of Forgotten Castle - Ruins (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonDuoHighRoller"
+        ],
+        "floor": 1
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_HR_Solo",
+        "name": "The Ruins of Forgotten Castle - Ruins (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonSoloHighRoller"
+        ],
+        "floor": 1
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_HR_Trio",
+        "name": "The Ruins of Forgotten Castle - Ruins (High-Roller)",
+        "gameTypes": [
+          "EGameType::DungeonTrioHighRoller"
+        ],
+        "floor": 1
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_N_Duo",
+        "name": "The Ruins of Forgotten Castle - Ruins (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonDuoNormal"
+        ],
+        "floor": 1
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_N_Solo",
+        "name": "The Ruins of Forgotten Castle - Ruins (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonSoloNormal"
+        ],
+        "floor": 1
+      },
+      {
+        "id": "Id_Dungeon_RandomRuins_N_Trio",
+        "name": "The Ruins of Forgotten Castle - Ruins (Normal)",
+        "gameTypes": [
+          "EGameType::DungeonTrioNormal"
+        ],
+        "floor": 1
+      }
+    ]
+  }
+}

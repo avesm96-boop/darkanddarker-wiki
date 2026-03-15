@@ -1,0 +1,110 @@
+{
+ "slug": "mermaid-corpse",
+ "overview": "Mermaid Corpse is a Normal-class Beast/Undead monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 0 HP, 0 physical damage, 0 move speed, ActionSpeed 0. ImpactResistance 0, MaxImpactEndurance 0. 4 attacks, 0 combo chains. Highest damage: Melee Attack2 at 160% ratio (0 base damage).",
+ "phases": [
+ {
+ "name": "Melee Combat",
+ "description": "4 melee attacks. Melee Attack1 (150%), Melee Attack2 (160%), Melee Attack1 Nightmare (150%), and more.",
+ "icon": "attack"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Melee Attack1",
+ "damage_ratio": 1500,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 0
+ },
+ {
+ "name": "Melee Attack2",
+ "damage_ratio": 1600,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "160% damage ratio, impact power 4.",
+ "damage_nightmare": 0
+ },
+ {
+ "name": "Melee Attack1 Nightmare",
+ "damage_ratio": 1500,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "150% damage ratio, impact power 4.",
+ "damage_nightmare": 0
+ },
+ {
+ "name": "Melee Attack2 Nightmare",
+ "damage_ratio": 1600,
+ "damage_common": 0,
+ "damage_elite": 0,
+ "note": "160% damage ratio, impact power 4.",
+ "damage_nightmare": 0
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+ "chains": []
+ },
+ "status_effects_detail": [
+ {
+ "name": "Bind",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Bind icon on your status bar."
+ },
+ {
+ "name": "Bind UI Data",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Bind UI Data icon on your status bar."
+ },
+ {
+ "name": "Curseof Corruption",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Curseof Corruption icon on your status bar."
+ },
+ {
+ "name": "Curseoof Corruption UI Data",
+ "type": "debuff",
+ "duration": "Data-dependent",
+ "stacks": 1,
+ "description": "Applied during combat. ",
+ "counter": "Watch for the Curseoof Corruption UI Data icon on your status bar."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Projectile Reduction: 150",
+ "priority": "medium",
+ "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+ }
+ ],
+ "elite_differences": [
+ "XP reward 3 → 4 in Elite",
+ "XP reward 3 → 5 in Nightmare"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "Standard monster perception.",
+ "damage_sense": true,
+ "damage_description": "Reacts to damage from any direction.",
+ "hearing": true,
+ "hearing_description": "Reacts to nearby sounds.",
+ "stuck_tracking": false,
+ "stuck_description": "Standard AI navigation."
+ }
+}

@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+  <path d='M12 1L14.5 8.5H22.5L16 13L18.5 21L12 16.5L5.5 21L8 13L1.5 8.5H9.5Z' fill='#daa520' stroke='#8b6914' stroke-width='.6'/>
+  <rect x='8' y='9' width='8' height='5.5' rx='1.2' fill='white' opacity='.9'/>
+  <line x1='8' y1='11.5' x2='16' y2='11.5' stroke='#daa520' stroke-width='.8'/>
+  <circle cx='12' cy='12.8' r='.8' fill='#daa520'/>
+</svg>

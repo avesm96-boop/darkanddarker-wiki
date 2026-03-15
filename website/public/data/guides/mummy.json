@@ -1,0 +1,223 @@
+{
+ "slug": "mummy",
+ "overview": "The Mummy is a slow but powerful Undead melee monster found across many dungeons including Crypt, Goblin Cave, Ice Abyss, Ice Cavern, Inferno, Ruins, and Ship Graveyard. It uses zombie-like attack animations with a distance-based AI that selects from standard swings (Attack1-3), a lunging tracking attack (Attack4), and devastating range-calibrated slam attacks (Attack5) that adjust reach based on target distance. Its attack phase checks three distance thresholds (120cm, 130cm, 140cm) to pick the optimal attack. Despite being a Normal-class monster, its Attack5 hits extremely hard at 2400% damage ratio. The Nightmare variant applies a Paralyze debuff and has dramatically increased speed.",
+ "phases": [
+ {
+ "name": "Spawn Phase",
+ "description": "The Mummy awakens with one of three randomly selected spawn animations. During the spawn animation it cannot be interrupted. The AI triggers this phase via the Event.AI.WakeUp tag. Players who spot a dormant Mummy can prepare positioning before it finishes spawning.",
+ "icon": "spawn"
+ },
+ {
+ "name": "Approach Phase",
+ "description": "After spawning, the Mummy walks toward its target at its base move speed (130 Common, 160 Elite, 220 Nightmare). It uses standard monster pathfinding with CrowdFollowing to navigate around obstacles and other monsters. Its slow Common speed gives players time to kite, but Nightmare moves nearly as fast as a player.",
+ "icon": "move"
+ },
+ {
+ "name": "Attack Phase",
+ "description": "When the Mummy reaches attack range, its AttackPhase ability activates and measures the distance to the target against three thresholds: 120cm, 130cm, and 140cm. Based on distance, it branches into close-range swings (Attack1-3), the lunging Attack4, or the range-calibrated Attack5 variants. A RandomBool call adds unpredictability to which attack it picks at each threshold.",
+ "icon": "attack"
+ },
+ {
+ "name": "Stagger Recovery",
+ "description": "With only 2 Impact Resistance and 5 Impact Endurance, the Mummy can be staggered by moderate-impact weapons. When staggered, it plays a dedicated recovery animation during which it cannot attack. This is a key window for safe damage.",
+ "icon": "special"
+ }
+ ],
+ "attack_categories": [
+ {
+ "tier": "Devastating",
+ "color": "#e04848",
+ "attacks": [
+ {
+ "name": "Attack5 Short",
+ "ratio": 2400,
+ "damage_common": 480,
+ "damage_elite": 720,
+ "note": "Close-range slam calibrated for 118cm distance. Highest damage ratio in the Mummy's kit. Low rotation speed (3.0) means it commits hard to its facing direction. Impact power 5 will stagger most players."
+ },
+ {
+ "name": "Attack5 Middle",
+ "ratio": 2400,
+ "damage_common": 480,
+ "damage_elite": 720,
+ "note": "Mid-range slam calibrated for 140cm distance. Same devastating damage as Short variant but covers medium range. Triggered when target is between the second and third distance thresholds."
+ },
+ {
+ "name": "Attack5 Long",
+ "ratio": 2400,
+ "damage_common": 480,
+ "damage_elite": 720,
+ "note": "Long-range slam calibrated for 165cm distance. Reaches the farthest of any Mummy attack. Selected when the target is beyond the 140cm threshold but still within engagement range."
+ }
+ ]
+ },
+ {
+ "tier": "Heavy",
+ "color": "#c9a84c",
+ "attacks": [
+ {
+ "name": "Attack4",
+ "ratio": 1900,
+ "damage_common": 380,
+ "damage_elite": 570,
+ "note": "Lunging root-motion attack that uses RotateToActor to actively track the target during wind-up. Lower impact power (3) than Attack5 but harder to dodge due to tracking. Multi-phase ability with multiple gameplay event listeners."
+ }
+ ]
+ },
+ {
+ "tier": "Standard",
+ "color": "#d9bc6a",
+ "attacks": [
+ {
+ "name": "Attack1",
+ "ratio": 1700,
+ "damage_common": 340,
+ "damage_elite": 510,
+ "note": "Left swing. Standard melee attack with rotation speed 5.0 allowing moderate tracking. Triggered by Skill.One tag. Impact power 4."
+ },
+ {
+ "name": "Attack2",
+ "ratio": 1700,
+ "damage_common": 340,
+ "damage_elite": 510,
+ "note": "Right swing. Same stats as Attack1 but different animation. Triggered by Skill.Two tag. Provides combo variety."
+ },
+ {
+ "name": "Attack3",
+ "ratio": 1700,
+ "damage_common": 340,
+ "damage_elite": 510,
+ "note": "Overhead/third swing variation. Completes the basic attack trio. Triggered by Skill.Three tag. Same damage and impact as Attack1-2."
+ }
+ ]
+ }
+ ],
+ "combo_flow": {
+ "description": "The Mummy's AttackPhase ability uses distance-based branching rather than strict combo chains. It measures distance to the target against three thresholds (120cm, 130cm, 140cm) and uses RandomBool for variety within each range bracket. The result is a simple but effective decision tree that selects the right attack for the current spacing.",
+ "chains": [
+ {
+ "from": "AttackPhase (distance > 140cm)",
+ "to": [
+ "Attack5 Long"
+ ],
+ "note": "Target is at maximum engagement range. The Mummy commits to its longest-reach slam at 165cm calibration."
+ },
+ {
+ "from": "AttackPhase (distance > 130cm)",
+ "to": [
+ "Attack5 Middle",
+ "Attack5 Short"
+ ],
+ "note": "Target is at medium-far range. The AI picks between the 140cm and 118cm calibrated slams."
+ },
+ {
+ "from": "AttackPhase (distance > 120cm)",
+ "to": [
+ "Attack4",
+ "Attack1",
+ "Attack2",
+ "Attack3"
+ ],
+ "note": "Target is at close-medium range. RandomBool branches between the tracking lunge (Attack4) and standard swings."
+ },
+ {
+ "from": "AttackPhase (distance <= 120cm)",
+ "to": [
+ "Attack1",
+ "Attack2",
+ "Attack3"
+ ],
+ "note": "Target is in close range. Standard zombie swings with rotation speed 5.0 for tracking."
+ },
+ {
+ "from": "Any Attack End",
+ "to": [
+ "AttackPhase"
+ ],
+ "note": "After any attack completes, the AI re-evaluates distance and selects the next appropriate attack."
+ }
+ ]
+ },
+ "status_effects_detail": [
+ {
+ "name": "Paralyze (Nightmare Only)",
+ "type": "debuff",
+ "duration": "Duration-based (tag only)",
+ "stacks": 1,
+ "description": "Applied exclusively by Nightmare-grade Mummies. Uses the HitslowMonster icon and applies as a duration-based tag effect with AggregateByTarget stacking (max 1 stack). Reduces the target's ability to act. Based on GE_Dur_TagOnly parent class, this is a pure tag debuff with no direct stat modification — it relies on gameplay systems reading the tag to apply movement/action penalties.",
+ "counter": "Avoid getting hit by Nightmare Mummies entirely. The Paralyze cannot stack but refreshes on each hit. Maintain distance and use the Mummy's slow turning against it. Fire damage is extremely effective for killing Nightmare Mummies quickly before they can apply this debuff."
+ }
+ ],
+ "strategies": [
+ {
+ "title": "Exploit Fire Weakness — 3000% Bonus Fire Damage",
+ "priority": "critical",
+ "description": "The Mummy has -3000 FireMagicalReduction, meaning it takes massive bonus damage from fire. Any fire spell, torch attack, or fire-enchanted weapon will shred Mummies. Clerics with Holy Light and Wizards with Fireball are the most efficient Mummy killers. Even a simple Campfire Torch does enormous bonus damage."
+ },
+ {
+ "title": "Divine Damage is Also Highly Effective",
+ "priority": "high",
+ "description": "With -1500 DivineMagicalReduction, the Mummy is extremely vulnerable to Divine damage. Clerics are the premier Mummy-fighting class — both their fire and divine spells exploit the Mummy's two biggest weaknesses. Holy Strike and Smite are devastatingly effective."
+ },
+ {
+ "title": "It Can Be Staggered — Use High-Impact Weapons",
+ "priority": "high",
+ "description": "With only 2 Impact Resistance and 5 Impact Endurance, the Mummy is vulnerable to stagger from moderate-impact weapons. Two-handed weapons, maces, and charged attacks can reliably interrupt its attacks. Stagger locks are a viable solo strategy — hit it before its slow attacks land."
+ },
+ {
+ "title": "Kite at Medium Range to Bait Attack5",
+ "priority": "medium",
+ "description": "At distances beyond 130cm, the Mummy commits to its Attack5 slam variants which have low rotation speed (3.0) and root-motion animations. These are its highest damage attacks but also its most punishable. Bait the slam, sidestep, then counter-attack during recovery."
+ },
+ {
+ "title": "Watch for Attack4's Tracking Lunge",
+ "priority": "medium",
+ "description": "Attack4 is unique because it uses RotateToActor to actively track the target during the wind-up phase. Unlike the standard swings, you cannot simply sidestep early — wait for the attack to commit before dodging. It has lower impact (3) but the tracking makes it the most dangerous attack at close-medium range."
+ },
+ {
+ "title": "Common Grade is Extremely Slow — Free Kiting",
+ "priority": "medium",
+ "description": "Common Mummies have only 130 MoveSpeed with 0 ActionSpeed bonus. Most player classes can simply walk backward to avoid all attacks. Use this to safely deal damage with ranged attacks or to reposition for backstabs. Only engage in melee when you have a clear opening."
+ },
+ {
+ "title": "Nightmare is a Different Monster Entirely",
+ "priority": "critical",
+ "description": "Nightmare Mummies jump to 220 MoveSpeed with 700 ActionSpeed — their attacks come out extremely fast and they can chase down most players. They also apply Paralyze on hit. Do not treat them like regular Mummies. Prioritize killing them from range with fire damage before they close distance."
+ },
+ {
+ "title": "Projectile Resistance — Don't Rely on Arrows Alone",
+ "priority": "medium",
+ "description": "The Mummy has 150 ProjectileReductionMod, giving it meaningful projectile damage reduction. Rangers and other projectile-based classes should use fire arrows if available, or supplement with melee. Raw physical projectiles are significantly less effective."
+ },
+ {
+ "title": "General Magical Weakness",
+ "priority": "medium",
+ "description": "Beyond fire and divine, the Mummy has -250 general MagicalReduction, making all magic somewhat more effective. Even non-fire spells deal bonus damage. Magic users of any school have an advantage over pure physical attackers against this enemy."
+ },
+ {
+ "title": "Close Range is Safer Than Mid Range",
+ "priority": "low",
+ "description": "At distances under 120cm, the Mummy uses its standard Attack1-3 swings (1700 ratio). At 130-165cm, it uses the devastating Attack5 slams (2400 ratio — 41% more damage). If you must fight in melee, stay very close rather than at medium range to avoid triggering the slam attacks."
+ }
+ ],
+ "elite_differences": [
+ "50% more HP (120 -> 180)",
+ "50% more physical damage (20 -> 30)",
+ "23% faster movement (130 -> 160 MoveSpeed)",
+ "100 ActionSpeed bonus (attacks execute noticeably faster)",
+ "Same resistances and elemental weaknesses as Common",
+ "Same fire vulnerability (-3000 FireMagicalReduction)",
+ "Higher adventure point reward (1 -> 2) and XP (3 -> 4)",
+ "Same impact vulnerability (2 Resistance, 5 Endurance) — still staggerable"
+ ],
+ "ai_perception": {
+ "vision_angle": 180,
+ "vision_description": "180-degree peripheral vision with 1500cm sight radius and 2000cm lose-sight radius — wide forward awareness but blind directly behind",
+ "damage_sense": true,
+ "damage_description": "Always reacts to damage regardless of facing direction or sight range",
+ "hearing": true,
+ "hearing_description": "Reacts to footsteps and other sounds — crouching or slow-walking can help avoid detection",
+ "stuck_tracking": false,
+ "stuck_description": "Uses standard monster pathfinding with CrowdFollowing component for navigation around obstacles and other monsters"
+ }
+}

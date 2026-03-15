@@ -1,0 +1,6058 @@
+{
+  "metadata": {
+    "extractedDate": "2026-03-14",
+    "source": "Crypt _HR_D.json sublevel files",
+    "coordinateFormula": "pctX = (worldY + 1600) / 3200 * 100, pctY = (1600 - worldX) / 3200 * 100",
+    "totalModulesWithMonsters": 55,
+    "totalMonsterSpawners": 813,
+    "uniqueMonsterTypes": [
+      "DeathSkull",
+      "GiantDragonfly",
+      "Lich",
+      "Mimic_Large_Simple_Elite",
+      "Mimic_Medium_MidLevel_Elite",
+      "Mimic_Medium_Simple",
+      "Mimic_Medium_Simple_Elite",
+      "Mimic_Small_Simple_Elite",
+      "Mummy",
+      "SkeletonArcher",
+      "SkeletonAxeman",
+      "SkeletonChampion",
+      "SkeletonCrossbowman",
+      "SkeletonFootmanFromFakeDeath",
+      "SkeletonGuardsmanFromFakeDeath",
+      "SkeletonMage",
+      "SkeletonMelee_5type",
+      "SkeletonRanged_2type",
+      "SkeletonSpearman",
+      "SkeletonSwordman",
+      "SkeletonWarlord",
+      "SpiderMummy",
+      "Wraith",
+      "Zombie"
+    ]
+  },
+  "modules": [
+    {
+      "moduleId": "AltarRoomAB",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 23.1,
+          "pctY": 30.2,
+          "worldX": 635,
+          "worldY": -860
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 35.9,
+          "pctY": 26.6,
+          "worldX": 750,
+          "worldY": -450
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 72.5,
+          "pctY": 70.2,
+          "worldX": -645,
+          "worldY": 720
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 81.4,
+          "pctY": 70.9,
+          "worldX": -670,
+          "worldY": 1005
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 76.9,
+          "pctY": 52.7,
+          "worldX": -85,
+          "worldY": 860
+        },
+        {
+          "name": "Skeleton Crossbowman",
+          "pctX": 85,
+          "pctY": 39.8,
+          "worldX": 327,
+          "worldY": 1120
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 43.8,
+          "pctY": 49.6,
+          "worldX": 12,
+          "worldY": -197
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 56.9,
+          "pctY": 11.9,
+          "worldX": 1220,
+          "worldY": 220
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 72.8,
+          "pctY": 8.3,
+          "worldX": 1335,
+          "worldY": 730
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 68.8,
+          "pctY": 28.4,
+          "worldX": 690,
+          "worldY": 600
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 85,
+          "pctY": 28.4,
+          "worldX": 690,
+          "worldY": 1120
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 33.8,
+          "pctY": 81.9,
+          "worldX": -1020,
+          "worldY": -520
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 47.5,
+          "pctY": 36.3,
+          "worldX": 440,
+          "worldY": -80
+        }
+      ]
+    },
+    {
+      "moduleId": "Atrium",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Archer",
+          "pctX": 15.2,
+          "pctY": 20.5,
+          "worldX": 945,
+          "worldY": -1115
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 80.9,
+          "pctY": 77.3,
+          "worldX": -875,
+          "worldY": 990
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 40,
+          "pctY": 55.8,
+          "worldX": -185,
+          "worldY": -320
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 40,
+          "pctY": 36.7,
+          "worldX": 425,
+          "worldY": -320
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 54.8,
+          "pctY": 36.7,
+          "worldX": 425,
+          "worldY": 155
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 54.8,
+          "pctY": 56.9,
+          "worldX": -220,
+          "worldY": 155
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 48.3,
+          "pctY": 74.8,
+          "worldX": -795,
+          "worldY": -55
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 37.3,
+          "pctY": 83.8,
+          "worldX": -1080,
+          "worldY": -405
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 58.9,
+          "pctY": 15.3,
+          "worldX": 1110,
+          "worldY": 285
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 43.9,
+          "pctY": 25.5,
+          "worldX": 785,
+          "worldY": -195
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 74.8,
+          "pctY": 48,
+          "worldX": 65,
+          "worldY": 795
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 85.3,
+          "pctY": 61.6,
+          "worldX": -370,
+          "worldY": 1130
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 23.9,
+          "pctY": 54.4,
+          "worldX": -140,
+          "worldY": -835
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 14.5,
+          "pctY": 37.5,
+          "worldX": 400,
+          "worldY": -1135
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 24.2,
+          "pctY": 25.5,
+          "worldX": 785,
+          "worldY": -825
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 25.6,
+          "pctY": 74.4,
+          "worldX": -780,
+          "worldY": -780
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 74.1,
+          "pctY": 73.9,
+          "worldX": -765,
+          "worldY": 770
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 72.9,
+          "pctY": 25.6,
+          "worldX": 779.4,
+          "worldY": 734.4
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 49.4,
+          "pctY": 51.9,
+          "worldX": -60,
+          "worldY": -20
+        }
+      ]
+    },
+    {
+      "moduleId": "Cemetery_01",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 72.6,
+          "pctY": 88.7,
+          "worldX": -1240,
+          "worldY": 722
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 36.9,
+          "pctY": 86.1,
+          "worldX": -1156,
+          "worldY": -420
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 42.2,
+          "pctY": 63.3,
+          "worldX": -426,
+          "worldY": -250
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 65.7,
+          "pctY": 37.2,
+          "worldX": 410,
+          "worldY": 503
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 46.6,
+          "pctY": 24.7,
+          "worldX": 810,
+          "worldY": -108
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 64.1,
+          "pctY": 11.9,
+          "worldX": 1220,
+          "worldY": 450
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 35.7,
+          "pctY": 35.3,
+          "worldX": 469,
+          "worldY": -458
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 26.3,
+          "pctY": 26.9,
+          "worldX": 739,
+          "worldY": -757
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 66.7,
+          "pctY": 75.6,
+          "worldX": -820,
+          "worldY": 536
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 43.9,
+          "pctY": 76.7,
+          "worldX": -856,
+          "worldY": -196
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 38.8,
+          "pctY": 76.7,
+          "worldX": -856,
+          "worldY": -358
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 42.3,
+          "pctY": 17,
+          "worldX": 1057,
+          "worldY": -245
+        }
+      ]
+    },
+    {
+      "moduleId": "Cemetery_02",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 33,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": -545
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 32.2,
+          "pctY": 45,
+          "worldX": 160,
+          "worldY": -570
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 17.5,
+          "pctY": 45,
+          "worldX": 160,
+          "worldY": -1040
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 66.4,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": 525
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 83.4,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": 1070
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 82.2,
+          "pctY": 45,
+          "worldX": 160,
+          "worldY": 1030
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 67.5,
+          "pctY": 45,
+          "worldX": 160,
+          "worldY": 560
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 18.9,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": -995
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 16.8,
+          "pctY": 63.7,
+          "worldX": -438,
+          "worldY": -1064
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 33.4,
+          "pctY": 60.5,
+          "worldX": -336,
+          "worldY": -531
+        }
+      ]
+    },
+    {
+      "moduleId": "CenterTower",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 72,
+          "pctY": 65,
+          "worldX": -960,
+          "worldY": 1410
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 81.6,
+          "pctY": 68.8,
+          "worldX": -1200,
+          "worldY": 2020
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 93.4,
+          "pctY": 64.5,
+          "worldX": -928,
+          "worldY": 2780
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 116.8,
+          "pctY": 45.7,
+          "worldX": 275.1,
+          "worldY": 4278.3
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 48.7,
+          "pctY": 93.9,
+          "worldX": -2809,
+          "worldY": -81
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 100.4,
+          "pctY": 54.5,
+          "worldX": -291,
+          "worldY": 3226
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 118.9,
+          "pctY": 88,
+          "worldX": -2430,
+          "worldY": 4410
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 46.9,
+          "pctY": 32.9,
+          "worldX": 1093.6,
+          "worldY": -197.6
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 44.7,
+          "pctY": 35.3,
+          "worldX": 943.8,
+          "worldY": -342.1
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 111.4,
+          "pctY": 65.8,
+          "worldX": -1010,
+          "worldY": 3930
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 42.2,
+          "pctY": 35.6,
+          "worldX": 923.9,
+          "worldY": -502.3
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 46.4,
+          "pctY": 30.7,
+          "worldX": 1233.3,
+          "worldY": -227.9
+        },
+        {
+          "name": "Mummy",
+          "pctX": 68.5,
+          "pctY": 75.4,
+          "worldX": -1625,
+          "worldY": 1181
+        },
+        {
+          "name": "Mummy",
+          "pctX": 62.1,
+          "pctY": 75.4,
+          "worldX": -1625,
+          "worldY": 774
+        },
+        {
+          "name": "Mummy",
+          "pctX": 51.5,
+          "pctY": 75.4,
+          "worldX": -1625,
+          "worldY": 98
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 55.5,
+          "pctY": 85.2,
+          "worldX": -2250,
+          "worldY": 350
+        },
+        {
+          "name": "Mummy",
+          "pctX": 88.6,
+          "pctY": 75.2,
+          "worldX": -1613,
+          "worldY": 2473
+        },
+        {
+          "name": "Mummy",
+          "pctX": 93.6,
+          "pctY": 75.2,
+          "worldX": -1613,
+          "worldY": 2792
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 55,
+          "pctY": 64.1,
+          "worldX": -900,
+          "worldY": 320
+        },
+        {
+          "name": "Mimic Medium Simple",
+          "pctX": 118.3,
+          "pctY": 73.6,
+          "worldX": -1512.8,
+          "worldY": 4371.3
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 69.8,
+          "pctY": 57.7,
+          "worldX": -490,
+          "worldY": 1270
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 84.8,
+          "pctY": 60.3,
+          "worldX": -660,
+          "worldY": 2230
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 101.5,
+          "pctY": 54.7,
+          "worldX": -297.7,
+          "worldY": 3297.8
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 90.3,
+          "pctY": 81.9,
+          "worldX": -2040,
+          "worldY": 2580
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 97.5,
+          "pctY": 101.6,
+          "worldX": -3302,
+          "worldY": 3039
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 69.2,
+          "pctY": 81.1,
+          "worldX": -1990,
+          "worldY": 1230
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 69.7,
+          "pctY": 90.5,
+          "worldX": -2590,
+          "worldY": 1260
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 55.2,
+          "pctY": 75.3,
+          "worldX": -1617,
+          "worldY": 332
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 72.7,
+          "pctY": 73.6,
+          "worldX": -1507.7,
+          "worldY": 1450.8
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 67.3,
+          "pctY": 74.8,
+          "worldX": -1590,
+          "worldY": 1110
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.4,
+          "pctY": 51.7,
+          "worldX": -110,
+          "worldY": 1625
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.2,
+          "pctY": 27,
+          "worldX": 1474.3,
+          "worldY": 1613.7
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 35.2,
+          "pctY": 77.7,
+          "worldX": -1774,
+          "worldY": -948
+        },
+        {
+          "name": "Mummy",
+          "pctX": 77.7,
+          "pctY": 74.8,
+          "worldX": -1588,
+          "worldY": 1770
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 111.9,
+          "pctY": 75,
+          "worldX": -1602,
+          "worldY": 3960
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.4,
+          "pctY": 108.3,
+          "worldX": -3730,
+          "worldY": 1625
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 34,
+          "pctY": 104.3,
+          "worldX": -3476.8,
+          "worldY": -1023.4
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 72.5,
+          "pctY": 76.2,
+          "worldX": -1675.4,
+          "worldY": 1440.3
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 78.1,
+          "pctY": 73.1,
+          "worldX": -1480.8,
+          "worldY": 1799.6
+        },
+        {
+          "name": "Mummy",
+          "pctX": 72.5,
+          "pctY": 74.8,
+          "worldX": -1588,
+          "worldY": 1443
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 117.1,
+          "pctY": 46,
+          "worldX": 257.4,
+          "worldY": 4295.9
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 75.3,
+          "pctY": 76.9,
+          "worldX": -1720,
+          "worldY": 1620
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 88,
+          "pctY": 74.4,
+          "worldX": -1564,
+          "worldY": 2429
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 67.5,
+          "pctY": 66.4,
+          "worldX": -1051,
+          "worldY": 1122
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 75.3,
+          "pctY": 42.6,
+          "worldX": 473,
+          "worldY": 1622
+        }
+      ]
+    },
+    {
+      "moduleId": "CliffBridge",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 52.3,
+          "pctY": 56,
+          "worldX": -193,
+          "worldY": 75
+        },
+        {
+          "name": "Zombie",
+          "pctX": 53.1,
+          "pctY": 57.5,
+          "worldX": -240,
+          "worldY": 100
+        },
+        {
+          "name": "Zombie",
+          "pctX": 37.7,
+          "pctY": 40.9,
+          "worldX": 290,
+          "worldY": -395
+        },
+        {
+          "name": "Zombie",
+          "pctX": 45.5,
+          "pctY": 57.5,
+          "worldX": -240,
+          "worldY": -145
+        },
+        {
+          "name": "Zombie",
+          "pctX": 50.8,
+          "pctY": 47.3,
+          "worldX": 85,
+          "worldY": 25
+        },
+        {
+          "name": "Zombie",
+          "pctX": 54.2,
+          "pctY": 33.6,
+          "worldX": 525,
+          "worldY": 135
+        },
+        {
+          "name": "Zombie",
+          "pctX": 25.8,
+          "pctY": 45,
+          "worldX": 160,
+          "worldY": -775
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 12,
+          "pctY": 80.6,
+          "worldX": -980,
+          "worldY": -1215
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 24.4,
+          "pctY": 84.5,
+          "worldX": -1105,
+          "worldY": -820
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 83.4,
+          "pctY": 16.9,
+          "worldX": 1060,
+          "worldY": 1070
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 46.1,
+          "pctY": 84.1,
+          "worldX": -1090,
+          "worldY": -125
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 87.5,
+          "pctY": 31.3,
+          "worldX": 599,
+          "worldY": 1199
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 50.5,
+          "pctY": 47.2,
+          "worldX": 90,
+          "worldY": 15
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 13.9,
+          "pctY": 48.9,
+          "worldX": 35,
+          "worldY": -1155
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 52.5,
+          "pctY": 26.3,
+          "worldX": 760,
+          "worldY": 80
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 70.9,
+          "pctY": 57.8,
+          "worldX": -250,
+          "worldY": 670
+        }
+      ]
+    },
+    {
+      "moduleId": "ComplexHalls",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Archer",
+          "pctX": 72.3,
+          "pctY": 32,
+          "worldX": 576,
+          "worldY": 715
+        },
+        {
+          "name": "Mummy",
+          "pctX": 52.3,
+          "pctY": 31.9,
+          "worldX": 580,
+          "worldY": 75
+        },
+        {
+          "name": "Mummy",
+          "pctX": 89,
+          "pctY": 5.4,
+          "worldX": 1428.8,
+          "worldY": 1248.7
+        },
+        {
+          "name": "Mummy",
+          "pctX": 95.7,
+          "pctY": 11,
+          "worldX": 1248.8,
+          "worldY": 1463.2
+        },
+        {
+          "name": "Mummy",
+          "pctX": 38.3,
+          "pctY": 22.2,
+          "worldX": 890,
+          "worldY": -375
+        },
+        {
+          "name": "Mummy",
+          "pctX": 26.6,
+          "pctY": 22.2,
+          "worldX": 890,
+          "worldY": -750
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 21.9,
+          "pctY": 23.4,
+          "worldX": 850,
+          "worldY": -900
+        },
+        {
+          "name": "Mummy",
+          "pctX": 18,
+          "pctY": 44.8,
+          "worldX": 165,
+          "worldY": -1025
+        },
+        {
+          "name": "Mummy",
+          "pctX": 31.6,
+          "pctY": 44.8,
+          "worldX": 165,
+          "worldY": -590
+        },
+        {
+          "name": "Mummy",
+          "pctX": 31.6,
+          "pctY": 55.3,
+          "worldX": -170,
+          "worldY": -590
+        },
+        {
+          "name": "Mummy",
+          "pctX": 17.3,
+          "pctY": 55.3,
+          "worldX": -170,
+          "worldY": -1045
+        },
+        {
+          "name": "Mummy",
+          "pctX": 22,
+          "pctY": 49.1,
+          "worldX": 30,
+          "worldY": -895
+        },
+        {
+          "name": "Mummy",
+          "pctX": 81.4,
+          "pctY": 49.5,
+          "worldX": 15,
+          "worldY": 1005
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 27.8,
+          "pctY": 19.7,
+          "worldX": 970,
+          "worldY": -710
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 19.5,
+          "pctY": 19.7,
+          "worldX": 970,
+          "worldY": -975
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 35.2,
+          "pctY": 84.1,
+          "worldX": -1090,
+          "worldY": -475
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 18.1,
+          "pctY": 78.1,
+          "worldX": -900,
+          "worldY": -1020
+        },
+        {
+          "name": "Zombie",
+          "pctX": 65.2,
+          "pctY": 62.5,
+          "worldX": -400,
+          "worldY": 485
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 42.8,
+          "pctY": 21.9,
+          "worldX": 900,
+          "worldY": -230
+        },
+        {
+          "name": "Zombie",
+          "pctX": 79.2,
+          "pctY": 61.9,
+          "worldX": -380,
+          "worldY": 935
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 72,
+          "pctY": 9.7,
+          "worldX": 1290,
+          "worldY": 705
+        },
+        {
+          "name": "Zombie",
+          "pctX": 91.3,
+          "pctY": 75,
+          "worldX": -800,
+          "worldY": 1320
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 72,
+          "pctY": 87.5,
+          "worldX": -1200,
+          "worldY": 705
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 53.9,
+          "pctY": 22.2,
+          "worldX": 890,
+          "worldY": 125
+        }
+      ]
+    },
+    {
+      "moduleId": "Connector_01",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 24.9,
+          "pctY": 24.4,
+          "worldX": 819,
+          "worldY": -804
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 64.4,
+          "pctY": 50.6,
+          "worldX": -20,
+          "worldY": 460
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 75,
+          "pctY": 75.3,
+          "worldX": -810,
+          "worldY": 800
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 25,
+          "pctY": 75,
+          "worldX": -800,
+          "worldY": -800
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 81.6,
+          "pctY": 50.6,
+          "worldX": -20,
+          "worldY": 1011
+        }
+      ]
+    },
+    {
+      "moduleId": "CorridorCrypt",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Spider Mummy",
+          "pctX": 77.5,
+          "pctY": 17.7,
+          "worldX": 1034.1,
+          "worldY": 880
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 74.8,
+          "pctY": 31.6,
+          "worldX": 587.6,
+          "worldY": 793
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 74.8,
+          "pctY": 38,
+          "worldX": 385.3,
+          "worldY": 793.4
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 31.5,
+          "pctY": 55.3,
+          "worldX": -170.4,
+          "worldY": -591.9
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 31.5,
+          "pctY": 46.1,
+          "worldX": 123.6,
+          "worldY": -591.9
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 35.7,
+          "pctY": 50.1,
+          "worldX": -4.2,
+          "worldY": -458.1
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 24.5,
+          "pctY": 38,
+          "worldX": 385.3,
+          "worldY": -814.7
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 24.5,
+          "pctY": 63,
+          "worldX": -415.1,
+          "worldY": -814.7
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 75.6,
+          "pctY": 75,
+          "worldX": -798.7,
+          "worldY": 819
+        }
+      ]
+    },
+    {
+      "moduleId": "DarkMagicLibrary_Center",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 51.4,
+          "pctY": 25.6,
+          "worldX": 781,
+          "worldY": 44
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 47.1,
+          "pctY": 77.3,
+          "worldX": -872,
+          "worldY": -94
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 15.5,
+          "pctY": 57.7,
+          "worldX": -245,
+          "worldY": -1104
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 15.8,
+          "pctY": 49.3,
+          "worldX": 24,
+          "worldY": -1093
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 44.4,
+          "pctY": 15.5,
+          "worldX": 1105,
+          "worldY": -178
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 68.2,
+          "pctY": 35.4,
+          "worldX": 468,
+          "worldY": 582
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 56.8,
+          "pctY": 82.7,
+          "worldX": -1047,
+          "worldY": 216
+        }
+      ]
+    },
+    {
+      "moduleId": "DarkRitualRoom_01",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Warlord",
+          "pctX": 50,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 0
+        },
+        {
+          "name": "Lich",
+          "pctX": 50,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 0
+        }
+      ]
+    },
+    {
+      "moduleId": "Dungeon",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 58.2,
+          "pctY": 72.5,
+          "worldX": -719,
+          "worldY": 263
+        },
+        {
+          "name": "Mummy",
+          "pctX": 48,
+          "pctY": 87.7,
+          "worldX": -1205,
+          "worldY": -64
+        },
+        {
+          "name": "Mummy",
+          "pctX": 48.7,
+          "pctY": 63.6,
+          "worldX": -436,
+          "worldY": -43
+        },
+        {
+          "name": "Mummy",
+          "pctX": 85.4,
+          "pctY": 85.3,
+          "worldX": -1128,
+          "worldY": 1132
+        },
+        {
+          "name": "Mummy",
+          "pctX": 91.7,
+          "pctY": 58.6,
+          "worldX": -274,
+          "worldY": 1333
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 9.2,
+          "pctY": 21.9,
+          "worldX": 899.5,
+          "worldY": -1305.7
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 51.4,
+          "pctY": 61.1,
+          "worldX": -354.1,
+          "worldY": 45.6
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 32.4,
+          "pctY": 63.6,
+          "worldX": -434.8,
+          "worldY": -563.2
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 9,
+          "pctY": 74.4,
+          "worldX": -779.2,
+          "worldY": -1312.1
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 12.3,
+          "pctY": 35.3,
+          "worldX": 468.9,
+          "worldY": -1206.8
+        },
+        {
+          "name": "Zombie",
+          "pctX": 73.2,
+          "pctY": 22.7,
+          "worldX": 872.9,
+          "worldY": 743.9
+        },
+        {
+          "name": "Zombie",
+          "pctX": 78.8,
+          "pctY": 53.8,
+          "worldX": -121.1,
+          "worldY": 920.9
+        },
+        {
+          "name": "Zombie",
+          "pctX": 18.4,
+          "pctY": 46.4,
+          "worldX": 114.9,
+          "worldY": -1011.1
+        },
+        {
+          "name": "Zombie",
+          "pctX": 21.2,
+          "pctY": 76.1,
+          "worldX": -836.4,
+          "worldY": -920.5
+        },
+        {
+          "name": "Zombie",
+          "pctX": 65.7,
+          "pctY": 87,
+          "worldX": -1185.1,
+          "worldY": 503.9
+        },
+        {
+          "name": "Zombie",
+          "pctX": 52.2,
+          "pctY": 84.2,
+          "worldX": -1095.1,
+          "worldY": 68.9
+        }
+      ]
+    },
+    {
+      "moduleId": "EightToOne_01",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 53.1,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 100
+        },
+        {
+          "name": "Mummy",
+          "pctX": 75,
+          "pctY": 75.1,
+          "worldX": -802.1,
+          "worldY": 801.2
+        },
+        {
+          "name": "Mummy",
+          "pctX": 71.2,
+          "pctY": 24.2,
+          "worldX": 826,
+          "worldY": 678.4
+        },
+        {
+          "name": "Mummy",
+          "pctX": 74.9,
+          "pctY": 25.4,
+          "worldX": 787.2,
+          "worldY": 795.5
+        },
+        {
+          "name": "Mummy",
+          "pctX": 23.8,
+          "pctY": 28.1,
+          "worldX": 700.1,
+          "worldY": -838.3
+        },
+        {
+          "name": "Mummy",
+          "pctX": 25,
+          "pctY": 24.5,
+          "worldX": 817.2,
+          "worldY": -799.5
+        },
+        {
+          "name": "Mummy",
+          "pctX": 27.7,
+          "pctY": 76.5,
+          "worldX": -846.6,
+          "worldY": -712.5
+        },
+        {
+          "name": "Mummy",
+          "pctX": 24.1,
+          "pctY": 75.2,
+          "worldX": -807.8,
+          "worldY": -829.5
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 85.7,
+          "pctY": 46.3,
+          "worldX": 120,
+          "worldY": 1144
+        },
+        {
+          "name": "Mummy",
+          "pctX": 76.2,
+          "pctY": 71.4,
+          "worldX": -685,
+          "worldY": 840
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 60.6,
+          "pctY": 15.8,
+          "worldX": 1095,
+          "worldY": 340
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 15.6,
+          "pctY": 41.1,
+          "worldX": 285,
+          "worldY": -1100
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 15.6,
+          "pctY": 60.5,
+          "worldX": -335,
+          "worldY": -1100
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 39.7,
+          "pctY": 84.8,
+          "worldX": -1115,
+          "worldY": -330
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 59.7,
+          "pctY": 84.8,
+          "worldX": -1115,
+          "worldY": 310
+        },
+        {
+          "name": "Mummy",
+          "pctX": 50,
+          "pctY": 45.3,
+          "worldX": 150,
+          "worldY": 0
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 40,
+          "pctY": 15.2,
+          "worldX": 1115,
+          "worldY": -320
+        },
+        {
+          "name": "Mummy",
+          "pctX": 46.6,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": -110
+        },
+        {
+          "name": "Mummy",
+          "pctX": 50,
+          "pctY": 54.4,
+          "worldX": -140,
+          "worldY": 0
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 84.4,
+          "pctY": 60.8,
+          "worldX": -346,
+          "worldY": 1100
+        }
+      ]
+    },
+    {
+      "moduleId": "EightToOne_02",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Archer",
+          "pctX": 41.5,
+          "pctY": 39.2,
+          "worldX": 347,
+          "worldY": -271
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 58.8,
+          "pctY": 60.2,
+          "worldX": -325,
+          "worldY": 281
+        },
+        {
+          "name": "Wraith",
+          "pctX": 50.3,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 10
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 24.6,
+          "pctY": 76.2,
+          "worldX": -839,
+          "worldY": -814
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.5,
+          "pctY": 23.8,
+          "worldX": 837,
+          "worldY": 816
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 25.4,
+          "pctY": 20.8,
+          "worldX": 935,
+          "worldY": -787
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75,
+          "pctY": 76.9,
+          "worldX": -861,
+          "worldY": 799
+        }
+      ]
+    },
+    {
+      "moduleId": "FourRooms",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 26.6,
+          "pctY": 14.2,
+          "worldX": 1144,
+          "worldY": -748
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 15.8,
+          "pctY": 25.9,
+          "worldX": 770,
+          "worldY": -1093
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 28.4,
+          "pctY": 75.6,
+          "worldX": -819,
+          "worldY": -692
+        },
+        {
+          "name": "Mummy",
+          "pctX": 83.6,
+          "pctY": 65.2,
+          "worldX": -485,
+          "worldY": 1076
+        },
+        {
+          "name": "Mummy",
+          "pctX": 81.8,
+          "pctY": 79.5,
+          "worldX": -943,
+          "worldY": 1019
+        },
+        {
+          "name": "Mummy",
+          "pctX": 68,
+          "pctY": 66.5,
+          "worldX": -528,
+          "worldY": 576
+        },
+        {
+          "name": "Zombie",
+          "pctX": 74.5,
+          "pctY": 24.3,
+          "worldX": 821.8,
+          "worldY": 783.8
+        },
+        {
+          "name": "Zombie",
+          "pctX": 72.3,
+          "pctY": 79,
+          "worldX": -928.2,
+          "worldY": 713.8
+        }
+      ]
+    },
+    {
+      "moduleId": "FourWayConnect",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 39.5,
+          "pctY": 57.7,
+          "worldX": -246.2,
+          "worldY": -336.7
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 57.2,
+          "pctY": 58.5,
+          "worldX": -273,
+          "worldY": 230.2
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 60,
+          "pctY": 57.7,
+          "worldX": -247.3,
+          "worldY": 320
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 45.1,
+          "pctY": 39.4,
+          "worldX": 339.8,
+          "worldY": -155.4
+        },
+        {
+          "name": "Mummy",
+          "pctX": 24.9,
+          "pctY": 62.7,
+          "worldX": -407.2,
+          "worldY": -803.4
+        },
+        {
+          "name": "Mummy",
+          "pctX": 25,
+          "pctY": 34.1,
+          "worldX": 508.8,
+          "worldY": -799.5
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 25,
+          "pctY": 51.6,
+          "worldX": -50.7,
+          "worldY": -801.1
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 58.9,
+          "pctY": 25.1,
+          "worldX": 795.6,
+          "worldY": 283.3
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 74.7,
+          "pctY": 53.2,
+          "worldX": -102.9,
+          "worldY": 790.4
+        },
+        {
+          "name": "Mummy",
+          "pctX": 75.3,
+          "pctY": 36.7,
+          "worldX": 426.4,
+          "worldY": 808.8
+        },
+        {
+          "name": "Mummy",
+          "pctX": 49.6,
+          "pctY": 27.8,
+          "worldX": 710.9,
+          "worldY": -12.3
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 89.3,
+          "pctY": 42.6,
+          "worldX": 236,
+          "worldY": 1258
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 84.7,
+          "pctY": 51.9,
+          "worldX": -61,
+          "worldY": 1109
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 84.7,
+          "pctY": 65.5,
+          "worldX": -495,
+          "worldY": 1109
+        },
+        {
+          "name": "Zombie",
+          "pctX": 74.8,
+          "pctY": 75.2,
+          "worldX": -807.4,
+          "worldY": 792.9
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 61.6,
+          "pctY": 25.1,
+          "worldX": 797.8,
+          "worldY": 370.9
+        },
+        {
+          "name": "Zombie",
+          "pctX": 39,
+          "pctY": 25,
+          "worldX": 800,
+          "worldY": -351.6
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 93.7,
+          "pctY": 28.8,
+          "worldX": 677,
+          "worldY": 1399
+        },
+        {
+          "name": "Zombie",
+          "pctX": 25.8,
+          "pctY": 50.8,
+          "worldX": -25,
+          "worldY": -775.4
+        }
+      ]
+    },
+    {
+      "moduleId": "GreatWalkway",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 61.7,
+          "pctY": 38,
+          "worldX": 385,
+          "worldY": 375
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 71.9,
+          "pctY": 6.7,
+          "worldX": 1385,
+          "worldY": 700
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 5.5,
+          "pctY": 69.9,
+          "worldX": -636,
+          "worldY": -1423.1
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 13.3,
+          "pctY": 10,
+          "worldX": 1280,
+          "worldY": -1175
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 90,
+          "pctY": 86.3,
+          "worldX": -1160,
+          "worldY": 1280
+        },
+        {
+          "name": "Skeleton Crossbowman",
+          "pctX": 28.2,
+          "pctY": 93.8,
+          "worldX": -1401,
+          "worldY": -698.1
+        },
+        {
+          "name": "Skeleton Crossbowman",
+          "pctX": 94.8,
+          "pctY": 25.3,
+          "worldX": 790,
+          "worldY": 1435
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 85,
+          "pctY": 70.8,
+          "worldX": -665,
+          "worldY": 1120
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 72.3,
+          "pctY": 85,
+          "worldX": -1120,
+          "worldY": 715
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 29.5,
+          "pctY": 9.8,
+          "worldX": 1285,
+          "worldY": -655
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 17.2,
+          "pctY": 49.7,
+          "worldX": 10,
+          "worldY": -1050
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 81.7,
+          "pctY": 48.8,
+          "worldX": 40,
+          "worldY": 1015
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 25.6,
+          "pctY": 75.2,
+          "worldX": -805,
+          "worldY": -780
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 71.7,
+          "pctY": 27.8,
+          "worldX": 710,
+          "worldY": 695
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 14.1,
+          "pctY": 27,
+          "worldX": 735,
+          "worldY": -1150
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 46.6,
+          "pctY": 83,
+          "worldX": -1055,
+          "worldY": -110
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 52.8,
+          "pctY": 17.7,
+          "worldX": 1035,
+          "worldY": 90
+        },
+        {
+          "name": "Wraith",
+          "pctX": 50,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 0
+        },
+        {
+          "name": "Mummy",
+          "pctX": 55.2,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": 165
+        },
+        {
+          "name": "Mummy",
+          "pctX": 44.7,
+          "pctY": 45,
+          "worldX": 160,
+          "worldY": -170
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 38.9,
+          "pctY": 64.1,
+          "worldX": -450,
+          "worldY": -355
+        }
+      ]
+    },
+    {
+      "moduleId": "HBridge",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Archer",
+          "pctX": 24.7,
+          "pctY": 66.6,
+          "worldX": -530,
+          "worldY": -810
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 24.7,
+          "pctY": 33,
+          "worldX": 545,
+          "worldY": -810
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 45.2,
+          "pctY": 86.9,
+          "worldX": -1180,
+          "worldY": -155
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 60.6,
+          "pctY": 84.1,
+          "worldX": -1090,
+          "worldY": 340
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 52.5,
+          "pctY": 9.4,
+          "worldX": 1300,
+          "worldY": 80
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 14.1,
+          "pctY": 50.2,
+          "worldX": -5,
+          "worldY": -1150
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 73.3,
+          "pctY": 49.8,
+          "worldX": 5,
+          "worldY": 745
+        },
+        {
+          "name": "Wraith",
+          "pctX": 26.3,
+          "pctY": 74.5,
+          "worldX": -785,
+          "worldY": -760
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 25.5,
+          "pctY": 20,
+          "worldX": 960,
+          "worldY": -785
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 25.5,
+          "pctY": 15.9,
+          "worldX": 1090,
+          "worldY": -785
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 81.1,
+          "pctY": 67.5,
+          "worldX": -560,
+          "worldY": 995
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 78.8,
+          "pctY": 31.3,
+          "worldX": 600,
+          "worldY": 920
+        },
+        {
+          "name": "Zombie",
+          "pctX": 47.5,
+          "pctY": 62,
+          "worldX": -385,
+          "worldY": -80
+        },
+        {
+          "name": "Zombie",
+          "pctX": 47.5,
+          "pctY": 37.7,
+          "worldX": 395,
+          "worldY": -80
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 65.6,
+          "pctY": 26.9,
+          "worldX": 740,
+          "worldY": 500
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 55.8,
+          "pctY": 52.7,
+          "worldX": -85,
+          "worldY": 185
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 35.5,
+          "pctY": 73.6,
+          "worldX": -755,
+          "worldY": -465
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 24.8,
+          "pctY": 19.1,
+          "worldX": 990,
+          "worldY": -805
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 24.8,
+          "pctY": 17,
+          "worldX": 1055,
+          "worldY": -805
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 24.8,
+          "pctY": 17.8,
+          "worldX": 1030,
+          "worldY": -805
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 75.5,
+          "pctY": 51.1,
+          "worldX": -35,
+          "worldY": 815
+        },
+        {
+          "name": "Mimic Medium Simple",
+          "pctX": 85.3,
+          "pctY": 55.2,
+          "worldX": -165,
+          "worldY": 1128
+        },
+        {
+          "name": "Mimic Medium Simple",
+          "pctX": 85.3,
+          "pctY": 35.3,
+          "worldX": 470,
+          "worldY": 1128
+        },
+        {
+          "name": "Zombie",
+          "pctX": 12.6,
+          "pctY": 49.9,
+          "worldX": 2,
+          "worldY": -1196
+        }
+      ]
+    },
+    {
+      "moduleId": "LargeRoomPit",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Zombie",
+          "pctX": 51.7,
+          "pctY": 48.2,
+          "worldX": 59,
+          "worldY": 56
+        },
+        {
+          "name": "Zombie",
+          "pctX": 57.7,
+          "pctY": 28.6,
+          "worldX": 684,
+          "worldY": 246
+        },
+        {
+          "name": "Zombie",
+          "pctX": 68.1,
+          "pctY": 58.4,
+          "worldX": -270,
+          "worldY": 580
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 39.8,
+          "pctY": 20,
+          "worldX": 961,
+          "worldY": -325
+        },
+        {
+          "name": "Zombie",
+          "pctX": 24.6,
+          "pctY": 59.1,
+          "worldX": -290,
+          "worldY": -813
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 56.5,
+          "pctY": 78.1,
+          "worldX": -900,
+          "worldY": 207
+        },
+        {
+          "name": "Zombie",
+          "pctX": 28.4,
+          "pctY": 73.8,
+          "worldX": -763,
+          "worldY": -690
+        },
+        {
+          "name": "Zombie",
+          "pctX": 59.1,
+          "pctY": 46.6,
+          "worldX": 108,
+          "worldY": 290
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 49.6,
+          "pctY": 62.6,
+          "worldX": -404,
+          "worldY": -14
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 50.6,
+          "pctY": 38.4,
+          "worldX": 372,
+          "worldY": 18
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 49.2,
+          "pctY": 73.8,
+          "worldX": -760,
+          "worldY": -25
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 49.7,
+          "pctY": 27,
+          "worldX": 735,
+          "worldY": -10
+        },
+        {
+          "name": "Zombie",
+          "pctX": 41.9,
+          "pctY": 28.2,
+          "worldX": 698,
+          "worldY": -260
+        }
+      ]
+    },
+    {
+      "moduleId": "Maze",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 46.9,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": -100
+        },
+        {
+          "name": "Mummy",
+          "pctX": 51.9,
+          "pctY": 45.2,
+          "worldX": 153,
+          "worldY": 61
+        },
+        {
+          "name": "Mummy",
+          "pctX": 51.8,
+          "pctY": 54.6,
+          "worldX": -147,
+          "worldY": 56
+        }
+      ]
+    },
+    {
+      "moduleId": "Ramparts",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Mage",
+          "pctX": 49.9,
+          "pctY": 49.9,
+          "worldX": 3.7,
+          "worldY": -2
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 66.8,
+          "pctY": 34.3,
+          "worldX": 503.7,
+          "worldY": 538
+        },
+        {
+          "name": "Skeleton Crossbowman",
+          "pctX": 34.5,
+          "pctY": 67.4,
+          "worldX": -556.3,
+          "worldY": -497
+        },
+        {
+          "name": "Zombie",
+          "pctX": 17.9,
+          "pctY": 48.3,
+          "worldX": 53.7,
+          "worldY": -1027
+        },
+        {
+          "name": "Zombie",
+          "pctX": 83.7,
+          "pctY": 49.1,
+          "worldX": 28.7,
+          "worldY": 1078
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 49.5,
+          "pctY": 82.2,
+          "worldX": -1031.3,
+          "worldY": -17
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 49.8,
+          "pctY": 16,
+          "worldX": 1088.7,
+          "worldY": -7
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 49.8,
+          "pctY": 21.3,
+          "worldX": 918.7,
+          "worldY": -7
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 49.8,
+          "pctY": 76.6,
+          "worldX": -851.3,
+          "worldY": -7
+        }
+      ]
+    },
+    {
+      "moduleId": "TheCage",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Wraith",
+          "pctX": 46.4,
+          "pctY": 50.3,
+          "worldX": -10,
+          "worldY": -114
+        },
+        {
+          "name": "Mimic Small Simple Elite",
+          "pctX": 21.8,
+          "pctY": 42.7,
+          "worldX": 235,
+          "worldY": -902
+        },
+        {
+          "name": "Zombie",
+          "pctX": 35.6,
+          "pctY": 12.8,
+          "worldX": 1190,
+          "worldY": -460
+        },
+        {
+          "name": "Zombie",
+          "pctX": 35,
+          "pctY": 16.6,
+          "worldX": 1070,
+          "worldY": -480
+        },
+        {
+          "name": "Mummy",
+          "pctX": 15.6,
+          "pctY": 40.3,
+          "worldX": 310,
+          "worldY": -1100
+        },
+        {
+          "name": "Mummy",
+          "pctX": 12.8,
+          "pctY": 40.3,
+          "worldX": 310,
+          "worldY": -1190
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 80.9,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 990
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 74.7,
+          "pctY": 52.2,
+          "worldX": -70,
+          "worldY": 790
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 71.7,
+          "pctY": 47.8,
+          "worldX": 70,
+          "worldY": 695
+        },
+        {
+          "name": "Zombie",
+          "pctX": 47.7,
+          "pctY": 47,
+          "worldX": 95,
+          "worldY": -75
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 55.3,
+          "pctY": 70.3,
+          "worldX": -650,
+          "worldY": 170
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 46.4,
+          "pctY": 27,
+          "worldX": 735,
+          "worldY": -115
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 67.7,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 565
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 49.5,
+          "pctY": 16.3,
+          "worldX": 1080,
+          "worldY": -15
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 49.4,
+          "pctY": 85.2,
+          "worldX": -1125,
+          "worldY": -20
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 14.1,
+          "pctY": 49.2,
+          "worldX": 25,
+          "worldY": -1150
+        },
+        {
+          "name": "Zombie",
+          "pctX": 32.7,
+          "pctY": 83.1,
+          "worldX": -1060,
+          "worldY": -555
+        },
+        {
+          "name": "Zombie",
+          "pctX": 47.8,
+          "pctY": 53.3,
+          "worldX": -107,
+          "worldY": -72
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 81.3,
+          "pctY": 38.1,
+          "worldX": 380,
+          "worldY": 1000
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 81.3,
+          "pctY": 62.8,
+          "worldX": -410,
+          "worldY": 1000
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 14.1,
+          "pctY": 43.3,
+          "worldX": 215,
+          "worldY": -1150
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 88.1,
+          "pctY": 11.9,
+          "worldX": 1220,
+          "worldY": 1220
+        },
+        {
+          "name": "Mimic Small Simple Elite",
+          "pctX": 21.8,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": -901
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 86.9,
+          "pctY": 85,
+          "worldX": -1120,
+          "worldY": 1180
+        },
+        {
+          "name": "Mimic Small Simple Elite",
+          "pctX": 22,
+          "pctY": 57.3,
+          "worldX": -235,
+          "worldY": -895
+        },
+        {
+          "name": "Zombie",
+          "pctX": 87.7,
+          "pctY": 16.7,
+          "worldX": 1065,
+          "worldY": 1205
+        }
+      ]
+    },
+    {
+      "moduleId": "TheMiniWheel",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 14.1,
+          "pctY": 44.5,
+          "worldX": 175,
+          "worldY": -1150
+        },
+        {
+          "name": "Mummy",
+          "pctX": 48.8,
+          "pctY": 44.4,
+          "worldX": 180,
+          "worldY": -40
+        },
+        {
+          "name": "Mummy",
+          "pctX": 53.9,
+          "pctY": 54.1,
+          "worldX": -130,
+          "worldY": 125
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 56.6,
+          "pctY": 48.6,
+          "worldX": 45,
+          "worldY": 210
+        },
+        {
+          "name": "Mummy",
+          "pctX": 45,
+          "pctY": 15.9,
+          "worldX": 1090,
+          "worldY": -160
+        },
+        {
+          "name": "Wraith",
+          "pctX": 50.3,
+          "pctY": 27.2,
+          "worldX": 730,
+          "worldY": 10
+        },
+        {
+          "name": "Mummy",
+          "pctX": 55.3,
+          "pctY": 15.9,
+          "worldX": 1090,
+          "worldY": 170
+        },
+        {
+          "name": "Zombie",
+          "pctX": 73.4,
+          "pctY": 26.5,
+          "worldX": 753.3,
+          "worldY": 749.7
+        },
+        {
+          "name": "Zombie",
+          "pctX": 23.7,
+          "pctY": 75.2,
+          "worldX": -807,
+          "worldY": -843
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 52.8,
+          "pctY": 58.4,
+          "worldX": -270,
+          "worldY": 90
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 52.8,
+          "pctY": 46.1,
+          "worldX": 125,
+          "worldY": 90
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 41.6,
+          "pctY": 46.1,
+          "worldX": 125,
+          "worldY": -270
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 84.5,
+          "pctY": 45,
+          "worldX": 160,
+          "worldY": 1105
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 64.1,
+          "pctY": 50.9,
+          "worldX": -30,
+          "worldY": 450
+        }
+      ]
+    },
+    {
+      "moduleId": "ThePit",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Archer",
+          "pctX": 18.3,
+          "pctY": 48.3,
+          "worldX": 55,
+          "worldY": -1015
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 81.1,
+          "pctY": 48.3,
+          "worldX": 55,
+          "worldY": 995
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 53,
+          "pctY": 56,
+          "worldX": -193.1,
+          "worldY": 96.1
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 45.5,
+          "pctY": 45.8,
+          "worldX": 135,
+          "worldY": -145
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 49.6,
+          "pctY": 82,
+          "worldX": -1023,
+          "worldY": -13
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 49.3,
+          "pctY": 63.7,
+          "worldX": -439,
+          "worldY": -23
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 51.3,
+          "pctY": 37,
+          "worldX": 415,
+          "worldY": 43
+        },
+        {
+          "name": "Zombie",
+          "pctX": 74.8,
+          "pctY": 22.3,
+          "worldX": 887,
+          "worldY": 795
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 51.2,
+          "pctY": 20.2,
+          "worldX": 955,
+          "worldY": 40
+        },
+        {
+          "name": "Zombie",
+          "pctX": 29.1,
+          "pctY": 78.9,
+          "worldX": -925,
+          "worldY": -670
+        },
+        {
+          "name": "Mummy",
+          "pctX": 84.7,
+          "pctY": 75.9,
+          "worldX": -828,
+          "worldY": 1110
+        },
+        {
+          "name": "Mummy",
+          "pctX": 25.2,
+          "pctY": 14.9,
+          "worldX": 1124,
+          "worldY": -794
+        }
+      ]
+    },
+    {
+      "moduleId": "Tomb_Center",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 75.2,
+          "pctY": 88.3,
+          "worldX": -1225,
+          "worldY": 805
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 54.7,
+          "pctY": 14.1,
+          "worldX": 1150,
+          "worldY": 150
+        },
+        {
+          "name": "Mummy",
+          "pctX": 22.5,
+          "pctY": 74.7,
+          "worldX": -790,
+          "worldY": -880
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.5,
+          "pctY": 28.7,
+          "worldX": 681,
+          "worldY": 815
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 54.7,
+          "pctY": 84.4,
+          "worldX": -1100,
+          "worldY": 150
+        },
+        {
+          "name": "Mummy",
+          "pctX": 66.3,
+          "pctY": 55.3,
+          "worldX": -170,
+          "worldY": 520
+        },
+        {
+          "name": "Zombie",
+          "pctX": 16.6,
+          "pctY": 18.6,
+          "worldX": 1005,
+          "worldY": -1070
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 35.7,
+          "pctY": 65,
+          "worldX": -481,
+          "worldY": -458
+        },
+        {
+          "name": "Zombie",
+          "pctX": 21.9,
+          "pctY": 30.9,
+          "worldX": 610,
+          "worldY": -900
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 80.3,
+          "pctY": 10,
+          "worldX": 1279,
+          "worldY": 971
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 20.9,
+          "pctY": 90.5,
+          "worldX": -1297,
+          "worldY": -931
+        },
+        {
+          "name": "Mummy",
+          "pctX": 14.4,
+          "pctY": 57.2,
+          "worldX": -230,
+          "worldY": -1140
+        }
+      ]
+    },
+    {
+      "moduleId": "TreasureRoom_01",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 85.1,
+          "pctY": 37.8,
+          "worldX": 392,
+          "worldY": 1123
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 14.7,
+          "pctY": 58.2,
+          "worldX": -262,
+          "worldY": -1130
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 43.6,
+          "pctY": 17,
+          "worldX": 1057,
+          "worldY": -205
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 65.6,
+          "pctY": 34.5,
+          "worldX": 497,
+          "worldY": 500
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 60.4,
+          "pctY": 25.5,
+          "worldX": 785,
+          "worldY": 333
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 49.4,
+          "pctY": 75.2,
+          "worldX": -806,
+          "worldY": -19
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 49.3,
+          "pctY": 83.5,
+          "worldX": -1071,
+          "worldY": -21
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 85.2,
+          "pctY": 71.2,
+          "worldX": -677,
+          "worldY": 1126
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 55.7,
+          "pctY": 74.4,
+          "worldX": -782,
+          "worldY": 184
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 49.7,
+          "pctY": 54.1,
+          "worldX": -131,
+          "worldY": -10
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 41.7,
+          "pctY": 72.8,
+          "worldX": -730,
+          "worldY": -265
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 58,
+          "pctY": 27.3,
+          "worldX": 725,
+          "worldY": 255
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 47.1,
+          "pctY": 25.5,
+          "worldX": 785,
+          "worldY": -92
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 41.2,
+          "pctY": 26.7,
+          "worldX": 744.1,
+          "worldY": -281.3
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 49.4,
+          "pctY": 20.9,
+          "worldX": 930,
+          "worldY": -20
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 45.9,
+          "pctY": 70.5,
+          "worldX": -655,
+          "worldY": -130
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 53,
+          "pctY": 70.5,
+          "worldX": -655,
+          "worldY": 95
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 63.6,
+          "pctY": 85.2,
+          "worldX": -1126,
+          "worldY": 434
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 35.8,
+          "pctY": 67.5,
+          "worldX": -561,
+          "worldY": -454
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 9.3,
+          "pctY": 39.6,
+          "worldX": 332,
+          "worldY": -1301
+        }
+      ]
+    },
+    {
+      "moduleId": "Vault",
+      "category": "Center",
+      "monsters": [
+        {
+          "name": "Wraith",
+          "pctX": 59.3,
+          "pctY": 39.8,
+          "worldX": 326,
+          "worldY": 299
+        },
+        {
+          "name": "Mummy",
+          "pctX": 54.6,
+          "pctY": 94.7,
+          "worldX": -1429,
+          "worldY": 148
+        },
+        {
+          "name": "Mummy",
+          "pctX": 94.2,
+          "pctY": 49.3,
+          "worldX": 24,
+          "worldY": 1414
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 84.3,
+          "pctY": 49.2,
+          "worldX": 25,
+          "worldY": 1099
+        },
+        {
+          "name": "Mummy",
+          "pctX": 54.2,
+          "pctY": 6.3,
+          "worldX": 1400,
+          "worldY": 135
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 45.1,
+          "pctY": 91,
+          "worldX": -1312,
+          "worldY": -156
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 45.1,
+          "pctY": 14,
+          "worldX": 1152,
+          "worldY": -156
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 45.1,
+          "pctY": 36.4,
+          "worldX": 434,
+          "worldY": -156
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 56.9,
+          "pctY": 53.7,
+          "worldX": -118,
+          "worldY": 221
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 12.3,
+          "pctY": 49.2,
+          "worldX": 25,
+          "worldY": -1205
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 39.2,
+          "pctY": 60,
+          "worldX": -319.4,
+          "worldY": -347
+        },
+        {
+          "name": "Mummy",
+          "pctX": 6.7,
+          "pctY": 56.9,
+          "worldX": -222,
+          "worldY": -1385
+        }
+      ]
+    },
+    {
+      "moduleId": "AdmirerRoom",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 66.6,
+          "pctY": 71.2,
+          "worldX": -677,
+          "worldY": 531
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 16.7,
+          "pctY": 58.8,
+          "worldX": -281.4,
+          "worldY": -1064.4
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 13.3,
+          "pctY": 48.3,
+          "worldX": 53.6,
+          "worldY": -1175.4
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 26.5,
+          "pctY": 34.5,
+          "worldX": 497.6,
+          "worldY": -750.4
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 35.1,
+          "pctY": 58.3,
+          "worldX": -265.4,
+          "worldY": -477.4
+        },
+        {
+          "name": "Zombie",
+          "pctX": 74.7,
+          "pctY": 78.8,
+          "worldX": -921,
+          "worldY": 790
+        },
+        {
+          "name": "Zombie",
+          "pctX": 82.9,
+          "pctY": 75.5,
+          "worldX": -815,
+          "worldY": 1054
+        },
+        {
+          "name": "Zombie",
+          "pctX": 65,
+          "pctY": 14.7,
+          "worldX": 1130,
+          "worldY": 480
+        },
+        {
+          "name": "Zombie",
+          "pctX": 85,
+          "pctY": 34.7,
+          "worldX": 490,
+          "worldY": 1120
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 70.3,
+          "pctY": 27.2,
+          "worldX": 731,
+          "worldY": 648
+        },
+        {
+          "name": "Mummy",
+          "pctX": 85.6,
+          "pctY": 16,
+          "worldX": 1089,
+          "worldY": 1138
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 75.5,
+          "pctY": 75.3,
+          "worldX": -811,
+          "worldY": 815
+        }
+      ]
+    },
+    {
+      "moduleId": "Armory",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 23.5,
+          "pctY": 58,
+          "worldX": -255,
+          "worldY": -847
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 23.5,
+          "pctY": 52.1,
+          "worldX": -66,
+          "worldY": -847
+        },
+        {
+          "name": "Mummy",
+          "pctX": 88,
+          "pctY": 82.5,
+          "worldX": -1039.8,
+          "worldY": 1214.7
+        },
+        {
+          "name": "Mummy",
+          "pctX": 92,
+          "pctY": 82.5,
+          "worldX": -1039.8,
+          "worldY": 1342.7
+        },
+        {
+          "name": "Mummy",
+          "pctX": 88,
+          "pctY": 18.9,
+          "worldX": 995.2,
+          "worldY": 1214.7
+        },
+        {
+          "name": "Mummy",
+          "pctX": 54.6,
+          "pctY": 43.8,
+          "worldX": 199,
+          "worldY": 148
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 34.3,
+          "pctY": 55.3,
+          "worldX": -168,
+          "worldY": -504
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 66.1,
+          "pctY": 54.9,
+          "worldX": -158,
+          "worldY": 516
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 36.8,
+          "pctY": 38.1,
+          "worldX": 382,
+          "worldY": -424
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 45.3,
+          "pctY": 26.4,
+          "worldX": 754,
+          "worldY": -151
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 44.1,
+          "pctY": 75.3,
+          "worldX": -811,
+          "worldY": -188
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 55.5,
+          "pctY": 78.9,
+          "worldX": -926,
+          "worldY": 177
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 53,
+          "pctY": 66,
+          "worldX": -511,
+          "worldY": 95
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 67.5,
+          "pctY": 54.9,
+          "worldX": -158,
+          "worldY": 561
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 30.9,
+          "pctY": 54.9,
+          "worldX": -158,
+          "worldY": -610
+        },
+        {
+          "name": "Mummy",
+          "pctX": 92,
+          "pctY": 18.9,
+          "worldX": 995.2,
+          "worldY": 1342.7
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.9,
+          "pctY": 25.4,
+          "worldX": 787,
+          "worldY": 829
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 13.6,
+          "pctY": 50,
+          "worldX": -1,
+          "worldY": -1166
+        }
+      ]
+    },
+    {
+      "moduleId": "Barracks",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 11.8,
+          "pctY": 33.2,
+          "worldX": 537,
+          "worldY": -1224
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 57.5,
+          "pctY": 30.6,
+          "worldX": 621,
+          "worldY": 241
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 50.3,
+          "pctY": 18.4,
+          "worldX": 1011,
+          "worldY": 10
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 49.9,
+          "pctY": 32,
+          "worldX": 575,
+          "worldY": -4
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 39.1,
+          "pctY": 17.6,
+          "worldX": 1036,
+          "worldY": -349
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 92.6,
+          "pctY": 11.1,
+          "worldX": 1245,
+          "worldY": 1364
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 36.3,
+          "pctY": 75,
+          "worldX": -800,
+          "worldY": -440
+        },
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 55,
+          "pctY": 88,
+          "worldX": -1215,
+          "worldY": 160
+        }
+      ]
+    },
+    {
+      "moduleId": "Catacomb",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 46.7,
+          "pctY": 16.2,
+          "worldX": 1082.6,
+          "worldY": -104.1
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 65.9,
+          "pctY": 47.8,
+          "worldX": 69,
+          "worldY": 509
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 55,
+          "pctY": 41.8,
+          "worldX": 261,
+          "worldY": 159
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 35.7,
+          "pctY": 75.8,
+          "worldX": -825.4,
+          "worldY": -457.1
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 22.6,
+          "pctY": 77.7,
+          "worldX": -885.4,
+          "worldY": -877.1
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 21.3,
+          "pctY": 45.5,
+          "worldX": 144.6,
+          "worldY": -917.1
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 74.8,
+          "pctY": 35.6,
+          "worldX": 459.6,
+          "worldY": 792.9
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 74.8,
+          "pctY": 51.8,
+          "worldX": -57.4,
+          "worldY": 793.9
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 54.9,
+          "pctY": 57.9,
+          "worldX": -252,
+          "worldY": 158
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 45.3,
+          "pctY": 49,
+          "worldX": 33,
+          "worldY": -151
+        },
+        {
+          "name": "Zombie",
+          "pctX": 76.8,
+          "pctY": 77.4,
+          "worldX": -876,
+          "worldY": 858
+        }
+      ]
+    },
+    {
+      "moduleId": "Cemetery_03",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 35.5,
+          "pctY": 10.3,
+          "worldX": 1270,
+          "worldY": -464
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 64.4,
+          "pctY": 10.3,
+          "worldX": 1270,
+          "worldY": 460
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 85.3,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": 1130
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 25.2,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": -795
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 41.2,
+          "pctY": 82.1,
+          "worldX": -1027.1,
+          "worldY": -282.2
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 59.1,
+          "pctY": 19,
+          "worldX": 992.9,
+          "worldY": 292.8
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 86.5,
+          "pctY": 23.6,
+          "worldX": 845,
+          "worldY": 1168
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 50.3,
+          "pctY": 78.1,
+          "worldX": -900,
+          "worldY": 10
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 74.8,
+          "pctY": 74.7,
+          "worldX": -789,
+          "worldY": 793
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 27.9,
+          "pctY": 24.1,
+          "worldX": 828,
+          "worldY": -708
+        }
+      ]
+    },
+    {
+      "moduleId": "Chapel",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 28.1,
+          "pctY": 17.1,
+          "worldX": 1054,
+          "worldY": -702
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 87.4,
+          "pctY": 6.8,
+          "worldX": 1381,
+          "worldY": 1198
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 62.2,
+          "pctY": 46.6,
+          "worldX": 110,
+          "worldY": 390
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 45.3,
+          "pctY": 46.6,
+          "worldX": 110,
+          "worldY": -150
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 68.8,
+          "pctY": 78.7,
+          "worldX": -919.1,
+          "worldY": 601
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 82.5,
+          "pctY": 50.6,
+          "worldX": -18.5,
+          "worldY": 1038.9
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 69.1,
+          "pctY": 19.2,
+          "worldX": 986,
+          "worldY": 611
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 14.5,
+          "pctY": 47,
+          "worldX": 96,
+          "worldY": -1135.8
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 14.5,
+          "pctY": 52.7,
+          "worldX": -86,
+          "worldY": -1135.8
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 28.3,
+          "pctY": 59.5,
+          "worldX": -303.3,
+          "worldY": -696
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 33.1,
+          "pctY": 37.4,
+          "worldX": 403,
+          "worldY": -541.8
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 60.1,
+          "pctY": 84.7,
+          "worldX": -1111.5,
+          "worldY": 322.5
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 29.8,
+          "pctY": 75.4,
+          "worldX": -811.5,
+          "worldY": -647.5
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 29.8,
+          "pctY": 23.8,
+          "worldX": 838.5,
+          "worldY": -647.5
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 80.4,
+          "pctY": 57.4,
+          "worldX": -236.5,
+          "worldY": 973.2
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 80.7,
+          "pctY": 43.4,
+          "worldX": 212.7,
+          "worldY": 983.2
+        }
+      ]
+    },
+    {
+      "moduleId": "Cistern",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 68.4,
+          "pctY": 46.6,
+          "worldX": 110,
+          "worldY": 590
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 25.6,
+          "pctY": 72.5,
+          "worldX": -720,
+          "worldY": -780
+        },
+        {
+          "name": "Zombie",
+          "pctX": 28.4,
+          "pctY": 40,
+          "worldX": 320,
+          "worldY": -690
+        },
+        {
+          "name": "Zombie",
+          "pctX": 73.1,
+          "pctY": 40,
+          "worldX": 320,
+          "worldY": 740
+        },
+        {
+          "name": "Zombie",
+          "pctX": 73.1,
+          "pctY": 70,
+          "worldX": -640,
+          "worldY": 740
+        },
+        {
+          "name": "Zombie",
+          "pctX": 28.7,
+          "pctY": 70,
+          "worldX": -640,
+          "worldY": -680
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 49.5,
+          "pctY": 45.8,
+          "worldX": 133,
+          "worldY": -16
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 48.9,
+          "pctY": 42,
+          "worldX": 257,
+          "worldY": -36
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 51,
+          "pctY": 53.9,
+          "worldX": -124,
+          "worldY": 32
+        }
+      ]
+    },
+    {
+      "moduleId": "Connector_Trap_01",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 53,
+          "pctY": 25.2,
+          "worldX": 793,
+          "worldY": 96
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 41.2,
+          "pctY": 55.8,
+          "worldX": -186,
+          "worldY": -283
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 58.9,
+          "pctY": 55.8,
+          "worldX": -186,
+          "worldY": 284
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 67.2,
+          "pctY": 68.4,
+          "worldX": -590,
+          "worldY": 550
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.2,
+          "pctY": 25.8,
+          "worldX": 773,
+          "worldY": 806
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 24.2,
+          "pctY": 25.8,
+          "worldX": 773,
+          "worldY": -825
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 50.3,
+          "pctY": 17.3,
+          "worldX": 1046,
+          "worldY": 9
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 50.7,
+          "pctY": 17.3,
+          "worldX": 1047,
+          "worldY": 23
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 64.7,
+          "pctY": 35,
+          "worldX": 480,
+          "worldY": 470
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 36.6,
+          "pctY": 17.2,
+          "worldX": 1050,
+          "worldY": -430
+        }
+      ]
+    },
+    {
+      "moduleId": "Connector_Trap_02",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 68.4,
+          "pctY": 17.8,
+          "worldX": 1030,
+          "worldY": 588
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 50.2,
+          "pctY": 17,
+          "worldX": 1055,
+          "worldY": 5
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 49.3,
+          "pctY": 63.2,
+          "worldX": -422,
+          "worldY": -21
+        },
+        {
+          "name": "Zombie",
+          "pctX": 50.5,
+          "pctY": 33.5,
+          "worldX": 528,
+          "worldY": 17
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 24.2,
+          "pctY": 16.8,
+          "worldX": 1064,
+          "worldY": -825
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 63.1,
+          "pctY": 19.7,
+          "worldX": 970,
+          "worldY": 420
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 33.8,
+          "pctY": 27.8,
+          "worldX": 710,
+          "worldY": -520
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 33.8,
+          "pctY": 11.9,
+          "worldX": 1220,
+          "worldY": -520
+        }
+      ]
+    },
+    {
+      "moduleId": "CorridorofDarkPriests",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 13,
+          "pctY": 14.1,
+          "worldX": 1150,
+          "worldY": -1185
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 50.8,
+          "pctY": 13.3,
+          "worldX": 1175,
+          "worldY": 25
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 14.2,
+          "pctY": 63.4,
+          "worldX": -430,
+          "worldY": -1145
+        },
+        {
+          "name": "Mummy",
+          "pctX": 49.8,
+          "pctY": 81.9,
+          "worldX": -1021,
+          "worldY": -6
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 84.2,
+          "pctY": 15.6,
+          "worldX": 1100,
+          "worldY": 1095
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 84.7,
+          "pctY": 66.9,
+          "worldX": -540,
+          "worldY": 1110
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 50.3,
+          "pctY": 64.2,
+          "worldX": -455,
+          "worldY": 10
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 14.8,
+          "pctY": 84.4,
+          "worldX": -1100,
+          "worldY": -1125
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 85.8,
+          "pctY": 86.3,
+          "worldX": -1160,
+          "worldY": 1145
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 84.8,
+          "pctY": 37.2,
+          "worldX": 410,
+          "worldY": 1115
+        },
+        {
+          "name": "Mummy",
+          "pctX": 49.8,
+          "pctY": 33.6,
+          "worldX": 524,
+          "worldY": -5
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 60.2,
+          "pctY": 86.7,
+          "worldX": -1175,
+          "worldY": 325
+        }
+      ]
+    },
+    {
+      "moduleId": "CrossRoad",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 87.8,
+          "pctY": 50.2,
+          "worldX": -5,
+          "worldY": 1208
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 56.7,
+          "pctY": 82.6,
+          "worldX": -1042,
+          "worldY": 215
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 56.7,
+          "pctY": 66,
+          "worldX": -512,
+          "worldY": 215
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 55.9,
+          "pctY": 14.2,
+          "worldX": 1147,
+          "worldY": 189
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 50.2,
+          "pctY": 35.4,
+          "worldX": 468,
+          "worldY": 5
+        },
+        {
+          "name": "Mummy",
+          "pctX": 69.1,
+          "pctY": 22.5,
+          "worldX": 880,
+          "worldY": 611
+        },
+        {
+          "name": "Mummy",
+          "pctX": 78.5,
+          "pctY": 27.8,
+          "worldX": 710,
+          "worldY": 911
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 61.1,
+          "pctY": 68,
+          "worldX": -574.7,
+          "worldY": 353.7
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 43.3,
+          "pctY": 65.3,
+          "worldX": -490.7,
+          "worldY": -213.3
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 60.8,
+          "pctY": 77.5,
+          "worldX": -878.7,
+          "worldY": 344.7
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 43.3,
+          "pctY": 83.6,
+          "worldX": -1074.7,
+          "worldY": -213.3
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 36,
+          "pctY": 43.9,
+          "worldX": 195,
+          "worldY": -449
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 36,
+          "pctY": 55.8,
+          "worldX": -185,
+          "worldY": -449
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 13.9,
+          "pctY": 55.8,
+          "worldX": -184,
+          "worldY": -1155
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 13.9,
+          "pctY": 43.9,
+          "worldX": 196,
+          "worldY": -1155
+        }
+      ]
+    },
+    {
+      "moduleId": "DeathHall",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 85.3,
+          "pctY": 36,
+          "worldX": 448,
+          "worldY": 1131
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 14,
+          "pctY": 63.6,
+          "worldX": -436,
+          "worldY": -1151
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 50.4,
+          "pctY": 15.5,
+          "worldX": 1103,
+          "worldY": 14
+        },
+        {
+          "name": "Mummy",
+          "pctX": 46.4,
+          "pctY": 6,
+          "worldX": 1407,
+          "worldY": -114
+        },
+        {
+          "name": "Wraith",
+          "pctX": 50.2,
+          "pctY": 85.9,
+          "worldX": -1149,
+          "worldY": 6
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 47.4,
+          "pctY": 86.6,
+          "worldX": -1170,
+          "worldY": -82
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 52.4,
+          "pctY": 86.3,
+          "worldX": -1163,
+          "worldY": 76
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 45.7,
+          "pctY": 89.4,
+          "worldX": -1260,
+          "worldY": -137
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 53,
+          "pctY": 89.4,
+          "worldX": -1260,
+          "worldY": 97
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 44.4,
+          "pctY": 83.3,
+          "worldX": -1066,
+          "worldY": -178
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 55.3,
+          "pctY": 83.2,
+          "worldX": -1062,
+          "worldY": 170
+        },
+        {
+          "name": "Mummy",
+          "pctX": 33.4,
+          "pctY": 34.7,
+          "worldX": 491,
+          "worldY": -531
+        },
+        {
+          "name": "Mummy",
+          "pctX": 40.8,
+          "pctY": 50.2,
+          "worldX": -6,
+          "worldY": -296
+        },
+        {
+          "name": "Mummy",
+          "pctX": 30.6,
+          "pctY": 58.7,
+          "worldX": -279,
+          "worldY": -621
+        },
+        {
+          "name": "Mummy",
+          "pctX": 64.5,
+          "pctY": 34.3,
+          "worldX": 504,
+          "worldY": 465
+        },
+        {
+          "name": "Mummy",
+          "pctX": 68.4,
+          "pctY": 62.8,
+          "worldX": -409,
+          "worldY": 589
+        },
+        {
+          "name": "Mummy",
+          "pctX": 57.8,
+          "pctY": 50.6,
+          "worldX": -20,
+          "worldY": 250
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 31.2,
+          "pctY": 12.6,
+          "worldX": 1197,
+          "worldY": -603.2
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 85,
+          "pctY": 65.3,
+          "worldX": -490,
+          "worldY": 1119
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 13.9,
+          "pctY": 36,
+          "worldX": 448,
+          "worldY": -1155
+        }
+      ]
+    },
+    {
+      "moduleId": "FishingGround",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 75.9,
+          "pctY": 84.9,
+          "worldX": -1118,
+          "worldY": 828
+        },
+        {
+          "name": "Mummy",
+          "pctX": 48.1,
+          "pctY": 36.9,
+          "worldX": 420,
+          "worldY": -60
+        },
+        {
+          "name": "Mummy",
+          "pctX": 49.1,
+          "pctY": 28.8,
+          "worldX": 680,
+          "worldY": -30
+        },
+        {
+          "name": "Mummy",
+          "pctX": 58.7,
+          "pctY": 11.6,
+          "worldX": 1230,
+          "worldY": 280
+        },
+        {
+          "name": "Mummy",
+          "pctX": 84.1,
+          "pctY": 15.3,
+          "worldX": 1110,
+          "worldY": 1090
+        },
+        {
+          "name": "Zombie",
+          "pctX": 37.5,
+          "pctY": 17.8,
+          "worldX": 1030,
+          "worldY": -400
+        },
+        {
+          "name": "Mummy",
+          "pctX": 27.2,
+          "pctY": 71.6,
+          "worldX": -690,
+          "worldY": -730
+        },
+        {
+          "name": "Mummy",
+          "pctX": 35,
+          "pctY": 77.8,
+          "worldX": -890,
+          "worldY": -480
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 24.7,
+          "pctY": 57,
+          "worldX": -225,
+          "worldY": -810
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 24.7,
+          "pctY": 75.9,
+          "worldX": -830,
+          "worldY": -810
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 24.7,
+          "pctY": 64.7,
+          "worldX": -470,
+          "worldY": -810
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 74.1,
+          "pctY": 70.9,
+          "worldX": -668,
+          "worldY": 770
+        },
+        {
+          "name": "Mummy",
+          "pctX": 16.3,
+          "pctY": 77.2,
+          "worldX": -870,
+          "worldY": -1080
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 78.2,
+          "pctY": 27.8,
+          "worldX": 710,
+          "worldY": 903
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 14.9,
+          "pctY": 11.8,
+          "worldX": 1223,
+          "worldY": -1124
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 13.6,
+          "pctY": 24.1,
+          "worldX": 829,
+          "worldY": -1166
+        }
+      ]
+    },
+    {
+      "moduleId": "GuardPost",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 51,
+          "pctY": 53.9,
+          "worldX": -124,
+          "worldY": 33
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 51,
+          "pctY": 27.5,
+          "worldX": 720,
+          "worldY": 33
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 65.3,
+          "pctY": 39.1,
+          "worldX": 350,
+          "worldY": 490
+        },
+        {
+          "name": "Wraith",
+          "pctX": 28,
+          "pctY": 21.3,
+          "worldX": 918,
+          "worldY": -704
+        },
+        {
+          "name": "Mummy",
+          "pctX": 71.4,
+          "pctY": 82.2,
+          "worldX": -1030,
+          "worldY": 685
+        },
+        {
+          "name": "Mummy",
+          "pctX": 41.9,
+          "pctY": 87.8,
+          "worldX": -1210,
+          "worldY": -260
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 35,
+          "pctY": 38.4,
+          "worldX": 370,
+          "worldY": -480
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 78.7,
+          "pctY": 23.3,
+          "worldX": 855,
+          "worldY": 919
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 52.4,
+          "pctY": 21.8,
+          "worldX": 903,
+          "worldY": 78
+        }
+      ]
+    },
+    {
+      "moduleId": "Hallways",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Death Skull",
+          "pctX": 48.7,
+          "pctY": 56.9,
+          "worldX": -220,
+          "worldY": -41
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 44.5,
+          "pctY": 75.5,
+          "worldX": -815,
+          "worldY": -175
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 37.9,
+          "pctY": 53.9,
+          "worldX": -125.3,
+          "worldY": -388.2
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 36.7,
+          "pctY": 50.8,
+          "worldX": -26.6,
+          "worldY": -424.1
+        },
+        {
+          "name": "Zombie",
+          "pctX": 24.2,
+          "pctY": 43.9,
+          "worldX": 195,
+          "worldY": -825
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 75.6,
+          "pctY": 75.8,
+          "worldX": -825,
+          "worldY": 820
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 53.3,
+          "pctY": 24.7,
+          "worldX": 810,
+          "worldY": 105
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 78.1,
+          "pctY": 24.5,
+          "worldX": 815,
+          "worldY": 900
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 44.4,
+          "pctY": 54.4,
+          "worldX": -140,
+          "worldY": -180
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 53,
+          "pctY": 56.6,
+          "worldX": -210,
+          "worldY": 95
+        }
+      ]
+    },
+    {
+      "moduleId": "HighPriestOssuary",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Death Skull",
+          "pctX": 63.2,
+          "pctY": 13.5,
+          "worldX": 1168.9,
+          "worldY": 421.1
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 88.8,
+          "pctY": 18.8,
+          "worldX": 999.2,
+          "worldY": 1241.3
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 22.2,
+          "pctY": 25,
+          "worldX": 801,
+          "worldY": -889.1
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 74.7,
+          "pctY": 18.8,
+          "worldX": 999.2,
+          "worldY": 791.3
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 42.7,
+          "pctY": 57.4,
+          "worldX": -236.7,
+          "worldY": -232.1
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 36.4,
+          "pctY": 26.2,
+          "worldX": 763,
+          "worldY": -436
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 31.9,
+          "pctY": 35.6,
+          "worldX": 462.3,
+          "worldY": -579.1
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 15.7,
+          "pctY": 54.1,
+          "worldX": -131.7,
+          "worldY": -1097.1
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 27,
+          "pctY": 74.9,
+          "worldX": -797,
+          "worldY": -735.1
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 83.8,
+          "pctY": 86.7,
+          "worldX": -1174.7,
+          "worldY": 1081.7
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 18,
+          "pctY": 86.7,
+          "worldX": -1173.1,
+          "worldY": -1022.4
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 57,
+          "pctY": 58.1,
+          "worldX": -259.1,
+          "worldY": 222.9
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 76.3,
+          "pctY": 75.6,
+          "worldX": -819,
+          "worldY": 843
+        }
+      ]
+    },
+    {
+      "moduleId": "LowPyramid",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Death Skull",
+          "pctX": 40,
+          "pctY": 39.7,
+          "worldX": 330,
+          "worldY": -320
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 63.4,
+          "pctY": 59.4,
+          "worldX": -300,
+          "worldY": 430
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 61.2,
+          "pctY": 65.6,
+          "worldX": -500,
+          "worldY": 360
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 69.7,
+          "pctY": 53.8,
+          "worldX": -120,
+          "worldY": 630
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 63.1,
+          "pctY": 46.9,
+          "worldX": 100,
+          "worldY": 420
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 63.1,
+          "pctY": 53.1,
+          "worldX": -100,
+          "worldY": 420
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 53.4,
+          "pctY": 62.5,
+          "worldX": -400,
+          "worldY": 110
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 53.4,
+          "pctY": 40.3,
+          "worldX": 310,
+          "worldY": 110
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 42.8,
+          "pctY": 61.6,
+          "worldX": -370,
+          "worldY": -230
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 50,
+          "pctY": 40.6,
+          "worldX": 300,
+          "worldY": 0
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 36.6,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": -430
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 50.3,
+          "pctY": 55,
+          "worldX": -160,
+          "worldY": 10
+        },
+        {
+          "name": "Mummy",
+          "pctX": 54.5,
+          "pctY": 38.6,
+          "worldX": 365,
+          "worldY": 145
+        },
+        {
+          "name": "Mummy",
+          "pctX": 53.5,
+          "pctY": 74.7,
+          "worldX": -791,
+          "worldY": 112
+        },
+        {
+          "name": "Mummy",
+          "pctX": 45.6,
+          "pctY": 45.2,
+          "worldX": 155,
+          "worldY": -140
+        },
+        {
+          "name": "Mummy",
+          "pctX": 62.5,
+          "pctY": 45.2,
+          "worldX": 155,
+          "worldY": 400
+        }
+      ]
+    },
+    {
+      "moduleId": "MimicRoom",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 41.9,
+          "pctY": 25,
+          "worldX": 800,
+          "worldY": -258
+        },
+        {
+          "name": "Mimic Medium Simple Elite",
+          "pctX": 18,
+          "pctY": 32.5,
+          "worldX": 560,
+          "worldY": -1023
+        },
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 6.9,
+          "pctY": 93.4,
+          "worldX": -1390,
+          "worldY": -1380
+        },
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 63.1,
+          "pctY": 46.6,
+          "worldX": 110.1,
+          "worldY": 418
+        },
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 62.6,
+          "pctY": 22.7,
+          "worldX": 872.1,
+          "worldY": 402
+        },
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 87.5,
+          "pctY": 46.6,
+          "worldX": 108.1,
+          "worldY": 1200
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 45.4,
+          "pctY": 61,
+          "worldX": -352,
+          "worldY": -146
+        },
+        {
+          "name": "Mummy",
+          "pctX": 75,
+          "pctY": 74.6,
+          "worldX": -787,
+          "worldY": 799
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 63.9,
+          "pctY": 74.6,
+          "worldX": -787,
+          "worldY": 445
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 87.7,
+          "pctY": 74.6,
+          "worldX": -787,
+          "worldY": 1206
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 42.3,
+          "pctY": 95.4,
+          "worldX": -1452,
+          "worldY": -246
+        },
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 62.8,
+          "pctY": 74.9,
+          "worldX": -798,
+          "worldY": 409
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 84.5,
+          "pctY": 75.2,
+          "worldX": -805,
+          "worldY": 1105
+        },
+        {
+          "name": "Mimic Medium Mid Level Elite",
+          "pctX": 25.6,
+          "pctY": 93.4,
+          "worldX": -1390,
+          "worldY": -780
+        }
+      ]
+    },
+    {
+      "moduleId": "OldTomb",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Zombie",
+          "pctX": 7.8,
+          "pctY": 48.4,
+          "worldX": 50,
+          "worldY": -1350
+        },
+        {
+          "name": "Zombie",
+          "pctX": 7.8,
+          "pctY": 33.9,
+          "worldX": 516,
+          "worldY": -1350
+        },
+        {
+          "name": "Mummy",
+          "pctX": 22.1,
+          "pctY": 85.3,
+          "worldX": -1128,
+          "worldY": -894
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 57.8,
+          "pctY": 60.9,
+          "worldX": -350,
+          "worldY": 250
+        },
+        {
+          "name": "Zombie",
+          "pctX": 7.8,
+          "pctY": 69.8,
+          "worldX": -633,
+          "worldY": -1350
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 44.4,
+          "pctY": 60.9,
+          "worldX": -350,
+          "worldY": -180
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 67.2,
+          "pctY": 50.9,
+          "worldX": -30,
+          "worldY": 550
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 36.6,
+          "pctY": 50.9,
+          "worldX": -30,
+          "worldY": -430
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 64.4,
+          "pctY": 38.8,
+          "worldX": 360,
+          "worldY": 460
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 25.8,
+          "pctY": 49.1,
+          "worldX": 30,
+          "worldY": -775
+        },
+        {
+          "name": "Mummy",
+          "pctX": 88.6,
+          "pctY": 74,
+          "worldX": -769,
+          "worldY": 1234
+        },
+        {
+          "name": "Mummy",
+          "pctX": 88.2,
+          "pctY": 84.9,
+          "worldX": -1117,
+          "worldY": 1223
+        },
+        {
+          "name": "Wraith",
+          "pctX": 52.2,
+          "pctY": 39.1,
+          "worldX": 348,
+          "worldY": 70
+        },
+        {
+          "name": "Skeleton Champion",
+          "pctX": 46.1,
+          "pctY": 39.1,
+          "worldX": 348,
+          "worldY": -124
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 84.3,
+          "pctY": 83.6,
+          "worldX": -1076,
+          "worldY": 1096.8
+        },
+        {
+          "name": "Zombie",
+          "pctX": 21.9,
+          "pctY": 48.4,
+          "worldX": 50,
+          "worldY": -900
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 49.3,
+          "pctY": 25.4,
+          "worldX": 787,
+          "worldY": -23
+        },
+        {
+          "name": "Mummy",
+          "pctX": 26.1,
+          "pctY": 85.3,
+          "worldX": -1128,
+          "worldY": -764
+        }
+      ]
+    },
+    {
+      "moduleId": "OssuaryEdge",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Mage",
+          "pctX": 90.5,
+          "pctY": 64.7,
+          "worldX": -470,
+          "worldY": 1295
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 58.1,
+          "pctY": 10.3,
+          "worldX": 1270,
+          "worldY": 260
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 9.8,
+          "pctY": 29.9,
+          "worldX": 644,
+          "worldY": -1285
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 71.9,
+          "pctY": 89.7,
+          "worldX": -1270,
+          "worldY": 700
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 53,
+          "pctY": 78.7,
+          "worldX": -919,
+          "worldY": 96
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 31.8,
+          "pctY": 50.6,
+          "worldX": -20.2,
+          "worldY": -584
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 65.7,
+          "pctY": 50.6,
+          "worldX": -20.2,
+          "worldY": 501
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 50.3,
+          "pctY": 37.8,
+          "worldX": 391.8,
+          "worldY": 10
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 48.4,
+          "pctY": 65.7,
+          "worldX": -503.2,
+          "worldY": -51
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 9.9,
+          "pctY": 51.7,
+          "worldX": -53.2,
+          "worldY": -1284
+        }
+      ]
+    },
+    {
+      "moduleId": "Prison_01",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 10,
+          "pctY": 85,
+          "worldX": -1120,
+          "worldY": -1280
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 17,
+          "pctY": 57.6,
+          "worldX": -242,
+          "worldY": -1056
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 25,
+          "pctY": 25.3,
+          "worldX": 790,
+          "worldY": -800
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 75,
+          "pctY": 53.3,
+          "worldX": -105,
+          "worldY": 800
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 7.5,
+          "pctY": 5.1,
+          "worldX": 1436,
+          "worldY": -1361
+        },
+        {
+          "name": "Mimic Small Simple Elite",
+          "pctX": 45.4,
+          "pctY": 13.9,
+          "worldX": 1155,
+          "worldY": -147
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 84.9,
+          "pctY": 84.3,
+          "worldX": -1098,
+          "worldY": 1118
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 51.5,
+          "pctY": 40,
+          "worldX": 320,
+          "worldY": 49
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 54.2,
+          "pctY": 53.3,
+          "worldX": -105,
+          "worldY": 135
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 44.4,
+          "pctY": 27.3,
+          "worldX": 727,
+          "worldY": -178
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 65.9,
+          "pctY": 40.2,
+          "worldX": 315,
+          "worldY": 510
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 65.2,
+          "pctY": 19.7,
+          "worldX": 970,
+          "worldY": 485
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 34.5,
+          "pctY": 40,
+          "worldX": 320,
+          "worldY": -495
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 34.5,
+          "pctY": 58,
+          "worldX": -255,
+          "worldY": -495
+        }
+      ]
+    },
+    {
+      "moduleId": "Sanctum",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Wraith",
+          "pctX": 76.8,
+          "pctY": 45.5,
+          "worldX": 142.5,
+          "worldY": 857
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 61.6,
+          "pctY": 6.8,
+          "worldX": 1382,
+          "worldY": 372
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 61.5,
+          "pctY": 93.4,
+          "worldX": -1388,
+          "worldY": 367
+        },
+        {
+          "name": "Zombie",
+          "pctX": 27.5,
+          "pctY": 57.5,
+          "worldX": -240,
+          "worldY": -721
+        },
+        {
+          "name": "Zombie",
+          "pctX": 28.7,
+          "pctY": 43.1,
+          "worldX": 220,
+          "worldY": -681
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 64.7,
+          "pctY": 43.8,
+          "worldX": 200,
+          "worldY": 469
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 64.7,
+          "pctY": 56.3,
+          "worldX": -200,
+          "worldY": 470
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 35.7,
+          "pctY": 87.4,
+          "worldX": -1198,
+          "worldY": -458
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 15.6,
+          "pctY": 77,
+          "worldX": -865,
+          "worldY": -1100
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 15.6,
+          "pctY": 21.5,
+          "worldX": 911,
+          "worldY": -1100
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 40.2,
+          "pctY": 15.4,
+          "worldX": 1106,
+          "worldY": -315
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 13.9,
+          "pctY": 50.4,
+          "worldX": -13,
+          "worldY": -1155
+        }
+      ]
+    },
+    {
+      "moduleId": "Sewers",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 39.7,
+          "pctY": 62.2,
+          "worldX": -390,
+          "worldY": -331
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 54.8,
+          "pctY": 64.6,
+          "worldX": -466,
+          "worldY": 154
+        },
+        {
+          "name": "Mummy",
+          "pctX": 55.7,
+          "pctY": 56.5,
+          "worldX": -209,
+          "worldY": 183
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 46.6,
+          "pctY": 15.8,
+          "worldX": 1095,
+          "worldY": -110
+        },
+        {
+          "name": "Mummy",
+          "pctX": 23.4,
+          "pctY": 82.3,
+          "worldX": -1034,
+          "worldY": -851
+        },
+        {
+          "name": "Mummy",
+          "pctX": 8.8,
+          "pctY": 13.4,
+          "worldX": 1171,
+          "worldY": -1320
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 92,
+          "pctY": 94.4,
+          "worldX": -1420,
+          "worldY": 1343
+        },
+        {
+          "name": "Zombie",
+          "pctX": 35.9,
+          "pctY": 37.5,
+          "worldX": 400,
+          "worldY": -450
+        },
+        {
+          "name": "Zombie",
+          "pctX": 46.4,
+          "pctY": 57.5,
+          "worldX": -241,
+          "worldY": -116
+        },
+        {
+          "name": "Zombie",
+          "pctX": 21.6,
+          "pctY": 54.7,
+          "worldX": -150,
+          "worldY": -910
+        },
+        {
+          "name": "Zombie",
+          "pctX": 92.8,
+          "pctY": 23.8,
+          "worldX": 840,
+          "worldY": 1370
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 46.6,
+          "pctY": 37.5,
+          "worldX": 400,
+          "worldY": -110
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 60,
+          "pctY": 54.7,
+          "worldX": -150,
+          "worldY": 320
+        },
+        {
+          "name": "Mummy",
+          "pctX": 55.5,
+          "pctY": 84.9,
+          "worldX": -1118,
+          "worldY": 176
+        },
+        {
+          "name": "Mummy",
+          "pctX": 58.9,
+          "pctY": 37.7,
+          "worldX": 394,
+          "worldY": 284
+        },
+        {
+          "name": "Zombie",
+          "pctX": 34.7,
+          "pctY": 15,
+          "worldX": 1120,
+          "worldY": -490
+        }
+      ]
+    },
+    {
+      "moduleId": "SingleLogBridge",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 31.7,
+          "pctY": 20.8,
+          "worldX": 935,
+          "worldY": -585
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 20.9,
+          "pctY": 39.7,
+          "worldX": 330,
+          "worldY": -930
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 78.4,
+          "pctY": 56.4,
+          "worldX": -204,
+          "worldY": 909
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 40.4,
+          "pctY": 84.8,
+          "worldX": -1114,
+          "worldY": -306
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 80.9,
+          "pctY": 61.1,
+          "worldX": -354,
+          "worldY": 989
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 24.9,
+          "pctY": 6.8,
+          "worldX": 1384,
+          "worldY": -802
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 23.9,
+          "pctY": 73.9,
+          "worldX": -765,
+          "worldY": -835
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 88.1,
+          "pctY": 13,
+          "worldX": 1184,
+          "worldY": 1220
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 86.7,
+          "pctY": 34.5,
+          "worldX": 495,
+          "worldY": 1175
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 68.9,
+          "pctY": 13.3,
+          "worldX": 1174,
+          "worldY": 606
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 92.6,
+          "pctY": 7.8,
+          "worldX": 1349.2,
+          "worldY": 1364.3
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 6.4,
+          "pctY": 6.4,
+          "worldX": 1396.1,
+          "worldY": -1396.4
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 92.9,
+          "pctY": 94,
+          "worldX": -1409.3,
+          "worldY": 1373
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 73.1,
+          "pctY": 92.3,
+          "worldX": -1354.3,
+          "worldY": 738
+        }
+      ]
+    },
+    {
+      "moduleId": "SkeletonPit",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Mimic Small Simple Elite",
+          "pctX": 36.6,
+          "pctY": 36.7,
+          "worldX": 424.3,
+          "worldY": -428
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 36.3,
+          "pctY": 14.7,
+          "worldX": 1130,
+          "worldY": -437
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 64.6,
+          "pctY": 46,
+          "worldX": 128.3,
+          "worldY": 466
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 47.6,
+          "pctY": 34.5,
+          "worldX": 496.3,
+          "worldY": -78
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 47.6,
+          "pctY": 64.5,
+          "worldX": -464.7,
+          "worldY": -78
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 49.8,
+          "pctY": 34,
+          "worldX": 513,
+          "worldY": -5
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 59.9,
+          "pctY": 22.1,
+          "worldX": 894,
+          "worldY": 318
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 39.3,
+          "pctY": 21.9,
+          "worldX": 899,
+          "worldY": -344
+        },
+        {
+          "name": "Mimic Large Simple Elite",
+          "pctX": 50,
+          "pctY": 50,
+          "worldX": 0,
+          "worldY": 0
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 50,
+          "pctY": 64.8,
+          "worldX": -475,
+          "worldY": 0
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 65.5,
+          "pctY": 76.7,
+          "worldX": -855,
+          "worldY": 495
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 50.2,
+          "pctY": 78.9,
+          "worldX": -925,
+          "worldY": 5
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 35.2,
+          "pctY": 77.3,
+          "worldX": -875,
+          "worldY": -475
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 31.9,
+          "pctY": 75,
+          "worldX": -800,
+          "worldY": -580
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 68.9,
+          "pctY": 75,
+          "worldX": -800,
+          "worldY": 605
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 50.5,
+          "pctY": 75,
+          "worldX": -800,
+          "worldY": 15
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 79.7,
+          "pctY": 74.9,
+          "worldX": -798,
+          "worldY": 951
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 28.8,
+          "pctY": 25.8,
+          "worldX": 774.3,
+          "worldY": -678
+        },
+        {
+          "name": "Giant Dragonfly",
+          "pctX": 71.2,
+          "pctY": 25.8,
+          "worldX": 774.3,
+          "worldY": 677
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 59,
+          "pctY": 25.1,
+          "worldX": 797,
+          "worldY": 289
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 33.5,
+          "pctY": 37.8,
+          "worldX": 391,
+          "worldY": -527
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 36.8,
+          "pctY": 87.1,
+          "worldX": -1187,
+          "worldY": -423
+        }
+      ]
+    },
+    {
+      "moduleId": "Storeroom",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Mummy",
+          "pctX": 54.3,
+          "pctY": 35.3,
+          "worldX": 472,
+          "worldY": 138
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 68.5,
+          "pctY": 24.3,
+          "worldX": 824,
+          "worldY": 593
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 64.8,
+          "pctY": 8.1,
+          "worldX": 1342,
+          "worldY": 473
+        },
+        {
+          "name": "Mummy",
+          "pctX": 40,
+          "pctY": 13.5,
+          "worldX": 1168,
+          "worldY": -319
+        },
+        {
+          "name": "Mummy",
+          "pctX": 46,
+          "pctY": 7.5,
+          "worldX": 1360,
+          "worldY": -127
+        },
+        {
+          "name": "Mummy",
+          "pctX": 40,
+          "pctY": 7.5,
+          "worldX": 1360,
+          "worldY": -319
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 54.3,
+          "pctY": 93.6,
+          "worldX": -1395,
+          "worldY": 138
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 45.7,
+          "pctY": 80.5,
+          "worldX": -977,
+          "worldY": -139
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 53.5,
+          "pctY": 53.6,
+          "worldX": -115,
+          "worldY": 111
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 77.5,
+          "pctY": 60.7,
+          "worldX": -342,
+          "worldY": 880
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 75.2,
+          "pctY": 37.3,
+          "worldX": 406,
+          "worldY": 805
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 84,
+          "pctY": 44.1,
+          "worldX": 189,
+          "worldY": 1088
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 33.2,
+          "pctY": 46.5,
+          "worldX": 111,
+          "worldY": -537
+        }
+      ]
+    },
+    {
+      "moduleId": "Swamp",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Spider Mummy",
+          "pctX": 72.2,
+          "pctY": 41.9,
+          "worldX": 260,
+          "worldY": 710
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 73.4,
+          "pctY": 52.8,
+          "worldX": -90,
+          "worldY": 750
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 79.7,
+          "pctY": 35.6,
+          "worldX": 460,
+          "worldY": 950
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 74.7,
+          "pctY": 19.1,
+          "worldX": 990,
+          "worldY": 790
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 75.9,
+          "pctY": 47.8,
+          "worldX": 70,
+          "worldY": 830
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 67.8,
+          "pctY": 45.9,
+          "worldX": 130,
+          "worldY": 570
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 67.2,
+          "pctY": 35.6,
+          "worldX": 460,
+          "worldY": 550
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 78.7,
+          "pctY": 27.2,
+          "worldX": 730,
+          "worldY": 920
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 71.9,
+          "pctY": 24.1,
+          "worldX": 830,
+          "worldY": 700
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 43.9,
+          "pctY": 62.4,
+          "worldX": -398,
+          "worldY": -195
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 36,
+          "pctY": 68.9,
+          "worldX": -606,
+          "worldY": -448
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 43.9,
+          "pctY": 66.2,
+          "worldX": -518,
+          "worldY": -195
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 34.3,
+          "pctY": 61.3,
+          "worldX": -360,
+          "worldY": -502
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 36.3,
+          "pctY": 58.3,
+          "worldX": -264,
+          "worldY": -438
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 43.7,
+          "pctY": 58.3,
+          "worldX": -264,
+          "worldY": -201
+        },
+        {
+          "name": "Skeleton Ranged 2 type",
+          "pctX": 38.2,
+          "pctY": 54.4,
+          "worldX": -141,
+          "worldY": -377
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 31.8,
+          "pctY": 23.5,
+          "worldX": 848,
+          "worldY": -582
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 24.6,
+          "pctY": 54.2,
+          "worldX": -135.1,
+          "worldY": -812.5
+        },
+        {
+          "name": "Mummy",
+          "pctX": 23.8,
+          "pctY": 47.7,
+          "worldX": 74.2,
+          "worldY": -839.2
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 19.9,
+          "pctY": 27.3,
+          "worldX": 728,
+          "worldY": -962
+        },
+        {
+          "name": "Skeleton Archer",
+          "pctX": 86,
+          "pctY": 12.1,
+          "worldX": 1213,
+          "worldY": 1151
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 84.1,
+          "pctY": 25.3,
+          "worldX": 790,
+          "worldY": 1090
+        },
+        {
+          "name": "Spider Mummy",
+          "pctX": 64.1,
+          "pctY": 26.9,
+          "worldX": 740,
+          "worldY": 450
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 69.2,
+          "pctY": 77.3,
+          "worldX": -874,
+          "worldY": 614
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 30.8,
+          "pctY": 47.7,
+          "worldX": 74,
+          "worldY": -614
+        },
+        {
+          "name": "Skeleton Melee 5 type",
+          "pctX": 16.8,
+          "pctY": 62.5,
+          "worldX": -400,
+          "worldY": -1064
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 50.9,
+          "pctY": 58.7,
+          "worldX": -279,
+          "worldY": 30
+        }
+      ]
+    },
+    {
+      "moduleId": "UndergroundAltar",
+      "category": "Edge",
+      "monsters": [
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 66.2,
+          "pctY": 64,
+          "worldX": -448,
+          "worldY": 517
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 64,
+          "pctY": 71.2,
+          "worldX": -679,
+          "worldY": 447
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 16.2,
+          "pctY": 77.2,
+          "worldX": -869,
+          "worldY": -1083
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 15.3,
+          "pctY": 76.6,
+          "worldX": -852,
+          "worldY": -1111
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 14.8,
+          "pctY": 76.8,
+          "worldX": -857,
+          "worldY": -1125
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 16.6,
+          "pctY": 75.9,
+          "worldX": -829,
+          "worldY": -1070
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 70.8,
+          "pctY": 22.5,
+          "worldX": 880,
+          "worldY": 664
+        },
+        {
+          "name": "Mummy",
+          "pctX": 48.6,
+          "pctY": 49.1,
+          "worldX": 28,
+          "worldY": -45
+        },
+        {
+          "name": "Zombie",
+          "pctX": 52,
+          "pctY": 49.1,
+          "worldX": 28,
+          "worldY": 64
+        },
+        {
+          "name": "Skeleton Mage",
+          "pctX": 18.1,
+          "pctY": 18.2,
+          "worldX": 1019,
+          "worldY": -1020
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 32.8,
+          "pctY": 14,
+          "worldX": 1150.4,
+          "worldY": -549.9
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 16,
+          "pctY": 30.8,
+          "worldX": 613,
+          "worldY": -1087.3
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 27.5,
+          "pctY": 26.9,
+          "worldX": 740.3,
+          "worldY": -719.6
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 71.2,
+          "pctY": 22.1,
+          "worldX": 894,
+          "worldY": 679
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 66.6,
+          "pctY": 63.6,
+          "worldX": -434,
+          "worldY": 532
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 70.3,
+          "pctY": 21.5,
+          "worldX": 911,
+          "worldY": 651
+        },
+        {
+          "name": "Death Skull",
+          "pctX": 48.8,
+          "pctY": 79,
+          "worldX": -929,
+          "worldY": -38
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 65.8,
+          "pctY": 63,
+          "worldX": -417,
+          "worldY": 504
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 65.3,
+          "pctY": 63.2,
+          "worldX": -422,
+          "worldY": 490
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 69.9,
+          "pctY": 21.7,
+          "worldX": 906,
+          "worldY": 637
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 71.6,
+          "pctY": 20.8,
+          "worldX": 934,
+          "worldY": 692
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 79.8,
+          "pctY": 24.8,
+          "worldX": 807,
+          "worldY": 955
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 80.3,
+          "pctY": 24.3,
+          "worldX": 821,
+          "worldY": 970
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 79.4,
+          "pctY": 23.8,
+          "worldX": 838,
+          "worldY": 942
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 79,
+          "pctY": 24,
+          "worldX": 833,
+          "worldY": 928
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 80.7,
+          "pctY": 23.1,
+          "worldX": 861,
+          "worldY": 983
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 36,
+          "pctY": 30.2,
+          "worldX": 635,
+          "worldY": -449
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 36.4,
+          "pctY": 29.7,
+          "worldX": 649,
+          "worldY": -434
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 67,
+          "pctY": 62.3,
+          "worldX": -394,
+          "worldY": 545
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 35.6,
+          "pctY": 29.2,
+          "worldX": 666,
+          "worldY": -462
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 35.1,
+          "pctY": 29.3,
+          "worldX": 661,
+          "worldY": -476
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 36.8,
+          "pctY": 28.5,
+          "worldX": 689,
+          "worldY": -421
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 63.1,
+          "pctY": 72.9,
+          "worldX": -733,
+          "worldY": 419
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 63.6,
+          "pctY": 72.5,
+          "worldX": -719,
+          "worldY": 434
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 24.3,
+          "pctY": 36.1,
+          "worldX": 444,
+          "worldY": -824
+        },
+        {
+          "name": "Skeleton Guardsman From Fake Death",
+          "pctX": 24.7,
+          "pctY": 35.7,
+          "worldX": 458,
+          "worldY": -809
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 23.8,
+          "pctY": 35.2,
+          "worldX": 475,
+          "worldY": -837
+        },
+        {
+          "name": "Skeleton Swordman",
+          "pctX": 62.7,
+          "pctY": 71.9,
+          "worldX": -702,
+          "worldY": 406
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 62.3,
+          "pctY": 72.1,
+          "worldX": -707,
+          "worldY": 392
+        },
+        {
+          "name": "Skeleton Spearman",
+          "pctX": 23.4,
+          "pctY": 35.3,
+          "worldX": 470,
+          "worldY": -851
+        },
+        {
+          "name": "Skeleton Footman From Fake Death",
+          "pctX": 25.1,
+          "pctY": 34.4,
+          "worldX": 498,
+          "worldY": -796
+        },
+        {
+          "name": "Skeleton Axeman",
+          "pctX": 15.7,
+          "pctY": 77.6,
+          "worldX": -883,
+          "worldY": -1098
+        }
+      ]
+    }
+  ]
+}

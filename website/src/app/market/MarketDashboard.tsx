@@ -62,7 +62,7 @@ function TrendTable({
           <span title="What this item typically sold for over the past week. We ignore unrealistic prices (like 1g or 99,999g troll/RMT listings) to show what real players actually pay.">Avg 7d</span>
           <span title="What this item typically sold for in the last 24 hours, with fake prices filtered out.">Avg 24h</span>
           <span title="The most recent typical price based on the last few hours of trade data. Note: market data updates every few hours, so this may be slightly behind real-time.">Current Avg</span>
-          <span title="A realistic low price from current live listings. We skip the absolute cheapest listings because they often already sold (data lag) and use the 10th percentile instead — what you'd realistically find available.">Lowest Now</span>
+          <span title="A realistic low-end price from current marketplace listings. DarkerDB data has a lag, so the absolute cheapest listings have often already sold. We use the 25th percentile to show what you'd realistically find available right now.">Low Range</span>
           <span title="How much the price moved recently — compares the last ~12 hours to the previous ~24 hours. A positive number means the price went up.">Change</span>
           <span title="Visual price trend over the past week. The line shows typical trade prices with fake listings filtered out.">Trend</span>
         </div>
@@ -161,15 +161,15 @@ export default function MarketDashboard({ trending, loading }: Props) {
           that ruin the average. We automatically strip the most extreme prices from each time window
           to get closer to what the item actually trades for. However, some items (especially currency
           items like Silver Coin) have so many fake listings that even cleaned averages may be off.
-          For those items, the <strong style={{ fontStyle: "normal" }}>&quot;Lowest Now&quot;</strong> column
+          For those items, the <strong style={{ fontStyle: "normal" }}>&quot;Low Range&quot;</strong> column
           is the most reliable — it shows the real cheapest price on the market right now, with
           troll prices filtered out.
         </p>
         <p style={{ marginBottom: 8 }}>
           <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>What to trust most:</strong>{" "}
-          &quot;Lowest Now&quot; is always real-time and outlier-filtered from 50 live listings.
+          &quot;Low Range&quot; is always real-time and outlier-filtered from 50 live listings.
           The averages (7d, 24h, Current) are best for items with clean trading patterns
-          (like Wolf Pelt, Bone Powder). For RMT-heavy items, focus on &quot;Lowest Now&quot; instead.
+          (like Wolf Pelt, Bone Powder). For RMT-heavy items, focus on &quot;Low Range&quot; instead.
         </p>
         <p>
           Market data is provided by DarkerDB and updates every few hours.

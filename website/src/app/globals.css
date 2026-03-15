@@ -558,6 +558,39 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   background: linear-gradient(180deg, transparent, var(--gold-700));
 }
 
+/* ─── Notice Bar ─────────────────────────────────────────────────────────── */
+.notice-bar {
+  background: rgba(220, 50, 50, 0.08);
+  border-top: 1px solid rgba(220, 50, 50, 0.2);
+  border-bottom: 1px solid rgba(220, 50, 50, 0.2);
+  padding: 14px 0;
+}
+
+.notice-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.notice-icon {
+  font-size: 1.1rem;
+  color: #dc3232;
+  flex-shrink: 0;
+}
+
+.notice-text {
+  font-size: 0.8125rem;
+  color: rgba(220, 140, 140, 0.9);
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.notice-text strong {
+  color: #dc6464;
+}
+
 /* ─── Stats Bar ──────────────────────────────────────────────────────────── */
 .stats-bar {
   position: relative;

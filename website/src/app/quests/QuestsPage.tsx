@@ -1,43 +1,41 @@
 "use client";
 
 import { useState, useMemo, useEffect, useCallback } from "react";
-import Image from "next/image";
 import styles from "./quests.module.css";
 
 // ---------------------------------------------------------------------------
-// Types
+// Types (matching new quests.json schema)
 // ---------------------------------------------------------------------------
-
-interface Reward {
-  type: "item" | "exp" | "affinity" | "random";
-  id?: string;
-  name?: string;
-  count: number;
-  merchant?: string;
-}
 
 interface Objective {
   type: string;
   count?: number;
   target?: string;
-  dungeons?: string[];
-  item_type?: string;
+  item_id?: string;
   rarity?: string;
-  single_session?: boolean;
-  [key: string]: unknown;
+  loot_state?: string;
+}
+
+interface Reward {
+  type: string;
+  count?: number;
+  item_id?: string;
+  rarity?: string;
+  item_type?: string;
+  merchant_id?: string;
 }
 
 interface Quest {
   id: string;
-  required_level?: number;
-  required_quest?: string;
+  title: string | null;
+  chapter: string | null;
+  text: string | null;
+  completion_text: string | null;
+  dungeons: string[];
+  prerequisite: string | null;
+  sub_merchant: string;
+  objectives: Objective[];
   rewards: Reward[];
-  objectives?: Objective[];
-  chapter_id?: string;
-  chapter_name?: string;
-  chapter_order?: number;
-  title?: string;
-  title_localized?: string;
 }
 
 interface Merchant {
@@ -50,10 +48,7 @@ interface Merchant {
 
 interface QuestsData {
   generated_at: string;
-  stats: {
-    total_merchants: number;
-    total_quests: number;
-  };
+  source: string;
   merchants: Merchant[];
 }
 
@@ -61,144 +56,93 @@ interface QuestsData {
 // Helpers
 // ---------------------------------------------------------------------------
 
-/** Convert "Id_Item_GoldCoins" -> "GoldCoins" for icon path */
-function itemIdToIconName(id: string): string {
-  return id.replace(/^Id_Item_/, "");
+const RARITY_COLORS: Record<string, string> = {
+  Poor: "#888",
+  Common: "#aaa",
+  Uncommon: "#55c075",
+  Rare: "#5588dd",
+  Epic: "#aa55cc",
+  Legendary: "#c9a84c",
+  Unique: "#cc4444",
+};
+
+function formatId(id: string): string {
+  return id
+    .replace(/_\d+$/, "")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/_/g, " ");
 }
 
-/** Human-friendly quest ID: "Id_Quest_Alchemist_01" -> "Alchemist #01" */
-function formatQuestId(id: string): string {
-  const m = id.match(/^Id_Quest_(\w+?)_(\d+)$/);
-  if (m) return `${m[1].replace(/_/g, " ")} #${m[2]}`;
-  return id.replace(/^Id_Quest_/, "").replace(/_/g, " ");
+function itemIconUrl(itemId: string): string {
+  const base = itemId.replace(/_\d+$/, "");
+  return `/item-icons/Item_Icon_${base}.png`;
 }
 
-/** Format a required_quest reference into a readable name */
-function formatPrereq(id: string): string {
-  return formatQuestId(id);
-}
-
-/** Objective type -> CSS class */
-function objectiveClass(type: string): string {
-  switch (type) {
-    case "kill":
-    case "damage":
-      return styles.objectiveKill;
-    case "fetch":
-    case "hold":
-    case "useitem":
-      return styles.objectiveFetch;
-    case "explore":
-    case "escape":
-      return styles.objectiveExplore;
-    default:
-      return styles.objectiveGeneric;
+function formatPrereqId(id: string): string {
+  // "Alchemist_11" -> "Alchemist #11"
+  // "Treasurer_06" -> "Treasurer #06"
+  // "TavernMaster_Tuto_03" -> "Tavern Master Tuto #03"
+  const m = id.match(/^(.+?)_(\d+)$/);
+  if (m) {
+    const name = m[1]
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+      .replace(/_/g, " ");
+    return `${name} #${m[2]}`;
   }
+  return id.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/_/g, " ");
 }
 
-/** Build a human-readable description of an objective */
-function describeObjective(obj: Objective): string {
-  const parts: string[] = [];
-  switch (obj.type) {
-    case "kill":
-      parts.push(`Kill ${obj.count ?? "?"} ${obj.target ?? "enemies"}`);
-      break;
-    case "fetch":
-      if (obj.item_type) {
-        parts.push(`Collect ${obj.count ?? "?"} ${obj.rarity ? obj.rarity + " " : ""}${obj.item_type} items`);
-      } else if (obj.target) {
-        parts.push(`Collect ${obj.count ?? "?"} ${obj.target}`);
-      } else {
-        parts.push(`Fetch ${obj.count ?? "?"} items`);
-      }
-      break;
-    case "explore":
-      parts.push(`Explore ${obj.target ?? "area"}`);
-      if (obj.count && obj.count > 1) parts[0] += ` (x${obj.count})`;
-      break;
-    case "escape":
-      parts.push(`Escape ${obj.count ?? 1} time${(obj.count ?? 1) > 1 ? "s" : ""}`);
-      break;
-    case "damage":
-      parts.push(`Deal ${obj.count ?? "?"} damage to ${obj.target ?? "enemies"}`);
-      break;
-    case "hold":
-      parts.push(`Hold ${obj.count ?? "?"} ${obj.target ?? "items"}`);
-      break;
-    case "useitem":
-      parts.push(`Use ${obj.count ?? "?"} ${obj.target ?? "items"}`);
-      break;
-    case "props":
-      parts.push(`Interact with ${obj.count ?? "?"} ${obj.target ?? "props"}`);
-      break;
-    default:
-      parts.push(`${obj.type}: ${obj.count ?? "?"}`);
-  }
-  if (obj.single_session) parts.push("(single run)");
-  return parts.join(" ");
+/** Classify a sub_merchant into a tab category */
+function subMerchantCategory(sub: string, merchantName: string): string {
+  const lower = sub.toLowerCase();
+  if (lower.includes("daily")) return "Daily";
+  if (lower.includes("weekly")) return "Weekly";
+  if (lower.includes("seasonal")) return "Seasonal";
+  // "Final", "Tuto", "Extra", or same as merchant => Story
+  return "Story";
+}
+
+/** Determine if a merchant needs sub-merchant tabs */
+function getMerchantTabs(
+  merchant: Merchant
+): { label: string; key: string }[] | null {
+  const subs = [...new Set(merchant.quests.map((q) => q.sub_merchant))];
+  const categories = [...new Set(subs.map((s) => subMerchantCategory(s, merchant.name)))];
+  if (categories.length <= 1) return null;
+
+  const order = ["Story", "Daily", "Weekly", "Seasonal"];
+  const tabs = order
+    .filter((cat) => categories.includes(cat))
+    .map((cat) => ({
+      label: cat === "Story" ? "Story Quests" : cat,
+      key: cat,
+    }));
+
+  // Add "All" at front
+  tabs.unshift({ label: "All", key: "All" });
+  return tabs;
 }
 
 // ---------------------------------------------------------------------------
 // Sub-Components
 // ---------------------------------------------------------------------------
 
-function RewardChip({ reward }: { reward: Reward }) {
-  if (reward.type === "exp") {
-    return (
-      <span className={styles.rewardChip}>
-        <span className={styles.rewardXp}>{reward.count} XP</span>
-      </span>
-    );
-  }
-
-  if (reward.type === "affinity") {
-    return (
-      <span className={styles.rewardChip}>
-        <span className={styles.rewardAffinity}>
-          {reward.count} Affinity
-          {reward.merchant ? ` (${reward.merchant})` : ""}
-        </span>
-      </span>
-    );
-  }
-
-  if (reward.type === "random") {
-    const label = reward.id
-      ? reward.id
-          .replace(/^Id_RandomReward_Quest_/, "")
-          .replace(/_/g, " ")
-      : "Random Reward";
-    return (
-      <span className={styles.rewardChip}>
-        <span className={styles.rewardCount}>{reward.count}x</span>
-        <span className={styles.rewardRandom}>{label}</span>
-      </span>
-    );
-  }
-
-  // item reward
-  const iconName = reward.id ? itemIdToIconName(reward.id) : "";
-  const iconPath = iconName ? `/item-icons/Item_Icon_${iconName}.png` : "";
-
-  return (
-    <span className={styles.rewardChip}>
-      {iconPath && (
-        <RewardIcon src={iconPath} alt={reward.name ?? "item"} />
-      )}
-      <span className={styles.rewardCount}>{reward.count}</span>
-      <span className={styles.rewardName}>{reward.name ?? "Item"}</span>
-    </span>
-  );
-}
-
-function RewardIcon({ src, alt }: { src: string; alt: string }) {
+function SafeIcon({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
   const [show, setShow] = useState(true);
   if (!show) return null;
   return (
     <img
       src={src}
       alt={alt}
-      className={styles.rewardIcon}
+      className={className}
       onError={() => setShow(false)}
     />
   );
@@ -239,6 +183,257 @@ function MerchantPortrait({
   );
 }
 
+function ObjectiveRow({ obj }: { obj: Objective }) {
+  const type = obj.type;
+  const badgeClass =
+    type === "Kill" || type === "Damage"
+      ? styles.objBadgeKill
+      : type === "Fetch" || type === "Hold" || type === "Use Item"
+      ? styles.objBadgeFetch
+      : type === "Explore" || type === "Escape" || type === "Survive"
+      ? styles.objBadgeExplore
+      : styles.objBadgeGeneric;
+
+  let label = "";
+  let detail = "";
+  let icon: string | null = null;
+  let rarityColor: string | undefined;
+
+  switch (type) {
+    case "Kill":
+      label = obj.target ? `Kill ${formatId(obj.target)}` : "Kill enemies";
+      detail = `Count: ${obj.count ?? "?"}`;
+      break;
+    case "Fetch":
+      label = obj.item_id ? `Fetch ${formatId(obj.item_id)}` : "Fetch items";
+      if (obj.item_id) icon = itemIconUrl(obj.item_id);
+      if (obj.rarity) {
+        label += ` (${obj.rarity})`;
+        rarityColor = RARITY_COLORS[obj.rarity];
+      }
+      detail = `Count: ${obj.count ?? "?"}`;
+      if (obj.loot_state) detail += ` | Condition: ${obj.loot_state}`;
+      break;
+    case "Explore":
+      label = obj.target ? `Explore ${formatId(obj.target)}` : "Explore area";
+      if (obj.count && obj.count > 1) detail = `Count: ${obj.count}`;
+      break;
+    case "Escape":
+    case "Survive":
+      label = `${type} ${obj.count ?? 1} time${(obj.count ?? 1) > 1 ? "s" : ""}`;
+      break;
+    case "Damage":
+      label = obj.target
+        ? `Deal damage to ${formatId(obj.target)}`
+        : "Deal damage";
+      detail = `Amount: ${obj.count ?? "?"}`;
+      break;
+    case "Hold":
+      label = obj.item_id ? `Hold ${formatId(obj.item_id)}` : "Hold items";
+      if (obj.item_id) icon = itemIconUrl(obj.item_id);
+      detail = `Count: ${obj.count ?? "?"}`;
+      break;
+    case "Use Item":
+      label = obj.item_id
+        ? `Use ${formatId(obj.item_id)}`
+        : "Use items";
+      if (obj.item_id) icon = itemIconUrl(obj.item_id);
+      detail = `Count: ${obj.count ?? "?"}`;
+      break;
+    case "Props":
+      label = obj.target
+        ? `Interact with ${formatId(obj.target)}`
+        : "Interact with props";
+      detail = `Count: ${obj.count ?? "?"}`;
+      break;
+    default:
+      label = `${type}`;
+      if (obj.count) detail = `Count: ${obj.count}`;
+  }
+
+  return (
+    <div className={styles.objRow}>
+      <div className={styles.objMain}>
+        {icon && (
+          <SafeIcon src={icon} alt={label} className={styles.objItemIcon} />
+        )}
+        <span className={badgeClass}>{type}</span>
+        <span
+          className={styles.objLabel}
+          style={rarityColor ? { color: rarityColor } : undefined}
+        >
+          {label}
+        </span>
+        {detail && <span className={styles.objDetail}>{detail}</span>}
+      </div>
+    </div>
+  );
+}
+
+function RewardRow({ reward }: { reward: Reward }) {
+  const type = reward.type;
+
+  if (type === "Experience") {
+    return (
+      <div className={styles.rwdRow}>
+        <span className={styles.rwdIconStar}>&#9733;</span>
+        <span className={styles.rwdText}>
+          <span className={styles.rwdCount}>{reward.count}</span> Experience
+        </span>
+      </div>
+    );
+  }
+
+  if (type === "Affinity") {
+    return (
+      <div className={styles.rwdRow}>
+        <span className={styles.rwdIconHeart}>&#9829;</span>
+        <span className={styles.rwdText}>
+          <span className={styles.rwdCount}>{reward.count}</span> Affinity
+          {reward.merchant_id && (
+            <span className={styles.rwdMerchant}>
+              {" "}({formatId(reward.merchant_id)})
+            </span>
+          )}
+        </span>
+      </div>
+    );
+  }
+
+  if (type === "Random") {
+    const rarityColor = reward.rarity
+      ? RARITY_COLORS[reward.rarity]
+      : undefined;
+    return (
+      <div className={styles.rwdRow}>
+        <span className={styles.rwdIconRandom}>?</span>
+        <span className={styles.rwdText}>
+          <span className={styles.rwdCount}>{reward.count}</span>{" "}
+          <span style={rarityColor ? { color: rarityColor } : undefined}>
+            Random {reward.rarity ?? ""} {reward.item_type ?? "Item"}
+          </span>
+        </span>
+      </div>
+    );
+  }
+
+  if (type === "Item") {
+    const icon = reward.item_id ? itemIconUrl(reward.item_id) : null;
+    const name = reward.item_id ? formatId(reward.item_id) : "Item";
+    return (
+      <div className={styles.rwdRow}>
+        {icon ? (
+          <SafeIcon src={icon} alt={name} className={styles.rwdItemIcon} />
+        ) : (
+          <span className={styles.rwdIconGeneric}>&#9670;</span>
+        )}
+        <span className={styles.rwdText}>
+          <span className={styles.rwdCount}>{reward.count}</span> {name}
+        </span>
+      </div>
+    );
+  }
+
+  // Stash Tab, Action, Item Skin, Unknown
+  return (
+    <div className={styles.rwdRow}>
+      <span className={styles.rwdIconGeneric}>&#9670;</span>
+      <span className={styles.rwdText}>
+        <span className={styles.rwdCount}>{reward.count ?? 1}</span> {type}
+      </span>
+    </div>
+  );
+}
+
+function QuestCard({
+  quest,
+  merchantName,
+}: {
+  quest: Quest;
+  merchantName: string;
+}) {
+  const showSubLabel =
+    quest.sub_merchant && quest.sub_merchant !== merchantName;
+
+  return (
+    <div className={styles.questCard}>
+      {/* Chapter badge */}
+      {quest.chapter && (
+        <div className={styles.questChapterBadge}>
+          Chapter: {quest.chapter}
+        </div>
+      )}
+
+      {/* Sub-merchant label */}
+      {showSubLabel && (
+        <div className={styles.questSubLabel}>{quest.sub_merchant}</div>
+      )}
+
+      {/* Title */}
+      <h3 className={styles.questTitle}>
+        {quest.title ?? formatPrereqId(quest.id)}
+      </h3>
+
+      {/* Quest text */}
+      {quest.text && (
+        <p className={styles.questText}>&ldquo;{quest.text}&rdquo;</p>
+      )}
+
+      {/* Objectives */}
+      {quest.objectives.length > 0 && (
+        <div className={styles.questSection}>
+          <div className={styles.sectionDivider}>
+            <span className={styles.sectionDividerLabel}>Objectives</span>
+          </div>
+          <div className={styles.objList}>
+            {quest.objectives.map((obj, idx) => (
+              <ObjectiveRow key={idx} obj={obj} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Rewards */}
+      {quest.rewards.length > 0 && (
+        <div className={styles.questSection}>
+          <div className={styles.sectionDivider}>
+            <span className={styles.sectionDividerLabel}>Rewards</span>
+          </div>
+          <div className={styles.rwdList}>
+            {quest.rewards.map((rwd, idx) => (
+              <RewardRow key={idx} reward={rwd} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Footer: prereq + dungeons */}
+      <div className={styles.questFooter}>
+        {quest.prerequisite && (
+          <div className={styles.questFooterRow}>
+            <span className={styles.footerLabel}>Prerequisite:</span>
+            <span className={styles.prereqValue}>
+              {formatPrereqId(quest.prerequisite)}
+            </span>
+          </div>
+        )}
+        {quest.dungeons.length > 0 && (
+          <div className={styles.questFooterRow}>
+            <span className={styles.footerLabel}>Available Dungeons:</span>
+            <div className={styles.dungeonBadges}>
+              {quest.dungeons.map((d) => (
+                <span key={d} className={styles.dungeonBadge}>
+                  {d}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Main Component
 // ---------------------------------------------------------------------------
@@ -248,6 +443,7 @@ export default function QuestsPage() {
   const [error, setError] = useState(false);
   const [selectedMerchant, setSelectedMerchant] = useState<string | null>(null);
   const [search, setSearch] = useState("");
+  const [activeTab, setActiveTab] = useState("All");
 
   const loadData = useCallback(() => {
     setError(false);
@@ -271,6 +467,10 @@ export default function QuestsPage() {
     return [...data.merchants].sort((a, b) => a.name.localeCompare(b.name));
   }, [data]);
 
+  const totalQuests = useMemo(() => {
+    return merchants.reduce((acc, m) => acc + m.quest_count, 0);
+  }, [merchants]);
+
   // Filtered merchants for grid view
   const filteredMerchants = useMemo(() => {
     if (!search.trim()) return merchants;
@@ -284,40 +484,67 @@ export default function QuestsPage() {
     return merchants.find((m) => m.id === selectedMerchant) ?? null;
   }, [merchants, selectedMerchant]);
 
-  // Group quests by chapter, sorted by chapter_order
+  // Tabs for merchant with sub-types
+  const tabs = useMemo(() => {
+    if (!merchant) return null;
+    return getMerchantTabs(merchant);
+  }, [merchant]);
+
+  // Reset tab when changing merchant
+  useEffect(() => {
+    setActiveTab("All");
+  }, [selectedMerchant]);
+
+  // Filter and group quests
   const questChapters = useMemo(() => {
     if (!merchant) return [];
-    const sorted = [...merchant.quests].sort(
-      (a, b) => (a.chapter_order ?? 0) - (b.chapter_order ?? 0)
-    );
-    const chapters: { name: string; order: number; quests: Quest[] }[] = [];
-    const chapterMap = new Map<string, { name: string; order: number; quests: Quest[] }>();
+
+    let quests = merchant.quests;
+
+    // Filter by active tab
+    if (tabs && activeTab !== "All") {
+      quests = quests.filter(
+        (q) => subMerchantCategory(q.sub_merchant, merchant.name) === activeTab
+      );
+    }
+
+    // Sort: story quests first (by chapter alphabetically, then ID),
+    // then daily/weekly/seasonal
+    const categoryOrder: Record<string, number> = {
+      Story: 0,
+      Daily: 1,
+      Weekly: 2,
+      Seasonal: 3,
+    };
+
+    const sorted = [...quests].sort((a, b) => {
+      const catA = categoryOrder[subMerchantCategory(a.sub_merchant, merchant.name)] ?? 99;
+      const catB = categoryOrder[subMerchantCategory(b.sub_merchant, merchant.name)] ?? 99;
+      if (catA !== catB) return catA - catB;
+      // Within same category, sort by chapter then by ID
+      const chA = a.chapter ?? "";
+      const chB = b.chapter ?? "";
+      if (chA !== chB) return chA.localeCompare(chB);
+      return a.id.localeCompare(b.id);
+    });
+
+    // Group by chapter
+    const chapters: { name: string; quests: Quest[] }[] = [];
+    const chapterMap = new Map<string, Quest[]>();
 
     for (const q of sorted) {
-      const key = q.chapter_id ?? q.chapter_name ?? "Uncategorized";
-      let ch = chapterMap.get(key);
-      if (!ch) {
-        ch = { name: q.chapter_name ?? "Uncategorized", order: q.chapter_order ?? 0, quests: [] };
-        chapterMap.set(key, ch);
-        chapters.push(ch);
+      const key = q.chapter ?? "Uncategorized";
+      let arr = chapterMap.get(key);
+      if (!arr) {
+        arr = [];
+        chapterMap.set(key, arr);
+        chapters.push({ name: key, quests: arr });
       }
-      ch.quests.push(q);
+      arr.push(q);
     }
 
     return chapters;
-  }, [merchant]);
-
-  // Build a lookup for quest IDs -> names within this merchant for prereq display
-  const questNameLookup = useMemo(() => {
-    if (!data) return new Map<string, string>();
-    const map = new Map<string, string>();
-    for (const m of data.merchants) {
-      for (const q of m.quests) {
-        map.set(q.id, formatQuestId(q.id));
-      }
-    }
-    return map;
-  }, [data]);
+  }, [merchant, tabs, activeTab]);
 
   // -- Loading state --
   if (!data && !error) {
@@ -365,6 +592,11 @@ export default function QuestsPage() {
 
   // -- Merchant Detail View --
   if (merchant) {
+    const filteredCount = questChapters.reduce(
+      (acc, ch) => acc + ch.quests.length,
+      0
+    );
+
     return (
       <div className={styles.page}>
         <div className={styles.pageInner}>
@@ -387,79 +619,48 @@ export default function QuestsPage() {
             <div className={styles.detailInfo}>
               <h1 className={styles.detailName}>{merchant.name}</h1>
               <span className={styles.detailSub}>
-                {merchant.quests.length} quest{merchant.quests.length !== 1 ? "s" : ""}
+                {merchant.quests.length} quest
+                {merchant.quests.length !== 1 ? "s" : ""}
               </span>
             </div>
           </div>
 
+          {/* Sub-merchant tabs */}
+          {tabs && (
+            <div className={styles.tabBar}>
+              {tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  className={`${styles.tab} ${
+                    activeTab === tab.key ? styles.tabActive : ""
+                  }`}
+                  onClick={() => setActiveTab(tab.key)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Quest cards grouped by chapter */}
           {questChapters.map((chapter) => (
-            <div key={chapter.name + chapter.order} className={styles.chapterGroup}>
+            <div key={chapter.name} className={styles.chapterGroup}>
               <h2 className={styles.chapterTitle}>{chapter.name}</h2>
-              <div className={styles.timeline}>
+              <div className={styles.questGrid}>
                 {chapter.quests.map((quest) => (
-                  <div key={quest.id} className={styles.questNode}>
-                    <div className={styles.questDot} />
-                    <div className={styles.questNodeHeader}>
-                      <span className={styles.questId}>
-                        {quest.title_localized ?? formatQuestId(quest.id)}
-                      </span>
-                      {quest.required_level != null && (
-                        <span className={styles.questLevel}>
-                          Level {quest.required_level}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className={styles.questMeta}>
-                      {quest.required_quest && (
-                        <div className={styles.questMetaRow}>
-                          <span className={styles.metaLabel}>Prerequisite</span>
-                          <span className={styles.prereqLink}>
-                            {questNameLookup.get(quest.required_quest) ??
-                              formatPrereq(quest.required_quest)}
-                          </span>
-                        </div>
-                      )}
-
-                      {quest.objectives && quest.objectives.length > 0 && (
-                        <div className={styles.questMetaRow} style={{ alignItems: "flex-start" }}>
-                          <span className={styles.metaLabel}>Objectives</span>
-                          <div className={styles.objectivesList}>
-                            {quest.objectives.map((obj, idx) => (
-                              <div key={idx} className={styles.objectiveItem}>
-                                <span className={objectiveClass(obj.type)}>
-                                  {obj.type}
-                                </span>
-                                <span>{describeObjective(obj)}</span>
-                                {obj.dungeons && obj.dungeons.length > 0 && (
-                                  <span className={styles.objectiveDungeon}>
-                                    in {obj.dungeons.join(", ")}
-                                  </span>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {quest.rewards && quest.rewards.length > 0 && (
-                      <div className={styles.rewardsRow}>
-                        <span className={styles.rewardsLabel}>Rewards</span>
-                        {quest.rewards.map((reward, idx) => (
-                          <RewardChip key={idx} reward={reward} />
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <QuestCard
+                    key={quest.id}
+                    quest={quest}
+                    merchantName={merchant.name}
+                  />
                 ))}
               </div>
             </div>
           ))}
 
-          {questChapters.length === 0 && (
+          {filteredCount === 0 && (
             <div className={styles.emptyState}>
-              No quests found for this merchant.
+              No quests found for this filter.
             </div>
           )}
         </div>
@@ -475,8 +676,8 @@ export default function QuestsPage() {
           <span className="section-label">Objectives</span>
           <h1 className="section-title">Quest Tracker</h1>
           <p className="section-desc">
-            {data!.stats.total_quests} quests across {data!.stats.total_merchants} merchants.
-            Select a merchant to browse their quest chain.
+            {totalQuests} quests across {merchants.length} merchants. Select a
+            merchant to browse their quest chain.
           </p>
           <div className={styles.headerDivider} />
         </div>
@@ -492,7 +693,9 @@ export default function QuestsPage() {
         </div>
 
         {filteredMerchants.length === 0 ? (
-          <div className={styles.emptyState}>No merchants match your search</div>
+          <div className={styles.emptyState}>
+            No merchants match your search
+          </div>
         ) : (
           <div className={styles.merchantGrid}>
             {filteredMerchants.map((m) => (

@@ -1,26 +1,15 @@
-// DarkerDB API Client
-// Base URL: https://api.darkerdb.com/v1
+// Marketplace API Client — powered by our own Hetzner poller
+// Replaces DarkerDB dependency with direct game server data
 
-// Use Vercel proxy to avoid CORS issues (DarkerDB API has no CORS headers)
-const BASE = "/api/darkerdb/v1";
-const API_KEY = "6f45b5a13f622bbe0f37";
+const OUR_API = "http://5.161.247.74:8080/api/v1";
+
+// Keep DarkerDB for population only (we don't track this)
+const DARKERDB_BASE = "/api/darkerdb/v1";
+const DARKERDB_KEY = "6f45b5a13f622bbe0f37";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
-
-export interface ApiResponse<T> {
-  version: string;
-  status: string;
-  code: number;
-  query_time: number;
-  body: T;
-  pagination?: {
-    count: number;
-    limit: number;
-    cursor?: number;
-  };
-}
 
 export interface PopulationData {
   timestamp: string;
@@ -53,7 +42,6 @@ export interface MarketListing {
   has_sold: boolean;
   has_expired: boolean;
   seller: string;
-  /** Listings carry dynamic stat fields (e.g. primary_weapon_damage). */
   [stat: string]: unknown;
 }
 
@@ -74,96 +62,16 @@ export interface TrendingItem {
   avg14d: number;
   avg7d: number;
   avg24h: number;
-  currentAvg: number;      // most recent aggregated typical price
-  currentLowest: number;   // lowest price_per_unit in live listings
-  previousAvg: number;     // for change calc
+  currentAvg: number;
+  currentLowest: number;
+  previousAvg: number;
   changePct: number;
   totalVolume: number;
-  priceHistory: PricePoint[];  // raw points for mini chart (cleaned)
+  priceHistory: PricePoint[];
 }
-
-// ---------------------------------------------------------------------------
-// Outlier-resistant price estimation
-// ---------------------------------------------------------------------------
-// The DarkerDB API returns avg/min/max per time bucket. RMT and troll listings
-// (e.g. 10,000g for a 30g item) heavily skew the average. We detect this by
-// comparing max vs min — in a healthy bucket, max is typically <5x min.
-//
-// Method: Interquartile-inspired estimate using min/avg/max.
-// - Clean data (max < 3x avg): use avg as-is
-// - Polluted data (max >= 3x avg): estimate typical price as min * 1.2
-//   This adds a 20% margin above floor since real trades cluster near min.
-//
-// The priceHistory points are returned with a "typical" field for charting.
 
 export interface CleanPricePoint extends PricePoint {
   typical: number;
-}
-
-function typicalPrice(p: PricePoint): number {
-  // The API gives avg/min/max per time bucket. Both ends can be trolled:
-  // - Low trolls: items listed at 0-1g
-  // - High trolls/RMT: items listed at 50,000-100,000g
-  //
-  // Strategy: score how polluted the data is and pick the best estimate.
-  //
-  // Key insight: if min is near zero but avg is high, the min is a troll.
-  // If max is extremely high but avg is moderate, the max is a troll/RMT.
-  // The avg itself is our best signal UNLESS it's been pulled way up by
-  // extreme max values.
-
-  if (p.volume === 0) return 0;
-
-  // With only avg/min/max/volume, we can't compute a true median.
-  // Strategy: iteratively remove the influence of the single largest
-  // outlier from the total, up to 3 times.
-  //
-  // clean_avg = (avg * vol - max) / (vol - 1)
-  //
-  // After cleaning, if result is still wildly above min, the data
-  // has systemic pollution (many fake listings) and we fall back to
-  // the live "Lowest Now" price (computed separately from 50 listings).
-  // In that case we return the raw avg — the caller's "currentLowest"
-  // from live listings will be the reliable number.
-
-  // When max is extreme (e.g. 100,000g on a 90g item), many trades in the
-  // bucket are RMT at inflated prices. With only avg/min/max/volume we can
-  // estimate the "real" average by working backwards:
-  //
-  // If we assume legitimate trades cluster near min, and RMT trades are
-  // spread between avg and max, we can estimate:
-  //   real_avg ≈ min + (avg - min) * correction_factor
-  //
-  // The correction factor shrinks as the max/avg ratio grows (more pollution).
-  // When max/avg < 3: data is clean, use avg.
-  // When max/avg >= 3: scale down the distance between min and avg.
-
-  if (p.max <= p.avg * 3) {
-    return Math.round(p.avg);
-  }
-
-  // How polluted? Use the ratio of max to avg as a signal.
-  // Higher ratio = more extreme outliers = trust min more.
-  const pollutionRatio = p.max / p.avg;
-
-  // Correction: as pollution grows, weight towards min.
-  // At 3x pollution: 70% of (avg-min) kept
-  // At 10x: ~40%
-  // At 100x: ~15%
-  // At 1000x: ~5%
-  const correction = 1 / Math.log10(Math.max(pollutionRatio, 3));
-  const estimate = p.min + (p.avg - p.min) * correction;
-
-  return Math.round(Math.max(estimate, p.min));
-}
-
-function cleanHistory(points: PricePoint[]): CleanPricePoint[] {
-  return points.map(p => ({ ...p, typical: typicalPrice(p) }));
-}
-
-function typicalAvg(points: PricePoint[]): number {
-  if (points.length === 0) return 0;
-  return points.reduce((s, p) => s + typicalPrice(p), 0) / points.length;
 }
 
 // ---------------------------------------------------------------------------
@@ -187,263 +95,247 @@ export const GOLD_ICON = "/item-icons/Item_Icon_GoldCoin.png";
 // Fetch helpers
 // ---------------------------------------------------------------------------
 
-async function get<T>(
-  path: string,
-  params?: Record<string, string | number>,
-  signal?: AbortSignal,
-): Promise<T> {
-  const qs = new URLSearchParams();
-  qs.set("key", API_KEY);
-  if (params) {
-    for (const [k, v] of Object.entries(params)) {
-      qs.set(k, String(v));
-    }
-  }
-  const qsStr = qs.toString();
-  const url = `${BASE}${path}${qsStr ? `?${qsStr}` : ""}`;
-
-  const res = await fetch(url, {
+async function ourGet<T>(path: string, signal?: AbortSignal): Promise<T> {
+  const res = await fetch(`${OUR_API}${path}`, {
     signal,
     headers: { Accept: "application/json" },
   });
-
-  if (!res.ok) {
-    throw new Error(`DarkerDB ${res.status}: ${res.statusText} – ${path}`);
-  }
-
+  if (!res.ok) throw new Error(`API ${res.status}: ${res.statusText}`);
   return res.json() as Promise<T>;
 }
 
 // ---------------------------------------------------------------------------
-// Endpoint functions
+// Population (still from DarkerDB — we don't track this)
 // ---------------------------------------------------------------------------
 
-/** Fetch current population snapshot. */
+interface DarkerDBResponse<T> {
+  body: T;
+}
+
 export async function fetchPopulation(
   signal?: AbortSignal,
 ): Promise<PopulationData> {
-  const res = await get<ApiResponse<PopulationData>>(
-    "/population",
-    undefined,
-    signal,
-  );
-  return res.body;
+  try {
+    const qs = new URLSearchParams({ key: DARKERDB_KEY });
+    const res = await fetch(`${DARKERDB_BASE}/population?${qs}`, {
+      signal,
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) throw new Error("DarkerDB unavailable");
+    const data = (await res.json()) as DarkerDBResponse<PopulationData>;
+    return data.body;
+  } catch {
+    // Fallback if DarkerDB is down
+    return { timestamp: new Date().toISOString(), num_online: 0, num_lobby: 0, num_dungeon: 0 };
+  }
 }
 
-/**
- * Fetch price history for an item archetype.
- *
- * @param archetype  e.g. "Longsword", "WolfPelt" (NOT item_id like "Longsword_5001")
- * @param interval   bucket size, e.g. "1h", "6h", "1d"
- */
-export async function fetchPriceHistory(
-  archetype: string,
-  interval: string = "1h",
-  signal?: AbortSignal,
-): Promise<PricePoint[]> {
-  const res = await get<ApiResponse<PricePoint[]>>(
-    `/market/analytics/${encodeURIComponent(archetype)}/prices/history`,
-    { interval },
-    signal,
-  );
-  return res.body ?? [];
+// ---------------------------------------------------------------------------
+// Listings — from our API
+// ---------------------------------------------------------------------------
+
+interface OurListingsResponse {
+  listings: Array<{
+    listing_id: number;
+    item_id: string;
+    item_base_name: string;
+    item_marketplace_id: string;
+    item_count: number;
+    rarity: number;
+    rarity_name: string;
+    price: number;
+    seller_name: string;
+    seller_info: string;
+    listing_time: number;
+    first_seen_at: number;
+    last_seen_at: number;
+    sold_at: number | null;
+    status: string;
+    properties: Array<{
+      property_type: string;
+      property_value: number;
+      is_primary: number;
+    }>;
+  }>;
+  count: number;
 }
 
-/**
- * Fetch market listings for an item.
- *
- * @param item     Human-readable item name, e.g. "Longsword"
- * @param limit    Max results (default 20)
- * @param condense Merge similar listings (default true)
- */
+function adaptListing(l: OurListingsResponse["listings"][0]): MarketListing {
+  const listing: MarketListing = {
+    id: String(l.listing_id),
+    cursor: String(l.listing_id),
+    item_id: l.item_id,
+    item: l.item_base_name,
+    archetype: l.item_base_name,
+    rarity: l.rarity_name,
+    price: l.price,
+    price_per_unit: l.price / Math.max(l.item_count, 1),
+    quantity: l.item_count,
+    created_at: new Date(l.first_seen_at * 1000).toISOString(),
+    expires_at: "",
+    has_sold: l.status === "sold",
+    has_expired: false,
+    seller: l.seller_name || "Anonymous",
+  };
+
+  // Flatten properties as dynamic stat keys
+  for (const prop of l.properties) {
+    const name = prop.property_type
+      .replace("Id_ItemPropertyType_Effect_", "")
+      .replace(/([A-Z])/g, " $1")
+      .trim();
+    listing[name] = prop.property_value;
+  }
+
+  return listing;
+}
+
 export async function fetchMarketListings(
   item: string,
   limit: number = 20,
-  condense: boolean = true,
+  _condense: boolean = true,
   signal?: AbortSignal,
   price?: string,
 ): Promise<MarketListing[]> {
-  const params: Record<string, string | number> = {
-    limit,
-    condense: condense ? "true" : "false",
-  };
-  if (item) params.item = item;
-  if (price) params.price = price;
-  const res = await get<ApiResponse<MarketListing[]>>("/market", params, signal);
-  return res.body ?? [];
+  let path = `/listings?item=${encodeURIComponent(item)}&limit=${limit}`;
+  if (price) path += `&price_min=${price}`;
+  const data = await ourGet<OurListingsResponse>(path, signal);
+  return data.listings.map(adaptListing);
 }
 
-/**
- * Search the item definitions catalogue.
- *
- * @param name   Partial or full item name filter
- * @param limit  Max results (default 20)
- */
+// ---------------------------------------------------------------------------
+// Price History — from our API
+// ---------------------------------------------------------------------------
+
+interface OurHistoryResponse {
+  history: Array<{
+    timestamp: number;
+    active_count: number;
+    min_price: number;
+    max_price: number;
+    median_price: number;
+    avg_price: number;
+    p10_price: number;
+    p25_price: number;
+    p75_price: number;
+    p90_price: number;
+  }>;
+  count: number;
+}
+
+export async function fetchPriceHistory(
+  archetype: string,
+  _interval: string = "1h",
+  signal?: AbortSignal,
+): Promise<PricePoint[]> {
+  const hours = _interval === "1d" ? 720 : _interval === "4h" ? 168 : 24;
+  const data = await ourGet<OurHistoryResponse>(
+    `/prices/history?item=${encodeURIComponent(archetype)}&hours=${hours}`,
+    signal,
+  );
+
+  return data.history.map((h) => ({
+    timestamp: new Date(h.timestamp * 1000).toISOString(),
+    item_id: archetype,
+    avg: h.avg_price || 0,
+    min: h.min_price || 0,
+    max: h.max_price || 0,
+    volume: h.active_count || 0,
+  }));
+}
+
+// ---------------------------------------------------------------------------
+// Item Search — from our API
+// ---------------------------------------------------------------------------
+
+interface OurItemsResponse {
+  items: Array<{
+    marketplace_id: string;
+    name: string;
+    item_type: string;
+    slot_type: string;
+    armor_type: string;
+  }>;
+  count: number;
+}
+
 export async function searchItems(
   name: string,
   limit: number = 20,
   signal?: AbortSignal,
 ): Promise<ItemDef[]> {
-  const res = await get<ApiResponse<ItemDef[]>>("/items", {
-    name,
-    limit,
-  }, signal);
-  return res.body ?? [];
+  const data = await ourGet<OurItemsResponse>(
+    `/items?search=${encodeURIComponent(name)}&limit=${limit}`,
+    signal,
+  );
+
+  return data.items.map((item) => ({
+    id: item.marketplace_id,
+    archetype: item.marketplace_id.replace("Id.Item.", ""),
+    name: item.name,
+    rarity: "",
+    type: item.item_type,
+    slot_type: item.slot_type || "",
+    description: "",
+  }));
 }
 
 // ---------------------------------------------------------------------------
-// Trending computation
+// Trending — from our API
 // ---------------------------------------------------------------------------
 
-/** Curated list of items with confirmed price history data. [archetype, label] */
-const CURATED_ITEMS: [string, string][] = [
-  ["WolfPelt", "Wolf Pelt"],
-  ["WolfClaw", "Wolf Claw"],
-  ["GoldCoinPurse", "Gold Coin Purse"],
-  ["GoldCoinBag", "Gold Coin Bag"],
-  ["SilverCoin", "Silver Coin"],
-  ["GoldenTeeth", "Golden Teeth"],
-  ["ShiningPearl", "Shining Pearl"],
-  ["Lockpick", "Lockpick"],
-  ["RottenFluids", "Rotten Fluids"],
-  ["BonePowder", "Bone Powder"],
-];
-
-/**
- * Run `fn` for every item in `items`, at most `concurrency` at a time.
- * Returns results in the same order; failed items resolve to `null`.
- */
-async function mapWithConcurrency<T, R>(
-  items: T[],
-  concurrency: number,
-  fn: (item: T) => Promise<R>,
-): Promise<(R | null)[]> {
-  const results: (R | null)[] = new Array(items.length).fill(null);
-  let cursor = 0;
-
-  async function worker() {
-    while (cursor < items.length) {
-      const idx = cursor++;
-      try {
-        results[idx] = await fn(items[idx]);
-      } catch {
-        results[idx] = null;
-      }
-    }
-  }
-
-  const workers: Promise<void>[] = [];
-  for (let i = 0; i < Math.min(concurrency, items.length); i++) {
-    workers.push(worker());
-  }
-  await Promise.all(workers);
-  return results;
+interface OurTrendingResponse {
+  items: Array<{
+    marketplace_id: string;
+    name: string;
+    active_count: number;
+    sold_count: number;
+    min_price: number;
+    max_price: number;
+    avg_price: number;
+    price_history: Array<{
+      timestamp: number;
+      avg_price: number;
+      min_price: number;
+      max_price: number;
+      active_count: number;
+    }>;
+  }>;
 }
 
-/**
- * Fetch trending data for the curated item list.
- * Uses 4h interval for ~7 days of data, computes all time windows.
- */
 export async function fetchTrending(
   signal?: AbortSignal,
 ): Promise<TrendingItem[]> {
-  const interval = "4h";
+  const data = await ourGet<OurTrendingResponse>("/trending", signal);
 
-  // Fetch price histories and lowest listings concurrently
-  const [histories, listings] = await Promise.all([
-    mapWithConcurrency(
-      CURATED_ITEMS,
-      5,
-      ([archetype]) => fetchPriceHistory(archetype, interval, signal),
-    ),
-    mapWithConcurrency(
-      CURATED_ITEMS,
-      5,
-      ([, label]) => fetchMarketListings(label, 50, true, signal),
-    ),
-  ]);
+  return data.items
+    .filter((item) => item.active_count > 0)
+    .slice(0, 30)
+    .map((item) => {
+      const archetype = item.marketplace_id.replace("Id.Item.", "");
+      const history = item.price_history || [];
 
-  const now = Date.now();
+      const priceHistory: PricePoint[] = history.map((h) => ({
+        timestamp: new Date(h.timestamp * 1000).toISOString(),
+        item_id: archetype,
+        avg: h.avg_price || 0,
+        min: h.min_price || 0,
+        max: h.max_price || 0,
+        volume: h.active_count || 0,
+      }));
 
-  const trending: TrendingItem[] = [];
-
-  for (let i = 0; i < CURATED_ITEMS.length; i++) {
-    const points = histories[i];
-    if (!points || points.length === 0) continue;
-
-    const [archetype, label] = CURATED_ITEMS[i];
-
-    // Sort points chronologically
-    const sorted = [...points].sort(
-      (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime(),
-    );
-
-    // Compute outlier-resistant averages by slicing from the end
-    // With 4h intervals: 6 pts ~ 24h, 42 pts ~ 7d, all pts ~ 14d
-    const avg14d = typicalAvg(sorted);
-    const avg7d = typicalAvg(sorted.slice(-42));
-    const avg24h = typicalAvg(sorted.slice(-6));
-    const currentAvg = typicalAvg(sorted.slice(-2));
-
-    // Change: compare most recent vs the period before it
-    const recentTypical = typicalAvg(sorted.slice(-3));
-    const previousTypical = typicalAvg(sorted.slice(-9, -3));
-
-    if (sorted.length < 4 || previousTypical === 0) continue;
-
-    const changePct = ((recentTypical - previousTypical) / previousTypical) * 100;
-    const totalVolume = sorted.reduce((s, p) => s + p.volume, 0);
-
-    // Get real lowest price and median from live listings.
-    // The median of 50 live listings is our ground truth for the item's real price.
-    const itemListings = listings[i];
-    let currentLowest = 0;
-    let liveMedian = 0;
-    if (itemListings && itemListings.length > 0) {
-      const prices = itemListings
-        .map(l => l.price_per_unit)
-        .filter(p => p > 0)
-        .sort((a, b) => a - b);
-
-      if (prices.length > 0) {
-        liveMedian = prices[Math.floor(prices.length / 2)];
-        // Keep prices within reasonable range of the median (0.1x to 5x)
-        const reasonable = prices.filter(p => p >= liveMedian * 0.1 && p <= liveMedian * 5);
-        // Use 25th percentile (not absolute min) — cheapest listings often
-        // already sold but DarkerDB still shows them as active (data lag).
-        // P25 skips stale sold listings for a more realistic floor price.
-        const p25Index = Math.min(Math.floor(reasonable.length * 0.25), reasonable.length - 1);
-        currentLowest = reasonable.length > 0 ? reasonable[Math.max(p25Index, 0)] : prices[0];
-      }
-    }
-
-    // Sanity check: if historical averages are wildly off from live median,
-    // the item is RMT-polluted and historical data is unreliable.
-    // Cap at 2x live median — anything above is RMT noise, not real pricing.
-    const sanitize = (val: number) => {
-      if (liveMedian > 0 && val > liveMedian * 2) return Math.round(liveMedian);
-      return val;
-    };
-
-    trending.push({
-      archetype,
-      label,
-      avg14d: sanitize(avg14d),
-      avg7d: sanitize(avg7d),
-      avg24h: sanitize(avg24h),
-      currentAvg: sanitize(currentAvg),
-      currentLowest,
-      previousAvg: sanitize(previousTypical),
-      changePct: liveMedian > 0 && (currentAvg > liveMedian * 2 || previousTypical > liveMedian * 2)
-        ? 0  // Change % is meaningless for RMT-polluted items
-        : changePct,
-      totalVolume,
-      priceHistory: cleanHistory(sorted),
+      return {
+        archetype,
+        label: item.name,
+        avg14d: item.avg_price,
+        avg7d: item.avg_price,
+        avg24h: item.avg_price,
+        currentAvg: Math.round(item.avg_price),
+        currentLowest: item.min_price,
+        previousAvg: item.avg_price,
+        changePct: 0, // Will be meaningful once we have enough historical data
+        totalVolume: item.sold_count,
+        priceHistory,
+      };
     });
-  }
-
-  // Sort by absolute change descending.
-  trending.sort((a, b) => Math.abs(b.changePct) - Math.abs(a.changePct));
-
-  return trending;
 }

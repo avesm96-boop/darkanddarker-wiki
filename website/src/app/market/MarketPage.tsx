@@ -59,19 +59,19 @@ export default function MarketPage() {
           <span className="section-label">Economy</span>
           <h1 className="section-title">Market</h1>
           <p className="section-desc">
-            Live marketplace data powered by DarkerDB
+            Live marketplace data — direct from game servers
           </p>
         </div>
 
-        {/* Work in Progress banner */}
+        {/* Live data banner */}
         <div style={{
           display: "flex",
           alignItems: "center",
           gap: 10,
           padding: "12px 20px",
           marginBottom: 24,
-          background: "rgba(201, 168, 76, 0.06)",
-          border: "1px solid rgba(201, 168, 76, 0.2)",
+          background: "rgba(76, 201, 100, 0.06)",
+          border: "1px solid rgba(76, 201, 100, 0.2)",
           borderRadius: 8,
           fontSize: "0.75rem",
           color: "var(--gold-500)",
@@ -79,14 +79,13 @@ export default function MarketPage() {
         }}>
           <span style={{
             width: 8, height: 8, flexShrink: 0,
-            background: "var(--gold-500)",
+            background: "#4cc964",
             borderRadius: "50%",
             animation: "pulse-glow 2s ease-in-out infinite",
           }} />
           <span>
-            <strong>Work in Progress</strong> — The Market page is under active development.
-            Prices are estimates based on DarkerDB analytics data and may not perfectly reflect
-            real-time in-game values. Item search, price history charts, and more features coming soon.
+            <strong>Live Data</strong> — Prices are pulled directly from the in-game marketplace
+            every ~60 seconds. All listings include full stat rolls, seller info, and sale tracking.
           </span>
         </div>
 

@@ -172,7 +172,7 @@ export default function MarketDashboard({ trending, loading }: Props) {
           (like Wolf Pelt, Bone Powder). For RMT-heavy items, focus on &quot;Low Range&quot; instead.
         </p>
         <p>
-          Market data is provided by DarkerDB and updates every few hours.
+          Market data is collected directly from the in-game marketplace every ~60 seconds.
           Hover over column headers for details. Use the <strong style={{ fontStyle: "normal" }}>Search</strong> tab
           for real-time listing prices.
         </p>

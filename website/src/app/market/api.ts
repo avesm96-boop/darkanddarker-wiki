@@ -74,12 +74,47 @@ export interface TrendingItem {
   avg14d: number;
   avg7d: number;
   avg24h: number;
-  currentAvg: number;      // last 6h avg
-  currentLowest: number;   // lowest price_per_unit in recent listings
+  currentAvg: number;      // most recent aggregated typical price
+  currentLowest: number;   // lowest price_per_unit in live listings
   previousAvg: number;     // for change calc
   changePct: number;
   totalVolume: number;
-  priceHistory: PricePoint[];  // raw points for mini chart
+  priceHistory: PricePoint[];  // raw points for mini chart (cleaned)
+}
+
+// ---------------------------------------------------------------------------
+// Outlier-resistant price estimation
+// ---------------------------------------------------------------------------
+// The DarkerDB API returns avg/min/max per time bucket. RMT and troll listings
+// (e.g. 10,000g for a 30g item) heavily skew the average. We detect this by
+// comparing max vs min — in a healthy bucket, max is typically <5x min.
+//
+// Method: Interquartile-inspired estimate using min/avg/max.
+// - Clean data (max < 3x avg): use avg as-is
+// - Polluted data (max >= 3x avg): estimate typical price as min * 1.2
+//   This adds a 20% margin above floor since real trades cluster near min.
+//
+// The priceHistory points are returned with a "typical" field for charting.
+
+export interface CleanPricePoint extends PricePoint {
+  typical: number;
+}
+
+function typicalPrice(p: PricePoint): number {
+  if (p.max >= p.avg * 3 && p.max > p.min * 10) {
+    // Data is polluted by outliers — use min + 20% as estimate
+    return Math.round(p.min * 1.2);
+  }
+  return Math.round(p.avg);
+}
+
+function cleanHistory(points: PricePoint[]): CleanPricePoint[] {
+  return points.map(p => ({ ...p, typical: typicalPrice(p) }));
+}
+
+function typicalAvg(points: PricePoint[]): number {
+  if (points.length === 0) return 0;
+  return points.reduce((s, p) => s + typicalPrice(p), 0) / points.length;
 }
 
 // ---------------------------------------------------------------------------
@@ -291,29 +326,23 @@ export async function fetchTrending(
       (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime(),
     );
 
-    // Compute averages by slicing from the end (most recent data)
-    // With 4h intervals: 6 pts ≈ 24h, 42 pts ≈ 7d, all pts ≈ 14d
-    const avg = (arr: PricePoint[]) =>
-      arr.length === 0 ? 0 : arr.reduce((s, p) => s + p.avg, 0) / arr.length;
-
-    const avg14d = avg(sorted);
-    const avg7d = avg(sorted.slice(-42));     // last ~7 days
-    const avg24h = avg(sorted.slice(-6));     // last ~24 hours
-    const currentAvg = avg(sorted.slice(-2)); // last ~8 hours (most recent)
+    // Compute outlier-resistant averages by slicing from the end
+    // With 4h intervals: 6 pts ~ 24h, 42 pts ~ 7d, all pts ~ 14d
+    const avg14d = typicalAvg(sorted);
+    const avg7d = typicalAvg(sorted.slice(-42));
+    const avg24h = typicalAvg(sorted.slice(-6));
+    const currentAvg = typicalAvg(sorted.slice(-2));
 
     // Change: compare most recent vs the period before it
-    const recentSlice = sorted.slice(-3);      // last ~12h
-    const previousSlice = sorted.slice(-9, -3); // 12-36h ago
-    const previousAvg = avg(previousSlice);
+    const recentTypical = typicalAvg(sorted.slice(-3));
+    const previousTypical = typicalAvg(sorted.slice(-9, -3));
 
-    if (sorted.length < 4) continue;
+    if (sorted.length < 4 || previousTypical === 0) continue;
 
-    if (previousAvg === 0) continue;
-
-    const changePct = previousAvg > 0 ? ((currentAvg - previousAvg) / previousAvg) * 100 : 0;
+    const changePct = ((recentTypical - previousTypical) / previousTypical) * 100;
     const totalVolume = sorted.reduce((s, p) => s + p.volume, 0);
 
-    // Get lowest listing price
+    // Get lowest listing price (per unit)
     const itemListings = listings[i];
     const currentLowest = itemListings && itemListings.length > 0
       ? itemListings[0].price_per_unit
@@ -327,10 +356,10 @@ export async function fetchTrending(
       avg24h,
       currentAvg,
       currentLowest,
-      previousAvg,
+      previousAvg: previousTypical,
       changePct,
       totalVolume,
-      priceHistory: points,
+      priceHistory: cleanHistory(sorted),
     });
   }
 

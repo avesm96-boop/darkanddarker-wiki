@@ -100,7 +100,7 @@ function TrendTable({
                 <AreaChart data={item.priceHistory}>
                   <Area
                     type="monotone"
-                    dataKey="avg"
+                    dataKey="typical"
                     stroke="rgba(201,168,76,0.6)"
                     fill="rgba(201,168,76,0.1)"
                     strokeWidth={1.5}
@@ -150,18 +150,34 @@ export default function MarketDashboard({ trending, loading }: Props) {
       <TrendTable title="Top 10 Losers" items={losers} />
       <TrendTable title="Most Traded" items={mostTraded} />
 
-      <p style={{
+      <div style={{
         fontSize: "0.6875rem",
         color: "var(--text-muted)",
         fontStyle: "italic",
-        marginTop: 16,
+        marginTop: 20,
         opacity: 0.7,
+        lineHeight: 1.7,
+        maxWidth: 800,
       }}>
-        Analytics data is aggregated hourly and may be delayed 3-4 hours.
-        &quot;Current Avg&quot; reflects the most recent aggregated average.
-        &quot;Lowest Now&quot; is the cheapest per-unit listing currently on the marketplace.
-        Use the Search tab for real-time prices.
-      </p>
+        <p style={{ marginBottom: 8 }}>
+          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>How we calculate prices:</strong>{" "}
+          Raw market averages are heavily skewed by RMT and troll listings (e.g. 10,000g for a 30g item).
+          We use an outlier-resistant method: when a time bucket&apos;s maximum price exceeds 3x the average
+          and 10x the minimum, we estimate the typical price as the minimum + 20% instead of using the
+          polluted average. This gives a much more accurate picture of what items actually trade for.
+        </p>
+        <p style={{ marginBottom: 8 }}>
+          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>Column definitions:</strong>{" "}
+          &quot;Avg 14d/7d/24h&quot; = outlier-adjusted average over that period.
+          &quot;Current Avg&quot; = most recent ~8 hours.
+          &quot;Lowest Now&quot; = cheapest per-unit listing currently live on the marketplace.
+          &quot;Change&quot; = price movement comparing last ~12h vs previous ~24h.
+        </p>
+        <p>
+          Analytics data is aggregated hourly by DarkerDB and may be delayed 3-4 hours.
+          Use the <strong style={{ fontStyle: "normal" }}>Search</strong> tab for real-time listing prices.
+        </p>
+      </div>
     </div>
   );
 }

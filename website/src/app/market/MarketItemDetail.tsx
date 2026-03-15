@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import styles from "./market.module.css";
-import { fetchPriceHistory, type PricePoint } from "./api";
+import { fetchPriceHistory, type PricePoint, type CleanPricePoint } from "./api";
 import {
   ComposedChart,
   Area,
@@ -117,14 +117,20 @@ export default function MarketItemDetail({ itemId, itemName }: Props) {
     fetchPriceHistory(archetype, INTERVAL_MAP[range], ac.signal)
       .then((points) => {
         if (!ac.signal.aborted) {
-          const chartData: ChartPoint[] = points.map((p) => ({
-            time: formatTime(p.timestamp, range),
-            avg: p.avg,
-            min: p.min,
-            max: p.max,
-            volume: p.volume,
-            range: [p.min, p.max] as [number, number],
-          }));
+          const chartData: ChartPoint[] = points.map((p) => {
+            // Outlier-resistant: if max >= 3x avg and 10x min, use min*1.2
+            const typical = (p.max >= p.avg * 3 && p.max > p.min * 10)
+              ? Math.round(p.min * 1.2)
+              : Math.round(p.avg);
+            return {
+              time: formatTime(p.timestamp, range),
+              avg: typical,
+              min: p.min,
+              max: p.max,
+              volume: p.volume,
+              range: [p.min, p.max] as [number, number],
+            };
+          });
           setData(chartData);
           setLoading(false);
         }

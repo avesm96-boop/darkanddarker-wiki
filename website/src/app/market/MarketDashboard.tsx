@@ -59,13 +59,13 @@ function TrendTable({
         <div className={styles.trendTableHeader}>
           <span></span>
           <span>Item</span>
-          <span>Avg 14d</span>
-          <span>Avg 7d</span>
-          <span>Avg 24h</span>
-          <span>Current Avg</span>
-          <span>Lowest Now</span>
-          <span>Change</span>
-          <span>Chart</span>
+          <span title="Outlier-adjusted average price over the last 14 days. RMT and troll listings are filtered out using a geometric mean when price spread exceeds 20x.">Avg 14d</span>
+          <span title="Outlier-adjusted average price over the last 7 days.">Avg 7d</span>
+          <span title="Outlier-adjusted average price over the last 24 hours.">Avg 24h</span>
+          <span title="Outlier-adjusted average from the most recent ~8 hours of aggregated data. Analytics data may be delayed 3-4 hours.">Current Avg</span>
+          <span title="The cheapest per-unit listing currently live on the marketplace. This is real-time data.">Lowest Now</span>
+          <span title="Price change comparing the last ~12 hours vs the previous ~24 hours, using outlier-adjusted prices.">Change</span>
+          <span title="Price trend over the available history (~7-14 days). Uses outlier-adjusted typical prices.">Chart</span>
         </div>
         {items.map((item) => (
           <div key={item.archetype} className={styles.trendTableRow}>

@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useCallback } from "react";
 import styles from "./quests.module.css";
 
 // ---------------------------------------------------------------------------
-// Types (matching new quests.json schema)
+// Types (matching new quests.json schema — chapters-based)
 // ---------------------------------------------------------------------------
 
 interface Objective {
@@ -17,38 +17,51 @@ interface Objective {
 }
 
 interface Reward {
-  type: string;
+  type: string; // "Item" | "Exp" | "Affinity" | "Random" | etc.
   count?: number;
-  item_id?: string;
+  id?: string;
+  name?: string;
   rarity?: string;
   item_type?: string;
-  merchant_id?: string;
+  merchant?: string;
+}
+
+interface Prerequisite {
+  id: string;
+  title: string;
 }
 
 interface Quest {
   id: string;
-  title: string | null;
-  chapter: string | null;
-  text: string | null;
-  completion_text: string | null;
+  title: string;
+  quest_number: number;
+  required_level: number;
+  greeting: string;
+  completion_text: string;
+  prerequisite: Prerequisite | null;
   dungeons: string[];
-  prerequisite: string | null;
-  sub_merchant: string;
   objectives: Objective[];
   rewards: Reward[];
+}
+
+interface Chapter {
+  name: string;
+  order: number;
+  quests: Quest[];
 }
 
 interface Merchant {
   id: string;
   name: string;
   portrait: string;
-  quest_count: number;
-  quests: Quest[];
+  chapters: Chapter[];
 }
 
 interface QuestsData {
   generated_at: string;
   source: string;
+  total_quests: number;
+  total_merchants: number;
   merchants: Merchant[];
 }
 
@@ -73,54 +86,15 @@ function formatId(id: string): string {
     .replace(/_/g, " ");
 }
 
+/** Strip "Id_Item_" prefix and trailing "_XXXX" numbers, return icon path */
 function itemIconUrl(itemId: string): string {
-  const base = itemId.replace(/_\d+$/, "");
-  return `/item-icons/Item_Icon_${base}.png`;
+  const stripped = itemId.replace(/^Id_Item_/, "").replace(/_\d+$/, "");
+  return `/item-icons/Item_Icon_${stripped}.png`;
 }
 
-function formatPrereqId(id: string): string {
-  // "Alchemist_11" -> "Alchemist #11"
-  // "Treasurer_06" -> "Treasurer #06"
-  // "TavernMaster_Tuto_03" -> "Tavern Master Tuto #03"
-  const m = id.match(/^(.+?)_(\d+)$/);
-  if (m) {
-    const name = m[1]
-      .replace(/([a-z])([A-Z])/g, "$1 $2")
-      .replace(/_/g, " ");
-    return `${name} #${m[2]}`;
-  }
-  return id.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/_/g, " ");
-}
-
-/** Classify a sub_merchant into a tab category */
-function subMerchantCategory(sub: string, merchantName: string): string {
-  const lower = sub.toLowerCase();
-  if (lower.includes("daily")) return "Daily";
-  if (lower.includes("weekly")) return "Weekly";
-  if (lower.includes("seasonal")) return "Seasonal";
-  // "Final", "Tuto", "Extra", or same as merchant => Story
-  return "Story";
-}
-
-/** Determine if a merchant needs sub-merchant tabs */
-function getMerchantTabs(
-  merchant: Merchant
-): { label: string; key: string }[] | null {
-  const subs = [...new Set(merchant.quests.map((q) => q.sub_merchant))];
-  const categories = [...new Set(subs.map((s) => subMerchantCategory(s, merchant.name)))];
-  if (categories.length <= 1) return null;
-
-  const order = ["Story", "Daily", "Weekly", "Seasonal"];
-  const tabs = order
-    .filter((cat) => categories.includes(cat))
-    .map((cat) => ({
-      label: cat === "Story" ? "Story Quests" : cat,
-      key: cat,
-    }));
-
-  // Add "All" at front
-  tabs.unshift({ label: "All", key: "All" });
-  return tabs;
+/** Get total quest count across all chapters */
+function getMerchantQuestCount(merchant: Merchant): number {
+  return merchant.chapters.reduce((acc, ch) => acc + ch.quests.length, 0);
 }
 
 // ---------------------------------------------------------------------------
@@ -273,7 +247,7 @@ function ObjectiveRow({ obj }: { obj: Objective }) {
 function RewardRow({ reward }: { reward: Reward }) {
   const type = reward.type;
 
-  if (type === "Experience") {
+  if (type === "Exp") {
     return (
       <div className={styles.rwdRow}>
         <span className={styles.rwdIconStar}>&#9733;</span>
@@ -290,9 +264,9 @@ function RewardRow({ reward }: { reward: Reward }) {
         <span className={styles.rwdIconHeart}>&#9829;</span>
         <span className={styles.rwdText}>
           <span className={styles.rwdCount}>{reward.count}</span> Affinity
-          {reward.merchant_id && (
+          {reward.merchant && (
             <span className={styles.rwdMerchant}>
-              {" "}({formatId(reward.merchant_id)})
+              {" "}({formatId(reward.merchant)})
             </span>
           )}
         </span>
@@ -318,8 +292,13 @@ function RewardRow({ reward }: { reward: Reward }) {
   }
 
   if (type === "Item") {
-    const icon = reward.item_id ? itemIconUrl(reward.item_id) : null;
-    const name = reward.item_id ? formatId(reward.item_id) : "Item";
+    const isGold = reward.id === "Id_Item_GoldCoins";
+    const icon = reward.id
+      ? isGold
+        ? "/item-icons/Item_Icon_GoldCoin.png"
+        : itemIconUrl(reward.id)
+      : null;
+    const name = reward.name ?? (reward.id ? formatId(reward.id) : "Item");
     return (
       <div className={styles.rwdRow}>
         {icon ? (
@@ -347,36 +326,31 @@ function RewardRow({ reward }: { reward: Reward }) {
 
 function QuestCard({
   quest,
-  merchantName,
+  totalQuests,
 }: {
   quest: Quest;
-  merchantName: string;
+  totalQuests: number;
 }) {
-  const showSubLabel =
-    quest.sub_merchant && quest.sub_merchant !== merchantName;
-
   return (
     <div className={styles.questCard}>
-      {/* Chapter badge */}
-      {quest.chapter && (
-        <div className={styles.questChapterBadge}>
-          Chapter: {quest.chapter}
-        </div>
-      )}
-
-      {/* Sub-merchant label */}
-      {showSubLabel && (
-        <div className={styles.questSubLabel}>{quest.sub_merchant}</div>
-      )}
+      {/* Quest number + required level badges */}
+      <div className={styles.questChapterBadge}>
+        Quest {quest.quest_number} of {totalQuests}
+        {quest.required_level > 0 && (
+          <span style={{ marginLeft: 12, color: "var(--gold-400)" }}>
+            Lv. {quest.required_level}
+          </span>
+        )}
+      </div>
 
       {/* Title */}
-      <h3 className={styles.questTitle}>
-        {quest.title ?? formatPrereqId(quest.id)}
-      </h3>
+      <h3 className={styles.questTitle}>{quest.title}</h3>
 
-      {/* Quest text */}
-      {quest.text && (
-        <p className={styles.questText}>&ldquo;{quest.text}&rdquo;</p>
+      {/* Greeting text (merchant's words) */}
+      {quest.greeting && (
+        <p className={styles.questText}>
+          &ldquo;{quest.greeting}&rdquo;
+        </p>
       )}
 
       {/* Objectives */}
@@ -413,7 +387,7 @@ function QuestCard({
           <div className={styles.questFooterRow}>
             <span className={styles.footerLabel}>Prerequisite:</span>
             <span className={styles.prereqValue}>
-              {formatPrereqId(quest.prerequisite)}
+              {quest.prerequisite.title}
             </span>
           </div>
         )}
@@ -443,7 +417,6 @@ export default function QuestsPage() {
   const [error, setError] = useState(false);
   const [selectedMerchant, setSelectedMerchant] = useState<string | null>(null);
   const [search, setSearch] = useState("");
-  const [activeTab, setActiveTab] = useState("All");
 
   const loadData = useCallback(() => {
     setError(false);
@@ -468,7 +441,7 @@ export default function QuestsPage() {
   }, [data]);
 
   const totalQuests = useMemo(() => {
-    return merchants.reduce((acc, m) => acc + m.quest_count, 0);
+    return merchants.reduce((acc, m) => acc + getMerchantQuestCount(m), 0);
   }, [merchants]);
 
   // Filtered merchants for grid view
@@ -484,67 +457,17 @@ export default function QuestsPage() {
     return merchants.find((m) => m.id === selectedMerchant) ?? null;
   }, [merchants, selectedMerchant]);
 
-  // Tabs for merchant with sub-types
-  const tabs = useMemo(() => {
-    if (!merchant) return null;
-    return getMerchantTabs(merchant);
+  // Chapters sorted by order
+  const sortedChapters = useMemo(() => {
+    if (!merchant) return [];
+    return [...merchant.chapters].sort((a, b) => a.order - b.order);
   }, [merchant]);
 
-  // Reset tab when changing merchant
-  useEffect(() => {
-    setActiveTab("All");
-  }, [selectedMerchant]);
-
-  // Filter and group quests
-  const questChapters = useMemo(() => {
-    if (!merchant) return [];
-
-    let quests = merchant.quests;
-
-    // Filter by active tab
-    if (tabs && activeTab !== "All") {
-      quests = quests.filter(
-        (q) => subMerchantCategory(q.sub_merchant, merchant.name) === activeTab
-      );
-    }
-
-    // Sort: story quests first (by chapter alphabetically, then ID),
-    // then daily/weekly/seasonal
-    const categoryOrder: Record<string, number> = {
-      Story: 0,
-      Daily: 1,
-      Weekly: 2,
-      Seasonal: 3,
-    };
-
-    const sorted = [...quests].sort((a, b) => {
-      const catA = categoryOrder[subMerchantCategory(a.sub_merchant, merchant.name)] ?? 99;
-      const catB = categoryOrder[subMerchantCategory(b.sub_merchant, merchant.name)] ?? 99;
-      if (catA !== catB) return catA - catB;
-      // Within same category, sort by chapter then by ID
-      const chA = a.chapter ?? "";
-      const chB = b.chapter ?? "";
-      if (chA !== chB) return chA.localeCompare(chB);
-      return a.id.localeCompare(b.id);
-    });
-
-    // Group by chapter
-    const chapters: { name: string; quests: Quest[] }[] = [];
-    const chapterMap = new Map<string, Quest[]>();
-
-    for (const q of sorted) {
-      const key = q.chapter ?? "Uncategorized";
-      let arr = chapterMap.get(key);
-      if (!arr) {
-        arr = [];
-        chapterMap.set(key, arr);
-        chapters.push({ name: key, quests: arr });
-      }
-      arr.push(q);
-    }
-
-    return chapters;
-  }, [merchant, tabs, activeTab]);
+  // Total quests for the selected merchant (for "Quest X of Y" display)
+  const merchantTotalQuests = useMemo(() => {
+    if (!merchant) return 0;
+    return getMerchantQuestCount(merchant);
+  }, [merchant]);
 
   // -- Loading state --
   if (!data && !error) {
@@ -592,11 +515,6 @@ export default function QuestsPage() {
 
   // -- Merchant Detail View --
   if (merchant) {
-    const filteredCount = questChapters.reduce(
-      (acc, ch) => acc + ch.quests.length,
-      0
-    );
-
     return (
       <div className={styles.page}>
         <div className={styles.pageInner}>
@@ -619,48 +537,47 @@ export default function QuestsPage() {
             <div className={styles.detailInfo}>
               <h1 className={styles.detailName}>{merchant.name}</h1>
               <span className={styles.detailSub}>
-                {merchant.quests.length} quest
-                {merchant.quests.length !== 1 ? "s" : ""}
+                {merchantTotalQuests} quest
+                {merchantTotalQuests !== 1 ? "s" : ""} across{" "}
+                {sortedChapters.length} chapter
+                {sortedChapters.length !== 1 ? "s" : ""}
               </span>
             </div>
           </div>
 
-          {/* Sub-merchant tabs */}
-          {tabs && (
-            <div className={styles.tabBar}>
-              {tabs.map((tab) => (
-                <button
-                  key={tab.key}
-                  className={`${styles.tab} ${
-                    activeTab === tab.key ? styles.tabActive : ""
-                  }`}
-                  onClick={() => setActiveTab(tab.key)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          )}
-
           {/* Quest cards grouped by chapter */}
-          {questChapters.map((chapter) => (
+          {sortedChapters.map((chapter) => (
             <div key={chapter.name} className={styles.chapterGroup}>
-              <h2 className={styles.chapterTitle}>{chapter.name}</h2>
+              <h2 className={styles.chapterTitle}>
+                {chapter.name}
+                <span
+                  style={{
+                    marginLeft: 12,
+                    fontSize: "0.6875rem",
+                    fontWeight: 600,
+                    color: "var(--text-muted)",
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  {chapter.quests.length} quest
+                  {chapter.quests.length !== 1 ? "s" : ""}
+                </span>
+              </h2>
               <div className={styles.questGrid}>
                 {chapter.quests.map((quest) => (
                   <QuestCard
                     key={quest.id}
                     quest={quest}
-                    merchantName={merchant.name}
+                    totalQuests={merchantTotalQuests}
                   />
                 ))}
               </div>
             </div>
           ))}
 
-          {filteredCount === 0 && (
+          {sortedChapters.length === 0 && (
             <div className={styles.emptyState}>
-              No quests found for this filter.
+              No quests found for this merchant.
             </div>
           )}
         </div>
@@ -698,26 +615,29 @@ export default function QuestsPage() {
           </div>
         ) : (
           <div className={styles.merchantGrid}>
-            {filteredMerchants.map((m) => (
-              <div
-                key={m.id}
-                className={styles.merchantCard}
-                onClick={() => setSelectedMerchant(m.id)}
-              >
-                <MerchantPortrait
-                  src={m.portrait}
-                  name={m.name}
-                  size={128}
-                  className={styles.merchantPortrait}
-                  fallbackClass={styles.merchantPortraitFallback}
-                />
-                <div className={styles.merchantName}>{m.name}</div>
-                <div className={styles.merchantQuestCount}>
-                  {m.quest_count} quest{m.quest_count !== 1 ? "s" : ""}
+            {filteredMerchants.map((m) => {
+              const qCount = getMerchantQuestCount(m);
+              return (
+                <div
+                  key={m.id}
+                  className={styles.merchantCard}
+                  onClick={() => setSelectedMerchant(m.id)}
+                >
+                  <MerchantPortrait
+                    src={m.portrait}
+                    name={m.name}
+                    size={128}
+                    className={styles.merchantPortrait}
+                    fallbackClass={styles.merchantPortraitFallback}
+                  />
+                  <div className={styles.merchantName}>{m.name}</div>
+                  <div className={styles.merchantQuestCount}>
+                    {qCount} quest{qCount !== 1 ? "s" : ""}
+                  </div>
+                  <div className={styles.viewQuestsBtn}>View Quests &rarr;</div>
                 </div>
-                <div className={styles.viewQuestsBtn}>View Quests &rarr;</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

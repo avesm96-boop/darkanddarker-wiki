@@ -1,25 +1,20 @@
+#!/usr/bin/env python3
 """
-build_quests.py - Compile all quest data into website/public/data/quests.json
+build_quests.py - Compile all quest data into website/src/data/quests.json
 
-Reads from:
-  - raw/.../V2/Quest/Quest/              — quest definitions (level, prereqs)
-  - raw/.../V2/Quest/QuestChapter/       — chapter groupings & display names
-  - raw/.../V2/Quest/QuestContentKill/   — kill objectives
-  - raw/.../V2/Quest/QuestContentFetch/  — fetch/gather objectives
-  - raw/.../V2/Quest/QuestContentEscape/ — escape objectives
-  - raw/.../V2/Quest/QuestContentExplore/— explore objectives
-  - raw/.../V2/Quest/QuestContentDamage/ — damage objectives
-  - raw/.../V2/Quest/QuestContentHold/   — hold objectives
-  - raw/.../V2/Quest/QuestContentProps/  — props/destroy objectives
-  - raw/.../V2/Quest/QuestContentUseItem/— use-item objectives
-  - raw/.../V2/Quest/QuestReward/        — reward definitions
-  - raw/.../V2/Merchant/Merchant/        — merchant names
+Sources:
+  - Localization: Exports/.../Localization/Game/en/Game.json
+    (quest titles, greetings, completion texts, chapter names)
+  - QuestChapter files: raw/.../Quest/QuestChapter/
+    (chapter ordering, quest grouping)
+  - Quest files: raw/.../Quest/Quest/
+    (required level, prerequisites, inline text/contents for a few quests)
+  - QuestReward files: raw/.../Quest/QuestReward/
+    (reward items per quest)
+  - QuestContent* files: raw/.../Quest/QuestContent*/
+    (kill, fetch, escape, explore, hold, damage, props, useitem objectives)
 
-Outputs:
-  - website/public/data/quests.json
-
-Usage:
-    py -3 tools/build_quests.py
+Output: website/src/data/quests.json
 """
 from __future__ import annotations
 
@@ -31,33 +26,48 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-RAW_BASE = ROOT / "raw" / "DungeonCrawler" / "Content" / "DungeonCrawler" / "Data" / "Generated" / "V2"
-RAW_QUEST = RAW_BASE / "Quest"
-RAW_MERCHANT = RAW_BASE / "Merchant" / "Merchant"
-OUTPUT_FILE = ROOT / "website" / "public" / "data" / "quests.json"
+# ── Paths ──────────────────────────────────────────────────────────────────────
 
-# Directories for quest content types
+ROOT = Path(__file__).resolve().parent.parent
+EXPORTS_ROOT = ROOT.parent / "Exports"
+RAW_BASE = ROOT / "raw" / "DungeonCrawler" / "Content" / "DungeonCrawler" / "Data" / "Generated" / "V2"
+
+LOCALIZATION_FILE = (
+    EXPORTS_ROOT / "DungeonCrawler" / "Content" / "Localization" / "Game" / "en" / "Game.json"
+)
+
+RAW_QUEST = RAW_BASE / "Quest"
+QUEST_DIR = RAW_QUEST / "Quest"
+CHAPTER_DIR = RAW_QUEST / "QuestChapter"
+REWARD_DIR = RAW_QUEST / "QuestReward"
+
 CONTENT_DIRS = {
-    "kill":    RAW_QUEST / "QuestContentKill",
-    "fetch":   RAW_QUEST / "QuestContentFetch",
-    "escape":  RAW_QUEST / "QuestContentEscape",
-    "explore": RAW_QUEST / "QuestContentExplore",
-    "damage":  RAW_QUEST / "QuestContentDamage",
-    "hold":    RAW_QUEST / "QuestContentHold",
-    "props":   RAW_QUEST / "QuestContentProps",
-    "useitem": RAW_QUEST / "QuestContentUseItem",
+    "Kill":    RAW_QUEST / "QuestContentKill",
+    "Fetch":   RAW_QUEST / "QuestContentFetch",
+    "Escape":  RAW_QUEST / "QuestContentEscape",
+    "Explore": RAW_QUEST / "QuestContentExplore",
+    "Hold":    RAW_QUEST / "QuestContentHold",
+    "Damage":  RAW_QUEST / "QuestContentDamage",
+    "Props":   RAW_QUEST / "QuestContentProps",
+    "UseItem": RAW_QUEST / "QuestContentUseItem",
 }
 
-# Friendly merchant names (fallback if not found in raw data)
+OUTPUT_FILE = ROOT / "website" / "public" / "data" / "quests.json"
+
+# ── Portrait overrides (merchant key -> portrait filename token) ───────────────
+PORTRAIT_OVERRIDES = {
+    "JackOLantern": "PumpkinMan",
+    "TavernMaster": "Tavernmaster",
+}
+
+# ── Merchant display names ─────────────────────────────────────────────────────
 MERCHANT_DISPLAY_NAMES = {
     "Alchemist": "The Alchemist",
     "Armourer": "The Armourer",
-    "Cockatrice": "Cockatrice",
+    "Cockatrice": "The Cockatrice",
     "Dealmaker": "The Dealmaker",
-    "Expressman": "The Expressman",
     "FortuneTeller": "The Fortune Teller",
-    "GoblinMerchant": "Goblin Merchant",
+    "GoblinMerchant": "The Goblin Merchant",
     "Goldsmith": "The Goldsmith",
     "Huntress": "The Huntress",
     "JackOLantern": "Jack O'Lantern",
@@ -66,9 +76,8 @@ MERCHANT_DISPLAY_NAMES = {
     "Miner": "The Miner",
     "Navigator": "The Navigator",
     "Nicholas": "Nicholas",
-    "NightmareMummy": "Nightmare Mummy",
-    "PumpkinMan": "Pumpkin Man",
-    "SkeletonFootman": "Skeleton Footman",
+    "NightmareMummy": "The Nightmare Mummy",
+    "SkeletonFootman": "The Skeleton Footman",
     "Squire": "The Squire",
     "Surgeon": "The Surgeon",
     "Tailor": "The Tailor",
@@ -80,7 +89,7 @@ MERCHANT_DISPLAY_NAMES = {
     "Woodsman": "The Woodsman",
 }
 
-# Dungeon tag to friendly name
+# ── Dungeon tag to friendly name ──────────────────────────────────────────────
 DUNGEON_TAG_NAMES = {
     "Id.Dungeon.Crypts": "Forgotten Crypt",
     "Id.Dungeon.Goblin": "Goblin Cave",
@@ -91,35 +100,40 @@ DUNGEON_TAG_NAMES = {
     "Id.Dungeon.ShipGraveyard": "Ship Graveyard",
     "Id.Dungeon.Firedeep": "Firedeep",
     "Id.Dungeon.ForgottenCastle": "Forgotten Castle",
+    "Id.Dungeon.HowlingCrypts": "Howling Crypts",
 }
 
 
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════════════
 # Helpers
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════════════
 
-def load_fmodel_json(path: Path) -> dict | None:
-    """Load an FModel-exported JSON and return the first object's Properties."""
+def load_json_file(path: Path) -> dict | list | None:
+    """Load a JSON file with UTF-8 encoding."""
     try:
         with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        if isinstance(data, list) and data:
-            return data[0]
-        return None
-    except (json.JSONDecodeError, FileNotFoundError, IndexError) as e:
+            return json.load(f)
+    except (json.JSONDecodeError, FileNotFoundError) as e:
         print(f"  WARNING: Failed to load {path}: {e}", file=sys.stderr)
         return None
 
 
+def load_fmodel_json(path: Path) -> dict | None:
+    """Load an FModel-exported JSON and return the first object."""
+    data = load_json_file(path)
+    if isinstance(data, list) and data:
+        return data[0]
+    return None
+
+
 def extract_asset_id(ref: dict | None) -> str | None:
-    """Extract the asset ID from an AssetPathName reference."""
+    """Extract the asset ID from an AssetPathName reference like '.../Foo.Foo' -> 'Foo'."""
     if not isinstance(ref, dict):
         return None
     path = ref.get("AssetPathName", "")
     if not path:
         return None
-    parts = path.split(".")
-    return parts[-1] if len(parts) > 1 else None
+    return path.split("/")[-1].split(".")[0] if "/" in path else None
 
 
 def extract_tag_name(tag: dict | None) -> str | None:
@@ -129,15 +143,12 @@ def extract_tag_name(tag: dict | None) -> str | None:
     return None
 
 
-def extract_dungeon_tags(props: dict) -> list[str]:
-    """Extract dungeon tags from DungeonIdTags array."""
-    tags = props.get("DungeonIdTags", [])
-    result = []
-    for t in tags:
-        name = extract_tag_name(t)
-        if name:
-            result.append(name)
-    return result
+def humanize_id(s: str) -> str:
+    """Convert PascalCase/camelCase ID to human-readable: DeathSkull -> Death Skull."""
+    result = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", s)
+    result = re.sub(r"(?<=[A-Z])(?=[A-Z][a-z])", " ", result)
+    result = result.replace("_", " ")
+    return result.strip()
 
 
 def dungeon_tag_to_name(tag: str) -> str:
@@ -145,509 +156,766 @@ def dungeon_tag_to_name(tag: str) -> str:
     return DUNGEON_TAG_NAMES.get(tag, tag.replace("Id.Dungeon.", ""))
 
 
-def extract_text_field(text_obj: dict | None) -> str | None:
-    """Extract the text key or localized string from an FModel text object."""
-    if not isinstance(text_obj, dict):
-        return None
-    # Prefer Key (localization key), fall back to LocalizedString
-    return text_obj.get("Key") or text_obj.get("LocalizedString") or text_obj.get("SourceString")
-
-
-def item_id_to_name(item_id: str) -> str:
-    """Convert Id_Item_BlackRose -> Black Rose, handling CamelCase."""
-    # Strip Id_Item_ prefix
-    name = item_id
-    if name.startswith("Id_Item_"):
-        name = name[8:]
-    # Insert spaces before capital letters (CamelCase -> Camel Case)
-    name = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", name)
-    name = re.sub(r"(?<=[A-Z])(?=[A-Z][a-z])", " ", name)
-    # Replace underscores with spaces
-    name = name.replace("_", " ")
-    return name.strip()
-
-
 def tag_to_name(tag: str, prefix: str) -> str:
-    """Convert Id.Monster.Abomination -> Abomination, etc."""
-    if tag.startswith(prefix):
-        name = tag[len(prefix):]
-    else:
-        name = tag
-    # Insert spaces before capitals
-    name = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", name)
-    return name.strip()
+    """Strip prefix from a tag and humanize: Id.Monster.Abomination -> Abomination."""
+    name = tag[len(prefix):] if tag.startswith(prefix) else tag
+    return humanize_id(name)
 
 
 def module_path_to_name(asset_path: str) -> str:
     """Extract a readable module name from an asset path."""
-    # /Game/.../Id_DungeonModule_Ruins_GreatHall_03_Destroyed.Id_DungeonModule...
     asset_id = asset_path.split(".")[-1] if "." in asset_path else asset_path
-    # Strip prefix
     name = asset_id
     if name.startswith("Id_DungeonModule_"):
         name = name[17:]
-    # Replace underscores, insert spaces
-    name = name.replace("_", " ")
-    return name.strip()
+    return name.replace("_", " ").strip()
 
 
-# ---------------------------------------------------------------------------
-# Loaders
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════════════
+# Localization
+# ═══════════════════════════════════════════════════════════════════════════════
 
-def load_all_quest_content() -> dict[str, dict]:
-    """Load all quest content (objectives) from all content subdirectories."""
-    content_by_id: dict[str, dict] = {}
-
-    for content_type, directory in CONTENT_DIRS.items():
-        if not directory.is_dir():
-            print(f"  WARNING: Content directory not found: {directory}", file=sys.stderr)
-            continue
-
-        for file_path in sorted(directory.glob("*.json")):
-            obj = load_fmodel_json(file_path)
-            if not obj:
-                continue
-
-            content_id = obj.get("Name", file_path.stem)
-            props = obj.get("Properties", {})
-            parsed = {"type": content_type, "id": content_id}
-
-            count = props.get("ContentCount")
-            if count is not None:
-                parsed["count"] = count
-
-            # Dungeon tags (common across types)
-            dungeons = extract_dungeon_tags(props)
-            if dungeons:
-                parsed["dungeons"] = [dungeon_tag_to_name(d) for d in dungeons]
-
-            # Type-specific fields
-            if content_type == "kill":
-                kill_tag = extract_tag_name(props.get("KillTag"))
-                if kill_tag:
-                    parsed["target"] = tag_to_name(kill_tag, "Id.Monster.")
-                    parsed["target_tag"] = kill_tag
-                kill_type = props.get("KillType", "")
-                if kill_type:
-                    parsed["kill_type"] = kill_type.split("::")[-1]
-                if props.get("SingleSession"):
-                    parsed["single_session"] = True
-
-            elif content_type == "fetch":
-                item_tag = extract_tag_name(props.get("ItemIdTag"))
-                if item_tag:
-                    item_id = item_tag.replace("Id.Item.", "")
-                    parsed["item"] = item_id
-                    parsed["item_name"] = tag_to_name(item_tag, "Id.Item.")
-                # Some fetch quests use TypeTag + RarityType instead of specific item
-                type_tag = extract_tag_name(props.get("TypeTag"))
-                if type_tag:
-                    parsed["item_type"] = tag_to_name(type_tag, "Type.Item.")
-                rarity_tag = extract_tag_name(props.get("RarityType"))
-                if rarity_tag:
-                    parsed["rarity"] = tag_to_name(rarity_tag, "Type.Item.Rarity.")
-                loot_state = props.get("ItemLootState", "")
-                if loot_state:
-                    parsed["loot_state"] = loot_state.split("::")[-1]
-
-            elif content_type == "escape":
-                if props.get("ConsecutiveEscape"):
-                    parsed["consecutive"] = True
-
-            elif content_type == "explore":
-                module_ref = props.get("ModuleId")
-                if isinstance(module_ref, dict):
-                    asset_path = module_ref.get("AssetPathName", "")
-                    if asset_path:
-                        parsed["module"] = module_path_to_name(asset_path)
-
-            elif content_type == "damage":
-                damage_type = props.get("DamageType", "")
-                if damage_type:
-                    parsed["damage_type"] = damage_type.split("::")[-1]
-                tag_queries = props.get("TagQueryData", [])
-                if tag_queries:
-                    parsed["conditions"] = [
-                        extract_asset_id(t) or "" for t in tag_queries if isinstance(t, dict)
-                    ]
-
-            elif content_type == "hold":
-                module_ref = props.get("ModuleId")
-                if isinstance(module_ref, dict):
-                    asset_path = module_ref.get("AssetPathName", "")
-                    if asset_path:
-                        parsed["module"] = module_path_to_name(asset_path)
-                hold_time = props.get("HoldTime")
-                if hold_time is not None:
-                    parsed["hold_time"] = hold_time
-                if props.get("SingleSession"):
-                    parsed["single_session"] = True
-                if props.get("MustEscape"):
-                    parsed["must_escape"] = True
-
-            elif content_type == "props":
-                props_tag = extract_tag_name(props.get("PropsIdTag"))
-                if props_tag:
-                    parsed["props_target"] = tag_to_name(props_tag, "Id.Props.")
-                    parsed["props_tag"] = props_tag
-                props_type = props.get("PropsType", "")
-                if props_type:
-                    parsed["action"] = props_type.split("::")[-1]
-
-            elif content_type == "useitem":
-                item_tag = extract_tag_name(props.get("ItemIdTag"))
-                if item_tag:
-                    item_id = item_tag.replace("Id.Item.", "")
-                    parsed["item"] = item_id
-                    parsed["item_name"] = tag_to_name(item_tag, "Id.Item.")
-                item_type = props.get("ItemType", "")
-                if item_type:
-                    parsed["item_type"] = item_type.split("::")[-1]
-
-            content_by_id[content_id] = parsed
-
-    return content_by_id
+def load_localization() -> dict[str, str]:
+    """Load the DC namespace from the localization file."""
+    print(f"[loc] Loading {LOCALIZATION_FILE}")
+    data = load_json_file(LOCALIZATION_FILE)
+    if not data or not isinstance(data, dict):
+        print("  ERROR: Could not load localization!", file=sys.stderr)
+        return {}
+    dc = data.get("DC", {})
+    print(f"  {len(dc)} entries in DC namespace")
+    return dc
 
 
-def load_all_rewards() -> dict[str, list[dict]]:
-    """Load all quest rewards, keyed by reward ID."""
-    reward_dir = RAW_QUEST / "QuestReward"
-    rewards_by_id: dict[str, list[dict]] = {}
-
-    if not reward_dir.is_dir():
-        print(f"  WARNING: Reward directory not found: {reward_dir}", file=sys.stderr)
-        return rewards_by_id
-
-    for file_path in sorted(reward_dir.glob("*.json")):
-        obj = load_fmodel_json(file_path)
-        if not obj:
-            continue
-
-        reward_id = obj.get("Name", file_path.stem)
-        props = obj.get("Properties", {})
-        reward_items = props.get("RewardItemArray", [])
-
-        parsed_rewards = []
-        for item in reward_items:
-            reward_type = item.get("RewardType", "").split("::")[-1]
-            reward_rid = item.get("RewardId", "")
-            reward_count = item.get("RewardCount", 0)
-
-            entry: dict = {"type": reward_type.lower()}
-
-            if reward_type == "Item":
-                entry["id"] = reward_rid
-                entry["name"] = item_id_to_name(reward_rid)
-                entry["count"] = reward_count
-            elif reward_type == "Exp":
-                entry["count"] = reward_count
-            elif reward_type == "Affinity":
-                # RewardId is like "Id_Merchant_Alchemist"
-                merchant_key = reward_rid.replace("Id_Merchant_", "") if reward_rid.startswith("Id_Merchant_") else reward_rid
-                entry["merchant"] = merchant_key
-                entry["count"] = reward_count
-            else:
-                entry["id"] = reward_rid
-                entry["count"] = reward_count
-
-            parsed_rewards.append(entry)
-
-        rewards_by_id[reward_id] = parsed_rewards
-
-    return rewards_by_id
+def _version_sort_key(suffix: str) -> tuple[int, int]:
+    """Sort version suffixes: EAS > EA, then by number."""
+    m = re.match(r"_?(EAS?)_(\d+)$", suffix)
+    if m:
+        era = 1 if m.group(1) == "EAS" else 0
+        return (era, int(m.group(2)))
+    return (-1, 0)
 
 
-def load_all_chapters() -> list[dict]:
-    """Load quest chapters for grouping."""
-    chapter_dir = RAW_QUEST / "QuestChapter"
-    chapters = []
+def resolve_localized(loc: dict[str, str], prefix: str) -> str | None:
+    """
+    Given a key prefix like 'Text_DesignData_Quest_Alchemist_Title_01',
+    find the latest-versioned entry (e.g. _EAS_08 beats _EA_05).
+    Also tries exact match (some keys have no version suffix).
+    """
+    if prefix in loc:
+        # Could be an exact match with no version suffix
+        candidates = {prefix: ("", loc[prefix])}
+    else:
+        candidates = {}
 
-    if not chapter_dir.is_dir():
-        print(f"  WARNING: Chapter directory not found: {chapter_dir}", file=sys.stderr)
-        return chapters
+    for k, v in loc.items():
+        if k.startswith(prefix) and k != prefix:
+            suffix = k[len(prefix):]
+            # Must look like a version suffix (_EA_05, _EAS_06, etc.)
+            if re.match(r"^_E", suffix):
+                candidates[k] = (suffix, v)
 
-    for file_path in sorted(chapter_dir.glob("*.json")):
-        obj = load_fmodel_json(file_path)
+    if not candidates:
+        return None
+    if len(candidates) == 1:
+        return list(candidates.values())[0][1] if isinstance(list(candidates.values())[0], tuple) else list(candidates.values())[0]
+
+    # Pick latest version
+    best_key = max(candidates, key=lambda k: _version_sort_key(
+        candidates[k][0] if isinstance(candidates[k], tuple) else ""
+    ))
+    val = candidates[best_key]
+    return val[1] if isinstance(val, tuple) else val
+
+
+def build_loc_indices(loc: dict[str, str]):
+    """
+    Build lookup dicts for quest titles, greetings, completions.
+    Key: (merchant_loc_key, quest_number_str) -> text
+    """
+    title_idx: dict[tuple[str, str], str] = {}
+    greeting_idx: dict[tuple[str, str], str] = {}
+    complete_idx: dict[tuple[str, str], str] = {}
+
+    # Patterns:
+    #   Text_DesignData_Quest_{MerchantKey}_Title_{NN}_{version}
+    #   Text_DesignData_Quest_{MerchantKey}_Greeting_{NN}_{version}
+    #   Text_DesignData_Quest_{MerchantKey}_Complete_{NN}_{version}
+    # MerchantKey can contain underscores (e.g. TavernMaster_Final, Huntress_Daily)
+    #
+    # Some quests have qualifiers before the number:
+    #   Quest_GoblinMerchant_Title_Final_01 -> merchant=GoblinMerchant, num_part=Final_01
+    #   Quest_TavernMaster_Tuto_Title_01    -> merchant=TavernMaster_Tuto, num_part=01
+    # The qualifier (Final/Tuto) can be part of the merchant key OR between Title and number.
+    #
+    # We use a pattern that captures optional qualifier + number after Title/Greeting/Complete.
+    title_re = re.compile(r"^Text_DesignData_Quest_(.+?)_Title_((?:[A-Za-z]+_)?\d+)")
+    greeting_re = re.compile(r"^Text_DesignData_Quest_(.+?)_Greeting_((?:[A-Za-z]+_)?\d+)")
+    complete_re = re.compile(r"^Text_DesignData_Quest_(.+?)_Complete_((?:[A-Za-z]+_)?\d+)")
+
+    def _collect(pattern: re.Pattern, idx: dict):
+        # First pass: find all unique (merchant, number_part) prefixes
+        prefixes: set[tuple[str, str, str]] = set()
+        for k in loc:
+            m = pattern.match(k)
+            if m:
+                merchant = m.group(1)
+                num_part = m.group(2)  # e.g. "01" or "Final_01"
+                prefix = k[: m.end()]
+                prefixes.add((merchant, num_part, prefix))
+
+        # Second pass: resolve each to best version
+        for merchant, num_part, prefix in prefixes:
+            text = resolve_localized(loc, prefix)
+            # Skip entries where the value is the key itself (unlocalized placeholder)
+            if text and not text.startswith("Text_DesignData_"):
+                idx[(merchant, num_part)] = text
+
+    _collect(title_re, title_idx)
+    _collect(greeting_re, greeting_idx)
+    _collect(complete_re, complete_idx)
+
+    print(f"  Loc indices: {len(title_idx)} titles, {len(greeting_idx)} greetings, {len(complete_idx)} completions")
+    return title_idx, greeting_idx, complete_idx
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Quest Chapters
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def _derive_merchant_key(chapter_id: str, quest_ids: list[str]) -> str:
+    """
+    Derive the merchant key from a chapter/quest.
+    Uses the first quest ID if available, otherwise the chapter ID.
+    """
+    if quest_ids:
+        rest = quest_ids[0].replace("Id_Quest_", "")
+        return re.sub(r"_\d+$", "", rest)
+
+    rest = chapter_id.replace("Id_QuestChapter_", "")
+    return re.sub(r"_\d+$", "", rest)
+
+
+def load_chapters() -> tuple[dict[str, list[dict]], dict[str, dict]]:
+    """
+    Load all QuestChapter files.
+    Returns:
+      merchant_chapters: merchant_key -> [chapter_data, ...] sorted by order
+      chapter_map: chapter_id -> chapter_data
+    """
+    print(f"[chapters] Loading from {CHAPTER_DIR}")
+    merchant_chapters: dict[str, list[dict]] = defaultdict(list)
+    chapter_map: dict[str, dict] = {}
+
+    for f in sorted(CHAPTER_DIR.glob("*.json")):
+        obj = load_fmodel_json(f)
         if not obj:
             continue
 
         props = obj.get("Properties", {})
-        quest_refs = props.get("Quests", [])
-        quest_ids = [extract_asset_id(q) for q in quest_refs if isinstance(q, dict)]
-        quest_ids = [q for q in quest_ids if q]
+        chapter_id = obj.get("Name", f.stem)
 
-        name_data = props.get("Name")
-        chapter_name = extract_text_field(name_data) if isinstance(name_data, dict) else None
-        localized = name_data.get("LocalizedString", "") if isinstance(name_data, dict) else ""
+        name_data = props.get("Name", {})
+        chapter_name = name_data.get("LocalizedString", "") if isinstance(name_data, dict) else ""
+        order = props.get("Order", 0)
 
-        chapters.append({
-            "id": obj.get("Name", file_path.stem),
-            "name_key": chapter_name,
-            "name": localized if localized and localized != chapter_name else None,
-            "order": props.get("Order"),
+        quest_ids = []
+        for q in props.get("Quests", []):
+            qid = extract_asset_id(q)
+            if qid:
+                quest_ids.append(qid)
+
+        merchant_key = _derive_merchant_key(chapter_id, quest_ids)
+
+        ch = {
+            "chapter_id": chapter_id,
+            "name": chapter_name,
+            "order": order,
             "quest_ids": quest_ids,
-        })
+            "merchant_key": merchant_key,
+        }
+        merchant_chapters[merchant_key].append(ch)
+        chapter_map[chapter_id] = ch
 
-    chapters.sort(key=lambda c: c.get("order") or 0)
-    return chapters
+    # Sort each merchant's chapters by order
+    for mk in merchant_chapters:
+        merchant_chapters[mk].sort(key=lambda c: c["order"])
+
+    total = sum(len(v) for v in merchant_chapters.values())
+    print(f"  {total} chapters across {len(merchant_chapters)} merchant keys")
+    return dict(merchant_chapters), chapter_map
 
 
-def load_all_quests() -> dict[str, dict]:
-    """Load all raw quest definitions."""
-    quest_dir = RAW_QUEST / "Quest"
+# ═══════════════════════════════════════════════════════════════════════════════
+# Quest Files
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def load_quests() -> dict[str, dict]:
+    """Load all Quest files. Returns quest_id -> parsed data."""
+    print(f"[quests] Loading from {QUEST_DIR}")
     quests: dict[str, dict] = {}
 
-    if not quest_dir.is_dir():
-        print(f"  ERROR: Quest directory not found: {quest_dir}", file=sys.stderr)
-        return quests
-
-    for file_path in sorted(quest_dir.glob("*.json")):
-        obj = load_fmodel_json(file_path)
+    for f in sorted(QUEST_DIR.glob("*.json")):
+        obj = load_fmodel_json(f)
         if not obj:
             continue
 
-        quest_id = obj.get("Name", file_path.stem)
+        quest_id = obj.get("Name", f.stem)
         props = obj.get("Properties", {})
 
-        quest: dict = {"id": quest_id}
+        q: dict = {}
+        q["required_level"] = props.get("RequiredLevel", 0)
 
-        # Title text
-        title_text = extract_text_field(props.get("TitleText"))
-        if title_text:
-            quest["title"] = title_text
-        title_localized = props.get("TitleText", {}).get("LocalizedString", "") if isinstance(props.get("TitleText"), dict) else ""
-        if title_localized and title_localized != title_text:
-            quest["title_localized"] = title_localized
+        # Prerequisite
+        prereq = extract_asset_id(props.get("RequiredQuest"))
+        if prereq:
+            q["prerequisite_id"] = prereq
 
-        # Required level
-        req_level = props.get("RequiredLevel")
-        if req_level is not None:
-            quest["required_level"] = req_level
-
-        # Required quest
-        req_quest = extract_asset_id(props.get("RequiredQuest"))
-        if req_quest:
-            quest["required_quest"] = req_quest
-
-        # Explicit quest contents (only some quests have this)
-        content_refs = props.get("QuestContents", [])
-        explicit_content_ids = [extract_asset_id(c) for c in content_refs if isinstance(c, dict)]
-        explicit_content_ids = [c for c in explicit_content_ids if c]
-        if explicit_content_ids:
-            quest["_content_ids"] = explicit_content_ids
-
-        # Explicit reward reference
+        # Explicit reward reference (some quests like Valentine have it inline)
         reward_ref = extract_asset_id(props.get("QuestReward"))
         if reward_ref:
-            quest["_reward_id"] = reward_ref
+            q["reward_ref"] = reward_ref
 
-        quests[quest_id] = quest
+        # Inline localized text (only a handful of quests have these resolved)
+        for field, key in [("TitleText", "title"), ("GreetingText", "greeting"),
+                           ("CompleteText", "completion")]:
+            text_obj = props.get(field)
+            if isinstance(text_obj, dict):
+                localized = text_obj.get("LocalizedString", "")
+                loc_key = text_obj.get("Key", "")
+                # If LocalizedString != Key, it's resolved inline
+                if localized and localized != loc_key and not localized.startswith("Text_DesignData"):
+                    q[f"inline_{key}"] = localized
 
+        # Explicit QuestContents (only ~6 quests have this)
+        content_ids = []
+        for c in props.get("QuestContents", []):
+            cid = extract_asset_id(c)
+            if cid:
+                content_ids.append(cid)
+        if content_ids:
+            q["content_ids"] = content_ids
+
+        quests[quest_id] = q
+
+    print(f"  {len(quests)} quests loaded")
     return quests
 
 
-def load_merchant_names() -> dict[str, str]:
-    """Load merchant display names from raw data."""
-    names: dict[str, str] = {}
+# ═══════════════════════════════════════════════════════════════════════════════
+# Quest Rewards
+# ═══════════════════════════════════════════════════════════════════════════════
 
-    if not RAW_MERCHANT.is_dir():
-        return names
+def _parse_random_reward_id(reward_id: str) -> tuple[str | None, str | None]:
+    """Parse rarity and item type from a random reward ID."""
+    parts = reward_id.replace("Id_RandomReward_Quest_", "").split("_")
+    rarities = {"Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique"}
+    type_words = {"Weapon", "Weapons", "Armor", "Armors", "Accessory", "Accessories", "Utility"}
+    rarity = item_type = None
+    for p in parts:
+        if p in rarities:
+            rarity = p
+        elif p in type_words:
+            item_type = p.rstrip("s")
+            if item_type == "Accessorie":
+                item_type = "Accessory"
+    return rarity, item_type
 
-    for file_path in sorted(RAW_MERCHANT.glob("*.json")):
-        obj = load_fmodel_json(file_path)
+
+def load_rewards() -> dict[str, list[dict]]:
+    """Load all QuestReward files. Returns reward_id -> [reward entries]."""
+    print(f"[rewards] Loading from {REWARD_DIR}")
+    rewards: dict[str, list[dict]] = {}
+
+    for f in sorted(REWARD_DIR.glob("*.json")):
+        obj = load_fmodel_json(f)
         if not obj:
             continue
 
-        merchant_id = obj.get("Name", "")
-        key = merchant_id.replace("Id_Merchant_", "") if merchant_id.startswith("Id_Merchant_") else merchant_id
-
+        reward_id = obj.get("Name", f.stem)
         props = obj.get("Properties", {})
-        name_data = props.get("Name")
-        localized = name_data.get("LocalizedString", "") if isinstance(name_data, dict) else ""
+        items = []
 
-        if localized and not localized.startswith("Text_"):
-            names[key] = localized
+        for ri in props.get("RewardItemArray", []):
+            rtype_raw = ri.get("RewardType", "")
+            rtype = rtype_raw.split("::")[-1] if "::" in rtype_raw else rtype_raw
+            rid = ri.get("RewardId", "")
+            count = ri.get("RewardCount", 0)
 
-    return names
+            entry: dict = {"type": rtype, "count": count}
+
+            if rtype == "Item":
+                entry["id"] = rid
+                clean = rid.replace("Id_Item_", "") if rid.startswith("Id_Item_") else rid
+                entry["name"] = humanize_id(clean)
+
+            elif rtype == "Exp":
+                pass  # type + count only
+
+            elif rtype == "Affinity":
+                merchant = rid.replace("Id_Merchant_", "") if rid.startswith("Id_Merchant_") else rid
+                entry["merchant"] = merchant
+
+            elif rtype == "Random":
+                entry["id"] = rid
+                rarity, itype = _parse_random_reward_id(rid)
+                if rarity:
+                    entry["rarity"] = rarity
+                if itype:
+                    entry["item_type"] = itype
+
+            else:
+                entry["id"] = rid
+
+            # Preserve explicit ItemRarity / ItemType if present
+            ir = ri.get("ItemRarity", "")
+            if ir:
+                ir_clean = ir.split("::")[-1] if "::" in ir else ir
+                if ir_clean and "rarity" not in entry:
+                    entry["rarity"] = ir_clean
+            it = ri.get("ItemType", "")
+            if it:
+                it_clean = it.split("::")[-1] if "::" in it else it
+                if it_clean and "item_type" not in entry:
+                    entry["item_type"] = it_clean
+
+            items.append(entry)
+
+        rewards[reward_id] = items
+
+    print(f"  {len(rewards)} reward sets loaded")
+    return rewards
 
 
-# ---------------------------------------------------------------------------
-# Main build
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════════════
+# Quest Content (Objectives)
+# ═══════════════════════════════════════════════════════════════════════════════
 
-def extract_merchant_from_quest_id(quest_id: str) -> str | None:
-    """Extract merchant name from quest ID: Id_Quest_{Merchant}_{rest}."""
-    m = re.match(r"Id_Quest_([A-Za-z]+)_", quest_id)
+def load_all_content() -> dict[str, dict]:
+    """Load all quest content files from all content type directories."""
+    print("[content] Loading quest objectives...")
+    lookup: dict[str, dict] = {}
+
+    for ctype, dirpath in CONTENT_DIRS.items():
+        if not dirpath.is_dir():
+            print(f"  WARNING: {ctype} dir not found: {dirpath}", file=sys.stderr)
+            continue
+
+        count = 0
+        for f in sorted(dirpath.glob("*.json")):
+            obj = load_fmodel_json(f)
+            if not obj:
+                continue
+
+            cid = obj.get("Name", f.stem)
+            props = obj.get("Properties", {})
+            entry: dict = {"id": cid, "content_type": ctype}
+
+            # Common
+            entry["count"] = props.get("ContentCount", 0)
+            if props.get("SingleSession"):
+                entry["single_session"] = True
+
+            # Dungeons
+            dungeons = []
+            for dtag in props.get("DungeonIdTags", []):
+                tag = extract_tag_name(dtag)
+                if tag:
+                    dungeons.append(dungeon_tag_to_name(tag))
+            if dungeons:
+                entry["dungeons"] = dungeons
+
+            # Type-specific
+            if ctype == "Kill":
+                kt = props.get("KillType", "")
+                entry["kill_type"] = kt.split("::")[-1] if "::" in kt else kt
+                kill_tag = extract_tag_name(props.get("KillTag"))
+                if kill_tag:
+                    entry["target"] = tag_to_name(kill_tag, "Id.Monster.")
+                    entry["target_tag"] = kill_tag
+                desc = f"Kill {entry['count']} {entry.get('target', '?')}"
+                if dungeons:
+                    desc += f" in {', '.join(dungeons)}"
+                entry["description"] = desc
+
+            elif ctype == "Fetch":
+                item_tag = extract_tag_name(props.get("ItemIdTag"))
+                if item_tag:
+                    entry["item"] = item_tag.replace("Id.Item.", "")
+                    entry["item_name"] = tag_to_name(item_tag, "Id.Item.")
+                ls = props.get("ItemLootState", "")
+                if ls:
+                    entry["loot_state"] = ls.split("::")[-1] if "::" in ls else ls
+                ir = props.get("ItemRarity", "")
+                if ir:
+                    entry["rarity"] = ir.split("::")[-1] if "::" in ir else ir
+                type_tag = extract_tag_name(props.get("TypeTag"))
+                if type_tag:
+                    entry["item_type_tag"] = tag_to_name(type_tag, "Type.Item.")
+                desc = f"Collect {entry['count']} {entry.get('item_name', entry.get('item_type_tag', '?'))}"
+                if entry.get("rarity"):
+                    desc = f"Collect {entry['count']} {entry['rarity']} {entry.get('item_name', '?')}"
+                entry["description"] = desc
+
+            elif ctype == "Escape":
+                desc = f"Escape {entry['count']} time(s)"
+                if dungeons:
+                    desc += f" from {', '.join(dungeons)}"
+                if props.get("ConsecutiveEscape"):
+                    entry["consecutive"] = True
+                    desc += " (consecutive)"
+                entry["description"] = desc
+
+            elif ctype == "Explore":
+                mod = props.get("ModuleId")
+                if isinstance(mod, dict) and mod.get("AssetPathName"):
+                    entry["module"] = module_path_to_name(mod["AssetPathName"])
+                desc = f"Explore {entry.get('module', '?')}"
+                if dungeons:
+                    desc += f" in {', '.join(dungeons)}"
+                entry["description"] = desc
+
+            elif ctype == "Hold":
+                mod = props.get("ModuleId")
+                if isinstance(mod, dict) and mod.get("AssetPathName"):
+                    entry["module"] = module_path_to_name(mod["AssetPathName"])
+                entry["hold_time"] = props.get("HoldTime", 0)
+                if props.get("MustEscape"):
+                    entry["must_escape"] = True
+                desc = f"Hold {entry.get('module', '?')} for {entry.get('hold_time', '?')}s"
+                entry["description"] = desc
+
+            elif ctype == "Damage":
+                dt = props.get("DamageType", "")
+                entry["damage_type"] = dt.split("::")[-1] if "::" in dt else dt
+                desc = f"Deal {entry['count']} damage ({entry['damage_type']})"
+                entry["description"] = desc
+
+            elif ctype == "Props":
+                pt = props.get("PropsType", "")
+                entry["props_type"] = pt.split("::")[-1] if "::" in pt else pt
+                ptag = extract_tag_name(props.get("PropsIdTag"))
+                if ptag:
+                    entry["target"] = tag_to_name(ptag, "Id.Props.")
+                desc = f"{entry.get('props_type', 'Interact')} {entry['count']} {entry.get('target', '?')}"
+                if dungeons:
+                    desc += f" in {', '.join(dungeons)}"
+                entry["description"] = desc
+
+            elif ctype == "UseItem":
+                item_tag = extract_tag_name(props.get("ItemIdTag"))
+                if item_tag:
+                    entry["item"] = item_tag.replace("Id.Item.", "")
+                    entry["item_name"] = tag_to_name(item_tag, "Id.Item.")
+                it = props.get("ItemType", "")
+                if it:
+                    entry["item_type"] = it.split("::")[-1] if "::" in it else it
+                desc = f"Use {entry['count']} {entry.get('item_name', '?')}"
+                if dungeons:
+                    desc += f" in {', '.join(dungeons)}"
+                entry["description"] = desc
+
+            lookup[cid] = entry
+            count += 1
+
+        print(f"  {ctype}: {count} entries")
+
+    print(f"  Total: {len(lookup)} content entries")
+    return lookup
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Key derivation helpers
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def get_quest_number(quest_id: str) -> str | None:
+    """Id_Quest_Alchemist_01 -> '01'."""
+    m = re.search(r"_(\d+)$", quest_id)
     return m.group(1) if m else None
 
 
-def build_quest_entry(
-    quest: dict,
-    content_by_id: dict[str, dict],
-    rewards_by_id: dict[str, list[dict]],
-) -> dict:
-    """Build a fully resolved quest entry."""
-    quest_id = quest["id"]
-    entry: dict = {"id": quest_id}
+def get_merchant_quest_key(quest_id: str) -> str:
+    """
+    Id_Quest_Alchemist_01 -> 'Alchemist'
+    Id_Quest_TavernMaster_Final_01 -> 'TavernMaster_Final'
+    """
+    rest = quest_id.replace("Id_Quest_", "")
+    return re.sub(r"_\d+$", "", rest)
 
-    if "title" in quest:
-        entry["title"] = quest["title"]
-    if "title_localized" in quest:
-        entry["title_localized"] = quest["title_localized"]
-    if "required_level" in quest:
-        entry["required_level"] = quest["required_level"]
-    if "required_quest" in quest:
-        entry["required_quest"] = quest["required_quest"]
 
-    # Resolve objectives
-    content_ids = quest.get("_content_ids", [])
-    if content_ids:
-        objectives = []
-        for cid in content_ids:
-            if cid in content_by_id:
-                obj = dict(content_by_id[cid])
-                obj.pop("id", None)  # Remove the raw content ID from output
-                objectives.append(obj)
-            else:
-                objectives.append({"type": "unknown", "content_id": cid})
-        entry["objectives"] = objectives
+def get_loc_lookup_keys(quest_id: str) -> list[tuple[str, str]]:
+    """
+    Return a list of (merchant_loc_key, num_part) candidates to try
+    when looking up localization for a quest. First match wins.
 
-    # Resolve rewards
-    reward_id = quest.get("_reward_id")
-    if not reward_id:
-        # Fall back to naming convention: Id_Quest_X_NN -> Id_Reward_Quest_X_NN
-        reward_id = quest_id.replace("Id_Quest_", "Id_Reward_Quest_")
+    Examples:
+      Id_Quest_Alchemist_01          -> [("Alchemist", "01")]
+      Id_Quest_GoblinMerchant_Final_01 -> [("GoblinMerchant_Final", "01"),
+                                           ("GoblinMerchant", "Final_01")]
+      Id_Quest_TavernMaster_Tuto_01  -> [("TavernMaster_Tuto", "01"),
+                                           ("TavernMaster", "Tuto_01")]
+      Id_Quest_Huntress_Daily_Equipment_01 -> [("Huntress_Daily_Equipment", "01"),
+                                                ("Huntress_Daily", "01")]
+      Id_Quest_Huntress_Daily_05     -> [("Huntress_Daily", "05"),
+                                          ("Huntress_Daily", "01")]
+    """
+    merchant_key = get_merchant_quest_key(quest_id)
+    qnum = get_quest_number(quest_id)
+    if not qnum:
+        return [(merchant_key, "01")]
 
-    if reward_id in rewards_by_id:
-        entry["rewards"] = rewards_by_id[reward_id]
-        entry["_reward_id"] = reward_id
-    elif quest.get("_reward_id"):
-        # Had explicit ref but no data found
-        entry["_reward_id"] = quest["_reward_id"]
+    candidates = [(merchant_key, qnum)]
 
-    return entry
+    # For sub-type merchants (Final, Tuto, Extra), also try the base merchant
+    # with the qualifier prepended to the number
+    for suffix in ["_Final", "_Tuto", "_Extra"]:
+        if merchant_key.endswith(suffix):
+            base = merchant_key[: -len(suffix)]
+            qualifier = suffix.lstrip("_")
+            candidates.append((base, f"{qualifier}_{qnum}"))
+            break
 
+    # Huntress_Daily_Equipment shares text with Huntress_Daily
+    if merchant_key == "Huntress_Daily_Equipment":
+        candidates.append(("Huntress_Daily", qnum))
+
+    # For daily/weekly/seasonal quests with many numbered variants but only
+    # one localization entry (key 01), fall back to 01
+    if qnum != "01":
+        for sub in ["_Daily", "_Weekly", "_Seasonal", "_Sesonal"]:
+            if merchant_key.endswith(sub):
+                candidates.append((merchant_key, "01"))
+                break
+
+    return candidates
+
+
+_SUB_SUFFIXES = [
+    "_Daily_Equipment", "_Daily", "_Weekly", "_Seasonal", "_Sesonal",
+    "_Final", "_Tuto", "_Extra",
+]
+
+
+def get_base_merchant(merchant_key: str) -> str:
+    """
+    TavernMaster_Final -> TavernMaster
+    Huntress_Daily -> Huntress
+    Krampus_Seasonal -> Krampus
+    """
+    for s in sorted(_SUB_SUFFIXES, key=len, reverse=True):
+        if merchant_key.endswith(s):
+            return merchant_key[: -len(s)]
+    return merchant_key
+
+
+def get_portrait_path(base_merchant: str) -> str:
+    token = PORTRAIT_OVERRIDES.get(base_merchant, base_merchant)
+    return f"/merchant-portraits/Portrait_Merchant_{token}.png"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Main build
+# ═══════════════════════════════════════════════════════════════════════════════
 
 def build():
-    print("[build_quests] Loading quest content (objectives)...")
-    content_by_id = load_all_quest_content()
-    print(f"  Loaded {len(content_by_id)} quest content entries")
+    loc = load_localization()
+    title_idx, greeting_idx, complete_idx = build_loc_indices(loc)
+    merchant_chapters, chapter_map = load_chapters()
+    quests = load_quests()
+    rewards = load_rewards()
+    content_lookup = load_all_content()
 
-    print("[build_quests] Loading quest rewards...")
-    rewards_by_id = load_all_rewards()
-    print(f"  Loaded {len(rewards_by_id)} reward entries")
+    # Build reward lookup: quest_id -> reward_id (by naming convention)
+    quest_reward_map: dict[str, str] = {}
+    for rid in rewards:
+        qid = rid.replace("Id_Reward_Quest_", "Id_Quest_")
+        quest_reward_map[qid] = rid
 
-    print("[build_quests] Loading quest chapters...")
-    chapters = load_all_chapters()
-    print(f"  Loaded {len(chapters)} chapters")
+    # Group chapters by base merchant (all sub-types under one merchant)
+    base_merchant_chapters: dict[str, list[dict]] = defaultdict(list)
+    for mk, chaps in merchant_chapters.items():
+        base = get_base_merchant(mk)
+        base_merchant_chapters[base].extend(chaps)
 
-    print("[build_quests] Loading quests...")
-    quests = load_all_quests()
-    print(f"  Loaded {len(quests)} quests")
+    # Sort chapters within each base merchant by order
+    for base in base_merchant_chapters:
+        base_merchant_chapters[base].sort(key=lambda c: c["order"])
 
-    print("[build_quests] Loading merchant names...")
-    merchant_names_raw = load_merchant_names()
-    print(f"  Loaded {len(merchant_names_raw)} merchant names from raw data")
+    # Track coverage
+    quests_in_chapters: set[str] = set()
+    for chaps in merchant_chapters.values():
+        for ch in chaps:
+            for qid in ch["quest_ids"]:
+                quests_in_chapters.add(qid)
 
-    # Build quest-to-chapter mapping
-    quest_to_chapter: dict[str, dict] = {}
-    for ch in chapters:
-        for qid in ch["quest_ids"]:
-            quest_to_chapter[qid] = ch
+    orphans = set(quests.keys()) - quests_in_chapters
+    if orphans:
+        print(f"\n  Note: {len(orphans)} quests not in any chapter (will be appended): {sorted(orphans)[:8]}...")
 
-    # Group quests by merchant
-    merchant_quests: dict[str, list[dict]] = defaultdict(list)
-    no_merchant = []
+    # ── Build output per merchant ──────────────────────────────────────────
+    merchants_output = []
 
-    for quest_id, quest in quests.items():
-        merchant = extract_merchant_from_quest_id(quest_id)
-        if merchant:
-            entry = build_quest_entry(quest, content_by_id, rewards_by_id)
+    for base_merchant in sorted(base_merchant_chapters.keys()):
+        chaps = base_merchant_chapters[base_merchant]
+        display_name = MERCHANT_DISPLAY_NAMES.get(base_merchant, base_merchant)
+        portrait = get_portrait_path(base_merchant)
 
-            # Add chapter info
-            ch = quest_to_chapter.get(quest_id)
-            if ch:
-                entry["chapter_id"] = ch["id"]
-                if ch.get("name"):
-                    entry["chapter_name"] = ch["name"]
-                if ch.get("name_key"):
-                    entry["chapter_name_key"] = ch["name_key"]
-                if ch.get("order") is not None:
-                    entry["chapter_order"] = ch["order"]
+        chapters_out = []
+        for ch in chaps:
+            quests_out = []
+            for idx, quest_id in enumerate(ch["quest_ids"]):
+                qdata = quests.get(quest_id, {})
+                qnum = get_quest_number(quest_id)
+                loc_keys = get_loc_lookup_keys(quest_id)
 
-            merchant_quests[merchant].append(entry)
-        else:
-            no_merchant.append(quest_id)
+                def _loc_lookup(idx_dict, inline_key):
+                    """Try inline text first, then loc index with multiple candidate keys."""
+                    val = qdata.get(inline_key)
+                    if val:
+                        return val
+                    for mk, np in loc_keys:
+                        val = idx_dict.get((mk, np))
+                        if val:
+                            return val
+                    return None
 
-    if no_merchant:
-        print(f"  WARNING: {len(no_merchant)} quests could not be mapped to a merchant: {no_merchant[:5]}")
+                # ── Title ──
+                title = _loc_lookup(title_idx, "inline_title")
+                if not title:
+                    title = quest_id  # last resort fallback
 
-    # Build final merchant list
-    merchants_list = []
-    for merchant_key in sorted(merchant_quests.keys()):
-        quest_list = merchant_quests[merchant_key]
-        # Sort quests by chapter order, then by quest number
-        quest_list.sort(key=lambda q: (
-            q.get("chapter_order", 9999),
-            q.get("id", ""),
-        ))
+                # ── Greeting ──
+                greeting = _loc_lookup(greeting_idx, "inline_greeting")
 
-        display_name = (
-            merchant_names_raw.get(merchant_key)
-            or MERCHANT_DISPLAY_NAMES.get(merchant_key)
-            or merchant_key
-        )
+                # ── Completion ──
+                completion = _loc_lookup(complete_idx, "inline_completion")
 
-        merchants_list.append({
-            "id": merchant_key,
+                # ── Prerequisite ──
+                prerequisite = None
+                prereq_id = qdata.get("prerequisite_id")
+                if prereq_id:
+                    prereq_keys = get_loc_lookup_keys(prereq_id)
+                    prereq_title = None
+                    for mk, np in prereq_keys:
+                        prereq_title = title_idx.get((mk, np))
+                        if prereq_title:
+                            break
+                    prerequisite = {
+                        "id": prereq_id,
+                        "title": prereq_title or prereq_id,
+                    }
+
+                # ── Rewards ──
+                reward_items: list[dict] = []
+                rref = qdata.get("reward_ref")
+                if rref and rref in rewards:
+                    reward_items = rewards[rref]
+                elif quest_id in quest_reward_map:
+                    reward_items = rewards[quest_reward_map[quest_id]]
+
+                # ── Objectives ──
+                objectives: list[dict] = []
+                for cid in qdata.get("content_ids", []):
+                    if cid in content_lookup:
+                        objectives.append(content_lookup[cid])
+
+                # ── Dungeons from objectives ──
+                dungeon_set: set[str] = set()
+                for obj in objectives:
+                    for d in obj.get("dungeons", []):
+                        dungeon_set.add(d)
+
+                quest_entry: dict = {
+                    "id": quest_id,
+                    "title": title,
+                    "quest_number": int(qnum) if qnum else idx + 1,
+                    "required_level": qdata.get("required_level", 0),
+                }
+                if greeting:
+                    quest_entry["greeting"] = greeting
+                if completion:
+                    quest_entry["completion_text"] = completion
+                if prerequisite:
+                    quest_entry["prerequisite"] = prerequisite
+                quest_entry["dungeons"] = sorted(dungeon_set) if dungeon_set else []
+                quest_entry["objectives"] = objectives
+                quest_entry["rewards"] = reward_items
+
+                quests_out.append(quest_entry)
+
+            chapters_out.append({
+                "name": ch["name"],
+                "order": ch["order"],
+                "quests": quests_out,
+            })
+
+        merchants_output.append({
+            "id": base_merchant,
             "name": display_name,
-            "portrait": f"/merchant-portraits/Portrait_Merchant_{merchant_key}.png",
-            "quest_count": len(quest_list),
-            "quests": quest_list,
+            "portrait": portrait,
+            "chapters": chapters_out,
         })
 
-    # Also build a flat content lookup for reference
-    content_summary = {}
-    for ctype, directory in CONTENT_DIRS.items():
-        content_summary[ctype] = sum(1 for c in content_by_id.values() if c.get("type") == ctype)
-
-    # Stats
-    total_quests = sum(m["quest_count"] for m in merchants_list)
-    quests_with_objectives = sum(
-        1 for m in merchants_list for q in m["quests"] if q.get("objectives")
+    # ── Stats ──────────────────────────────────────────────────────────────
+    total_quests = sum(len(q["quests"]) for m in merchants_output for q in m["chapters"])
+    with_title = sum(
+        1 for m in merchants_output for ch in m["chapters"] for q in ch["quests"]
+        if q["title"] and not q["title"].startswith("Id_Quest_")
     )
-    quests_with_rewards = sum(
-        1 for m in merchants_list for q in m["quests"] if q.get("rewards")
+    with_greeting = sum(
+        1 for m in merchants_output for ch in m["chapters"] for q in ch["quests"]
+        if q.get("greeting")
     )
-
-    print(f"\n[build_quests] Summary:")
-    print(f"  Total merchants: {len(merchants_list)}")
-    print(f"  Total quests: {total_quests}")
-    print(f"  Quests with objectives: {quests_with_objectives}")
-    print(f"  Quests with rewards: {quests_with_rewards}")
-    print(f"  Content entries by type: {content_summary}")
+    with_rewards = sum(
+        1 for m in merchants_output for ch in m["chapters"] for q in ch["quests"]
+        if q.get("rewards")
+    )
+    with_objectives = sum(
+        1 for m in merchants_output for ch in m["chapters"] for q in ch["quests"]
+        if q.get("objectives")
+    )
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "stats": {
-            "total_merchants": len(merchants_list),
-            "total_quests": total_quests,
-            "quests_with_objectives": quests_with_objectives,
-            "quests_with_rewards": quests_with_rewards,
-            "content_entries": content_summary,
-        },
-        "content_lookup": content_by_id,
-        "merchants": merchants_list,
+        "source": "Game data files (FModel extraction + localization)",
+        "total_quests": total_quests,
+        "total_merchants": len(merchants_output),
+        "merchants": merchants_output,
+        "content_lookup": content_lookup,
     }
 
-    # Write output
+    # ── Write ──────────────────────────────────────────────────────────────
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"\n[build_quests] Written to {OUTPUT_FILE}")
-    print(f"  File size: {OUTPUT_FILE.stat().st_size / 1024:.1f} KB")
+    size_kb = OUTPUT_FILE.stat().st_size / 1024
+    print(f"\n{'='*60}")
+    print(f"Output: {OUTPUT_FILE}")
+    print(f"Size:   {size_kb:.1f} KB")
+    print(f"{'='*60}")
+    print(f"  Merchants:            {len(merchants_output)}")
+    print(f"  Total quests:         {total_quests}")
+    print(f"  With resolved title:  {with_title}/{total_quests}")
+    print(f"  With greeting text:   {with_greeting}/{total_quests}")
+    print(f"  With rewards:         {with_rewards}/{total_quests}")
+    print(f"  With objectives:      {with_objectives}/{total_quests}")
+    print(f"  Content lookup:       {len(content_lookup)} entries")
+
+    # -- Sample --
+    if merchants_output:
+        m = merchants_output[0]
+        print(f"\n-- Sample: {m['name']} --")
+        if m["chapters"]:
+            ch = m["chapters"][0]
+            print(f"  Chapter: \"{ch['name']}\" (order {ch['order']})")
+            for q in ch["quests"][:2]:
+                print(f"    [{q['quest_number']}] {q['title']}  (level {q['required_level']})")
+                if q.get("greeting"):
+                    g = q["greeting"][:90].encode("ascii", "replace").decode()
+                    print(f"        Greeting: {g}...")
+                if q.get("rewards"):
+                    print(f"        Rewards: {len(q['rewards'])} items")
 
 
 if __name__ == "__main__":

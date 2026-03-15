@@ -1,7 +1,8 @@
 // Marketplace API Client — powered by our own Hetzner poller
 // Replaces DarkerDB dependency with direct game server data
 
-const OUR_API = "http://5.161.247.74:8080/api/v1";
+// Proxy through our own Next.js API route to avoid mixed content (HTTPS→HTTP) blocks
+const OUR_API = "/api/market";
 
 // Keep DarkerDB for population only (we don't track this)
 const DARKERDB_BASE = "/api/darkerdb/v1";

@@ -826,9 +826,11 @@ def main() -> None:
     print(f"    Fixed-rarity items: {len(db.fixed_rarity)}")
 
     # Build icon map: itemIdx → icon filename (without .png)
+    # Use case-insensitive fallback since game data has inconsistent casing
+    icon_index_lower = {k.lower(): v for k, v in icon_index.items()}
     item_icons: dict[str, str] = {}
     for idx, asset in db.item_asset.items():
-        icon = icon_index.get(asset)
+        icon = icon_index.get(asset) or icon_index_lower.get(asset.lower())
         if icon:
             item_icons[str(idx)] = icon
     print(f"    Items with icons: {len(item_icons)}")

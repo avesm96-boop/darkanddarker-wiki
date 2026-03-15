@@ -419,22 +419,22 @@ export async function fetchTrending(
 
     // Sanity check: if historical averages are wildly off from live median,
     // the item is RMT-polluted and historical data is unreliable.
-    // Override with live median in that case.
+    // Cap at 2x live median — anything above is RMT noise, not real pricing.
     const sanitize = (val: number) => {
-      if (liveMedian > 0 && val > liveMedian * 10) return Math.round(liveMedian);
+      if (liveMedian > 0 && val > liveMedian * 2) return Math.round(liveMedian);
       return val;
     };
 
     trending.push({
       archetype,
       label,
-      avg14d,
+      avg14d: sanitize(avg14d),
       avg7d: sanitize(avg7d),
       avg24h: sanitize(avg24h),
       currentAvg: sanitize(currentAvg),
       currentLowest,
       previousAvg: sanitize(previousTypical),
-      changePct: liveMedian > 0 && (avg7d > liveMedian * 10 || previousTypical > liveMedian * 10)
+      changePct: liveMedian > 0 && (currentAvg > liveMedian * 2 || previousTypical > liveMedian * 2)
         ? 0  // Change % is meaningless for RMT-polluted items
         : changePct,
       totalVolume,

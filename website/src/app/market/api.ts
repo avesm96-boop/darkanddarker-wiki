@@ -186,23 +186,18 @@ export async function searchItems(
 // Trending computation
 // ---------------------------------------------------------------------------
 
-/** Curated list of popular items to track for trending. [archetype, label] */
+/** Curated list of items with confirmed price history data. [archetype, label] */
 const CURATED_ITEMS: [string, string][] = [
-  ["Longsword", "Longsword"],
-  ["RondelDagger", "Rondel Dagger"],
-  ["CrystalBall", "Crystal Ball"],
-  ["SpellBook", "Spell Book"],
   ["WolfPelt", "Wolf Pelt"],
-  ["GoblinEar", "Goblin Ear"],
+  ["WolfClaw", "Wolf Claw"],
   ["GoldCoinPurse", "Gold Coin Purse"],
-  ["RubyGem", "Ruby"],
-  ["GoldIngot", "Gold Ingot"],
-  ["BluePotion", "Blue Potion"],
-  ["SurgicalKit", "Surgical Kit"],
-  ["Bandage", "Bandage"],
-  ["Hatchet", "Hatchet"],
-  ["Crossbow", "Crossbow"],
-  ["PlateArmor", "Plate Armor"],
+  ["GoldCoinBag", "Gold Coin Bag"],
+  ["SilverCoin", "Silver Coin"],
+  ["GoldenTeeth", "Golden Teeth"],
+  ["ShiningPearl", "Shining Pearl"],
+  ["Lockpick", "Lockpick"],
+  ["RottenFluids", "Rotten Fluids"],
+  ["BonePowder", "Bone Powder"],
 ];
 
 /**

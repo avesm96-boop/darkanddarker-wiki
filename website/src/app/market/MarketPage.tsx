@@ -66,7 +66,16 @@ export default function MarketPage() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.pageInner}>
+      <div className={`container ${styles.pageInner}`}>
+        {/* Header */}
+        <div className="section-head" style={{ marginBottom: "36px" }}>
+          <span className="section-label">Economy</span>
+          <h1 className="section-title">Market</h1>
+          <p className="section-desc">
+            Live marketplace data powered by DarkerDB
+          </p>
+        </div>
+
         {/* Error Banner */}
         {error && (
           <div className={styles.errorBanner}>

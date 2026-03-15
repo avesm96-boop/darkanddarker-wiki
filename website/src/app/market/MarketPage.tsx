@@ -9,23 +9,14 @@ import {
   type TrendingItem,
 } from "./api";
 import MarketDashboard from "./MarketDashboard";
-import MarketSearch from "./MarketSearch";
-import MarketItemDetail from "./MarketItemDetail";
-import MarketListings from "./MarketListings";
 import MarketRMT from "./MarketRMT";
-
-interface SelectedItem {
-  id: string;
-  name: string;
-}
 
 export default function MarketPage() {
   const [population, setPopulation] = useState<PopulationData | null>(null);
   const [trending, setTrending] = useState<TrendingItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<SelectedItem | null>(null);
-  const [activeTab, setActiveTab] = useState<"trends" | "search" | "rmt">("trends");
+  const [activeTab, setActiveTab] = useState<"trends" | "rmt">("trends");
 
   const loadData = useCallback(() => {
     const ac = new AbortController();
@@ -58,14 +49,6 @@ export default function MarketPage() {
     return cleanup;
   }, [loadData]);
 
-  const handleSelect = useCallback((item: { id: string; name: string }) => {
-    setSelectedItem(item);
-  }, []);
-
-  const handleClear = useCallback(() => {
-    setSelectedItem(null);
-  }, []);
-
   const formatNum = (n: number): string => n.toLocaleString();
 
   return (
@@ -78,6 +61,33 @@ export default function MarketPage() {
           <p className="section-desc">
             Live marketplace data powered by DarkerDB
           </p>
+        </div>
+
+        {/* Work in Progress banner */}
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          padding: "12px 20px",
+          marginBottom: 24,
+          background: "rgba(201, 168, 76, 0.06)",
+          border: "1px solid rgba(201, 168, 76, 0.2)",
+          borderRadius: 8,
+          fontSize: "0.75rem",
+          color: "var(--gold-500)",
+          lineHeight: 1.6,
+        }}>
+          <span style={{
+            width: 8, height: 8, flexShrink: 0,
+            background: "var(--gold-500)",
+            borderRadius: "50%",
+            animation: "pulse-glow 2s ease-in-out infinite",
+          }} />
+          <span>
+            <strong>Work in Progress</strong> — The Market page is under active development.
+            Prices are estimates based on DarkerDB analytics data and may not perfectly reflect
+            real-time in-game values. Item search, price history charts, and more features coming soon.
+          </span>
         </div>
 
         {/* Error Banner */}
@@ -139,12 +149,6 @@ export default function MarketPage() {
             Trends
           </button>
           <button
-            className={activeTab === "search" ? styles.tabBtnActive : styles.tabBtn}
-            onClick={() => setActiveTab("search")}
-          >
-            Search
-          </button>
-          <button
             className={activeTab === "rmt" ? styles.tabBtnActive : styles.tabBtn}
             onClick={() => setActiveTab("rmt")}
           >
@@ -161,36 +165,6 @@ export default function MarketPage() {
         )}
 
         {activeTab === "rmt" && <MarketRMT />}
-
-        {activeTab === "search" && (
-          <>
-            {/* Search */}
-            <MarketSearch onSelect={handleSelect} />
-
-            {/* Item Detail */}
-            {selectedItem && (
-              <>
-                <div className={styles.itemDetail}>
-                  <div className={styles.itemHeader}>
-                    <div>
-                      <h2 className={styles.itemName}>{selectedItem.name}</h2>
-                      <p className={styles.itemSubtitle}>Price history and statistics</p>
-                    </div>
-                    <button className={styles.retryBtn} onClick={handleClear}>
-                      Close
-                    </button>
-                  </div>
-                  <MarketItemDetail
-                    itemId={selectedItem.id}
-                    itemName={selectedItem.name}
-                  />
-                </div>
-
-                <MarketListings itemName={selectedItem.name} />
-              </>
-            )}
-          </>
-        )}
       </div>
     </div>
   );

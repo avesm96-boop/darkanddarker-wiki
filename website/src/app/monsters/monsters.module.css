@@ -211,9 +211,28 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: radial-gradient(circle, #2a2418, #151210);
-  border: 1px solid rgba(201, 168, 76, 0.1);
   flex-shrink: 0;
+}
+
+.portraitNormal {
+  composes: portrait;
+  background: radial-gradient(circle at 35% 35%, #3a3a40, #1e1e22);
+  border: 1px solid rgba(160, 160, 175, 0.25);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.05);
+}
+
+.portraitSubBoss {
+  composes: portrait;
+  background: radial-gradient(circle at 35% 35%, #3d3018, #1a1408);
+  border: 1px solid var(--gold-800);
+  box-shadow: 0 0 6px rgba(201, 168, 76, 0.15);
+}
+
+.portraitBoss {
+  composes: portrait;
+  background: radial-gradient(circle at 35% 35%, #4a1515, #1a0808);
+  border: 1px solid var(--red-700);
+  box-shadow: 0 0 6px rgba(220, 50, 50, 0.2);
 }
 
 .monsterName {

@@ -55,6 +55,12 @@ const BADGE_CLASS: Record<string, string> = {
   Boss: styles.classBadgeBoss,
 };
 
+const PORTRAIT_CLASS: Record<string, string> = {
+  Normal: styles.portraitNormal,
+  SubBoss: styles.portraitSubBoss,
+  Boss: styles.portraitBoss,
+};
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -312,7 +318,7 @@ export default function MonstersPage() {
                   onClick={() => router.push(`/monsters/${m.slug}`)}
                 >
                   <div className={`${styles.cell} ${styles.colPortrait}`}>
-                    <div className={styles.portrait} />
+                    <div className={`${styles.portrait} ${PORTRAIT_CLASS[m.class_type] ?? styles.portraitNormal}`} />
                   </div>
                   <div className={`${styles.cell} ${styles.colName}`}>
                     <Link href={`/monsters/${m.slug}`} className={styles.monsterName} onClick={(e) => e.stopPropagation()}>

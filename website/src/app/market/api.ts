@@ -391,7 +391,11 @@ export async function fetchTrending(
         liveMedian = prices[Math.floor(prices.length / 2)];
         // Keep prices within reasonable range of the median (0.1x to 5x)
         const reasonable = prices.filter(p => p >= liveMedian * 0.1 && p <= liveMedian * 5);
-        currentLowest = reasonable.length > 0 ? reasonable[0] : prices[0];
+        // Use 10th percentile (not absolute min) — cheapest listings often
+        // already sold but DarkerDB still shows them as active (data lag).
+        // The 10th percentile better represents what you'd actually find.
+        const p10Index = Math.min(Math.floor(reasonable.length * 0.1), reasonable.length - 1);
+        currentLowest = reasonable.length > 0 ? reasonable[Math.max(p10Index, 0)] : prices[0];
       }
     }
 

@@ -62,7 +62,7 @@ function TrendTable({
           <span title="What this item typically sold for over the past week. We ignore unrealistic prices (like 1g or 99,999g troll/RMT listings) to show what real players actually pay.">Avg 7d</span>
           <span title="What this item typically sold for in the last 24 hours, with fake prices filtered out.">Avg 24h</span>
           <span title="The most recent typical price based on the last few hours of trade data. Note: market data updates every few hours, so this may be slightly behind real-time.">Current Avg</span>
-          <span title="The cheapest listing per unit currently live on the marketplace right now. This updates in real-time.">Lowest Now</span>
+          <span title="A realistic low price from current live listings. We skip the absolute cheapest listings because they often already sold (data lag) and use the 10th percentile instead — what you'd realistically find available.">Lowest Now</span>
           <span title="How much the price moved recently — compares the last ~12 hours to the previous ~24 hours. A positive number means the price went up.">Change</span>
           <span title="Visual price trend over the past week. The line shows typical trade prices with fake listings filtered out.">Trend</span>
         </div>

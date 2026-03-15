@@ -98,7 +98,10 @@ function formatId(id: string): string {
 
 /** Strip "Id_Item_" prefix and trailing "_XXXX" numbers, return icon path */
 function itemIconUrl(itemId: string): string {
-  const stripped = itemId.replace(/^Id_Item_/, "").replace(/_\d+$/, "");
+  const stripped = itemId
+    .replace(/^Id_Item_/, "")
+    .replace(/_\d+$/, "")
+    .replace(/\./g, "");
   return `/item-icons/Item_Icon_${stripped}.png`;
 }
 

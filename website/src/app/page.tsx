@@ -198,6 +198,17 @@ const FEATURES = [
 export default function HomePage() {
   return (
     <>
+      {/* ── Notice ─────────────────────────────────────────────────────── */}
+      <div className="notice-bar">
+        <div className="container notice-inner">
+          <span className="notice-icon">&#9878;</span>
+          <p className="notice-text">
+            This website and its tools are <strong>not to be shared or promoted</strong> in the
+            Dark and Darker Knights Discord server, now or in the future.
+          </p>
+        </div>
+      </div>
+
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <section className="hero">
         <div className="hero-bg" />
@@ -245,17 +256,6 @@ export default function HomePage() {
           <span>Scroll</span>
         </div>
       </section>
-
-      {/* ── Notice ─────────────────────────────────────────────────────── */}
-      <div className="notice-bar">
-        <div className="container notice-inner">
-          <span className="notice-icon">&#9888;</span>
-          <p className="notice-text">
-            This website and its tools are <strong>not to be shared or promoted</strong> in the
-            Dark and Darker Knights Discord server, now or in the future.
-          </p>
-        </div>
-      </div>
 
       {/* ── Stats Bar ──────────────────────────────────────────────────── */}
       <div className="stats-bar">

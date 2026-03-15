@@ -1,265 +1,160 @@
 {
- "slug": "ghost-king",
- "overview": "The Ghost King is a multi-phase Undead boss found in Inferno. It uses a behavior tree-driven AI with two distinct behavior modes: a main combat tree and an Eating Phase tree. The Ghost King fires charged ranged projectile attacks, teleports to reposition, applies a stacking Curse of Chilling debuff via an AoE field, snares players with its Eating mechanic (which applies a shield to itself and traps/silences the target), unleashes a devastating distance-based Scream, triggers an Earthquake that spawns Death Skull Elite adds, and summons Small Ghosts based on its remaining HP. Its AI monitors target status continuously and switches behavior trees depending on Eating Phase state.",
- "phases": [
- {
- "name": "Main Combat Phase",
- "description": "The Ghost King operates from its primary behavior tree (BT_GhostKing). It acquires a target, approaches and rotates to face them using range-validated checks (BTD_TargetIsInRange), then selects from its attack repertoire. The AI uses gameplay tag checks on the actor to determine which branch to execute, with two primary selector paths gated by tag decorators.",
- "icon": "attack"
- },
- {
- "name": "Eating Phase",
- "description": "When the Ghost King initiates its Eating mechanic, the AI switches to a dedicated behavior tree (BT_GhostKing_EatingPhase). It acquires a target, checks for overlapped actors (BTD_GhostKing_CheckOverlappedActors), moves toward the target, and executes the Eating sequence. This phase applies a 1000-HP shield to the Ghost King, traps and silences the victim, and deals periodic damage based on max HP ratio. If the target is lost (invisible or dead), the eating ends.",
- "icon": "special"
- },
- {
- "name": "Earthquake Phase",
- "description": "Triggered via Ability.Monster.Skill.Seven, the Ghost King performs its Earthquake attack dealing 1500% damage ratio. During this phase it spawns Death Skull Elite minions via a GameSpawner at its location. The EarthQuakePhase ability (Skill.Nine) monitors target distance to determine when to end. This is the most damaging single attack in its kit.",
- "icon": "special"
- },
- {
- "name": "Scream Phase",
- "description": "The Scream ability (Skill.Six) uses a distance-based damage curve (Curve_GhostKing_ScreamDamage_Common) and scales damage based on how many CurseOfChilling stacks are on the target. It calculates distance from the Ghost King, reads the curse stack count from the target's ability system, and multiplies damage accordingly. The AI uses a 'Set Variable By Grade' function to adjust parameters between Common and Elite.",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "Earthquake",
- "ratio": 1500,
- "damage_common": 600,
- "damage_elite": 900,
- "note": "Massive AoE ground slam. 1500% damage ratio with impact power 6. Also spawns Death Skull Elite minions. Triggered via Skill.Seven tag. Has a dedicated EarthQuakePhase (Skill.Nine) that monitors target distance."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Scream",
- "ratio": 0,
- "damage_common": "Varies",
- "damage_elite": "Varies",
- "note": "Distance-based damage using a float curve. Damage scales with CurseOfChilling stack count on target and distance from Ghost King. Uses Health Ratio Per Curse Stack multiplier. Closer = more damage, more curse stacks = more damage. Impact power 4."
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Teleport",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Repositioning teleport with impact power 5. Uses a Move Timer to interpolate position. Teleports to a target location and can deal impact on arrival. The AI uses this to close gaps or reposition unpredictably."
- },
- {
- "name": "Eating (Snare + Damage)",
- "ratio": 0,
- "damage_common": "9.5% max HP/tick",
- "damage_elite": "9.5% max HP/tick",
- "note": "Two-part ability: Eating_ApplyAndRemoveShield (Skill.Three) initiates the sequence with a Snare_Casting montage, applying a 1000-HP shield to the Ghost King. Eating_Snare (Skill.Four) then traps the target, applying periodic damage at -950 ExecAddHealthByMaxHealthRatio (9.5% max HP per tick) for 15 seconds. Target is Trapped + Silenced + immune to forced movement."
- }
- ]
- },
- {
- "tier": "Ranged",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "Normal Attack",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Charged ranged multi-projectile attack (GA_MonsterChargedRangedAttackBase). Fires projectiles from FireProjectile socket with rotation spread: starts at -20 degrees Z, rotates 12 degrees per projectile, with 5-degree random variance and 0.1s interval between shots. Targets body hitbox. Uses BP_Projectile_GhostKing_NormalAttack."
- },
- {
- "name": "Normal Attack Return",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Return projectile variant that fires BP_Projectile_GhostKing_ReturnHeal projectiles. Behavior varies by grade (checks GetGradeType). These projectiles heal the Ghost King on impact, creating a sustain mechanic. Spawns up to 3 projectiles using forward and up vectors for spread."
- }
- ]
- },
- {
- "tier": "Utility",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "Curse of Chilling (AoE)",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Persistent AoE debuff field (DebuffArea). Applies CurseOfChilling on a timer cycle to all targets in the area. Uses Apply Cycle TimerHandle for periodic application. Stacks up to 30 times, each stack reducing move speed by -16. Duration 8 seconds per stack. Blocked by State.Immune.Debuff.MoveSpeed."
- },
- {
- "name": "Summon Small Ghost",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Summoning ability (Skill.Ten). Checks current HP vs max HP ratio, and if below a threshold, summons Small Ghost minions (BP_GhostKing_SmallGhost). Has a 'Used' boolean flag that prevents repeated use. Reads from Blackboard to determine spawn conditions."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Ghost King's behavior tree does not use a traditional combo chain system. Instead, its AI uses a selector-based priority system gated by gameplay tags. The main BT_GhostKing tree starts with a Sequence root, then branches into Selectors that check tag conditions. One branch handles the Eating Phase (with CheckGameplayTagsOnActorAbortObservers decorators), another handles normal combat. Within combat, it selects between approach/rotate and attack execution. The BTS_GhostKing_MonitorTargetStatus service continuously tracks elapsed time and target state.",
- "chains": [
- {
- "from": "Target Acquired",
- "to": [
- "Approach & Rotate",
- "Teleport"
- ],
- "note": "After acquiring a target, the AI checks if the target is in range. If in range, it rotates to face them. If not, it approaches via movement or teleport."
- },
- {
- "from": "In Range",
- "to": [
- "Normal Attack",
- "Scream",
- "Earthquake",
- "Eating Initiation"
- ],
- "note": "When in range, the AI selects an attack based on gameplay tag conditions and cooldowns. Each ability is triggered via specific Skill tags (One through Ten)."
- },
- {
- "from": "Eating Initiation",
- "to": [
- "Eating Shield Apply",
- "Eating Snare",
- "Resume Combat"
- ],
- "note": "The Eating sequence switches to BT_GhostKing_EatingPhase. The Ghost King casts Snare_Casting, applies a 1000-HP shield, then snares the target. If target becomes invisible or dies, it resumes normal combat."
- },
- {
- "from": "Earthquake",
- "to": [
- "Spawn Death Skulls",
- "Normal Attack"
- ],
- "note": "After Earthquake, the Ghost King spawns Death Skull Elite minions at its position. The EarthQuakePhase monitors distance to determine when the spawning phase ends."
- },
- {
- "from": "Low HP Threshold",
- "to": [
- "Summon Small Ghost"
- ],
- "note": "When HP drops below a threshold, the Ghost King summons Small Ghosts. This ability has a one-time use flag."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "Curse of Chilling",
- "type": "debuff",
- "duration": "8 seconds per stack",
- "stacks": 30,
- "description": "Applied via the Ghost King's persistent AoE debuff field on a repeating timer. Each stack reduces move speed by 16. Stacks up to 30 times (aggregate by target). Tagged with State.ActorStatus.Debuff.MoveSpeed. Critically, the number of curse stacks amplifies Scream damage through a multiplicative formula based on Health Ratio Per Curse Stack.",
- "counter": "Use abilities or items that grant State.Immune.Debuff.MoveSpeed to completely block application. Move out of the debuff area to prevent new stacks. Existing stacks are removed if you gain MoveSpeed immunity. Minimize stacks before Scream — each stack multiplies Scream damage."
- },
- {
- "name": "Eating",
- "type": "debuff",
- "duration": "15 seconds",
- "stacks": 1,
- "description": "Applied when the Ghost King successfully snares a target. Applies Trapped (cannot move), Silenced (GhostKingEating variant — cannot use abilities), Immune to Forced Movement (cannot be knocked away from the Ghost King), and periodic damage at 9.5% of target's max HP per tick. The Ghost King simultaneously gains a 1000-HP shield (EatingShield) during this phase.",
- "counter": "The Eating ability checks if the target has State.ActorStatus.Buff.Invisible or Mode.Death tags — if so, it ends early. Teammates must break the 1000-HP shield on the Ghost King to free the trapped player. The shield is applied via the EatingShield effect with MaxTotalShield of 1000. The snare ends if the Ghost King is destroyed or the shield is removed."
- },
- {
- "name": "Eating Shield (Boss Self-Buff)",
- "type": "buff",
- "duration": "Infinite (until removed)",
- "stacks": 1,
- "description": "Applied to the Ghost King itself during the Eating phase. Grants a 1000-HP total shield (MaxTotalShield attribute). This shield must be destroyed by other players to interrupt the Eating mechanic and free the trapped ally.",
- "counter": "Focus burst damage on the Ghost King to break through the 1000-HP shield as fast as possible. Once the shield is removed, the Eating effect ends and the trapped player is freed."
- }
- ],
- "strategies": [
- {
- "title": "Break the Eating Shield Immediately",
- "priority": "critical",
- "description": "When the Ghost King initiates Eating, it applies a 1000-HP shield to itself while trapping and periodically draining a player at 9.5% max HP per tick for 15 seconds. Teammates must burst through the 1000-HP shield to end the effect early. If the shield is not broken, the trapped player will lose roughly 142% of their max HP over the full duration — guaranteed death. This is the single most important mechanic to react to."
- },
- {
- "title": "Minimize Curse of Chilling Stacks Before Scream",
- "priority": "critical",
- "description": "The Scream ability multiplies its damage based on the number of CurseOfChilling stacks on the target. The formula uses Health Ratio Per Curse Stack as a multiplier and reads the GameplayEffectCount from the target's ability system. At 30 stacks (the maximum), Scream damage is catastrophic. Stay out of the debuff AoE field and let stacks expire (8 seconds each) before the Ghost King reaches Scream phase."
- },
- {
- "title": "Scream Damage Falls Off with Distance",
- "priority": "high",
- "description": "The Scream ability uses a distance-based damage curve (Curve_GhostKing_ScreamDamage_Common) and a Max Damage Distance parameter. The ability calculates Get Distance From GhostKing and uses FClamp to determine the curve value. Being farther from the Ghost King reduces Scream damage. When you see the Scream animation (AM_GhostKing_Scream), run away to minimize the hit."
- },
- {
- "title": "Dodge the Projectile Spread Pattern",
- "priority": "high",
- "description": "The Normal Attack fires multiple projectiles in a spread pattern starting at -20 degrees, rotating 12 degrees per projectile with 5-degree random variance and 0.1 second intervals. The projectiles sweep in an arc. Sidestep perpendicular to the Ghost King rather than backing up in a straight line to avoid the spread. The Return variant fires healing projectiles back — intercepting these denies the Ghost King sustain."
- },
- {
- "title": "High Impact Values (999/999)",
- "priority": "medium",
- "description": "With 999 Impact Resistance and 999 Impact Endurance, the Ghost King is has high Impact values (ImpactResistance 999, MaxImpactEndurance 999). ImpactResistance 999, MaxImpactEndurance 999."
- },
- {
- "title": "Kill Death Skull Adds from Earthquake Quickly",
- "priority": "high",
- "description": "The Earthquake ability (1500% damage ratio) also spawns Death Skull Elite minions via a GameSpawner. These adds complicate the fight significantly. Prioritize killing them immediately after Earthquake resolves, or they will overwhelm your team alongside the Ghost King's other mechanics."
- },
- {
- "title": "Invisible Players Escape Eating",
- "priority": "medium",
- "description": "The Eating ability's Target Loss Tags include State.ActorStatus.Buff.Invisible and Mode.Death. If a player gains invisibility during Eating, the Ghost King will lose its target and the Eating phase will end. Classes with invisibility abilities can use this as a self-rescue."
- },
- {
- "title": "Stay Mobile to Avoid the Debuff Area",
- "priority": "medium",
- "description": "The Ghost King deploys a persistent DebuffArea AoE that applies CurseOfChilling on a repeating timer cycle. Standing in the area means continuous stack accumulation (up to 30 stacks of -16 move speed each = -480 total move speed). Keep moving and fight from the edges of the area to minimize exposure."
- },
- {
- "title": "Small Ghost Summon is One-Time — Push Through",
- "priority": "medium",
- "description": "The SummonSmallGhost ability has a 'Used' boolean flag that prevents it from firing more than once. It triggers based on the Ghost King's current HP ratio. Once you see the Small Ghost summon, know that it will not happen again — this is your signal that the boss is in its final stretch."
- },
- {
- "title": "Divine Magic is Highly Effective",
- "priority": "high",
- "description": "The Ghost King has DivineMagicalReduction of -1000, meaning it takes massively increased Divine damage. Conversely, it has EvilMagicalReduction of 500, reducing Evil damage. Clerics and other Divine damage dealers should be the primary damage source in this fight."
- },
- {
- "title": "Elite Moves 35% Faster — Respect the Teleport",
- "priority": "medium",
- "description": "Elite Ghost King has 270 MoveSpeedBase vs 200 for Common — a 35% increase. Combined with its Teleport ability (which uses a Move Timer for smooth interpolation), Elite can close gaps extremely fast. Always keep an escape route in mind and expect shorter reaction windows on Elite."
- }
- ],
- "elite_differences": [
- "39% more HP (2,541 -> 3,531)",
- "50% more physical damage (40 -> 60)",
- "35% faster movement speed (200 -> 270)",
- "Same Action Speed (0 for both grades)",
- "Same resistances and base attributes as Common",
- "Scream ability uses Set Variable By Grade to adjust parameters for Elite",
- "Normal Attack Return behavior varies by grade (checks GetGradeType for different projectile patterns)",
- "Higher XP reward (15 -> 20)",
- "Same adventure points (100 for both grades)"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster vision — uses BTS_GhostKing_MonitorTargetStatus service to continuously track targets",
- "damage_sense": true,
- "damage_description": "Monitors target status via dedicated BT service with elapsed time tracking. Reacts to damage and target state changes",
- "hearing": true,
- "hearing_description": "Uses BTT_GetTargetActor with multiple fallback selectors — acquires targets through vision, damage, or proximity",
- "stuck_tracking": true,
- "stuck_description": "BT_GhostKing_EatingPhase uses BTD_GhostKing_CheckOverlappedActors decorator to verify target overlap before proceeding with Eating, and BTT_GhostKing_SetEatingPhaseEnum to manage state transitions. Target loss detection via Invisible/Death tags prevents stuck states during Eating"
- }
+  "slug": "ghost-king",
+  "overview": "Ghost King is a Boss-class Undead monster found in Inferno. 2 grades: Common, Elite. Base stats (Common): 2541 HP, 40 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 4 attacks, 0 combo chains. Highest damage: Earth Quake at 150% ratio (600 base damage). Sight range 1000, combat radius 5000, behavior tree: BT_GhostKing.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "1 melee attacks. Normal Attack (0%).",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Earth Quake",
+          "damage_ratio": 1500,
+          "damage_common": 600,
+          "damage_elite": 900,
+          "note": "150% damage ratio, impact power 6."
+        }
+      ]
+    },
+    {
+      "tier": "Utility",
+      "color": "#5588dd",
+      "attacks": [
+        {
+          "name": "Normal Attack",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 7."
+        },
+        {
+          "name": "Teleport",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 5."
+        },
+        {
+          "name": "Scream",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 4."
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Curse Of Chilling",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. Affects: MoveSpeed.",
+      "counter": "Watch for the Curse Of Chilling icon on your status bar."
+    },
+    {
+      "name": "Curse Of Chlling Synchronizer",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Curse Of Chlling Synchronizer icon on your status bar."
+    },
+    {
+      "name": "Eating",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Eating icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Elemental Weakness: Divine",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Divine (-1000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Evil",
+      "priority": "high",
+      "description": "Elemental resistances: Evil (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 250",
+      "priority": "medium",
+      "description": "Has 250 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1000 units",
+      "priority": "medium",
+      "description": "Sight radius 1000 units, loses target at 1500 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 5000, ability check distance 1200",
+      "priority": "medium",
+      "description": "Combat area radius 5000. Ability check distance 1200. Ability attack delay: 30s."
+    },
+    {
+      "title": "HP Phase Triggers",
+      "priority": "critical",
+      "description": "Scream HPRatio Cycle: 20%, Summon HP Ratio: 66%. These HP thresholds trigger phase transitions, summons, or special attacks."
+    },
+    {
+      "title": "Summon Mechanics",
+      "priority": "high",
+      "description": "summons 3 enemies. summon type: Ghost King_Small Ghost."
+    },
+    {
+      "title": "Cooldown Timers",
+      "priority": "medium",
+      "description": "Earthquake Timer: 60s."
+    },
+    {
+      "title": "Behavior Trees: BT_GhostKing, BT_GhostKing_EatingPhase",
+      "priority": "low",
+      "description": "Uses behavior trees: BT_GhostKing, BT_GhostKing_EatingPhase. Switches to combat behavior tree during combat phases."
+    },
+    {
+      "title": "Ability Damage Values",
+      "priority": "medium",
+      "description": "Blueprint damage parameters: Earthquake Damage Base: 3, Teleport Damage Base: 30, Scream Damage Base: 75. These are base values before scaling."
+    }
+  ],
+  "elite_differences": [
+    "39% more HP (2541 → 3531) in Elite",
+    "50% more physical damage (40 → 60) in Elite",
+    "Move speed 200 → 270 in Elite",
+    "XP reward 15 → 20 in Elite",
+    "No Nightmare grade exists"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 1000,
+    "lose_sight_radius": 1500,
+    "sight_description": "Detects targets within 1000 units. Loses target at 1500 units."
+  }
 }

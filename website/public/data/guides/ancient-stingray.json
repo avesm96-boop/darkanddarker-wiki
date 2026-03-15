@@ -1,339 +1,512 @@
 {
- "slug": "ancient-stingray",
- "overview": "The Ancient Stingray is a Boss-class Aberration encountered in underwater dungeon areas. This fight takes place entirely underwater — physical projectiles suffer extreme falloff and magic projectiles travel much slower than normal. The Stingray is an extremely fast aquatic predator with 400 base move speed and a massive 39-attack moveset including tail strikes, water arrow projectiles, lightning abilities, and rush charges. Its core mechanic revolves around LightningBubbles — protective AOE spheres that grant immunity to LightningNova and DivineJudgment, but deal periodic magical damage (7 per tick) to players sheltering inside. The Stingray actively destroys these bubbles by swimming through them, making bubble management the central strategic challenge. Its Dash attack applies Trapped + Silence, completely immobilizing and silencing the target for a guaranteed combo follow-up. With ImpactResistance 999 and MaxImpactEndurance 999, it has high Impact values. It has no elemental weaknesses — all magic types deal neutral damage. The Elite grade gains two exclusive abilities: Rush FallingRock and LightningBubble Elite. Elite has 75% more HP (4000 to 7000) and 58% more damage (38 to 60) with ActionSpeed normalized from -120 to 0.",
- "phases": [
- {
- "name": "Swimming Engagement",
- "description": "The Ancient Stingray uses Swim_Front, Swim_Glide, and directional Swim_L/Swim_R to close distance underwater. From swimming, it can combo directly into ShortDash (gap closer at 900 ratio) or tail attacks. Swim movements feed into the combo system via Swim L and Swim R into TailSlash or ShortDash entries. The Stingray will also swim through LightningBubbles to destroy them, removing your safe zones.",
- "icon": "move"
- },
- {
- "name": "Tail Strike Phase",
- "description": "The primary melee phase. Four tail attacks: TailSlash High (1900 ratio), TailSlash Down (1800), TailAttack Up (1900), and TailAttack Down (2000 — highest melee damage). These chain freely from ShortDash, Swim, Dash, and BackSteb openers, and can combo into WaterArrow ranged attacks. TailAttack Down is the most dangerous at 2000 ratio. All tail attacks have impact power 5 and can apply TailPoison, a 30-second periodic damage debuff.",
- "icon": "attack"
- },
- {
- "name": "Ranged Phase (Water Arrows)",
- "description": "WaterArrow 1 (1600 ratio) and WaterArrow 2 (1300 ratio) are ranged water projectile attacks. They can be used standalone or chained from TailSlash/BackSteb via combos. Turning variants (Turning WaterArrow L/R, TurningWaterArrow2 L/R) allow the Stingray to fire while changing direction, all at 1600 ratio. The Stingray's own water projectiles function normally underwater, unlike player projectiles which suffer from the underwater environment (physical projectiles have extreme falloff, magic projectiles travel much slower).",
- "icon": "special"
- },
- {
- "name": "Rush & Dash Phase",
- "description": "Rush (1700 ratio) is a high-speed charge attack. Dash (600 ratio) and DashEnd (600 ratio) are repositioning charges that apply a devastating Dash Stun on contact — trapping and silencing the target simultaneously. This sets up guaranteed tail combo follow-ups on the helpless player. ShortDash (900 ratio, impact 6) is a short gap closer that feeds into every tail attack variant. BackSteb is a defensive reposition that combos into both tail attacks and WaterArrows.",
- "icon": "move"
- },
- {
- "name": "Lightning Phase — Bubble Mechanic",
- "description": "LightningNova (8000 ratio) is the Stingray's most devastating attack — a massive AoE lightning burst that will kill most players outright. DivineJudgment (3000 ratio) is a powerful targeted lightning attack. The LightningBubble is a protective AOE sphere: players inside it receive immunity to both LightningNova and DivineJudgment. However, the bubble also applies periodic magical damage (ExecMagicalDamageBase 7 per tick) to players sheltering inside via LightningBubble_Stacking. The bubble has two spheres (inner and outer zones). The Stingray actively destroys bubbles by swimming through them — keeping at least one bubble alive is essential for survival.",
- "icon": "special"
- },
- {
- "name": "Obsessed Enrage",
- "description": "The Stingray enters an Obsessed enrage state, a 30-second self-buff triggered by fire-related events (Event.Spell.Fire). During this state, the Stingray's stance and behavior change, making it more aggressive. The enrage tag (State.Monster.Stance.AncientStingray.Obessed) alters the AI's attack patterns for the full 30-second duration.",
- "icon": "debuff"
- },
- {
- "name": "Elite Rock Bombardment",
- "description": "Rush FallingRock (400 ratio per hit, impact 4) is an Elite-exclusive ability where the Stingray charges while raining down rock projectiles. Low per-hit damage but persistent area denial. Combined with Elite's 60 base damage and faster ActionSpeed, this ability creates additional pressure not present in Common.",
- "icon": "special",
- "grades": ["Elite"]
- },
- {
- "name": "Elite Lightning Bubble",
- "description": "LightningBubble Elite replaces the Common LightningBubble ability with an upgraded version. The protective AOE bubble effect is enhanced in Elite, but the core mechanic remains: players shelter inside for immunity to LightningNova and DivineJudgment, while taking periodic magical damage from the stacking effect.",
- "icon": "debuff",
- "grades": ["Elite"]
- }
- ],
- "attack_categories": [
- {
- "tier": "Catastrophic",
- "color": "#ff2222",
- "attacks": [
- {
- "name": "LightningNova",
- "damage_ratio": 8000,
- "damage_common": 304,
- "damage_elite": 480,
- "note": "Massive AoE lightning explosion. 8000 ratio — by far the highest damage attack. Impact power 6. Triggered via LightningNova_Start, LightningNova_Loop, LightningNova_End animation sequence. Players must shelter inside a LightningBubble to survive — the bubble grants immunity to this attack."
- }
- ]
- },
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "DivineJudgment",
- "damage_ratio": 3000,
- "damage_common": 114,
- "damage_elite": 180,
- "note": "Powerful targeted lightning attack at 3000 ratio. Impact power 6. Players inside a LightningBubble are immune to this attack via the LightningBubble_ImmuneJudgement effect."
- },
- {
- "name": "TailAttack Down",
- "damage_ratio": 2000,
- "damage_common": 76,
- "damage_elite": 120,
- "note": "Highest damage tail attack. 2000 ratio, impact 5. Available standalone and from ShortDash, Dash, BackSteb, TailSlash High, and TailSlash Down. Can apply TailPoison (30-second DoT). The most dangerous melee hit."
- },
- {
- "name": "TailAttack Up",
- "damage_ratio": 1900,
- "damage_common": 72.2,
- "damage_elite": 114,
- "note": "Upward tail strike at 1900 ratio, impact 5. Chains from the same sources as TailAttack Down. Slightly less damage but same combo access. Can apply TailPoison."
- },
- {
- "name": "TailSlash High",
- "damage_ratio": 1900,
- "damage_common": 72.2,
- "damage_elite": 114,
- "note": "High sweeping tail slash at 1900 ratio, impact 5. Primary combo entry from Swim L/R, ShortDash, and Dash. Chains into TailAttack Down/Up and WaterArrow 1/2. Can apply TailPoison."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "TailSlash Down",
- "damage_ratio": 1800,
- "damage_common": 68.4,
- "damage_elite": 108,
- "note": "Downward tail slash at 1800 ratio, impact 5. Same combo connectivity as TailSlash High. Chains into TailAttack Down/Up and WaterArrow 1/2. Can apply TailPoison."
- },
- {
- "name": "Rush",
- "damage_ratio": 1700,
- "damage_common": 64.6,
- "damage_elite": 102,
- "note": "High-speed charge at 1700 ratio, impact 4. A direct rush attack, not part of the combo system. Separate from Dash and ShortDash."
- },
- {
- "name": "WaterArrow 1",
- "damage_ratio": 1600,
- "damage_common": 60.8,
- "damage_elite": 96,
- "note": "Primary ranged water projectile at 1600 ratio, impact 6. Chains from TailSlash High/Down and BackSteb. Also available as Turning variants (L/R) at same ratio. These are the Stingray's own water-based projectiles and are not affected by the underwater environment the way player arrows are."
- },
- {
- "name": "WaterArrow 2",
- "damage_ratio": 1300,
- "damage_common": 49.4,
- "damage_elite": 78,
- "note": "Secondary ranged water projectile at 1300 ratio, impact 6. Same combo sources as WaterArrow 1 but lower damage."
- },
- {
- "name": "PopOut",
- "damage_ratio": 1200,
- "damage_common": 45.6,
- "damage_elite": 72,
- "note": "Ambush emergence attack at 1200 ratio, impact 6. Used when the Stingray surfaces from hiding."
- }
- ]
- },
- {
- "tier": "Moderate",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "ShortDash",
- "damage_ratio": 900,
- "damage_common": 34.2,
- "damage_elite": 54,
- "note": "Short gap closer at 900 ratio, impact 6 (highest impact of any Stingray attack). Chains from Swim L/R. Feeds into all four tail attacks — the primary combo entry point."
- },
- {
- "name": "Rush Lightning",
- "damage_ratio": 900,
- "damage_common": 34.2,
- "damage_elite": 54,
- "note": "Lightning-infused rush at 900 ratio, impact 0. The lightning component applies status effects rather than knockback."
- },
- {
- "name": "Dash / DashEnd",
- "damage_ratio": 600,
- "damage_common": 22.8,
- "damage_elite": 36,
- "note": "Repositioning dash at 600 ratio, impact 4. Both Dash and DashEnd have the same ratio. Combos into all four tail attacks. On contact, applies Dash Stun — trapping and silencing the target, setting up guaranteed tail combo follow-ups."
- }
- ]
- },
- {
- "tier": "Utility",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "Rush FallingRock",
- "damage_ratio": 400,
- "damage_common": 0,
- "damage_elite": 24,
- "note": "Elite-exclusive. Rush with falling rock projectiles at 400 ratio per hit, impact 4. Low individual damage but multi-hit area denial during the charge.",
- "grades": ["Elite"]
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Ancient Stingray has a deep 26-combo system. Swimming movement feeds into ShortDash or tail attacks, which chain into ranged WaterArrows. Dash and BackSteb provide repositioning that connects back into the melee/ranged cycle. Critically, Dash applies a trap+silence debuff, making any Dash into tail attack combo extremely deadly — the player cannot move or cast spells while the follow-up lands. The combo tree creates a fluid rotation: approach, tail strike, ranged follow-up, reposition, repeat.",
- "chains": [
- {
- "from": "Swim L / Swim R",
- "to": ["TailSlash High", "TailSlash Down", "ShortDash"],
- "note": "Swimming approach feeds into melee openers. ShortDash is the safest combo entry with impact 6."
- },
- {
- "from": "ShortDash",
- "to": ["TailSlash High", "TailSlash Down", "TailAttack Down", "TailAttack Up"],
- "note": "Primary gap closer into any tail attack. This is the most common combo entry point."
- },
- {
- "from": "TailSlash High / TailSlash Down",
- "to": ["TailAttack Down", "TailAttack Up", "WaterArrow 1", "WaterArrow 2"],
- "note": "Tail slashes chain into either more powerful tail attacks (2000/1900 ratio) or ranged WaterArrows (1600/1300 ratio). This is the main decision branch."
- },
- {
- "from": "Dash",
- "to": ["TailAttack Down", "TailAttack Up", "TailSlash Down", "TailSlash High"],
- "note": "Dash repositioning into any tail attack. Dash applies trap+silence on contact, so any follow-up tail attack hits a helpless target. Extremely dangerous combo path."
- },
- {
- "from": "BackSteb",
- "to": ["WaterArrow 1", "WaterArrow 2", "TailAttackDown", "TailSlash High"],
- "note": "Defensive reposition into either ranged or melee follow-up. The only source that chains into WaterArrow without a tail slash first."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "Dash Stun (Trap + Silence)",
- "type": "debuff",
- "duration": "Short (tag-based)",
- "stacks": 1,
- "description": "Applied on Dash contact. Applies three simultaneous tags: Trapped (cannot move), Immune to Forced Movement (cannot be knocked out of the trap), and Silence via CutThroat (cannot cast spells). The target is completely immobilized and silenced, creating a guaranteed setup for tail attack follow-ups from the combo chain.",
- "counter": "Dodge the Dash at all costs. If hit, you are trapped in place and silenced — you cannot move, use movement abilities, or cast spells. The Stingray will immediately follow up with a high-damage tail attack on your helpless character. This is the most dangerous debuff in the fight."
- },
- {
- "name": "LightningBubble (Protective Shelter)",
- "type": "mechanic",
- "duration": "Persistent until destroyed",
- "stacks": 1,
- "description": "The LightningBubble is a protective AOE sphere. Players inside receive Applied Immune EffectHandle, granting immunity to LightningNova and DivineJudgment via GE_AncientStingray_LightningBubble_ImmuneJudgement (infinite duration tag-only effect, active while inside). However, the bubble also applies periodic magical damage to players inside via LightningBubble_Stacking (ExecMagicalDamageBase 7 per tick). The bubble has two spheres (Sphere and Sphere1) — likely an inner safe zone and outer damage zone. Bubbles can be destroyed: the Stingray destroys them by swimming through them (World Static Collision overlap triggers Bubble Destroy Event).",
- "counter": "Use bubbles as shelter during LightningNova and DivineJudgment — they grant immunity to these lethal attacks. But do not linger inside longer than necessary, as the periodic magical damage (7 per tick) adds up. The Stingray actively tries to destroy bubbles by swimming through them, so keep track of which bubbles are still alive and position yourself near one when lightning attacks begin."
- },
- {
- "name": "TailPoison",
- "type": "debuff",
- "duration": "30 seconds",
- "stacks": 1,
- "description": "Applied by tail attacks. Uses GE_DurPeriod_Calculation — a periodic damage-over-time effect with 30-second duration. Stacks by target with a limit of 1. StackPeriodResetPolicy is ResetOnSuccessfulApplication, meaning getting hit by another tail attack resets the tick timer (restarting the periodic damage cycle). Tagged with HydrothermalVent, relating to the underwater thermal vent environment.",
- "counter": "Getting hit by any tail attack applies this 30-second poison DoT. If hit again, the tick timer resets — so consecutive tail hits effectively refresh the full 30-second duration. Avoid tail attacks above all else. Healing or poison cure effects are valuable for managing this long-duration debuff."
- },
- {
- "name": "Obsessed (Self-Enrage)",
- "type": "self-buff",
- "duration": "30 seconds",
- "stacks": 1,
- "description": "A 30-second self-buff applied to the Stingray, triggered by Event.Spell.Fire. Applies the tag State.Monster.Stance.AncientStingray.Obessed, which changes the Stingray's stance and behavior, making it more aggressive for the duration.",
- "counter": "When the Stingray enters Obsessed state, expect more aggressive attack patterns for 30 seconds. The enrage is triggered by Event.Spell.Fire — whether this refers to the Stingray's own fire events or external fire sources is not fully confirmed from the data."
- }
- ],
- "strategies": [
- {
- "title": "LightningBubbles Are Your Shelter — Not a Hazard",
- "priority": "critical",
- "description": "LightningBubbles are protective AOE spheres that grant immunity to LightningNova (304/480 damage) and DivineJudgment (114/180 damage). When you see a lightning attack winding up, get inside a bubble immediately. The bubble does deal periodic magical damage (7 per tick) while you are inside, so enter only when needed and exit promptly after the lightning attack ends. This is the core survival mechanic of the entire fight."
- },
- {
- "title": "The Stingray Destroys Bubbles — Protect Them",
- "priority": "critical",
- "description": "The Stingray destroys LightningBubbles by swimming through them (World Static Collision triggers Bubble Destroy Event). If all bubbles are destroyed before a LightningNova, you have no shelter and will almost certainly die. Keep track of remaining bubbles at all times. Position yourself near a surviving bubble and try not to lead the Stingray's swimming path through your remaining bubbles."
- },
- {
- "title": "LightningNova Is Lethal Without Bubble Shelter",
- "priority": "critical",
- "description": "LightningNova at 8000 ratio deals 304 damage (Common) or 480 damage (Elite). This will kill most characters outright. When you see the LightningNova_Start animation, immediately move inside a LightningBubble for immunity. The attack has a Start, Loop, End sequence, giving you a wind-up warning. Without a bubble, there is no survivable defense."
- },
- {
- "title": "Dash Stun Is Trap + Silence — The Most Dangerous Debuff",
- "priority": "critical",
- "description": "The Dash applies Trapped (cannot move), Immune to Forced Movement (cannot be knocked free), and Silence via CutThroat (cannot cast spells). You are completely helpless — unable to move, dodge, or cast. The Stingray immediately follows up with tail attacks from the combo chain. Dodging the Dash is the single most important mechanical skill in this fight."
- },
- {
- "title": "High Impact Values (ImpactResistance 999, MaxImpactEndurance 999)",
- "priority": "critical",
- "description": "ImpactResistance 999 and MaxImpactEndurance 999 make the Ancient Stingray has high ImpactResistance and MaxImpactEndurance values. ImpactResistance 999 and MaxImpactEndurance 999."
- },
- {
- "title": "Underwater Environment — Projectiles Are Severely Impacted",
- "priority": "high",
- "description": "This fight takes place entirely underwater. Physical projectiles (arrows, bolts) suffer extreme falloff, and magic projectiles travel much slower than normal. The Stingray's 0 ProjectileReductionMod stat is irrelevant — the water environment itself degrades all projectile effectiveness. Proper positioning to dodge or parry attacks is far more important than trying to maintain range."
- },
- {
- "title": "TailPoison Lasts 30 Seconds with Reset on Re-hit",
- "priority": "high",
- "description": "Any tail attack can apply TailPoison — a 30-second periodic damage DoT. The StackPeriodResetPolicy of ResetOnSuccessfulApplication means getting hit by another tail attack resets the tick timer, effectively refreshing the full 30-second duration. Consecutive tail hits keep you poisoned indefinitely. Avoid tail attacks above all else; if hit, the sustained damage adds up significantly."
- },
- {
- "title": "400 Move Speed — Fastest Boss in the Game",
- "priority": "high",
- "description": "At 400 base MoveSpeed (same for both Common and Elite), the Ancient Stingray is faster than any other boss. You cannot outrun it underwater. Positioning and reading its combo entries are more important than trying to create distance."
- },
- {
- "title": "Common Has Negative ActionSpeed (-120)",
- "priority": "high",
- "description": "Common grade has ActionSpeed -120, meaning its attacks animate slower than normal. Elite has ActionSpeed 0 (normal speed). This makes Common noticeably more forgiving to dodge. Elite attacks come out at standard speed with 58% more damage — a major difficulty spike."
- },
- {
- "title": "Obsessed Enrage Lasts 30 Seconds",
- "priority": "high",
- "description": "The Stingray periodically enters an Obsessed enrage state lasting 30 seconds (triggered via Event.Spell.Fire). During this state its stance changes (State.Monster.Stance.AncientStingray.Obessed) and it becomes more aggressive. Expect faster and more relentless attack patterns during this window."
- },
- {
- "title": "No Elemental Weaknesses — All Magic Is Neutral",
- "priority": "high",
- "description": "The Stingray has 0 reduction in all magic types (Fire, Ice, Light, Dark, Divine, Evil, Earth) and 124 base MagicResistance. No magic type is more or less effective than another. Note that all projectiles — physical and magical — are impacted by the underwater environment."
- },
- {
- "title": "ShortDash Is the Combo Gateway",
- "priority": "medium",
- "description": "ShortDash (900 ratio, impact 6) is the most common combo entry point. From ShortDash, it can chain into any of the four tail attacks. If you can dodge the ShortDash, you break the combo chain before it reaches the 2000-ratio TailAttack Down."
- },
- {
- "title": "BackSteb Creates Ranged Openings",
- "priority": "medium",
- "description": "BackSteb is a defensive reposition that chains into WaterArrow 1/2 or tail attacks. When the Stingray backsteps, expect an incoming water projectile. Sidestep laterally after seeing the BackSteb animation."
- },
- {
- "title": "Rush FallingRock Is Elite-Only Area Denial",
- "priority": "medium",
- "description": "Elite gains Rush FallingRock — a charge with falling rock projectiles. Low per-hit damage (400 ratio) but creates persistent area denial. This ability does not exist in Common, making Elite a fundamentally different fight with additional environmental hazards.",
- "grades": ["Elite"]
- }
- ],
- "elite_differences": [
- "75% more HP (4000 to 7000)",
- "58% more physical damage (38 to 60)",
- "Same 400 MoveSpeed as Common",
- "ActionSpeed normalized from -120 to 0 — attacks come out noticeably faster than Common",
- "Gains Rush FallingRock (rock projectile bombardment during charge)",
- "Gains LightningBubble Elite (upgraded protective bubble mechanic)",
- "LightningNova damage increases from 304 to 480 — almost certainly a one-shot without bubble shelter",
- "DivineJudgment damage increases from 114 to 180",
- "Same resistances (all neutral), same impact immunity",
- "Same 26 combo chains — no additional combos in Elite",
- "No Nightmare grade exists"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "180-degree frontal vision — standard boss perception",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction regardless of facing (inherited AIPerceptionStimuliSourceComponent)",
- "hearing": true,
- "hearing_description": "Reacts to sounds in the dungeon area. Ambient swimming patrols use AISense to detect nearby players.",
- "stuck_tracking": true,
- "stuck_description": "Rush and Dash abilities use timer-based movement. If the charge path is blocked, the timer expires and the AI re-evaluates. Ambush_Surge has Start/Loop/End phases with failsafe transitions."
- }
+  "slug": "ancient-stingray",
+  "overview": "Ancient Stingray is a Boss-class Beast monster found in Ship Graveyard. 2 grades: Common, Elite. Base stats (Common): 4000 HP, 38 physical damage, 400 move speed, ActionSpeed -120. ImpactResistance 999, MaxImpactEndurance 999. 39 attacks, 26 combo chains. Highest damage: Lightning Nova at 800% ratio (3040 base damage). combat radius 600, behavior tree: BT_AncientStingray. Elite gains 2 exclusive abilityies: Rush Falling Rock, Lightning Bubble Elite.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "24 melee attacks. Tail Slash High From Short Dash (190%), Tail Slash Down From Short Dash (180%), Tail Attack Down From Tail Slah High (200%), and more.",
+      "icon": "attack"
+    },
+    {
+      "name": "Ranged Attacks",
+      "description": "12 ranged attacks. Water Arrow 1 (160%), Combo Water Arrow 1 From Tail Slash High (160%), Combo Water Arrow 1 From Tail Slash Down (160%), and more.",
+      "icon": "special"
+    },
+    {
+      "name": "Rush / Charge",
+      "description": "14 rush/charge attacks for gap-closing. Tail Slash High From Short Dash (190%), Tail Slash Down From Short Dash (180%), Tail Attack Down From Short Dash (200%).",
+      "icon": "move"
+    },
+    {
+      "name": "Special Abilities",
+      "description": "1 special abilities. Lightning Nova (800%).",
+      "icon": "special"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Catastrophic",
+      "color": "#ff2222",
+      "attacks": [
+        {
+          "name": "Lightning Nova",
+          "damage_ratio": 8000,
+          "damage_common": 3040,
+          "damage_elite": 4800,
+          "note": "800% damage ratio, impact power 6."
+        }
+      ]
+    },
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Tail Attack Down From Tail Slah High",
+          "damage_ratio": 2000,
+          "damage_common": 760,
+          "damage_elite": 1200,
+          "note": "200% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Down From Tail Slah Down",
+          "damage_ratio": 2000,
+          "damage_common": 760,
+          "damage_elite": 1200,
+          "note": "200% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Down From Short Dash",
+          "damage_ratio": 2000,
+          "damage_common": 760,
+          "damage_elite": 1200,
+          "note": "200% damage ratio, impact power 5."
+        },
+        {
+          "name": "Divine Judgment",
+          "damage_ratio": 3000,
+          "damage_common": 1140,
+          "damage_elite": 1800,
+          "note": "300% damage ratio, impact power 6."
+        },
+        {
+          "name": "Tail Attack Down From Dash",
+          "damage_ratio": 2000,
+          "damage_common": 760,
+          "damage_elite": 1200,
+          "note": "200% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Down",
+          "damage_ratio": 2000,
+          "damage_common": 760,
+          "damage_elite": 1200,
+          "note": "200% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Down From Back Steb",
+          "damage_ratio": 2000,
+          "damage_common": 760,
+          "damage_elite": 1200,
+          "note": "200% damage ratio, impact power 5."
+        }
+      ]
+    },
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Tail Slash High From Short Dash",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Slash Down From Short Dash",
+          "damage_ratio": 1800,
+          "damage_common": 684,
+          "damage_elite": 1080,
+          "note": "180% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Up From Tail Slah High",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Up From Tail Slah Down",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Up From Short Dash",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Water Arrow 1",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Combo Water Arrow 1 From Tail Slash High",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Combo Water Arrow 1 From Tail Slash Down",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Combo Water Arrow 1 From Back Steb",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Turning Water Arrow L",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Turning Water Arrow R",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Turning Water Arrow2 L",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Turning Water Arrow2 R",
+          "damage_ratio": 1600,
+          "damage_common": 608,
+          "damage_elite": 960,
+          "note": "160% damage ratio, impact power 6."
+        },
+        {
+          "name": "Tail Attack Up From Dash",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Slash Down From Dash",
+          "damage_ratio": 1800,
+          "damage_common": 684,
+          "damage_elite": 1080,
+          "note": "180% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Slash High From Dash",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Attack Up",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Slash Down",
+          "damage_ratio": 1800,
+          "damage_common": 684,
+          "damage_elite": 1080,
+          "note": "180% damage ratio, impact power 5."
+        },
+        {
+          "name": "Tail Slash High",
+          "damage_ratio": 1900,
+          "damage_common": 722,
+          "damage_elite": 1140,
+          "note": "190% damage ratio, impact power 5."
+        },
+        {
+          "name": "Rush",
+          "damage_ratio": 1700,
+          "damage_common": 646,
+          "damage_elite": 1020,
+          "note": "170% damage ratio, impact power 4."
+        },
+        {
+          "name": "Tail Slash High From Back Steb",
+          "damage_ratio": 1800,
+          "damage_common": 684,
+          "damage_elite": 1080,
+          "note": "180% damage ratio, impact power 5."
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Water Arrow 2",
+          "damage_ratio": 1300,
+          "damage_common": 494,
+          "damage_elite": 780,
+          "note": "130% damage ratio, impact power 6."
+        },
+        {
+          "name": "Combo Water Arrow 2 From Tail Slash High",
+          "damage_ratio": 1300,
+          "damage_common": 494,
+          "damage_elite": 780,
+          "note": "130% damage ratio, impact power 6."
+        },
+        {
+          "name": "Combo Water Arrow 2 From Tail Slash Down",
+          "damage_ratio": 1300,
+          "damage_common": 494,
+          "damage_elite": 780,
+          "note": "130% damage ratio, impact power 6."
+        },
+        {
+          "name": "Combo Water Arrow 2 From Back Steb",
+          "damage_ratio": 1300,
+          "damage_common": 494,
+          "damage_elite": 780,
+          "note": "130% damage ratio, impact power 6."
+        },
+        {
+          "name": "Pop Out",
+          "damage_ratio": 1200,
+          "damage_common": 456,
+          "damage_elite": 720,
+          "note": "120% damage ratio, impact power 6."
+        }
+      ]
+    },
+    {
+      "tier": "Moderate",
+      "color": "#8a7048",
+      "attacks": [
+        {
+          "name": "Short Dash",
+          "damage_ratio": 900,
+          "damage_common": 342,
+          "damage_elite": 540,
+          "note": "90% damage ratio, impact power 6."
+        },
+        {
+          "name": "Dash",
+          "damage_ratio": 600,
+          "damage_common": 228,
+          "damage_elite": 360,
+          "note": "60% damage ratio, impact power 4."
+        },
+        {
+          "name": "Dash End",
+          "damage_ratio": 600,
+          "damage_common": 228,
+          "damage_elite": 360,
+          "note": "60% damage ratio, impact power 4."
+        },
+        {
+          "name": "Rush Lightning",
+          "damage_ratio": 900,
+          "damage_common": 342,
+          "damage_elite": 540,
+          "note": "90% damage ratio, impact power 0."
+        }
+      ]
+    },
+    {
+      "tier": "Utility",
+      "color": "#5588dd",
+      "attacks": [
+        {
+          "name": "Rush Falling Rock",
+          "damage_ratio": 400,
+          "damage_common": 152,
+          "damage_elite": 240,
+          "note": "40% damage ratio, impact power 4."
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "29 combo chains across 9 entry points. Attacks chain from one to the next based on the AI's positioning and target state.",
+    "chains": [
+      {
+        "from": "Swim L",
+        "to": [
+          "Tail Slash High",
+          "TailSlash Down",
+          "ShortDash",
+          "TailSlash High"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Swim R",
+        "to": [
+          "Tail Slash High",
+          "TailSlash Down",
+          "ShortDash",
+          "TailSlash High"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Short Dash",
+        "to": [
+          "Tail Slash High",
+          "Tail Slash Down",
+          "Tail Attack Down",
+          "Tail Attack Up"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Tail Slah High",
+        "to": [
+          "Tail Attack Down",
+          "Tail Attack Up"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Tail Slah Down",
+        "to": [
+          "Tail Attack Down",
+          "Tail Attack Up"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Tail Slash High",
+        "to": [
+          "Water Arrow 1",
+          "Water Arrow 2"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Tail Slash Down",
+        "to": [
+          "Water Arrow 1",
+          "Water Arrow 2"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Back Steb",
+        "to": [
+          "Water Arrow 1",
+          "Water Arrow 2",
+          "Tail Attack Down",
+          "Tail Slash High"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Dash",
+        "to": [
+          "Tail Attack Down",
+          "TailAttack Up",
+          "TailSlash Down",
+          "TailSlash High",
+          "TailAttack Down"
+        ],
+        "note": ""
+      }
+    ]
+  },
+  "status_effects_detail": [
+    {
+      "name": "Dash Stun",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Dash Stun icon on your status bar."
+    },
+    {
+      "name": "Lightning Bubble Immune Judgement",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Lightning Bubble Immune Judgement icon on your status bar."
+    },
+    {
+      "name": "Lightning Bubble Stacking",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Lightning Bubble Stacking icon on your status bar."
+    },
+    {
+      "name": "Tail Poison",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. Affects: HydrothermalVent.",
+      "counter": "Watch for the Tail Poison icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Very Fast — 400 Move Speed",
+      "priority": "high",
+      "description": "Base move speed of 400 makes this one of the fastest monsters. Outrunning it is difficult."
+    },
+    {
+      "title": "Highest Damage: Lightning Nova (800% ratio)",
+      "priority": "high",
+      "description": "Lightning Nova deals 3040 damage at base (800% ratio). This is the most dangerous attack to avoid."
+    },
+    {
+      "title": "Elite Gains: Rush Falling Rock, Lightning Bubble Elite",
+      "priority": "medium",
+      "description": "Elite grade has 2 exclusive abilities not present in lower grades: Rush Falling Rock, Lightning Bubble Elite. These change the fight dynamics in Elite.",
+      "grades": [
+        "Elite"
+      ]
+    },
+    {
+      "title": "Combat Range: combat area radius 600, ability check distance 1000",
+      "priority": "medium",
+      "description": "Combat area radius 600. Ability check distance 1000."
+    },
+    {
+      "title": "Behavior Trees: BT_AncientStingray",
+      "priority": "low",
+      "description": "Uses behavior tree: BT_AncientStingray. "
+    }
+  ],
+  "elite_differences": [
+    "75% more HP (4000 → 7000) in Elite",
+    "58% more physical damage (38 → 60) in Elite",
+    "ActionSpeed -120 → 0 in Elite — attacks animate faster",
+    "XP reward 15 → 20 in Elite",
+    "Elite gains 2 exclusive abilities: Rush Falling Rock, Lightning Bubble Elite",
+    "No Nightmare grade exists"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree."
+  }
 }

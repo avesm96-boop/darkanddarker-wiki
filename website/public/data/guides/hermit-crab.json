@@ -1,29 +1,42 @@
 {
- "slug": "hermit-crab",
- "overview": "Hermit Crab is a Normal-class Beast monster found in Ship Graveyard. 1 grades: Common. Base stats (Common): 0 HP, 0 physical damage, 10 move speed, ActionSpeed 0. ImpactResistance 0, MaxImpactEndurance 0. 0 attacks, 0 combo chains.",
- "phases": [],
- "attack_categories": [],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- }
- ],
- "elite_differences": [],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "hermit-crab",
+  "overview": "Hermit Crab is a Normal-class Beast monster found in Ship Graveyard. 1 grades: Common. Base stats (Common): 0 HP, 0 physical damage, 10 move speed, ActionSpeed 0. ImpactResistance 0, MaxImpactEndurance 0. 0 attacks, 0 combo chains. Sight range 100.",
+  "phases": [],
+  "attack_categories": [],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 100 units",
+      "priority": "medium",
+      "description": "Sight radius 100 units, loses target at 100 units, 180° vision angle."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 700 unit peace distance."
+    }
+  ],
+  "elite_differences": [],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 100,
+    "lose_sight_radius": 100,
+    "sight_description": "Detects targets within 100 units. Loses target at 100 units."
+  }
 }

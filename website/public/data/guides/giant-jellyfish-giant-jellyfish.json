@@ -1,155 +1,168 @@
 {
- "slug": "giant-jellyfish-giant-jellyfish",
- "overview": "Giant Jellyfish (Giant Jellyfish) is a SubBoss-class Beast monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 700 HP, 20 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 4 attacks, 0 combo chains. Highest damage: Spawn Jellyfish Mine at 160% ratio (320 base damage). Nightmare gains 2 exclusive abilityies: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare.",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "2 melee attacks. Melee Attack1 (130%), Melee Attack1 Nightmare (130%).",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Spawn Jellyfish Mine",
- "damage_ratio": 1600,
- "damage_common": 320,
- "damage_elite": 368,
- "note": "160% damage ratio, impact power 5.",
- "damage_nightmare": 432
- },
- {
- "name": "Spawn Jellyfish Mine Nightmare",
- "damage_ratio": 1600,
- "damage_common": 320,
- "damage_elite": 368,
- "note": "160% damage ratio, impact power 5.",
- "damage_nightmare": 432
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Melee Attack1",
- "damage_ratio": 1300,
- "damage_common": 260,
- "damage_elite": 299,
- "note": "130% damage ratio, impact power 4.",
- "damage_nightmare": 351
- },
- {
- "name": "Melee Attack1 Nightmare",
- "damage_ratio": 1300,
- "damage_common": 260,
- "damage_elite": 299,
- "note": "130% damage ratio, impact power 4.",
- "damage_nightmare": 351
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [
- {
- "name": "Electrified",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. Affects: MoveSpeed.",
- "counter": "Watch for the Electrified icon on your status bar."
- },
- {
- "name": "Electrified Nightmare",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. Affects: MoveSpeed.",
- "counter": "Watch for the Electrified Nightmare icon on your status bar."
- },
- {
- "name": "Electrified UI Data",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Electrified UI Data icon on your status bar."
- },
- {
- "name": "Shocked",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Shocked icon on your status bar."
- },
- {
- "name": "Shocked UI Data",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Shocked UI Data icon on your status bar."
- },
- {
- "name": "Static Stun",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. Affects: MoveSpeed.",
- "counter": "Watch for the Static Stun icon on your status bar."
- },
- {
- "name": "Static Stun UI Data",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Static Stun UI Data icon on your status bar."
- }
- ],
- "strategies": [
- {
- "title": "High Impact Values (ImpactRes 999, Endurance 999)",
- "priority": "medium",
- "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
- },
- {
- "title": "Nightmare Gains: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare",
- "priority": "medium",
- "description": "Nightmare grade has 2 exclusive abilities not present in lower grades: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare. These change the fight dynamics in Nightmare.",
- "grades": [
- "Nightmare"
- ]
- }
- ],
- "elite_differences": [
- "29% more HP (700 → 900) in Elite",
- "15% more physical damage (20 → 23) in Elite",
- "Move speed 150 → 160 in Elite",
- "XP reward 8 → 9 in Elite",
- "57% more HP (700 → 1100) in Nightmare",
- "35% more physical damage (20 → 27) in Nightmare",
- "Move speed 150 → 170 in Nightmare",
- "XP reward 8 → 10 in Nightmare",
- "Nightmare gains 2 exclusive abilities: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard boss perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": true,
- "stuck_description": "Has stuck-detection failsafes in behavior tree."
- }
+  "slug": "giant-jellyfish-giant-jellyfish",
+  "overview": "Giant Jellyfish (Giant Jellyfish) is a SubBoss-class Beast monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 700 HP, 20 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 4 attacks, 0 combo chains. Highest damage: Spawn Jellyfish Mine at 160% ratio (320 base damage). Sight range 1000. Nightmare gains 2 exclusive abilityies: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "2 melee attacks. Melee Attack1 (130%), Melee Attack1 Nightmare (130%).",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Spawn Jellyfish Mine",
+          "damage_ratio": 1600,
+          "damage_common": 320,
+          "damage_elite": 368,
+          "note": "160% damage ratio, impact power 5.",
+          "damage_nightmare": 432
+        },
+        {
+          "name": "Spawn Jellyfish Mine Nightmare",
+          "damage_ratio": 1600,
+          "damage_common": 320,
+          "damage_elite": 368,
+          "note": "160% damage ratio, impact power 5.",
+          "damage_nightmare": 432
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Melee Attack1",
+          "damage_ratio": 1300,
+          "damage_common": 260,
+          "damage_elite": 299,
+          "note": "130% damage ratio, impact power 4.",
+          "damage_nightmare": 351
+        },
+        {
+          "name": "Melee Attack1 Nightmare",
+          "damage_ratio": 1300,
+          "damage_common": 260,
+          "damage_elite": 299,
+          "note": "130% damage ratio, impact power 4.",
+          "damage_nightmare": 351
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Electrified",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. Affects: MoveSpeed.",
+      "counter": "Watch for the Electrified icon on your status bar."
+    },
+    {
+      "name": "Electrified Nightmare",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. Affects: MoveSpeed.",
+      "counter": "Watch for the Electrified Nightmare icon on your status bar."
+    },
+    {
+      "name": "Electrified UI Data",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Electrified UI Data icon on your status bar."
+    },
+    {
+      "name": "Shocked",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Shocked icon on your status bar."
+    },
+    {
+      "name": "Shocked UI Data",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Shocked UI Data icon on your status bar."
+    },
+    {
+      "name": "Static Stun",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. Affects: MoveSpeed.",
+      "counter": "Watch for the Static Stun icon on your status bar."
+    },
+    {
+      "name": "Static Stun UI Data",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Static Stun UI Data icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Nightmare Gains: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare",
+      "priority": "medium",
+      "description": "Nightmare grade has 2 exclusive abilities not present in lower grades: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare. These change the fight dynamics in Nightmare.",
+      "grades": [
+        "Nightmare"
+      ]
+    },
+    {
+      "title": "Detection Range: 1000 units",
+      "priority": "medium",
+      "description": "Sight radius 1000 units, loses target at 1700 units, 180° vision angle."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 600 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "29% more HP (700 → 900) in Elite",
+    "15% more physical damage (20 → 23) in Elite",
+    "Move speed 150 → 160 in Elite",
+    "XP reward 8 → 9 in Elite",
+    "57% more HP (700 → 1100) in Nightmare",
+    "35% more physical damage (20 → 27) in Nightmare",
+    "Move speed 150 → 170 in Nightmare",
+    "XP reward 8 → 10 in Nightmare",
+    "Nightmare gains 2 exclusive abilities: Melee Attack1 Nightmare, Spawn Jellyfish Mine Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 1000,
+    "lose_sight_radius": 1700,
+    "sight_description": "Detects targets within 1000 units. Loses target at 1700 units."
+  }
 }

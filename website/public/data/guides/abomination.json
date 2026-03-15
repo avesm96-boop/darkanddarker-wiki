@@ -1,198 +1,152 @@
 {
- "slug": "abomination",
- "overview": "The Abomination is a SubBoss-class Demon/Aberration found in the Inferno dungeon. It has 5 distinct attack abilities triggered through an AttackPhase system that uses RandomFloat checks and grade-based branching to select attacks. Its AI checks enemies in range and angle from the actor, then picks between HeavySwing, GreedyRush, BloodVomiting, or Destruction based on proximity and randomness. The GreedyRush ability uses a timer-based charge system with Start and End rush timers. BloodVomiting applies VomitingBlinker — a 7-second screen-impairing debuff triggered via Event.Attack.AdditionalHit.Radius. With ImpactResistance of only 3 and MaxImpactEndurance of 6, this is one of the few SubBosses that CAN be staggered. It has three grades (Common/Elite/Nightmare) with identical ability sets but escalating stats.",
- "phases": [
- {
- "name": "AttackPhase Selection",
- "description": "The Abomination's AI activates via Ability.Monster.Skill.One.On and uses RandomFloatInRange checks combined with Get_Enemies_In_Range_And_Angle_From_Actor to determine which attack to use. It also reads the monster's grade type (Common/Elite/Nightmare) via GetGradeType and checks Blackboard float values to adjust behavior. The phase loops — after each attack completes, it re-evaluates conditions for the next attack.",
- "icon": "attack"
- },
- {
- "name": "Melee Engagement (HeavySwing)",
- "description": "HeavySwing Up (Skill.One) and HeavySwing Down (Skill.Two) are the primary melee attacks at 1500 damage ratio each. These are simple but hard-hitting overhead and downward swings. Both have impact power 6, which is enough to stagger lighter player characters.",
- "icon": "attack"
- },
- {
- "name": "Charge Phase (GreedyRush)",
- "description": "GreedyRush (Skill.Six) is a 3-part charge attack: Start → Loop → End. The rush uses timer-based movement (Start Rush Timer and End Rush Timer handles) to charge toward the target. The charge deals 2000 damage ratio — the Abomination's highest damage attack. This is its gap-closer for when targets are at range.",
- "icon": "move"
- },
- {
- "name": "Ranged Debuff (BloodVomiting)",
- "description": "BloodVomiting (Skill.Eight) is a ranged cone attack that deals 400 damage ratio but applies VomitingBlinker — a 7-second visual impairment debuff. The effect triggers via Event.Attack.AdditionalHit.Radius, meaning it hits in an area around the projectile impact. The debuff stacks by target with a limit of 1 (cannot be stacked). Low damage but high threat due to the blinding effect.",
- "icon": "debuff"
- },
- {
- "name": "Destruction",
- "description": "Destruction (Skill.Five) is a powerful area attack at 1600 damage ratio with impact power 6. This appears to be a ground-pound or area slam that the Abomination uses when surrounded or when multiple enemies are detected in range via the Get_Enemies_In_Range_And_Angle checks.",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "GreedyRush",
- "damage_ratio": 2000,
- "damage_common": 60,
- "damage_elite": 66,
- "damage_nightmare": 72,
- "note": "3-phase charge attack (Start → Loop → End). Timer-based rush toward target. Highest damage ability. The charge uses Start Rush Timer and End Rush Timer to control duration and ending."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Destruction",
- "damage_ratio": 1600,
- "damage_common": 48,
- "damage_elite": 52.8,
- "damage_nightmare": 57.6,
- "note": "Powerful area attack. Impact power 6. Used when multiple enemies are detected in range and angle. Likely a ground slam or area pound animation."
- },
- {
- "name": "HeavySwing Up",
- "damage_ratio": 1500,
- "damage_common": 45,
- "damage_elite": 49.5,
- "damage_nightmare": 54,
- "note": "Overhead melee swing. Impact power 6. One of two primary melee attacks, selected via RandomFloat in the AttackPhase."
- },
- {
- "name": "HeavySwing Down",
- "damage_ratio": 1500,
- "damage_common": 45,
- "damage_elite": 49.5,
- "damage_nightmare": 54,
- "note": "Downward melee swing. Impact power 6. Identical damage ratio to HeavySwing Up. The alternate melee option in the attack selection."
- }
- ]
- },
- {
- "tier": "Utility",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "BloodVomiting",
- "damage_ratio": 400,
- "damage_common": 12,
- "damage_elite": 13.2,
- "damage_nightmare": 14.4,
- "note": "Low-damage ranged attack that applies VomitingBlinker debuff (7-second visual impairment). Triggers via Event.Attack.AdditionalHit.Radius — hits in an area, not just a single target. Impact power 3 (low knockback). The primary threat is the blinding effect, not the damage."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Abomination does not use traditional combo chains. Instead, its AttackPhase (Skill.One) acts as a central ability selector that picks one attack per cycle based on RandomFloat values, target distance/angle checks, and grade type. After each attack completes, the AttackPhase re-evaluates and selects the next attack. There is no fixed from→to chain, but the GreedyRush has its own internal 3-phase sequence.",
- "chains": [
- {
- "from": "AttackPhase",
- "to": [
- "HeavySwing Up",
- "HeavySwing Down",
- "GreedyRush",
- "BloodVomiting",
- "Destruction"
- ],
- "note": "Central selector. Uses RandomFloatInRange, Get_Enemies_In_Range_And_Angle, and GetGradeType to pick the next attack. Loops after each attack completes."
- },
- {
- "from": "GreedyRush Start",
- "to": [
- "GreedyRush Loop",
- "GreedyRush End"
- ],
- "note": "Internal 3-phase sequence. Start initiates the charge, Loop maintains forward movement via timer, End delivers the damage hit. The rush continues until the End Rush Timer fires."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "VomitingBlinker",
- "type": "debuff",
- "duration": "7 seconds",
- "stacks": 1,
- "description": "Applied by BloodVomiting via Event.Attack.AdditionalHit.Radius. A visual impairment debuff (Blinker type) that obstructs the player's screen for 7 seconds. Uses GE_Dur_TagOnly — it applies a gameplay tag but does not directly modify stats. Stacking type is AggregateByTarget with a stack limit of 1, meaning the debuff cannot stack but can be refreshed.",
- "counter": "The debuff is tag-only (no stat reduction) but impairs vision significantly. Since it hits in a radius, maintaining distance does not guarantee safety if you're near the impact zone. Move perpendicular to the vomit direction. The 7-second duration is long — be prepared to fight partially blind or disengage until it wears off."
- }
- ],
- "strategies": [
- {
- "title": "It CAN Be Staggered — Exploit This",
- "priority": "critical",
- "description": "Unlike most bosses and sub-bosses that have 999 Impact Resistance, the Abomination only has ImpactResistance 3 and MaxImpactEndurance 6. This means high-impact weapons and abilities can interrupt its attacks. Staggering it during GreedyRush startup or BloodVomiting wind-up can prevent its most dangerous abilities from completing."
- },
- {
- "title": "Massive Ice Weakness (-3000 IceMagicalReduction)",
- "priority": "critical",
- "description": "The Abomination has -3000 IceMagicalReduction — the largest elemental weakness in its stat block. Any source of Ice damage will be dramatically amplified. This is the single most effective damage type against this monster."
- },
- {
- "title": "Sidestep the GreedyRush",
- "priority": "high",
- "description": "GreedyRush is a straight-line charge using timer-based forward movement. At 2000 damage ratio it hits the hardest of any Abomination attack. Since the rush commits to a direction, stepping perpendicular to its charge path is the safest dodge. The charge has a fixed timer duration — if it misses, there is a recovery window before the next AttackPhase cycle."
- },
- {
- "title": "Light and Divine Magic Are Also Strong (-2000 Reduction Each)",
- "priority": "high",
- "description": "Beyond Ice, the Abomination also has -2000 LightMagicalReduction and -2000 DivineMagicalReduction. These are significant weaknesses. Fire (+250), Dark (+500), and Evil (+500) magic types are resisted — avoid those damage types."
- },
- {
- "title": "Avoid BloodVomiting at All Costs",
- "priority": "high",
- "description": "BloodVomiting deals trivial damage (400 ratio = 12 damage Common) but applies a 7-second VomitingBlinker that impairs your screen. Fighting the Abomination while blinded is extremely dangerous, especially if it follows up with a GreedyRush you cannot see coming. The vomit hits in a radius (Event.Attack.AdditionalHit.Radius), so nearby allies can also be blinded."
- },
- {
- "title": "It Has Magic Resistance (124 MagRes)",
- "priority": "medium",
- "description": "Despite its massive elemental weaknesses, the Abomination has 124 base MagicResistance which provides some flat magic defense. The elemental reductions (-3000 Ice, -2000 Light/Divine) far outweigh this, but it means non-elemental magic won't be as effective as you might expect."
- },
- {
- "title": "Projectiles Are Partially Reduced",
- "priority": "medium",
- "description": "With 200 ProjectileReductionMod, physical projectile damage is reduced. Ranged physical builds will deal less damage than melee or magic approaches."
- },
- {
- "title": "Nightmare Grade Is Significantly Faster",
- "priority": "medium",
- "description": "Nightmare grade has 250 MoveSpeed (vs 200 Common, 220 Elite) and 200 ActionSpeed (vs 0 Common, 100 Elite). The ActionSpeed increase means attacks come out much faster in Elite and Nightmare — dodge timings that work on Common may not work on higher grades. The same attack animations play faster."
- },
- {
- "title": "Destruction Punishes Groups",
- "priority": "medium",
- "description": "Destruction at 1600 ratio with impact power 6 appears to be triggered when the Abomination detects multiple enemies in range and angle. Spreading out reduces the chance of the entire party being hit simultaneously."
- },
- {
- "title": "No Combos — Each Attack Is Independent",
- "priority": "low",
- "description": "Unlike bosses with complex combo chains, the Abomination picks one attack per cycle from its AttackPhase selector. This means after any attack ends, there is a brief window before the next selection. Use these gaps for damage and repositioning."
- }
- ],
- "elite_differences": [
- "22% more HP (900 → 1100)",
- "10% more physical damage (30 → 33)",
- "10% faster base move speed (200 → 220)",
- "ActionSpeed increased from 0 to 100 — attacks are noticeably faster",
- "Same resistances, impact values, and projectile reduction as Common",
- "Same ability set — no new attacks in Elite",
- "Higher XP reward (8 → 9)",
- "Nightmare grade: 44% more HP (900 → 1300), 20% more damage (30 → 36), 25% faster move (200 → 250), ActionSpeed 200 (attacks much faster), 10 XP",
- "All three grades have identical ability sets and elemental weaknesses — the difference is purely stat-based (HP, damage, speed, action speed)"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard 180-degree frontal vision from SubBoss base class",
- "damage_sense": true,
- "damage_description": "Reacts to being hit regardless of facing direction (inherited AIPerceptionStimuliSourceComponent)",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds in the Inferno dungeon",
- "stuck_tracking": true,
- "stuck_description": "GreedyRush uses timer-based movement with Start and End Rush Timer handles. If the rush fails to reach the target before the End Rush Timer fires, it aborts and the AttackPhase re-evaluates. The GreedyRush also has a separate GreedyRush_Check ability and Cooldown decorator on the behavior tree to prevent spam."
- }
+  "slug": "abomination",
+  "overview": "Abomination is a SubBoss-class Demon/Aberration monster found in Inferno. 3 grades: Common, Elite, Nightmare. Base stats (Common): 900 HP, 30 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 6. 5 attacks, 0 combo chains. Highest damage: Greedy Rush at 200% ratio (600 base damage). Sight range 1100, combat radius 200.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "2 melee attacks. Heavy Swing Up (150%), Heavy Swing Down (150%).",
+      "icon": "attack"
+    },
+    {
+      "name": "Rush / Charge",
+      "description": "1 rush/charge attacks for gap-closing. Greedy Rush (200%).",
+      "icon": "move"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Greedy Rush",
+          "damage_ratio": 2000,
+          "damage_common": 600,
+          "damage_elite": 660,
+          "note": "200% damage ratio, impact power 6.",
+          "damage_nightmare": 720
+        }
+      ]
+    },
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Heavy Swing Up",
+          "damage_ratio": 1500,
+          "damage_common": 450,
+          "damage_elite": 495,
+          "note": "150% damage ratio, impact power 6.",
+          "damage_nightmare": 540
+        },
+        {
+          "name": "Heavy Swing Down",
+          "damage_ratio": 1500,
+          "damage_common": 450,
+          "damage_elite": 495,
+          "note": "150% damage ratio, impact power 6.",
+          "damage_nightmare": 540
+        },
+        {
+          "name": "Destruction",
+          "damage_ratio": 1600,
+          "damage_common": 480,
+          "damage_elite": 528,
+          "note": "160% damage ratio, impact power 6.",
+          "damage_nightmare": 576
+        }
+      ]
+    },
+    {
+      "tier": "Utility",
+      "color": "#5588dd",
+      "attacks": [
+        {
+          "name": "Blood Vomiting",
+          "damage_ratio": 400,
+          "damage_common": 120,
+          "damage_elite": 132,
+          "note": "40% damage ratio, impact power 3.",
+          "damage_nightmare": 144
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Vomiting Blinker",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Vomiting Blinker icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "Elemental Weaknesses: Ice, Light, Divine",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Ice (-3000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Dark, Evil",
+      "priority": "high",
+      "description": "Elemental resistances: Dark (+500), Evil (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 200",
+      "priority": "medium",
+      "description": "Has 200 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Highest Damage: Greedy Rush (200% ratio)",
+      "priority": "high",
+      "description": "Greedy Rush deals 600 damage at base (200% ratio). This is the most dangerous attack to avoid."
+    },
+    {
+      "title": "Detection Range: 1100 units",
+      "priority": "medium",
+      "description": "Sight radius 1100 units, loses target at 1600 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 200, ability check distance 300",
+      "priority": "medium",
+      "description": "Combat area radius 200. Ability check distance 300. Ability attack delay: 0.3s."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 500 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "22% more HP (900 → 1100) in Elite",
+    "10% more physical damage (30 → 33) in Elite",
+    "Move speed 200 → 220 in Elite",
+    "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+    "XP reward 8 → 9 in Elite",
+    "44% more HP (900 → 1300) in Nightmare",
+    "20% more physical damage (30 → 36) in Nightmare",
+    "Move speed 200 → 250 in Nightmare",
+    "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+    "XP reward 8 → 10 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 1100,
+    "lose_sight_radius": 1600,
+    "sight_description": "Detects targets within 1100 units. Loses target at 1600 units."
+  }
 }

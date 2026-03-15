@@ -309,6 +309,112 @@ function buildStrategies(monster, gradeAnalysis) {
     });
   }
 
+  // ── Blueprint behavior data strategies (facts only) ──
+
+  const b = monster.behavior || {};
+  const props = b.properties || {};
+
+  // Detection range
+  if (b.sight_radius != null) {
+    strategies.push({
+      title: `Detection Range: ${b.sight_radius} units`,
+      priority: 'medium',
+      description: `Sight radius ${b.sight_radius} units${b.lose_sight_radius != null ? `, loses target at ${b.lose_sight_radius} units` : ''}${b.peripheral_vision_angle != null ? `, ${b.peripheral_vision_angle}° vision angle` : ''}.`
+    });
+  }
+
+  // Combat engagement range
+  const combatRadius = props['Combat Acceptance Radius'];
+  const abilityDist = props['Check Ability Distance'];
+  if (combatRadius != null || abilityDist != null) {
+    const parts = [];
+    if (combatRadius != null) parts.push(`combat area radius ${combatRadius}`);
+    if (abilityDist != null) parts.push(`ability check distance ${abilityDist}`);
+    strategies.push({
+      title: `Combat Range: ${parts.join(', ')}`,
+      priority: 'medium',
+      description: `${parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join('. ')}.${props['Combat Ability Attack Delay'] != null ? ` Ability attack delay: ${props['Combat Ability Attack Delay']}s.` : ''}`
+    });
+  }
+
+  // HP-based phase transitions
+  const hpRatioProps = Object.entries(props).filter(([k]) =>
+    k.toLowerCase().includes('hp ratio') || k.toLowerCase().includes('hpratio')
+  );
+  if (hpRatioProps.length > 0) {
+    const triggers = hpRatioProps.map(([k, v]) => `${k}: ${v}%`).join(', ');
+    strategies.push({
+      title: `HP Phase Triggers`,
+      priority: 'critical',
+      description: `${triggers}. These HP thresholds trigger phase transitions, summons, or special attacks.`
+    });
+  }
+
+  // Summon mechanics
+  const summonCount = Object.entries(props).find(([k]) => k.toLowerCase().includes('summonee count'));
+  const summonMonster = props['In Monster Id'];
+  if (summonCount || summonMonster) {
+    const parts = [];
+    if (summonCount) parts.push(`summons ${summonCount[1]} enemies`);
+    if (summonMonster) parts.push(`summon type: ${cleanName(summonMonster.replace('Id_Monster_', ''))}`);
+    strategies.push({
+      title: `Summon Mechanics`,
+      priority: 'high',
+      description: `${parts.join('. ')}.`
+    });
+  }
+
+  // Cooldown timers
+  const timerProps = Object.entries(props).filter(([k]) =>
+    k.toLowerCase().includes('timer') && !k.toLowerCase().includes('set')
+  );
+  if (timerProps.length > 0) {
+    const timers = timerProps.map(([k, v]) => `${k}: ${v}s`).join(', ');
+    strategies.push({
+      title: `Cooldown Timers`,
+      priority: 'medium',
+      description: `${timers}.`
+    });
+  }
+
+  // Flee/kite behavior (ranged monsters)
+  const fleeDist = props['Flee Distance'];
+  const peaceDist = props['Peace Distance'];
+  if (fleeDist != null || peaceDist != null) {
+    const parts = [];
+    if (fleeDist != null) parts.push(`flees when target within ${fleeDist} units`);
+    if (peaceDist != null) parts.push(`re-engages at ${peaceDist} unit peace distance`);
+    strategies.push({
+      title: `Flee/Kite Behavior`,
+      priority: 'high',
+      description: `${parts.join('. ')}.`
+    });
+  }
+
+  // Behavior tree info
+  if (b.behavior_tree) {
+    const btParts = [b.behavior_tree];
+    if (b.combat_behavior_tree) btParts.push(b.combat_behavior_tree);
+    strategies.push({
+      title: `Behavior Trees: ${btParts.join(', ')}`,
+      priority: 'low',
+      description: `Uses behavior tree${btParts.length > 1 ? 's' : ''}: ${btParts.join(', ')}. ${b.combat_behavior_tree ? 'Switches to combat behavior tree during combat phases.' : ''}`
+    });
+  }
+
+  // Blueprint damage parameters (specific abilities with damage bases)
+  const dmgProps = Object.entries(props).filter(([k]) =>
+    k.includes('Damage Base') && !k.includes('Ratio')
+  );
+  if (dmgProps.length > 0) {
+    const dmgs = dmgProps.map(([k, v]) => `${k}: ${v}`).join(', ');
+    strategies.push({
+      title: `Ability Damage Values`,
+      priority: 'medium',
+      description: `Blueprint damage parameters: ${dmgs}. These are base values before scaling.`
+    });
+  }
+
   return strategies;
 }
 
@@ -392,18 +498,36 @@ function buildPhases(monster) {
 // ── AI Perception ────────────────────────────────────────────────────────────
 
 function buildPerception(monster) {
-  return {
-    vision_angle: 180,
-    vision_description: `Standard ${monster.class_type === 'Boss' || monster.class_type === 'SubBoss' ? 'boss' : 'monster'} perception.`,
+  const b = monster.behavior || {};
+  const isBoss = monster.class_type === 'Boss' || monster.class_type === 'SubBoss';
+
+  const perception = {
+    vision_angle: b.peripheral_vision_angle ?? 180,
+    vision_description: b.peripheral_vision_angle != null
+      ? `${b.peripheral_vision_angle}° peripheral vision angle.`
+      : `Standard ${isBoss ? 'boss' : 'monster'} perception.`,
     damage_sense: true,
     damage_description: 'Reacts to damage from any direction.',
     hearing: true,
-    hearing_description: 'Reacts to nearby sounds.',
-    stuck_tracking: monster.class_type === 'Boss' || monster.class_type === 'SubBoss',
-    stuck_description: monster.class_type === 'Boss' || monster.class_type === 'SubBoss'
+    hearing_description: b.hearing_range != null
+      ? `Hearing range: ${b.hearing_range} units.`
+      : 'Reacts to nearby sounds.',
+    stuck_tracking: isBoss,
+    stuck_description: isBoss
       ? 'Has stuck-detection failsafes in behavior tree.'
       : 'Standard AI navigation.'
   };
+
+  // Add sight range data from blueprint
+  if (b.sight_radius != null) {
+    perception.sight_radius = b.sight_radius;
+    perception.lose_sight_radius = b.lose_sight_radius ?? null;
+    perception.sight_description = b.lose_sight_radius != null
+      ? `Detects targets within ${b.sight_radius} units. Loses target at ${b.lose_sight_radius} units.`
+      : `Detects targets within ${b.sight_radius} units.`;
+  }
+
+  return perception;
 }
 
 // ── Generate Guide ───────────────────────────────────────────────────────────
@@ -435,6 +559,14 @@ function generateGuide(monster) {
   const sortedAttacks = [...attacks].sort((a, b) => (b.damage_ratio || 0) - (a.damage_ratio || 0));
   const topAttack = sortedAttacks[0];
 
+  // Behavior data facts for overview
+  const b = monster.behavior || {};
+  const bProps = b.properties || {};
+  const behaviorFacts = [];
+  if (b.sight_radius != null) behaviorFacts.push(`Sight range ${b.sight_radius}`);
+  if (bProps['Combat Acceptance Radius'] != null) behaviorFacts.push(`combat radius ${bProps['Combat Acceptance Radius']}`);
+  if (b.behavior_tree) behaviorFacts.push(`behavior tree: ${b.behavior_tree}`);
+
   const overview = [
     `${monster.name} is a ${monster.class_type}-class ${(monster.creature_types || []).join('/')} monster`,
     monster.dungeons?.length > 0 ? ` found in ${monster.dungeons.join(', ')}` : '',
@@ -444,6 +576,7 @@ function generateGuide(monster) {
     hasStagger ? ' Has a Staggered reaction in its ability set.' : '',
     ` ${attacks.length} attack${attacks.length !== 1 ? 's' : ''}, ${commonCombos.length} combo chain${commonCombos.length !== 1 ? 's' : ''}.`,
     topAttack ? ` Highest damage: ${cleanName(topAttack.name)} at ${(topAttack.damage_ratio || 0) / 10}% ratio (${calcDamage(stats.PhysicalDamageWeapon, topAttack.damage_ratio || 0)} base damage).` : '',
+    behaviorFacts.length > 0 ? ` ${behaviorFacts.join(', ')}.` : '',
     gradeNotes.length > 0 ? ` ${gradeNotes.join('. ')}.` : '',
   ].join('');
 

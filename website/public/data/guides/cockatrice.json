@@ -1,118 +1,136 @@
 {
- "slug": "cockatrice",
- "overview": "Cockatrice is a SubBoss-class Beast monster found in Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): 1050 HP, 26 physical damage, 250 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 5 attacks, 0 combo chains. Highest damage: Attack2 at 150% ratio (390 base damage). Nightmare gains 1 exclusive abilityy: Fire Breath.",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "4 melee attacks. Attack1 (120%), Attack2 (150%), Chase Attack1 (120%), and more.",
- "icon": "attack"
- },
- {
- "name": "Ranged Attacks",
- "description": "1 ranged attacks. Fire Breath (150%).",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Attack2",
- "damage_ratio": 1500,
- "damage_common": 390,
- "damage_elite": 510,
- "note": "150% damage ratio, impact power 6.",
- "damage_nightmare": 630
- },
- {
- "name": "Chase Attack2",
- "damage_ratio": 1500,
- "damage_common": 390,
- "damage_elite": 510,
- "note": "150% damage ratio, impact power 6.",
- "damage_nightmare": 630
- },
- {
- "name": "Fire Breath",
- "damage_ratio": 1500,
- "damage_common": 390,
- "damage_elite": 510,
- "note": "150% damage ratio, impact power 6.",
- "damage_nightmare": 630
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Attack1",
- "damage_ratio": 1200,
- "damage_common": 312,
- "damage_elite": 408,
- "note": "120% damage ratio, impact power 6.",
- "damage_nightmare": 504
- },
- {
- "name": "Chase Attack1",
- "damage_ratio": 1200,
- "damage_common": 312,
- "damage_elite": 408,
- "note": "120% damage ratio, impact power 6.",
- "damage_nightmare": 504
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [
- {
- "name": "Petrification",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Petrification icon on your status bar."
- }
- ],
- "strategies": [
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- },
- {
- "title": "Nightmare Gains: Fire Breath",
- "priority": "medium",
- "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Fire Breath. These change the fight dynamics in Nightmare.",
- "grades": [
- "Nightmare"
- ]
- }
- ],
- "elite_differences": [
- "33% more HP (1050 → 1400) in Elite",
- "31% more physical damage (26 → 34) in Elite",
- "XP reward 6 → 7 in Elite",
- "67% more HP (1050 → 1750) in Nightmare",
- "62% more physical damage (26 → 42) in Nightmare",
- "XP reward 6 → 8 in Nightmare",
- "Nightmare gains 1 exclusive abilities: Fire Breath"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard boss perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": true,
- "stuck_description": "Has stuck-detection failsafes in behavior tree."
- }
+  "slug": "cockatrice",
+  "overview": "Cockatrice is a SubBoss-class Beast monster found in Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): 1050 HP, 26 physical damage, 250 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 5 attacks, 0 combo chains. Highest damage: Attack2 at 150% ratio (390 base damage). Sight range 1200, combat radius 100. Nightmare gains 1 exclusive abilityy: Fire Breath.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "4 melee attacks. Attack1 (120%), Attack2 (150%), Chase Attack1 (120%), and more.",
+      "icon": "attack"
+    },
+    {
+      "name": "Ranged Attacks",
+      "description": "1 ranged attacks. Fire Breath (150%).",
+      "icon": "special"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Attack2",
+          "damage_ratio": 1500,
+          "damage_common": 390,
+          "damage_elite": 510,
+          "note": "150% damage ratio, impact power 6.",
+          "damage_nightmare": 630
+        },
+        {
+          "name": "Chase Attack2",
+          "damage_ratio": 1500,
+          "damage_common": 390,
+          "damage_elite": 510,
+          "note": "150% damage ratio, impact power 6.",
+          "damage_nightmare": 630
+        },
+        {
+          "name": "Fire Breath",
+          "damage_ratio": 1500,
+          "damage_common": 390,
+          "damage_elite": 510,
+          "note": "150% damage ratio, impact power 6.",
+          "damage_nightmare": 630
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Attack1",
+          "damage_ratio": 1200,
+          "damage_common": 312,
+          "damage_elite": 408,
+          "note": "120% damage ratio, impact power 6.",
+          "damage_nightmare": 504
+        },
+        {
+          "name": "Chase Attack1",
+          "damage_ratio": 1200,
+          "damage_common": 312,
+          "damage_elite": 408,
+          "note": "120% damage ratio, impact power 6.",
+          "damage_nightmare": 504
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Petrification",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Petrification icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Nightmare Gains: Fire Breath",
+      "priority": "medium",
+      "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Fire Breath. These change the fight dynamics in Nightmare.",
+      "grades": [
+        "Nightmare"
+      ]
+    },
+    {
+      "title": "Detection Range: 1200 units",
+      "priority": "medium",
+      "description": "Sight radius 1200 units, loses target at 2000 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 100, ability check distance 250",
+      "priority": "medium",
+      "description": "Combat area radius 100. Ability check distance 250. Ability attack delay: 0.7s."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 800 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "33% more HP (1050 → 1400) in Elite",
+    "31% more physical damage (26 → 34) in Elite",
+    "XP reward 6 → 7 in Elite",
+    "67% more HP (1050 → 1750) in Nightmare",
+    "62% more physical damage (26 → 42) in Nightmare",
+    "XP reward 6 → 8 in Nightmare",
+    "Nightmare gains 1 exclusive abilities: Fire Breath"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Hearing range: 500 units.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 1200,
+    "lose_sight_radius": 2000,
+    "sight_description": "Detects targets within 1200 units. Loses target at 2000 units."
+  }
 }

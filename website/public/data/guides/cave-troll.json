@@ -1,314 +1,221 @@
 {
- "slug": "cave-troll",
- "overview": "The Cave Troll is a Boss-class monster found in Goblin Cave. It is a massive Humanoid/Beast hybrid that relies on devastating melee combos, spinning attacks, and ground pounds. Its AI uses a phase-driven combo system — a Combo Phase ability selects between LeftToRight and RightToLeft swing chains based on target positioning and yaw angle checks, while a separate Spinning Phase randomly picks between High and Low spinning attacks. The troll can also charge from distance using SpinningPhaseFromRun, which adds input movement toward the target until it closes within 300 units. With 999 Impact Resistance and 999 Impact Endurance, it has high Impact values. It applies CaveTrollSlow on hit (-350 move speed for 4 seconds) and Whirl (dizziness for 4 seconds), and passively regenerates health.",
- "phases": [
- {
- "name": "Combo Phase",
- "description": "The troll enters Combo Phase (Skill.One) as its primary melee engagement. The phase reads the target's position using FindRelativeLookAtRotation to determine yaw angle, then selects either Combo LeftToRight or Combo RightToLeft based on which side the target is on. Each combo swing can chain into follow-up attacks — LeftToRight signals Skill.Two which can branch to HeadUp (Skill.Four), and RightToLeft signals Skill.Three which branches similarly. A 60% Ratio To Choose Combo on LeftToRight determines whether the combo extends or ends.",
- "icon": "attack"
- },
- {
- "name": "Spinning Phase",
- "description": "When not in close combo range, the troll uses SpinningPhase (Skill.Six) which randomly selects between SpinningHigh (Skill.Seven) or SpinningLow (Skill.Eight) using a 50% Choosing Ratio. These deal the highest damage in its arsenal at 2000 ratio. Both use CantStuck melee data with 10.0 RotationSpeed for fast tracking.",
- "icon": "special"
- },
- {
- "name": "Charging Phase",
- "description": "When the target is far away, SpinningPhaseFromRun (Skill.Nine) activates. The troll charges toward the target using AddInputMovement on a timer, tracking distance until within 300 units (DistanceToCharge). Upon reaching the target, it fires a SpinningHighFromRun (Skill.Ten) or SpinningLowFromRun (Skill.Eleven) attack. If the charge fails (MoveTimer expires), it aborts and picks an attack anyway.",
- "icon": "move"
- },
- {
- "name": "Debuff & Utility Phase",
- "description": "The troll periodically uses Debuff Shouting (Skill.Twelve), which applies status effects to all enemies within 1300 distance and 70-degree angle. It also uses AddImpactPower (Skill.Thirteen) as a self-buff, and has dedicated PunchDown (Skill.Fifteen), Combo Slap (Skill.Fourteen), Combo PunchDown (Skill.Sixteen), and Ground attacks (Skill.Five/Seventeen) for close-range targets. Ground attacks launch targets with XY=600, Z=400 force.",
- "icon": "debuff"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "Spinning High",
- "ratio": 2000,
- "damage_common": 200,
- "damage_elite": 220,
- "note": "Highest damage attack. Selected from SpinningPhase with 50% chance. Uses CantStuck melee data with 10.0 rotation speed for fast tracking. Cannot be interrupted."
- },
- {
- "name": "Spinning Low",
- "ratio": 2000,
- "damage_common": 200,
- "damage_elite": 220,
- "note": "Equal to Spinning High. The alternate 50% choice from SpinningPhase. Same CantStuck data and rotation speed."
- },
- {
- "name": "Spinning High From Run",
- "ratio": 2000,
- "damage_common": 200,
- "damage_elite": 220,
- "note": "Delivered after a charge from distance. The troll runs at you and finishes with a high spinning strike. Same devastating ratio."
- },
- {
- "name": "Spinning Low From Run",
- "ratio": 2000,
- "damage_common": 200,
- "damage_elite": 220,
- "note": "Alternate finisher after a charge. Low variant of the running spinning attack."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Combo HeadUp",
- "ratio": 1800,
- "damage_common": 180,
- "damage_elite": 198,
- "note": "The hardest-hitting combo finisher. Triggered as Skill.Four after LeftToRight or RightToLeft opener. Uses CantStuck melee data with 5.0 rotation speed. Signals end of combo chain via Skill.Four tag."
- },
- {
- "name": "Combo LeftToRight",
- "ratio": 1500,
- "damage_common": 150,
- "damage_elite": 165,
- "note": "Primary combo opener. Has a 60% Ratio To Choose Combo for extending the chain. Checks target distance and yaw angle to decide follow-ups. Signals via Skill.Two."
- },
- {
- "name": "Combo Slap",
- "ratio": 1450,
- "damage_common": 145,
- "damage_elite": 159.5,
- "note": "Close-range slap with 3.0 rotation speed. Finds enemies in range and angle, applies effect to each. Uses CantStuck melee data."
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Combo RightToLeft",
- "ratio": 1100,
- "damage_common": 110,
- "damage_elite": 121,
- "note": "Secondary combo opener. Slower rotation (2.0) than LeftToRight. Also checks distance and angle for follow-up decisions. Signals via Skill.Three."
- },
- {
- "name": "Ground",
- "ratio": 1000,
- "damage_common": 100,
- "damage_elite": 110,
- "note": "Ground slam that launches targets (XY=600, Z=400). Uses sphere overlap to detect nearby enemies. Checks grade type (Common/Elite/Nightmare) to adjust behavior."
- },
- {
- "name": "Ground Combo",
- "ratio": 1000,
- "damage_common": 100,
- "damage_elite": 110,
- "note": "Follow-up ground slam in the combo chain. Same launch mechanics as the standalone Ground attack."
- }
- ]
- },
- {
- "tier": "Moderate",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "PunchDown",
- "ratio": 800,
- "damage_common": 80,
- "damage_elite": 88,
- "note": "Downward punch using MonsterStrong melee data (unlike most attacks which use CantStuck). Has 3.0 rotation speed. Finds enemies in range and angle."
- },
- {
- "name": "Combo PunchDown",
- "ratio": 800,
- "damage_common": 80,
- "damage_elite": 88,
- "note": "Combo variant of PunchDown. Triggered as Skill.Sixteen in combo chains."
- }
- ]
- },
- {
- "tier": "Utility",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "AddImpactPower",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Self-buff that applies an effect container with 999 impact power. Does no damage but massively increases the troll's ability to stagger players on the next hit."
- },
- {
- "name": "Debuff Shouting",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "AoE shout affecting all targets within 1300 distance and 70-degree angle. Applies Whirl (dizziness) and CaveTrollSlow debuffs. The troll rotates toward its target during the shout animation."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Cave Troll's combo system is driven by a Combo Phase ability that checks the target's relative yaw angle and distance to select attacks. LeftToRight has a 60% chance to chain into follow-ups. The combo tree branches based on grade type (Common/Elite/Nightmare) and geometric positioning checks.",
- "chains": [
- {
- "from": "Combo Phase",
- "to": [
- "Combo LeftToRight",
- "Combo RightToLeft"
- ],
- "note": "Entry point (Skill.One). Uses FindRelativeLookAtRotation on the target to decide left vs right based on yaw angle. Also reads the current BB_Phase blackboard value."
- },
- {
- "from": "Combo LeftToRight",
- "to": [
- "Combo HeadUp",
- "Combo Slap",
- "Combo PunchDown",
- "Ground"
- ],
- "note": "60% Ratio To Choose Combo. Signals Skill.Two on end. Checks distance and angle to target for follow-up selection."
- },
- {
- "from": "Combo RightToLeft",
- "to": [
- "Combo HeadUp",
- "Combo Slap",
- "Combo PunchDown",
- "Ground"
- ],
- "note": "Uses RandomBool for simpler branching. Signals Skill.Three on end. Also checks distance and angle."
- },
- {
- "from": "Spinning Phase",
- "to": [
- "Spinning High",
- "Spinning Low"
- ],
- "note": "50/50 random selection via Choosing Ratio. Both deal 2000 ratio damage."
- },
- {
- "from": "Spinning Phase From Run",
- "to": [
- "Spinning High From Run",
- "Spinning Low From Run"
- ],
- "note": "Charges at target until within 300 units, then selects high or low spinning attack."
- },
- {
- "from": "Ground",
- "to": [
- "Ground Combo"
- ],
- "note": "Ground slam can chain into Ground Combo (Skill.Seventeen) for repeated area damage with launch."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "CaveTrollSlow",
- "type": "debuff",
- "duration": "4 seconds",
- "stacks": 1,
- "description": "Applied on hit (Event.Attack.Hit trigger). Reduces move speed by 350 for 4 seconds. This is a significant slow that makes it very difficult to disengage from the troll's combo chains once you are hit.",
- "counter": "Avoid getting hit by the first attack in a combo. Once slowed, you cannot outrun the troll's 250+ base move speed. Use movement abilities or dodge rolls to escape. The duration is short — wait it out if possible."
- },
- {
- "name": "Whirl",
- "type": "debuff",
- "duration": "4 seconds",
- "stacks": 1,
- "description": "Applied via Debuff Shouting (Event.Spell.Fire trigger). Inflicts dizziness for 4 seconds. The shout has a massive 1300 unit range but only a 70-degree frontal cone.",
- "counter": "Stay behind or to the side of the troll when it begins its shouting animation. The 70-degree angle is narrow — positioning outside the cone negates the debuff entirely."
- },
- {
- "name": "Regeneration",
- "type": "self-buff",
- "duration": "Persistent",
- "stacks": 1,
- "description": "Self-buff that heals the Cave Troll over time with ExecPhysicalHealBase of 2. Tagged as HealOverTime. Passively regenerates health during combat.",
- "counter": "Maintain consistent DPS pressure. The regeneration is low (base 2) but can add up during prolonged fights. Burst damage windows during its long attack animations are critical to outpace the healing."
- }
- ],
- "strategies": [
- {
- "title": "It High Impact Resistance Values",
- "priority": "critical",
- "description": "With 999 Impact Resistance and 999 Impact Endurance, the Cave Troll is completely has high ImpactResistance and MaxImpactEndurance values. ImpactResistance 999 and MaxImpactEndurance 999. Focus entirely on raw damage output and positioning."
- },
- {
- "title": "Dodge the First Hit or Get Combo Locked",
- "priority": "critical",
- "description": "CaveTrollSlow applies on every hit, reducing your move speed by 350 for 4 seconds. Once hit, you are too slow to escape the troll's 250 base move speed, and it will chain combo attacks. The first hit in any combo is the one you absolutely must dodge — after that, escaping the chain becomes extremely difficult."
- },
- {
- "title": "Exploit Dark Magic Weakness (-2000 Reduction)",
- "priority": "high",
- "description": "The Cave Troll has -2000 DarkMagicalReduction across all grades, making Dark magic the single most effective damage type. Earth magic is also strong at -1000 EarthMagicalReduction. Fire (+500) and Evil (+500) are resisted. Warlock and dark-damage builds are ideal for this fight."
- },
- {
- "title": "Stand Behind to Avoid Debuff Shouting",
- "priority": "high",
- "description": "Debuff Shouting has a massive 1300 unit range but only a 70-degree frontal cone. The shout applies both Whirl (dizziness) and slow effects. Standing behind or to the side of the troll completely negates this ability. When you see the shouting animation, reposition immediately."
- },
- {
- "title": "Punish the Spinning Phase Commitment",
- "priority": "high",
- "description": "SpinningPhase abilities are the troll's highest damage (2000 ratio) but lock it into a long animation. The 50/50 choice between High and Low means the height changes but the window is the same. After the spin completes, there is a recovery window before the next attack — use it for burst damage."
- },
- {
- "title": "Sidestep the Charge Attack",
- "priority": "high",
- "description": "SpinningPhaseFromRun charges in a straight line using AddInputMovement toward your position at activation. It calculates the direction vector once and charges that path. Sidestepping perpendicular to the charge direction is the most reliable dodge. The charge stops at 300 units distance or when a MoveTimer expires."
- },
- {
- "title": "Projectiles Are Nearly Useless",
- "priority": "medium",
- "description": "With 400 ProjectileReductionMod, the Cave Troll reduces all projectile damage significantly. Ranged builds should use spell-based attacks rather than physical projectiles. This makes Ranger and crossbow builds far less effective than melee or magic approaches."
- },
- {
- "title": "Ground Slam Launches You — Roll the Landing",
- "priority": "medium",
- "description": "The Ground attack applies a force launch of XY=600 and Z=400, physically throwing targets. This can separate your group and leave you vulnerable to follow-up Ground Combo attacks. If hit, recover quickly — a second ground slam may follow immediately."
- },
- {
- "title": "The Troll Regenerates — Keep Pressure Up",
- "priority": "medium",
- "description": "The Cave Troll has a passive Regeneration buff (ExecPhysicalHealBase: 2) that heals it over time. In long fights, this adds up. Maintain consistent damage output and capitalize on its long attack animations to deal damage during recovery frames."
- },
- {
- "title": "Elite and Nightmare Are Faster",
- "priority": "medium",
- "description": "Elite increases base move speed from 250 to 280, and Nightmare to 300. Combined with 10% more physical damage per tier, higher grades are noticeably more aggressive and harder to kite. The same dodge timings that work on Common may not be sufficient for Nightmare."
- },
- {
- "title": "Combo LeftToRight Has a 60% Chain Rate",
- "priority": "low",
- "description": "The LeftToRight swing has a 60% Ratio To Choose Combo, meaning 60% of the time it will chain into a follow-up (HeadUp, Slap, PunchDown, or Ground). The remaining 40% of the time the combo ends. Learning to read whether the chain continues lets you time your counter-attacks."
- }
- ],
- "elite_differences": [
- "34% more HP (2,875 -> 3,865)",
- "10% more physical damage (100 -> 110)",
- "12% faster base move speed (250 -> 280)",
- "Same resistances, impact immunity, and projectile reduction as Common",
- "Same ability set and combo structure",
- "Higher XP reward (12 -> 15)",
- "Nightmare grade: 53% more HP (2,875 -> 4,400), 20% more damage (100 -> 120), 20% faster (250 -> 300), 18 XP"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "180-degree peripheral vision — cannot see directly behind",
- "damage_sense": true,
- "damage_description": "Always reacts to being hit regardless of facing direction (AISenseConfig_Damage)",
- "hearing": true,
- "hearing_description": "Reacts to loud noises in the arena (AISenseConfig_Hearing)",
- "stuck_tracking": true,
- "stuck_description": "Behavior tree uses BTD_CheckTarget decorators with probability-based attack selection. SpinningPhaseFromRun has a MoveTimer failsafe to abort charges that get stuck."
- }
+  "slug": "cave-troll",
+  "overview": "Cave Troll is a Boss-class Humanoid/Beast monster found in Goblin Cave. 3 grades: Common, Elite, Nightmare. Base stats (Common): 2875 HP, 100 physical damage, 250 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 13 attacks, 0 combo chains. Highest damage: Spinning High at 200% ratio (2000 base damage). behavior tree: BT_CaveTroll.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "7 melee attacks. Combo Left To Right (150%), Combo Right To Left (110%), Combo Head Up (180%), and more.",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Spinning High",
+          "damage_ratio": 2000,
+          "damage_common": 2000,
+          "damage_elite": 2200,
+          "note": "200% damage ratio, impact power 7.",
+          "damage_nightmare": 2400
+        },
+        {
+          "name": "Spinning Low",
+          "damage_ratio": 2000,
+          "damage_common": 2000,
+          "damage_elite": 2200,
+          "note": "200% damage ratio, impact power 7.",
+          "damage_nightmare": 2400
+        },
+        {
+          "name": "Spinning High From Run",
+          "damage_ratio": 2000,
+          "damage_common": 2000,
+          "damage_elite": 2200,
+          "note": "200% damage ratio, impact power 7.",
+          "damage_nightmare": 2400
+        },
+        {
+          "name": "Spinning Low From Run",
+          "damage_ratio": 2000,
+          "damage_common": 2000,
+          "damage_elite": 2200,
+          "note": "200% damage ratio, impact power 7.",
+          "damage_nightmare": 2400
+        }
+      ]
+    },
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Combo Left To Right",
+          "damage_ratio": 1500,
+          "damage_common": 1500,
+          "damage_elite": 1650,
+          "note": "150% damage ratio, impact power 7.",
+          "damage_nightmare": 1800
+        },
+        {
+          "name": "Combo Head Up",
+          "damage_ratio": 1800,
+          "damage_common": 1800,
+          "damage_elite": 1980,
+          "note": "180% damage ratio, impact power 7.",
+          "damage_nightmare": 2160
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Combo Right To Left",
+          "damage_ratio": 1100,
+          "damage_common": 1100,
+          "damage_elite": 1210,
+          "note": "110% damage ratio, impact power 7.",
+          "damage_nightmare": 1320
+        },
+        {
+          "name": "Ground",
+          "damage_ratio": 1000,
+          "damage_common": 1000,
+          "damage_elite": 1100,
+          "note": "100% damage ratio, impact power 7.",
+          "damage_nightmare": 1200
+        },
+        {
+          "name": "Combo Slap",
+          "damage_ratio": 1450,
+          "damage_common": 1450,
+          "damage_elite": 1595,
+          "note": "145% damage ratio, impact power 7.",
+          "damage_nightmare": 1740
+        },
+        {
+          "name": "Ground Combo",
+          "damage_ratio": 1000,
+          "damage_common": 1000,
+          "damage_elite": 1100,
+          "note": "100% damage ratio, impact power 7.",
+          "damage_nightmare": 1200
+        }
+      ]
+    },
+    {
+      "tier": "Moderate",
+      "color": "#8a7048",
+      "attacks": [
+        {
+          "name": "Punch Down",
+          "damage_ratio": 800,
+          "damage_common": 800,
+          "damage_elite": 880,
+          "note": "80% damage ratio, impact power 7.",
+          "damage_nightmare": 960
+        },
+        {
+          "name": "Combo Punch Down",
+          "damage_ratio": 800,
+          "damage_common": 800,
+          "damage_elite": 880,
+          "note": "80% damage ratio, impact power 7.",
+          "damage_nightmare": 960
+        }
+      ]
+    },
+    {
+      "tier": "Utility",
+      "color": "#5588dd",
+      "attacks": [
+        {
+          "name": "Add Impact Power",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 999.",
+          "damage_nightmare": 0
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Whirl",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Whirl icon on your status bar."
+    },
+    {
+      "name": "Cave Troll Slow",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Cave Troll Slow icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Elemental Weaknesses: Dark, Earth",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Dark (-2000), Earth (-1000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Fire, Evil",
+      "priority": "high",
+      "description": "Elemental resistances: Fire (+500), Evil (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 400",
+      "priority": "medium",
+      "description": "Has 400 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Highest Damage: Spinning High (200% ratio)",
+      "priority": "high",
+      "description": "Spinning High deals 2000 damage at base (200% ratio). This is the most dangerous attack to avoid."
+    },
+    {
+      "title": "Behavior Trees: BT_CaveTroll",
+      "priority": "low",
+      "description": "Uses behavior tree: BT_CaveTroll. "
+    }
+  ],
+  "elite_differences": [
+    "34% more HP (2875 → 3865) in Elite",
+    "10% more physical damage (100 → 110) in Elite",
+    "Move speed 250 → 280 in Elite",
+    "XP reward 12 → 15 in Elite",
+    "53% more HP (2875 → 4400) in Nightmare",
+    "20% more physical damage (100 → 120) in Nightmare",
+    "Move speed 250 → 300 in Nightmare",
+    "XP reward 12 → 18 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree."
+  }
 }

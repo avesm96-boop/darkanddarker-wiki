@@ -1,258 +1,134 @@
 {
- "slug": "skeleton-champion",
- "overview": "The Skeleton Champion is an Undead SubBoss found across nearly every dungeon in Dark and Darker — Crypt, Goblin Cave, Ice Cavern, Inferno, Ruins, and Ship Graveyard. It is the elite melee fighter of the Skeleton family, wielding a sword and shield with devastating combo chains. Unlike normal Skeleton variants which can be staggered, the Champion has 999 Impact Resistance and 999 Impact Endurance, making it has high Impact values (ImpactResistance 999, MaxImpactEndurance 999). Its behavior tree features a conditional rush attack (Skill Nine) that triggers when targets are between 350 and 3000 units away and off cooldown, closing distance rapidly before entering its melee combo phase. The AttackPhase ability uses a random integer switch to select between Attack 1 (Skill Two) and Attack 2 (Skill Three), which then chain into Combo 2 and Combo 3 follow-ups based on range and angle checks. It is part of the largest monster family in the game — 11 Skeleton variants plus Frost Skeleton sub-variants totaling over 173 abilities across the family.",
- "phases": [
- {
- "name": "Idle / Patrol",
- "description": "The Skeleton Champion patrols its area or stands guard. It detects players through 180-degree peripheral vision at 1000 unit sight radius (loses sight at 1500 units), damage sense, and hearing. Once a target is detected, it transitions to combat.",
- "icon": "idle"
- },
- {
- "name": "Rush Phase (Conditional)",
- "description": "When a target with aggro is between 350 and 3000 units away and the start timer and cooldown tags are inactive, the Champion triggers its rush attack (Skill Nine) to close the gap. The behavior tree node is labeled 'if enemy is far, rush attack' in Korean. After the rush completes, the AI waits 1.5 seconds before re-evaluating.",
- "icon": "move"
- },
- {
- "name": "Attack Phase",
- "description": "The AttackPhase ability (Skill One) is the primary combat entry point. It uses a RandomInteger switch combined with grade-type checks to select between Attack 1 or Attack 2 as the opener. Attack 1 triggers Skill Two, Attack 2 triggers Skill Three. Both attacks use range/angle validation via Get_Enemies_In_Range_And_Angle_From_Actor before committing.",
- "icon": "attack"
- },
- {
- "name": "Combo Phase",
- "description": "After an initial attack lands or completes, the Champion can chain into combos. Combo 2_1 (Skill Four) and Combo 2_2 (Skill Five) are higher-damage follow-ups at 1200 ratio. Combo 3_1 (Skill Six) and Combo 3_2 (Skill Seven) are slightly weaker at 1000 ratio but have different rotation speeds (12 and 15 respectively vs. 20 for Combo 2). The combo abilities check grade type and use random float ranges to decide whether to continue the chain.",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy Combo",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Combo 2_1 (Overhead Slam)",
- "ratio": 1200,
- "damage_common": 336,
- "damage_elite": 432,
- "note": "Higher-damage combo follow-up from Attack 1 or Attack 2. Uses Skill Four trigger. Rotation speed 20 — tracks target aggressively during the swing. Checks enemies in range and angle twice before committing."
- },
- {
- "name": "Combo 2_2 (Cross Slash)",
- "ratio": 1200,
- "damage_common": 336,
- "damage_elite": 432,
- "note": "Alternate high-damage follow-up using Skill Five trigger. Same 1200 ratio as Combo 2_1. Also uses dual range/angle checks with grade-type branching for Elite/Nightmare behavior."
- }
- ]
- },
- {
- "tier": "Primary Attacks",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Attack 1 (Horizontal Slash)",
- "ratio": 1100,
- "damage_common": 308,
- "damage_elite": 396,
- "note": "Primary opener triggered by Skill Two. Uses MontageToPlay AM_SkeletonChampion_Attack_1. Rotation speed 15. Checks grade type to branch behavior — different combo follow-ups for Common vs. Elite/Nightmare."
- },
- {
- "name": "Attack 2 (Thrust)",
- "ratio": 1100,
- "damage_common": 308,
- "damage_elite": 396,
- "note": "Alternate opener triggered by Skill Three. Has a 'Combo Triggered' boolean property — can directly chain into combo abilities. Same 1100 ratio and impact power 6 as Attack 1."
- }
- ]
- },
- {
- "tier": "Light Combo",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "Combo 3_1 (Sweeping Arc)",
- "ratio": 1000,
- "damage_common": 280,
- "damage_elite": 360,
- "note": "Lower-damage but faster combo ender triggered by Skill Six. Rotation speed 12 — slower tracking than Combo 2 variants. No range/angle pre-check — this one commits immediately."
- },
- {
- "name": "Combo 3_2 (Shield Bash)",
- "ratio": 1000,
- "damage_common": 280,
- "damage_elite": 360,
- "note": "Final combo option triggered by Skill Seven. Has ServerTargetDataReceived function — uses server-validated hit detection. Rotation speed 15. This attack has the most reliable hit confirmation in the chain."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Skeleton Champion's AI selects attacks through a structured ability trigger chain. The AttackPhase randomly picks an opener, which can then branch into combo follow-ups based on range/angle validation and random probability rolls. Each combo ability independently decides whether to continue the chain.",
- "chains": [
- {
- "from": "Rush (Skill Nine)",
- "to": [
- "AttackPhase"
- ],
- "note": "Triggers when target is 350-3000 units away. After rushing, waits 1.5 seconds then enters normal AttackPhase."
- },
- {
- "from": "AttackPhase (Skill One)",
- "to": [
- "Attack 1",
- "Attack 2"
- ],
- "note": "Random integer switch picks the opener. Grade type determines which branch is available."
- },
- {
- "from": "Attack 1 (Skill Two)",
- "to": [
- "Combo 2_1",
- "Combo 2_2",
- "Combo 3_1",
- "Combo 3_2"
- ],
- "note": "After Attack 1 completes, if enemies remain in range and angle, chains into a combo. Random float determines which combo variant."
- },
- {
- "from": "Attack 2 (Skill Three)",
- "to": [
- "Combo 2_1",
- "Combo 2_2",
- "Combo 3_1",
- "Combo 3_2"
- ],
- "note": "Attack 2 has explicit 'Combo Triggered' boolean. When set, chains directly into follow-up combos."
- },
- {
- "from": "Combo 2_1 (Skill Four)",
- "to": [
- "Combo 3_1",
- "Combo 3_2"
- ],
- "note": "Heavy combo can chain into light combo enders if target is still in range. Uses dual angle/range checks."
- },
- {
- "from": "Combo 2_2 (Skill Five)",
- "to": [
- "Combo 3_1",
- "Combo 3_2"
- ],
- "note": "Alternate heavy combo similarly chains into Combo 3 variants. Grade-type switch may limit or expand options at higher difficulties."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "Undead Vulnerability — Fire",
- "type": "weakness",
- "duration": "Permanent",
- "stacks": 1,
- "description": "All Skeletons have -2000 to -2500 Fire Magical Reduction. The Champion specifically has -2000. Fire damage is massively amplified against all Skeleton types.",
- "counter": "This is a player advantage. Use fire-based spells and weapons (Fireball, Fire Strike, campfire) to deal heavily amplified damage."
- },
- {
- "name": "Undead Vulnerability — Divine",
- "type": "weakness",
- "duration": "Permanent",
- "stacks": 1,
- "description": "The Champion has -1500 Divine Magical Reduction. Normal skeletons have -2000. Cleric spells that deal Divine damage are extremely effective against the entire family.",
- "counter": "Cleric's Holy Strike and Divine spells exploit this weakness. Prioritize Divine damage sources when fighting any skeleton."
- },
- {
- "name": "Dark/Evil Resistance",
- "type": "resistance",
- "duration": "Permanent",
- "stacks": 1,
- "description": "The Champion has +500 Dark Magical Reduction and +500 Evil Magical Reduction. As an undead creature, it partially resists dark and evil magic.",
- "counter": "Avoid Warlock and dark-damage spells against the Champion. Switch to physical, fire, or divine damage instead."
- },
- {
- "name": "Stagger Immunity",
- "type": "self-buff",
- "duration": "Permanent",
- "stacks": 1,
- "description": "With 999 Impact Resistance and 999 Impact Endurance, the Champion is has high Impact values (ImpactResistance 999, MaxImpactEndurance 999). This is unique to the Champion — normal skeletons only have 3 Impact Resistance and 4-6 Impact Endurance.",
- "counter": "Do not rely on stagger mechanics. You cannot interrupt the Champion's attacks. Focus on dodging and timing your counter-attacks between its combo chains."
- },
- {
- "name": "Fake Death (Family Trait)",
- "type": "mechanic",
- "duration": "Until triggered",
- "stacks": 1,
- "description": "Many Skeleton variants (Footman, Guardman) have FakeDeath and Resurrection abilities — they appear dead but can reanimate. The Champion itself does NOT have FakeDeath, but surrounding Skeleton minions often do.",
- "counter": "Always confirm skeleton kills. Footmen and Guardsmen can feign death and resurrect when you turn your back. The Champion has a standard Death ability with no resurrection mechanic."
- }
- ],
- "strategies": [
- {
- "title": "Use Fire and Divine Damage",
- "priority": "critical",
- "description": "The Champion has -2000 Fire Magical Reduction and -1500 Divine Magical Reduction. Fire and divine damage are massively amplified. A Cleric's divine spells or a Wizard's Fireball will deal far more damage than physical attacks. All Skeleton family members share this weakness — normal skeletons are even more vulnerable with -2500 Fire and -2000 Divine."
- },
- {
- "title": "You Cannot Stagger the Champion",
- "priority": "critical",
- "description": "With 999/999 Impact Resistance and Endurance, the Champion is completely unstaggerable. Do not waste high-impact attacks hoping to interrupt its combos. Every other skeleton in the family (Footman, Archer, Swordman, etc.) only has 3-5 Impact Resistance and CAN be staggered — but the Champion is the exception. Plan your dodge timing around its full combo chains."
- },
- {
- "title": "Bait the Rush, Then Punish",
- "priority": "high",
- "description": "The behavior tree shows the rush attack (Skill Nine) triggers when targets are 350-3000 units away. After rushing, the AI waits 1.5 seconds before the next action. This post-rush cooldown is your best DPS window. Stay at medium range to bait the rush, dodge sideways, then punish during the 1.5-second wait."
- },
- {
- "title": "Dodge After the Second Hit",
- "priority": "high",
- "description": "The combo chain goes Opener (1100 ratio) into Combo 2 (1200 ratio) into Combo 3 (1000 ratio). The Combo 2 variants have the highest damage at 1200 ratio (336 Common / 432 Elite). If you must take a hit, let the Combo 3 land (1000 ratio, 280 damage) rather than the Combo 2 follow-up. Better yet, dodge after the opener — the combo abilities check range/angle before committing, so backing out of range can cancel the chain."
- },
- {
- "title": "Break the Combo Chain with Distance",
- "priority": "high",
- "description": "Both Attack 1 and Attack 2 use Get_Enemies_In_Range_And_Angle_From_Actor before triggering combos. Combo 2_1 performs this check twice. If you dodge out of range or angle after the first hit, the combo follow-up will fail its validation and the chain breaks. The Champion will reset to AttackPhase."
- },
- {
- "title": "Avoid Dark and Evil Magic",
- "priority": "medium",
- "description": "The Champion resists Dark (+500) and Evil (+500) magic. Warlock spells and dark-typed attacks are partially mitigated. Normal skeletons have only +250 Evil resistance and 0 Dark resistance, so this is specifically a Champion issue."
- },
- {
- "title": "Watch for Fake Death Skeletons Nearby",
- "priority": "medium",
- "description": "When fighting a Skeleton Champion, you are often surrounded by Skeleton Footmen and Guardsmen who have FakeDeath and Resurrection abilities. Do not ignore 'dead' skeletons on the ground — they can resurrect mid-fight. Clear the minions first or confirm their kills before focusing the Champion."
- },
- {
- "title": "Projectile Damage is Reduced",
- "priority": "medium",
- "description": "The Champion has 200 Projectile Reduction Mod, reducing ranged physical damage. Normal skeletons have 150. Rangers and crossbow users will notice reduced effectiveness. Melee or magic (especially fire/divine) is preferred."
- },
- {
- "title": "Elite Attacks Come Out Much Faster",
- "priority": "medium",
- "description": "Common has 0 Action Speed, Elite has +300, and Nightmare also has +300. This is a massive speed increase — Elite/Nightmare combos come out 30% faster, giving you significantly less reaction time. The same combo chain that feels manageable on Common becomes extremely punishing on Elite."
- },
- {
- "title": "Exploit the Combo Rotation Speeds",
- "priority": "low",
- "description": "Different combo abilities have different rotation tracking speeds. Combo 3_1 has the slowest tracking at 12 rotation speed — circle-strafing is most effective against this attack. Combo 2 variants track at 20 rotation speed and are much harder to strafe. The base attacks track at 15. Strafe aggressively during Combo 3 openings."
- }
- ],
- "elite_differences": [
- "46% more HP (650 -> 950)",
- "29% more physical damage (28 -> 36)",
- "+300 Action Speed (attacks are 30% faster, vs. 0 on Common)",
- "15% faster movement speed (200 -> 230 MoveSpeedBase)",
- "Same 999/999 stagger immunity across all grades",
- "Same elemental resistances and weaknesses across all grades",
- "Nightmare further increases to 1200 HP, 42 damage, 260 move speed",
- "Combo abilities branch differently based on grade type (GetGradeType switch in Attack 1, Combo 2_2)"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "180-degree peripheral vision with 1000 unit sight radius. Loses sight at 1500 units. Cannot see directly behind.",
- "damage_sense": true,
- "damage_description": "Always reacts to being hit regardless of vision angle or range.",
- "hearing": true,
- "hearing_description": "Reacts to loud sounds in the environment. Shares the standard Skeleton hearing configuration.",
- "stuck_tracking": false,
- "stuck_description": "No explicit stuck tracking in the Champion's behavior tree, unlike more complex bosses."
- }
+  "slug": "skeleton-champion",
+  "overview": "Skeleton Champion is a SubBoss-class Undead monster found in Crypt, Goblin Cave, Ice Cavern, Inferno, Ruins, Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 650 HP, 28 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 6 attacks, 0 combo chains. Highest damage: Combo 2 1 at 120% ratio (336 base damage). Sight range 1000, combat radius 170.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "4 melee attacks. Combo 2 1 (120%), Combo 2 2 (120%), Combo 3 1 (100%), and more.",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "",
+          "damage_ratio": 1100,
+          "damage_common": 308,
+          "damage_elite": 396,
+          "note": "110% damage ratio, impact power 6.",
+          "damage_nightmare": 462
+        },
+        {
+          "name": "",
+          "damage_ratio": 1100,
+          "damage_common": 308,
+          "damage_elite": 396,
+          "note": "110% damage ratio, impact power 6.",
+          "damage_nightmare": 462
+        },
+        {
+          "name": "Combo 2 1",
+          "damage_ratio": 1200,
+          "damage_common": 336,
+          "damage_elite": 432,
+          "note": "120% damage ratio, impact power 6.",
+          "damage_nightmare": 504
+        },
+        {
+          "name": "Combo 2 2",
+          "damage_ratio": 1200,
+          "damage_common": 336,
+          "damage_elite": 432,
+          "note": "120% damage ratio, impact power 6.",
+          "damage_nightmare": 504
+        },
+        {
+          "name": "Combo 3 1",
+          "damage_ratio": 1000,
+          "damage_common": 280,
+          "damage_elite": 360,
+          "note": "100% damage ratio, impact power 6.",
+          "damage_nightmare": 420
+        },
+        {
+          "name": "Combo 3 2",
+          "damage_ratio": 1000,
+          "damage_common": 280,
+          "damage_elite": 360,
+          "note": "100% damage ratio, impact power 6.",
+          "damage_nightmare": 420
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Elemental Weaknesses: Fire, Divine",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-2000), Divine (-1500). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Dark, Evil",
+      "priority": "high",
+      "description": "Elemental resistances: Dark (+500), Evil (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 200",
+      "priority": "medium",
+      "description": "Has 200 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1000 units",
+      "priority": "medium",
+      "description": "Sight radius 1000 units, loses target at 1500 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 170, ability check distance 220",
+      "priority": "medium",
+      "description": "Combat area radius 170. Ability check distance 220."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 800 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "46% more HP (650 → 950) in Elite",
+    "29% more physical damage (28 → 36) in Elite",
+    "Move speed 200 → 230 in Elite",
+    "ActionSpeed 0 → 300 in Elite — attacks animate faster",
+    "XP reward 6 → 7 in Elite",
+    "85% more HP (650 → 1200) in Nightmare",
+    "50% more physical damage (28 → 42) in Nightmare",
+    "Move speed 200 → 260 in Nightmare",
+    "ActionSpeed 0 → 300 in Nightmare — attacks animate faster",
+    "XP reward 6 → 8 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 1000,
+    "lose_sight_radius": 1500,
+    "sight_description": "Detects targets within 1000 units. Loses target at 1500 units."
+  }
 }

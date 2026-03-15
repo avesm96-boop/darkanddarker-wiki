@@ -1,91 +1,96 @@
 {
- "slug": "skeleton-royal-guard",
- "overview": "Skeleton Royal Guard is a Normal-class Undead monster. 1 grades: Common. Base stats (Common): 118 HP, 27 physical damage, 180 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 5. 4 attacks, 0 combo chains. Highest damage: Bombing at 400% ratio (1080 base damage).",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "1 melee attacks. Attack (160%).",
- "icon": "attack"
- },
- {
- "name": "Ranged Attacks",
- "description": "1 ranged attacks. Throwing Knife (160%).",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "Back Step",
- "damage_ratio": 2500,
- "damage_common": 675,
- "damage_elite": 675,
- "note": "250% damage ratio, impact power 4."
- },
- {
- "name": "Bombing",
- "damage_ratio": 4000,
- "damage_common": 1080,
- "damage_elite": 1080,
- "note": "400% damage ratio, impact power 5."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Attack",
- "damage_ratio": 1600,
- "damage_common": 432,
- "damage_elite": 432,
- "note": "160% damage ratio, impact power 3."
- },
- {
- "name": "Throwing Knife",
- "damage_ratio": 1600,
- "damage_common": 432,
- "damage_elite": 432,
- "note": "160% damage ratio, impact power 3."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Elemental Weaknesses: Fire, Divine, Earth",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-2500), Divine (-2000), Earth (-3000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- },
- {
- "title": "Highest Damage: Bombing (400% ratio)",
- "priority": "high",
- "description": "Bombing deals 1080 damage at base (400% ratio). This is the most dangerous attack to avoid."
- }
- ],
- "elite_differences": [],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "skeleton-royal-guard",
+  "overview": "Skeleton Royal Guard is a Normal-class Undead monster. 1 grades: Common. Base stats (Common): 118 HP, 27 physical damage, 180 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 5. 4 attacks, 0 combo chains. Highest damage: Bombing at 400% ratio (1080 base damage). behavior tree: BT_SkeletonRoyalGuard.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "1 melee attacks. Attack (160%).",
+      "icon": "attack"
+    },
+    {
+      "name": "Ranged Attacks",
+      "description": "1 ranged attacks. Throwing Knife (160%).",
+      "icon": "special"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Back Step",
+          "damage_ratio": 2500,
+          "damage_common": 675,
+          "damage_elite": 675,
+          "note": "250% damage ratio, impact power 4."
+        },
+        {
+          "name": "Bombing",
+          "damage_ratio": 4000,
+          "damage_common": 1080,
+          "damage_elite": 1080,
+          "note": "400% damage ratio, impact power 5."
+        }
+      ]
+    },
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Attack",
+          "damage_ratio": 1600,
+          "damage_common": 432,
+          "damage_elite": 432,
+          "note": "160% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knife",
+          "damage_ratio": 1600,
+          "damage_common": 432,
+          "damage_elite": 432,
+          "note": "160% damage ratio, impact power 3."
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Elemental Weaknesses: Fire, Divine, Earth",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-2500), Divine (-2000), Earth (-3000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Highest Damage: Bombing (400% ratio)",
+      "priority": "high",
+      "description": "Bombing deals 1080 damage at base (400% ratio). This is the most dangerous attack to avoid."
+    },
+    {
+      "title": "Behavior Trees: BT_SkeletonRoyalGuard",
+      "priority": "low",
+      "description": "Uses behavior tree: BT_SkeletonRoyalGuard. "
+    }
+  ],
+  "elite_differences": [],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation."
+  }
 }

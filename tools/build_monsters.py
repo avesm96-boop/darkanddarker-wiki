@@ -572,6 +572,212 @@ def extract_projectiles(image_folder: str) -> list[dict]:
     return projectiles
 
 
+# Property keys to skip when extracting blueprint behavior (UE5 internals, visuals)
+_BP_SKIP_PREFIXES = ("bOverride_", "UberGraph", "DefaultSceneRoot", "Default__")
+_BP_SKIP_CONTAINS = (
+    "Material", "Mesh", "Montage", "Animation", "Particle", "Sound",
+    "Niagara", "Widget", "Component", "Capsule", "Collision", "Scene",
+    "Sprite", "Arrow", "Socket", "Slot", "Preview", "Debug",
+)
+_BP_SKIP_EXACT = {
+    "BlueprintCreatedComponents", "BlueprintSystemVersion",
+    "InternalVariableGuidMap", "bCanBeDamaged", "AutoPossessAI",
+    "AutoReceiveInput", "PreviewFX",
+}
+
+
+def _extract_bt_name(ref: dict) -> str:
+    """Extract behavior tree name from an ObjectName reference like
+    "BehaviorTree'BT_GhostKing'"."""
+    obj_name = ref.get("ObjectName", "")
+    if "'" in obj_name:
+        return obj_name.split("'")[1]
+    return ""
+
+
+def _extract_asset_ref(item: dict) -> str:
+    """Extract asset name from a PrimaryAssetName dict."""
+    return item.get("PrimaryAssetName", "")
+
+
+def _should_skip_bp_key(key: str) -> bool:
+    """Check if a blueprint property key is UE5 internal / non-gameplay."""
+    if key in _BP_SKIP_EXACT:
+        return True
+    for prefix in _BP_SKIP_PREFIXES:
+        if key.startswith(prefix):
+            return True
+    for substr in _BP_SKIP_CONTAINS:
+        if substr in key:
+            return True
+    return False
+
+
+def _is_engine_ref(value: dict) -> bool:
+    """Check if a dict value is a reference to Engine/ or Script/ internals."""
+    obj_path = value.get("ObjectPath", "")
+    if obj_path.startswith("/Engine/") or obj_path.startswith("/Script/"):
+        return True
+    # MaterialInstance refs
+    obj_name = value.get("ObjectName", "")
+    if obj_name.startswith("MaterialInstance"):
+        return True
+    return False
+
+
+def extract_blueprint_behavior(image_folder: str, base_name: str) -> dict:
+    """Extract behavioral data from BP_ blueprint JSON files.
+
+    Reads the Common/base blueprint for gameplay properties (cooldowns,
+    HP thresholds, damage params, combat config) and the AIController
+    for perception config (sight, hearing).
+    """
+    monster_dir = CHARACTERS_DIR / image_folder
+    if not monster_dir.exists():
+        return {}
+
+    base_lower = base_name.lower()
+    behavior = {}
+
+    # --- Find and process the Common/base blueprint ---
+    common_file = None
+    for bp_file in sorted(monster_dir.rglob("BP_*.json")):
+        stem = bp_file.stem
+        # Match base_name at start of filename after "BP_" prefix
+        after_bp = stem[3:] if stem.startswith("BP_") else stem
+        after_bp_lower = after_bp.lower()
+        if not after_bp_lower.startswith(base_lower):
+            continue
+        # Skip Elite, Nightmare, Projectile, AIController, Summoned variants
+        if any(skip in stem for skip in ("Elite", "Nightmare", "AIControl",
+                                          "Projectile", "Arrow", "Summoned",
+                                          "SmallGhost", "Rock", "FakeDeath")):
+            continue
+        # Prefer exact match: BP_{base_name}_Common or BP_{base_name}
+        after_base = after_bp[len(base_name):]
+        if after_base in ("_Common", ""):
+            common_file = bp_file
+            break
+        # Otherwise keep looking, but remember first match as fallback
+        if common_file is None:
+            common_file = bp_file
+
+    if common_file:
+        data = load_json(common_file)
+        if data:
+            objects = data if isinstance(data, list) else [data]
+
+            # Find CDO (Name starts with "Default__")
+            cdo_props = {}
+            for obj in objects:
+                if obj.get("Name", "").startswith("Default__"):
+                    cdo_props = obj.get("Properties", {})
+                    break
+
+            # Extract behavior trees
+            for bt_key in ("Custom Behavior Tree", "Combat BehaviorTree"):
+                bt_ref = cdo_props.get(bt_key)
+                if isinstance(bt_ref, dict) and "ObjectName" in bt_ref:
+                    field = "behavior_tree" if "Custom" in bt_key else "combat_behavior_tree"
+                    name = _extract_bt_name(bt_ref)
+                    if name:
+                        behavior[field] = name
+
+            # Extract all gameplay properties
+            properties = {}
+            for key, value in cdo_props.items():
+                if _should_skip_bp_key(key):
+                    continue
+
+                # Skip behavior tree refs (already extracted above)
+                if key in ("Custom Behavior Tree", "Combat BehaviorTree"):
+                    continue
+
+                # Scalars: int, float, bool
+                if isinstance(value, bool):
+                    properties[key] = value
+                elif isinstance(value, (int, float)):
+                    properties[key] = value
+                # Strings (enum values etc.)
+                elif isinstance(value, str) and value:
+                    properties[key] = value
+                # Tag structs
+                elif isinstance(value, dict) and "TagName" in value:
+                    properties[key] = value["TagName"]
+                # Asset path references
+                elif isinstance(value, dict) and "AssetPathName" in value:
+                    asset = extract_asset_name(value["AssetPathName"])
+                    if asset:
+                        properties[key] = asset
+                # Skip engine/material refs
+                elif isinstance(value, dict):
+                    if _is_engine_ref(value):
+                        continue
+                    # Other dict values with ObjectName (non-BT refs)
+                    if "ObjectName" in value:
+                        obj_name = value["ObjectName"]
+                        if "'" in obj_name:
+                            extracted = obj_name.split("'")[1]
+                            if extracted:
+                                properties[key] = extracted
+                # Lists
+                elif isinstance(value, list) and value:
+                    # Tag arrays
+                    if isinstance(value[0], dict) and "TagName" in value[0]:
+                        tags = [v["TagName"] for v in value if "TagName" in v]
+                        if tags:
+                            properties[key] = tags
+                    # Asset ref arrays
+                    elif isinstance(value[0], dict) and "PrimaryAssetName" in value[0]:
+                        refs = [_extract_asset_ref(v) for v in value]
+                        refs = [r for r in refs if r]
+                        if refs:
+                            properties[key] = refs
+                    # Scalar arrays
+                    elif isinstance(value[0], (int, float, str)):
+                        properties[key] = value
+                    # Enum/string arrays
+                    elif isinstance(value[0], str):
+                        properties[key] = value
+
+            if properties:
+                behavior["properties"] = properties
+
+    # --- Find and process AIController ---
+    ai_file = None
+    for bp_file in sorted(monster_dir.rglob("BP_*AIController*.json")):
+        stem = bp_file.stem
+        after_bp = stem[3:] if stem.startswith("BP_") else stem
+        after_bp_lower = after_bp.lower()
+        if not after_bp_lower.startswith(base_lower):
+            continue
+        # Skip Summoned AIControllers
+        if "summoned" in after_bp_lower:
+            continue
+        ai_file = bp_file
+        break
+
+    if ai_file:
+        data = load_json(ai_file)
+        if data:
+            objects = data if isinstance(data, list) else [data]
+            for obj in objects:
+                obj_type = obj.get("Type", "")
+                props = obj.get("Properties", {})
+                if obj_type == "AISenseConfig_Sight":
+                    if "SightRadius" in props:
+                        behavior["sight_radius"] = props["SightRadius"]
+                    if "LoseSightRadius" in props:
+                        behavior["lose_sight_radius"] = props["LoseSightRadius"]
+                    if "PeripheralVisionAngleDegrees" in props:
+                        behavior["peripheral_vision_angle"] = props["PeripheralVisionAngleDegrees"]
+                elif obj_type == "AISenseConfig_Hearing":
+                    if "HearingRange" in props:
+                        behavior["hearing_range"] = props["HearingRange"]
+
+    return behavior
+
+
 def extract_aoe(base_name: str) -> list[dict]:
     """Extract AoE definitions from extracted combat data."""
     if not EXTRACTED_AOE_DIR.exists():
@@ -786,6 +992,7 @@ def main():
         hunting_loot = hunting_loot_map.get(base_name.lower())
         projectiles = extract_projectiles(image_folder)
         aoe = extract_aoe(base_name)
+        behavior = extract_blueprint_behavior(image_folder, base_name)
 
         monster = {
             "slug": slug,
@@ -801,6 +1008,7 @@ def main():
             "hunting_loot": hunting_loot,
             "projectiles": projectiles,
             "aoe": aoe,
+            "behavior": behavior,
         }
         monsters.append(monster)
 
@@ -848,6 +1056,8 @@ def main():
     print(f"  Hunting loot: {with_hunting} monsters")
     print(f"  Projectiles: {with_projectiles} monsters")
     print(f"  AoE: {with_aoe} monsters")
+    with_behavior = sum(1 for m in monsters if m.get("behavior"))
+    print(f"  Behavior data: {with_behavior} monsters")
     print(f"  Total combos: {total_combos}")
     print(f"  Status icons: {len(all_icons_needed)}")
 

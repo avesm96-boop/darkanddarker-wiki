@@ -1,96 +1,114 @@
 {
- "slug": "living-statue",
- "overview": "Living Statue is a Normal-class Construct/Undead monster found in Inferno, Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): 100 HP, 22 physical damage, 120 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 3 attacks, 0 combo chains. Highest damage: Attack01 Combo at 160% ratio (352 base damage).",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "3 melee attacks. Attack01 (150%), Attack02 (150%), Attack01 Combo (160%).",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Attack01",
- "damage_ratio": 1500,
- "damage_common": 330,
- "damage_elite": 420,
- "note": "150% damage ratio, impact power 4.",
- "damage_nightmare": 525
- },
- {
- "name": "Attack02",
- "damage_ratio": 1500,
- "damage_common": 330,
- "damage_elite": 420,
- "note": "150% damage ratio, impact power 4.",
- "damage_nightmare": 525
- },
- {
- "name": "Attack01 Combo",
- "damage_ratio": 1600,
- "damage_common": 352,
- "damage_elite": 448,
- "note": "160% damage ratio, impact power 4.",
- "damage_nightmare": 560
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [
- {
- "name": "Silence",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Silence icon on your status bar."
- }
- ],
- "strategies": [
- {
- "title": "Elemental Weakness: Light",
- "priority": "high",
- "description": "Significant elemental weaknesses: Light (-3000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Resists: Fire, Ice",
- "priority": "high",
- "description": "Elemental resistances: Fire (+500), Ice (+500). Positive reduction values reduce incoming damage of that type."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- }
- ],
- "elite_differences": [
- "80% more HP (100 → 180) in Elite",
- "27% more physical damage (22 → 28) in Elite",
- "Move speed 120 → 150 in Elite",
- "ActionSpeed 0 → 50 in Elite — attacks animate faster",
- "XP reward 3 → 4 in Elite",
- "160% more HP (100 → 260) in Nightmare",
- "59% more physical damage (22 → 35) in Nightmare",
- "Move speed 120 → 180 in Nightmare",
- "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
- "XP reward 3 → 5 in Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "living-statue",
+  "overview": "Living Statue is a Normal-class Construct/Undead monster found in Inferno, Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): 100 HP, 22 physical damage, 120 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 3 attacks, 0 combo chains. Highest damage: Attack01 Combo at 160% ratio (352 base damage). Sight range 1000, combat radius 250.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "3 melee attacks. Attack01 (150%), Attack02 (150%), Attack01 Combo (160%).",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Attack01",
+          "damage_ratio": 1500,
+          "damage_common": 330,
+          "damage_elite": 420,
+          "note": "150% damage ratio, impact power 4.",
+          "damage_nightmare": 525
+        },
+        {
+          "name": "Attack02",
+          "damage_ratio": 1500,
+          "damage_common": 330,
+          "damage_elite": 420,
+          "note": "150% damage ratio, impact power 4.",
+          "damage_nightmare": 525
+        },
+        {
+          "name": "Attack01 Combo",
+          "damage_ratio": 1600,
+          "damage_common": 352,
+          "damage_elite": 448,
+          "note": "160% damage ratio, impact power 4.",
+          "damage_nightmare": 560
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Silence",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Silence icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "Elemental Weakness: Light",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Light (-3000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Fire, Ice",
+      "priority": "high",
+      "description": "Elemental resistances: Fire (+500), Ice (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1000 units",
+      "priority": "medium",
+      "description": "Sight radius 1000 units, loses target at 1500 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 250, ability check distance 350",
+      "priority": "medium",
+      "description": "Combat area radius 250. Ability check distance 350."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 500 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "80% more HP (100 → 180) in Elite",
+    "27% more physical damage (22 → 28) in Elite",
+    "Move speed 120 → 150 in Elite",
+    "ActionSpeed 0 → 50 in Elite — attacks animate faster",
+    "XP reward 3 → 4 in Elite",
+    "160% more HP (100 → 260) in Nightmare",
+    "59% more physical damage (22 → 35) in Nightmare",
+    "Move speed 120 → 180 in Nightmare",
+    "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
+    "XP reward 3 → 5 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 1000,
+    "lose_sight_radius": 1500,
+    "sight_description": "Detects targets within 1000 units. Loses target at 1500 units."
+  }
 }

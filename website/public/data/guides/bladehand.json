@@ -1,439 +1,536 @@
 {
- "slug": "bladehand",
- "overview": "The Bladehand is a Boss-class Humanoid monster found in the Ship Graveyard dungeon. It is one of the most mechanically complex bosses in the game, featuring a dual-stance system that switches between melee blade mode and ranged cannon mode via StanceChange. Its melee combo tree is extensive with 26 combo chains, branching from Slash openers into Blade follow-ups and UpperSlash finishers. In cannon mode, it fires devastating Shell and Ballista projectiles, and can call in artillery bombardment via the Ballista CallFlare sequence. It has Reflect Melee and Reflect Range counter-attacks that punish both melee and ranged attackers. With 999 Impact Resistance and 999 Impact Endurance, it has high Impact values. It has significant fire resistance (+500) but no other magical resistances.",
- "phases": [
- {
- "name": "Blade Stance — Melee Phase",
- "description": "The Bladehand's primary melee engagement stance. It opens with Slash L or Slash R attacks that branch into extensive combo chains. Slash L chains into Slash Low, UpperSlash, UpperSlash Cannon, or Thrust. Slash R chains into Blade VerticalSlash, OverheadSlash, or DownSlash. Blade attacks (Down, Slash, VerticalSlash) have low impact power (2) making them faster but unable to stagger players, while all other melee attacks have full impact power (7). The Bladehand can also initiate with Slash High which chains into UpperSlash, UpperSlash Cannon, or Thrust.",
- "icon": "attack"
- },
- {
- "name": "Cannon Stance — Ranged Phase",
- "description": "After performing a StanceChange, the Bladehand enters cannon mode. It uses Cannon Ready to prepare, then fires either Cannon Fire or Cannon Fire Long at 1600 damage ratio — the highest base damage ratio in its arsenal. In this stance it also has access to FireSparks In and FireSparks Out, fire-based AoE attacks that also deal 1600 ratio damage. The cannon stance trades the extensive melee combo tree for raw ranged damage output.",
- "icon": "special"
- },
- {
- "name": "Artillery Bombardment Phase",
- "description": "The Bladehand calls in artillery via the Ballista CallFlare ability. This initiates a sequence: CallFlare marks the target area, Ballista Loop sustains the bombardment, Ballista Falling rains projectiles at 1600 damage ratio, and Ballista Shockwave follows each impact at 800 ratio. This is an area-denial sequence that forces players to reposition constantly. The Ballista projectile type is used for the falling ordnance.",
- "icon": "special"
- },
- {
- "name": "Counter-Attack Phase",
- "description": "The Bladehand has dedicated Reflect Melee and Reflect Range abilities that function as counter-attacks. Reflect Melee punishes melee attackers at 1500 damage ratio (94.5 Common / 120 Elite), and Reflect Range punishes ranged attackers. These abilities activate reactively when the Bladehand detects incoming attacks, making reckless aggression extremely dangerous regardless of your combat style.",
- "icon": "debuff"
- },
- {
- "name": "Repositioning Phase",
- "description": "The Bladehand uses BackStep and BackStep Cannon to reposition and create distance. It also has Rush Attack, RushSlash High, and RushSlash Low to close distance aggressively at 1400 damage ratio. Runstate, Move, and Move Back provide general movement between engagements. The boss uses these to control spacing and transition between melee and ranged stances effectively.",
- "icon": "move"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "Cannon Fire",
- "ratio": 1600,
- "damage_common": 100.8,
- "damage_elite": 128,
- "note": "Ranged cannon shot fired after Cannon Ready. Highest damage ratio in the Bladehand's kit at 1600. Requires StanceChange into cannon mode first. Impact power 7."
- },
- {
- "name": "Cannon Fire Long",
- "ratio": 1600,
- "damage_common": 100.8,
- "damage_elite": 128,
- "note": "Extended range variant of Cannon Fire. Same 1600 ratio. Used when targets are at greater distance. Uses Shell projectile type."
- },
- {
- "name": "FireSparks In",
- "ratio": 1600,
- "damage_common": 100.8,
- "damage_elite": 128,
- "note": "Fire-based AoE that pulls inward. Deals 1600 ratio damage. Particularly dangerous because it draws targets closer to the Bladehand."
- },
- {
- "name": "FireSparks Out",
- "ratio": 1600,
- "damage_common": 100.8,
- "damage_elite": 128,
- "note": "Fire-based AoE that radiates outward. Same 1600 ratio. Creates a zone that forces repositioning."
- },
- {
- "name": "Ballista Falling",
- "ratio": 1600,
- "damage_common": 100.8,
- "damage_elite": 128,
- "note": "Artillery bombardment from the Ballista CallFlare sequence. Rains projectiles onto the marked area at 1600 ratio. Uses Ballista projectile type. Followed by Shockwave."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Reflect Melee",
- "ratio": 1500,
- "damage_common": 94.5,
- "damage_elite": 120,
- "note": "Counter-attack that punishes melee attackers. Activates reactively when struck in melee. At 1500 ratio this is the hardest-hitting melee attack in the Bladehand's kit. Impact power 7."
- },
- {
- "name": "Slash High",
- "ratio": 1400,
- "damage_common": 88.2,
- "damage_elite": 112,
- "note": "High horizontal slash opener. Chains into UpperSlash, UpperSlash Cannon, or Thrust. Also has Short and From variants. Impact power 7."
- },
- {
- "name": "Slash Low",
- "ratio": 1400,
- "damage_common": 88.2,
- "damage_elite": 112,
- "note": "Low horizontal slash. Chains into Blade Down, Blade Slash, or Blade VerticalSlash for fast follow-up pressure. Impact power 7."
- },
- {
- "name": "Thrust",
- "ratio": 1400,
- "damage_common": 88.2,
- "damage_elite": 112,
- "note": "Forward thrust attack. Can follow from Slash L, Slash High, Blade Down, Blade Slash, or Blade VerticalSlash. Impact power 7."
- },
- {
- "name": "RushSlash High",
- "ratio": 1400,
- "damage_common": 88.2,
- "damage_elite": 112,
- "note": "Charging high slash used to close distance aggressively. Deals 1400 ratio with impact power 7."
- },
- {
- "name": "RushSlash Low",
- "ratio": 1400,
- "damage_common": 88.2,
- "damage_elite": 112,
- "note": "Charging low slash variant. Same 1400 ratio. Alternative gap-closer that hits at a different height."
- },
- {
- "name": "Rush Attack",
- "ratio": 1400,
- "damage_common": 88.2,
- "damage_elite": 112,
- "note": "Direct rushing attack to close distance. 1400 ratio with impact power 7."
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Slash L",
- "ratio": 1300,
- "damage_common": 81.9,
- "damage_elite": 104,
- "note": "Left horizontal slash opener. Chains into Slash Low, UpperSlash, UpperSlash Cannon, or Thrust. Impact power 7. One of the primary combo starters."
- },
- {
- "name": "Slash R",
- "ratio": 1300,
- "damage_common": 81.9,
- "damage_elite": 104,
- "note": "Right horizontal slash opener. Chains into Blade VerticalSlash, OverheadSlash, or DownSlash. Impact power 7. Alternate combo starter."
- },
- {
- "name": "UpperSlash",
- "ratio": 1300,
- "damage_common": 81.9,
- "damage_elite": 104,
- "note": "Upward slash that can follow from multiple openers (Slash L, Slash High, Blade Down, Blade Slash, Blade Vertical). Chains into OverheadSlash or DownSlash. Impact power 7."
- },
- {
- "name": "UpperSlash Cannon",
- "ratio": 1300,
- "damage_common": 81.9,
- "damage_elite": 104,
- "note": "Variant of UpperSlash that transitions into cannon mode. Can follow from the same openers as standard UpperSlash. Impact power 7."
- },
- {
- "name": "DownSlash",
- "ratio": 1300,
- "damage_common": 81.9,
- "damage_elite": 104,
- "note": "Downward slash follow-up. Chains from Slash R or UpperSlash. Impact power 7."
- }
- ]
- },
- {
- "tier": "Moderate",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "Blade Down",
- "ratio": 1100,
- "damage_common": 69.3,
- "damage_elite": 88,
- "note": "Fast downward blade strike. Low impact power (2) — cannot stagger players but executes quickly. Chains from Slash Low into UpperSlash, UpperSlash Cannon, or Thrust."
- },
- {
- "name": "Blade Slash",
- "ratio": 1100,
- "damage_common": 69.3,
- "damage_elite": 88,
- "note": "Fast blade slash variant. Low impact power (2) for speed over stagger. Same follow-up chains as Blade Down."
- },
- {
- "name": "Blade VerticalSlash",
- "ratio": 1100,
- "damage_common": 69.3,
- "damage_elite": 88,
- "note": "Vertical blade strike. Low impact power (2). Can follow from Slash R or Slash Low. Chains into UpperSlash, UpperSlash Cannon, or Thrust."
- },
- {
- "name": "OverheadSlash",
- "ratio": 1000,
- "damage_common": 63,
- "damage_elite": 80,
- "note": "Overhead chopping attack. Lowest ratio melee attack at 1000. Follows from Slash R or UpperSlash. Impact power 7."
- }
- ]
- },
- {
- "tier": "Utility",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "Ballista Shockwave",
- "ratio": 800,
- "damage_common": 50.4,
- "damage_elite": 64,
- "note": "Shockwave following each Ballista Falling impact. Lower ratio (800) but adds to the total bombardment damage. Impact power 7. Creates additional area denial after the initial strike."
- },
- {
- "name": "StanceChange",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Switches between blade stance and cannon stance. No damage but fundamentally changes the Bladehand's available attacks. Watch for the animation to know which mode it is entering."
- },
- {
- "name": "Reflect Range",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Counter-attack that reflects or punishes ranged attackers. Activates when the Bladehand detects incoming ranged attacks. Forces ranged players to time their shots carefully."
- },
- {
- "name": "BackStep",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Repositioning dodge backward in blade stance. Creates distance to transition into cannon mode or reset melee engagement."
- },
- {
- "name": "BackStep Cannon",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Repositioning dodge backward in cannon stance. Creates distance for ranged attacks."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Bladehand has one of the most complex combo trees of any boss, with 26 combo chains. Its melee attacks branch from Slash openers through Blade follow-ups into UpperSlash finishers, which can further chain into OverheadSlash or DownSlash. Blade attacks (impact 2) are faster but do not stagger, while all other attacks (impact 7) carry full stagger weight. The combo system allows the Bladehand to mix fast low-impact pressure with heavy finishing strikes.",
- "chains": [
- {
- "from": "Slash L",
- "to": [
- "Slash Low",
- "UpperSlash",
- "UpperSlash Cannon",
- "Thrust"
- ],
- "note": "Primary left-side opener. Branches into low follow-up for blade combos, or directly into heavy finishers (UpperSlash, Thrust). UpperSlash Cannon transitions to ranged mode mid-combo."
- },
- {
- "from": "Slash R",
- "to": [
- "Blade VerticalSlash",
- "OverheadSlash",
- "DownSlash"
- ],
- "note": "Primary right-side opener. Leads into Blade VerticalSlash for fast pressure or directly into overhead/down finishers."
- },
- {
- "from": "Slash High",
- "to": [
- "UpperSlash",
- "UpperSlash Cannon",
- "Thrust"
- ],
- "note": "High opener that skips the Blade follow-up tier entirely, going directly to heavy finishers."
- },
- {
- "from": "Slash Low",
- "to": [
- "Blade Down",
- "Blade Slash",
- "Blade VerticalSlash"
- ],
- "note": "Transitions into fast Blade attacks (impact 2). These are lower damage (1100 ratio) but execute rapidly and chain further."
- },
- {
- "from": "Blade Down",
- "to": [
- "UpperSlash",
- "UpperSlash Cannon",
- "Thrust"
- ],
- "note": "Fast blade attack chains into heavy finishers. The low-to-high rhythm catches players who expect continued fast attacks."
- },
- {
- "from": "Blade Slash",
- "to": [
- "UpperSlash",
- "UpperSlash Cannon",
- "Thrust"
- ],
- "note": "Same finisher options as Blade Down. All three Blade variants share identical follow-up chains."
- },
- {
- "from": "Blade VerticalSlash",
- "to": [
- "UpperSlash",
- "UpperSlash Cannon",
- "Thrust"
- ],
- "note": "Can be reached from either Slash R or Slash Low, making it a common mid-combo junction point."
- },
- {
- "from": "UpperSlash",
- "to": [
- "OverheadSlash",
- "DownSlash"
- ],
- "note": "Terminal combo stage. OverheadSlash (1000 ratio) or DownSlash (1300 ratio) end the chain. DownSlash is the more dangerous finisher."
- },
- {
- "from": "Ballista CallFlare",
- "to": [
- "Ballista Loop",
- "Ballista Falling",
- "Ballista Shockwave"
- ],
- "note": "Artillery sequence. CallFlare marks the target, Loop sustains bombardment, Falling deals 1600 ratio, Shockwave follows at 800 ratio."
- },
- {
- "from": "Cannon Ready",
- "to": [
- "Cannon Fire",
- "Cannon Fire Long"
- ],
- "note": "Cannon stance attack chain. Ready telegraphs the shot, then fires standard or long-range variant at 1600 ratio."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "Fire Resistance",
- "type": "passive",
- "duration": "Permanent",
- "stacks": 1,
- "description": "The Bladehand has +500 FireMagicalReduction, making it significantly resistant to fire-based damage. This is its only notable magical resistance — all other magic types (Ice, Light, Dark, Divine, Evil, Earth) have 0 reduction.",
- "counter": "Avoid fire-based spells and damage sources. Use any other magical damage type for full effectiveness. Ice, Light, Dark, Divine, Evil, and Earth magic all bypass its resistances entirely."
- },
- {
- "name": "Stagger Immunity",
- "type": "passive",
- "duration": "Permanent",
- "stacks": 1,
- "description": "With 999 Impact Resistance and 999 Impact Endurance, the Bladehand is has high ImpactResistance and MaxImpactEndurance values from any source. Its combo chains cannot be broken by player attacks.",
- "counter": "Do not rely on impact or stagger mechanics. Focus on damage output, positioning, and dodge timing. The Bladehand's combos will always complete once started — plan your movement around the combo chains rather than trying to interrupt them."
- }
- ],
- "strategies": [
- {
- "title": "Learn the Stance Change Tell — It Defines the Fight",
- "priority": "critical",
- "description": "The Bladehand switches between melee blade stance and ranged cannon stance via StanceChange. Each stance has completely different attacks, ranges, and dangers. Recognizing the StanceChange animation is essential because your positioning strategy must change immediately — close-range safety in cannon mode becomes dangerous in blade mode, and vice versa. The UpperSlash Cannon variant can transition mid-combo from blade to cannon, catching players off guard."
- },
- {
- "title": "It High Impact Resistance Values",
- "priority": "critical",
- "description": "With 999 Impact Resistance and 999 Impact Endurance, the Bladehand is completely has high ImpactResistance and MaxImpactEndurance values. Its 26 combo chains will always complete once started. Do not waste high-impact abilities hoping to disrupt its attacks. Focus entirely on raw damage and positioning."
- },
- {
- "title": "Respect the Reflect — Do Not Attack Recklessly",
- "priority": "critical",
- "description": "Reflect Melee (1500 ratio = 94.5/120 damage) and Reflect Range punish both melee and ranged attackers. The Bladehand activates these counters reactively when it detects incoming attacks. Attack only during confirmed safe windows — after combo finishers, during StanceChange animations, or during the Ballista CallFlare startup. Mindless DPS will get you killed by your own aggression."
- },
- {
- "title": "Run From the Ballista Bombardment",
- "priority": "critical",
- "description": "The Ballista CallFlare sequence is an artillery bombardment that marks an area then rains projectiles at 1600 ratio followed by 800 ratio shockwaves. This is sustained area denial, not a single dodge. When you see CallFlare, immediately move away from the marked zone and keep moving through the Ballista Loop phase. Do not try to DPS through the bombardment — the combined Falling + Shockwave damage is lethal."
- },
- {
- "title": "Cannon Mode Has the Highest Burst Damage",
- "priority": "high",
- "description": "Cannon Fire, Cannon Fire Long, FireSparks In, FireSparks Out, and Ballista Falling all deal 1600 ratio damage (100.8 Common / 128 Elite). These are the most dangerous attacks in the Bladehand's kit. In cannon stance, maintain maximum distance and use cover or lateral movement. Cannon shots use Shell projectiles — sidestep rather than backing away in a straight line."
- },
- {
- "title": "Blade Attacks Are Fast but Weak — Punish After",
- "priority": "high",
- "description": "Blade Down, Blade Slash, and Blade VerticalSlash have only 1100 ratio (69.3/88 damage) and impact power 2, making them the weakest attacks in the Bladehand's melee kit. They execute faster than the heavy Slash attacks but cannot stagger you. These are mid-combo transitional attacks that always chain into UpperSlash, UpperSlash Cannon, or Thrust — the real danger follows the fast attacks, not during them."
- },
- {
- "title": "Exploit the Slash-to-Blade-to-UpperSlash Rhythm",
- "priority": "high",
- "description": "The most common combo path is Slash opener (1300-1400 ratio) into Blade follow-up (1100 ratio, fast) into UpperSlash finisher (1300 ratio). This three-hit rhythm has a predictable cadence: heavy-fast-heavy. The safe window to attack is after the UpperSlash chains into OverheadSlash or DownSlash, which are terminal attacks. After the finisher completes, you have a recovery window before the next combo begins."
- },
- {
- "title": "Fire Damage Is Resisted — Use Anything Else",
- "priority": "high",
- "description": "The Bladehand has +500 FireMagicalReduction but 0 resistance to Ice, Light, Dark, Divine, Evil, and Earth magic. Fire-based builds (Wizard fire spells, fire enchantments) are significantly weakened. Any other magical damage type deals full unresisted damage. Respec or adjust loadout accordingly."
- },
- {
- "title": "Projectile Damage Is Heavily Reduced",
- "priority": "high",
- "description": "With 300 ProjectileReductionMod, the Bladehand significantly reduces all projectile-based physical damage. Combined with Reflect Range, pure ranged physical builds (Ranger, crossbow) are doubly punished. Spell-based ranged damage or melee approaches are far more effective."
- },
- {
- "title": "Elite Is Significantly Faster and Deadlier",
- "priority": "medium",
- "description": "Elite grade has 50% more ActionSpeed (100 to 150), meaning combos execute dramatically faster. Combined with 27% more damage and 7.7% more move speed, dodge timings learned on Common will not transfer cleanly to Elite. The same combo chains come out noticeably quicker, and the damage per mistake is substantially higher."
- },
- {
- "title": "FireSparks In Pulls You Closer — Dodge Outward",
- "priority": "medium",
- "description": "FireSparks In creates an inward-pulling fire AoE at 1600 ratio. If caught, you are drawn toward the Bladehand, potentially into melee range where blade combos or Reflect Melee await. FireSparks Out pushes outward instead. Distinguish between the two variants and dodge accordingly — inward sparks require moving away, outward sparks require moving through or to the side."
- },
- {
- "title": "RushSlash Closes Distance Aggressively",
- "priority": "medium",
- "description": "RushSlash High and RushSlash Low at 1400 ratio are gap-closing attacks that the Bladehand uses when targets try to maintain range. Rush Attack is a similar closer. Kiting at medium range is dangerous because it invites these high-damage rush attacks. Either commit to melee range or stay at extreme range — the mid-range is the Bladehand's kill zone for rushes."
- }
- ],
- "elite_differences": [
- "35% more HP (2,600 -> 3,500)",
- "27% more physical damage (63 -> 80)",
- "7.7% faster base move speed (260 -> 280)",
- "50% more ActionSpeed (100 -> 150) — combos execute dramatically faster",
- "Same resistances, impact immunity, and projectile reduction as Common",
- "Same ability set and combo structure — all 26 combo chains preserved",
- "No Nightmare grade exists for this boss",
- "Higher XP reward (15 -> 20)"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "180-degree peripheral vision — cannot see directly behind",
- "damage_sense": true,
- "damage_description": "Always reacts to being hit regardless of facing direction (AISenseConfig_Damage)",
- "hearing": true,
- "hearing_description": "Reacts to loud noises in the arena (AISenseConfig_Hearing)",
- "stuck_tracking": true,
- "stuck_description": "Behavior tree uses probability-based attack selection with StanceChange decisions. Rush attacks and BackStep abilities provide repositioning when movement is obstructed. The complex combo tree has multiple branching paths to adapt to target positioning."
- }
+  "slug": "bladehand",
+  "overview": "Bladehand is a Boss-class Humanoid monster found in Ship Graveyard. 2 grades: Common, Elite. Base stats (Common): 2600 HP, 63 physical damage, 260 move speed, ActionSpeed 100. ImpactResistance 999, MaxImpactEndurance 999. 51 attacks, 26 combo chains. Highest damage: Cannon Fire at 160% ratio (1008 base damage). Sight range 2500, combat radius 300, behavior tree: BT_Bladehand_Combat.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "40 melee attacks. Slash L (130%), Slash R (130%), Slash High (140%), and more.",
+      "icon": "attack"
+    },
+    {
+      "name": "Ranged Attacks",
+      "description": "12 ranged attacks. Upper Slash Cannon (130%), Upper Slash Cannon From Slash L (130%), Upper Slash Cannon From Slash High (130%), and more.",
+      "icon": "special"
+    },
+    {
+      "name": "Rush / Charge",
+      "description": "3 rush/charge attacks for gap-closing. Rush Slash High (140%), Rush Slash Low (140%), Rush Attack (140%).",
+      "icon": "move"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Cannon Fire",
+          "damage_ratio": 1600,
+          "damage_common": 1008,
+          "damage_elite": 1280,
+          "note": "160% damage ratio, impact power 7."
+        },
+        {
+          "name": "Cannon Fire Long",
+          "damage_ratio": 1600,
+          "damage_common": 1008,
+          "damage_elite": 1280,
+          "note": "160% damage ratio, impact power 7."
+        },
+        {
+          "name": "Fire Sparks In",
+          "damage_ratio": 1600,
+          "damage_common": 1008,
+          "damage_elite": 1280,
+          "note": "160% damage ratio, impact power 7."
+        },
+        {
+          "name": "Fire Sparks Out",
+          "damage_ratio": 1600,
+          "damage_common": 1008,
+          "damage_elite": 1280,
+          "note": "160% damage ratio, impact power 7."
+        },
+        {
+          "name": "Ballista Falling",
+          "damage_ratio": 1600,
+          "damage_common": 1008,
+          "damage_elite": 1280,
+          "note": "160% damage ratio, impact power 7."
+        },
+        {
+          "name": "Reflect Melee",
+          "damage_ratio": 1500,
+          "damage_common": 945,
+          "damage_elite": 1200,
+          "note": "150% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Slash L",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Slash R",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Slash High",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Slash High Short",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Slash Low",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Slash Low From Slash L",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Blade Down",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Down Short",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Down From Slash Low",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Slash",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Slash Short",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Slash From Slash Low",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Vertical Slash",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Vertical Slash From Slash R",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Blade Vertical Slash From Slash Low",
+          "damage_ratio": 1100,
+          "damage_common": 693,
+          "damage_elite": 880,
+          "note": "110% damage ratio, impact power 2."
+        },
+        {
+          "name": "Upper Slash",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash From Slash L",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash From Slash High",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash From Blade Down",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash From Blade Slash",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash From Blade Vertical",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash Cannon",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash Cannon From Slash L",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash Cannon From Slash High",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash Cannon From Blade Down",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash Cannon From Blade Slash",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Upper Slash Cannon From Blade Vertical",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Thrust",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Thrust From Slash L",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Thrust From Slash High",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Thrust From Blade Down",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Thrust From Blade Slash",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Thrust From Blade Vertical",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Overhead Slash",
+          "damage_ratio": 1000,
+          "damage_common": 630,
+          "damage_elite": 800,
+          "note": "100% damage ratio, impact power 7."
+        },
+        {
+          "name": "Overhead Slash From Slash R",
+          "damage_ratio": 1000,
+          "damage_common": 630,
+          "damage_elite": 800,
+          "note": "100% damage ratio, impact power 7."
+        },
+        {
+          "name": "Overhead Slash From Slash Low",
+          "damage_ratio": 1000,
+          "damage_common": 630,
+          "damage_elite": 800,
+          "note": "100% damage ratio, impact power 7."
+        },
+        {
+          "name": "Overhead Slash From Upper Slash",
+          "damage_ratio": 1000,
+          "damage_common": 630,
+          "damage_elite": 800,
+          "note": "100% damage ratio, impact power 7."
+        },
+        {
+          "name": "Rush Slash High",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Rush Slash Low",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Rush Attack",
+          "damage_ratio": 1400,
+          "damage_common": 882,
+          "damage_elite": 1120,
+          "note": "140% damage ratio, impact power 7."
+        },
+        {
+          "name": "Down Slash",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Down Slash From Slash R",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Down Slash From Slash Low",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        },
+        {
+          "name": "Down Slash From Upper Slash",
+          "damage_ratio": 1300,
+          "damage_common": 819,
+          "damage_elite": 1040,
+          "note": "130% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Moderate",
+      "color": "#8a7048",
+      "attacks": [
+        {
+          "name": "Ballista Shockwave",
+          "damage_ratio": 800,
+          "damage_common": 504,
+          "damage_elite": 640,
+          "note": "80% damage ratio, impact power 7."
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "31 combo chains across 8 entry points. Attacks chain from one to the next based on the AI's positioning and target state.",
+    "chains": [
+      {
+        "from": "Slash L",
+        "to": [
+          "Slash Low",
+          "UpperSlash",
+          "UpperSlash Cannon",
+          "Thrust"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Slash Low",
+        "to": [
+          "Blade Down",
+          "Blade Slash",
+          "Blade VerticalSlash",
+          "Attack OverheadSlash",
+          "Attack DownSlash"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Slash R",
+        "to": [
+          "Blade Vertical Slash",
+          "Attack OverheadSlash",
+          "Attack DownSlash",
+          "Blade VerticalSlash"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Slash High",
+        "to": [
+          "Upper Slash",
+          "UpperSlash Cannon",
+          "Thrust",
+          "UpperSlash"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Blade Down",
+        "to": [
+          "Upper Slash",
+          "UpperSlash Cannon",
+          "Thrust",
+          "UpperSlash"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Blade Slash",
+        "to": [
+          "Upper Slash",
+          "UpperSlash Cannon",
+          "Thrust",
+          "UpperSlash"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Blade Vertical",
+        "to": [
+          "Upper Slash",
+          "UpperSlash Cannon",
+          "Thrust",
+          "UpperSlash"
+        ],
+        "note": ""
+      },
+      {
+        "from": "Upper Slash",
+        "to": [
+          "Attack Overhead Slash",
+          "Attack Down Slash"
+        ],
+        "note": ""
+      }
+    ]
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Resists: Fire",
+      "priority": "high",
+      "description": "Elemental resistances: Fire (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 300",
+      "priority": "medium",
+      "description": "Has 300 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 2500 units",
+      "priority": "medium",
+      "description": "Sight radius 2500 units, loses target at 3000 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 300, ability check distance 700",
+      "priority": "medium",
+      "description": "Combat area radius 300. Ability check distance 700."
+    },
+    {
+      "title": "Behavior Trees: BT_Bladehand_Combat",
+      "priority": "low",
+      "description": "Uses behavior tree: BT_Bladehand_Combat. "
+    }
+  ],
+  "elite_differences": [
+    "35% more HP (2600 → 3500) in Elite",
+    "27% more physical damage (63 → 80) in Elite",
+    "Move speed 260 → 280 in Elite",
+    "ActionSpeed 100 → 150 in Elite — attacks animate faster",
+    "XP reward 15 → 20 in Elite",
+    "No Nightmare grade exists"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 2500,
+    "lose_sight_radius": 3000,
+    "sight_description": "Detects targets within 2500 units. Loses target at 3000 units."
+  }
 }

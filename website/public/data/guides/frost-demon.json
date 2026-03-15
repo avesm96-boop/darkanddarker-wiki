@@ -1,96 +1,114 @@
 {
- "slug": "frost-demon",
- "overview": "Frost Demon is a SubBoss-class Demon monster found in Ice Abyss. 3 grades: Common, Elite, Nightmare. Base stats (Common): 700 HP, 0 physical damage, 75 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 2 attacks, 0 combo chains. Highest damage: at 150% ratio (0 base damage). Nightmare gains 1 exclusive abilityy: Self Heal.",
- "phases": [
- {
- "name": "Ranged Attacks",
- "description": "1 ranged attacks. Blizzard Fire Spell (90%).",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "",
- "damage_ratio": 1500,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "150% damage ratio, impact power 3.",
- "damage_nightmare": 0
- }
- ]
- },
- {
- "tier": "Moderate",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "Blizzard Fire Spell",
- "damage_ratio": 900,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "90% damage ratio, impact power 3.",
- "damage_nightmare": 0
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "High Impact Values (ImpactRes 999, Endurance 999)",
- "priority": "medium",
- "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
- },
- {
- "title": "Elemental Weaknesses: Fire, Light, Divine",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-2000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Resists: Ice",
- "priority": "high",
- "description": "Elemental resistances: Ice (+500). Positive reduction values reduce incoming damage of that type."
- },
- {
- "title": "Projectile Reduction: 200",
- "priority": "medium",
- "description": "Has 200 ProjectileReductionMod, reducing physical projectile damage."
- },
- {
- "title": "Nightmare Gains: Self Heal",
- "priority": "medium",
- "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Self Heal. These change the fight dynamics in Nightmare.",
- "grades": [
- "Nightmare"
- ]
- }
- ],
- "elite_differences": [
- "29% more HP (700 → 900) in Elite",
- "Move speed 75 → 120 in Elite",
- "XP reward 6 → 7 in Elite",
- "57% more HP (700 → 1100) in Nightmare",
- "Move speed 75 → 150 in Nightmare",
- "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
- "XP reward 6 → 8 in Nightmare",
- "Nightmare gains 1 exclusive abilities: Self Heal"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard boss perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": true,
- "stuck_description": "Has stuck-detection failsafes in behavior tree."
- }
+  "slug": "frost-demon",
+  "overview": "Frost Demon is a SubBoss-class Demon monster found in Ice Abyss. 3 grades: Common, Elite, Nightmare. Base stats (Common): 700 HP, 0 physical damage, 75 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 2 attacks, 0 combo chains. Highest damage:  at 150% ratio (0 base damage). Sight range 1100, combat radius 550. Nightmare gains 1 exclusive abilityy: Self Heal.",
+  "phases": [
+    {
+      "name": "Ranged Attacks",
+      "description": "1 ranged attacks. Blizzard Fire Spell (90%).",
+      "icon": "special"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "",
+          "damage_ratio": 1500,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "150% damage ratio, impact power 3.",
+          "damage_nightmare": 0
+        }
+      ]
+    },
+    {
+      "tier": "Moderate",
+      "color": "#8a7048",
+      "attacks": [
+        {
+          "name": "Blizzard Fire Spell",
+          "damage_ratio": 900,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "90% damage ratio, impact power 3.",
+          "damage_nightmare": 0
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Elemental Weaknesses: Fire, Light, Divine",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-2000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Ice",
+      "priority": "high",
+      "description": "Elemental resistances: Ice (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 200",
+      "priority": "medium",
+      "description": "Has 200 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Nightmare Gains: Self Heal",
+      "priority": "medium",
+      "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Self Heal. These change the fight dynamics in Nightmare.",
+      "grades": [
+        "Nightmare"
+      ]
+    },
+    {
+      "title": "Detection Range: 1100 units",
+      "priority": "medium",
+      "description": "Sight radius 1100 units, loses target at 1600 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 550, ability check distance 650",
+      "priority": "medium",
+      "description": "Combat area radius 550. Ability check distance 650."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 600 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "29% more HP (700 → 900) in Elite",
+    "Move speed 75 → 120 in Elite",
+    "XP reward 6 → 7 in Elite",
+    "57% more HP (700 → 1100) in Nightmare",
+    "Move speed 75 → 150 in Nightmare",
+    "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+    "XP reward 6 → 8 in Nightmare",
+    "Nightmare gains 1 exclusive abilities: Self Heal"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 1100,
+    "lose_sight_radius": 1600,
+    "sight_description": "Detects targets within 1100 units. Loses target at 1600 units."
+  }
 }

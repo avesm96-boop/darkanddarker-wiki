@@ -1,93 +1,111 @@
 {
- "slug": "frozen-ghost",
- "overview": "Frozen Ghost is a Normal-class Undead monster found in Ice Abyss. 3 grades: Common, Elite, Nightmare. Base stats (Common): 120 HP, 22 physical damage, 100 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 3. 1 attack, 0 combo chains. Highest damage: Ice Bolt at 150% ratio (330 base damage).",
- "phases": [
- {
- "name": "Ranged Attacks",
- "description": "1 ranged attacks. Ice Bolt (150%).",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Ice Bolt",
- "damage_ratio": 1500,
- "damage_common": 330,
- "damage_elite": 420,
- "note": "150% damage ratio, impact power 3.",
- "damage_nightmare": 525
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [
- {
- "name": "Curse Of The Screams",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Curse Of The Screams icon on your status bar."
- },
- {
- "name": "Curse Of The Screams Deafness",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Curse Of The Screams Deafness icon on your status bar."
- },
- {
- "name": "Frozen Field",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Frozen Field icon on your status bar."
- }
- ],
- "strategies": [
- {
- "title": "Elemental Weaknesses: Fire, Light, Divine",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-3000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Resists: Ice",
- "priority": "high",
- "description": "Elemental resistances: Ice (+500). Positive reduction values reduce incoming damage of that type."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- }
- ],
- "elite_differences": [
- "67% more HP (120 → 200) in Elite",
- "27% more physical damage (22 → 28) in Elite",
- "Move speed 100 → 150 in Elite",
- "108% more HP (120 → 250) in Nightmare",
- "59% more physical damage (22 → 35) in Nightmare",
- "Move speed 100 → 200 in Nightmare",
- "XP reward 3 → 5 in Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "frozen-ghost",
+  "overview": "Frozen Ghost is a Normal-class Undead monster found in Ice Abyss. 3 grades: Common, Elite, Nightmare. Base stats (Common): 120 HP, 22 physical damage, 100 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 3. 1 attack, 0 combo chains. Highest damage: Ice Bolt at 150% ratio (330 base damage). Sight range 1100, combat radius 600.",
+  "phases": [
+    {
+      "name": "Ranged Attacks",
+      "description": "1 ranged attacks. Ice Bolt (150%).",
+      "icon": "special"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Ice Bolt",
+          "damage_ratio": 1500,
+          "damage_common": 330,
+          "damage_elite": 420,
+          "note": "150% damage ratio, impact power 3.",
+          "damage_nightmare": 525
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Curse Of The Screams",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Curse Of The Screams icon on your status bar."
+    },
+    {
+      "name": "Curse Of The Screams Deafness",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Curse Of The Screams Deafness icon on your status bar."
+    },
+    {
+      "name": "Frozen Field",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Frozen Field icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "Elemental Weaknesses: Fire, Light, Divine",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-3000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Ice",
+      "priority": "high",
+      "description": "Elemental resistances: Ice (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1100 units",
+      "priority": "medium",
+      "description": "Sight radius 1100 units, loses target at 1600 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 600, ability check distance 700",
+      "priority": "medium",
+      "description": "Combat area radius 600. Ability check distance 700."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 600 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "67% more HP (120 → 200) in Elite",
+    "27% more physical damage (22 → 28) in Elite",
+    "Move speed 100 → 150 in Elite",
+    "108% more HP (120 → 250) in Nightmare",
+    "59% more physical damage (22 → 35) in Nightmare",
+    "Move speed 100 → 200 in Nightmare",
+    "XP reward 3 → 5 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 1100,
+    "lose_sight_radius": 1600,
+    "sight_description": "Detects targets within 1100 units. Loses target at 1600 units."
+  }
 }

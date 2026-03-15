@@ -1,104 +1,112 @@
 {
- "slug": "pirate-axe-thrower",
- "overview": "Pirate Axe Thrower is a Normal-class Humanoid/Human monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 85 HP, 20 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 5 attacks, 0 combo chains. Highest damage: Melee Attack R at 150% ratio (300 base damage).",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "5 melee attacks. Melee Attack R (150%), Melee Attack L (150%), Range Attack R (130%), and more.",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Melee Attack R",
- "damage_ratio": 1500,
- "damage_common": 300,
- "damage_elite": 330,
- "note": "150% damage ratio, impact power 4.",
- "damage_nightmare": 375
- },
- {
- "name": "Melee Attack L",
- "damage_ratio": 1500,
- "damage_common": 300,
- "damage_elite": 330,
- "note": "150% damage ratio, impact power 4.",
- "damage_nightmare": 375
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Range Attack R",
- "damage_ratio": 1300,
- "damage_common": 260,
- "damage_elite": 286,
- "note": "130% damage ratio, impact power 4.",
- "damage_nightmare": 325
- },
- {
- "name": "Range Attack L",
- "damage_ratio": 1300,
- "damage_common": 260,
- "damage_elite": 286,
- "note": "130% damage ratio, impact power 4.",
- "damage_nightmare": 325
- },
- {
- "name": "Range Attack R Combo",
- "damage_ratio": 1100,
- "damage_common": 220,
- "damage_elite": 242,
- "note": "110% damage ratio, impact power 4.",
- "damage_nightmare": 275
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Elemental Weaknesses: Fire, Earth",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-1500), Earth (-1500). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- }
- ],
- "elite_differences": [
- "82% more HP (85 → 155) in Elite",
- "10% more physical damage (20 → 22) in Elite",
- "Move speed 150 → 175 in Elite",
- "ActionSpeed 0 → 50 in Elite — attacks animate faster",
- "XP reward 3 → 4 in Elite",
- "165% more HP (85 → 225) in Nightmare",
- "25% more physical damage (20 → 25) in Nightmare",
- "Move speed 150 → 200 in Nightmare",
- "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
- "XP reward 3 → 5 in Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "pirate-axe-thrower",
+  "overview": "Pirate Axe Thrower is a Normal-class Humanoid/Human monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 85 HP, 20 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 5 attacks, 0 combo chains. Highest damage: Melee Attack R at 150% ratio (300 base damage). Sight range 1000.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "5 melee attacks. Melee Attack R (150%), Melee Attack L (150%), Range Attack R (130%), and more.",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Melee Attack R",
+          "damage_ratio": 1500,
+          "damage_common": 300,
+          "damage_elite": 330,
+          "note": "150% damage ratio, impact power 4.",
+          "damage_nightmare": 375
+        },
+        {
+          "name": "Melee Attack L",
+          "damage_ratio": 1500,
+          "damage_common": 300,
+          "damage_elite": 330,
+          "note": "150% damage ratio, impact power 4.",
+          "damage_nightmare": 375
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Range Attack R",
+          "damage_ratio": 1300,
+          "damage_common": 260,
+          "damage_elite": 286,
+          "note": "130% damage ratio, impact power 4.",
+          "damage_nightmare": 325
+        },
+        {
+          "name": "Range Attack L",
+          "damage_ratio": 1300,
+          "damage_common": 260,
+          "damage_elite": 286,
+          "note": "130% damage ratio, impact power 4.",
+          "damage_nightmare": 325
+        },
+        {
+          "name": "Range Attack R Combo",
+          "damage_ratio": 1100,
+          "damage_common": 220,
+          "damage_elite": 242,
+          "note": "110% damage ratio, impact power 4.",
+          "damage_nightmare": 275
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Elemental Weaknesses: Fire, Earth",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-1500), Earth (-1500). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1000 units",
+      "priority": "medium",
+      "description": "Sight radius 1000 units, loses target at 1500 units, 180° vision angle."
+    }
+  ],
+  "elite_differences": [
+    "82% more HP (85 → 155) in Elite",
+    "10% more physical damage (20 → 22) in Elite",
+    "Move speed 150 → 175 in Elite",
+    "ActionSpeed 0 → 50 in Elite — attacks animate faster",
+    "XP reward 3 → 4 in Elite",
+    "165% more HP (85 → 225) in Nightmare",
+    "25% more physical damage (20 → 25) in Nightmare",
+    "Move speed 150 → 200 in Nightmare",
+    "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
+    "XP reward 3 → 5 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 1000,
+    "lose_sight_radius": 1500,
+    "sight_description": "Detects targets within 1000 units. Loses target at 1500 units."
+  }
 }

@@ -1,103 +1,121 @@
 {
- "slug": "giant-bat",
- "overview": "Giant Bat is a Normal-class Beast monster found in Goblin Cave, Ice Cavern, Ruins, Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): -10 HP, 15 physical damage, 180 move speed, ActionSpeed 0. ImpactResistance 2, MaxImpactEndurance 3. 3 attacks, 0 combo chains. Highest damage: Attack2 at 140% ratio (210 base damage). Nightmare gains 1 exclusive abilityy: Ultrasonic Wave Nightmare.",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "3 melee attacks. Attack1 (120%), Attack2 (140%), Attack1 Combo (120%).",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Attack1",
- "damage_ratio": 1200,
- "damage_common": 180,
- "damage_elite": 264,
- "note": "120% damage ratio, impact power 2.",
- "damage_nightmare": 348
- },
- {
- "name": "Attack2",
- "damage_ratio": 1400,
- "damage_common": 210,
- "damage_elite": 308,
- "note": "140% damage ratio, impact power 3.",
- "damage_nightmare": 406
- },
- {
- "name": "Attack1 Combo",
- "damage_ratio": 1200,
- "damage_common": 180,
- "damage_elite": 264,
- "note": "120% damage ratio, impact power 2.",
- "damage_nightmare": 348
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [
- {
- "name": "Dizziness",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Dizziness icon on your status bar."
- },
- {
- "name": "Giant Bat Nightmare Dizziness",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Giant Bat Nightmare Dizziness icon on your status bar."
- }
- ],
- "strategies": [
- {
- "title": "Elemental Weakness: Light",
- "priority": "high",
- "description": "Significant elemental weaknesses: Light (-4000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Nightmare Gains: Ultrasonic Wave Nightmare",
- "priority": "medium",
- "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Ultrasonic Wave Nightmare. These change the fight dynamics in Nightmare.",
- "grades": [
- "Nightmare"
- ]
- }
- ],
- "elite_differences": [
- "-500% more HP (-10 → 40) in Elite",
- "47% more physical damage (15 → 22) in Elite",
- "Move speed 180 → 220 in Elite",
- "ActionSpeed 0 → 100 in Elite — attacks animate faster",
- "XP reward 3 → 4 in Elite",
- "-1000% more HP (-10 → 90) in Nightmare",
- "93% more physical damage (15 → 29) in Nightmare",
- "Move speed 180 → 260 in Nightmare",
- "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
- "XP reward 3 → 5 in Nightmare",
- "Nightmare gains 1 exclusive abilities: Ultrasonic Wave Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "giant-bat",
+  "overview": "Giant Bat is a Normal-class Beast monster found in Goblin Cave, Ice Cavern, Ruins, Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): -10 HP, 15 physical damage, 180 move speed, ActionSpeed 0. ImpactResistance 2, MaxImpactEndurance 3. 3 attacks, 0 combo chains. Highest damage: Attack2 at 140% ratio (210 base damage). Sight range 900, combat radius 90. Nightmare gains 1 exclusive abilityy: Ultrasonic Wave Nightmare.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "3 melee attacks. Attack1 (120%), Attack2 (140%), Attack1 Combo (120%).",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Attack1",
+          "damage_ratio": 1200,
+          "damage_common": 180,
+          "damage_elite": 264,
+          "note": "120% damage ratio, impact power 2.",
+          "damage_nightmare": 348
+        },
+        {
+          "name": "Attack2",
+          "damage_ratio": 1400,
+          "damage_common": 210,
+          "damage_elite": 308,
+          "note": "140% damage ratio, impact power 3.",
+          "damage_nightmare": 406
+        },
+        {
+          "name": "Attack1 Combo",
+          "damage_ratio": 1200,
+          "damage_common": 180,
+          "damage_elite": 264,
+          "note": "120% damage ratio, impact power 2.",
+          "damage_nightmare": 348
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Dizziness",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Dizziness icon on your status bar."
+    },
+    {
+      "name": "Giant Bat Nightmare Dizziness",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Giant Bat Nightmare Dizziness icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "Elemental Weakness: Light",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Light (-4000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Nightmare Gains: Ultrasonic Wave Nightmare",
+      "priority": "medium",
+      "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Ultrasonic Wave Nightmare. These change the fight dynamics in Nightmare.",
+      "grades": [
+        "Nightmare"
+      ]
+    },
+    {
+      "title": "Detection Range: 900 units",
+      "priority": "medium",
+      "description": "Sight radius 900 units, loses target at 2000 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 90, ability check distance 135",
+      "priority": "medium",
+      "description": "Combat area radius 90. Ability check distance 135. Ability attack delay: 0.25s."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 800 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "-500% more HP (-10 → 40) in Elite",
+    "47% more physical damage (15 → 22) in Elite",
+    "Move speed 180 → 220 in Elite",
+    "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+    "XP reward 3 → 4 in Elite",
+    "-1000% more HP (-10 → 90) in Nightmare",
+    "93% more physical damage (15 → 29) in Nightmare",
+    "Move speed 180 → 260 in Nightmare",
+    "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+    "XP reward 3 → 5 in Nightmare",
+    "Nightmare gains 1 exclusive abilities: Ultrasonic Wave Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 900,
+    "lose_sight_radius": 2000,
+    "sight_description": "Detects targets within 900 units. Loses target at 2000 units."
+  }
 }

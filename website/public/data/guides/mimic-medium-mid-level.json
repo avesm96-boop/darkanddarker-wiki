@@ -1,78 +1,78 @@
 {
- "slug": "mimic-medium-mid-level",
- "overview": "Mimic (Medium Mid Level) is a Normal-class Aberration/Monstrosity/Beast monster. 2 grades: Common, Elite. Base stats (Common): 0 HP, 0 physical damage, 0 move speed, ActionSpeed 0. ImpactResistance 0, MaxImpactEndurance 0. 2 attacks, 0 combo chains. Highest damage: Mimic Medium Attack at 200% ratio (0 base damage).",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "2 melee attacks. Mimic Medium Attack (200%), Mimic Medium Dash Attack (200%).",
- "icon": "attack"
- },
- {
- "name": "Rush / Charge",
- "description": "1 rush/charge attacks for gap-closing. Mimic Medium Dash Attack (200%).",
- "icon": "move"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "Mimic Medium Attack",
- "damage_ratio": 2000,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "200% damage ratio, impact power 4."
- },
- {
- "name": "Mimic Medium Dash Attack",
- "damage_ratio": 2000,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "200% damage ratio, impact power 4."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [
- {
- "name": "Poison Nightmare",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Poison Nightmare icon on your status bar."
- }
- ],
- "strategies": [
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- },
- {
- "title": "Highest Damage: Mimic Medium Attack (200% ratio)",
- "priority": "high",
- "description": "Mimic Medium Attack deals 0 damage at base (200% ratio). This is the most dangerous attack to avoid."
- }
- ],
- "elite_differences": [
- "XP reward 3 → 4 in Elite",
- "No Nightmare grade exists"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "mimic-medium-mid-level",
+  "overview": "Mimic (Medium Mid Level) is a Normal-class Aberration/Monstrosity/Beast monster. 2 grades: Common, Elite. Base stats (Common): 0 HP, 0 physical damage, 0 move speed, ActionSpeed 0. ImpactResistance 0, MaxImpactEndurance 0. 2 attacks, 0 combo chains. Highest damage: Mimic Medium Attack at 200% ratio (0 base damage).",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "2 melee attacks. Mimic Medium Attack (200%), Mimic Medium Dash Attack (200%).",
+      "icon": "attack"
+    },
+    {
+      "name": "Rush / Charge",
+      "description": "1 rush/charge attacks for gap-closing. Mimic Medium Dash Attack (200%).",
+      "icon": "move"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Mimic Medium Attack",
+          "damage_ratio": 2000,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "200% damage ratio, impact power 4."
+        },
+        {
+          "name": "Mimic Medium Dash Attack",
+          "damage_ratio": 2000,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "200% damage ratio, impact power 4."
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Poison Nightmare",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Poison Nightmare icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Highest Damage: Mimic Medium Attack (200% ratio)",
+      "priority": "high",
+      "description": "Mimic Medium Attack deals 0 damage at base (200% ratio). This is the most dangerous attack to avoid."
+    }
+  ],
+  "elite_differences": [
+    "XP reward 3 → 4 in Elite",
+    "No Nightmare grade exists"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "Standard monster perception.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation."
+  }
 }

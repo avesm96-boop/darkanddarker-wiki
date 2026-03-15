@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T08:46:53.245280+00:00",
+  "generated_at": "2026-03-15T16:08:34.814786+00:00",
   "monsters": [
     {
       "slug": "abomination",
@@ -183,7 +183,37 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Destruction Radius": 300.0,
+          "Peace Distance": 500.0,
+          "Do Ability While Peace": true,
+          "Peace Trigger Tag": [
+            "Ability.Monster.Skill.Ten.On",
+            "Ability.Monster.Skill.Eleven.On"
+          ],
+          "Peace Ability Rates": [
+            40,
+            60
+          ],
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_Abomination_GreedyRush",
+          "Combat Acceptance Radius": 200.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 300.0,
+          "Combat Ability Attack Delay": 0.3,
+          "Combat Ability Attack Delay Random Deviation": 0.2
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ancient-stingray",
@@ -228,107 +258,159 @@
           "combos": [
             {
               "from": "Swim L",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "swim-l",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "Swim R",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "swim-r",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "ShortDash",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "Swim L",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "swim-l",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "Swim R",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "swim-r",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "ShortDash",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "TailSlah High",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "TailSlah Down",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "ShortDash",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "TailSlah High",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "TailSlah Down",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "ShortDash",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "Swim L",
-              "to": "ShortDash"
+              "to": "ShortDash",
+              "from_animation_id": "swim-l",
+              "to_animation_id": "short-dash"
             },
             {
               "from": "Swim R",
-              "to": "ShortDash"
+              "to": "ShortDash",
+              "from_animation_id": "swim-r",
+              "to_animation_id": "short-dash"
             },
             {
               "from": "TailSlash High",
-              "to": "WaterArrow 1"
+              "to": "WaterArrow 1",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "water-arrow-1"
             },
             {
               "from": "TailSlash Down",
-              "to": "WaterArrow 1"
+              "to": "WaterArrow 1",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "water-arrow-1"
             },
             {
               "from": "BackSteb",
-              "to": "WaterArrow 1"
+              "to": "WaterArrow 1",
+              "from_animation_id": "back-step",
+              "to_animation_id": "water-arrow-1"
             },
             {
               "from": "TailSlash High",
-              "to": "WaterArrow 2"
+              "to": "WaterArrow 2",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "water-arrow-2"
             },
             {
               "from": "TailSlash Down",
-              "to": "WaterArrow 2"
+              "to": "WaterArrow 2",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "water-arrow-2"
             },
             {
               "from": "BackSteb",
-              "to": "WaterArrow 2"
+              "to": "WaterArrow 2",
+              "from_animation_id": "back-step",
+              "to_animation_id": "water-arrow-2"
             },
             {
               "from": "Dash",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "Dash",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "Dash",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "Dash",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "BackSteb",
-              "to": "TailAttackDown"
+              "to": "TailAttackDown",
+              "from_animation_id": "back-step",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "BackSteb",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "back-step",
+              "to_animation_id": "tail-slash-high"
             }
           ],
           "abilities": [
@@ -412,107 +494,159 @@
           "combos": [
             {
               "from": "Swim L",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "swim-l",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "Swim R",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "swim-r",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "ShortDash",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "Swim L",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "swim-l",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "Swim R",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "swim-r",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "ShortDash",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "TailSlah High",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "TailSlah Down",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "ShortDash",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "TailSlah High",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "TailSlah Down",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "ShortDash",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "short-dash",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "Swim L",
-              "to": "ShortDash"
+              "to": "ShortDash",
+              "from_animation_id": "swim-l",
+              "to_animation_id": "short-dash"
             },
             {
               "from": "Swim R",
-              "to": "ShortDash"
+              "to": "ShortDash",
+              "from_animation_id": "swim-r",
+              "to_animation_id": "short-dash"
             },
             {
               "from": "TailSlash High",
-              "to": "WaterArrow 1"
+              "to": "WaterArrow 1",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "water-arrow-1"
             },
             {
               "from": "TailSlash Down",
-              "to": "WaterArrow 1"
+              "to": "WaterArrow 1",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "water-arrow-1"
             },
             {
               "from": "BackSteb",
-              "to": "WaterArrow 1"
+              "to": "WaterArrow 1",
+              "from_animation_id": "back-step",
+              "to_animation_id": "water-arrow-1"
             },
             {
               "from": "TailSlash High",
-              "to": "WaterArrow 2"
+              "to": "WaterArrow 2",
+              "from_animation_id": "tail-slash-high",
+              "to_animation_id": "water-arrow-2"
             },
             {
               "from": "TailSlash Down",
-              "to": "WaterArrow 2"
+              "to": "WaterArrow 2",
+              "from_animation_id": "tail-slash-down",
+              "to_animation_id": "water-arrow-2"
             },
             {
               "from": "BackSteb",
-              "to": "WaterArrow 2"
+              "to": "WaterArrow 2",
+              "from_animation_id": "back-step",
+              "to_animation_id": "water-arrow-2"
             },
             {
               "from": "Dash",
-              "to": "TailAttack Down"
+              "to": "TailAttack Down",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "Dash",
-              "to": "TailAttack Up"
+              "to": "TailAttack Up",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-attack-up"
             },
             {
               "from": "Dash",
-              "to": "TailSlash Down"
+              "to": "TailSlash Down",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-slash-down"
             },
             {
               "from": "Dash",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "dash",
+              "to_animation_id": "tail-slash-high"
             },
             {
               "from": "BackSteb",
-              "to": "TailAttackDown"
+              "to": "TailAttackDown",
+              "from_animation_id": "back-step",
+              "to_animation_id": "tail-attack-down"
             },
             {
               "from": "BackSteb",
-              "to": "TailSlash High"
+              "to": "TailSlash High",
+              "from_animation_id": "back-step",
+              "to_animation_id": "tail-slash-high"
             }
           ],
           "abilities": [
@@ -823,7 +957,59 @@
         {
           "name": "LightningPoint"
         }
-      ]
+      ],
+      "behavior": {
+        "behavior_tree": "BT_AncientStingray",
+        "properties": {
+          "Tag Container Short Dash": [
+            "State.Monster.Skill.Fifteen",
+            "State.Monster.Skill.Sixteen",
+            "State.Monster.Skill.Seventeen"
+          ],
+          "Tag Container TailSlash_High": [
+            "State.Monster.Skill.Three",
+            "State.Monster.Skill.Four",
+            "State.Monster.Skill.Five",
+            "State.Monster.Skill.Fourtyeight",
+            "State.Monster.Skill.Fiftytwo"
+          ],
+          "Tag Container TailSlash_Down": [
+            "State.Monster.Skill.Six",
+            "State.Monster.Skill.Seven",
+            "State.Monster.Skill.Eight",
+            "State.Monster.Skill.Fourtyseven",
+            "State.Monster.Skill.Fiftyone"
+          ],
+          "Tag Container Swim_L": [
+            "State.Monster.Skill.Thirtyeight",
+            "State.Monster.Skill.One"
+          ],
+          "Tag Container Swim_R": [
+            "State.Monster.Skill.Thirtynine",
+            "State.Monster.Skill.Two"
+          ],
+          "Tag Container Back Steb": [
+            "State.Monster.Skill.Twentynine"
+          ],
+          "Max Combo": 4,
+          "Next Combo Trigger Tag": "None",
+          "HP Phase Ratio": 30.0,
+          "LightningNova Sphere Radius": 2000.0,
+          "Combat Acceptance Radius": 600.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Eighteen.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 1000.0,
+          "Use Custom Behavior Tree": true,
+          "Combat Area Shape": "E_CombatAreaShape::NewEnumerator1",
+          "Combat Area Sphere Radius": 2000.0,
+          "Pitch Rotation On Swim": false
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "baby-turtle",
@@ -879,7 +1065,18 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 1000.0,
+          "Do Combat Action": false,
+          "Peace Wander Stop Time": 15.0,
+          "Peace Wander Delay": 5.0
+        },
+        "sight_radius": 10.0,
+        "lose_sight_radius": 10.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "banshee-boss",
@@ -1060,7 +1257,19 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_Banshee",
+        "properties": {
+          "Max Specters Count": 8,
+          "Special Pattern Trigger Tag": "Ability.Monster.Skill.Eight.On",
+          "FogRush Timer": 70.0,
+          "Fog Missile2 Asset": "Id_Monster_Banshee_FogMissile2",
+          "Specter Asset": "Id_Monster_Specter",
+          "Use Custom Behavior Tree": true
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "banshee-fog-missile2",
@@ -1133,7 +1342,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "black-durgon",
@@ -1184,7 +1394,12 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Pitch Rotation On Swim": false
+        }
+      }
     },
     {
       "slug": "bladehand",
@@ -1229,107 +1444,159 @@
           "combos": [
             {
               "from": "Slash L",
-              "to": "Slash Low"
+              "to": "Slash Low",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "slash-low"
             },
             {
               "from": "Slash Low",
-              "to": "Blade Down"
+              "to": "Blade Down",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "blade-down"
             },
             {
               "from": "Slash Low",
-              "to": "Blade Slash"
+              "to": "Blade Slash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "blade-slash"
             },
             {
               "from": "Slash R",
-              "to": "Blade VerticalSlash"
+              "to": "Blade VerticalSlash",
+              "from_animation_id": "slash-r",
+              "to_animation_id": "blade-vertical-slash"
             },
             {
               "from": "Slash Low",
-              "to": "Blade VerticalSlash"
+              "to": "Blade VerticalSlash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "blade-vertical-slash"
             },
             {
               "from": "Slash L",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Slash High",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "slash-high",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Blade Down",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "blade-down",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Blade Slash",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "blade-slash",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Blade Vertical",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "blade-vertical",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Slash L",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Slash High",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "slash-high",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Blade Down",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "blade-down",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Blade Slash",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "blade-slash",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Blade Vertical",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "blade-vertical",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Slash L",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Slash High",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "slash-high",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Blade Down",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "blade-down",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Blade Slash",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "blade-slash",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Blade Vertical",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "blade-vertical",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Slash R",
-              "to": "Attack OverheadSlash"
+              "to": "Attack OverheadSlash",
+              "from_animation_id": "slash-r",
+              "to_animation_id": "attack-overhead-slash"
             },
             {
               "from": "Slash Low",
-              "to": "Attack OverheadSlash"
+              "to": "Attack OverheadSlash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "attack-overhead-slash"
             },
             {
               "from": "UpperSlash",
-              "to": "Attack OverheadSlash"
+              "to": "Attack OverheadSlash",
+              "from_animation_id": "upper-slash",
+              "to_animation_id": "attack-overhead-slash"
             },
             {
               "from": "Slash R",
-              "to": "Attack DownSlash"
+              "to": "Attack DownSlash",
+              "from_animation_id": "slash-r",
+              "to_animation_id": "attack-down-slash"
             },
             {
               "from": "Slash Low",
-              "to": "Attack DownSlash"
+              "to": "Attack DownSlash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "attack-down-slash"
             },
             {
               "from": "UpperSlash",
-              "to": "Attack DownSlash"
+              "to": "Attack DownSlash",
+              "from_animation_id": "upper-slash",
+              "to_animation_id": "attack-down-slash"
             }
           ],
           "abilities": [
@@ -1429,107 +1696,159 @@
           "combos": [
             {
               "from": "Slash L",
-              "to": "Slash Low"
+              "to": "Slash Low",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "slash-low"
             },
             {
               "from": "Slash Low",
-              "to": "Blade Down"
+              "to": "Blade Down",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "blade-down"
             },
             {
               "from": "Slash Low",
-              "to": "Blade Slash"
+              "to": "Blade Slash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "blade-slash"
             },
             {
               "from": "Slash R",
-              "to": "Blade VerticalSlash"
+              "to": "Blade VerticalSlash",
+              "from_animation_id": "slash-r",
+              "to_animation_id": "blade-vertical-slash"
             },
             {
               "from": "Slash Low",
-              "to": "Blade VerticalSlash"
+              "to": "Blade VerticalSlash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "blade-vertical-slash"
             },
             {
               "from": "Slash L",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Slash High",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "slash-high",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Blade Down",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "blade-down",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Blade Slash",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "blade-slash",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Blade Vertical",
-              "to": "UpperSlash"
+              "to": "UpperSlash",
+              "from_animation_id": "blade-vertical",
+              "to_animation_id": "upper-slash"
             },
             {
               "from": "Slash L",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Slash High",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "slash-high",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Blade Down",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "blade-down",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Blade Slash",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "blade-slash",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Blade Vertical",
-              "to": "UpperSlash Cannon"
+              "to": "UpperSlash Cannon",
+              "from_animation_id": "blade-vertical",
+              "to_animation_id": "upper-slash-cannon"
             },
             {
               "from": "Slash L",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "slash-l",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Slash High",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "slash-high",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Blade Down",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "blade-down",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Blade Slash",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "blade-slash",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Blade Vertical",
-              "to": "Thrust"
+              "to": "Thrust",
+              "from_animation_id": "blade-vertical",
+              "to_animation_id": "thrust"
             },
             {
               "from": "Slash R",
-              "to": "Attack OverheadSlash"
+              "to": "Attack OverheadSlash",
+              "from_animation_id": "slash-r",
+              "to_animation_id": "attack-overhead-slash"
             },
             {
               "from": "Slash Low",
-              "to": "Attack OverheadSlash"
+              "to": "Attack OverheadSlash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "attack-overhead-slash"
             },
             {
               "from": "UpperSlash",
-              "to": "Attack OverheadSlash"
+              "to": "Attack OverheadSlash",
+              "from_animation_id": "upper-slash",
+              "to_animation_id": "attack-overhead-slash"
             },
             {
               "from": "Slash R",
-              "to": "Attack DownSlash"
+              "to": "Attack DownSlash",
+              "from_animation_id": "slash-r",
+              "to_animation_id": "attack-down-slash"
             },
             {
               "from": "Slash Low",
-              "to": "Attack DownSlash"
+              "to": "Attack DownSlash",
+              "from_animation_id": "slash-low",
+              "to_animation_id": "attack-down-slash"
             },
             {
               "from": "UpperSlash",
-              "to": "Attack DownSlash"
+              "to": "Attack DownSlash",
+              "from_animation_id": "upper-slash",
+              "to_animation_id": "attack-down-slash"
             }
           ],
           "abilities": [
@@ -1880,7 +2199,100 @@
           "name": "Shell"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_Bladehand_Combat",
+        "properties": {
+          "Tag Container Slash Left": [
+            "State.Monster.Skill.One"
+          ],
+          "Tag Container Slash Right": [
+            "State.Monster.Skill.Two"
+          ],
+          "Tag Container Slash High": [
+            "State.Monster.Skill.Three",
+            "State.Monster.Skill.Four"
+          ],
+          "Tag Container Slash Low": [
+            "State.Monster.Skill.Five",
+            "State.Monster.Skill.Six"
+          ],
+          "Tag Container Blade Down": [
+            "State.Monster.Skill.Eight",
+            "State.Monster.Skill.Seven",
+            "State.Monster.Skill.Nine"
+          ],
+          "Tag Container Blade Slash": [
+            "State.Monster.Skill.Ten",
+            "State.Monster.Skill.Eleven",
+            "State.Monster.Skill.Twelve"
+          ],
+          "Tag Container Blade Vertical": [
+            "State.Monster.Skill.Thirteen",
+            "State.Monster.Skill.Fourteen",
+            "State.Monster.Skill.Fifteen"
+          ],
+          "Tag Container UpperSlash": [
+            "State.Monster.Skill.Sixteen",
+            "State.Monster.Skill.Seventeen",
+            "State.Monster.Skill.Eighteen",
+            "State.Monster.Skill.Nineteen",
+            "State.Monster.Skill.Twenty",
+            "State.Monster.Skill.Twentyone"
+          ],
+          "Tag Container UpperSlash Cannon": [
+            "State.Monster.Skill.Twentytwo",
+            "State.Monster.Skill.Twentythree",
+            "State.Monster.Skill.Twentyfour",
+            "State.Monster.Skill.Twentyfive",
+            "State.Monster.Skill.Twentysix",
+            "State.Monster.Skill.Twentyseven"
+          ],
+          "Tag Container Thrust": [
+            "State.Monster.Skill.Twentyeight",
+            "State.Monster.Skill.Twentynine",
+            "State.Monster.Skill.Thirty",
+            "State.Monster.Skill.Thirtyone",
+            "State.Monster.Skill.Thirtytwo",
+            "State.Monster.Skill.Thirtythree"
+          ],
+          "Tag Container OverheadSlash": [
+            "State.Monster.Skill.Thirtyfour",
+            "State.Monster.Skill.Thirtyfive",
+            "State.Monster.Skill.Thirtysix",
+            "State.Monster.Skill.Thirtyseven"
+          ],
+          "Next Combo Trigger Tag": "None",
+          "Current Combo": "E_Bladehand_Ability::NewEnumerator1",
+          "Attack Phase Add Min": 100,
+          "Attack Phase Add Max": 250,
+          "Combat Area Extent": 1600.0,
+          "Fire Sparks Tick Time": 0.07,
+          "Fire Sparks Distance from Self": 800.0,
+          "Fire Sparks Radius": 220.0,
+          "Defense Actor": "BP_Bladehand_Defense_C",
+          "Ballista Shockwave Radius": 250.0,
+          "Slash_L/R": 50.0,
+          "Slash_High/Low": 50.0,
+          "Blade_Slash/Down": 50.0,
+          "RushSlash_High/Low": 50.0,
+          "Cannon/Rush": 50.0,
+          "Move/Move_Back": 50.0,
+          "FireSparks_In/Out": 50.0,
+          "OverheadSlash Shockwave Radius": 160.0,
+          "Iron Hand": "BP_Bladehand_Stinghand_C",
+          "BackStep": 20.0,
+          "Do Peace Action": false,
+          "Combat Acceptance Radius": 300.0,
+          "Check Ability Distance": 700.0,
+          "Use Custom Behavior Tree": true,
+          "Combat Area Shape": "E_CombatAreaShape::NewEnumerator1",
+          "Combat Area Sphere Radius": 1150.0
+        },
+        "sight_radius": 2500.0,
+        "lose_sight_radius": 3000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "bluefin-tuna",
@@ -1931,7 +2343,12 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Pitch Rotation On Swim": false
+        }
+      }
     },
     {
       "slug": "bluemarlin",
@@ -1991,7 +2408,17 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_BlueMarlin_Combat",
+        "properties": {
+          "Peace BehaviorTree": "BT_BlueMarlin_Peace",
+          "Peace Distance": 1200.0
+        },
+        "sight_radius": 500.0,
+        "lose_sight_radius": 10000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "bone-prison",
@@ -2040,7 +2467,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "cave-troll",
@@ -2303,7 +2731,19 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_CaveTroll",
+        "properties": {
+          "Combo Trigger Ratio": 60.0,
+          "Subtract Combo Trigger Ratio": 15.0,
+          "Phase Subtract": 1000,
+          "Phase Add Min": 250,
+          "Phase Add Max": 300,
+          "Use Custom Behavior Tree": true
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "cerberus",
@@ -2524,7 +2964,37 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_Cerberus_ConditionalActionWhileCombat",
+        "properties": {
+          "Use Roar": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Peace Distance": 500.0,
+          "Do Ability While Peace": true,
+          "Peace Trigger Tag": [
+            "Ability.Monster.Skill.Nine.On"
+          ],
+          "Peace Ability Rates": [
+            100
+          ],
+          "Peace Check Distance": 600.0,
+          "Conditional Action BehaviorTree While Combat": "BT_Cerberus_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 300.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 350.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "cockatrice",
@@ -2718,7 +3188,46 @@
         "description": "A deep amethyst egg, flecked with myriad tiny spots, lies before thee. With gentle care and tender affection, \u2018tis said the egg may yet be persuaded to hatch."
       },
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_Cockatrice_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_Cockatrice_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 100.0,
+          "Set Height While Tracking": false,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "Combat Ability Attack Delay": 0.7,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 1000.0
+        },
+        "hearing_range": 500.0,
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "crocodilian",
@@ -2906,7 +3415,17 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_Crocodilian_Combat",
+        "properties": {
+          "Peace Distance": 900.0,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1700.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "crystal",
@@ -2961,7 +3480,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "cuttlefish",
@@ -3034,7 +3554,17 @@
         {
           "name": "InkCloud"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_Cuttlefish_Combat",
+        "properties": {
+          "Peace BehaviorTree": "BT_Cuttlefish_Peace",
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 200.0,
+        "lose_sight_radius": 1000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "cyclops",
@@ -3266,7 +3796,24 @@
           "name": "FallingRock"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_Cyclops",
+        "properties": {
+          "Riot Cancel HP": 350.0,
+          "Stomp Timer": 30.0,
+          "Combo Started": true,
+          "Blackboard HPRatio Initial Value": 66.0,
+          "Blackboard HPRatio Subtract Value": 33.0,
+          "Rock Spawn Count": 20,
+          "Rock Spawn Adding Height": -30.0,
+          "Rock Shadow Preceding Time": 1.5,
+          "Use Custom Behavior Tree": true
+        },
+        "sight_radius": 1500.0,
+        "lose_sight_radius": 4000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "death-beetle",
@@ -3430,7 +3977,24 @@
           "name": "Sting"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 500.0,
+          "Combat Acceptance Radius": 140.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Two.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 200.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "death-skull",
@@ -3580,7 +4144,30 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "MSESizeX": 3.5999999046325684,
+          "MSESizeY": 5.0,
+          "GlowingScale": 2.0,
+          "BigGlowingTime": 0.30000001192092896,
+          "SmallGlowingTime": 0.44999998807907104,
+          "Peace Distance": 200.0,
+          "Combat Acceptance Radius": 250.0,
+          "Set Height While Tracking": false,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 270.0,
+          "Draw Recog Range": 1200.0
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "demon-bat",
@@ -3743,7 +4330,41 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn Trigger Tag": [
+            "Ability.Monster.Skill.Three.On"
+          ],
+          "Action Once After Spawn Ability Rates": [
+            100
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 350.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 400.0,
+          "Draw Recog Range": 600.0
+        },
+        "sight_radius": 600.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "demon-berserker",
@@ -3932,7 +4553,27 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Spinning Attack Angle": 38.0,
+          "Peace Distance": 650.0,
+          "Combat Acceptance Radius": 160.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 200.0,
+          "Combat Ability Attack Delay": 0.75,
+          "Combat Ability Attack Delay Random Deviation": 0.15,
+          "Draw Recog Range": 950.0
+        },
+        "sight_radius": 950.0,
+        "lose_sight_radius": 1400.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "demon-centaur",
@@ -4121,7 +4762,33 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Sword": true,
+          "Shield": true,
+          "Peace Distance": 800.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_CentaurDemon_ConditionActionWhileCombat",
+          "Attach Effect While Tracking Action": [
+            "Id_MonsterEffect_CentaurDemon_CombatPhase"
+          ],
+          "Combat Acceptance Radius": 200.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "Combat Ability Attack Delay": 0.2,
+          "Combat Ability Attack Delay Random Deviation": 0.1,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "demon-dog",
@@ -4276,7 +4943,51 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "Mode.Alive.Combat",
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Action Once After Spawn Trigger Tag": [
+            "Event.AI.WakeUp"
+          ],
+          "Action Once After Spawn Ability Rates": [
+            100
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 600.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_DemonDog_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 180.0,
+          "Attach Effect While Do Ability Combat Action": [
+            "None"
+          ],
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 220.0,
+          "Draw Recog Range": 250.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 2100.0,
+        "peripheral_vision_angle": 80.0
+      }
     },
     {
       "slug": "demon-imp",
@@ -4418,7 +5129,19 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_DemonImp_Combat",
+        "properties": {
+          "Teleport Possible": true,
+          "Probabillity To Teleport": 50.0,
+          "Max Wave Count": 4,
+          "Peace Distance": 800.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "demonfly",
@@ -4594,185 +5317,33 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
-    },
-    {
-      "slug": "designdata-monster-monster-dreadspine-boneprison",
-      "name": "DesignData_Monster_Monster_Dreadspine_BonePrison",
-      "class_type": "Normal",
-      "creature_types": [],
-      "image": "Dreadspine",
-      "dungeons": [],
-      "grades": {
-        "Nightmare": {
-          "adv_point": null,
-          "exp_point": null,
-          "stats": {
-            "MaxHealthAdd": 50,
-            "PhysicalDamageWeapon": 0,
-            "MoveSpeedBase": 0,
-            "ActionSpeed": 0,
-            "StrengthBase": 15,
-            "VigorBase": 15,
-            "AgilityBase": 15,
-            "DexterityBase": 15,
-            "WillBase": 15,
-            "KnowledgeBase": 15,
-            "ResourcefulnessBase": 15,
-            "MagicResistance": 0,
-            "MagicalReduction": 0,
-            "FireMagicalReduction": 0,
-            "IceMagicalReduction": 0,
-            "LightMagicalReduction": 0,
-            "DarkMagicalReduction": 0,
-            "DivineMagicalReduction": 0,
-            "EvilMagicalReduction": 0,
-            "EarthMagicalReduction": 0,
-            "ProjectileReductionMod": 800,
-            "ImpactResistance": 5,
-            "MaxImpactEndurance": 5
-          },
-          "combos": [],
-          "abilities": [
-            "Dreadspine BonePrison Snare"
-          ]
-        }
-      },
-      "attacks": [],
-      "status_effects": [
-        {
-          "name": "BonePrsion Snare",
-          "icon": "Icon_Debuff_SkeletonWarlordBonePrison",
-          "tags": []
-        }
-      ],
-      "loot": [],
-      "hunting_loot": null,
-      "projectiles": [
-        {
-          "name": "BoneSpear"
-        }
-      ],
-      "aoe": []
-    },
-    {
-      "slug": "designdata-monster-monster-dreadspine-bonewall",
-      "name": "DesignData_Monster_Monster_Dreadspine_BoneWall",
-      "class_type": "Normal",
-      "creature_types": [],
-      "image": "Dreadspine",
-      "dungeons": [],
-      "grades": {
-        "Common": {
-          "adv_point": null,
-          "exp_point": null,
-          "stats": {
-            "MaxHealthAdd": -40,
-            "PhysicalDamageWeapon": 0,
-            "MoveSpeedBase": 0,
-            "ActionSpeed": 0,
-            "StrengthBase": 15,
-            "VigorBase": 15,
-            "AgilityBase": 15,
-            "DexterityBase": 15,
-            "WillBase": 15,
-            "KnowledgeBase": 15,
-            "ResourcefulnessBase": 15,
-            "MagicResistance": 0,
-            "MagicalReduction": 0,
-            "FireMagicalReduction": 0,
-            "IceMagicalReduction": 0,
-            "LightMagicalReduction": 0,
-            "DarkMagicalReduction": 0,
-            "DivineMagicalReduction": 0,
-            "EvilMagicalReduction": 0,
-            "EarthMagicalReduction": 0,
-            "ProjectileReductionMod": 150,
-            "ImpactResistance": 5,
-            "MaxImpactEndurance": 5
-          },
-          "combos": [],
-          "abilities": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "SelfDestruction Explosive Range": 400.0,
+          "Do Conditional Top Priority Action": true,
+          "Conditional Top Priority Action Behavior Tree": "BT_DemonFly_Common_TopPriorityConditionalAction",
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.AI.Stop.Wander"
+          ],
+          "Peace Distance": 600.0,
+          "Get Target While Combat": false,
+          "Combat Acceptance Radius": 800.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 1000.0,
+          "Draw Recog Range": 1000.0
         },
-        "Elite": {
-          "adv_point": null,
-          "exp_point": null,
-          "stats": {
-            "MaxHealthAdd": -40,
-            "PhysicalDamageWeapon": 0,
-            "MoveSpeedBase": 0,
-            "ActionSpeed": 0,
-            "StrengthBase": 15,
-            "VigorBase": 15,
-            "AgilityBase": 15,
-            "DexterityBase": 15,
-            "WillBase": 15,
-            "KnowledgeBase": 15,
-            "ResourcefulnessBase": 15,
-            "MagicResistance": 0,
-            "MagicalReduction": 0,
-            "FireMagicalReduction": 0,
-            "IceMagicalReduction": 0,
-            "LightMagicalReduction": 0,
-            "DarkMagicalReduction": 0,
-            "DivineMagicalReduction": 0,
-            "EvilMagicalReduction": 0,
-            "EarthMagicalReduction": 0,
-            "ProjectileReductionMod": 150,
-            "ImpactResistance": 5,
-            "MaxImpactEndurance": 5
-          },
-          "combos": [],
-          "abilities": []
-        },
-        "Nightmare": {
-          "adv_point": null,
-          "exp_point": null,
-          "stats": {
-            "MaxHealthAdd": -40,
-            "PhysicalDamageWeapon": 0,
-            "MoveSpeedBase": 0,
-            "ActionSpeed": 0,
-            "StrengthBase": 15,
-            "VigorBase": 15,
-            "AgilityBase": 15,
-            "DexterityBase": 15,
-            "WillBase": 15,
-            "KnowledgeBase": 15,
-            "ResourcefulnessBase": 15,
-            "MagicResistance": 0,
-            "MagicalReduction": 0,
-            "FireMagicalReduction": 0,
-            "IceMagicalReduction": 0,
-            "LightMagicalReduction": 0,
-            "DarkMagicalReduction": 0,
-            "DivineMagicalReduction": 0,
-            "EvilMagicalReduction": 0,
-            "EarthMagicalReduction": 0,
-            "ProjectileReductionMod": 150,
-            "ImpactResistance": 5,
-            "MaxImpactEndurance": 5
-          },
-          "combos": [],
-          "abilities": []
-        }
-      },
-      "attacks": [],
-      "status_effects": [
-        {
-          "name": "BonePrsion Snare",
-          "icon": "Icon_Debuff_SkeletonWarlordBonePrison",
-          "tags": []
-        }
-      ],
-      "loot": [],
-      "hunting_loot": null,
-      "projectiles": [
-        {
-          "name": "BoneSpear"
-        }
-      ],
-      "aoe": []
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1100.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "dire-wolf",
@@ -4977,7 +5548,8 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "dreadspine",
@@ -5208,7 +5780,20 @@
         {
           "name": "BoneThornField"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "FX Duration": 2.3,
+          "Combat Acceptance Radius": 600.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 800.0
+        }
+      }
     },
     {
       "slug": "dwarf-axeman",
@@ -5374,7 +5959,12 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 1300.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "dwarf-handcannoneer",
@@ -5537,7 +6127,12 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 1300.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "dwarf-knight",
@@ -5737,7 +6332,12 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "dwarf-mauler",
@@ -5896,7 +6496,12 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 1300.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "fire-colossus",
@@ -6216,7 +6821,21 @@
         {
           "name": "LavaEruption"
         }
-      ]
+      ],
+      "behavior": {
+        "behavior_tree": "BT_FireColossus_Combat",
+        "properties": {
+          "Max Combo Count": 3,
+          "NextOutburstSegmentIndex": 2,
+          "GC_Delay_Time-Phase2_Persistent": 5.0,
+          "GC_Delay_Time-Phase3_Persistent": 5.0,
+          "Use Custom Behavior Tree": true,
+          "Combat Area Shape": "E_CombatAreaShape::NewEnumerator1",
+          "Combat Area Sphere Radius": 1590.0,
+          "ChracterFXActivateTag": "None"
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "fire-elemental",
@@ -6383,7 +7002,12 @@
           "name": "HeartProjectile"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "fire-lizard",
@@ -6555,7 +7179,12 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "fire-spirit",
@@ -6722,7 +7351,12 @@
           "name": "Fireball"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "flame-boar",
@@ -6877,7 +7511,11 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 600.0,
+        "lose_sight_radius": 900.0
+      }
     },
     {
       "slug": "frost-demon",
@@ -7030,7 +7668,27 @@
         {
           "name": "BlizzardArea"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Min": 200,
+          "Max": 250,
+          "Blizzard Radius": 100.0,
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 550.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 650.0,
+          "Draw Recog Range": 1100.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-elemental",
@@ -7117,7 +7775,20 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_FrostElemental",
+        "properties": {
+          "Acceptance Radius": 70.0,
+          "Explosion Radius": 600.0,
+          "Explosion Time": 3.0,
+          "Do Peace Action": false,
+          "Do Combat Action": false,
+          "Use Custom Behavior Tree": true,
+          "Draw Recog Range": 3000.0
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-giant-berserker",
@@ -7297,7 +7968,29 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Step": true,
+          "GroundDestroy Radius": 300.0,
+          "Grade": 1,
+          "Peace Distance": 1000.0,
+          "Combat Acceptance Radius": 300.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Six.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 400.0,
+          "Combat Ability Attack Delay": 0.5,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 1200.0
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 1900.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-giant-shielder",
@@ -7454,7 +8147,24 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "ice Spread Shock Wave Radius": 100.0,
+          "Peace Distance": 800.0,
+          "Combat Acceptance Radius": 260.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 320.0,
+          "Combat Ability Attack Delay": 0.5,
+          "Combat Ability Attack Delay Random Deviation": 0.1,
+          "Draw Recog Range": 1100.0
+        }
+      }
     },
     {
       "slug": "frost-imp",
@@ -7608,7 +8318,30 @@
         {
           "name": "IceMine"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_FrostImp_Combat",
+        "properties": {
+          "Teleport Possible": true,
+          "FrostWave Radius": 250.0,
+          "FrostWave Time": 2.5,
+          "FrostWave Omen": 1.5,
+          "Peace Distance": 600.0,
+          "Do Ability While Peace": true,
+          "Combat Acceptance Radius": 500.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 600.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-sentinel",
@@ -7765,7 +8498,31 @@
         {
           "name": "ColdBlast"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Cold Blast Radius": 200.0,
+          "FrostNova Radius": 180.0,
+          "Omen Time": 2.0,
+          "LightStrength": 5.0,
+          "FrostNova RadiusGC": 320.0,
+          "Do Peace Action": false,
+          "Do Tracking While Combat": false,
+          "Combat Acceptance Radius": 1000.0,
+          "Use Rotate Before Ability": false,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 1200.0,
+          "Draw Recog Range": 650.0
+        },
+        "sight_radius": 650.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 130.0
+      }
     },
     {
       "slug": "frost-skeleton-archer",
@@ -7944,7 +8701,16 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Conditional Top Priority Action": false,
+          "Do Once": false,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ]
+        }
+      }
     },
     {
       "slug": "frost-skeleton-axeman",
@@ -8095,7 +8861,40 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_FrostSkeletonAxeman_ActionOnceAfterSpwan",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 600.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 2800.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 3000.0,
+          "Draw Recog Range": 600.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-skeleton-crossbowman",
@@ -8243,7 +9042,36 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Conditional Top Priority Action": true,
+          "Do Once": true,
+          "Conditional Top Priority Mode Action": "E_ActionWhileConditionalTopPriorityMode::NewEnumerator1",
+          "Conditional Top Priority Action Check Type": [
+            "E_BTCheckFloatCondition::NewEnumerator0",
+            "E_BTCheckFloatCondition::NewEnumerator1"
+          ],
+          "Condition Float Value": [
+            30.0,
+            350.0
+          ],
+          "Flee Distance": 900.0,
+          "Peace Distance": 500.0,
+          "Combat Acceptance Radius": 700.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 800.0,
+          "Draw Recog Range": 1100.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-skeleton-footman",
@@ -8330,7 +9158,34 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Action Once After Spawn BehaviorTree": "BT_FrostSkeletonFootman_ActionOnceAfterSpawn",
+          "Set Peace Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Peace Distance": 600.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Attach Effect While Tracking Action": [
+            "None"
+          ],
+          "Combat Acceptance Radius": 130.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Sixteen.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 195.0,
+          "Combat Ability Attack Delay": 0.2,
+          "ChracterFXDectivateTag": "Mode.Alive"
+        }
+      }
     },
     {
       "slug": "frost-skeleton-guardman",
@@ -8430,7 +9285,28 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Action Once After Spawn BehaviorTree": "BT_FrostSkeletonFootman_ActionOnceAfterSpawn",
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Combat Acceptance Radius": 125.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Eight.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 200.0,
+          "Combat Ability Attack Delay": 1.5,
+          "Combat Ability Attack Delay Random Deviation": 0.5
+        }
+      }
     },
     {
       "slug": "frost-skeleton-halberdier",
@@ -8588,7 +9464,44 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_FrostSkeletonHalberdier_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 140.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 260.0,
+          "Apply Wait Time By Distance": true,
+          "Combat Ability Attack Delay": 0.6,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 600.0,
+          "ChracterFXDectivateTag": "State.Monster.Stance.One"
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-skeleton-maceman",
@@ -8746,7 +9659,43 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Shield Class": "BP_FrostSkeletonMaceman_Shield_C",
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_FrostSkeletonMaceman_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 600.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 150.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Four.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "Apply Wait Time By Distance": true,
+          "Draw Recog Range": 600.0,
+          "ChracterFXDectivateTag": "State.Monster.Stance.One"
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-walker",
@@ -8937,7 +9886,22 @@
         {
           "name": "IceCloud Location"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "HP To Use IceCloud": 110.0,
+          "Stomach": false,
+          "Fungus": false,
+          "Conditional Action BehaviorTree While Combat": "BT_FrostWalker_ConditionalActoinWhileCombat",
+          "Set Height While Tracking": false,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Seven.On"
+          ]
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frost-wolf",
@@ -9145,7 +10109,8 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "frost-wyvern",
@@ -9655,7 +10620,121 @@
         "description": "Mystical egg, cool to the touch, encapsulating the delicate balance of fragility and resilience."
       },
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_FrostWyvern",
+        "properties": {
+          "Statue Count": 3,
+          "Max Combo": 3,
+          "Pushing Power": 20000.0,
+          "Distance To Determine Center": 1500.0,
+          "Next Combo Trigger Tag": "None",
+          "Tag Container TailAttack1": [
+            "State.Monster.Skill.One"
+          ],
+          "Tag Container TailAttack2": [
+            "State.Monster.Skill.Two",
+            "State.Monster.Skill.Three",
+            "State.Monster.Skill.Four",
+            "State.Monster.Skill.Five",
+            "State.Monster.Skill.Six",
+            "State.Monster.Skill.Seven"
+          ],
+          "Tag Container ForwardAttackL": [
+            "State.Monster.Skill.Eight",
+            "State.Monster.Skill.Nine",
+            "State.Monster.Skill.Ten"
+          ],
+          "Tag Container ForwardAttackR": [
+            "State.Monster.Skill.Eleven",
+            "State.Monster.Skill.Twelve",
+            "State.Monster.Skill.Thirteen"
+          ],
+          "Tag Container TwoHandAttack": [
+            "State.Monster.Skill.Fourteen",
+            "State.Monster.Skill.Fifteen",
+            "State.Monster.Skill.Sixteen",
+            "State.Monster.Skill.Seventeen",
+            "State.Monster.Skill.Eighteen"
+          ],
+          "Tag Container Breath Ground": [
+            "State.Monster.Skill.Nineteen",
+            "State.Monster.Skill.Twenty",
+            "State.Monster.Skill.Twentyone",
+            "State.Monster.Skill.Twentytwo",
+            "State.Monster.Skill.Twentythree",
+            "State.Monster.Skill.Twentyfour"
+          ],
+          "Tag Container Breath Air": [
+            "State.Monster.Skill.Twentyfive",
+            "State.Monster.Skill.Twentysix",
+            "State.Monster.Skill.Twentyseven",
+            "State.Monster.Skill.Twentyeight",
+            "State.Monster.Skill.Twentynine",
+            "State.Monster.Skill.Thirty"
+          ],
+          "Tag Container LeapAttack1": [
+            "State.Monster.Skill.Thirtyone",
+            "State.Monster.Skill.Thirtytwo",
+            "State.Monster.Skill.Thirtythree",
+            "State.Monster.Skill.Thirtyfour",
+            "State.Monster.Skill.Thirtyfive",
+            "State.Monster.Skill.Thirtysix"
+          ],
+          "Tag Container LeapAttack2": [
+            "State.Monster.Skill.Thirtyseven",
+            "State.Monster.Skill.Thirtyeight",
+            "State.Monster.Skill.Thirtynine",
+            "State.Monster.Skill.Fourty",
+            "State.Monster.Skill.Fourtyone"
+          ],
+          "BreathBall Explosion Radius": 160.0,
+          "Tag Container LeapAttack3": [
+            "State.Monster.Skill.Fourtytwo",
+            "State.Monster.Skill.Fourtythree",
+            "State.Monster.Skill.Fourtyfour",
+            "State.Monster.Skill.Fourtyfive",
+            "State.Monster.Skill.Fourtysix"
+          ],
+          "TwoHandAttack Radius": 500.0,
+          "LeapAttack3 Radius": 280.0,
+          "Over Distance From Actor To Leap": 200.0,
+          "PhaseMin_TailAttack1": 100,
+          "PhaseMax_TailAttack1": 300,
+          "PhaseMin_TailAttack2": 150,
+          "PhaseMax_TailAttack2": 350,
+          "PhaseMin_ForwardAttackL": 100,
+          "PhaseMax_ForwardAttackL": 250,
+          "PhaseMin_ForwardAttackR": 100,
+          "PhaseMax_ForwardAttackR": 250,
+          "PhaseMin_BreathGround": 100,
+          "PhaseMax_BreathGround": 250,
+          "PhaseMin_BreathAir": 100,
+          "PhaseMax_BreathAir": 300,
+          "PhaseMin_LeapAttack1": 150,
+          "PhaseMax_LeapAttack1": 350,
+          "PhaseMin_LeapAttack2": 200,
+          "PhaseMax_LeapAttack2": 400,
+          "PhaseMin_LeapAttack3": 150,
+          "PhaseMax_LeapAttack3": 350,
+          "Pushing Wind VFX Radius": 1800.0,
+          "Did Special": [
+            false,
+            false,
+            false
+          ],
+          "Use Statue": true,
+          "Launch Radius": 1000.0,
+          "Jump High": 30.0,
+          "HP Phase Ratio": 25.0,
+          "Do Peace Action": false,
+          "Combat Acceptance Radius": 300.0,
+          "Check Ability Distance": 2000.0,
+          "Use Custom Behavior Tree": true,
+          "Combat Area Shape": "E_CombatAreaShape::NewEnumerator1"
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frostweaver",
@@ -9753,7 +10832,38 @@
         {
           "name": "SpiderWeb"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Spawn Correction Height": -70.0,
+          "Faild Spaw Correction Height": 100.0,
+          "HangOn State": true,
+          "Action Once After Spawn BehaviorTree": "BT_IceGiantSpider_ActionOnceAfterSpawn",
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 60.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 160.0,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "frozen-ghost",
@@ -9931,7 +11041,27 @@
         {
           "name": "FrozenField"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Max": 400,
+          "Min": 200,
+          "HP To Use Flee": 100.0,
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 600.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Five.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 700.0,
+          "Draw Recog Range": 1100.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ghost-king",
@@ -10097,7 +11227,45 @@
         {
           "name": "DebuffArea"
         }
-      ]
+      ],
+      "behavior": {
+        "behavior_tree": "BT_GhostKing",
+        "combat_behavior_tree": "BT_GhostKing_EatingPhase",
+        "properties": {
+          "CurseOfChiling Apply Cycle": 0.4,
+          "Earthquake Timer": 60.0,
+          "Earthquake Jump Height": 53.0,
+          "Earthquake Launch XY": 150.0,
+          "Earthquake Launch Z": 500.0,
+          "Earthquake Damage Ratio Stack": 0.5,
+          "Earthquake Damage Base": 3.0,
+          "Earthquake Summonee Count": 3,
+          "Eating Acceptance Radius": 160.0,
+          "Eating Chase Time": 10.0,
+          "Teleport Launch XY": 400.0,
+          "Teleport Launch Z": 250.0,
+          "Teleport Attack Radius": 250.0,
+          "Teleport Acceptance Radius": 90.0,
+          "Teleport Invisible Time": 1.5,
+          "Teleport Subtract Ratio Per Success": 9.0,
+          "Teleport Damage Ratio Stack": 5.0,
+          "Teleport Damage Base": 30.0,
+          "Scream HPRatio Cycle": 20.0,
+          "Scream Damage Ratio Stack": 7.0,
+          "Scream Damage Base": 75.0,
+          "Summon HP Ratio": 66.0,
+          "In Monster Id": "Id_Monster_GhostKing_SmallGhost",
+          "Do Peace Action": false,
+          "Do Combat Action": false,
+          "Combat Acceptance Radius": 5000.0,
+          "Check Ability Distance": 1200.0,
+          "Combat Ability Attack Delay": 30.0,
+          "Use Custom Behavior Tree": true
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ghoul",
@@ -10276,7 +11444,33 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 500.0,
+          "Do Ability While Peace": true,
+          "Peace Trigger Tag": [
+            "Ability.Monster.Skill.Six.On"
+          ],
+          "Peace Ability Rates": [
+            100
+          ],
+          "Peace Check Distance": 500.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_Ghoul_CombatConditional",
+          "Combat Acceptance Radius": 170.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 220.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "giant-bat",
@@ -10459,7 +11653,49 @@
         "description": "A pelt with a velvety texture."
       },
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Action Once After Spawn Trigger Tag": [
+            "Ability.Monster.Skill.Four.On"
+          ],
+          "Action Once After Spawn Ability Rates": [
+            100
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GiantBat_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 90.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 135.0,
+          "Combat Ability Attack Delay": 0.25,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 3000.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "giant-centipede",
@@ -10624,7 +11860,30 @@
         {
           "name": "PoisonRoad"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "FleePhaseHP": 40.0,
+          "FleePhase Probability": 30.0,
+          "Peace Distance": 900.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GiantCentipede_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 90.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 130.0,
+          "Combat Ability Attack Delay": 0.4,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 1200.0
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 1900.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "giant-dragonfly",
@@ -10767,7 +12026,27 @@
           "name": "GiantDragonfly PoisonSting"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 500.0,
+          "Combat Acceptance Radius": 350.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 400.0,
+          "Apply Wait Time By Distance": true,
+          "Combat Ability Attack Delay": 0.5,
+          "Combat Ability Attack Delay Random Deviation": 0.15,
+          "Draw Recog Range": 900.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "giant-jellyfish-giant-jellyfish",
@@ -10968,7 +12247,18 @@
         {
           "name": "JellyfishMine"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_GiantJellyfish_Combat",
+        "properties": {
+          "Peace Distance": 600.0,
+          "Draw Recog Range": 1000.0,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1700.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "giant-jellyfish-small-jellyfish",
@@ -11100,7 +12390,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "giant-spider",
@@ -11285,7 +12576,40 @@
         {
           "name": "CobWeb Nightmare"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 700.0,
+          "Do Ability While Peace": true,
+          "Peace Trigger Tag": [
+            "Ability.Monster.Skill.Three.On"
+          ],
+          "Peace Ability Rates": [
+            100
+          ],
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Three"
+          ],
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GiantSpider_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 100.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 150.0,
+          "Combat Ability Attack Delay": 0.3,
+          "Combat Ability Attack Delay Random Deviation": 0.1,
+          "Draw Recog Range": 750.0
+        },
+        "sight_radius": 750.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "giant-worm",
@@ -11485,7 +12809,43 @@
         {
           "name": "PoisonArea"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Min": 150,
+          "Max": 250,
+          "Under Ground": true,
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_GiantWorm_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Do Peace Action": false,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GiantWorm_ConditionalActionWhileCombat",
+          "Do Tracking While Combat": false,
+          "Combat Acceptance Radius": 3000.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Seven.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "Combat Ability Attack Delay": 0.5,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 1500.0
+        },
+        "sight_radius": 1500.0,
+        "lose_sight_radius": 2500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "goblin-archer",
@@ -11665,7 +13025,30 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "FleePhaseHP": 20.0,
+          "FleePhaseProbability": 25.0,
+          "Peace Distance": 1200.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GoblinArcher_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 500.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 600.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.1,
+          "Draw Recog Range": 1200.0
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "goblin-axeman",
@@ -11838,7 +13221,28 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "FleePhaseProbability": 20.0,
+          "FleePhaseHP": 25.0,
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 130.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 200.0,
+          "Combat Ability Attack Delay": 0.5,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "goblin-bolaslinger",
@@ -12017,7 +13421,34 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "FleePhaseProbability": 25.0,
+          "FleePhaseHP": 20.0,
+          "Peace Distance": 1000.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GoblinBolaslinger_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 450.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On",
+            "Ability.Monster.Skill.Two.On",
+            "Ability.Monster.Skill.Three.On"
+          ],
+          "Combat Ability Rates": [
+            33,
+            33,
+            34
+          ],
+          "Check Ability Distance": 550.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.1,
+          "Draw Recog Range": 900.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "goblin-mage",
@@ -12167,7 +13598,34 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Conditional Top Priority Action": true,
+          "Do Once": true,
+          "Conditional Top Priority Action Behavior Tree": "BT_GoblinMage_ConditionalTopPriorityAction",
+          "Peace Distance": 1000.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GoblinMage_ConditionalActionWhileCombat",
+          "Attach Effect While Tracking Action": [
+            "Id_MonsterEffect_GoblinMage_CombatState"
+          ],
+          "Combat Acceptance Radius": 550.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 600.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.3,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "goblin-warrior",
@@ -12368,7 +13826,30 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "FleePhaseHP": 25.0,
+          "FleePhaseProbability": 20.0,
+          "Peace Distance": 1200.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GoblinWarrior_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 110.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 150.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "grimsley",
@@ -12446,7 +13927,30 @@
         {
           "name": "IceMine"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_FrostImp_Combat",
+        "properties": {
+          "Teleport Possible": true,
+          "FrostWave Radius": 250.0,
+          "FrostWave Time": 2.5,
+          "FrostWave Omen": 1.5,
+          "Peace Distance": 600.0,
+          "Do Ability While Peace": true,
+          "Combat Acceptance Radius": 500.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 600.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "grottox",
@@ -12539,7 +14043,39 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Combo Count": 1,
+          "Skill probability": 70.0,
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 500.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Attach Effect While Tracking Action": [
+            "None"
+          ],
+          "Combat Acceptance Radius": 170.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "harpy",
@@ -12694,7 +14230,24 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 200.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 300.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "hell-maggot",
@@ -12850,7 +14403,24 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 200.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "DeactivateCharacterFXOnTagAttach": true
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "hermit-crab",
@@ -12906,7 +14476,17 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 700.0,
+          "Peace Check Distance": 700.0,
+          "Do Combat Action": false
+        },
+        "sight_radius": 100.0,
+        "lose_sight_radius": 100.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ice-giant-spider",
@@ -13082,7 +14662,38 @@
         {
           "name": "SpiderWeb"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Spawn Correction Height": -70.0,
+          "Faild Spaw Correction Height": 100.0,
+          "HangOn State": true,
+          "Action Once After Spawn BehaviorTree": "BT_IceGiantSpider_ActionOnceAfterSpawn",
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 60.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 160.0,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ice-harpy",
@@ -13238,7 +14849,35 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "ModeChage": 70.0,
+          "Max": 602,
+          "Min": 400,
+          "Whirlwind Circle Direction From Self": 52.0,
+          "Whirlwind Circle Distance From Self": 800.0,
+          "Whirlwind Circle Radius": 820.0,
+          "Whirlwind Tick Speed": 0.07,
+          "Whirlwind Tick Total Count": 17.0,
+          "Whirlwind Rotation Angle By Tick": 5.0,
+          "IceHarpy Class": "BP_IceHarpy_Common_C",
+          "Transform Scale Method": "ESpawnActorScaleMethod::MultiplyWithRoot",
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 600.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 750.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ice-hound",
@@ -13399,7 +15038,26 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Max": 200,
+          "Min": 150,
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 150.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 200.0,
+          "Draw Recog Range": 1300.0
+        },
+        "sight_radius": 1300.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ice-kobold-archer",
@@ -13563,7 +15221,37 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 1200.0,
+          "Do Ability While Peace": true,
+          "Peace Trigger Tag": [
+            "Ability.Monster.Skill.Six.On",
+            "Ability.Monster.Skill.Seven.On",
+            "Ability.Monster.Skill.Eight.On"
+          ],
+          "Peace Ability Rates": [
+            33,
+            33,
+            34
+          ],
+          "Combat Acceptance Radius": 500.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 600.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.1,
+          "Draw Recog Range": 1200.0
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ice-kobold-axeman",
@@ -13744,7 +15432,42 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Shield Class": "BP_IceKoboldAxeman_Shield_C",
+          "Peace Distance": 600.0,
+          "Do Ability While Peace": true,
+          "Peace Trigger Tag": [
+            "Ability.Monster.Skill.Seven.On",
+            "Ability.Monster.Skill.Eight.On",
+            "Ability.Monster.Skill.Nine.On",
+            "Ability.Monster.Skill.Ten.On"
+          ],
+          "Peace Ability Rates": [
+            25,
+            25,
+            25,
+            25
+          ],
+          "Combat Acceptance Radius": 130.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On",
+            "Ability.Monster.Skill.Two.On"
+          ],
+          "Combat Ability Rates": [
+            50,
+            50
+          ],
+          "Check Ability Distance": 180.0,
+          "Combat Ability Attack Delay": 0.4,
+          "Combat Ability Attack Delay Random Deviation": 0.1,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ice-spider",
@@ -13907,7 +15630,27 @@
         {
           "name": "FrostPool"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "SelfDestruct Radius": 200.0,
+          "SelfDestruct OmenTime": 1.4,
+          "SelfDestructHealth": 25.0,
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 80.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 120.0,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ifrit",
@@ -14027,7 +15770,9 @@
           "combos": [
             {
               "from": "2",
-              "to": "MeleeAttack3"
+              "to": "MeleeAttack3",
+              "from_animation_id": "2",
+              "to_animation_id": "melee-attack3"
             }
           ],
           "abilities": [
@@ -14111,7 +15856,12 @@
           "name": "Fireball Projectile"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "lava-golem",
@@ -14278,7 +16028,12 @@
         {
           "name": "Lava"
         }
-      ]
+      ],
+      "behavior": {
+        "sight_radius": 700.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "lava-slime",
@@ -14446,7 +16201,13 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_LavaSlime_Combat",
+        "properties": {
+          "Combat Acceptance Radius": 0.0
+        }
+      }
     },
     {
       "slug": "lava-turtle",
@@ -14615,7 +16376,16 @@
         {
           "name": "MagmaRing"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_LavaTurtle_Combat",
+        "properties": {
+          "Peace Distance": 600.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "lich",
@@ -14776,7 +16546,22 @@
         {
           "name": "DeathSwarm"
         }
-      ]
+      ],
+      "behavior": {
+        "behavior_tree": "BT_Lich",
+        "properties": {
+          "CurseSelector": 50.0,
+          "HPRatio Curse Trigger Cycle": 20.0,
+          "Curse Explosion Radius": 300.0,
+          "Spawn Count": 6,
+          "Use Custom Behavior Tree": true,
+          "UseObjectLinkConditionCheck": true,
+          "MonsterSpawnableInterface": "Id_Monster_Lich_Common"
+        },
+        "sight_radius": 1500.0,
+        "lose_sight_radius": 4000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "living-armor",
@@ -14970,7 +16755,39 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Combo Count": 1,
+          "Skill probability": 70.0,
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 500.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Attach Effect While Tracking Action": [
+            "None"
+          ],
+          "Combat Acceptance Radius": 170.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "living-statue",
@@ -15137,7 +16954,40 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_LivingStatue_WakeUp",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 500.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 250.0,
+          "Set Height While Tracking": false,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 350.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "loot-goblin",
@@ -15242,7 +17092,30 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "FleePhaseHP": 25.0,
+          "FleePhaseProbability": 20.0,
+          "Peace Distance": 1200.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_GoblinWarrior_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 110.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 150.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "mermaid",
@@ -15419,7 +17292,18 @@
         "description": "This scale, taken from the body of a dead mermaid, shimmers beautifully in many colors when it catches the light. Yet the cold aura clinging to it leaves an unsettling chill in the air."
       },
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_Mermaid_Combat",
+        "properties": {
+          "Peace Distance": 2000.0,
+          "Combat Acceptance Radius": 200.0,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 600.0,
+        "lose_sight_radius": 1400.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "mermaid-corpse",
@@ -15593,7 +17477,37 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_MermaidCorpse_Combat",
+        "properties": {
+          "MermaidCorpse Attribute Effect": [
+            "Id_MonsterEffect_MermaidCorpse_Common"
+          ],
+          "Do Action Once After Spawn": true,
+          "Check Action Once After Spawn Has Tag": true,
+          "Check Action Once After Spawn Tag Reverse": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Immune.Damage"
+          ],
+          "Action Once After Spawn Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Action Once After Spawn Ability Rates": [
+            100
+          ],
+          "Do Peace Action": false,
+          "Peace Mode Action": "E_ActionWhilePeaceMode::NewEnumerator2",
+          "Combat Acceptance Radius": 150.0,
+          "Check Ability Distance": 200.0,
+          "Draw Recog Range": 0.0,
+          "Pitch Rotation On Swim": false,
+          "AudibleDistance": 3.1353357102954105e-294
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "midnight-stag",
@@ -15667,7 +17581,23 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_MidnightStag",
+        "properties": {
+          "Lie Cycle": 30.0,
+          "Do Peace Action": false,
+          "Peace Distance": 800.0,
+          "Do Combat Action": false,
+          "Combat Acceptance Radius": 100.0,
+          "Check Ability Distance": 200.0,
+          "Use Custom Behavior Tree": true,
+          "Draw Recog Range": 1200.0
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "mimic-large-flat",
@@ -15742,7 +17672,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-large-mid-level",
@@ -15817,7 +17748,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-large-ornate",
@@ -15892,7 +17824,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-large-simple",
@@ -16005,7 +17938,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-medium-mid-level",
@@ -16118,7 +18052,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-medium-ornate",
@@ -16193,7 +18128,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-medium-simple",
@@ -16306,7 +18242,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-small-mid-level",
@@ -16381,7 +18318,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-small-ornate",
@@ -16456,7 +18394,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "mimic-small-simple",
@@ -16569,7 +18508,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "moray-eel",
@@ -16637,7 +18577,15 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Can Use Attack": true,
+          "Do Peace Action": false,
+          "Get Target While Combat": false,
+          "Do Tracking While Combat": false
+        }
+      }
     },
     {
       "slug": "mummy",
@@ -16903,7 +18851,52 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Conditional Top Priority Action": true,
+          "Do Once": true,
+          "Check Conditional Top Priority Action Has Tag": true,
+          "Set Conditional Top Priority Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Conditional Top Priority Action Check Type": [
+            "E_BTCheckFloatCondition::NewEnumerator1"
+          ],
+          "Condition Float Value": [
+            400.0
+          ],
+          "Conditional Top Priority Action Trigger Tag": [
+            "Event.AI.WakeUp"
+          ],
+          "Conditional Top Priority Action Ability Rates": [
+            100
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 500.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 100.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Nine.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 160.0,
+          "Draw Recog Range": 400.0
+        },
+        "sight_radius": 1500.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "napoleon-wrasse",
@@ -16954,7 +18947,12 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Pitch Rotation On Swim": false
+        }
+      }
     },
     {
       "slug": "ocean-sunfish",
@@ -17005,7 +19003,12 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Pitch Rotation On Swim": false
+        }
+      }
     },
     {
       "slug": "octopus",
@@ -17069,7 +19072,23 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_Octopus_Combat",
+        "properties": {
+          "Peace Distance": 1000.0,
+          "Combat Acceptance Radius": 100.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 160.0
+        },
+        "lose_sight_radius": 3000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ozzeling",
@@ -17174,7 +19193,29 @@
         {
           "name": "PoisonPools"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Body Name": "Pelvis",
+          "Peace Distance": 800.0,
+          "Combat Acceptance Radius": 80.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Three.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 120.0,
+          "Combat Ability Attack Delay": 0.4,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 1200.0,
+          "MonsterSpawnableInterface": "Id_Monster_Slime_Common",
+          "bRagdollDeath": false
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "pinchclaw-crab",
@@ -17326,7 +19367,17 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 800.0,
+          "Combat Acceptance Radius": 70.0,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "pirate-axe-thrower",
@@ -17512,7 +19563,18 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_PirateAxeThrower_Combat",
+        "properties": {
+          "FaustianCombatTriggerTag": "Ability.Monster.Skill.Five.On",
+          "Peace BehaviorTree": "BT_PirateAxeThrower_Peace",
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "pirate-bowman",
@@ -17679,7 +19741,20 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_PirateBowman_Combat",
+        "properties": {
+          "FaustianCombatTriggerTag": "Ability.Monster.Skill.One.On",
+          "Peace BehaviorTree": "BT_PirateBowman_Peace",
+          "Combat Acceptance Radius": 500.0,
+          "Check Ability Distance": 900.0,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "pirate-crossbowman",
@@ -17825,7 +19900,17 @@
         {
           "name": "Smokebomb"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_PirateCrossbowman_Combat",
+        "properties": {
+          "Peace BehaviorTree": "BT_PirateCrossbowman_Peace",
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "pirate-swiftblade",
@@ -18008,7 +20093,14 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "ProjectileMovement": "Default__BP_PirateSwiftblade_Knife_C:ProjectileMovementComponent",
+          "ProjectileDataAsset": "Id_Projectile_PirateSwiftblade_Knife",
+          "BaseObject": "Default__BP_PirateSwiftblade_Knife_C:BaseObject"
+        }
+      }
     },
     {
       "slug": "pirate-swordman",
@@ -18181,7 +20273,8 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "reefling",
@@ -18262,7 +20355,16 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_Reefling_Combat",
+        "properties": {
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "ruins-golem",
@@ -18471,7 +20573,40 @@
         {
           "name": "StonePillar"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_RuinsGolem_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 160.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Nine.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 220.0,
+          "Draw Recog Range": 600.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "salmon",
@@ -18522,7 +20657,12 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Pitch Rotation On Swim": false
+        }
+      }
     },
     {
       "slug": "scarfang",
@@ -18628,7 +20768,8 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "scrawled-filefish",
@@ -18679,7 +20820,12 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Pitch Rotation On Swim": false
+        }
+      }
     },
     {
       "slug": "sea-harpy",
@@ -18830,7 +20976,12 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "sea-piranha",
@@ -18974,7 +21125,27 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Conditional Top Priority Action": true,
+          "Conditional Top Priority Action Behavior Tree": "BT_UnderwaterMonster_TryToEnterWater",
+          "Peace Distance": 800.0,
+          "Combat Acceptance Radius": 120.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On",
+            "Ability.Monster.Skill.Two.On"
+          ],
+          "Combat Ability Rates": [
+            70,
+            30
+          ],
+          "Check Ability Distance": 180.0
+        },
+        "sight_radius": 1500.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "sea-urchin",
@@ -19036,7 +21207,21 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Immune Tag Container": [
+            "Mode.Death",
+            "State.ActorStatus.Buff.Ethereal"
+          ],
+          "Peace Distance": 500.0,
+          "Do Combat Action": false,
+          "Draw Recog Range": 10.0
+        },
+        "sight_radius": 10.0,
+        "lose_sight_radius": 15.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "sea-walker",
@@ -19213,7 +21398,27 @@
         {
           "name": "SlimeyFloor"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_SeaWalker_Combat",
+        "properties": {
+          "Peace Distance": 900.0,
+          "Combat Acceptance Radius": 120.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Three.On",
+            "Ability.Monster.Skill.Four.On"
+          ],
+          "Combat Ability Rates": [
+            50,
+            50
+          ],
+          "Check Ability Distance": 180.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "sheepshead",
@@ -19264,7 +21469,12 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Pitch Rotation On Swim": false
+        }
+      }
     },
     {
       "slug": "skeleton-archer",
@@ -19443,7 +21653,43 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Conditional Top Priority Action": true,
+          "Do Once": true,
+          "Attach Effect While Conditional Top Priority Action": [
+            "Id_MonsterEffect_SkeletonArcherRunState"
+          ],
+          "Conditional Top Priority Mode Action": "E_ActionWhileConditionalTopPriorityMode::NewEnumerator1",
+          "Conditional Top Priority Action Check Type": [
+            "E_BTCheckFloatCondition::NewEnumerator0",
+            "E_BTCheckFloatCondition::NewEnumerator1"
+          ],
+          "Condition Float Value": [
+            30.0,
+            350.0
+          ],
+          "Flee Distance": 900.0,
+          "Peace Distance": 400.0,
+          "Attach Effect While Tracking Action": [
+            "Id_MonsterEffect_SkeletonArcherTrackState"
+          ],
+          "Combat Acceptance Radius": 600.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Three.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 700.0,
+          "Apply Wait Time By Distance": true,
+          "Combat Ability Attack Delay": 1.0,
+          "Draw Recog Range": 1100.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0
+      }
     },
     {
       "slug": "skeleton-axeman",
@@ -19602,7 +21848,44 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_SkeletonAxeman_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 600.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 150.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On",
+            "Ability.Monster.Skill.Two.On"
+          ],
+          "Combat Ability Rates": [
+            70,
+            30
+          ],
+          "Check Ability Distance": 250.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 600.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-champion",
@@ -19796,7 +22079,25 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 800.0,
+          "Conditional Action BehaviorTree While Combat": "BT_SkeletonChampion_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 170.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 220.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-crossbowman",
@@ -19940,7 +22241,35 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Conditional Top Priority Action": true,
+          "Do Once": true,
+          "Conditional Top Priority Mode Action": "E_ActionWhileConditionalTopPriorityMode::NewEnumerator1",
+          "Conditional Top Priority Action Check Type": [
+            "E_BTCheckFloatCondition::NewEnumerator0",
+            "E_BTCheckFloatCondition::NewEnumerator1"
+          ],
+          "Condition Float Value": [
+            30.0,
+            350.0
+          ],
+          "Flee Distance": 900.0,
+          "Peace Distance": 500.0,
+          "Combat Acceptance Radius": 700.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 800.0,
+          "Draw Recog Range": 1100.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1600.0
+      }
     },
     {
       "slug": "skeleton-footman",
@@ -20118,7 +22447,40 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Action Once After Spawn BehaviorTree": "BT_SkeletonFootman_ActionOnceAfterSpawn",
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Peace Distance": 600.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Attach Effect While Tracking Action": [
+            "Id_MonsterEffect_SkeletonArcherTrackState"
+          ],
+          "Combat Acceptance Radius": 130.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On",
+            "Ability.Monster.Skill.Two.On"
+          ],
+          "Combat Ability Rates": [
+            60,
+            40
+          ],
+          "Check Ability Distance": 195.0
+        },
+        "hearing_range": 0.0,
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-guardman",
@@ -20287,7 +22649,37 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Action Once After Spawn BehaviorTree": "BT_SkeletonFootman_ActionOnceAfterSpawn",
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Stance.One"
+          ],
+          "Combat Acceptance Radius": 125.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 170.0,
+          "Combat Ability Attack Delay": 1.5,
+          "Combat Ability Attack Delay Random Deviation": 0.5
+        },
+        "hearing_range": 0.0,
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1200.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-mage",
@@ -20460,7 +22852,45 @@
         {
           "name": "FireArea Nightmare"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Key Name": "TargetActor",
+          "In Gameplay Effect Id Array": [
+            "Id_ActorStatusEffect_SkeletonMage_Barrier_Buff"
+          ],
+          "Probability": "Probability",
+          "Do Conditional Top Priority Action": true,
+          "Do Once": true,
+          "Conditional Top Priority Mode Action": "E_ActionWhileConditionalTopPriorityMode::NewEnumerator1",
+          "Conditional Top Priority Action Check Type": [
+            "E_BTCheckFloatCondition::NewEnumerator2",
+            "E_BTCheckFloatCondition::NewEnumerator1"
+          ],
+          "Condition Float Value": [
+            25.0,
+            350.0
+          ],
+          "Flee Distance": 500.0,
+          "Peace Distance": 400.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_SkeletonMage_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 500.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 600.0,
+          "Apply Wait Time By Distance": true,
+          "Combat Ability Attack Delay": 1.0,
+          "Draw Recog Range": 900.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-royal-guard",
@@ -20538,7 +22968,16 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_SkeletonRoyalGuard",
+        "properties": {
+          "Temp Tag": "None",
+          "Use Custom Behavior Tree": true,
+          "Draw Recog Range": 3000.0
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-spearman",
@@ -20711,7 +23150,43 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_SkeletonSpearman_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 150.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 250.0,
+          "Apply Wait Time By Distance": true,
+          "Combat Ability Attack Delay": 0.6,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 600.0
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-swordman",
@@ -20892,7 +23367,42 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_SkeletonFootman_ActionOnceAfterSpawn",
+          "Check Action Once After Spawn Has Tag": true,
+          "Set Action Once After Spawn Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Check Peace Action Has Tag": true,
+          "Check Peace Action Tag Reverse": true,
+          "Set Peace Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Peace Distance": 700.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.Skill.Unobstructed"
+          ],
+          "Combat Acceptance Radius": 160.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On",
+            "Ability.Monster.Skill.Two.On"
+          ],
+          "Combat Ability Rates": [
+            60,
+            40
+          ],
+          "Check Ability Distance": 220.0,
+          "Draw Recog Range": 600.0
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "skeleton-warlord",
@@ -21243,7 +23753,135 @@
         {
           "name": "RealmOfDomination Aoe"
         }
-      ]
+      ],
+      "behavior": {
+        "behavior_tree": "BT_SkeletonWarlord",
+        "properties": {
+          "Max Spawn Count": 8,
+          "SkeletonRoyalGuard": "Id_Monster_SkeletonRoyalGuard",
+          "Position Change Distance": 200.0,
+          "Gameplay Tag Lv Apply": [
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv1",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv2",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv3",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv4",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv5",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv6",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv7",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv8",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv9",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv10",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv11",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv12",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv13",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv14",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv15",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv16",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv17",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv18",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv19",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv20",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv21",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv22",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv23",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv24",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv25",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv26",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv27",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv28",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv29",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv30",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv31",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv32",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv33",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv34",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv35",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv36",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv37",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv38",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv39",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv40",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv41",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv42",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv43",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv44",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv45",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv46",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv47",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv48",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv49",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv50",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv51",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv52",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv53",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv54",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv55",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv56",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv57",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv58",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv59",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv60",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv61",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv62",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv63",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv64",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv65",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv66",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv67",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv68",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv69",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv70",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv71",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv72",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv73",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv74",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv75",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv76",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv77",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv78",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv79",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv80",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv81",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv82",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv83",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv84",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv85",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv86",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv87",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv88",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv89",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv90",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv91",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv92",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv93",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv94",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv95",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv96",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv97",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv98",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv99",
+            "State.ActorStatus.Buff.Monster.SkeletonWarlord.Lv100"
+          ],
+          "Gameplay Cue Tag Lv Apply": "GameplayCue.Monster.SkeletonWarlord.LvEffect",
+          "Max Soul Count": 25,
+          "Sword Length per Lv Effect Count": 15,
+          "Combo Reach Coefficient": 10.0,
+          "Combo Reach Base": 250.0,
+          "Combat Acceptance Radius": 3000.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Five.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 3000.0,
+          "Combat Ability Attack Delay": 5.0,
+          "Use Custom Behavior Tree": true,
+          "UseObjectLinkConditionCheck": true
+        },
+        "sight_radius": 800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "slime",
@@ -21424,7 +24062,29 @@
         {
           "name": "PoisonPools"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Body Name": "Pelvis",
+          "Peace Distance": 800.0,
+          "Combat Acceptance Radius": 80.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Three.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 120.0,
+          "Combat Ability Attack Delay": 0.4,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 1200.0,
+          "MonsterSpawnableInterface": "Id_Monster_Slime_Common",
+          "bRagdollDeath": false
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "slinkfoul-mimic-large-mid-level-unique",
@@ -21499,7 +24159,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "slinkfoul-mimic-medium-mid-level-unique",
@@ -21574,7 +24235,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "slinkfoul-mimic-small-mid-level-unique",
@@ -21649,7 +24311,8 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {}
     },
     {
       "slug": "specter",
@@ -21706,7 +24369,16 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "behavior_tree": "BT_Specter",
+        "properties": {
+          "Destroy Time": 3.0,
+          "Do Peace Action": false,
+          "Do Combat Action": false,
+          "Use Custom Behavior Tree": true
+        }
+      }
     },
     {
       "slug": "spectral-knight",
@@ -21751,115 +24423,171 @@
           "combos": [
             {
               "from": "ShoulderCharge",
-              "to": "Attack Slash1 1"
+              "to": "Attack Slash1 1",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-slash1-1"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack Slash1 1"
+              "to": "Attack Slash1 1",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-slash1-1"
             },
             {
               "from": "ShoulderCharge",
-              "to": "Attack Slash1 2"
+              "to": "Attack Slash1 2",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-slash1-2"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack Slash1 2"
+              "to": "Attack Slash1 2",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-slash1-2"
             },
             {
               "from": "Slash1 1",
-              "to": "Attack ShoulderCharge"
+              "to": "Attack ShoulderCharge",
+              "from_animation_id": "slash1-1",
+              "to_animation_id": "attack-shoulder-charge"
             },
             {
               "from": "Slash1 2",
-              "to": "Attack ShoulderCharge"
+              "to": "Attack ShoulderCharge",
+              "from_animation_id": "slash1-2",
+              "to_animation_id": "attack-shoulder-charge"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack ShoulderCharge"
+              "to": "Attack ShoulderCharge",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-shoulder-charge"
             },
             {
               "from": "ShoulderCharge",
-              "to": "Attack FrontSlash"
+              "to": "Attack FrontSlash",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-front-slash"
             },
             {
               "from": "TurnSlash Up",
-              "to": "Attack FrontSlash"
+              "to": "Attack FrontSlash",
+              "from_animation_id": "turn-slash-up",
+              "to_animation_id": "attack-front-slash"
             },
             {
               "from": "TurnSlash Down",
-              "to": "Attack FrontSlash"
+              "to": "Attack FrontSlash",
+              "from_animation_id": "turn-slash-down",
+              "to_animation_id": "attack-front-slash"
             },
             {
               "from": "ShoulderCharge",
-              "to": "Attack FrontThrust"
+              "to": "Attack FrontThrust",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-front-thrust"
             },
             {
               "from": "TurnSlash Up",
-              "to": "Attack FrontThrust"
+              "to": "Attack FrontThrust",
+              "from_animation_id": "turn-slash-up",
+              "to_animation_id": "attack-front-thrust"
             },
             {
               "from": "TurnSlash Down",
-              "to": "Attack FrontThrust"
+              "to": "Attack FrontThrust",
+              "from_animation_id": "turn-slash-down",
+              "to_animation_id": "attack-front-thrust"
             },
             {
               "from": "Slash1 1",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "slash1-1",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "Slash1 2",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "slash1-2",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "RushThrust",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "rush-thrust",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "Slash1 1",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "slash1-1",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "Slash1 2",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "slash1-2",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "RushThrust",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "rush-thrust",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack LeapAttack"
+              "to": "Attack LeapAttack",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-leap-attack"
             },
             {
               "from": "TurnSlash Up",
-              "to": "Attack LeapAttack"
+              "to": "Attack LeapAttack",
+              "from_animation_id": "turn-slash-up",
+              "to_animation_id": "attack-leap-attack"
             },
             {
               "from": "TurnSlash Down",
-              "to": "Attack LeapAttack"
+              "to": "Attack LeapAttack",
+              "from_animation_id": "turn-slash-down",
+              "to_animation_id": "attack-leap-attack"
             },
             {
               "from": "BackSteb",
-              "to": "Attack RushThrust"
+              "to": "Attack RushThrust",
+              "from_animation_id": "back-step",
+              "to_animation_id": "attack-rush-thrust"
             },
             {
               "from": "FastMove",
-              "to": "Attack RushThrust"
+              "to": "Attack RushThrust",
+              "from_animation_id": "fast-move",
+              "to_animation_id": "attack-rush-thrust"
             }
           ],
           "abilities": [
@@ -21942,115 +24670,171 @@
           "combos": [
             {
               "from": "ShoulderCharge",
-              "to": "Attack Slash1 1"
+              "to": "Attack Slash1 1",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-slash1-1"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack Slash1 1"
+              "to": "Attack Slash1 1",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-slash1-1"
             },
             {
               "from": "ShoulderCharge",
-              "to": "Attack Slash1 2"
+              "to": "Attack Slash1 2",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-slash1-2"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack Slash1 2"
+              "to": "Attack Slash1 2",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-slash1-2"
             },
             {
               "from": "Slash1 1",
-              "to": "Attack ShoulderCharge"
+              "to": "Attack ShoulderCharge",
+              "from_animation_id": "slash1-1",
+              "to_animation_id": "attack-shoulder-charge"
             },
             {
               "from": "Slash1 2",
-              "to": "Attack ShoulderCharge"
+              "to": "Attack ShoulderCharge",
+              "from_animation_id": "slash1-2",
+              "to_animation_id": "attack-shoulder-charge"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack ShoulderCharge"
+              "to": "Attack ShoulderCharge",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-shoulder-charge"
             },
             {
               "from": "ShoulderCharge",
-              "to": "Attack FrontSlash"
+              "to": "Attack FrontSlash",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-front-slash"
             },
             {
               "from": "TurnSlash Up",
-              "to": "Attack FrontSlash"
+              "to": "Attack FrontSlash",
+              "from_animation_id": "turn-slash-up",
+              "to_animation_id": "attack-front-slash"
             },
             {
               "from": "TurnSlash Down",
-              "to": "Attack FrontSlash"
+              "to": "Attack FrontSlash",
+              "from_animation_id": "turn-slash-down",
+              "to_animation_id": "attack-front-slash"
             },
             {
               "from": "ShoulderCharge",
-              "to": "Attack FrontThrust"
+              "to": "Attack FrontThrust",
+              "from_animation_id": "shoulder-charge",
+              "to_animation_id": "attack-front-thrust"
             },
             {
               "from": "TurnSlash Up",
-              "to": "Attack FrontThrust"
+              "to": "Attack FrontThrust",
+              "from_animation_id": "turn-slash-up",
+              "to_animation_id": "attack-front-thrust"
             },
             {
               "from": "TurnSlash Down",
-              "to": "Attack FrontThrust"
+              "to": "Attack FrontThrust",
+              "from_animation_id": "turn-slash-down",
+              "to_animation_id": "attack-front-thrust"
             },
             {
               "from": "Slash1 1",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "slash1-1",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "Slash1 2",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "slash1-2",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "RushThrust",
-              "to": "Attack TurnSlash Up"
+              "to": "Attack TurnSlash Up",
+              "from_animation_id": "rush-thrust",
+              "to_animation_id": "attack-turn-slash-up"
             },
             {
               "from": "Slash1 1",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "slash1-1",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "Slash1 2",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "slash1-2",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "FrontThrust",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "front-thrust",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "RushThrust",
-              "to": "Attack TurnSlash Down"
+              "to": "Attack TurnSlash Down",
+              "from_animation_id": "rush-thrust",
+              "to_animation_id": "attack-turn-slash-down"
             },
             {
               "from": "FrontSlash",
-              "to": "Attack LeapAttack"
+              "to": "Attack LeapAttack",
+              "from_animation_id": "front-slash",
+              "to_animation_id": "attack-leap-attack"
             },
             {
               "from": "TurnSlash Up",
-              "to": "Attack LeapAttack"
+              "to": "Attack LeapAttack",
+              "from_animation_id": "turn-slash-up",
+              "to_animation_id": "attack-leap-attack"
             },
             {
               "from": "TurnSlash Down",
-              "to": "Attack LeapAttack"
+              "to": "Attack LeapAttack",
+              "from_animation_id": "turn-slash-down",
+              "to_animation_id": "attack-leap-attack"
             },
             {
               "from": "BackSteb",
-              "to": "Attack RushThrust"
+              "to": "Attack RushThrust",
+              "from_animation_id": "back-step",
+              "to_animation_id": "attack-rush-thrust"
             },
             {
               "from": "FastMove",
-              "to": "Attack RushThrust"
+              "to": "Attack RushThrust",
+              "from_animation_id": "fast-move",
+              "to_animation_id": "attack-rush-thrust"
             }
           ],
           "abilities": [
@@ -22343,7 +25127,115 @@
         {
           "name": "DeadRift"
         }
-      ]
+      ],
+      "behavior": {
+        "behavior_tree": "BT_SpectralKnight",
+        "properties": {
+          "Playing Skill": "E_SpectralKnight_AbilityToUseCombo::NewEnumerator0",
+          "Current Combo": "E_SpectralKnight_Ability::NewEnumerator0",
+          "Next Combo Trigger Tag": "None",
+          "Tag Container Slash1_1": [
+            "State.Monster.Skill.One",
+            "State.Monster.Skill.Two",
+            "State.Monster.Skill.Three"
+          ],
+          "Tag Container Slash1_2": [
+            "State.Monster.Skill.Four",
+            "State.Monster.Skill.Five",
+            "State.Monster.Skill.Six"
+          ],
+          "Tag Container ShoulderCharge": [
+            "State.Monster.Skill.Eight",
+            "State.Monster.Skill.Nine",
+            "State.Monster.Skill.Seven",
+            "State.Monster.Skill.Ten"
+          ],
+          "Tag Container FrontSlash": [
+            "State.Monster.Skill.Eleven",
+            "State.Monster.Skill.Twelve",
+            "State.Monster.Skill.Thirteen",
+            "State.Monster.Skill.Fourteen"
+          ],
+          "Tag Container FrontThrust": [
+            "State.Monster.Skill.Fifteen",
+            "State.Monster.Skill.Sixteen",
+            "State.Monster.Skill.Seventeen",
+            "State.Monster.Skill.Eighteen"
+          ],
+          "Tag Container TurnSlash_Up": [
+            "State.Monster.Skill.Nineteen",
+            "State.Monster.Skill.Twenty",
+            "State.Monster.Skill.Twentyone",
+            "State.Monster.Skill.Twentytwo",
+            "State.Monster.Skill.Fourtythree"
+          ],
+          "Tag Container TurnSlash_Down": [
+            "State.Monster.Skill.Twentythree",
+            "State.Monster.Skill.Twentyfour",
+            "State.Monster.Skill.Twentyfive",
+            "State.Monster.Skill.Twentysix",
+            "State.Monster.Skill.Fourtyfour"
+          ],
+          "Tag Container LeapAttack": [
+            "State.Monster.Skill.Twentyseven",
+            "State.Monster.Skill.Twentyeight",
+            "State.Monster.Skill.Twentynine"
+          ],
+          "Tag Container RushThrust": [
+            "State.Monster.Skill.Thirty",
+            "State.Monster.Skill.Thirtytwo",
+            "State.Monster.Skill.Thirtyone"
+          ],
+          "Tag Container LongRange_Transverse": [
+            "State.Monster.Skill.Thirtythree"
+          ],
+          "Tag Container LongRange_Verticallay": [
+            "State.Monster.Skill.Thirtyfour"
+          ],
+          "Tag Container SoulShockWave": [
+            "State.Monster.Skill.Thirtyfive"
+          ],
+          "Tag Container SoulSlash": [
+            "State.Monster.Skill.Thirtysix"
+          ],
+          "Tag Container BackSteb": [
+            "State.Monster.Skill.Thirtyeight"
+          ],
+          "Tag Container FastMove": [
+            "State.Monster.Skill.Thirtynine",
+            "State.Monster.Skill.Fourty"
+          ],
+          "SoulShockwave Radius": 170.0,
+          "SoulShockwave Radius_GC": 1600.0,
+          "LeapAttackShockwave Radius": 170.0,
+          "Slash Min": 100,
+          "Slash Max": 250,
+          "ShoulderCharge Min": 100,
+          "ShoulderCharge Max": 150,
+          "FrontAttack Min": 100,
+          "FrontAttack Max": 250,
+          "TurnSlash Min": 150,
+          "TurnSlash Max": 300,
+          "LongRangeAttack Min": 150,
+          "LongRangeAttack Max": 250,
+          "LeapAttack Min": 150,
+          "LeapAttack Max": 150,
+          "RushThrust Min": 150,
+          "RushThrust Max": 150,
+          "ShockWave Omen Time": 2.5,
+          "FastMove Distance Value": 1000.0,
+          "WakeUp Shock Wave": 150.0,
+          "HP Phase Ratio": 25.0,
+          "Blackboard HPRatio Initial Value": 66.0,
+          "Blackboard HPRatio Subtract Value": 33.0,
+          "TestChaosForceMagnitude": 50.0,
+          "Do Peace Action": false,
+          "Combat Acceptance Radius": 300.0,
+          "Check Ability Distance": 700.0,
+          "Use Custom Behavior Tree": true
+        },
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "spider-mummy",
@@ -22507,7 +25399,27 @@
       "loot": [],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Do Action Once After Spawn": true,
+          "Action Once After Spawn BehaviorTree": "BT_SpiderMummy_ActionOnceAfterSpawn",
+          "Peace Distance": 800.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 70.0,
+          "Combat Ability Attack Delay": 0.5,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 800.0
+        },
+        "sight_radius": 800.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "tidewalker-clubfighter",
@@ -22686,7 +25598,21 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_TidewalkerClubfighter_Combat",
+        "properties": {
+          "Peace BehaviorTree": "BT_TidewalkerClubfighter_Peace",
+          "Peace Distance": 1000.0,
+          "Combat Acceptance Radius": 170.0,
+          "Check Ability Distance": 250.0,
+          "Apply Wait Time By Distance": true,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "tidewalker-shaman",
@@ -22853,7 +25779,35 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_TidewalkerShaman_Combat",
+        "properties": {
+          "Calling HP": 70.0,
+          "Do Conditional Top Priority Action": true,
+          "Do Once": true,
+          "Conditional Top Priority Action Behavior Tree": "BT_TideWalker_ConditionalAction",
+          "Peace Distance": 800.0,
+          "Check Combat Action Has Tag": true,
+          "Check Combat Action Tag Reverse": true,
+          "Set Combat Action Tags": [
+            "State.Monster.AI.Order.ConditionalAction"
+          ],
+          "Combat Acceptance Radius": 550.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 650.0,
+          "Draw Recog Range": 1000.0,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "tidewalker-slinger",
@@ -23028,7 +25982,20 @@
         {
           "name": "Smokebomb"
         }
-      ]
+      ],
+      "behavior": {
+        "combat_behavior_tree": "BT_TidewalkerSlinger_Combat",
+        "properties": {
+          "Peace BehaviorTree": "BT_Tidewalker_Slinger_Peace",
+          "Peace Distance": 1300.0,
+          "Combat Acceptance Radius": 140.0,
+          "Check Ability Distance": 200.0,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 1100.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "tidewalker-spearer",
@@ -23201,7 +26168,21 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_TidewalkerSpearer_Combat",
+        "properties": {
+          "Peace BehaviorTree": "BT_TidewalkerSpearer_Peace",
+          "Peace Distance": 1000.0,
+          "Combat Acceptance Radius": 160.0,
+          "Check Ability Distance": 230.0,
+          "Draw Recog Range": 900.0,
+          "Pitch Rotation On Swim": false
+        },
+        "sight_radius": 900.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "wendigo",
@@ -23367,7 +26348,31 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 800.0,
+          "Attach Effect While Conditional Action": [
+            "None"
+          ],
+          "Combat Acceptance Radius": 130.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On",
+            "Ability.Monster.Skill.Two.On"
+          ],
+          "Combat Ability Rates": [
+            50,
+            50
+          ],
+          "Check Ability Distance": 180.0,
+          "Combat Ability Attack Delay": 0.5,
+          "Combat Ability Attack Delay Random Deviation": 0.2,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1800.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "white-shark",
@@ -23546,7 +26551,21 @@
         "description": "A razor-sharp tooth made for rending flesh, its surface still crusted with the flesh and fresh blood of a recently bitten prey."
       },
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "combat_behavior_tree": "BT_WhiteShark_Combat",
+        "properties": {
+          "Do Conditional Top Priority Action": true,
+          "Conditional Top Priority Action Behavior Tree": "BT_WhiteShark_ConditionalTopPriorityAction",
+          "Peace BehaviorTree": "BT_WhiteShark_Peace",
+          "Peace Distance": 600.0,
+          "Combat Acceptance Radius": 500.0,
+          "Check Ability Distance": 300.0,
+          "Pitch Rotation On Swim": false
+        },
+        "lose_sight_radius": 3300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "wisp",
@@ -23698,7 +26717,28 @@
           "name": "MagicArrow"
         }
       ],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 800.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_Wisp_ConditionalActionWhileCombat",
+          "Combat Acceptance Radius": 600.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.One.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 700.0,
+          "Combat Ability Attack Delay": 0.8,
+          "Combat Ability Attack Delay Random Deviation": 0.5,
+          "Draw Recog Range": 1200.0
+        },
+        "sight_radius": 1200.0,
+        "lose_sight_radius": 2000.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "wraith",
@@ -23906,7 +26946,40 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "bUseHair": true,
+          "bUseEyes": true,
+          "bUseHood": true,
+          "bUseNecklace": true,
+          "bUseSleeve": true,
+          "bUseScarf": true,
+          "bUseCloth": true,
+          "Probability": "Probability",
+          "GameplayCueTagByState": "None",
+          "HPRatio": "HPRatio",
+          "Peace Distance": 800.0,
+          "Attach Effect While Tracking Action": [
+            "Id_MonsterEffect_Lib_Buff_MoveSpeed_100"
+          ],
+          "Combat Acceptance Radius": 110.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Four.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 180.0,
+          "Combat Ability Attack Delay": 0.35,
+          "Combat Ability Attack Delay Random Deviation": 0.15,
+          "Draw Recog Range": 1000.0,
+          "MonsterSpawnableInterface": "Id_Monster_Wraith_Common"
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1300.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "yeti",
@@ -24069,7 +27142,26 @@
       ],
       "hunting_loot": null,
       "projectiles": [],
-      "aoe": []
+      "aoe": [],
+      "behavior": {
+        "properties": {
+          "Peace Distance": 800.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_Yeti_ConditionalActionWhileCcombat",
+          "Combat Acceptance Radius": 140.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Six.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 300.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1600.0,
+        "peripheral_vision_angle": 180.0
+      }
     },
     {
       "slug": "zombie",
@@ -24266,7 +27358,30 @@
         {
           "name": "PoisonArea Nightmare"
         }
-      ]
+      ],
+      "behavior": {
+        "properties": {
+          "Stomach": true,
+          "Fungus": true,
+          "Do Conditional Top Priority Action": true,
+          "Conditional Top Priority Action Behavior Tree": "BT_Zombie_ConditionalTopPriorityAction",
+          "Peace Distance": 900.0,
+          "Do Conditional Action While Combat": true,
+          "Conditional Action BehaviorTree While Combat": "BT_Zombie_ConditionalActoinWhileCombat",
+          "Combat Acceptance Radius": 120.0,
+          "Combat Trigger Tag": [
+            "Ability.Monster.Skill.Eight.On"
+          ],
+          "Combat Ability Rates": [
+            100
+          ],
+          "Check Ability Distance": 180.0,
+          "Draw Recog Range": 1000.0
+        },
+        "sight_radius": 1000.0,
+        "lose_sight_radius": 1500.0,
+        "peripheral_vision_angle": 180.0
+      }
     }
   ]
 }

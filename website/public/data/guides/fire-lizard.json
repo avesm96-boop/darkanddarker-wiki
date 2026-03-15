@@ -1,124 +1,132 @@
 {
- "slug": "fire-lizard",
- "overview": "Fire Lizard is a Normal-class Beast monster found in Firedeep. 3 grades: Common, Elite, Nightmare. Base stats (Common): 50 HP, 20 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 6. 4 attacks, 0 combo chains. Highest damage: Rush Bite at 190% ratio (380 base damage). Nightmare gains 1 exclusive abilityy: Rush Bite.",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "4 melee attacks. Bite (150%), Tail Attack (170%), Tongue Strike (60%), and more.",
- "icon": "attack"
- },
- {
- "name": "Rush / Charge",
- "description": "1 rush/charge attacks for gap-closing. Rush Bite (190%).",
- "icon": "move"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Bite",
- "damage_ratio": 1500,
- "damage_common": 300,
- "damage_elite": 345,
- "note": "150% damage ratio, impact power 0.",
- "damage_nightmare": 405
- },
- {
- "name": "Tail Attack",
- "damage_ratio": 1700,
- "damage_common": 340,
- "damage_elite": 391,
- "note": "170% damage ratio, impact power 4.",
- "damage_nightmare": 459
- },
- {
- "name": "Rush Bite",
- "damage_ratio": 1900,
- "damage_common": 380,
- "damage_elite": 437,
- "note": "190% damage ratio, impact power 3.",
- "damage_nightmare": 513
- }
- ]
- },
- {
- "tier": "Moderate",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "Tongue Strike",
- "damage_ratio": 600,
- "damage_common": 120,
- "damage_elite": 138,
- "note": "60% damage ratio, impact power 3.",
- "damage_nightmare": 162
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [
- {
- "name": "Fire Burn",
- "type": "debuff",
- "duration": "Data-dependent",
- "stacks": 1,
- "description": "Applied during combat. ",
- "counter": "Watch for the Fire Burn icon on your status bar."
- }
- ],
- "strategies": [
- {
- "title": "Elemental Weaknesses: Ice, Light, Divine",
- "priority": "high",
- "description": "Significant elemental weaknesses: Ice (-3000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Resists: Fire",
- "priority": "high",
- "description": "Elemental resistances: Fire (+500). Positive reduction values reduce incoming damage of that type."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- },
- {
- "title": "Nightmare Gains: Rush Bite",
- "priority": "medium",
- "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Rush Bite. These change the fight dynamics in Nightmare.",
- "grades": [
- "Nightmare"
- ]
- }
- ],
- "elite_differences": [
- "100% more HP (50 → 100) in Elite",
- "15% more physical damage (20 → 23) in Elite",
- "Move speed 150 → 170 in Elite",
- "ActionSpeed 0 → 50 in Elite — attacks animate faster",
- "XP reward 4 → 5 in Elite",
- "200% more HP (50 → 150) in Nightmare",
- "35% more physical damage (20 → 27) in Nightmare",
- "Move speed 150 → 200 in Nightmare",
- "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
- "XP reward 4 → 6 in Nightmare",
- "Nightmare gains 1 exclusive abilities: Rush Bite"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "fire-lizard",
+  "overview": "Fire Lizard is a Normal-class Beast monster found in Firedeep. 3 grades: Common, Elite, Nightmare. Base stats (Common): 50 HP, 20 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 6. 4 attacks, 0 combo chains. Highest damage: Rush Bite at 190% ratio (380 base damage). Sight range 800. Nightmare gains 1 exclusive abilityy: Rush Bite.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "4 melee attacks. Bite (150%), Tail Attack (170%), Tongue Strike (60%), and more.",
+      "icon": "attack"
+    },
+    {
+      "name": "Rush / Charge",
+      "description": "1 rush/charge attacks for gap-closing. Rush Bite (190%).",
+      "icon": "move"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Bite",
+          "damage_ratio": 1500,
+          "damage_common": 300,
+          "damage_elite": 345,
+          "note": "150% damage ratio, impact power 0.",
+          "damage_nightmare": 405
+        },
+        {
+          "name": "Tail Attack",
+          "damage_ratio": 1700,
+          "damage_common": 340,
+          "damage_elite": 391,
+          "note": "170% damage ratio, impact power 4.",
+          "damage_nightmare": 459
+        },
+        {
+          "name": "Rush Bite",
+          "damage_ratio": 1900,
+          "damage_common": 380,
+          "damage_elite": 437,
+          "note": "190% damage ratio, impact power 3.",
+          "damage_nightmare": 513
+        }
+      ]
+    },
+    {
+      "tier": "Moderate",
+      "color": "#8a7048",
+      "attacks": [
+        {
+          "name": "Tongue Strike",
+          "damage_ratio": 600,
+          "damage_common": 120,
+          "damage_elite": 138,
+          "note": "60% damage ratio, impact power 3.",
+          "damage_nightmare": 162
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Fire Burn",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Fire Burn icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "Elemental Weaknesses: Ice, Light, Divine",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Ice (-3000), Light (-2000), Divine (-2000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Fire",
+      "priority": "high",
+      "description": "Elemental resistances: Fire (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Nightmare Gains: Rush Bite",
+      "priority": "medium",
+      "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Rush Bite. These change the fight dynamics in Nightmare.",
+      "grades": [
+        "Nightmare"
+      ]
+    },
+    {
+      "title": "Detection Range: 800 units",
+      "priority": "medium",
+      "description": "Sight radius 800 units, loses target at 1200 units, 180° vision angle."
+    }
+  ],
+  "elite_differences": [
+    "100% more HP (50 → 100) in Elite",
+    "15% more physical damage (20 → 23) in Elite",
+    "Move speed 150 → 170 in Elite",
+    "ActionSpeed 0 → 50 in Elite — attacks animate faster",
+    "XP reward 4 → 5 in Elite",
+    "200% more HP (50 → 150) in Nightmare",
+    "35% more physical damage (20 → 27) in Nightmare",
+    "Move speed 150 → 200 in Nightmare",
+    "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
+    "XP reward 4 → 6 in Nightmare",
+    "Nightmare gains 1 exclusive abilities: Rush Bite"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 800,
+    "lose_sight_radius": 1200,
+    "sight_description": "Detects targets within 800 units. Loses target at 1200 units."
+  }
 }

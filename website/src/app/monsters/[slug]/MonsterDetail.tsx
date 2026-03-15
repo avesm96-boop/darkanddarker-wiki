@@ -159,6 +159,9 @@ interface GuideData {
     hearing_description: string;
     stuck_tracking: boolean;
     stuck_description: string;
+    sight_radius?: number;
+    lose_sight_radius?: number | null;
+    sight_description?: string;
   };
 }
 
@@ -1060,8 +1063,15 @@ function BehaviorTab({ guide, grade }: { guide: GuideData; grade: string }) {
       {/* AI Perception */}
       <h3 className={styles.sectionTitle}>AI Perception</h3>
       <div className={styles.perceptionGrid}>
+        {guide.ai_perception.sight_radius != null && (
+          <div className={styles.perceptionItem}>
+            <span className={styles.perceptionLabel}>Sight Range</span>
+            <span className={styles.perceptionValue}>{guide.ai_perception.sight_radius}</span>
+            <p className={styles.perceptionDesc}>{guide.ai_perception.sight_description}</p>
+          </div>
+        )}
         <div className={styles.perceptionItem}>
-          <span className={styles.perceptionLabel}>Vision</span>
+          <span className={styles.perceptionLabel}>Vision Angle</span>
           <span className={styles.perceptionValue}>{guide.ai_perception.vision_angle}°</span>
           <p className={styles.perceptionDesc}>{guide.ai_perception.vision_description}</p>
         </div>

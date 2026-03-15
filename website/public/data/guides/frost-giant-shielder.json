@@ -1,102 +1,112 @@
 {
- "slug": "frost-giant-shielder",
- "overview": "Frost Giant Shielder is a SubBoss-class Humanoid/Giant/Human monster found in Ice Cavern. 3 grades: Common, Elite, Nightmare. Base stats (Common): 700 HP, 15 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 5, MaxImpactEndurance 5. 3 attacks, 0 combo chains. Highest damage: Attack1 at 180% ratio (270 base damage). Nightmare gains 1 exclusive abilityy: Ice Spread.",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "2 melee attacks. Attack1 (180%), Attack2 (180%).",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Attack1",
- "damage_ratio": 1800,
- "damage_common": 270,
- "damage_elite": 414,
- "note": "180% damage ratio, impact power 4.",
- "damage_nightmare": 558
- },
- {
- "name": "Attack2",
- "damage_ratio": 1800,
- "damage_common": 270,
- "damage_elite": 414,
- "note": "180% damage ratio, impact power 4.",
- "damage_nightmare": 558
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Ice Spread",
- "damage_ratio": 1300,
- "damage_common": 195,
- "damage_elite": 299,
- "note": "130% damage ratio, impact power 4.",
- "damage_nightmare": 403
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Elemental Weakness: Fire",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-2000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Resists: Ice",
- "priority": "high",
- "description": "Elemental resistances: Ice (+500). Positive reduction values reduce incoming damage of that type."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- },
- {
- "title": "Nightmare Gains: Ice Spread",
- "priority": "medium",
- "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Ice Spread. These change the fight dynamics in Nightmare.",
- "grades": [
- "Nightmare"
- ]
- }
- ],
- "elite_differences": [
- "29% more HP (700 → 900) in Elite",
- "53% more physical damage (15 → 23) in Elite",
- "Move speed 200 → 225 in Elite",
- "ActionSpeed 0 → 100 in Elite — attacks animate faster",
- "XP reward 6 → 7 in Elite",
- "57% more HP (700 → 1100) in Nightmare",
- "107% more physical damage (15 → 31) in Nightmare",
- "Move speed 200 → 250 in Nightmare",
- "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
- "XP reward 6 → 8 in Nightmare",
- "Nightmare gains 1 exclusive abilities: Ice Spread"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard boss perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": true,
- "stuck_description": "Has stuck-detection failsafes in behavior tree."
- }
+  "slug": "frost-giant-shielder",
+  "overview": "Frost Giant Shielder is a SubBoss-class Humanoid/Giant/Human monster found in Ice Cavern. 3 grades: Common, Elite, Nightmare. Base stats (Common): 700 HP, 15 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 5, MaxImpactEndurance 5. 3 attacks, 0 combo chains. Highest damage: Attack1 at 180% ratio (270 base damage). combat radius 260. Nightmare gains 1 exclusive abilityy: Ice Spread.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "2 melee attacks. Attack1 (180%), Attack2 (180%).",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Attack1",
+          "damage_ratio": 1800,
+          "damage_common": 270,
+          "damage_elite": 414,
+          "note": "180% damage ratio, impact power 4.",
+          "damage_nightmare": 558
+        },
+        {
+          "name": "Attack2",
+          "damage_ratio": 1800,
+          "damage_common": 270,
+          "damage_elite": 414,
+          "note": "180% damage ratio, impact power 4.",
+          "damage_nightmare": 558
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Ice Spread",
+          "damage_ratio": 1300,
+          "damage_common": 195,
+          "damage_elite": 299,
+          "note": "130% damage ratio, impact power 4.",
+          "damage_nightmare": 403
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Elemental Weakness: Fire",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-2000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Ice",
+      "priority": "high",
+      "description": "Elemental resistances: Ice (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Nightmare Gains: Ice Spread",
+      "priority": "medium",
+      "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Ice Spread. These change the fight dynamics in Nightmare.",
+      "grades": [
+        "Nightmare"
+      ]
+    },
+    {
+      "title": "Combat Range: combat area radius 260, ability check distance 320",
+      "priority": "medium",
+      "description": "Combat area radius 260. Ability check distance 320. Ability attack delay: 0.5s."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 800 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "29% more HP (700 → 900) in Elite",
+    "53% more physical damage (15 → 23) in Elite",
+    "Move speed 200 → 225 in Elite",
+    "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+    "XP reward 6 → 7 in Elite",
+    "57% more HP (700 → 1100) in Nightmare",
+    "107% more physical damage (15 → 31) in Nightmare",
+    "Move speed 200 → 250 in Nightmare",
+    "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+    "XP reward 6 → 8 in Nightmare",
+    "Nightmare gains 1 exclusive abilities: Ice Spread"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "Standard boss perception.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree."
+  }
 }

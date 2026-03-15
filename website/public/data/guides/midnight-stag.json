@@ -1,29 +1,52 @@
 {
- "slug": "midnight-stag",
- "overview": "Midnight Stag is a Normal-class Beast/Mythic monster found in Ruins. 1 grades: Common. Base stats (Common): 50 HP, 21 physical damage, 100 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 0 attacks, 0 combo chains.",
- "phases": [],
- "attack_categories": [],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- }
- ],
- "elite_differences": [],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "midnight-stag",
+  "overview": "Midnight Stag is a Normal-class Beast/Mythic monster found in Ruins. 1 grades: Common. Base stats (Common): 50 HP, 21 physical damage, 100 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 0 attacks, 0 combo chains. Sight range 1200, combat radius 100, behavior tree: BT_MidnightStag.",
+  "phases": [],
+  "attack_categories": [],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1200 units",
+      "priority": "medium",
+      "description": "Sight radius 1200 units, loses target at 1800 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 100, ability check distance 200",
+      "priority": "medium",
+      "description": "Combat area radius 100. Ability check distance 200."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 800 unit peace distance."
+    },
+    {
+      "title": "Behavior Trees: BT_MidnightStag",
+      "priority": "low",
+      "description": "Uses behavior tree: BT_MidnightStag. "
+    }
+  ],
+  "elite_differences": [],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 1200,
+    "lose_sight_radius": 1800,
+    "sight_description": "Detects targets within 1200 units. Loses target at 1800 units."
+  }
 }

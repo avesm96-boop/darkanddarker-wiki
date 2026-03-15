@@ -1,93 +1,106 @@
 {
- "slug": "pirate-bowman",
- "overview": "Pirate Bowman is a Normal-class Humanoid/Human monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 60 HP, 15 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 3 attacks, 0 combo chains. Highest damage: Arrow Shot at 160% ratio (240 base damage).",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "1 melee attacks. Punch (130%).",
- "icon": "attack"
- },
- {
- "name": "Ranged Attacks",
- "description": "2 ranged attacks. Arrow Shot (160%), Aboid Arrow (160%).",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Arrow Shot",
- "damage_ratio": 1600,
- "damage_common": 240,
- "damage_elite": 320,
- "note": "160% damage ratio, impact power 4.",
- "damage_nightmare": 368
- },
- {
- "name": "Aboid Arrow",
- "damage_ratio": 1600,
- "damage_common": 240,
- "damage_elite": 320,
- "note": "160% damage ratio, impact power 4.",
- "damage_nightmare": 368
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Punch",
- "damage_ratio": 1300,
- "damage_common": 195,
- "damage_elite": 260,
- "note": "130% damage ratio, impact power 3.",
- "damage_nightmare": 299
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Elemental Weaknesses: Fire, Earth",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-1500), Earth (-1500). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- }
- ],
- "elite_differences": [
- "117% more HP (60 → 130) in Elite",
- "33% more physical damage (15 → 20) in Elite",
- "Move speed 150 → 175 in Elite",
- "ActionSpeed 0 → 50 in Elite — attacks animate faster",
- "XP reward 3 → 4 in Elite",
- "233% more HP (60 → 200) in Nightmare",
- "53% more physical damage (15 → 23) in Nightmare",
- "Move speed 150 → 200 in Nightmare",
- "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
- "XP reward 3 → 5 in Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "pirate-bowman",
+  "overview": "Pirate Bowman is a Normal-class Humanoid/Human monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 60 HP, 15 physical damage, 150 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 3 attacks, 0 combo chains. Highest damage: Arrow Shot at 160% ratio (240 base damage). Sight range 1100, combat radius 500.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "1 melee attacks. Punch (130%).",
+      "icon": "attack"
+    },
+    {
+      "name": "Ranged Attacks",
+      "description": "2 ranged attacks. Arrow Shot (160%), Aboid Arrow (160%).",
+      "icon": "special"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Arrow Shot",
+          "damage_ratio": 1600,
+          "damage_common": 240,
+          "damage_elite": 320,
+          "note": "160% damage ratio, impact power 4.",
+          "damage_nightmare": 368
+        },
+        {
+          "name": "Aboid Arrow",
+          "damage_ratio": 1600,
+          "damage_common": 240,
+          "damage_elite": 320,
+          "note": "160% damage ratio, impact power 4.",
+          "damage_nightmare": 368
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Punch",
+          "damage_ratio": 1300,
+          "damage_common": 195,
+          "damage_elite": 260,
+          "note": "130% damage ratio, impact power 3.",
+          "damage_nightmare": 299
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Elemental Weaknesses: Fire, Earth",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-1500), Earth (-1500). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1100 units",
+      "priority": "medium",
+      "description": "Sight radius 1100 units, loses target at 1600 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 500, ability check distance 900",
+      "priority": "medium",
+      "description": "Combat area radius 500. Ability check distance 900."
+    }
+  ],
+  "elite_differences": [
+    "117% more HP (60 → 130) in Elite",
+    "33% more physical damage (15 → 20) in Elite",
+    "Move speed 150 → 175 in Elite",
+    "ActionSpeed 0 → 50 in Elite — attacks animate faster",
+    "XP reward 3 → 4 in Elite",
+    "233% more HP (60 → 200) in Nightmare",
+    "53% more physical damage (15 → 23) in Nightmare",
+    "Move speed 150 → 200 in Nightmare",
+    "ActionSpeed 0 → 100 in Nightmare — attacks animate faster",
+    "XP reward 3 → 5 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 1100,
+    "lose_sight_radius": 1600,
+    "sight_description": "Detects targets within 1100 units. Loses target at 1600 units."
+  }
 }

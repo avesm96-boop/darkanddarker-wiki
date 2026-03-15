@@ -1,88 +1,106 @@
 {
- "slug": "death-skull",
- "overview": "Death Skull is a Normal-class Undead monster found in Crypt, Goblin Cave, Ice Abyss, Ice Cavern, Inferno, Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): -74 HP, 10 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 3. Has a Staggered reaction in its ability set. 2 attacks, 0 combo chains. Highest damage: Attack at 200% ratio (200 base damage). Nightmare gains 1 exclusive abilityy: Nightmare.",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "1 melee attacks. Attack (200%).",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "Attack",
- "damage_ratio": 2000,
- "damage_common": 200,
- "damage_elite": 300,
- "note": "200% damage ratio, impact power 3.",
- "damage_nightmare": 400
- },
- {
- "name": "Nightmare",
- "damage_ratio": 2000,
- "damage_common": 200,
- "damage_elite": 300,
- "note": "200% damage ratio, impact power 3.",
- "damage_nightmare": 400
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Has Stagger Reaction (ImpactRes 1, Endurance 3)",
- "priority": "medium",
- "description": "This monster has a Staggered ability in its ability set, meaning it has a stagger reaction animation. ImpactResistance: 1, MaxImpactEndurance: 3."
- },
- {
- "title": "Elemental Weaknesses: Fire, Ice, Light, Divine",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-2000), Ice (-2000), Light (-2000), Divine (-1500). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Highest Damage: Attack (200% ratio)",
- "priority": "high",
- "description": "Attack deals 200 damage at base (200% ratio). This is the most dangerous attack to avoid."
- },
- {
- "title": "Nightmare Gains: Nightmare",
- "priority": "medium",
- "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Nightmare. These change the fight dynamics in Nightmare.",
- "grades": [
- "Nightmare"
- ]
- }
- ],
- "elite_differences": [
- "-26% more HP (-74 → -55) in Elite",
- "50% more physical damage (10 → 15) in Elite",
- "Move speed 200 → 240 in Elite",
- "ActionSpeed 0 → 100 in Elite — attacks animate faster",
- "XP reward 3 → 4 in Elite",
- "-73% more HP (-74 → -20) in Nightmare",
- "100% more physical damage (10 → 20) in Nightmare",
- "Move speed 200 → 280 in Nightmare",
- "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
- "XP reward 3 → 5 in Nightmare",
- "Nightmare gains 1 exclusive abilities: Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "death-skull",
+  "overview": "Death Skull is a Normal-class Undead monster found in Crypt, Goblin Cave, Ice Abyss, Ice Cavern, Inferno, Ruins. 3 grades: Common, Elite, Nightmare. Base stats (Common): -74 HP, 10 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 3. Has a Staggered reaction in its ability set. 2 attacks, 0 combo chains. Highest damage: Attack at 200% ratio (200 base damage). Sight range 1200, combat radius 250. Nightmare gains 1 exclusive abilityy: Nightmare.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "1 melee attacks. Attack (200%).",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Attack",
+          "damage_ratio": 2000,
+          "damage_common": 200,
+          "damage_elite": 300,
+          "note": "200% damage ratio, impact power 3.",
+          "damage_nightmare": 400
+        },
+        {
+          "name": "Nightmare",
+          "damage_ratio": 2000,
+          "damage_common": 200,
+          "damage_elite": 300,
+          "note": "200% damage ratio, impact power 3.",
+          "damage_nightmare": 400
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Has Stagger Reaction (ImpactRes 1, Endurance 3)",
+      "priority": "medium",
+      "description": "This monster has a Staggered ability in its ability set, meaning it has a stagger reaction animation. ImpactResistance: 1, MaxImpactEndurance: 3."
+    },
+    {
+      "title": "Elemental Weaknesses: Fire, Ice, Light, Divine",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-2000), Ice (-2000), Light (-2000), Divine (-1500). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Highest Damage: Attack (200% ratio)",
+      "priority": "high",
+      "description": "Attack deals 200 damage at base (200% ratio). This is the most dangerous attack to avoid."
+    },
+    {
+      "title": "Nightmare Gains: Nightmare",
+      "priority": "medium",
+      "description": "Nightmare grade has 1 exclusive abilities not present in lower grades: Nightmare. These change the fight dynamics in Nightmare.",
+      "grades": [
+        "Nightmare"
+      ]
+    },
+    {
+      "title": "Detection Range: 1200 units",
+      "priority": "medium",
+      "description": "Sight radius 1200 units, loses target at 1500 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 250, ability check distance 270",
+      "priority": "medium",
+      "description": "Combat area radius 250. Ability check distance 270."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 200 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "-26% more HP (-74 → -55) in Elite",
+    "50% more physical damage (10 → 15) in Elite",
+    "Move speed 200 → 240 in Elite",
+    "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+    "XP reward 3 → 4 in Elite",
+    "-73% more HP (-74 → -20) in Nightmare",
+    "100% more physical damage (10 → 20) in Nightmare",
+    "Move speed 200 → 280 in Nightmare",
+    "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+    "XP reward 3 → 5 in Nightmare",
+    "Nightmare gains 1 exclusive abilities: Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 1200,
+    "lose_sight_radius": 1500,
+    "sight_description": "Detects targets within 1200 units. Loses target at 1500 units."
+  }
 }

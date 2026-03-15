@@ -1,279 +1,168 @@
 {
- "slug": "banshee-boss",
- "overview": "The Banshee is an Undead boss found in the Ruins dungeon. It is a spectral entity that fights entirely through magical fog projectiles, screams, and summoning — it has 0 Physical Damage and relies purely on ability-based attacks with extremely high damage ratios (1400-2200%). The Banshee's behavior tree prioritizes special screams when HP thresholds are crossed, cycling through Silence, Corruption, and Sentence screams that scale with possession count. It can turn invisible via a Hide mechanic, pull players toward it, bomb the arena with fog missiles, and summon Specter minions. Its weakness to Light magic (-1000 reduction) is a critical exploit point.",
- "phases": [
- {
- "name": "Passive / Peace Stance",
- "description": "The Banshee begins in Peace Stance, floating idly until a player enters its 180-degree vision cone or makes noise within hearing range. Once combat is triggered, it transitions to Combat Stance and never returns to Peace.",
- "icon": "idle"
- },
- {
- "name": "Fog Attack Phase",
- "description": "The primary combat phase. The Banshee uses FogAttack1 (spawns up to 4 fog missiles at 750 range with 25-degree rotating angle per shot) and FogAttack2 (a stronger single-target fog blast). These are its bread-and-butter ranged attacks that it cycles through while maintaining distance.",
- "icon": "attack"
- },
- {
- "name": "Special Scream Phase",
- "description": "Triggered by HP thresholds (checked via BTD_CheckFloatAttributeCondition on HP ratio). The Banshee cycles through three screams in sequence: Scream Sentence (direct damage, 300% ratio), Scream Silence (applies Silence debuff), and Scream Corruption (applies Corruption/unhealable). Each scream's effect duration scales by 7.5 seconds per possession count. The Sentence scream's damage scales by 0.1 per possession count.",
- "icon": "special"
- },
- {
- "name": "Hide & Ambush Phase",
- "description": "The Banshee applies an infinite-duration Hide buff (GE_Banshee_Hide) that makes it invisible and untargetable. It repositions within the combat area, then unleashes HideAttack (1800% damage ratio) as a devastating ambush. The Bombing Montage ability is also used from hiding — spawning up to 15 fog missiles on random targets while concealed.",
- "icon": "stealth"
- },
- {
- "name": "Summoning Phase",
- "description": "The Banshee spawns Specter minions using the SpawnSpecter ability. It creates a BP_GameSpawner at random points within a bounding box around its position, summoning Specters on a timer. This adds persistent DPS pressure and forces players to split attention between the boss and adds.",
- "icon": "summon"
- }
- ],
- "attack_categories": [
- {
- "tier": "Devastating",
- "color": "#e04848",
- "attacks": [
- {
- "name": "FogAttack2",
- "ratio": 2200,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Strongest direct fog attack. Plays AM_Banshee_Weak_Strong montage. Rotates toward target at 10 speed during cast. Despite 0 PhysicalDamageWeapon, the 2200% ratio is applied to ability-based magical damage."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "HideAttack",
- "ratio": 1800,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Ambush from invisibility. The Banshee teleports to a random location in the combat area before striking. Extremely high ratio — the lethal surprise attack."
- },
- {
- "name": "FogRush",
- "ratio": 1600,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "A rushing fog charge. High impact power (7) can stagger players. The Banshee closes distance rapidly before delivering the hit."
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#d9bc6a",
- "attacks": [
- {
- "name": "Pull",
- "ratio": 1500,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Pulls players toward the Banshee with 600 XY / 300 Z pulling power. Plays AM_Banshee_Weak_Pulling. Attaches to targets and drags them in repeatedly via montage signal counting. Extremely dangerous near environmental hazards."
- },
- {
- "name": "FogAttack1",
- "ratio": 1400,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Spawns up to 4 fog missiles at 750 distance, 280 height. Each missile rotates 25 degrees between shots with 4-degree variance. Uses BP_Banshee_FogMissile1 projectile. The primary ranged poke."
- },
- {
- "name": "Bombing SpawnFogMissile",
- "ratio": 1400,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Fog missiles spawned during Bombing Montage phase. Up to 15 missiles targeted at random enemies. Each deals 1400% ratio. Combined area saturation is the deadliest sustained damage in the fight."
- }
- ]
- },
- {
- "tier": "Ranged (Fog Missile2 Summon)",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "Banshee FogMissile2 Attack",
- "ratio": 3000,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Summoned Fog Missile2 entity (100 HP, 80 move speed). has high Impact values (999/999) and has 700% projectile reduction. Applies Corruption, DecreaseHeal, and Silence on hit. A persistent hazard that must be destroyed or avoided."
- }
- ]
- },
- {
- "tier": "Utility",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "Scream Sentence",
- "ratio": 300,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Direct damage scream. Lower ratio but scales by +0.1 per possession count (number of possessed/affected players). Applied via GE_Inst_Calculation for instant damage."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Banshee's behavior tree is priority-based rather than combo-chained. It checks conditions top-down: HP-threshold special screams take highest priority, followed by state-specific skills (Standing while hiding, Bombing while in spawn state), then the main attack selector which picks from Fog Attacks, Pull, Hide, FogRush, Screams, and Specter spawning based on blackboard values and gameplay tags.",
- "chains": [
- {
- "from": "HP Threshold Crossed",
- "to": [
- "Scream Sentence",
- "Scream Silence",
- "Scream Corruption"
- ],
- "note": "Highest priority. The BT checks HP ratio via BTD_CheckFloatAttributeCondition. When threshold is met, it triggers BTT_Banshee_SpecialScream which cycles through the three scream types in order."
- },
- {
- "from": "In Hide State",
- "to": [
- "Standing (maintain hide)",
- "Bombing Montage (spawn fog missiles)"
- ],
- "note": "While hidden (checked via gameplay tag), the Banshee either stays still or begins the bombing run spawning up to 15 fog missiles at random targets."
- },
- {
- "from": "Blackboard Phase Check",
- "to": [
- "FogAttack1",
- "FogAttack2",
- "Pull",
- "HideAttack",
- "FogRush",
- "SpawnSpecter"
- ],
- "note": "The main combat selector. BTD_CheckBBValue decorators gate different ability sets based on the current blackboard phase value. Multiple nested selectors allow the AI to pick contextually."
- },
- {
- "from": "Scream Silence",
- "to": [
- "Scream Corruption"
- ],
- "note": "Silence's Special Pattern Trigger Tag points to Skill.Seven.On, which is Silence itself — creating a potential chain where Silence triggers the next scream (Corruption at Skill.Eight.On)."
- },
- {
- "from": "Bombing Montage End",
- "to": [
- "HideAttack",
- "FogAttack1"
- ],
- "note": "After bombing completes, the Hide effect is removed and the Banshee returns to normal combat, typically opening with a fog attack or repositioning."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "Silence",
- "type": "debuff",
- "duration": "Scales with possession count (7.5s per count)",
- "stacks": 1,
- "description": "Applied by Scream Silence. Duration-based tag-only effect (GE_Dur_TagOnly) that prevents the target from using spells and abilities. Stacks aggregate by target with a limit of 1 — refreshes duration on reapplication rather than stacking.",
- "counter": "Spread out to reduce possession count, which shortens duration. Bring consumables or have a party member who can cleanse. Physical attacks still work while silenced — switch to melee/bow if you're a caster."
- },
- {
- "name": "Corruption",
- "type": "debuff",
- "duration": "Scales with possession count (7.5s per count)",
- "stacks": 1,
- "description": "Applied by Scream Corruption. Makes the target completely unhealable (Icon_Debuff_Unhealable). Duration-based tag-only effect with stack limit of 1. The most dangerous debuff in the fight — any damage taken while corrupted cannot be recovered.",
- "counter": "This is the kill condition. When Corruption is active, play extremely defensively. Do not trade hits. Wait for it to expire before re-engaging. Reduce possession count by spreading apart to minimize duration."
- },
- {
- "name": "DecreaseHeal",
- "type": "debuff",
- "duration": "Duration-based",
- "stacks": 10,
- "description": "Reduces healing received. Applied by fog missile attacks. Stacks up to 10 times, aggregating by target. Each stack expires individually (RemoveSingleStackAndRefreshDuration policy) — the most recent stack refreshes the timer while the oldest stack falls off first. Based on GE_Dur_HealingReceiveMod.",
- "counter": "Avoid repeated fog missile hits to prevent stack buildup. At high stacks, healing becomes nearly useless. Disengage and let stacks fall off naturally. Each stack expires independently, so the debuff gradually weakens over time."
- },
- {
- "name": "Hide (Self-Buff)",
- "type": "buff",
- "duration": "Infinite (until ability ends)",
- "stacks": 1,
- "description": "Applied to the Banshee itself during Hide/Bombing phases. An infinite-duration tag-only effect (GE_Inf_TagOnly) that makes the Banshee invisible and untargetable. Removed when the Banshee exits the bombing montage or performs HideAttack.",
- "counter": "You cannot target or damage the Banshee while hidden. Focus on dodging the fog missile bombardment (up to 15 missiles). Position near cover and wait for it to reveal itself with HideAttack — that's your punish window."
- }
- ],
- "strategies": [
- {
- "title": "Exploit Light Magic Weakness",
- "priority": "critical",
- "description": "The Banshee has -1000 Light Magical Reduction, meaning it takes massively increased damage from Light magic. Cleric's Holy Light, Smite, and any Light-damage spells are devastatingly effective. This is by far the most efficient way to deal damage. Conversely, avoid Fire and Ice magic — both have +500 reduction."
- },
- {
- "title": "Corruption is the Kill Condition — Play Safe When Active",
- "priority": "critical",
- "description": "Scream Corruption makes you completely unhealable. Any HP lost during Corruption is gone until it expires. When you see the AM_Banshee_Special_Corruption animation, stop attacking and focus entirely on dodging. The duration scales with possession count (7.5s per possessed player), so spreading out reduces the window."
- },
- {
- "title": "Spread Out to Reduce Possession Count",
- "priority": "high",
- "description": "All three Scream abilities scale their effect values based on possession count — the number of players affected. Scream Sentence damage scales by +0.1 per count, while Silence and Corruption duration scale by 7.5 seconds per count. Standing apart ensures fewer players get hit, reducing both the damage and debuff severity for everyone."
- },
- {
- "title": "High Impact Values (999/999)",
- "priority": "high",
- "description": "With 999 Impact Resistance and 999 Max Impact Endurance, the Banshee is has high ImpactResistance and MaxImpactEndurance valuesion. Do not waste high-impact attacks hoping to cancel its abilities — focus on raw damage output instead."
- },
- {
- "title": "Bombing Phase = Dodge Priority",
- "priority": "high",
- "description": "During the Bombing Montage, the Banshee is hidden and fires up to 15 fog missiles at random enemy targets. Each missile deals 1400% ratio and applies DecreaseHeal stacks. Keep moving in unpredictable patterns. The missiles spawn on timers targeting random party members, so clumping up makes it worse."
- },
- {
- "title": "Pull Attack — Watch Your Positioning",
- "priority": "high",
- "description": "The Pull ability drags players toward the Banshee at 600 XY / 300 Z force. It attaches to targets and pulls repeatedly via montage signals. Being pulled into the Banshee's other attacks or environmental hazards is extremely dangerous. Stay aware of what's behind you and position with escape routes."
- },
- {
- "title": "HideAttack is the Punish Window",
- "priority": "medium",
- "description": "After bombing, the Banshee reveals itself with HideAttack (1800% ratio). While the attack itself is dangerous, the reveal moment is your best DPS window — the Banshee is briefly committed to the attack animation and can be hit freely. Dodge the HideAttack, then counter-attack immediately."
- },
- {
- "title": "Kill Specters Quickly",
- "priority": "medium",
- "description": "The SpawnSpecter ability summons Specter minions on a timer from random positions in the arena. Left unchecked, they add persistent damage pressure. Assign one player to handle adds while others focus the boss. The Specters are regular monsters — much easier to kill than the Banshee itself."
- },
- {
- "title": "Projectile-Based Attacks Are Effective",
- "priority": "medium",
- "description": "The Banshee has -250 Projectile Reduction, meaning it actually takes bonus damage from projectiles. Rangers and classes with ranged physical attacks deal increased damage. This stacks favorably with the Banshee's 0 base physical damage stat — it's designed to be fought at range."
- },
- {
- "title": "Fog Missile2 Entities Are Nearly Indestructible",
- "priority": "medium",
- "description": "The summoned Fog Missile2 (BP_Banshee_FogMissile2) has 100 HP but 700% Projectile Reduction and 999/999 impact immunity. It deals 3000% ratio on hit and applies Corruption, DecreaseHeal, and Silence simultaneously. Do not try to tank these — dodge them entirely. Melee can destroy them, but projectiles are nearly useless against them."
- },
- {
- "title": "Elite is Faster But Equally Fragile to Light",
- "priority": "low",
- "description": "Elite has 43% more HP (3000 vs 2100) and 20% faster movement (300 vs 250), but the same resistances and weaknesses. Light magic is equally devastating against both grades. The main danger of Elite is less time to react to abilities due to faster movement and repositioning."
- }
- ],
- "elite_differences": [
- "43% more HP (2,200 -> 3,100 effective with base 100)",
- "20% faster movement speed (300 vs 250 MoveSpeedBase)",
- "Same 0 Physical Damage — all damage comes from ability ratios",
- "Same resistances: Fire +500, Ice +500, Light -1000, all others neutral",
- "Same -250 Projectile Reduction (weak to projectiles)",
- "Same 999/999 Impact Resistance/Endurance (fully stagger-immune)",
- "Same ability set and behavior tree — no new attacks",
- "Same XP reward (15) and adventure points (50)"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "180-degree peripheral vision — full frontal awareness but blind directly behind",
- "damage_sense": true,
- "damage_description": "Always reacts to being hit regardless of facing direction (AISenseConfig_Damage)",
- "hearing": true,
- "hearing_description": "Reacts to loud noises — opening doors, fighting nearby, or casting spells can pull aggro through walls",
- "stuck_tracking": false,
- "stuck_description": "No explicit stuck tracking in the behavior tree — the Banshee relies on priority-based ability selection rather than movement-based combo chains"
- }
+  "slug": "banshee-boss",
+  "overview": "Banshee (Boss) is a Boss-class Undead monster found in Ruins. 2 grades: Common, Elite. Base stats (Common): 2100 HP, 0 physical damage, 250 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 7 attacks, 0 combo chains. Highest damage: Fog Attack2 at 220% ratio (0 base damage). behavior tree: BT_Banshee.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "3 melee attacks. Fog Attack1 (140%), Fog Attack2 (220%), Hide Attack (180%).",
+      "icon": "attack"
+    },
+    {
+      "name": "Rush / Charge",
+      "description": "1 rush/charge attacks for gap-closing. Fog Rush (160%).",
+      "icon": "move"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Fog Attack2",
+          "damage_ratio": 2200,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "220% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Pull",
+          "damage_ratio": 1500,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "150% damage ratio, impact power 6."
+        },
+        {
+          "name": "Hide Attack",
+          "damage_ratio": 1800,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "180% damage ratio, impact power 7."
+        },
+        {
+          "name": "Fog Rush",
+          "damage_ratio": 1600,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "160% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Fog Attack1",
+          "damage_ratio": 1400,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "140% damage ratio, impact power 6."
+        },
+        {
+          "name": "Bombing Spawn Fog Missile",
+          "damage_ratio": 1400,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "140% damage ratio, impact power 6."
+        }
+      ]
+    },
+    {
+      "tier": "Utility",
+      "color": "#5588dd",
+      "attacks": [
+        {
+          "name": "Scream Sentence",
+          "damage_ratio": 300,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "30% damage ratio, impact power 6."
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [
+    {
+      "name": "Corruption",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Corruption icon on your status bar."
+    },
+    {
+      "name": "Decrease Heal",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Decrease Heal icon on your status bar."
+    },
+    {
+      "name": "Silence",
+      "type": "debuff",
+      "duration": "Data-dependent",
+      "stacks": 1,
+      "description": "Applied during combat. ",
+      "counter": "Watch for the Silence icon on your status bar."
+    }
+  ],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Elemental Weakness: Light",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Light (-1000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Fire, Ice",
+      "priority": "high",
+      "description": "Elemental resistances: Fire (+500), Ice (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Highest Damage: Fog Attack2 (220% ratio)",
+      "priority": "high",
+      "description": "Fog Attack2 deals 0 damage at base (220% ratio). This is the most dangerous attack to avoid."
+    },
+    {
+      "title": "Cooldown Timers",
+      "priority": "medium",
+      "description": "FogRush Timer: 70s."
+    },
+    {
+      "title": "Behavior Trees: BT_Banshee",
+      "priority": "low",
+      "description": "Uses behavior tree: BT_Banshee. "
+    }
+  ],
+  "elite_differences": [
+    "43% more HP (2100 → 3000) in Elite",
+    "Move speed 250 → 300 in Elite",
+    "No Nightmare grade exists"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree."
+  }
 }

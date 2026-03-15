@@ -1,93 +1,101 @@
 {
- "slug": "fire-elemental",
- "overview": "Fire Elemental is a Normal-class Spirit/Elemental monster found in Firedeep. 3 grades: Common, Elite, Nightmare. Base stats (Common): 40 HP, 0 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 4 attacks, 0 combo chains. Highest damage: Melee Attack1 at 0% ratio (0 base damage).",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "4 melee attacks. Melee Attack1 (0%), Range Attack2 (0%), Action Attack3 (0%), and more.",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Utility",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "Melee Attack1",
- "damage_ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "0% damage ratio, impact power 3.",
- "damage_nightmare": 0
- },
- {
- "name": "Range Attack2",
- "damage_ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "0% damage ratio, impact power 4.",
- "damage_nightmare": 0
- },
- {
- "name": "Action Attack3",
- "damage_ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "0% damage ratio, impact power 3.",
- "damage_nightmare": 0
- },
- {
- "name": "Melee Attack4",
- "damage_ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "0% damage ratio, impact power 3.",
- "damage_nightmare": 0
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Elemental Weakness: Ice",
- "priority": "high",
- "description": "Significant elemental weaknesses: Ice (-2000). Negative reduction values mean incoming damage of that type is amplified."
- },
- {
- "title": "Resists: Fire",
- "priority": "high",
- "description": "Elemental resistances: Fire (+500). Positive reduction values reduce incoming damage of that type."
- },
- {
- "title": "Projectile Reduction: 150",
- "priority": "medium",
- "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
- }
- ],
- "elite_differences": [
- "50% more HP (40 → 60) in Elite",
- "Move speed 200 → 230 in Elite",
- "ActionSpeed 0 → 100 in Elite — attacks animate faster",
- "XP reward 3 → 4 in Elite",
- "100% more HP (40 → 80) in Nightmare",
- "Move speed 200 → 260 in Nightmare",
- "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
- "XP reward 3 → 5 in Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "fire-elemental",
+  "overview": "Fire Elemental is a Normal-class Spirit/Elemental monster found in Firedeep. 3 grades: Common, Elite, Nightmare. Base stats (Common): 40 HP, 0 physical damage, 200 move speed, ActionSpeed 0. ImpactResistance 3, MaxImpactEndurance 4. 4 attacks, 0 combo chains. Highest damage: Melee Attack1 at 0% ratio (0 base damage). Sight range 1100.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "4 melee attacks. Melee Attack1 (0%), Range Attack2 (0%), Action Attack3 (0%), and more.",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Utility",
+      "color": "#5588dd",
+      "attacks": [
+        {
+          "name": "Melee Attack1",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 3.",
+          "damage_nightmare": 0
+        },
+        {
+          "name": "Range Attack2",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 4.",
+          "damage_nightmare": 0
+        },
+        {
+          "name": "Action Attack3",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 3.",
+          "damage_nightmare": 0
+        },
+        {
+          "name": "Melee Attack4",
+          "damage_ratio": 0,
+          "damage_common": 0,
+          "damage_elite": 0,
+          "note": "0% damage ratio, impact power 3.",
+          "damage_nightmare": 0
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Elemental Weakness: Ice",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Ice (-2000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Fire",
+      "priority": "high",
+      "description": "Elemental resistances: Fire (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 150",
+      "priority": "medium",
+      "description": "Has 150 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Detection Range: 1100 units",
+      "priority": "medium",
+      "description": "Sight radius 1100 units, loses target at 1500 units, 180° vision angle."
+    }
+  ],
+  "elite_differences": [
+    "50% more HP (40 → 60) in Elite",
+    "Move speed 200 → 230 in Elite",
+    "ActionSpeed 0 → 100 in Elite — attacks animate faster",
+    "XP reward 3 → 4 in Elite",
+    "100% more HP (40 → 80) in Nightmare",
+    "Move speed 200 → 260 in Nightmare",
+    "ActionSpeed 0 → 200 in Nightmare — attacks animate faster",
+    "XP reward 3 → 5 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 1100,
+    "lose_sight_radius": 1500,
+    "sight_description": "Detects targets within 1100 units. Loses target at 1500 units."
+  }
 }

@@ -1,73 +1,91 @@
 {
- "slug": "tidewalker-spearer",
- "overview": "Tidewalker Spearer is a Normal-class Beast monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 55 HP, 16 physical damage, 80 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 3 attacks, 0 combo chains. Highest damage: Melee Attack2 Land at 180% ratio (288 base damage).",
- "phases": [
- {
- "name": "Melee Combat",
- "description": "3 melee attacks. Melee Attack1 Land (150%), Melee Attack2 Land (180%), Melee Attack Water (160%).",
- "icon": "attack"
- }
- ],
- "attack_categories": [
- {
- "tier": "Heavy",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Melee Attack1 Land",
- "damage_ratio": 1500,
- "damage_common": 240,
- "damage_elite": 240,
- "note": "150% damage ratio, impact power 4.",
- "damage_nightmare": 240
- },
- {
- "name": "Melee Attack2 Land",
- "damage_ratio": 1800,
- "damage_common": 288,
- "damage_elite": 288,
- "note": "180% damage ratio, impact power 4.",
- "damage_nightmare": 288
- },
- {
- "name": "Melee Attack Water",
- "damage_ratio": 1600,
- "damage_common": 256,
- "damage_elite": 256,
- "note": "160% damage ratio, impact power 4.",
- "damage_nightmare": 256
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
- "chains": []
- },
- "status_effects_detail": [],
- "strategies": [
- {
- "title": "Elemental Weakness: Fire",
- "priority": "high",
- "description": "Significant elemental weaknesses: Fire (-2000). Negative reduction values mean incoming damage of that type is amplified."
- }
- ],
- "elite_differences": [
- "118% more HP (55 → 120) in Elite",
- "Move speed 80 → 100 in Elite",
- "XP reward 3 → 4 in Elite",
- "236% more HP (55 → 185) in Nightmare",
- "Move speed 80 → 120 in Nightmare",
- "XP reward 3 → 5 in Nightmare"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "Standard monster perception.",
- "damage_sense": true,
- "damage_description": "Reacts to damage from any direction.",
- "hearing": true,
- "hearing_description": "Reacts to nearby sounds.",
- "stuck_tracking": false,
- "stuck_description": "Standard AI navigation."
- }
+  "slug": "tidewalker-spearer",
+  "overview": "Tidewalker Spearer is a Normal-class Beast monster found in Ship Graveyard. 3 grades: Common, Elite, Nightmare. Base stats (Common): 55 HP, 16 physical damage, 80 move speed, ActionSpeed 0. ImpactResistance 1, MaxImpactEndurance 1. 3 attacks, 0 combo chains. Highest damage: Melee Attack2 Land at 180% ratio (288 base damage). Sight range 900, combat radius 160.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "3 melee attacks. Melee Attack1 Land (150%), Melee Attack2 Land (180%), Melee Attack Water (160%).",
+      "icon": "attack"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Melee Attack1 Land",
+          "damage_ratio": 1500,
+          "damage_common": 240,
+          "damage_elite": 240,
+          "note": "150% damage ratio, impact power 4.",
+          "damage_nightmare": 240
+        },
+        {
+          "name": "Melee Attack2 Land",
+          "damage_ratio": 1800,
+          "damage_common": 288,
+          "damage_elite": 288,
+          "note": "180% damage ratio, impact power 4.",
+          "damage_nightmare": 288
+        },
+        {
+          "name": "Melee Attack Water",
+          "damage_ratio": 1600,
+          "damage_common": 256,
+          "damage_elite": 256,
+          "note": "160% damage ratio, impact power 4.",
+          "damage_nightmare": 256
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "Elemental Weakness: Fire",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Fire (-2000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Detection Range: 900 units",
+      "priority": "medium",
+      "description": "Sight radius 900 units, loses target at 1500 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 160, ability check distance 230",
+      "priority": "medium",
+      "description": "Combat area radius 160. Ability check distance 230."
+    },
+    {
+      "title": "Flee/Kite Behavior",
+      "priority": "high",
+      "description": "re-engages at 1000 unit peace distance."
+    }
+  ],
+  "elite_differences": [
+    "118% more HP (55 → 120) in Elite",
+    "Move speed 80 → 100 in Elite",
+    "XP reward 3 → 4 in Elite",
+    "236% more HP (55 → 185) in Nightmare",
+    "Move speed 80 → 120 in Nightmare",
+    "XP reward 3 → 5 in Nightmare"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": false,
+    "stuck_description": "Standard AI navigation.",
+    "sight_radius": 900,
+    "lose_sight_radius": 1500,
+    "sight_description": "Detects targets within 900 units. Loses target at 1500 units."
+  }
 }

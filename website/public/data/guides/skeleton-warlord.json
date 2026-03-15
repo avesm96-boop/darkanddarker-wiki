@@ -1,364 +1,346 @@
 {
- "slug": "skeleton-warlord",
- "overview": "The Skeleton Warlord is a Boss-class Undead monster found in the Crypt dungeon. Unlike most bosses that rely on personal damage output, the Warlord is a commander — it uses 'Order' abilities to summon and direct skeleton minions, creating a multi-threat encounter. Its personal melee attacks consist of a 5-hit combo chain where every attack can cross-chain into any other (Combo1 through Combo5), supplemented by ThrowingKnives for ranged pressure. It controls space with BonePrison (trapping players in bone cages) and RealmOfDomination (area denial). With 999 Impact Resistance and 999 Impact Endurance, it has high Impact values. The Elite variant is dramatically more dangerous than Common, gaining Explosion (the highest damage ratio of any attack in the game at 8000), SpawnCrystal, and AttackBlockExplosion — abilities that Common does not have at all.",
- "phases": [
- {
- "name": "Melee Combo Phase",
- "description": "The Warlord's primary engagement uses a 5-attack combo chain (Combo1 through Combo5) where every attack can freely cross-chain into any other. Combo1 (1500 ratio) is the lightest opener, Combo3 (2200 ratio) is the hardest-hitting melee strike, and Combo2/4/5 fall between at 1800-1900 ratio. The free cross-chaining (Combo2From1, Combo3From2, Combo4From3, Combo5From4, etc.) means the Warlord can vary its combo length and rhythm unpredictably. All combo attacks have impact 7.",
- "icon": "attack"
- },
- {
- "name": "Ranged Phase (Throwing Knives)",
- "description": "ThrowingKnives can be used as a standalone ranged attack (1900 ratio — equal to Combo4/5 damage) or chained from any combo attack (ThrowingKnivesFrom1 through ThrowingKnivesFrom5) at a reduced 800 ratio. ThrowingKnives2 variants also deal 800 ratio. This means the Warlord can seamlessly transition from melee combos into ranged pressure without a gap. Standalone throwing knives deal full damage; combo-chained knives deal roughly 42% of standalone damage.",
- "icon": "attack"
- },
- {
- "name": "Commander Phase (Orders)",
- "description": "The Warlord's signature mechanic. Order Spawn summons skeleton minions into the fight. Order BackStep commands repositioning. Order PositionChange and Order PositionChange Center direct tactical movement. Order Bombing commands explosive attacks from minions. Order ThrowingKnives commands ranged attacks from adds. These abilities make the Warlord a force multiplier — even if its personal damage is lower than other bosses, the combined threat of the Warlord plus its minions is extreme.",
- "icon": "special"
- },
- {
- "name": "Control Phase",
- "description": "BonePrison traps a player in a cage of bones, immobilizing them and leaving them vulnerable to minion attacks or the Warlord's own combos. RealmOfDomination creates an area-of-effect zone (RealmOfDomination Aoe) for area denial and control. Shield provides a defensive ability. SoulPassFromPlayer steals from the targeted player. These abilities create dangerous lockdown scenarios, especially when combined with summoned minions.",
- "icon": "debuff"
- },
- {
- "name": "Elite Explosion Phase",
- "description": "ELITE ONLY. The Elite Warlord gains three abilities that Common does not have: Explosion (8000 damage ratio — the highest of ANY attack in the game), SpawnCrystal (spawns a crystal object likely tied to the Explosion mechanic), and AttackBlockExplosion Damage (1000 ratio defensive explosion). Explosion deals 3840 damage with Elite's 48 base damage, which is a guaranteed one-shot on virtually any player build. SpawnCrystal likely creates the target or trigger for Explosion. These abilities fundamentally change the Elite fight from a war of attrition into a lethal puzzle.",
- "icon": "special"
- }
- ],
- "attack_categories": [
- {
- "tier": "Catastrophic (Elite Only)",
- "color": "#ff2222",
- "attacks": [
- {
- "name": "Explosion",
- "ratio": 8000,
- "damage_common": null,
- "damage_elite": 3840,
- "note": "ELITE ONLY. The single highest damage ratio of any attack in the entire game. At 48 base damage * 8000 / 100 = 3840 raw physical damage. This is a guaranteed instant kill on any player. Tied to the SpawnCrystal mechanic — the crystal likely serves as the detonation point. Avoiding this attack is not optional; it cannot be survived."
- },
- {
- "name": "AttackBlockExplosion Damage",
- "ratio": 1000,
- "damage_common": null,
- "damage_elite": 480,
- "note": "ELITE ONLY. A defensive explosion triggered when the Warlord blocks an attack. At 480 damage, this punishes aggressive melee players who attack without reading the Warlord's defensive stance. Forces attackers to recognize when the Warlord has its Shield active."
- }
- ]
- },
- {
- "tier": "Heavy",
- "color": "#e04848",
- "attacks": [
- {
- "name": "Combo3",
- "ratio": 2200,
- "damage_common": 70.4,
- "damage_elite": 105.6,
- "note": "The hardest-hitting melee combo attack. Can be used standalone or chained from Combo1 or Combo2 (Combo3From1, Combo3From2). Impact 7. At Elite grade this deals over 100 damage per hit."
- },
- {
- "name": "Combo4",
- "ratio": 1900,
- "damage_common": 60.8,
- "damage_elite": 91.2,
- "note": "High-damage combo attack. Can chain from Combo1, Combo2, Combo3, or Combo5 (Combo4From1/2/3/5). Impact 7. Part of the Warlord's flexible cross-chain system."
- },
- {
- "name": "Combo5",
- "ratio": 1900,
- "damage_common": 60.8,
- "damage_elite": 91.2,
- "note": "Equal damage to Combo4. Can chain from Combo1 through Combo4 (Combo5From1/2/3/4). Impact 7. The combo chain can loop back into earlier attacks from here."
- },
- {
- "name": "ThrowingKnives (Standalone)",
- "ratio": 1900,
- "damage_common": 60.8,
- "damage_elite": 91.2,
- "note": "Full-power standalone ranged attack. Same 1900 ratio as Combo4/5. Impact 7. Used when the Warlord wants ranged pressure without being in a combo chain. Significantly stronger than the combo-chained variant."
- }
- ]
- },
- {
- "tier": "Strong",
- "color": "#c9a84c",
- "attacks": [
- {
- "name": "Combo2",
- "ratio": 1800,
- "damage_common": 57.6,
- "damage_elite": 86.4,
- "note": "Mid-tier combo attack. Can be used standalone or chained from Combo1 or Combo3 (Combo2From1, Combo2From3). Impact 7."
- },
- {
- "name": "Combo1",
- "ratio": 1500,
- "damage_common": 48,
- "damage_elite": 72,
- "note": "The lightest combo opener at 1500 ratio. Still deals significant damage. Impact 7. Often the entry point into the cross-chain combo system."
- }
- ]
- },
- {
- "tier": "Moderate",
- "color": "#8a7048",
- "attacks": [
- {
- "name": "ThrowingKnives (From Combo)",
- "ratio": 800,
- "damage_common": 25.6,
- "damage_elite": 38.4,
- "note": "Weaker variant used when chained from any combo attack (ThrowingKnivesFrom1 through ThrowingKnivesFrom5). Impact 3 (lower than melee attacks). Deals roughly 42% of the standalone ThrowingKnives damage. Less dangerous individually but extends the Warlord's effective range mid-combo."
- },
- {
- "name": "ThrowingKnives2",
- "ratio": 800,
- "damage_common": 25.6,
- "damage_elite": 38.4,
- "note": "Secondary throwing knife variant. All sub-variants deal 800 ratio with impact 3. Functions as additional ranged pressure."
- }
- ]
- },
- {
- "tier": "Utility",
- "color": "#5588dd",
- "attacks": [
- {
- "name": "Order Spawn",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Summons skeleton minions into the arena. The core of the Warlord's commander identity. Adds must be managed or they overwhelm the group. Summoned minions persist until killed."
- },
- {
- "name": "Order Bombing",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Commands minions to perform explosive attacks. Indirect damage dealt through adds rather than the Warlord itself."
- },
- {
- "name": "Order ThrowingKnives",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Commands minions to throw knives at players. Creates ranged pressure from multiple angles simultaneously."
- },
- {
- "name": "BonePrison",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Traps a player inside a cage of bones. Immobilized targets are vulnerable to the Warlord's combos, minion attacks, and in Elite — Explosion. Breaking line of sight or destroying the prison is critical."
- },
- {
- "name": "RealmOfDomination",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Creates a RealmOfDomination Aoe zone for area denial. Forces players out of a section of the arena, limiting positioning options and potentially corralling players into minions or BonePrison."
- },
- {
- "name": "Shield",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Defensive ability. In Elite, attacking during Shield may trigger AttackBlockExplosion Damage (1000 ratio / 480 damage). Do not mindlessly attack a shielding Elite Warlord."
- },
- {
- "name": "SpawnCrystal (Elite Only)",
- "ratio": 0,
- "damage_common": null,
- "damage_elite": 0,
- "note": "ELITE ONLY. Spawns a crystal object in the arena. Likely serves as the trigger or focal point for the Explosion ability (8000 ratio). Destroying or avoiding the crystal is presumably critical to surviving the Elite fight."
- },
- {
- "name": "SoulPassFromPlayer",
- "ratio": 0,
- "damage_common": 0,
- "damage_elite": 0,
- "note": "Steals from the targeted player. The exact mechanical effect is a resource drain that benefits the Warlord."
- }
- ]
- }
- ],
- "combo_flow": {
- "description": "The Skeleton Warlord uses a fully cross-chained 5-attack combo system. Every combo attack (1 through 5) can chain into any other combo attack, creating unpredictable attack sequences of variable length. Additionally, any combo attack can branch into ThrowingKnives for a ranged follow-up at reduced damage. The Warlord can also use standalone ThrowingKnives at full power outside the combo system. This means there is no fixed combo pattern to memorize — the Warlord dynamically selects its next attack from the full combo menu at each step.",
- "chains": [
- {
- "from": "Combo1",
- "to": [
- "Combo2From1",
- "Combo3From1",
- "Combo4From1",
- "Combo5From1",
- "ThrowingKnivesFrom1"
- ],
- "note": "Lightest opener (1500 ratio). Can chain into any other combo attack or transition to throwing knives (800 ratio)."
- },
- {
- "from": "Combo2",
- "to": [
- "Combo3From2",
- "Combo4From2",
- "Combo5From2",
- "ThrowingKnivesFrom2"
- ],
- "note": "Mid-weight attack (1800 ratio). Cross-chains forward into Combo3-5 or branches to ranged."
- },
- {
- "from": "Combo3",
- "to": [
- "Combo2From3",
- "Combo4From3",
- "Combo5From3",
- "ThrowingKnivesFrom3"
- ],
- "note": "Hardest-hitting melee attack (2200 ratio). Can chain backward to Combo2 or forward to Combo4-5."
- },
- {
- "from": "Combo4",
- "to": [
- "Combo5From4",
- "ThrowingKnivesFrom4"
- ],
- "note": "Heavy attack (1900 ratio). Chains forward to Combo5 or branches to ranged."
- },
- {
- "from": "Combo5",
- "to": [
- "Combo4From5",
- "ThrowingKnivesFrom5"
- ],
- "note": "Heavy attack (1900 ratio). Can loop back to Combo4, creating a 4-5-4-5 repeating chain, or exit to ranged."
- },
- {
- "from": "ThrowingKnives (Standalone)",
- "to": [],
- "note": "Full-power ranged attack (1900 ratio). Does not chain into combos — used as an independent action."
- },
- {
- "from": "Any Combo",
- "to": [
- "ThrowingKnives (From Combo)"
- ],
- "note": "Any combo attack can exit into a throwing knife at reduced 800 ratio. This extends the Warlord's threat range mid-combo but deals less than half the standalone knife damage."
- }
- ]
- },
- "status_effects_detail": [
- {
- "name": "BonePrison",
- "type": "debuff",
- "duration": "Until destroyed or expires",
- "stacks": 1,
- "description": "Traps the targeted player inside a cage of bones, preventing movement. The imprisoned player is completely vulnerable to the Warlord's combos, minion attacks, RealmOfDomination, and in Elite — the Explosion ability. BonePrison combined with Order Spawn creates the most lethal scenarios, as the player cannot dodge incoming minion attacks.",
- "counter": "Teammates must prioritize breaking the BonePrison immediately. The imprisoned player should block if possible. In Elite, being trapped in BonePrison near a SpawnCrystal is likely fatal due to the Explosion mechanic. Spread out to avoid multiple players being caught."
- },
- {
- "name": "RealmOfDomination",
- "type": "zone",
- "duration": "Persistent zone",
- "stacks": 1,
- "description": "Creates a RealmOfDomination Aoe zone that controls a section of the arena. Players inside the zone suffer area-of-effect damage or debuffs. The zone denies positioning and can funnel players into unfavorable locations where minions or the Warlord's combos are more dangerous.",
- "counter": "Exit the zone immediately. Do not fight inside RealmOfDomination. The Warlord may use this to cut off escape routes — maintain awareness of zone placement and keep open paths available. Ranged damage can be applied safely from outside the zone."
- },
- {
- "name": "SoulPassFromPlayer",
- "type": "debuff",
- "duration": "Instant",
- "stacks": 1,
- "description": "The Warlord steals from the targeted player. This is a resource drain ability that directly benefits the boss.",
- "counter": "Avoid being in close range when the Warlord begins this animation. Maintaining distance or positioning behind the boss can reduce exposure to this ability."
- }
- ],
- "strategies": [
- {
- "title": "Elite Is a Completely Different Fight",
- "priority": "critical",
- "description": "The Elite Skeleton Warlord gains three abilities that Common does not have: Explosion (8000 ratio = 3840 damage, guaranteed one-shot), SpawnCrystal, and AttackBlockExplosion Damage (480 damage on blocked attacks). Common is a war of attrition against a commander and its minions. Elite is a lethal puzzle where a single Explosion can instantly end a player. Do not assume Common experience prepares you for Elite."
- },
- {
- "title": "It High Impact Resistance Values",
- "priority": "critical",
- "description": "With 999 Impact Resistance and 999 Impact Endurance, the Skeleton Warlord is completely has high ImpactResistance and MaxImpactEndurance values. Do not waste high-impact abilities hoping to disrupt its combos or ability casts. Its Order abilities and BonePrison will go off uninterrupted — plan around them rather than trying to stop them."
- },
- {
- "title": "Kill the Adds or Get Overwhelmed",
- "priority": "critical",
- "description": "Order Spawn summons skeleton minions that persist until killed. Order Bombing, Order ThrowingKnives, and Order PositionChange direct these adds to attack from multiple angles. If adds are allowed to accumulate, the combined damage from the Warlord's combos plus minion attacks becomes unsurvivable. Designate players to clear adds immediately when Order Spawn is used."
- },
- {
- "title": "Exploit Earth Magic Weakness (-1000 Reduction)",
- "priority": "high",
- "description": "The Skeleton Warlord has -1000 EarthMagicalReduction, making Earth magic the most effective damage type by a massive margin. Evil magic is heavily resisted at +500 EvilMagicalReduction. Base MagRes is 124, providing moderate general magic defense. Fire, Ice, Light, Dark, and Divine are all neutral (0 reduction). Earth-based builds and spells should be prioritized for this fight."
- },
- {
- "title": "Do NOT Attack a Shielding Elite Warlord",
- "priority": "high",
- "description": "In Elite, the Shield ability is paired with AttackBlockExplosion Damage (1000 ratio = 480 damage). Hitting the Warlord while it is shielding triggers a retaliatory explosion. This punishes aggressive melee players who do not read the boss's defensive stance. When you see the Shield animation on Elite, stop attacking and reposition."
- },
- {
- "title": "BonePrison + Adds = Death Sentence",
- "priority": "high",
- "description": "BonePrison immobilizes a player while Order Spawn minions are still active. The trapped player cannot dodge melee attacks from adds, the Warlord's own combos, or in Elite — Explosion. Teammates must break BonePrison immediately. Solo players caught in BonePrison with active adds face an extremely dangerous situation."
- },
- {
- "title": "Watch for SpawnCrystal in Elite",
- "priority": "high",
- "description": "The Elite Warlord uses SpawnCrystal to place a crystal in the arena, likely tied to the Explosion mechanic (8000 ratio = 3840 damage). When you see a crystal appear, either destroy it immediately or move as far from it as possible. Being caught near a crystal when Explosion triggers is instant death. This mechanic does not exist in Common."
- },
- {
- "title": "The Combo System Has No Fixed Pattern",
- "priority": "high",
- "description": "Unlike bosses with predictable combo strings, the Warlord's 5-attack combo chain allows free cross-chaining. Combo1 can go into Combo3, which can go into Combo5, which can loop back to Combo4. There is no fixed sequence to memorize. Instead, learn the individual attack animations and react to each swing rather than trying to predict the chain. Any combo can also exit into ThrowingKnives for ranged follow-up."
- },
- {
- "title": "Standalone Throwing Knives Hit Hard",
- "priority": "medium",
- "description": "Standalone ThrowingKnives deal 1900 ratio (60.8 Common / 91.2 Elite), equal to Combo4 and Combo5. Do not assume ranged attacks are weak — standalone knives are a full-power attack. However, throwing knives chained from combos deal only 800 ratio (25.6 Common / 38.4 Elite), which is significantly weaker. The distinction matters for threat assessment."
- },
- {
- "title": "Projectiles Are Heavily Reduced",
- "priority": "medium",
- "description": "With 250 ProjectileReductionMod, the Warlord reduces all projectile damage significantly. Physical ranged builds (Ranger, crossbow) are much less effective. Spell-based ranged damage, particularly Earth magic, is far superior for this encounter."
- },
- {
- "title": "Elite Is Faster and Tankier",
- "priority": "medium",
- "description": "Elite has 4244 HP (49% more than Common's 2844), 48 base damage (50% more than Common's 32), and 280 move speed (12% faster than Common's 250). Combined with the three exclusive abilities, Elite requires significantly more preparation, coordination, and gear than Common."
- },
- {
- "title": "Spread Out to Limit Order Effectiveness",
- "priority": "medium",
- "description": "The Warlord's Order abilities direct multiple adds simultaneously. If your group is stacked, Order Bombing and Order ThrowingKnives can hit everyone at once. Spreading out forces the adds to split their attention and reduces the chance of BonePrison catching multiple players in a cluster."
- }
- ],
- "elite_differences": [
- "49% more HP (2,844 -> 4,244)",
- "50% more base physical damage (32 -> 48)",
- "12% faster base move speed (250 -> 280)",
- "GAINS 3 entirely new abilities not available in Common: Explosion (8000 ratio), SpawnCrystal, AttackBlockExplosion Damage (1000 ratio)",
- "Explosion deals 3,840 damage — the highest single-hit damage of any attack in the game, a guaranteed one-shot on any player",
- "AttackBlockExplosion punishes players who attack during Shield (480 damage retaliatory explosion)",
- "SpawnCrystal introduces a new arena mechanic tied to the Explosion ability",
- "Same resistances: MagRes 124, ImpactRes 999, ImpactEnd 999, ProjectileReduction 250, Evil +500, Earth -1000",
- "Same base ability set (combos, orders, BonePrison, RealmOfDomination) with the 3 additions on top",
- "Higher XP reward (15 -> 20)",
- "No Nightmare grade exists for this boss"
- ],
- "ai_perception": {
- "vision_angle": 180,
- "vision_description": "180-degree peripheral vision — cannot see directly behind",
- "damage_sense": true,
- "damage_description": "Always reacts to being hit regardless of facing direction (AISenseConfig_Damage)",
- "hearing": true,
- "hearing_description": "Reacts to loud noises in the arena (AISenseConfig_Hearing)",
- "stuck_tracking": true,
- "stuck_description": "Uses a commander AI pattern with Order abilities to reposition minions. Order PositionChange and Order PositionChange Center dynamically adjust minion formations. The Warlord itself uses combo cross-chaining to adapt its attack rhythm based on target positioning."
- }
+  "slug": "skeleton-warlord",
+  "overview": "Skeleton Warlord is a Boss-class Undead monster found in Crypt. 2 grades: Common, Elite. Base stats (Common): 2844 HP, 32 physical damage, 250 move speed, ActionSpeed 0. ImpactResistance 999, MaxImpactEndurance 999. 31 attacks, 0 combo chains. Highest damage: Explosion at 800% ratio (2560 base damage). Sight range 800, combat radius 3000, behavior tree: BT_SkeletonWarlord. Elite gains 3 exclusive abilityies: Explosion, Spawn Crystal, Attack Block Explosion Damage.",
+  "phases": [
+    {
+      "name": "Melee Combat",
+      "description": "18 melee attacks. Combo1 (150%), Combo2 (180%), Combo2From1 (180%), and more.",
+      "icon": "attack"
+    },
+    {
+      "name": "Ranged Attacks",
+      "description": "12 ranged attacks. Throwing Knives (190%), Throwing Knives From1 (80%), Throwing Knives From2 (80%), and more.",
+      "icon": "special"
+    },
+    {
+      "name": "Special Abilities",
+      "description": "2 special abilities. Explosion (800%), Attack Block Explosion Damage (100%).",
+      "icon": "special"
+    }
+  ],
+  "attack_categories": [
+    {
+      "tier": "Catastrophic",
+      "color": "#ff2222",
+      "attacks": [
+        {
+          "name": "Explosion",
+          "damage_ratio": 8000,
+          "damage_common": 2560,
+          "damage_elite": 3840,
+          "note": "800% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Devastating",
+      "color": "#e04848",
+      "attacks": [
+        {
+          "name": "Combo3",
+          "damage_ratio": 2200,
+          "damage_common": 704,
+          "damage_elite": 1056,
+          "note": "220% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo3From1",
+          "damage_ratio": 2200,
+          "damage_common": 704,
+          "damage_elite": 1056,
+          "note": "220% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo3From2",
+          "damage_ratio": 2200,
+          "damage_common": 704,
+          "damage_elite": 1056,
+          "note": "220% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Heavy",
+      "color": "#c9a84c",
+      "attacks": [
+        {
+          "name": "Combo1",
+          "damage_ratio": 1500,
+          "damage_common": 480,
+          "damage_elite": 720,
+          "note": "150% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo2",
+          "damage_ratio": 1800,
+          "damage_common": 576,
+          "damage_elite": 864,
+          "note": "180% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo2From1",
+          "damage_ratio": 1800,
+          "damage_common": 576,
+          "damage_elite": 864,
+          "note": "180% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo2From3",
+          "damage_ratio": 1800,
+          "damage_common": 576,
+          "damage_elite": 864,
+          "note": "180% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo4",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo4From1",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo4From2",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo4From3",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo4From5",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo5",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo5From1",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo5From2",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo5From3",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Combo5From4",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        },
+        {
+          "name": "Throwing Knives",
+          "damage_ratio": 1900,
+          "damage_common": 608,
+          "damage_elite": 912,
+          "note": "190% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Strong",
+      "color": "#d9bc6a",
+      "attacks": [
+        {
+          "name": "Attack Block Explosion Damage",
+          "damage_ratio": 1000,
+          "damage_common": 320,
+          "damage_elite": 480,
+          "note": "100% damage ratio, impact power 7."
+        }
+      ]
+    },
+    {
+      "tier": "Moderate",
+      "color": "#8a7048",
+      "attacks": [
+        {
+          "name": "Throwing Knives From1",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives From2",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives From3",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives From4",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives From5",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives2",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives2From1",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives2From2",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives2From3",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives2From4",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        },
+        {
+          "name": "Throwing Knives2From5",
+          "damage_ratio": 800,
+          "damage_common": 256,
+          "damage_elite": 384,
+          "note": "80% damage ratio, impact power 3."
+        }
+      ]
+    }
+  ],
+  "combo_flow": {
+    "description": "This monster does not use combo chains. Each attack is selected independently by the AI.",
+    "chains": []
+  },
+  "status_effects_detail": [],
+  "strategies": [
+    {
+      "title": "High Impact Values (ImpactRes 999, Endurance 999)",
+      "priority": "medium",
+      "description": "ImpactResistance 999 and MaxImpactEndurance 999. This monster does not have a Staggered ability in its ability set."
+    },
+    {
+      "title": "Elemental Weakness: Earth",
+      "priority": "high",
+      "description": "Significant elemental weaknesses: Earth (-1000). Negative reduction values mean incoming damage of that type is amplified."
+    },
+    {
+      "title": "Resists: Evil",
+      "priority": "high",
+      "description": "Elemental resistances: Evil (+500). Positive reduction values reduce incoming damage of that type."
+    },
+    {
+      "title": "Projectile Reduction: 250",
+      "priority": "medium",
+      "description": "Has 250 ProjectileReductionMod, reducing physical projectile damage."
+    },
+    {
+      "title": "Highest Damage: Explosion (800% ratio)",
+      "priority": "high",
+      "description": "Explosion deals 2560 damage at base (800% ratio). This is the most dangerous attack to avoid."
+    },
+    {
+      "title": "Elite Gains: Explosion, Spawn Crystal, Attack Block Explosion Damage",
+      "priority": "medium",
+      "description": "Elite grade has 3 exclusive abilities not present in lower grades: Explosion, Spawn Crystal, Attack Block Explosion Damage. These change the fight dynamics in Elite.",
+      "grades": [
+        "Elite"
+      ]
+    },
+    {
+      "title": "Detection Range: 800 units",
+      "priority": "medium",
+      "description": "Sight radius 800 units, 180° vision angle."
+    },
+    {
+      "title": "Combat Range: combat area radius 3000, ability check distance 3000",
+      "priority": "medium",
+      "description": "Combat area radius 3000. Ability check distance 3000. Ability attack delay: 5s."
+    },
+    {
+      "title": "Behavior Trees: BT_SkeletonWarlord",
+      "priority": "low",
+      "description": "Uses behavior tree: BT_SkeletonWarlord. "
+    }
+  ],
+  "elite_differences": [
+    "49% more HP (2844 → 4244) in Elite",
+    "50% more physical damage (32 → 48) in Elite",
+    "Move speed 250 → 280 in Elite",
+    "XP reward 15 → 20 in Elite",
+    "Elite gains 3 exclusive abilities: Explosion, Spawn Crystal, Attack Block Explosion Damage",
+    "No Nightmare grade exists"
+  ],
+  "ai_perception": {
+    "vision_angle": 180,
+    "vision_description": "180° peripheral vision angle.",
+    "damage_sense": true,
+    "damage_description": "Reacts to damage from any direction.",
+    "hearing": true,
+    "hearing_description": "Reacts to nearby sounds.",
+    "stuck_tracking": true,
+    "stuck_description": "Has stuck-detection failsafes in behavior tree.",
+    "sight_radius": 800,
+    "lose_sight_radius": null,
+    "sight_description": "Detects targets within 800 units."
+  }
 }

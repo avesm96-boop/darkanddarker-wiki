@@ -167,6 +167,14 @@ function MerchantPortrait({
   );
 }
 
+/** Convert a monster display name to a URL slug */
+function nameToSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function ObjectiveRow({ obj }: { obj: Objective }) {
   const type = obj.content_type;
   const badgeClass =
@@ -182,11 +190,13 @@ function ObjectiveRow({ obj }: { obj: Objective }) {
   let detail = "";
   let icon: string | null = null;
   let rarityColor: string | undefined;
+  let href: string | null = null;
 
   switch (type) {
     case "Kill":
       label = obj.target ? `Kill ${obj.target}` : "Kill enemies";
       detail = `Count: ${obj.count ?? "?"}`;
+      if (obj.target) href = `/monsters/${nameToSlug(obj.target)}`;
       break;
     case "Fetch":
       label = obj.item_name ? `Fetch ${obj.item_name}` : "Fetch items";
@@ -197,10 +207,12 @@ function ObjectiveRow({ obj }: { obj: Objective }) {
       }
       detail = `Count: ${obj.count ?? "?"}`;
       if (obj.loot_state) detail += ` | Condition: ${obj.loot_state}`;
+      if (obj.item_name) href = `/items?search=${encodeURIComponent(obj.item_name)}`;
       break;
     case "Explore":
       label = obj.module ? `Explore ${obj.module}` : "Explore area";
       if (obj.count && obj.count > 1) detail = `Count: ${obj.count}`;
+      href = "/maps";
       break;
     case "Escape":
       label = `Escape ${obj.count ?? 1} time${(obj.count ?? 1) > 1 ? "s" : ""}`;
@@ -214,6 +226,7 @@ function ObjectiveRow({ obj }: { obj: Objective }) {
     case "Hold":
       label = obj.module ? `Hold ${obj.module}` : "Hold position";
       detail = obj.hold_time ? `Duration: ${obj.hold_time}s` : `Count: ${obj.count ?? "?"}`;
+      href = "/maps";
       break;
     case "UseItem":
       label = obj.item_name
@@ -227,6 +240,7 @@ function ObjectiveRow({ obj }: { obj: Objective }) {
         ? `${obj.props_type || "Interact"} ${obj.target}`
         : "Interact with props";
       detail = `Count: ${obj.count ?? "?"}`;
+      href = "/maps";
       break;
     default:
       label = obj.description || `${type}`;
@@ -241,23 +255,32 @@ function ObjectiveRow({ obj }: { obj: Objective }) {
     detail += (detail ? " | " : "") + "Single session";
   }
 
-  return (
-    <div className={styles.objRow}>
-      <div className={styles.objMain}>
-        {icon && (
-          <SafeIcon src={icon} alt={label} className={styles.objItemIcon} />
-        )}
-        <span className={badgeClass}>{type}</span>
-        <span
-          className={styles.objLabel}
-          style={rarityColor ? { color: rarityColor } : undefined}
-        >
-          {label}
-        </span>
-        {detail && <span className={styles.objDetail}>{detail}</span>}
-      </div>
+  const content = (
+    <div className={styles.objMain}>
+      {icon && (
+        <SafeIcon src={icon} alt={label} className={styles.objItemIcon} />
+      )}
+      <span className={badgeClass}>{type}</span>
+      <span
+        className={styles.objLabel}
+        style={rarityColor ? { color: rarityColor } : undefined}
+      >
+        {label}
+      </span>
+      {detail && <span className={styles.objDetail}>{detail}</span>}
+      {href && <span className={styles.objLinkIcon}>&#8599;</span>}
     </div>
   );
+
+  if (href) {
+    return (
+      <a href={href} className={styles.objRowLink}>
+        {content}
+      </a>
+    );
+  }
+
+  return <div className={styles.objRow}>{content}</div>;
 }
 
 function RewardRow({ reward }: { reward: Reward }) {

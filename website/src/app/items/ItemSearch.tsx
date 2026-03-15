@@ -250,6 +250,13 @@ export default function ItemSearch() {
   const [page, setPage] = useState(1);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  // Read ?search= param from URL on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("search");
+    if (q) setSearch(q);
+  }, []);
+
   useEffect(() => {
     fetch("/data/items.json")
       .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })

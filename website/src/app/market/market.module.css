@@ -126,7 +126,8 @@
 }
 
 .statValue {
-  font-family: var(--font-heading);
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--gold-300);
@@ -258,7 +259,7 @@
 
 .priceCell {
   font-variant-numeric: tabular-nums;
-  font-family: var(--font-heading);
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--text-bright);

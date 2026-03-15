@@ -86,8 +86,16 @@ export interface TrendingItem {
 // Icon helpers
 // ---------------------------------------------------------------------------
 
+const ICON_OVERRIDES: Record<string, string> = {
+  RottenFluids: "RottenFluides",
+  ShiningPearl: "PearlNecklace",
+  GoldCoinBag: "CoinBag",
+  GoldenTeeth: "GoldenTeeth",
+};
+
 export function itemIconPath(archetype: string): string {
-  return `/item-icons/Item_Icon_${archetype}.png`;
+  const name = ICON_OVERRIDES[archetype] ?? archetype;
+  return `/item-icons/Item_Icon_${name}.png`;
 }
 export const GOLD_ICON = "/item-icons/Item_Icon_GoldCoin.png";
 

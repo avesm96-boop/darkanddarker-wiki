@@ -62,8 +62,8 @@ function TrendTable({
           <span>Avg 14d</span>
           <span>Avg 7d</span>
           <span>Avg 24h</span>
-          <span>Current</span>
-          <span>Lowest</span>
+          <span>Current Avg</span>
+          <span>Lowest Now</span>
           <span>Change</span>
           <span>Chart</span>
         </div>
@@ -149,6 +149,19 @@ export default function MarketDashboard({ trending, loading }: Props) {
       <TrendTable title="Top 10 Gainers" items={gainers} />
       <TrendTable title="Top 10 Losers" items={losers} />
       <TrendTable title="Most Traded" items={mostTraded} />
+
+      <p style={{
+        fontSize: "0.6875rem",
+        color: "var(--text-muted)",
+        fontStyle: "italic",
+        marginTop: 16,
+        opacity: 0.7,
+      }}>
+        Analytics data is aggregated hourly and may be delayed 3-4 hours.
+        &quot;Current Avg&quot; reflects the most recent aggregated average.
+        &quot;Lowest Now&quot; is the cheapest per-unit listing currently on the marketplace.
+        Use the Search tab for real-time prices.
+      </p>
     </div>
   );
 }

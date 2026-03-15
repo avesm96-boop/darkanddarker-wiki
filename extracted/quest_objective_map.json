@@ -1,0 +1,1982 @@
+{
+  "Id_Quest_Alchemist_01": [
+    "Id_QuestContent_Explore_Crypt_Chapel_01"
+  ],
+  "Id_Quest_Alchemist_02": [
+    "Id_QuestContent_Fetch_Lifeleaf_02",
+    "Id_QuestContent_Fetch_PhantomFlower_01",
+    "Id_QuestContent_Fetch_Wardweed_01"
+  ],
+  "Id_Quest_Alchemist_03": [
+    "Id_QuestContent_Fetch_BrokenSkull_01",
+    "Id_QuestContent_Fetch_GraveEssence_03",
+    "Id_QuestContent_Fetch_Maggots_01"
+  ],
+  "Id_Quest_Alchemist_04": [
+    "Id_QuestContent_Use_HealingPotion_02",
+    "Id_QuestContent_Use_InvisibilityPotion_01",
+    "Id_QuestContent_Use_MagicProtectionPotion_01",
+    "Id_QuestContent_Use_ProtectionPotion_01"
+  ],
+  "Id_Quest_Alchemist_05": [
+    "Id_QuestContent_Kill_DeathSkull_SingleAdventure_01"
+  ],
+  "Id_Quest_Alchemist_06": [
+    "Id_QuestContent_Kill_SkeletonArcher_02",
+    "Id_QuestContent_Kill_SkeletonAxeman_03",
+    "Id_QuestContent_Kill_SkeletonSwordsman_01",
+    "Id_QuestContent_Kill_Wraith_05"
+  ],
+  "Id_Quest_Alchemist_07": [
+    "Id_QuestContent_Fetch_PotionOfHealing_01",
+    "Id_QuestContent_Fetch_PotionOfInvisibility_01",
+    "Id_QuestContent_Fetch_PotionOProtection_01"
+  ],
+  "Id_Quest_Alchemist_08": [
+    "Id_QuestContent_Kill_IceKoboldArcher_01",
+    "Id_QuestContent_Kill_IceKoboldAxeman_01"
+  ],
+  "Id_Quest_Alchemist_09": [
+    "Id_QuestContent_Explore_WolfCave_01"
+  ],
+  "Id_Quest_Alchemist_10": [
+    "Id_QuestContent_Fetch_HardenedShellFragment_01",
+    "Id_QuestContent_Kill_LavaTurtle_01"
+  ],
+  "Id_Quest_Alchemist_11": [
+    "Id_QuestContent_Fetch_MagmaEssence_01",
+    "Id_QuestContent_Kill_LavaSlime_01"
+  ],
+  "Id_Quest_Alchemist_12": [
+    "Id_QuestContent_Fetch_FlickeringEmber_01",
+    "Id_QuestContent_Kill_FireSpirit_01"
+  ],
+  "Id_Quest_Alchemist_13": [
+    "Id_QuestContent_Kill_GiantWorm_01",
+    "Id_QuestContent_Open_HiddenLever_01"
+  ],
+  "Id_Quest_Alchemist_14": [
+    "Id_QuestContent_Destroy_SpiderPot_01"
+  ],
+  "Id_Quest_Alchemist_15": [
+    "Id_QuestContent_Escape_HowlingCrypts_03",
+    "Id_QuestContent_Kill_Skeletons_01"
+  ],
+  "Id_Quest_Alchemist_16": [
+    "Id_QuestContent_Explore_Bloodyfalls_01",
+    "Id_QuestContent_Explore_Doomcage_01",
+    "Id_QuestContent_Explore_Drain_01",
+    "Id_QuestContent_Explore_Hellcrossbridge_01"
+  ],
+  "Id_Quest_Alchemist_17": [
+    "Id_QuestContent_Kill_DemonBerserker_05"
+  ],
+  "Id_Quest_Alchemist_18": [
+    "Id_QuestContent_Kill_GhostKing_01"
+  ],
+  "Id_Quest_Armourer_01": [
+    "Id_QuestContent_Fetch_CobaltOres_01"
+  ],
+  "Id_Quest_Armourer_02": [
+    "Id_QuestContent_Kill_GiantDragonfly_01",
+    "Id_QuestContent_Kill_Zombie_01"
+  ],
+  "Id_Quest_Armourer_03": [
+    "Id_QuestContent_Fetch_Armor_01"
+  ],
+  "Id_Quest_Armourer_04": [
+    "Id_QuestContent_Fetch_RubysilverOres_01"
+  ],
+  "Id_Quest_Armourer_05": [
+    "Id_QuestContent_Explore_Ruins_Graveyard_01"
+  ],
+  "Id_Quest_Armourer_06": [
+    "Id_QuestContent_Kill_Slime_02",
+    "Id_QuestContent_Kill_Wisp_03"
+  ],
+  "Id_Quest_Armourer_07": [
+    "Id_QuestContent_Fetch_TidestoneOres_01"
+  ],
+  "Id_Quest_Armourer_08": [
+    "Id_QuestContent_Fetch_HardCrabShell_01",
+    "Id_QuestContent_Fetch_SharpSeaUrchinSpine_01"
+  ],
+  "Id_Quest_Armourer_09": [
+    "Id_QuestContent_Kill_TidewalkerClubfighter_02",
+    "Id_QuestContent_Kill_TidewalkerShaman_01",
+    "Id_QuestContent_Kill_TidewalkerSpearer_02"
+  ],
+  "Id_Quest_Armourer_10": [
+    "Id_QuestContent_Fetch_Hourglass_01",
+    "Id_QuestContent_Fetch_WalkingCane_01"
+  ],
+  "Id_Quest_Armourer_11": [
+    "Id_QuestContent_Explore_Stables_01"
+  ],
+  "Id_Quest_Armourer_12": [
+    "Id_QuestContent_Kill_SpectralKnight_01"
+  ],
+  "Id_Quest_Armourer_13": [
+    "Id_QuestContent_Fetch_InfectedFlesh_01",
+    "Id_QuestContent_Fetch_OldBloodyBandage_04",
+    "Id_QuestContent_Kill_Mummy_04",
+    "Id_QuestContent_Kill_Zombie_03"
+  ],
+  "Id_Quest_Armourer_14": [
+    "Id_QuestContent_Open_FloorSpikes_02",
+    "Id_QuestContent_Open_TrackAxe_01",
+    "Id_QuestContent_Open_WallSpikes_02"
+  ],
+  "Id_Quest_Armourer_15": [
+    "Id_QuestContent_Explore_AdmirerRoom_01",
+    "Id_QuestContent_Explore_Barracks_02",
+    "Id_QuestContent_Explore_Catacomb_01",
+    "Id_QuestContent_Explore_CenterTower_01",
+    "Id_QuestContent_Explore_Cistern_01",
+    "Id_QuestContent_Explore_CliffBridge_01",
+    "Id_QuestContent_Explore_Crypt_FourWayConnect_01",
+    "Id_QuestContent_Explore_Crypt_Hallways_01",
+    "Id_QuestContent_Explore_Crypt_LargeRoomPit_01",
+    "Id_QuestContent_Explore_FishingGround_01",
+    "Id_QuestContent_Explore_HBridge_01",
+    "Id_QuestContent_Explore_LowPyramid_02",
+    "Id_QuestContent_Explore_Prisons_02",
+    "Id_QuestContent_Explore_Sewers_01",
+    "Id_QuestContent_Explore_Storeroom_01"
+  ],
+  "Id_Quest_Armourer_16": [
+    "Id_QuestContent_Fetch_Armor_05"
+  ],
+  "Id_Quest_Armourer_17": [
+    "Id_QuestContent_Open_Torch_02"
+  ],
+  "Id_Quest_Armourer_18": [
+    "Id_QuestContent_Open_HealthStatue_06",
+    "Id_QuestContent_Open_PowerStatue_02",
+    "Id_QuestContent_Open_ProtectionStatue_02",
+    "Id_QuestContent_Open_SpeedStatue_02"
+  ],
+  "Id_Quest_Cockatrice_01": [
+    "Id_QuestContent_Fetch_Cockatrice_01_01",
+    "Id_QuestContent_Fetch_Cockatrice_01_02",
+    "Id_QuestContent_Fetch_Cockatrice_01_03"
+  ],
+  "Id_Quest_Cockatrice_02": [
+    "Id_QuestContent_Fetch_Cockatrice_02_01",
+    "Id_QuestContent_Fetch_Cockatrice_02_02",
+    "Id_QuestContent_Fetch_Cockatrice_02_03"
+  ],
+  "Id_Quest_Cockatrice_03": [
+    "Id_QuestContent_Fetch_Cockatrice_03_01",
+    "Id_QuestContent_Fetch_Cockatrice_03_02",
+    "Id_QuestContent_Fetch_Cockatrice_03_03"
+  ],
+  "Id_Quest_Cockatrice_04": [
+    "Id_QuestContent_Fetch_Cockatrice_04_01",
+    "Id_QuestContent_Fetch_Cockatrice_04_02"
+  ],
+  "Id_Quest_Cockatrice_05": [
+    "Id_QuestContent_Fetch_Cockatrice_05_01",
+    "Id_QuestContent_Fetch_Cockatrice_05_02"
+  ],
+  "Id_Quest_Cockatrice_06": [
+    "Id_QuestContent_Fetch_Cockatrice_06_01",
+    "Id_QuestContent_Fetch_Cockatrice_06_02"
+  ],
+  "Id_Quest_Cockatrice_07": [
+    "Id_QuestContent_Fetch_Cockatrice_07_01",
+    "Id_QuestContent_Fetch_Cockatrice_07_02"
+  ],
+  "Id_Quest_Cockatrice_08": [
+    "Id_QuestContent_Fetch_Cockatrice_08_01",
+    "Id_QuestContent_Fetch_Cockatrice_08_02"
+  ],
+  "Id_Quest_Cockatrice_09": [
+    "Id_QuestContent_Fetch_Cockatrice_09_01",
+    "Id_QuestContent_Fetch_Cockatrice_09_02"
+  ],
+  "Id_Quest_Cockatrice_10": [
+    "Id_QuestContent_Fetch_Cockatrice_10_01",
+    "Id_QuestContent_Fetch_Cockatrice_10_02"
+  ],
+  "Id_Quest_Cockatrice_11": [
+    "Id_QuestContent_Fetch_Cockatrice_11_01",
+    "Id_QuestContent_Fetch_Cockatrice_11_02"
+  ],
+  "Id_Quest_Cockatrice_12": [
+    "Id_QuestContent_Fetch_Cockatrice_12_01",
+    "Id_QuestContent_Fetch_Cockatrice_12_02"
+  ],
+  "Id_Quest_Dealmaker_01": [
+    "Id_QuestContent_Damage_FaustianBargainPlayer_01"
+  ],
+  "Id_Quest_Dealmaker_02": [
+    "Id_QuestContent_Damage_FaustianBargainPlayer_02"
+  ],
+  "Id_Quest_Dealmaker_03": [
+    "Id_QuestContent_Damage_FaustianBargainPlayer_03"
+  ],
+  "Id_Quest_FortuneTeller_01": [
+    "Id_QuestContent_Fetch_MimicTongue_02"
+  ],
+  "Id_Quest_FortuneTeller_02": [
+    "Id_QuestContent_Fetch_BlueEyeball_03"
+  ],
+  "Id_Quest_FortuneTeller_03": [
+    "Id_QuestContent_Fetch_GiantBatEar_01"
+  ],
+  "Id_Quest_FortuneTeller_04": [
+    "Id_QuestContent_Open_Torch_01"
+  ],
+  "Id_Quest_FortuneTeller_05": [
+    "Id_QuestContent_Destroy_SpiderPot_02"
+  ],
+  "Id_Quest_FortuneTeller_06": [
+    "Id_QuestContent_Fetch_TornBatWing_01"
+  ],
+  "Id_Quest_FortuneTeller_07": [
+    "Id_QuestContent_Fetch_ArmillarySphere_01",
+    "Id_QuestContent_Fetch_CrystalBalls_01"
+  ],
+  "Id_Quest_FortuneTeller_08": [
+    "Id_QuestContent_Explore_IcicleCave_01",
+    "Id_QuestContent_Fetch_PrimitiveBracelet_02"
+  ],
+  "Id_Quest_FortuneTeller_09": [
+    "Id_QuestContent_Open_AltarOfSacrifice_01"
+  ],
+  "Id_Quest_FortuneTeller_10": [
+    "Id_QuestContent_Fetch_FrostedFeather_01",
+    "Id_QuestContent_Fetch_GlowingBlueIceEyes_03"
+  ],
+  "Id_Quest_FortuneTeller_11": [
+    "Id_QuestContent_Fetch_WendigoHoof_01",
+    "Id_QuestContent_Use_LuckPotion_01"
+  ],
+  "Id_Quest_FortuneTeller_12": [
+    "Id_QuestContent_Open_GoldenHoard_01"
+  ],
+  "Id_Quest_FortuneTeller_13": [
+    "Id_QuestContent_Fetch_Saltvine_01"
+  ],
+  "Id_Quest_FortuneTeller_14": [
+    "Id_QuestContent_Fetch_EtchedWandFragment_01",
+    "Id_QuestContent_Fetch_SeaweedNecklace_01"
+  ],
+  "Id_Quest_FortuneTeller_15": [
+    "Id_QuestContent_Fetch_WhiteSharkFin_01",
+    "Id_QuestContent_Fetch_WhiteSharkHide_01",
+    "Id_QuestContent_Fetch_WhiteSharkTooth_01"
+  ],
+  "Id_Quest_FortuneTeller_16": [
+    "Id_QuestContent_Open_WallSpikes_01",
+    "Id_QuestContent_Use_LuckPotion_02"
+  ],
+  "Id_Quest_FortuneTeller_17": [
+    "Id_QuestContent_Fetch_ThickForefoot_01"
+  ],
+  "Id_Quest_FortuneTeller_18": [
+    "Id_QuestContent_Fetch_GiantHorn_01",
+    "Id_QuestContent_Kill_Abomination_04",
+    "Id_QuestContent_Kill_SkeletonCrossbowman_02",
+    "Id_QuestContent_Kill_SkeletonSpearman_03"
+  ],
+  "Id_Quest_GoblinMerchant_01": [
+    "Id_QuestContent_Kill_GoblinArcher_01",
+    "Id_QuestContent_Kill_GoblinAxeman_01",
+    "Id_QuestContent_Kill_GoblinWarrior_01"
+  ],
+  "Id_Quest_GoblinMerchant_02": [
+    "Id_QuestContent_Explore_CaveAltar_01"
+  ],
+  "Id_Quest_GoblinMerchant_03": [
+    "Id_QuestContent_Fetch_GoblinEar_01"
+  ],
+  "Id_Quest_GoblinMerchant_04": [
+    "Id_QuestContent_Fetch_BugShell_01"
+  ],
+  "Id_Quest_GoblinMerchant_05": [
+    "Id_QuestContent_Kill_GiantCentipede_01",
+    "Id_QuestContent_Kill_GiantSpider_02",
+    "Id_QuestContent_Kill_GoblinMage_01"
+  ],
+  "Id_Quest_GoblinMerchant_06": [
+    "Id_QuestContent_Escape_GoblinCaves_01"
+  ],
+  "Id_Quest_GoblinMerchant_07": [
+    "Id_QuestContent_Open_AshPile_01"
+  ],
+  "Id_Quest_GoblinMerchant_08": [
+    "Id_QuestContent_Fetch_BlazingTail_01",
+    "Id_QuestContent_Kill_FireLizard_01"
+  ],
+  "Id_Quest_GoblinMerchant_09": [
+    "Id_QuestContent_Fetch_LavaMushroom_01"
+  ],
+  "Id_Quest_GoblinMerchant_10": [
+    "Id_QuestContent_Kill_DeathBeetle_02"
+  ],
+  "Id_Quest_GoblinMerchant_11": [
+    "Id_QuestContent_Destroy_SmallCrates_01"
+  ],
+  "Id_Quest_GoblinMerchant_12": [
+    "Id_QuestContent_Kill_GoblinsSingleAdventure_01"
+  ],
+  "Id_Quest_GoblinMerchant_13": [
+    "Id_QuestContent_Open_OrnateChestLarge_02"
+  ],
+  "Id_Quest_GoblinMerchant_14": [
+    "Id_QuestContent_Explore_CavePitHall_01",
+    "Id_QuestContent_Kill_GiantCentipede_02"
+  ],
+  "Id_Quest_GoblinMerchant_15": [
+    "Id_QuestContent_Kill_Cyclops_01"
+  ],
+  "Id_Quest_GoblinMerchant_16": [
+    "Id_QuestContent_Fetch_LuckyFeather_01",
+    "Id_QuestContent_Kill_Cockatrice_01"
+  ],
+  "Id_Quest_GoblinMerchant_17": [
+    "Id_QuestContent_Open_StoneTomb_02"
+  ],
+  "Id_Quest_GoblinMerchant_18": [
+    "Id_QuestContent_Escape_Ruins_02"
+  ],
+  "Id_Quest_GoblinMerchant_19": [
+    "Id_QuestContent_Fetch_CaveTrollsPreciousRock_01",
+    "Id_QuestContent_Fetch_CyclopsPreciousMirror_01"
+  ],
+  "Id_Quest_GoblinMerchant_20": [
+    "Id_QuestContent_Kill_GoblinArcher_02",
+    "Id_QuestContent_Kill_GoblinAxeman_02",
+    "Id_QuestContent_Kill_GoblinBolaslinger_01",
+    "Id_QuestContent_Kill_GoblinWarrior_02"
+  ],
+  "Id_Quest_GoblinMerchant_21": [
+    "Id_QuestContent_Explore_AntsNest_01",
+    "Id_QuestContent_Explore_BanditCamp_01",
+    "Id_QuestContent_Explore_CaveAltar2_01",
+    "Id_QuestContent_Explore_CaveMaze_01",
+    "Id_QuestContent_Explore_CavePitHall_03",
+    "Id_QuestContent_Explore_CavernLake_01",
+    "Id_QuestContent_Explore_CaveRooms_01",
+    "Id_QuestContent_Explore_CaveTown_01",
+    "Id_QuestContent_Explore_GoblinMine_02",
+    "Id_QuestContent_Explore_HideoutCave_01",
+    "Id_QuestContent_Explore_MoleTunnel_01",
+    "Id_QuestContent_Explore_StoneGrave_01",
+    "Id_QuestContent_Explore_Tomb_02",
+    "Id_QuestContent_Explore_ValleyA_01",
+    "Id_QuestContent_Explore_ValleyB_01"
+  ],
+  "Id_Quest_GoblinMerchant_Final_01": [
+    "Id_QuestContent_Kill_Goblins_01",
+    "Id_QuestContent_Open_FlameSpout_01",
+    "Id_QuestContent_Open_TrackAxe_02"
+  ],
+  "Id_Quest_Goldsmith_01": [
+    "Id_QuestContent_Fetch_BlueSapphire_01",
+    "Id_QuestContent_Fetch_Diamond_01",
+    "Id_QuestContent_Fetch_Emerald_01",
+    "Id_QuestContent_Fetch_Ruby_01"
+  ],
+  "Id_Quest_Goldsmith_02": [
+    "Id_QuestContent_Fetch_BlueSapphire_02",
+    "Id_QuestContent_Fetch_Diamond_02",
+    "Id_QuestContent_Fetch_Emerald_02",
+    "Id_QuestContent_Fetch_Ruby_02"
+  ],
+  "Id_Quest_Goldsmith_03": [
+    "Id_QuestContent_Fetch_BlueSapphire_03",
+    "Id_QuestContent_Fetch_Diamond_03",
+    "Id_QuestContent_Fetch_Emerald_03",
+    "Id_QuestContent_Fetch_Ruby_03"
+  ],
+  "Id_Quest_Goldsmith_04": [
+    "Id_QuestContent_Fetch_CobaltIngots_01",
+    "Id_QuestContent_Fetch_LukewarmStew_02",
+    "Id_QuestContent_Fetch_RedApple_02"
+  ],
+  "Id_Quest_Goldsmith_05": [
+    "Id_QuestContent_Fetch_BronzeScale_01",
+    "Id_QuestContent_Fetch_SilverIngots_01",
+    "Id_QuestContent_Fetch_StoneMortar_01"
+  ],
+  "Id_Quest_Goldsmith_06": [
+    "Id_QuestContent_Fetch_Awl_01",
+    "Id_QuestContent_Fetch_Bellows_01",
+    "Id_QuestContent_Fetch_RubysilverIngots_01"
+  ],
+  "Id_Quest_Goldsmith_07": [
+    "Id_QuestContent_Fetch_Diamond_04",
+    "Id_QuestContent_Fetch_Ruby_04"
+  ],
+  "Id_Quest_Goldsmith_08": [
+    "Id_QuestContent_Fetch_BlueSapphire_04",
+    "Id_QuestContent_Fetch_Emerald_04"
+  ],
+  "Id_Quest_Goldsmith_09": [
+    "Id_QuestContent_Fetch_BlemishedPearl_01",
+    "Id_QuestContent_Fetch_BrokenGlasses_01",
+    "Id_QuestContent_Fetch_TidestoneIngots_01"
+  ],
+  "Id_Quest_Goldsmith_10": [
+    "Id_QuestContent_Fetch_Ruby_05"
+  ],
+  "Id_Quest_Goldsmith_11": [
+    "Id_QuestContent_Fetch_BlueSapphire_05"
+  ],
+  "Id_Quest_Goldsmith_12": [
+    "Id_QuestContent_Fetch_GoldIngots_01",
+    "Id_QuestContent_Fetch_ShiningPearl_02"
+  ],
+  "Id_Quest_Goldsmith_13": [
+    "Id_QuestContent_Fetch_Diamond_05"
+  ],
+  "Id_Quest_Goldsmith_14": [
+    "Id_QuestContent_Fetch_Emerald_05"
+  ],
+  "Id_Quest_Goldsmith_15": [
+    "Id_QuestContent_Fetch_MysteriousPotion_01",
+    "Id_QuestContent_Fetch_ObsidianIngots_01",
+    "Id_QuestContent_Fetch_PocketWatch_01"
+  ],
+  "Id_Quest_Huntress_Daily_01": [
+    "Id_QuestContent_Kill_Huntress_SkeletonFootman_01"
+  ],
+  "Id_Quest_Huntress_Daily_02": [
+    "Id_QuestContent_Kill_Huntress_SkeletonGuardman_01"
+  ],
+  "Id_Quest_Huntress_Daily_03": [
+    "Id_QuestContent_Kill_Huntress_SkeletonCrossbowman_01"
+  ],
+  "Id_Quest_Huntress_Daily_04": [
+    "Id_QuestContent_Kill_Huntress_SkeletonMage_01"
+  ],
+  "Id_Quest_Huntress_Daily_05": [
+    "Id_QuestContent_Kill_Huntress_SkeletonArcher_01"
+  ],
+  "Id_Quest_Huntress_Daily_06": [
+    "Id_QuestContent_Kill_Huntress_Skeleton_01"
+  ],
+  "Id_Quest_Huntress_Daily_07": [
+    "Id_QuestContent_Kill_Huntress_Wisp_01"
+  ],
+  "Id_Quest_Huntress_Daily_08": [
+    "Id_QuestContent_Kill_Huntress_Harpy_01"
+  ],
+  "Id_Quest_Huntress_Daily_09": [
+    "Id_QuestContent_Kill_Huntress_Zombie_01"
+  ],
+  "Id_Quest_Huntress_Daily_10": [
+    "Id_QuestContent_Kill_Huntress_GiantDragonfly_01"
+  ],
+  "Id_Quest_Huntress_Daily_100": [
+    "Id_QuestContent_Fetch_Huntress_GoldCandelabra_03"
+  ],
+  "Id_Quest_Huntress_Daily_101": [
+    "Id_QuestContent_Fetch_Huntress_GoldCandleHolder_03"
+  ],
+  "Id_Quest_Huntress_Daily_102": [
+    "Id_QuestContent_Fetch_Huntress_GoldCandlePlatter_03"
+  ],
+  "Id_Quest_Huntress_Daily_103": [
+    "Id_QuestContent_Fetch_Huntress_GoldChaliceA_03"
+  ],
+  "Id_Quest_Huntress_Daily_104": [
+    "Id_QuestContent_Fetch_Huntress_GoldChaliceB_03"
+  ],
+  "Id_Quest_Huntress_Daily_105": [
+    "Id_QuestContent_Fetch_Huntress_GoldCrown_03"
+  ],
+  "Id_Quest_Huntress_Daily_106": [
+    "Id_QuestContent_Fetch_Huntress_GoldWaterpot_03"
+  ],
+  "Id_Quest_Huntress_Daily_107": [
+    "Id_QuestContent_Fetch_Huntress_GraveEssence_01"
+  ],
+  "Id_Quest_Huntress_Daily_108": [
+    "Id_QuestContent_Fetch_Huntress_InfectedFlesh_01"
+  ],
+  "Id_Quest_Huntress_Daily_109": [
+    "Id_QuestContent_Fetch_Huntress_IntactSkull_01"
+  ],
+  "Id_Quest_Huntress_Daily_11": [
+    "Id_QuestContent_Kill_Huntress_Mummy_01"
+  ],
+  "Id_Quest_Huntress_Daily_110": [
+    "Id_QuestContent_Fetch_Huntress_IronOres_01"
+  ],
+  "Id_Quest_Huntress_Daily_111": [
+    "Id_QuestContent_Fetch_Huntress_KoboldEar_01"
+  ],
+  "Id_Quest_Huntress_Daily_112": [
+    "Id_QuestContent_Fetch_Huntress_LargeScroll_02"
+  ],
+  "Id_Quest_Huntress_Daily_113": [
+    "Id_QuestContent_Fetch_Huntress_LargeScroll_03"
+  ],
+  "Id_Quest_Huntress_Daily_114": [
+    "Id_QuestContent_Fetch_Huntress_Lifeleaf_01"
+  ],
+  "Id_Quest_Huntress_Daily_115": [
+    "Id_QuestContent_Fetch_Huntress_Lifeleaf_02"
+  ],
+  "Id_Quest_Huntress_Daily_116": [
+    "Id_QuestContent_Fetch_Huntress_Maggots_01"
+  ],
+  "Id_Quest_Huntress_Daily_117": [
+    "Id_QuestContent_Fetch_Huntress_MetalCup_03"
+  ],
+  "Id_Quest_Huntress_Daily_118": [
+    "Id_QuestContent_Fetch_Huntress_MimicTooth_01"
+  ],
+  "Id_Quest_Huntress_Daily_119": [
+    "Id_QuestContent_Fetch_Huntress_OldBloodyBandage_01"
+  ],
+  "Id_Quest_Huntress_Daily_12": [
+    "Id_QuestContent_Kill_Huntress_DeathSkull_01"
+  ],
+  "Id_Quest_Huntress_Daily_120": [
+    "Id_QuestContent_Fetch_Huntress_OldCloth_01"
+  ],
+  "Id_Quest_Huntress_Daily_121": [
+    "Id_QuestContent_Fetch_Huntress_PearlNecklace_03"
+  ],
+  "Id_Quest_Huntress_Daily_122": [
+    "Id_QuestContent_Fetch_Huntress_PhantomFlower_01"
+  ],
+  "Id_Quest_Huntress_Daily_123": [
+    "Id_QuestContent_Fetch_Huntress_PrimitiveBracelet_01"
+  ],
+  "Id_Quest_Huntress_Daily_124": [
+    "Id_QuestContent_Fetch_Huntress_Ruby_02"
+  ],
+  "Id_Quest_Huntress_Daily_125": [
+    "Id_QuestContent_Fetch_Huntress_RustyBrokenSword_01"
+  ],
+  "Id_Quest_Huntress_Daily_126": [
+    "Id_QuestContent_Fetch_Huntress_SilverChalice_03"
+  ],
+  "Id_Quest_Huntress_Daily_127": [
+    "Id_QuestContent_Fetch_Huntress_TongueOfMimic_01"
+  ],
+  "Id_Quest_Huntress_Daily_128": [
+    "Id_QuestContent_Fetch_Huntress_TornBatWing_01"
+  ],
+  "Id_Quest_Huntress_Daily_129": [
+    "Id_QuestContent_Fetch_Huntress_Wardweed_02"
+  ],
+  "Id_Quest_Huntress_Daily_13": [
+    "Id_QuestContent_Kill_Huntress_SkeletonAxeman_01"
+  ],
+  "Id_Quest_Huntress_Daily_130": [
+    "Id_QuestContent_Fetch_Huntress_WendigoHoof_01"
+  ],
+  "Id_Quest_Huntress_Daily_131": [
+    "Id_QuestContent_Fetch_Huntress_WendigoSharpClaws_01"
+  ],
+  "Id_Quest_Huntress_Daily_132": [
+    "Id_QuestContent_Fetch_Huntress_WolfClaw_01"
+  ],
+  "Id_Quest_Huntress_Daily_133": [
+    "Id_QuestContent_Fetch_Huntress_WolfFang_01"
+  ],
+  "Id_Quest_Huntress_Daily_134": [
+    "Id_QuestContent_Fetch_Huntress_WolfPelt_01"
+  ],
+  "Id_Quest_Huntress_Daily_135": [
+    "Id_QuestContent_Fetch_Huntress_HardCrabShell_01"
+  ],
+  "Id_Quest_Huntress_Daily_136": [
+    "Id_QuestContent_Fetch_Huntress_SeaweedNecklace_01"
+  ],
+  "Id_Quest_Huntress_Daily_137": [
+    "Id_QuestContent_Fetch_Huntress_SharpSeaUrchinSpine_01"
+  ],
+  "Id_Quest_Huntress_Daily_138": [
+    "Id_QuestContent_Fetch_Huntress_TidewalkerFin_01"
+  ],
+  "Id_Quest_Huntress_Daily_139": [
+    "Id_QuestContent_Fetch_Huntress_WhiteSharkHide_01"
+  ],
+  "Id_Quest_Huntress_Daily_14": [
+    "Id_QuestContent_Kill_Huntress_SkeletonSpearman_01"
+  ],
+  "Id_Quest_Huntress_Daily_140": [
+    "Id_QuestContent_Escape_Huntress_HowlingCrypts_01"
+  ],
+  "Id_Quest_Huntress_Daily_141": [
+    "Id_QuestContent_Escape_Huntress_IceCavern_01"
+  ],
+  "Id_Quest_Huntress_Daily_142": [
+    "Id_QuestContent_Escape_Huntress_GoblinCaves_01"
+  ],
+  "Id_Quest_Huntress_Daily_143": [
+    "Id_QuestContent_Escape_Huntress_ShipGraveyard_01"
+  ],
+  "Id_Quest_Huntress_Daily_15": [
+    "Id_QuestContent_Kill_Huntress_SkeletonSwordman_01"
+  ],
+  "Id_Quest_Huntress_Daily_16": [
+    "Id_QuestContent_Kill_Huntress_DireWolf_01"
+  ],
+  "Id_Quest_Huntress_Daily_17": [
+    "Id_QuestContent_Kill_Huntress_Slime_01"
+  ],
+  "Id_Quest_Huntress_Daily_18": [
+    "Id_QuestContent_Kill_Huntress_LivingStatue_01"
+  ],
+  "Id_Quest_Huntress_Daily_19": [
+    "Id_QuestContent_Kill_Huntress_Demonfly_01"
+  ],
+  "Id_Quest_Huntress_Daily_20": [
+    "Id_QuestContent_Kill_Huntress_LivingArmor_01"
+  ],
+  "Id_Quest_Huntress_Daily_21": [
+    "Id_QuestContent_Kill_Huntress_Demon_01"
+  ],
+  "Id_Quest_Huntress_Daily_22": [
+    "Id_QuestContent_Kill_Huntress_DemonDog_01"
+  ],
+  "Id_Quest_Huntress_Daily_23": [
+    "Id_QuestContent_Kill_Huntress_DemonImp_01"
+  ],
+  "Id_Quest_Huntress_Daily_24": [
+    "Id_QuestContent_Kill_Huntress_DemonBat_01"
+  ],
+  "Id_Quest_Huntress_Daily_25": [
+    "Id_QuestContent_Kill_Huntress_Ghoul_01"
+  ],
+  "Id_Quest_Huntress_Daily_26": [
+    "Id_QuestContent_Kill_Huntress_HellMaggot_01"
+  ],
+  "Id_Quest_Huntress_Daily_27": [
+    "Id_QuestContent_Kill_Huntress_GoblinAxeman_01"
+  ],
+  "Id_Quest_Huntress_Daily_28": [
+    "Id_QuestContent_Kill_Huntress_GoblinWarrior_01"
+  ],
+  "Id_Quest_Huntress_Daily_29": [
+    "Id_QuestContent_Kill_Huntress_GoblinArcher_01"
+  ],
+  "Id_Quest_Huntress_Daily_30": [
+    "Id_QuestContent_Kill_Huntress_GoblinMage_01"
+  ],
+  "Id_Quest_Huntress_Daily_31": [
+    "Id_QuestContent_Kill_Huntress_Goblin_01"
+  ],
+  "Id_Quest_Huntress_Daily_32": [
+    "Id_QuestContent_Kill_Huntress_GiantBat_01"
+  ],
+  "Id_Quest_Huntress_Daily_33": [
+    "Id_QuestContent_Kill_Huntress_DeathBeetle_01"
+  ],
+  "Id_Quest_Huntress_Daily_34": [
+    "Id_QuestContent_Kill_Huntress_GoblinBolaslinger_01"
+  ],
+  "Id_Quest_Huntress_Daily_35": [
+    "Id_QuestContent_Kill_Huntress_GiantSpider_01"
+  ],
+  "Id_Quest_Huntress_Daily_36": [
+    "Id_QuestContent_Kill_Huntress_FrostWalker_01"
+  ],
+  "Id_Quest_Huntress_Daily_37": [
+    "Id_QuestContent_Kill_Huntress_FrostWolf_01"
+  ],
+  "Id_Quest_Huntress_Daily_38": [
+    "Id_QuestContent_Kill_Huntress_IceKoboldAxeman_01"
+  ],
+  "Id_Quest_Huntress_Daily_39": [
+    "Id_QuestContent_Kill_Huntress_IceKoboldArcher_01"
+  ],
+  "Id_Quest_Huntress_Daily_40": [
+    "Id_QuestContent_Kill_Huntress_FrostSkeletonAxeman_01"
+  ],
+  "Id_Quest_Huntress_Daily_41": [
+    "Id_QuestContent_Kill_Huntress_FrostSkeletonMaceman_01"
+  ],
+  "Id_Quest_Huntress_Daily_42": [
+    "Id_QuestContent_Kill_Huntress_Kobold_01"
+  ],
+  "Id_Quest_Huntress_Daily_43": [
+    "Id_QuestContent_Kill_Huntress_FrostSkeletonArcher_01"
+  ],
+  "Id_Quest_Huntress_Daily_44": [
+    "Id_QuestContent_Kill_Huntress_FrostSkeletonCrossbowman_01"
+  ],
+  "Id_Quest_Huntress_Daily_45": [
+    "Id_QuestContent_Kill_Huntress_IceHound_01"
+  ],
+  "Id_Quest_Huntress_Daily_46": [
+    "Id_QuestContent_Kill_Huntress_FrostSentinel_01"
+  ],
+  "Id_Quest_Huntress_Daily_47": [
+    "Id_QuestContent_Kill_Huntress_IceHarpy_01"
+  ],
+  "Id_Quest_Huntress_Daily_48": [
+    "Id_QuestContent_Kill_Huntress_IceGiantSpider_01"
+  ],
+  "Id_Quest_Huntress_Daily_49": [
+    "Id_QuestContent_Kill_Huntress_FrostSkeletonFootman_01"
+  ],
+  "Id_Quest_Huntress_Daily_50": [
+    "Id_QuestContent_Kill_Huntress_FrostSkeletonGuardman_01"
+  ],
+  "Id_Quest_Huntress_Daily_51": [
+    "Id_QuestContent_Kill_Huntress_FrostSkeletonHalberdier_01"
+  ],
+  "Id_Quest_Huntress_Daily_52": [
+    "Id_QuestContent_Kill_Huntress_FrozenGhost_01"
+  ],
+  "Id_Quest_Huntress_Daily_53": [
+    "Id_QuestContent_Kill_Huntress_FrostImp_01"
+  ],
+  "Id_Quest_Huntress_Daily_54": [
+    "Id_QuestContent_Kill_Huntress_Mimic_01"
+  ],
+  "Id_Quest_Huntress_Daily_55": [
+    "Id_QuestContent_Kill_Huntress_TidewalkerSpearer_01"
+  ],
+  "Id_Quest_Huntress_Daily_56": [
+    "Id_QuestContent_Kill_Huntress_SeaPiranha_01"
+  ],
+  "Id_Quest_Huntress_Daily_57": [
+    "Id_QuestContent_Kill_Huntress_HermitCrab_01"
+  ],
+  "Id_Quest_Huntress_Daily_58": [
+    "Id_QuestContent_Kill_Huntress_Bluemarlin_01"
+  ],
+  "Id_Quest_Huntress_Daily_59": [
+    "Id_QuestContent_Kill_Huntress_BabyTurtle_01"
+  ],
+  "Id_Quest_Huntress_Daily_60": [
+    "Id_QuestContent_Kill_Huntress_SmallJellyfish_01"
+  ],
+  "Id_Quest_Huntress_Daily_61": [
+    "Id_QuestContent_Kill_Huntress_SeaWalker_01"
+  ],
+  "Id_Quest_Huntress_Daily_62": [
+    "Id_QuestContent_Kill_Huntress_Seaurchin_01"
+  ],
+  "Id_Quest_Huntress_Daily_63": [
+    "Id_QuestContent_Kill_Huntress_Morayeel_01"
+  ],
+  "Id_Quest_Huntress_Daily_64": [
+    "Id_QuestContent_Kill_Huntress_Jellyfish_01"
+  ],
+  "Id_Quest_Huntress_Daily_65": [
+    "Id_QuestContent_Kill_Huntress_Octopus_01"
+  ],
+  "Id_Quest_Huntress_Daily_66": [
+    "Id_QuestContent_Kill_Huntress_Mermaid_01"
+  ],
+  "Id_Quest_Huntress_Daily_67": [
+    "Id_QuestContent_Kill_Huntress_Anemone_01"
+  ],
+  "Id_Quest_Huntress_Daily_68": [
+    "Id_QuestContent_Kill_Huntress_Cuttlefish_01"
+  ],
+  "Id_Quest_Huntress_Daily_69": [
+    "Id_QuestContent_Kill_Huntress_MermaidCorpse_01"
+  ],
+  "Id_Quest_Huntress_Daily_70": [
+    "Id_QuestContent_Fetch_Huntress_ArmorScrap_01"
+  ],
+  "Id_Quest_Huntress_Daily_71": [
+    "Id_QuestContent_Fetch_Huntress_BatClaw_01"
+  ],
+  "Id_Quest_Huntress_Daily_72": [
+    "Id_QuestContent_Fetch_Huntress_BatWing_01"
+  ],
+  "Id_Quest_Huntress_Daily_73": [
+    "Id_QuestContent_Fetch_Huntress_BeetleWings_01"
+  ],
+  "Id_Quest_Huntress_Daily_74": [
+    "Id_QuestContent_Fetch_Huntress_BlueSapphire_02"
+  ],
+  "Id_Quest_Huntress_Daily_75": [
+    "Id_QuestContent_Fetch_Huntress_Bone_01"
+  ],
+  "Id_Quest_Huntress_Daily_76": [
+    "Id_QuestContent_Fetch_Huntress_Bowstring_01"
+  ],
+  "Id_Quest_Huntress_Daily_77": [
+    "Id_QuestContent_Fetch_Huntress_CeremonialDagger_03"
+  ],
+  "Id_Quest_Huntress_Daily_78": [
+    "Id_QuestContent_Fetch_Huntress_CopperOres_01"
+  ],
+  "Id_Quest_Huntress_Daily_79": [
+    "Id_QuestContent_Fetch_Huntress_Diamond_01"
+  ],
+  "Id_Quest_Huntress_Daily_80": [
+    "Id_QuestContent_Fetch_Huntress_Ectoplasm_01"
+  ],
+  "Id_Quest_Huntress_Daily_81": [
+    "Id_QuestContent_Fetch_Huntress_Emerald_02"
+  ],
+  "Id_Quest_Huntress_Daily_82": [
+    "Id_QuestContent_Fetch_Huntress_EnchantedDarkFabric_01"
+  ],
+  "Id_Quest_Huntress_Daily_83": [
+    "Id_QuestContent_Fetch_Huntress_GemNecklace_03"
+  ],
+  "Id_Quest_Huntress_Daily_84": [
+    "Id_QuestContent_Fetch_Huntress_GemRing_03"
+  ],
+  "Id_Quest_Huntress_Daily_85": [
+    "Id_QuestContent_Fetch_Huntress_GiantBatEar_01"
+  ],
+  "Id_Quest_Huntress_Daily_86": [
+    "Id_QuestContent_Fetch_Huntress_GiantToe_01"
+  ],
+  "Id_Quest_Huntress_Daily_87": [
+    "Id_QuestContent_Fetch_Huntress_GoblinEars_01"
+  ],
+  "Id_Quest_Huntress_Daily_88": [
+    "Id_QuestContent_Fetch_Huntress_GoldBand_03"
+  ],
+  "Id_Quest_Huntress_Daily_89": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1B_03"
+  ],
+  "Id_Quest_Huntress_Daily_90": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1C_03"
+  ],
+  "Id_Quest_Huntress_Daily_91": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1D_03"
+  ],
+  "Id_Quest_Huntress_Daily_92": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1E_03"
+  ],
+  "Id_Quest_Huntress_Daily_93": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1H_03"
+  ],
+  "Id_Quest_Huntress_Daily_94": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1I_03"
+  ],
+  "Id_Quest_Huntress_Daily_95": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1J_03"
+  ],
+  "Id_Quest_Huntress_Daily_96": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle2D_03"
+  ],
+  "Id_Quest_Huntress_Daily_97": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle2G_03"
+  ],
+  "Id_Quest_Huntress_Daily_98": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle2H_03"
+  ],
+  "Id_Quest_Huntress_Daily_99": [
+    "Id_QuestContent_Fetch_Huntress_GoldBowl_03"
+  ],
+  "Id_Quest_Huntress_Daily_Equipment_01": [
+    "Id_QuestContent_Fetch_Huntress_Weapon_01"
+  ],
+  "Id_Quest_Huntress_Daily_Equipment_02": [
+    "Id_QuestContent_Fetch_Huntress_Armor_01"
+  ],
+  "Id_Quest_Huntress_Daily_Equipment_03": [
+    "Id_QuestContent_Fetch_Huntress_Accessory_01"
+  ],
+  "Id_Quest_Huntress_Seasonal_01": [
+    "Id_QuestContent_Fetch_Huntress_HuntressGoldEmblem_01"
+  ],
+  "Id_Quest_Huntress_Seasonal_02": [
+    "Id_QuestContent_Fetch_Huntress_HuntressGoldEmblem_02"
+  ],
+  "Id_Quest_Huntress_Seasonal_03": [
+    "Id_QuestContent_Fetch_Huntress_HuntressGoldEmblem_03"
+  ],
+  "Id_Quest_Huntress_Weekly_01": [
+    "Id_QuestContent_Fetch_Huntress_HuntressSilverEmblem_01"
+  ],
+  "Id_Quest_Huntress_Weekly_02": [
+    "Id_QuestContent_Fetch_Huntress_HuntressSilverEmblem_02"
+  ],
+  "Id_Quest_Huntress_Weekly_03": [
+    "Id_QuestContent_Fetch_Huntress_HuntressSilverEmblem_03"
+  ],
+  "Id_Quest_Huntress_Weekly_04": [
+    "Id_QuestContent_Kill_Huntress_RuinsGolem_01"
+  ],
+  "Id_Quest_Huntress_Weekly_05": [
+    "Id_QuestContent_Kill_Huntress_GiantWorm_01"
+  ],
+  "Id_Quest_Huntress_Weekly_06": [
+    "Id_QuestContent_Kill_Huntress_Cockatrice_01"
+  ],
+  "Id_Quest_Huntress_Weekly_07": [
+    "Id_QuestContent_Kill_Huntress_SkeletonChampion_01"
+  ],
+  "Id_Quest_Huntress_Weekly_08": [
+    "Id_QuestContent_Kill_Huntress_Wraith_01"
+  ],
+  "Id_Quest_Huntress_Weekly_09": [
+    "Id_QuestContent_Kill_Huntress_CentaurDemon_01"
+  ],
+  "Id_Quest_Huntress_Weekly_10": [
+    "Id_QuestContent_Kill_Huntress_Abomination_01"
+  ],
+  "Id_Quest_Huntress_Weekly_11": [
+    "Id_QuestContent_Kill_Huntress_Cerberus_01"
+  ],
+  "Id_Quest_Huntress_Weekly_12": [
+    "Id_QuestContent_Kill_Huntress_Dreadspine_01"
+  ],
+  "Id_Quest_Huntress_Weekly_13": [
+    "Id_QuestContent_Kill_Huntress_DemonBerserker_01"
+  ],
+  "Id_Quest_Huntress_Weekly_14": [
+    "Id_QuestContent_Kill_Huntress_GiantCentipede_01"
+  ],
+  "Id_Quest_Huntress_Weekly_15": [
+    "Id_QuestContent_Kill_Huntress_Yeti_01"
+  ],
+  "Id_Quest_Huntress_Weekly_16": [
+    "Id_QuestContent_Kill_Huntress_FrostGiant_01"
+  ],
+  "Id_Quest_Huntress_Weekly_17": [
+    "Id_QuestContent_Kill_Huntress_FrostGiantBerserker_01"
+  ],
+  "Id_Quest_Huntress_Weekly_18": [
+    "Id_QuestContent_Kill_Huntress_FrostGiantShielder_01"
+  ],
+  "Id_Quest_Huntress_Weekly_19": [
+    "Id_QuestContent_Kill_Huntress_Wendigo_01"
+  ],
+  "Id_Quest_Huntress_Weekly_20": [
+    "Id_QuestContent_Kill_Huntress_FrostDemon_01"
+  ],
+  "Id_Quest_Huntress_Weekly_21": [
+    "Id_QuestContent_Kill_Huntress_GiantJellyfish_01"
+  ],
+  "Id_Quest_Huntress_Weekly_22": [
+    "Id_QuestContent_Kill_Huntress_WhiteShark_01"
+  ],
+  "Id_Quest_Huntress_Weekly_23": [
+    "Id_QuestContent_Fetch_Huntress_BlueEyeballs_01"
+  ],
+  "Id_Quest_Huntress_Weekly_24": [
+    "Id_QuestContent_Fetch_Huntress_BlueSapphire_03"
+  ],
+  "Id_Quest_Huntress_Weekly_25": [
+    "Id_QuestContent_Fetch_Huntress_BugShell_01"
+  ],
+  "Id_Quest_Huntress_Weekly_26": [
+    "Id_QuestContent_Fetch_Huntress_CeremonialDagger_04"
+  ],
+  "Id_Quest_Huntress_Weekly_27": [
+    "Id_QuestContent_Fetch_Huntress_CobaltOres_01"
+  ],
+  "Id_Quest_Huntress_Weekly_28": [
+    "Id_QuestContent_Fetch_Huntress_CockatriceEgg_01"
+  ],
+  "Id_Quest_Huntress_Weekly_29": [
+    "Id_QuestContent_Fetch_Huntress_CockatricesLuckyFeather_01"
+  ],
+  "Id_Quest_Huntress_Weekly_30": [
+    "Id_QuestContent_Fetch_Huntress_CyclopsRags_01"
+  ],
+  "Id_Quest_Huntress_Weekly_31": [
+    "Id_QuestContent_Fetch_Huntress_DemonDogThorns_01"
+  ],
+  "Id_Quest_Huntress_Weekly_32": [
+    "Id_QuestContent_Fetch_Huntress_Diamond_02"
+  ],
+  "Id_Quest_Huntress_Weekly_33": [
+    "Id_QuestContent_Fetch_Huntress_Emerald_03"
+  ],
+  "Id_Quest_Huntress_Weekly_34": [
+    "Id_QuestContent_Fetch_Huntress_ExtraThickPelts_01"
+  ],
+  "Id_Quest_Huntress_Weekly_35": [
+    "Id_QuestContent_Fetch_Huntress_FrostedFeather_01"
+  ],
+  "Id_Quest_Huntress_Weekly_36": [
+    "Id_QuestContent_Fetch_Huntress_GemNecklace_04"
+  ],
+  "Id_Quest_Huntress_Weekly_37": [
+    "Id_QuestContent_Fetch_Huntress_GemRing_04"
+  ],
+  "Id_Quest_Huntress_Weekly_38": [
+    "Id_QuestContent_Fetch_Huntress_GiantBatHide_01"
+  ],
+  "Id_Quest_Huntress_Weekly_39": [
+    "Id_QuestContent_Fetch_Huntress_GlowingBlueIceEyes_01"
+  ],
+  "Id_Quest_Huntress_Weekly_40": [
+    "Id_QuestContent_Fetch_Huntress_GoldBand_04"
+  ],
+  "Id_Quest_Huntress_Weekly_41": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1B_04"
+  ],
+  "Id_Quest_Huntress_Weekly_42": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1C_04"
+  ],
+  "Id_Quest_Huntress_Weekly_43": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1D_04"
+  ],
+  "Id_Quest_Huntress_Weekly_44": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1E_04"
+  ],
+  "Id_Quest_Huntress_Weekly_45": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1H_04"
+  ],
+  "Id_Quest_Huntress_Weekly_46": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1I_04"
+  ],
+  "Id_Quest_Huntress_Weekly_47": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle1J_04"
+  ],
+  "Id_Quest_Huntress_Weekly_48": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle2D_04"
+  ],
+  "Id_Quest_Huntress_Weekly_49": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle2G_04"
+  ],
+  "Id_Quest_Huntress_Weekly_50": [
+    "Id_QuestContent_Fetch_Huntress_GoldBangle2H_04"
+  ],
+  "Id_Quest_Huntress_Weekly_51": [
+    "Id_QuestContent_Fetch_Huntress_GoldBowl_04"
+  ],
+  "Id_Quest_Huntress_Weekly_52": [
+    "Id_QuestContent_Fetch_Huntress_GoldCandelabra_04"
+  ],
+  "Id_Quest_Huntress_Weekly_53": [
+    "Id_QuestContent_Fetch_Huntress_GoldCandleHolder_04"
+  ],
+  "Id_Quest_Huntress_Weekly_54": [
+    "Id_QuestContent_Fetch_Huntress_GoldCandlePlatter_04"
+  ],
+  "Id_Quest_Huntress_Weekly_55": [
+    "Id_QuestContent_Fetch_Huntress_GoldChaliceA_04"
+  ],
+  "Id_Quest_Huntress_Weekly_56": [
+    "Id_QuestContent_Fetch_Huntress_GoldChaliceB_04"
+  ],
+  "Id_Quest_Huntress_Weekly_57": [
+    "Id_QuestContent_Fetch_Huntress_GoldCrown_04"
+  ],
+  "Id_Quest_Huntress_Weekly_58": [
+    "Id_QuestContent_Fetch_Huntress_GoldenTeeth_01"
+  ],
+  "Id_Quest_Huntress_Weekly_59": [
+    "Id_QuestContent_Fetch_Huntress_GoldWaterpot_04"
+  ],
+  "Id_Quest_Huntress_Weekly_60": [
+    "Id_QuestContent_Fetch_Huntress_LargeScroll_04"
+  ],
+  "Id_Quest_Huntress_Weekly_61": [
+    "Id_QuestContent_Fetch_Huntress_Lifeleaf_03"
+  ],
+  "Id_Quest_Huntress_Weekly_62": [
+    "Id_QuestContent_Fetch_Huntress_MetalCup_04"
+  ],
+  "Id_Quest_Huntress_Weekly_63": [
+    "Id_QuestContent_Fetch_Huntress_PearlNecklace_04"
+  ],
+  "Id_Quest_Huntress_Weekly_64": [
+    "Id_QuestContent_Fetch_Huntress_PhantomFlower_02"
+  ],
+  "Id_Quest_Huntress_Weekly_65": [
+    "Id_QuestContent_Fetch_Huntress_RottenFluids_01"
+  ],
+  "Id_Quest_Huntress_Weekly_66": [
+    "Id_QuestContent_Fetch_Huntress_Ruby_03"
+  ],
+  "Id_Quest_Huntress_Weekly_67": [
+    "Id_QuestContent_Fetch_Huntress_SilverChalice_04"
+  ],
+  "Id_Quest_Huntress_Weekly_68": [
+    "Id_QuestContent_Fetch_Huntress_SpiderSilk_01"
+  ],
+  "Id_Quest_Huntress_Weekly_69": [
+    "Id_QuestContent_Fetch_Huntress_TailOfCentaur_01"
+  ],
+  "Id_Quest_Huntress_Weekly_70": [
+    "Id_QuestContent_Fetch_Huntress_TrollPelt_01"
+  ],
+  "Id_Quest_Huntress_Weekly_71": [
+    "Id_QuestContent_Fetch_Huntress_Wardweed_03"
+  ],
+  "Id_Quest_Huntress_Weekly_72": [
+    "Id_QuestContent_Fetch_Huntress_WarlordsArmorShard_01"
+  ],
+  "Id_Quest_Huntress_Weekly_73": [
+    "Id_QuestContent_Fetch_Huntress_WendigosEntrails_01"
+  ],
+  "Id_Quest_Huntress_Weekly_74": [
+    "Id_QuestContent_Fetch_Huntress_YetisTeeth_01"
+  ],
+  "Id_Quest_Huntress_Weekly_75": [
+    "Id_QuestContent_Fetch_Huntress_BonePowder_01"
+  ],
+  "Id_Quest_Huntress_Weekly_76": [
+    "Id_QuestContent_Fetch_Huntress_CuttlefishInkSac_01"
+  ],
+  "Id_Quest_Huntress_Weekly_77": [
+    "Id_QuestContent_Fetch_Huntress_EtchedWandFragment_01"
+  ],
+  "Id_Quest_Huntress_Weekly_78": [
+    "Id_QuestContent_Fetch_Huntress_GlowingOrangeEye_01"
+  ],
+  "Id_Quest_Huntress_Weekly_79": [
+    "Id_QuestContent_Fetch_Huntress_JellyfishGlowEssence_01"
+  ],
+  "Id_Quest_Huntress_Weekly_80": [
+    "Id_QuestContent_Fetch_Huntress_KneadBloodBag_01"
+  ],
+  "Id_Quest_Huntress_Weekly_81": [
+    "Id_QuestContent_Fetch_Huntress_MermaidScale_01"
+  ],
+  "Id_Quest_Huntress_Weekly_82": [
+    "Id_QuestContent_Fetch_Huntress_RottenLump_01"
+  ],
+  "Id_Quest_Huntress_Weekly_83": [
+    "Id_QuestContent_Fetch_Huntress_SkinnyFinger_01"
+  ],
+  "Id_Quest_Huntress_Weekly_84": [
+    "Id_QuestContent_Fetch_Huntress_SmellyVomit_01"
+  ],
+  "Id_Quest_Huntress_Weekly_85": [
+    "Id_QuestContent_Fetch_Huntress_SmokyPoisonPowder_01"
+  ],
+  "Id_Quest_Huntress_Weekly_86": [
+    "Id_QuestContent_Fetch_Huntress_StickyTongue_01"
+  ],
+  "Id_Quest_Huntress_Weekly_87": [
+    "Id_QuestContent_Fetch_Huntress_WhiteSharkTooth_01"
+  ],
+  "Id_Quest_Huntress_Weekly_88": [
+    "Id_QuestContent_Escape_Huntress_HowlingCrypts_02"
+  ],
+  "Id_Quest_Huntress_Weekly_89": [
+    "Id_QuestContent_Escape_Huntress_IceCavern_02"
+  ],
+  "Id_Quest_Huntress_Weekly_90": [
+    "Id_QuestContent_Escape_Huntress_GoblinCaves_02"
+  ],
+  "Id_Quest_Huntress_Weekly_91": [
+    "Id_QuestContent_Escape_Huntress_ShipGraveyard_02"
+  ],
+  "Id_Quest_JackOLantern_01": [
+    "Id_QuestContent_Kill_JackOLantern_Mummy_01",
+    "Id_QuestContent_Kill_JackOLantern_Skeletons_01",
+    "Id_QuestContent_Kill_JackOLantern_Zombie_01"
+  ],
+  "Id_Quest_JackOLantern_02": [
+    "Id_QuestContent_Escape_JackOLantern_GoblinCaves_01",
+    "Id_QuestContent_Escape_JackOLantern_HowlingCrypts_01",
+    "Id_QuestContent_Escape_JackOLantern_ShipGraveyard_01"
+  ],
+  "Id_Quest_JackOLantern_03": [
+    "Id_QuestContent_Fetch_JackOLantern_CandyCorns_01"
+  ],
+  "Id_Quest_Krampus_Daily_01": [
+    "Id_QuestContent_Fetch_Krampus_KrampusSilverBell_01"
+  ],
+  "Id_Quest_Krampus_Daily_02": [
+    "Id_QuestContent_Kill_Krampus_Undead_01"
+  ],
+  "Id_Quest_Krampus_Daily_03": [
+    "Id_QuestContent_Escape_Krampus_GoblinCaves_01",
+    "Id_QuestContent_Escape_Krampus_HowlingCrypts_01",
+    "Id_QuestContent_Escape_Krampus_IceCavern_01",
+    "Id_QuestContent_Escape_Krampus_ShipGraveyard_01"
+  ],
+  "Id_Quest_Krampus_Seasonal_01": [
+    "Id_QuestContent_Fetch_Krampus_KrampusGoldenBell_01"
+  ],
+  "Id_Quest_Krampus_Seasonal_02": [
+    "Id_QuestContent_Fetch_Krampus_KrampusGoldenBell_02"
+  ],
+  "Id_Quest_Krampus_Seasonal_03": [
+    "Id_QuestContent_Fetch_Krampus_KrampusGoldenBell_03"
+  ],
+  "Id_Quest_Leathersmith_01": [
+    "Id_QuestContent_Fetch_LeatherCap_01"
+  ],
+  "Id_Quest_Leathersmith_02": [
+    "Id_QuestContent_Open_HealthStatue_05"
+  ],
+  "Id_Quest_Leathersmith_03": [
+    "Id_QuestContent_Explore_CampSite_01"
+  ],
+  "Id_Quest_Leathersmith_04": [
+    "Id_QuestContent_Open_MediumChest_01"
+  ],
+  "Id_Quest_Leathersmith_05": [
+    "Id_QuestContent_Fetch_Bone_01",
+    "Id_QuestContent_Fetch_KoboldEar_04"
+  ],
+  "Id_Quest_Leathersmith_06": [
+    "Id_QuestContent_Kill_FrostSentinel_01",
+    "Id_QuestContent_Kill_IceHound_01"
+  ],
+  "Id_Quest_Leathersmith_07": [
+    "Id_QuestContent_Kill_Harpy_03",
+    "Id_QuestContent_Kill_Skeleton_01"
+  ],
+  "Id_Quest_Leathersmith_08": [
+    "Id_QuestContent_Kill_DemonBerserker_04",
+    "Id_QuestContent_Kill_DemonCentaur_05",
+    "Id_QuestContent_Kill_SkeletonChampion_04",
+    "Id_QuestContent_Kill_Wraith_04"
+  ],
+  "Id_Quest_Leathersmith_09": [
+    "Id_QuestContent_Kill_SkeletonWarlord_01"
+  ],
+  "Id_Quest_Leathersmith_10": [
+    "Id_QuestContent_Fetch_MarauderOutfit_01",
+    "Id_QuestContent_Fetch_SpiderSilk_02",
+    "Id_QuestContent_Fetch_SturdyCloth_02",
+    "Id_QuestContent_Fetch_TroubadourOutfit_01",
+    "Id_QuestContent_Fetch_WardenOutfit_01"
+  ],
+  "Id_Quest_Leathersmith_11": [
+    "Id_QuestContent_Kill_Skeleton_02"
+  ],
+  "Id_Quest_Leathersmith_12": [
+    "Id_QuestContent_Fetch_HumanRemains_01"
+  ],
+  "Id_Quest_Leathersmith_13": [
+    "Id_QuestContent_Destroy_SmallCrates_02"
+  ],
+  "Id_Quest_Leathersmith_14": [
+    "Id_QuestContent_Fetch_CyclopsEye_01",
+    "Id_QuestContent_Fetch_TrollsClub_01"
+  ],
+  "Id_Quest_Leathersmith_15": [
+    "Id_QuestContent_Open_GoldChest_06"
+  ],
+  "Id_Quest_Miner_01": [
+    "Id_QuestContent_Escape_Firedeep_01"
+  ],
+  "Id_Quest_Miner_02": [
+    "Id_QuestContent_Explore_BrokenStonebridge_01"
+  ],
+  "Id_Quest_Miner_03": [
+    "Id_QuestContent_Kill_DwarfAxeman_01",
+    "Id_QuestContent_Kill_DwarfHandcannoneer_02",
+    "Id_QuestContent_Kill_DwarfMauler_02"
+  ],
+  "Id_Quest_Miner_04": [
+    "Id_QuestContent_Fetch_CrackedTusk_01",
+    "Id_QuestContent_Kill_FlameBoar_01"
+  ],
+  "Id_Quest_Miner_05": [
+    "Id_QuestContent_Open_FallenDwarf_01"
+  ],
+  "Id_Quest_Miner_06": [
+    "Id_QuestContent_Kill_LavaGolem_01"
+  ],
+  "Id_Quest_Miner_07": [
+    "Id_QuestContent_Explore_BurningCourt_01"
+  ],
+  "Id_Quest_Miner_08": [
+    "Id_QuestContent_Kill_FireElemental_01",
+    "Id_QuestContent_Kill_FireSpirit_02"
+  ],
+  "Id_Quest_Miner_09": [
+    "Id_QuestContent_Kill_FireColossus_01"
+  ],
+  "Id_Quest_Navigator_01": [
+    "Id_QuestContent_Fetch_Bavin_01",
+    "Id_QuestContent_Fetch_Billet_01"
+  ],
+  "Id_Quest_Navigator_02": [
+    "Id_QuestContent_Fetch_Pincushion_01",
+    "Id_QuestContent_Fetch_SturdyCloth_01"
+  ],
+  "Id_Quest_Navigator_03": [
+    "Id_QuestContent_Fetch_OldRope_01",
+    "Id_QuestContent_Fetch_SturdyRope_01"
+  ],
+  "Id_Quest_Navigator_04": [
+    "Id_QuestContent_Kill_PirateBowman_01",
+    "Id_QuestContent_Kill_PirateSwordman_01"
+  ],
+  "Id_Quest_Navigator_05": [
+    "Id_QuestContent_Open_MermaidCoffin_01"
+  ],
+  "Id_Quest_Navigator_06": [
+    "Id_QuestContent_Escape_ShipGraveyard_01"
+  ],
+  "Id_Quest_Navigator_07": [
+    "Id_QuestContent_Kill_TidewalkerClubfighter_01",
+    "Id_QuestContent_Kill_TidewalkerSlinger_01",
+    "Id_QuestContent_Kill_TidewalkerSpearer_01"
+  ],
+  "Id_Quest_Navigator_08": [
+    "Id_QuestContent_Fetch_OldNauticalChartFragment_01"
+  ],
+  "Id_Quest_Navigator_09": [
+    "Id_QuestContent_Explore_PiratePrison_01"
+  ],
+  "Id_Quest_Navigator_10": [
+    "Id_QuestContent_Fetch_SailorsJournal_01",
+    "Id_QuestContent_Kill_MorayEel_01",
+    "Id_QuestContent_Kill_SeaPiranha_01"
+  ],
+  "Id_Quest_Navigator_11": [
+    "Id_QuestContent_Fetch_CoralFragment_01",
+    "Id_QuestContent_Fetch_ShiningPearl_01"
+  ],
+  "Id_Quest_Navigator_12": [
+    "Id_QuestContent_Fetch_CrocodilianEyeball_01",
+    "Id_QuestContent_Kill_Crocodilian_01"
+  ],
+  "Id_Quest_Navigator_13": [
+    "Id_QuestContent_Explore_CircleIsland_01",
+    "Id_QuestContent_Explore_FloatingVillage_01",
+    "Id_QuestContent_Explore_HangingShip_01",
+    "Id_QuestContent_Explore_RockIsland_01"
+  ],
+  "Id_Quest_Navigator_14": [
+    "Id_QuestContent_Kill_PirateAxeThrower_01",
+    "Id_QuestContent_Kill_PirateBowman_02",
+    "Id_QuestContent_Kill_PirateSwordman_02"
+  ],
+  "Id_Quest_Navigator_15": [
+    "Id_QuestContent_Kill_CaptainBladehand_01"
+  ],
+  "Id_Quest_Nicholas_01": [
+    "Id_QuestContent_Kill_FrostSkeletonArcher_02",
+    "Id_QuestContent_Kill_FrostWolf_03",
+    "Id_QuestContent_Kill_IceHarpy_03"
+  ],
+  "Id_Quest_Nicholas_02": [
+    "Id_QuestContent_Escape_IceCavern_02"
+  ],
+  "Id_Quest_Nicholas_03": [
+    "Id_QuestContent_Fetch_GingerbreadCookies_01"
+  ],
+  "Id_Quest_NightmareMummy_01": [
+    "Id_QuestContent_Open_OldCoffin_02"
+  ],
+  "Id_Quest_NightmareMummy_02": [
+    "Id_QuestContent_Explore_LowPyramid_01"
+  ],
+  "Id_Quest_NightmareMummy_03": [
+    "Id_QuestContent_Fetch_BlueSapphire_03",
+    "Id_QuestContent_Fetch_Diamond_03",
+    "Id_QuestContent_Fetch_Emerald_03",
+    "Id_QuestContent_Fetch_Ruby_03"
+  ],
+  "Id_Quest_NightmareMummy_04": [
+    "Id_QuestContent_Fetch_ScrollofForgottenKnowledge_01"
+  ],
+  "Id_Quest_SkeletonFootman_01": [
+    "Id_QuestContent_Fetch_Bone_03"
+  ],
+  "Id_Quest_SkeletonFootman_02": [
+    "Id_QuestContent_Escape_GoblinCaves_01",
+    "Id_QuestContent_Escape_HowlingCrypts_01",
+    "Id_QuestContent_Escape_IceCavern_01"
+  ],
+  "Id_Quest_SkeletonFootman_03": [
+    "Id_QuestContent_Fetch_IntactSkull_03"
+  ],
+  "Id_Quest_Squire_01": [
+    "Id_QuestContent_Fetch_Armor_02",
+    "Id_QuestContent_Fetch_Weapon_03"
+  ],
+  "Id_Quest_Squire_02": [
+    "Id_QuestContent_Explore_TowerBridge_01"
+  ],
+  "Id_Quest_Squire_03": [
+    "Id_QuestContent_Kill_SkeletonArcher_03",
+    "Id_QuestContent_Kill_SkeletonFootman_02",
+    "Id_QuestContent_Kill_SkeletonGuardsman_03"
+  ],
+  "Id_Quest_Squire_04": [
+    "Id_QuestContent_Fetch_Armor_03",
+    "Id_QuestContent_Fetch_Weapon_04"
+  ],
+  "Id_Quest_Squire_05": [
+    "Id_QuestContent_Explore_Guardpost_01",
+    "Id_QuestContent_Explore_IceCaveAltar_01"
+  ],
+  "Id_Quest_Squire_06": [
+    "Id_QuestContent_Kill_FrostSkeletonArcher_03",
+    "Id_QuestContent_Kill_FrostSkeletonFootman_02",
+    "Id_QuestContent_Kill_FrostSkeletonGuardsman_02"
+  ],
+  "Id_Quest_Squire_07": [
+    "Id_QuestContent_Fetch_Accessory_03",
+    "Id_QuestContent_Fetch_Armor_04",
+    "Id_QuestContent_Fetch_Weapon_05"
+  ],
+  "Id_Quest_Squire_08": [
+    "Id_QuestContent_Explore_CavePitHall_02",
+    "Id_QuestContent_Explore_GoblinMine_01",
+    "Id_QuestContent_Explore_Tomb_01"
+  ],
+  "Id_Quest_Squire_09": [
+    "Id_QuestContent_Kill_GoblinArcher_03",
+    "Id_QuestContent_Kill_GoblinAxeman_03",
+    "Id_QuestContent_Kill_GoblinWarrior_03"
+  ],
+  "Id_Quest_Surgeon_01": [
+    "Id_QuestContent_Fetch_Bandages_01"
+  ],
+  "Id_Quest_Surgeon_02": [
+    "Id_QuestContent_Kill_LivingArmor_05"
+  ],
+  "Id_Quest_Surgeon_03": [
+    "Id_QuestContent_Explore_Keep_01"
+  ],
+  "Id_Quest_Surgeon_04": [
+    "Id_QuestContent_Fetch_SurgicalKit_01"
+  ],
+  "Id_Quest_Surgeon_05": [
+    "Id_QuestContent_Kill_GiantDragonfly_03",
+    "Id_QuestContent_Kill_Mummy_02"
+  ],
+  "Id_Quest_Surgeon_06": [
+    "Id_QuestContent_Use_SurgicalKits_01"
+  ],
+  "Id_Quest_Surgeon_07": [
+    "Id_QuestContent_Use_Bandage_01",
+    "Id_QuestContent_Use_HealingPotion_01",
+    "Id_QuestContent_Use_SurgicalKits_02"
+  ],
+  "Id_Quest_Surgeon_08": [
+    "Id_QuestContent_Open_HealthStatue_02"
+  ],
+  "Id_Quest_Surgeon_09": [
+    "Id_QuestContent_Fetch_GiantToe_01"
+  ],
+  "Id_Quest_Surgeon_10": [
+    "Id_QuestContent_Fetch_Maggots_02",
+    "Id_QuestContent_Fetch_MoldyBread_02",
+    "Id_QuestContent_Use_SurgicalKits_03"
+  ],
+  "Id_Quest_Surgeon_11": [
+    "Id_QuestContent_Kill_Cockatrice_02",
+    "Id_QuestContent_Kill_DeathSkull_02",
+    "Id_QuestContent_Kill_LivingStatue_02"
+  ],
+  "Id_Quest_Surgeon_12": [
+    "Id_QuestContent_Kill_Lich_01"
+  ],
+  "Id_Quest_Surgeon_13": [
+    "Id_QuestContent_Use_Bandage_02",
+    "Id_QuestContent_Use_SurgicalKits_04"
+  ],
+  "Id_Quest_Surgeon_14": [
+    "Id_QuestContent_Hold_BloodBridge_01",
+    "Id_QuestContent_Hold_LowPyramid_01",
+    "Id_QuestContent_Hold_Square_01"
+  ],
+  "Id_Quest_Surgeon_15": [
+    "Id_QuestContent_Fetch_EnchantedDarkFabric_03",
+    "Id_QuestContent_Fetch_OldBloodyBandage_03",
+    "Id_QuestContent_Fetch_OldCloth_01",
+    "Id_QuestContent_Fetch_SpectralFabric_01"
+  ],
+  "Id_Quest_Tailor_01": [
+    "Id_QuestContent_Kill_SkeletonArcher_01",
+    "Id_QuestContent_Kill_SkeletonSwordsman_02"
+  ],
+  "Id_Quest_Tailor_02": [
+    "Id_QuestContent_Fetch_RottenFluid_01",
+    "Id_QuestContent_Fetch_SturdyCloth_03"
+  ],
+  "Id_Quest_Tailor_03": [
+    "Id_QuestContent_Explore_Inferno_DeathPlatforms_01"
+  ],
+  "Id_Quest_Tailor_04": [
+    "Id_QuestContent_Kill_DireWolf_01",
+    "Id_QuestContent_Kill_Golem_01"
+  ],
+  "Id_Quest_Tailor_05": [
+    "Id_QuestContent_Open_HealthStatue_04"
+  ],
+  "Id_Quest_Tailor_06": [
+    "Id_QuestContent_Fetch_OldBloodyBandage_01",
+    "Id_QuestContent_Fetch_SpiderSilk_01"
+  ],
+  "Id_Quest_Tailor_07": [
+    "Id_QuestContent_Fetch_Tar_01",
+    "Id_QuestContent_Fetch_TornSail_01"
+  ],
+  "Id_Quest_Tailor_08": [
+    "Id_QuestContent_Fetch_CuttlefishInkSac_01",
+    "Id_QuestContent_Kill_Cuttlefish_01"
+  ],
+  "Id_Quest_Tailor_09": [
+    "Id_QuestContent_Fetch_JellyfishGlowEssence_01",
+    "Id_QuestContent_Kill_Jellyfish_01"
+  ],
+  "Id_Quest_Tailor_10": [
+    "Id_QuestContent_Escape_IceCavern_Consecutive_01",
+    "Id_QuestContent_Kill_FrozenGhost_01"
+  ],
+  "Id_Quest_Tailor_11": [
+    "Id_QuestContent_Kill_FrostDemon_03",
+    "Id_QuestContent_Kill_IceHound_02",
+    "Id_QuestContent_Kill_Wendigo_02"
+  ],
+  "Id_Quest_Tailor_12": [
+    "Id_QuestContent_Fetch_EnchantedDarkFabric_02",
+    "Id_QuestContent_Fetch_WendigoSharpClaws_02"
+  ],
+  "Id_Quest_Tailor_13": [
+    "Id_QuestContent_Kill_FrostSkeletonArcher_01",
+    "Id_QuestContent_Kill_FrostSkeletonAxeman_02",
+    "Id_QuestContent_Kill_FrostSkeletonCrossbowman_02",
+    "Id_QuestContent_Kill_FrostSkeletonFootman_01",
+    "Id_QuestContent_Kill_FrostSkeletonGuardsman_01",
+    "Id_QuestContent_Kill_FrostSkeletonHalberdier_01",
+    "Id_QuestContent_Kill_FrostSkeletonMaceman_02"
+  ],
+  "Id_Quest_Tailor_14": [
+    "Id_QuestContent_Hold_FourRoute_01",
+    "Id_QuestContent_Hold_Pyramid_01",
+    "Id_QuestContent_Hold_WyvernsLair_01"
+  ],
+  "Id_Quest_Tailor_15": [
+    "Id_QuestContent_Fetch_Bowstring_04",
+    "Id_QuestContent_Fetch_KoboldEar_05"
+  ],
+  "Id_Quest_Tailor_16": [
+    "Id_QuestContent_Hold_Altar_01",
+    "Id_QuestContent_Hold_Cabin_01",
+    "Id_QuestContent_Hold_FourRoute_02",
+    "Id_QuestContent_Hold_IcicleCave_01",
+    "Id_QuestContent_Hold_Maze_01",
+    "Id_QuestContent_Hold_NarrowBridge_01",
+    "Id_QuestContent_Hold_Pyramid_02",
+    "Id_QuestContent_Hold_Sanctum_01",
+    "Id_QuestContent_Hold_WolfCave_01",
+    "Id_QuestContent_Hold_WyvernsLair_02"
+  ],
+  "Id_Quest_Tailor_17": [
+    "Id_QuestContent_Kill_FrostDemon_04",
+    "Id_QuestContent_Kill_FrostSentinel_02",
+    "Id_QuestContent_Kill_IceHound_03",
+    "Id_QuestContent_Kill_Wendigo_03"
+  ],
+  "Id_Quest_Tailor_18": [
+    "Id_QuestContent_Fetch_FrozenHeart_01",
+    "Id_QuestContent_Fetch_WendigoEntrails_02",
+    "Id_QuestContent_Fetch_WendigoHoof_02",
+    "Id_QuestContent_Fetch_WendigosAntlerFragment_01",
+    "Id_QuestContent_Fetch_WendigoSharpClaws_01"
+  ],
+  "Id_Quest_TavernMaster_01": [
+    "Id_QuestContent_Kill_SkeletonArcher_04",
+    "Id_QuestContent_Kill_SkeletonFootman_01",
+    "Id_QuestContent_Kill_SkeletonGuardsman_01"
+  ],
+  "Id_Quest_TavernMaster_02": [
+    "Id_QuestContent_Fetch_Ale_01",
+    "Id_QuestContent_Fetch_LukewarmStew_01",
+    "Id_QuestContent_Fetch_RedApple_01"
+  ],
+  "Id_Quest_TavernMaster_03": [
+    "Id_QuestContent_Explore_Barracks_01"
+  ],
+  "Id_Quest_TavernMaster_04": [
+    "Id_QuestContent_Fetch_GraveEssence_01",
+    "Id_QuestContent_Fetch_IntactSkull_01",
+    "Id_QuestContent_Fetch_RustyBrokenSword_01"
+  ],
+  "Id_Quest_TavernMaster_05": [
+    "Id_QuestContent_Kill_SkeletonChampion_01",
+    "Id_QuestContent_Kill_SkeletonMage_01"
+  ],
+  "Id_Quest_TavernMaster_06": [
+    "Id_QuestContent_Escape_HowlingCrypts_01"
+  ],
+  "Id_Quest_TavernMaster_07": [
+    "Id_QuestContent_Kill_FrostWalker_02"
+  ],
+  "Id_Quest_TavernMaster_08": [
+    "Id_QuestContent_Escape_IceCavern_01"
+  ],
+  "Id_Quest_TavernMaster_09": [
+    "Id_QuestContent_Kill_FrostGiantBerserker_01",
+    "Id_QuestContent_Kill_FrostGiantShielder_01"
+  ],
+  "Id_Quest_TavernMaster_10": [
+    "Id_QuestContent_Kill_DeathSkull_01",
+    "Id_QuestContent_Kill_Mummy_01"
+  ],
+  "Id_Quest_TavernMaster_11": [
+    "Id_QuestContent_Kill_SkeletonAxeman_01",
+    "Id_QuestContent_Kill_SkeletonGuardsman_02",
+    "Id_QuestContent_Kill_SkeletonSpearman_01"
+  ],
+  "Id_Quest_TavernMaster_12": [
+    "Id_QuestContent_Explore_DarkRitualRoom_01"
+  ],
+  "Id_Quest_TavernMaster_13": [
+    "Id_QuestContent_Open_HealthStatue_01",
+    "Id_QuestContent_Open_PowerStatue_01",
+    "Id_QuestContent_Open_ProtectionStatue_01",
+    "Id_QuestContent_Open_SpeedStatue_01"
+  ],
+  "Id_Quest_TavernMaster_14": [
+    "Id_QuestContent_Fetch_BonePowder_01",
+    "Id_QuestContent_Kill_DemonDog_02",
+    "Id_QuestContent_Kill_Dreadspine_04"
+  ],
+  "Id_Quest_TavernMaster_15": [
+    "Id_QuestContent_Fetch_FlameGasBag_01",
+    "Id_QuestContent_Kill_Cockatrice_05",
+    "Id_QuestContent_Kill_SkeletonAxeman_02",
+    "Id_QuestContent_Kill_SkeletonCrossbowman_01",
+    "Id_QuestContent_Kill_SkeletonSpearman_02"
+  ],
+  "Id_Quest_TavernMaster_16": [
+    "Id_QuestContent_Kill_FrostSkeletonAxeman_01",
+    "Id_QuestContent_Kill_FrostSkeletonMaceman_01"
+  ],
+  "Id_Quest_TavernMaster_17": [
+    "Id_QuestContent_Fetch_Ectoplasm_02",
+    "Id_QuestContent_Fetch_FrozenClaw_01"
+  ],
+  "Id_Quest_TavernMaster_18": [
+    "Id_QuestContent_Kill_FrostDemon_01",
+    "Id_QuestContent_Kill_FrostImp_01",
+    "Id_QuestContent_Kill_FrostWyvern_01"
+  ],
+  "Id_Quest_TavernMaster_Final_01": [
+    "Id_QuestContent_Kill_Abomination_02",
+    "Id_QuestContent_Kill_Cerberus_02",
+    "Id_QuestContent_Kill_Dreadspine_02",
+    "Id_QuestContent_Kill_Skeletons_02"
+  ],
+  "Id_Quest_TavernMaster_Tuto_01": [
+    "Id_QuestContent_Kill_TavernMaster_Tuto_Undead_01"
+  ],
+  "Id_Quest_TavernMaster_Tuto_02": [
+    "Id_QuestContent_Open_SimpleChestSmall_01"
+  ],
+  "Id_Quest_TavernMaster_Tuto_03": [
+    "Id_QuestContent_Escape_TavernMaster_Tuto_HowlingCrypts_01"
+  ],
+  "Id_Quest_TheCollector_01": [
+    "Id_QuestContent_Kill_FrostWolf_01"
+  ],
+  "Id_Quest_TheCollector_02": [
+    "Id_QuestContent_Fetch_AncientScroll_01",
+    "Id_QuestContent_Fetch_GoldWaterpot_01"
+  ],
+  "Id_Quest_TheCollector_03": [
+    "Id_QuestContent_Fetch_WoodenMask_01"
+  ],
+  "Id_Quest_TheCollector_04": [
+    "Id_QuestContent_Fetch_Shackles_01"
+  ],
+  "Id_Quest_TheCollector_05": [
+    "Id_QuestContent_Explore_FourRoute_01"
+  ],
+  "Id_Quest_TheCollector_06": [
+    "Id_QuestContent_Fetch_Bone_04",
+    "Id_QuestContent_Fetch_MoldyBread_01",
+    "Id_QuestContent_Fetch_WolfFang_01"
+  ],
+  "Id_Quest_TheCollector_07": [
+    "Id_QuestContent_Kill_FrostSkeletons_SingleAdventure_01"
+  ],
+  "Id_Quest_TheCollector_08": [
+    "Id_QuestContent_Kill_Yeti_04"
+  ],
+  "Id_Quest_TheCollector_09": [
+    "Id_QuestContent_Fetch_ExtraThickPelt_02",
+    "Id_QuestContent_Fetch_WolfClaw_01"
+  ],
+  "Id_Quest_TheCollector_10": [
+    "Id_QuestContent_Explore_MermaidTomb_01"
+  ],
+  "Id_Quest_TheCollector_11": [
+    "Id_QuestContent_Kill_Mermaid_01",
+    "Id_QuestContent_Kill_MermaidCorpse_01"
+  ],
+  "Id_Quest_TheCollector_12": [
+    "Id_QuestContent_Fetch_MermaidScale_01",
+    "Id_QuestContent_Fetch_MermaidsTear_01"
+  ],
+  "Id_Quest_TheCollector_13": [
+    "Id_QuestContent_Kill_IceHarpy_01",
+    "Id_QuestContent_Kill_Yeti_01"
+  ],
+  "Id_Quest_TheCollector_14": [
+    "Id_QuestContent_Kill_FrostSkeletons_01",
+    "Id_QuestContent_Use_Ale_SingleAdventure_01"
+  ],
+  "Id_Quest_TheCollector_15": [
+    "Id_QuestContent_Fetch_FrostedFeather_02",
+    "Id_QuestContent_Fetch_YetiTeeth_01"
+  ],
+  "Id_Quest_TheCollector_16": [
+    "Id_QuestContent_Fetch_GoldCandelabra_01",
+    "Id_QuestContent_Fetch_GoldCandleHolder_01",
+    "Id_QuestContent_Fetch_GoldWaterpot_02"
+  ],
+  "Id_Quest_TheCollector_17": [
+    "Id_QuestContent_Open_GoldChest_02",
+    "Id_QuestContent_Open_OrnateChestLarge_01"
+  ],
+  "Id_Quest_TheCollector_18": [
+    "Id_QuestContent_Fetch_Ale_02",
+    "Id_QuestContent_Fetch_GoldBowl_01",
+    "Id_QuestContent_Fetch_Lifeleaf_01"
+  ],
+  "Id_Quest_TheCollector_Final_01": [
+    "Id_QuestContent_Fetch_TearoftheVolcano_01"
+  ],
+  "Id_Quest_Treasurer_01": [
+    "Id_QuestContent_Fetch_GemNecklace_01",
+    "Id_QuestContent_Fetch_GemRing_01"
+  ],
+  "Id_Quest_Treasurer_02": [
+    "Id_QuestContent_Explore_Cemetery_01"
+  ],
+  "Id_Quest_Treasurer_03": [
+    "Id_QuestContent_Kill_Wraith_02"
+  ],
+  "Id_Quest_Treasurer_04": [
+    "Id_QuestContent_Explore_LowPyramid_01"
+  ],
+  "Id_Quest_Treasurer_05": [
+    "Id_QuestContent_Fetch_SilverCoin_01"
+  ],
+  "Id_Quest_Treasurer_06": [
+    "Id_QuestContent_Kill_Mimic_01"
+  ],
+  "Id_Quest_Treasurer_07": [
+    "Id_QuestContent_Fetch_GoldChalice_01",
+    "Id_QuestContent_Fetch_SilverChalice_01"
+  ],
+  "Id_Quest_Treasurer_08": [
+    "Id_QuestContent_Explore_TreasureRoom_01",
+    "Id_QuestContent_Kill_SkeletonChampion_03",
+    "Id_QuestContent_Kill_Wraith_03"
+  ],
+  "Id_Quest_Treasurer_09": [
+    "Id_QuestContent_Explore_DemonThrone_01"
+  ],
+  "Id_Quest_Treasurer_10": [
+    "Id_QuestContent_Open_IronDoor_01"
+  ],
+  "Id_Quest_Treasurer_11": [
+    "Id_QuestContent_Open_BossCasket_01"
+  ],
+  "Id_Quest_Treasurer_12": [
+    "Id_QuestContent_Fetch_CeremonialDagger_01"
+  ],
+  "Id_Quest_Treasurer_13": [
+    "Id_QuestContent_Open_GoldChest_01"
+  ],
+  "Id_Quest_Treasurer_14": [
+    "Id_QuestContent_Open_DoubleStoneDoor_01"
+  ],
+  "Id_Quest_Treasurer_15": [
+    "Id_QuestContent_Fetch_DottedBangle_01",
+    "Id_QuestContent_Fetch_PatternedGoldBangle_01",
+    "Id_QuestContent_Fetch_SimpleGoldBangle_01",
+    "Id_QuestContent_Fetch_TurquoiseGemBangle_01"
+  ],
+  "Id_Quest_Treasurer_16": [
+    "Id_QuestContent_Open_GoldenHoard_02"
+  ],
+  "Id_Quest_Treasurer_17": [
+    "Id_QuestContent_Open_DoubleStoneDoor_02",
+    "Id_QuestContent_Open_GoldenDoor_01",
+    "Id_QuestContent_Open_IronDoor_02"
+  ],
+  "Id_Quest_Treasurer_18": [
+    "Id_QuestContent_Fetch_GoldCrown_02"
+  ],
+  "Id_Quest_Valentine_01": [
+    "Id_QuestContent_Fetch_BlackRose_01",
+    "Id_QuestContent_Fetch_Lifeleaf_03",
+    "Id_QuestContent_Fetch_PhantomFlower_02",
+    "Id_QuestContent_Fetch_Wardweed_02"
+  ],
+  "Id_Quest_Valentine_02": [
+    "Id_QuestContent_Fetch_LuckyFeather_02"
+  ],
+  "Id_Quest_Valentine_03": [
+    "Id_QuestContent_Fetch_PearlNecklace_01"
+  ],
+  "Id_Quest_Valentine_Daily_01": [
+    "Id_QuestContent_Kill_Valentine_Goblins_01",
+    "Id_QuestContent_Kill_Valentine_Kobolds_01",
+    "Id_QuestContent_Kill_Valentine_Skeletons_01"
+  ],
+  "Id_Quest_Valentine_Daily_02": [
+    "Id_QuestContent_Kill_Valentine_GiantCentipede_01",
+    "Id_QuestContent_Kill_Valentine_SkeletonChampion_01",
+    "Id_QuestContent_Kill_Valentine_Yeti_01"
+  ],
+  "Id_Quest_Valentine_Daily_03": [
+    "Id_QuestContent_Escape_Valentine_GoblinCaves_01",
+    "Id_QuestContent_Escape_Valentine_HowlingCrypts_01",
+    "Id_QuestContent_Escape_Valentine_IceCavern_01"
+  ],
+  "Id_Quest_Valentine_Seasonal_01": [
+    "Id_QuestContent_Fetch_Valentine_BlackRose_01"
+  ],
+  "Id_Quest_Valentine_Seasonal_02": [
+    "Id_QuestContent_Fetch_Valentine_BlackRose_02"
+  ],
+  "Id_Quest_Valentine_Seasonal_03": [
+    "Id_QuestContent_Fetch_Valentine_BlackRose_03"
+  ],
+  "Id_Quest_Weaponsmith_01": [
+    "Id_QuestContent_Open_OldCoffin_01",
+    "Id_QuestContent_Open_StoneTomb_01"
+  ],
+  "Id_Quest_Weaponsmith_02": [
+    "Id_QuestContent_Kill_LivingStatue_01"
+  ],
+  "Id_Quest_Weaponsmith_03": [
+    "Id_QuestContent_Fetch_GoldOres_01"
+  ],
+  "Id_Quest_Weaponsmith_04": [
+    "Id_QuestContent_Fetch_Weapon_01"
+  ],
+  "Id_Quest_Weaponsmith_05": [
+    "Id_QuestContent_Explore_IceCave_Pyramid_01"
+  ],
+  "Id_Quest_Weaponsmith_06": [
+    "Id_QuestContent_Kill_IceGiantSpider_01"
+  ],
+  "Id_Quest_Weaponsmith_07": [
+    "Id_QuestContent_Explore_MagmaFalls_01"
+  ],
+  "Id_Quest_Weaponsmith_08": [
+    "Id_QuestContent_Fetch_ObsidianOres_01"
+  ],
+  "Id_Quest_Weaponsmith_09": [
+    "Id_QuestContent_Fetch_MeltedPickaxeHead_01",
+    "Id_QuestContent_Kill_DwarfHandcannoneer_01",
+    "Id_QuestContent_Kill_DwarfMauler_01"
+  ],
+  "Id_Quest_Weaponsmith_10": [
+    "Id_QuestContent_Destroy_Pot_01"
+  ],
+  "Id_Quest_Weaponsmith_11": [
+    "Id_QuestContent_Open_SmallChest_01"
+  ],
+  "Id_Quest_Weaponsmith_12": [
+    "Id_QuestContent_Open_GoldChest_05"
+  ],
+  "Id_Quest_Weaponsmith_13": [
+    "Id_QuestContent_Kill_Golem_03",
+    "Id_QuestContent_Kill_Harpy_02",
+    "Id_QuestContent_Kill_LivingArmor_02"
+  ],
+  "Id_Quest_Weaponsmith_14": [
+    "Id_QuestContent_Fetch_ArmorScrap_02",
+    "Id_QuestContent_Fetch_RottenFluid_03",
+    "Id_QuestContent_Fetch_Weapon_02"
+  ],
+  "Id_Quest_Weaponsmith_15": [
+    "Id_QuestContent_Fetch_BrokenBoneSpike_01",
+    "Id_QuestContent_Fetch_SpectralHilt_01",
+    "Id_QuestContent_Fetch_WarlordsBrokenSwordBlade_01"
+  ],
+  "Id_Quest_Weaponsmith_16": [
+    "Id_QuestContent_Fetch_SmokyPoisonPowder_01",
+    "Id_QuestContent_Fetch_Weapon_06"
+  ],
+  "Id_Quest_Weaponsmith_17": [
+    "Id_QuestContent_Kill_Abomination_01",
+    "Id_QuestContent_Kill_Cerberus_01",
+    "Id_QuestContent_Kill_Dreadspine_01"
+  ],
+  "Id_Quest_Weaponsmith_18": [
+    "Id_QuestContent_Kill_EliteGhostKing_01",
+    "Id_QuestContent_Kill_EliteLich_01",
+    "Id_QuestContent_Kill_EliteSkeletonWarlord_01"
+  ],
+  "Id_Quest_Weaponsmith_Extra_01": [
+    "Id_QuestContent_Fetch_Weapon_07"
+  ],
+  "Id_Quest_Weaponsmith_Extra_02": [
+    "Id_QuestContent_Fetch_Weapon_08"
+  ],
+  "Id_Quest_Weaponsmith_Extra_03": [
+    "Id_QuestContent_Fetch_Weapon_09"
+  ],
+  "Id_Quest_Woodsman_01": [
+    "Id_QuestContent_Fetch_CampfireKit_01"
+  ],
+  "Id_Quest_Woodsman_02": [
+    "Id_QuestContent_Kill_DireWolf_02"
+  ],
+  "Id_Quest_Woodsman_03": [
+    "Id_QuestContent_Explore_Prisons_01"
+  ],
+  "Id_Quest_Woodsman_04": [
+    "Id_QuestContent_Kill_Demonfly_01"
+  ],
+  "Id_Quest_Woodsman_05": [
+    "Id_QuestContent_Fetch_BrokenWheel_01",
+    "Id_QuestContent_Fetch_CrackedLog_01",
+    "Id_QuestContent_Fetch_SturdyLog_01"
+  ],
+  "Id_Quest_Woodsman_06": [
+    "Id_QuestContent_Explore_DownStair_01"
+  ],
+  "Id_Quest_Woodsman_07": [
+    "Id_QuestContent_Explore_DeathAltar_01"
+  ],
+  "Id_Quest_Woodsman_08": [
+    "Id_QuestContent_Escape_ForgottenCastle_Consecutive_01"
+  ],
+  "Id_Quest_Woodsman_09": [
+    "Id_QuestContent_Kill_DemonBat_03",
+    "Id_QuestContent_Kill_DemonBerserker_01",
+    "Id_QuestContent_Kill_DemonCentaur_02",
+    "Id_QuestContent_Kill_DemonDog_03"
+  ],
+  "Id_Quest_Woodsman_10": [
+    "Id_QuestContent_Use_CampfireKit_01"
+  ],
+  "Id_Quest_Woodsman_11": [
+    "Id_QuestContent_Kill_FrostGiantBerserker_03",
+    "Id_QuestContent_Kill_FrostGiantShielder_02"
+  ],
+  "Id_Quest_Woodsman_12": [
+    "Id_QuestContent_Kill_FrostWolf_02",
+    "Id_QuestContent_Kill_Yeti_02"
+  ],
+  "Id_Quest_Woodsman_13": [
+    "Id_QuestContent_Explore_WyvernLair_01"
+  ],
+  "Id_Quest_Woodsman_14": [
+    "Id_QuestContent_Kill_FrostDemon_02",
+    "Id_QuestContent_Kill_FrostImp_02",
+    "Id_QuestContent_Kill_FrozenGhost_02",
+    "Id_QuestContent_Kill_IceHarpy_02"
+  ],
+  "Id_Quest_Woodsman_15": [
+    "Id_QuestContent_Fetch_WendigoEntrails_01",
+    "Id_QuestContent_Fetch_YetiTeeth_02"
+  ],
+  "Id_Quest_Woodsman_16": [
+    "Id_QuestContent_Hold_CenterBridge_01",
+    "Id_QuestContent_Hold_DarkRitualRoom_01",
+    "Id_QuestContent_Hold_TowerBridge_01"
+  ],
+  "Id_Quest_Woodsman_17": [
+    "Id_QuestContent_Kill_Cockatrice_03",
+    "Id_QuestContent_Kill_DireWolf_03",
+    "Id_QuestContent_Kill_GiantBat_03",
+    "Id_QuestContent_Kill_GiantSpider_03"
+  ],
+  "Id_Quest_Woodsman_18": [
+    "Id_QuestContent_Fetch_ChroniclesoftheCursedCrown_01",
+    "Id_QuestContent_Fetch_DiaryoftheToz_01",
+    "Id_QuestContent_Fetch_ManuscriptsoftheWarlord_01"
+  ]
+}

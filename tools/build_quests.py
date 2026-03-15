@@ -797,6 +797,16 @@ def build():
     rewards = load_rewards()
     content_lookup = load_all_content()
 
+    # Load uasset-derived quest-to-objective mapping
+    uasset_map_path = ROOT / "extracted" / "quest_objective_map.json"
+    uasset_obj_map: dict[str, list[str]] = {}
+    if uasset_map_path.exists():
+        with open(uasset_map_path, encoding="utf-8") as f:
+            uasset_obj_map = json.load(f)
+        print(f"  Loaded uasset objective map: {len(uasset_obj_map)} quests")
+    else:
+        print("  WARNING: quest_objective_map.json not found - objectives will be limited")
+
     # Build reward lookup: quest_id -> reward_id (by naming convention)
     quest_reward_map: dict[str, str] = {}
     for rid in rewards:
@@ -898,9 +908,16 @@ def build():
 
                 # ── Objectives ──
                 objectives: list[dict] = []
-                for cid in qdata.get("content_ids", []):
+                # First try uasset-derived mapping (covers all 553 quests)
+                uasset_content_ids = uasset_obj_map.get(quest_id, [])
+                for cid in uasset_content_ids:
                     if cid in content_lookup:
                         objectives.append(content_lookup[cid])
+                # Fall back to inline content_ids from JSON (only 6 quests)
+                if not objectives:
+                    for cid in qdata.get("content_ids", []):
+                        if cid in content_lookup:
+                            objectives.append(content_lookup[cid])
 
                 # ── Dungeons from objectives ──
                 dungeon_set: set[str] = set()

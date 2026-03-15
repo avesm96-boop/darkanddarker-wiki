@@ -328,7 +328,7 @@ export async function fetchTrending(
         archetype,
         label: item.name,
         avg14d: item.avg_price,
-        avg7d: item.avg_price,
+        avg7d: item.active_count,    // Used by dashboard as "Listings" count
         avg24h: item.avg_price,
         currentAvg: Math.round(item.avg_price),
         currentLowest: item.min_price,

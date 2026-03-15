@@ -251,10 +251,14 @@ export default function ItemSearch() {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   // Read ?search= param from URL on mount
+  const [urlSearch, setUrlSearch] = useState<string | null>(null);
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const q = params.get("search");
-    if (q) setSearch(q);
+    if (q) {
+      setSearch(q);
+      setUrlSearch(q);
+    }
   }, []);
 
   useEffect(() => {
@@ -272,6 +276,21 @@ export default function ItemSearch() {
       return { name: name.toLowerCase(), dn: dn.toLowerCase(), idx: i, display: dn, assetName: name };
     });
   }, [data]);
+
+  // Auto-select first match when arriving via URL ?search= param
+  useEffect(() => {
+    if (!urlSearch || !data || searchIndex.length === 0) return;
+    const q = urlSearch.trim().toLowerCase();
+    const match = searchIndex.find(
+      (item) => item.dn === q || item.name === q
+    ) ?? searchIndex.find(
+      (item) => item.dn.startsWith(q) || item.name.startsWith(q)
+    );
+    if (match) {
+      setSelectedItem(match.idx);
+      setUrlSearch(null);
+    }
+  }, [urlSearch, data, searchIndex]);
 
   const suggestions = useMemo(() => {
     if (!data || search.trim().length < 2) return [];

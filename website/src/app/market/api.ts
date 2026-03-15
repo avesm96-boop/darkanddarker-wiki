@@ -71,11 +71,25 @@ export interface ItemDef {
 export interface TrendingItem {
   archetype: string;
   label: string;
-  currentAvg: number;
-  previousAvg: number;
+  avg14d: number;
+  avg7d: number;
+  avg24h: number;
+  currentAvg: number;      // last 6h avg
+  currentLowest: number;   // lowest price_per_unit in recent listings
+  previousAvg: number;     // for change calc
   changePct: number;
-  recentVolume: number;
+  totalVolume: number;
+  priceHistory: PricePoint[];  // raw points for mini chart
 }
+
+// ---------------------------------------------------------------------------
+// Icon helpers
+// ---------------------------------------------------------------------------
+
+export function itemIconPath(archetype: string): string {
+  return `/item-icons/Item_Icon_${archetype}.png`;
+}
+export const GOLD_ICON = "/item-icons/Item_Icon_GoldCoin.png";
 
 // ---------------------------------------------------------------------------
 // Fetch helpers
@@ -231,32 +245,30 @@ async function mapWithConcurrency<T, R>(
   return results;
 }
 
-export type TrendingRange = "24h" | "7d";
-
 /**
  * Fetch trending data for the curated item list.
- *
- * @param range "24h" compares last 6h vs previous 18h. "7d" compares last 24h vs previous 6d.
+ * Uses 4h interval for ~7 days of data, computes all time windows.
  */
 export async function fetchTrending(
-  range: TrendingRange = "24h",
   signal?: AbortSignal,
 ): Promise<TrendingItem[]> {
-  // For 7d we need more data, use 4h interval
-  const interval = range === "7d" ? "4h" : "1h";
+  const interval = "4h";
 
-  const histories = await mapWithConcurrency(
-    CURATED_ITEMS,
-    5,
-    ([archetype]) => fetchPriceHistory(archetype, interval, signal),
-  );
+  // Fetch price histories and lowest listings concurrently
+  const [histories, listings] = await Promise.all([
+    mapWithConcurrency(
+      CURATED_ITEMS,
+      5,
+      ([archetype]) => fetchPriceHistory(archetype, interval, signal),
+    ),
+    mapWithConcurrency(
+      CURATED_ITEMS,
+      5,
+      ([label]) => fetchMarketListings(label, 1, true, signal),
+    ),
+  ]);
 
   const now = Date.now();
-
-  // Define "recent" and "previous" windows based on range
-  const recentWindow = range === "7d" ? 24 * 3600_000 : 6 * 3600_000;
-  const previousEnd = recentWindow;
-  const previousWindow = range === "7d" ? 6 * 24 * 3600_000 : 18 * 3600_000;
 
   const trending: TrendingItem[] = [];
 
@@ -266,39 +278,55 @@ export async function fetchTrending(
 
     const [archetype, label] = CURATED_ITEMS[i];
 
-    const recent: PricePoint[] = [];
-    const previous: PricePoint[] = [];
+    const pts14d: PricePoint[] = [];
+    const pts7d: PricePoint[] = [];
+    const pts24h: PricePoint[] = [];
+    const pts6h: PricePoint[] = [];
+    const ptsPrev: PricePoint[] = []; // 6h-24h window for change calc
 
     for (const p of points) {
       const age = now - new Date(p.timestamp).getTime();
-      if (age <= recentWindow) {
-        recent.push(p);
-      } else if (age <= previousEnd + previousWindow) {
-        previous.push(p);
-      }
+      if (age <= 14 * 24 * 3600_000) pts14d.push(p);
+      if (age <= 7 * 24 * 3600_000) pts7d.push(p);
+      if (age <= 24 * 3600_000) pts24h.push(p);
+      if (age <= 6 * 3600_000) pts6h.push(p);
+      if (age > 6 * 3600_000 && age <= 24 * 3600_000) ptsPrev.push(p);
     }
 
-    if (recent.length === 0 || previous.length === 0) continue;
+    if (pts6h.length === 0 || ptsPrev.length === 0) continue;
 
-    const avg = (pts: PricePoint[]) =>
-      pts.reduce((s, p) => s + p.avg, 0) / pts.length;
+    const avg = (arr: PricePoint[]) =>
+      arr.length === 0 ? 0 : arr.reduce((s, p) => s + p.avg, 0) / arr.length;
 
-    const currentAvg = avg(recent);
-    const previousAvg = avg(previous);
+    const avg14d = avg(pts14d);
+    const avg7d = avg(pts7d);
+    const avg24h = avg(pts24h);
+    const currentAvg = avg(pts6h);
+    const previousAvg = avg(ptsPrev);
 
     if (previousAvg === 0) continue;
 
     const changePct = ((currentAvg - previousAvg) / previousAvg) * 100;
-    const recentVolume = recent.reduce((s, p) => s + p.volume, 0)
-      + previous.reduce((s, p) => s + p.volume, 0);
+    const totalVolume = pts14d.reduce((s, p) => s + p.volume, 0);
+
+    // Get lowest listing price
+    const itemListings = listings[i];
+    const currentLowest = itemListings && itemListings.length > 0
+      ? itemListings[0].price_per_unit
+      : 0;
 
     trending.push({
       archetype,
       label,
+      avg14d,
+      avg7d,
+      avg24h,
       currentAvg,
+      currentLowest,
       previousAvg,
       changePct,
-      recentVolume,
+      totalVolume,
+      priceHistory: points,
     });
   }
 

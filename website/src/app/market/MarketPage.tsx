@@ -7,7 +7,6 @@ import {
   fetchTrending,
   type PopulationData,
   type TrendingItem,
-  type TrendingRange,
 } from "./api";
 import MarketDashboard from "./MarketDashboard";
 import MarketSearch from "./MarketSearch";
@@ -25,7 +24,7 @@ export default function MarketPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<SelectedItem | null>(null);
-  const [trendingRange, setTrendingRange] = useState<TrendingRange>("24h");
+  const [activeTab, setActiveTab] = useState<"trends" | "search">("trends");
 
   const loadData = useCallback(() => {
     const ac = new AbortController();
@@ -34,7 +33,7 @@ export default function MarketPage() {
 
     Promise.all([
       fetchPopulation(ac.signal).catch(() => null),
-      fetchTrending(trendingRange, ac.signal).catch(() => []),
+      fetchTrending(ac.signal).catch(() => []),
     ])
       .then(([pop, trend]) => {
         if (!ac.signal.aborted) {
@@ -51,7 +50,7 @@ export default function MarketPage() {
       });
 
     return () => ac.abort();
-  }, [trendingRange]);
+  }, []);
 
   useEffect(() => {
     const cleanup = loadData();
@@ -65,6 +64,8 @@ export default function MarketPage() {
   const handleClear = useCallback(() => {
     setSelectedItem(null);
   }, []);
+
+  const formatNum = (n: number): string => n.toLocaleString();
 
   return (
     <div className={styles.page}>
@@ -88,40 +89,97 @@ export default function MarketPage() {
           </div>
         )}
 
-        {/* Dashboard */}
-        <MarketDashboard
-          population={population}
-          trending={trending}
-          loading={loading}
-          range={trendingRange}
-          onRangeChange={setTrendingRange}
-        />
-
-        <div className={styles.sectionDivider} />
-
-        {/* Search */}
-        <MarketSearch onSelect={handleSelect} />
-
-        {/* Item Detail */}
-        {selectedItem && (
-          <>
-            <div className={styles.itemDetail}>
-              <div className={styles.itemHeader}>
-                <div>
-                  <h2 className={styles.itemName}>{selectedItem.name}</h2>
-                  <p className={styles.itemSubtitle}>Price history and statistics</p>
+        {/* Population Stats — always visible above tabs */}
+        <div className={styles.populationBar}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTitle}>Server Population</span>
+          </div>
+          <div className={styles.dashboardGrid}>
+            {loading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className={styles.skeletonCard} />
+              ))
+            ) : (
+              <>
+                <div className={styles.statCard}>
+                  <div className={styles.statValue}>
+                    {population ? formatNum(population.num_online) : "\u2014"}
+                  </div>
+                  <div className={styles.statLabel}>Online</div>
                 </div>
-                <button className={styles.retryBtn} onClick={handleClear}>
-                  Close
-                </button>
-              </div>
-              <MarketItemDetail
-                itemId={selectedItem.id}
-                itemName={selectedItem.name}
-              />
+                <div className={styles.statCard}>
+                  <div className={styles.statValue}>
+                    {population ? formatNum(population.num_lobby) : "\u2014"}
+                  </div>
+                  <div className={styles.statLabel}>In Lobby</div>
+                </div>
+                <div className={styles.statCard}>
+                  <div className={styles.statValue}>
+                    {population ? formatNum(population.num_dungeon) : "\u2014"}
+                  </div>
+                  <div className={styles.statLabel}>In Dungeon</div>
+                </div>
+              </>
+            )}
+          </div>
+          {population?.timestamp && (
+            <div className={styles.lastUpdated}>
+              Last updated: {new Date(population.timestamp).toLocaleTimeString()}
             </div>
+          )}
+        </div>
 
-            <MarketListings itemName={selectedItem.name} />
+        {/* Tab Bar */}
+        <div className={styles.tabBar}>
+          <button
+            className={activeTab === "trends" ? styles.tabBtnActive : styles.tabBtn}
+            onClick={() => setActiveTab("trends")}
+          >
+            Trends
+          </button>
+          <button
+            className={activeTab === "search" ? styles.tabBtnActive : styles.tabBtn}
+            onClick={() => setActiveTab("search")}
+          >
+            Search
+          </button>
+        </div>
+
+        {/* Tab Content */}
+        {activeTab === "trends" && (
+          <MarketDashboard
+            trending={trending}
+            loading={loading}
+          />
+        )}
+
+        {activeTab === "search" && (
+          <>
+            {/* Search */}
+            <MarketSearch onSelect={handleSelect} />
+
+            {/* Item Detail */}
+            {selectedItem && (
+              <>
+                <div className={styles.itemDetail}>
+                  <div className={styles.itemHeader}>
+                    <div>
+                      <h2 className={styles.itemName}>{selectedItem.name}</h2>
+                      <p className={styles.itemSubtitle}>Price history and statistics</p>
+                    </div>
+                    <button className={styles.retryBtn} onClick={handleClear}>
+                      Close
+                    </button>
+                  </div>
+                  <MarketItemDetail
+                    itemId={selectedItem.id}
+                    itemName={selectedItem.name}
+                  />
+                </div>
+
+                <MarketListings itemName={selectedItem.name} />
+              </>
+            )}
           </>
         )}
       </div>

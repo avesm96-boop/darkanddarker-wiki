@@ -14,6 +14,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const GOLD_ICON = "/item-icons/Item_Icon_GoldCoin.png";
+
 interface Props {
   itemId: string;
   itemName: string;
@@ -39,6 +41,10 @@ interface ChartPoint {
 }
 
 function formatGold(n: number): string {
+  return Math.round(n).toLocaleString();
+}
+
+function formatGoldAxis(n: number): string {
   if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
   return Math.round(n).toLocaleString();
 }
@@ -52,6 +58,18 @@ function formatTime(ts: string, range: TimeRange): string {
     return d.toLocaleDateString([], { month: "short", day: "numeric", hour: "2-digit" });
   }
   return d.toLocaleDateString([], { month: "short", day: "numeric" });
+}
+
+function GoldCoin({ size = 14 }: { size?: number }) {
+  return (
+    <img
+      src={GOLD_ICON}
+      alt="gold"
+      width={size}
+      height={size}
+      style={{ verticalAlign: "middle", marginRight: 2 }}
+    />
+  );
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,10 +91,10 @@ function CustomTooltip({ active, payload, label }: any) {
       }}
     >
       <div style={{ color: "rgba(201, 168, 76, 0.7)", marginBottom: 4 }}>{data.time}</div>
-      <div>Avg: <strong style={{ color: "#c9a84c" }}>{formatGold(data.avg)}g</strong></div>
-      <div>Min: {formatGold(data.min)}g</div>
-      <div>Max: {formatGold(data.max)}g</div>
-      <div>Volume: {data.volume.toLocaleString()}</div>
+      <div style={{ fontVariantNumeric: "tabular-nums" }}>Avg: <strong style={{ color: "#c9a84c" }}><GoldCoin />{formatGold(data.avg)}</strong></div>
+      <div style={{ fontVariantNumeric: "tabular-nums" }}>Min: <GoldCoin />{formatGold(data.min)}</div>
+      <div style={{ fontVariantNumeric: "tabular-nums" }}>Max: <GoldCoin />{formatGold(data.max)}</div>
+      <div style={{ fontVariantNumeric: "tabular-nums" }}>Volume: {data.volume.toLocaleString()}</div>
     </div>
   );
 }
@@ -168,7 +186,7 @@ export default function MarketItemDetail({ itemId, itemName }: Props) {
                 tick={{ fill: "#7a7060", fontSize: 10 }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(v: number) => formatGold(v)}
+                tickFormatter={(v: number) => formatGoldAxis(v)}
               />
               <YAxis
                 yAxisId="volume"
@@ -176,7 +194,7 @@ export default function MarketItemDetail({ itemId, itemName }: Props) {
                 tick={{ fill: "#4a4540", fontSize: 10 }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(v: number) => formatGold(v)}
+                tickFormatter={(v: number) => formatGoldAxis(v)}
               />
               <Tooltip content={<CustomTooltip />} />
               <Area
@@ -210,19 +228,19 @@ export default function MarketItemDetail({ itemId, itemName }: Props) {
       {stats && (
         <div className={styles.statsGrid}>
           <div className={styles.statsGridCard}>
-            <div className={styles.statsGridValue}>{formatGold(stats.avgPrice)}g</div>
+            <div className={styles.statsGridValue} style={{ fontVariantNumeric: "tabular-nums" }}><GoldCoin size={16} />{formatGold(stats.avgPrice)}</div>
             <div className={styles.statsGridLabel}>Avg Price</div>
           </div>
           <div className={styles.statsGridCard}>
-            <div className={styles.statsGridValue}>{formatGold(stats.minPrice)}g</div>
+            <div className={styles.statsGridValue} style={{ fontVariantNumeric: "tabular-nums" }}><GoldCoin size={16} />{formatGold(stats.minPrice)}</div>
             <div className={styles.statsGridLabel}>Min</div>
           </div>
           <div className={styles.statsGridCard}>
-            <div className={styles.statsGridValue}>{formatGold(stats.maxPrice)}g</div>
+            <div className={styles.statsGridValue} style={{ fontVariantNumeric: "tabular-nums" }}><GoldCoin size={16} />{formatGold(stats.maxPrice)}</div>
             <div className={styles.statsGridLabel}>Max</div>
           </div>
           <div className={styles.statsGridCard}>
-            <div className={styles.statsGridValue}>{stats.totalVolume.toLocaleString()}</div>
+            <div className={styles.statsGridValue} style={{ fontVariantNumeric: "tabular-nums" }}>{stats.totalVolume.toLocaleString()}</div>
             <div className={styles.statsGridLabel}>24h Volume</div>
           </div>
         </div>

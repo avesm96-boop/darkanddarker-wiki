@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./market.module.css";
 import { fetchMarketListings, type MarketListing } from "./api";
 
+const GOLD_ICON = "/item-icons/Item_Icon_GoldCoin.png";
+
 interface Props {
   itemName: string;
 }
@@ -153,6 +155,7 @@ export default function MarketListings({ itemName }: Props) {
       <table className={styles.listingsTable}>
         <thead>
           <tr className={styles.listingsHeader}>
+            <th>Item</th>
             <th>Rarity</th>
             <th>Price</th>
             <th>Qty</th>
@@ -164,11 +167,24 @@ export default function MarketListings({ itemName }: Props) {
           {listings.map((listing) => (
             <tr key={listing.id} className={styles.listingsRow}>
               <td>
+                <img
+                  src={"/item-icons/Item_Icon_" + listing.archetype + ".png"}
+                  width={28}
+                  height={28}
+                  alt=""
+                  style={{ verticalAlign: "middle" }}
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
+              </td>
+              <td>
                 <span className={getRarityClass(listing.rarity)}>
                   {listing.rarity}
                 </span>
               </td>
-              <td>{listing.price.toLocaleString()}g</td>
+              <td style={{ fontVariantNumeric: "tabular-nums" }}>
+                <img src={GOLD_ICON} alt="gold" width={14} height={14} style={{ verticalAlign: "middle", marginRight: 2 }} />
+                {listing.price_per_unit.toLocaleString()}
+              </td>
               <td>{listing.quantity}</td>
               <td>{timeAgo(listing.created_at)}</td>
               <td>{extractProperties(listing)}</td>

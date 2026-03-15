@@ -136,7 +136,17 @@ export default function MarketSearch({ onSelect }: Props) {
               className={styles.searchResultItem}
               onClick={() => handleSelect(item)}
             >
-              <span className={styles.searchResultName}>{item.name}</span>
+              <span style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                <img
+                  src={"/item-icons/Item_Icon_" + item.archetype + ".png"}
+                  width={24}
+                  height={24}
+                  alt=""
+                  style={{ flexShrink: 0 }}
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
+                <span className={styles.searchResultName}>{item.name}</span>
+              </span>
               <span className={styles.searchResultRarity}>
                 <RarityBadge rarity={item.rarity} />
               </span>

@@ -264,7 +264,7 @@ export async function fetchTrending(
     mapWithConcurrency(
       CURATED_ITEMS,
       5,
-      ([label]) => fetchMarketListings(label, 1, true, signal),
+      ([, label]) => fetchMarketListings(label, 1, true, signal),
     ),
   ]);
 
@@ -278,36 +278,32 @@ export async function fetchTrending(
 
     const [archetype, label] = CURATED_ITEMS[i];
 
-    const pts14d: PricePoint[] = [];
-    const pts7d: PricePoint[] = [];
-    const pts24h: PricePoint[] = [];
-    const pts6h: PricePoint[] = [];
-    const ptsPrev: PricePoint[] = []; // 6h-24h window for change calc
+    // Sort points chronologically
+    const sorted = [...points].sort(
+      (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime(),
+    );
 
-    for (const p of points) {
-      const age = now - new Date(p.timestamp).getTime();
-      if (age <= 14 * 24 * 3600_000) pts14d.push(p);
-      if (age <= 7 * 24 * 3600_000) pts7d.push(p);
-      if (age <= 24 * 3600_000) pts24h.push(p);
-      if (age <= 6 * 3600_000) pts6h.push(p);
-      if (age > 6 * 3600_000 && age <= 24 * 3600_000) ptsPrev.push(p);
-    }
-
-    if (pts6h.length === 0 || ptsPrev.length === 0) continue;
-
+    // Compute averages by slicing from the end (most recent data)
+    // With 4h intervals: 6 pts ≈ 24h, 42 pts ≈ 7d, all pts ≈ 14d
     const avg = (arr: PricePoint[]) =>
       arr.length === 0 ? 0 : arr.reduce((s, p) => s + p.avg, 0) / arr.length;
 
-    const avg14d = avg(pts14d);
-    const avg7d = avg(pts7d);
-    const avg24h = avg(pts24h);
-    const currentAvg = avg(pts6h);
-    const previousAvg = avg(ptsPrev);
+    const avg14d = avg(sorted);
+    const avg7d = avg(sorted.slice(-42));     // last ~7 days
+    const avg24h = avg(sorted.slice(-6));     // last ~24 hours
+    const currentAvg = avg(sorted.slice(-2)); // last ~8 hours (most recent)
+
+    // Change: compare most recent vs the period before it
+    const recentSlice = sorted.slice(-3);      // last ~12h
+    const previousSlice = sorted.slice(-9, -3); // 12-36h ago
+    const previousAvg = avg(previousSlice);
+
+    if (sorted.length < 4) continue;
 
     if (previousAvg === 0) continue;
 
-    const changePct = ((currentAvg - previousAvg) / previousAvg) * 100;
-    const totalVolume = pts14d.reduce((s, p) => s + p.volume, 0);
+    const changePct = previousAvg > 0 ? ((currentAvg - previousAvg) / previousAvg) * 100 : 0;
+    const totalVolume = sorted.reduce((s, p) => s + p.volume, 0);
 
     // Get lowest listing price
     const itemListings = listings[i];

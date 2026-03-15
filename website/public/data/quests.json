@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T15:11:47.578503+00:00",
+  "generated_at": "2026-03-15T17:03:27.106519+00:00",
   "source": "Game data files (FModel extraction + localization)",
   "total_quests": 553,
   "total_merchants": 25,
@@ -973,7 +973,7 @@
           "quests": [
             {
               "id": "Id_Quest_Alchemist_16",
-              "title": "Id_Quest_Alchemist_16",
+              "title": "Alchemist Quest 16",
               "quest_number": 16,
               "required_level": 129,
               "prerequisite": {
@@ -1060,7 +1060,7 @@
             },
             {
               "id": "Id_Quest_Alchemist_17",
-              "title": "Id_Quest_Alchemist_17",
+              "title": "Alchemist Quest 17",
               "quest_number": 17,
               "required_level": 130,
               "prerequisite": {
@@ -1120,7 +1120,7 @@
             },
             {
               "id": "Id_Quest_Alchemist_18",
-              "title": "Id_Quest_Alchemist_18",
+              "title": "Alchemist Quest 18",
               "quest_number": 18,
               "required_level": 131,
               "prerequisite": {
@@ -1505,7 +1505,7 @@
           "quests": [
             {
               "id": "Id_Quest_Armourer_07",
-              "title": "Id_Quest_Armourer_07",
+              "title": "Armourer Quest 7",
               "quest_number": 7,
               "required_level": 189,
               "prerequisite": {
@@ -2205,7 +2205,7 @@
           "quests": [
             {
               "id": "Id_Quest_Armourer_16",
-              "title": "Id_Quest_Armourer_16",
+              "title": "Armourer Quest 16",
               "quest_number": 16,
               "required_level": 198,
               "prerequisite": {
@@ -2245,7 +2245,7 @@
             },
             {
               "id": "Id_Quest_Armourer_17",
-              "title": "Id_Quest_Armourer_17",
+              "title": "Armourer Quest 17",
               "quest_number": 17,
               "required_level": 199,
               "prerequisite": {
@@ -2289,7 +2289,7 @@
             },
             {
               "id": "Id_Quest_Armourer_18",
-              "title": "Id_Quest_Armourer_18",
+              "title": "Armourer Quest 18",
               "quest_number": 18,
               "required_level": 200,
               "prerequisite": {
@@ -3936,7 +3936,7 @@
           "quests": [
             {
               "id": "Id_Quest_FortuneTeller_16",
-              "title": "Id_Quest_FortuneTeller_16",
+              "title": "Fortune Teller Quest 16",
               "quest_number": 16,
               "required_level": 147,
               "prerequisite": {
@@ -4040,7 +4040,7 @@
             },
             {
               "id": "Id_Quest_FortuneTeller_18",
-              "title": "Id_Quest_FortuneTeller_18",
+              "title": "Fortune Teller Quest 18",
               "quest_number": 18,
               "required_level": 149,
               "greeting": "The item you brought last time proved most helpful. Yet to examine the depths of the Inferno more closely, I require more wicked relics bound to that place. If you aid me, we shall draw one step closer to uncovering the source of this evil. Clear away all that stands in your path.",
@@ -5162,7 +5162,7 @@
           "quests": [
             {
               "id": "Id_Quest_GoblinMerchant_19",
-              "title": "Id_Quest_GoblinMerchant_19",
+              "title": "Goblin Merchant Quest 19",
               "quest_number": 19,
               "required_level": 95,
               "prerequisite": {
@@ -5223,7 +5223,7 @@
             },
             {
               "id": "Id_Quest_GoblinMerchant_20",
-              "title": "Id_Quest_GoblinMerchant_20",
+              "title": "Goblin Merchant Quest 20",
               "quest_number": 20,
               "required_level": 96,
               "prerequisite": {
@@ -5318,7 +5318,7 @@
             },
             {
               "id": "Id_Quest_GoblinMerchant_21",
-              "title": "Id_Quest_GoblinMerchant_21",
+              "title": "Goblin Merchant Quest 21",
               "quest_number": 21,
               "required_level": 97,
               "prerequisite": {
@@ -15980,7 +15980,7 @@
           "quests": [
             {
               "id": "Id_Quest_Nicholas_01",
-              "title": "Id_Quest_Nicholas_01",
+              "title": "Nicholas Quest 1",
               "quest_number": 1,
               "required_level": 246,
               "dungeons": [
@@ -16062,7 +16062,7 @@
             },
             {
               "id": "Id_Quest_Nicholas_02",
-              "title": "Id_Quest_Nicholas_02",
+              "title": "Nicholas Quest 2",
               "quest_number": 2,
               "required_level": 247,
               "prerequisite": {
@@ -16115,7 +16115,7 @@
             },
             {
               "id": "Id_Quest_Nicholas_03",
-              "title": "Id_Quest_Nicholas_03",
+              "title": "Nicholas Quest 3",
               "quest_number": 3,
               "required_level": 248,
               "prerequisite": {
@@ -19107,7 +19107,7 @@
           "quests": [
             {
               "id": "Id_Quest_Tailor_16",
-              "title": "Id_Quest_Tailor_16",
+              "title": "Tailor Quest 16",
               "quest_number": 16,
               "required_level": 180,
               "prerequisite": {
@@ -19261,7 +19261,7 @@
             },
             {
               "id": "Id_Quest_Tailor_17",
-              "title": "Id_Quest_Tailor_17",
+              "title": "Tailor Quest 17",
               "quest_number": 17,
               "required_level": 181,
               "prerequisite": {
@@ -19342,7 +19342,7 @@
             },
             {
               "id": "Id_Quest_Tailor_18",
-              "title": "Id_Quest_Tailor_18",
+              "title": "Tailor Quest 18",
               "quest_number": 18,
               "required_level": 182,
               "prerequisite": {
@@ -21681,7 +21681,7 @@
           "quests": [
             {
               "id": "Id_Quest_TheCollector_16",
-              "title": "Id_Quest_TheCollector_16",
+              "title": "The Collector Quest 16",
               "quest_number": 16,
               "required_level": 55,
               "prerequisite": {
@@ -21737,7 +21737,7 @@
             },
             {
               "id": "Id_Quest_TheCollector_17",
-              "title": "Id_Quest_TheCollector_17",
+              "title": "The Collector Quest 17",
               "quest_number": 17,
               "required_level": 56,
               "prerequisite": {
@@ -21799,7 +21799,7 @@
             },
             {
               "id": "Id_Quest_TheCollector_18",
-              "title": "Id_Quest_TheCollector_18",
+              "title": "The Collector Quest 18",
               "quest_number": 18,
               "required_level": 57,
               "prerequisite": {
@@ -22949,7 +22949,7 @@
           "quests": [
             {
               "id": "Id_Quest_Valentine_01",
-              "title": "Id_Quest_Valentine_01",
+              "title": "Valentine Quest 1",
               "quest_number": 1,
               "required_level": 0,
               "dungeons": [],
@@ -23025,7 +23025,7 @@
             },
             {
               "id": "Id_Quest_Valentine_02",
-              "title": "Id_Quest_Valentine_02",
+              "title": "Valentine Quest 2",
               "quest_number": 2,
               "required_level": 0,
               "prerequisite": {
@@ -23071,7 +23071,7 @@
             },
             {
               "id": "Id_Quest_Valentine_03",
-              "title": "Id_Quest_Valentine_03",
+              "title": "Valentine Quest 3",
               "quest_number": 3,
               "required_level": 0,
               "prerequisite": {
@@ -24265,7 +24265,7 @@
           "quests": [
             {
               "id": "Id_Quest_Weaponsmith_16",
-              "title": "Id_Quest_Weaponsmith_16",
+              "title": "Weaponsmith Quest 16",
               "quest_number": 16,
               "required_level": 216,
               "prerequisite": {
@@ -24313,7 +24313,7 @@
             },
             {
               "id": "Id_Quest_Weaponsmith_17",
-              "title": "Id_Quest_Weaponsmith_17",
+              "title": "Weaponsmith Quest 17",
               "quest_number": 17,
               "required_level": 217,
               "prerequisite": {
@@ -24382,7 +24382,7 @@
             },
             {
               "id": "Id_Quest_Weaponsmith_18",
-              "title": "Id_Quest_Weaponsmith_18",
+              "title": "Weaponsmith Quest 18",
               "quest_number": 18,
               "required_level": 218,
               "prerequisite": {

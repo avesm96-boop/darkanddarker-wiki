@@ -547,7 +547,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .objItemIcon {
@@ -604,6 +605,11 @@
   font-size: 0.75rem;
   color: var(--text-dim);
   font-weight: 500;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .objDetail {
@@ -611,6 +617,7 @@
   color: var(--text-muted);
   margin-left: auto;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* === Reward Rows === */

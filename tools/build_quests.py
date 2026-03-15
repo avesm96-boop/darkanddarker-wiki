@@ -870,7 +870,13 @@ def build():
                 # ── Title ──
                 title = _loc_lookup(title_idx, "inline_title")
                 if not title:
-                    title = quest_id  # last resort fallback
+                    # Generate readable name: Id_Quest_Alchemist_16 -> "Alchemist Quest 16"
+                    m_title = re.match(r"Id_Quest_(\w+?)_(\d+)$", quest_id)
+                    if m_title:
+                        merchant_part = re.sub(r"([a-z])([A-Z])", r"\1 \2", m_title.group(1))
+                        title = f"{merchant_part} Quest {int(m_title.group(2))}"
+                    else:
+                        title = quest_id
 
                 # ── Greeting ──
                 greeting = _loc_lookup(greeting_idx, "inline_greeting")

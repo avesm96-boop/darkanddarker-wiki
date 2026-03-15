@@ -1,7 +1,7 @@
 # Market Page — Design Spec
 
 **Date:** 2026-03-15
-**Status:** Draft
+**Status:** Approved
 **Branch:** dev
 
 ## Overview
@@ -12,7 +12,7 @@ A full market analytics page for Dark and Darker, powered by the DarkerDB public
 
 **API:** `https://api.darkerdb.com/v1`
 - No API key required (recommended but optional)
-- No documented rate limits
+- No documented rate limits — use concurrency limiting to be safe (max 5 parallel requests)
 - All endpoints return JSON with standard envelope: `{ version, status, code, meta, body }`
 
 ### Endpoints Used
@@ -35,35 +35,41 @@ A full market analytics page for Dark and Darker, powered by the DarkerDB public
 ### Page Structure
 
 ```
-/market (page.tsx)
-└── MarketPage.tsx (client component)
-    ├── MarketDashboard — overview with trending/most-traded/population
-    ├── MarketSearch — search bar with autocomplete
-    ├── MarketItemDetail — price chart + stats for selected item
-    └── MarketListings — filterable table of live listings
+/market
+├── page.tsx              — server component, metadata export only
+└── MarketPage.tsx        — "use client", all state + rendering
+    ├── MarketDashboard   — overview with trending/most-traded/population
+    ├── MarketSearch      — search bar with autocomplete
+    ├── MarketItemDetail  — price chart + stats for selected item
+    └── MarketListings    — filterable table of live listings
 ```
+
+`page.tsx` is a server component (for metadata). `MarketPage.tsx` gets `"use client"`. This matches the existing pattern (items/page.tsx → ItemSearch, maps/page.tsx → MapExplorer).
 
 ### Component Breakdown
 
 #### 1. MarketDashboard (top section)
 - **Server Population** — live player count from `/v1/population` (online/lobby/dungeon)
-- **Trending Items** — computed client-side: fetch price history for a curated list of popular items, compare current avg vs. 24h ago, show top gainers/losers
+- **Trending Items** — computed client-side: fetch price history for a curated list of ~15 popular items (with concurrency limit of 5), compare current avg vs. 24h ago, show top gainers/losers
 - **Most Traded** — items with highest volume from price history data
+- **Last Updated** — timestamp showing when data was last fetched
 - Layout: 3-4 cards in a row, dark glassmorphism style matching existing design
 
 #### 2. MarketSearch
 - Search input with debounced autocomplete
-- Autocomplete powered by `/v1/items?search=...` or client-side filter of item list
+- Autocomplete: use `/v1/items?search=...` server-side search (avoids fetching full item list)
 - On selection → loads MarketItemDetail for that item
 - Rarity filter pills (Poor → Artifact) for quick filtering
 
 #### 3. MarketItemDetail (appears when item selected)
-- **Price chart** — line/area chart showing price history over time
+- **Price chart** — area chart showing price history over time
   - Time range selector: 24h / 7d / 30d
-  - Shows avg price line, min/max band, volume bars
+  - Interval per range: 24h → 1h, 7d → 4h, 30d → 1d
+  - Shows avg price line, min/max shaded band, volume bars
   - Powered by `/v1/market/analytics/{item_id}/prices/history`
 - **Current stats panel** — avg price, min, max, volume (last 24h)
 - **Rarity breakdown** — if item has multiple rarities, show price per rarity
+- Uses `AbortController` — cancels in-flight requests when user changes selection
 
 #### 4. MarketListings (bottom section)
 - Filterable/sortable table of current marketplace listings
@@ -74,15 +80,29 @@ A full market analytics page for Dark and Darker, powered by the DarkerDB public
 
 ### Curated Trending Items
 
-To compute trends without scanning every item, we use a curated list of ~30 popular tradeable items across categories:
+Reduced to ~15 items to limit API calls. Uses item_id (archetype) directly, not display names:
 
-**Weapons:** Longsword, Falchion, Crossbow, Spellbook, Crystal Sword
-**Armor:** Plate Armor, Dark Plate Armor, Lightfoot Boots, Rugged Boots
-**Materials:** Wolf Pelt, Troll Blood, Corrupted Crystal, Golden Key
-**Consumables:** Surgical Kit, Bandage, Blue Potion, Ale
-**Valuables:** Gold Coin Bag, Goblet, Ring, Necklace
+```typescript
+const TRENDING_ITEMS = [
+  { id: "Longsword", name: "Longsword" },
+  { id: "Falchion", name: "Falchion" },
+  { id: "Crossbow", name: "Crossbow" },
+  { id: "CrystalSword", name: "Crystal Sword" },
+  { id: "PlateArmor", name: "Plate Armor" },
+  { id: "LightfootBoots", name: "Lightfoot Boots" },
+  { id: "WolfPelt", name: "Wolf Pelt" },
+  { id: "GoldenKey", name: "Golden Key" },
+  { id: "SurgicalKit", name: "Surgical Kit" },
+  { id: "BluePotionOfHealing", name: "Blue Potion" },
+  { id: "GoldCoinBag", name: "Gold Coin Bag" },
+  { id: "TrollBlood", name: "Troll Blood" },
+  { id: "CorruptedCrystal", name: "Corrupted Crystal" },
+  { id: "Ale", name: "Ale" },
+  { id: "Bandage", name: "Bandage" },
+];
+```
 
-On page load, fetch price history (1h interval, last 48h) for each. Compare last-6h avg vs. previous-24h avg to determine trend direction and percentage change.
+Fetch with concurrency limit of 5. Compare last-6h avg vs. previous-24h avg for trend direction.
 
 ## Styling
 
@@ -97,6 +117,7 @@ Follow existing design system:
 ## Charting
 
 **Library:** Recharts (React-native charting)
+- ~200-300KB bundle size — acceptable tradeoff for rich charting capability
 - `AreaChart` for price history (avg line with min/max shaded band)
 - `BarChart` overlay for volume
 - `ResponsiveContainer` for responsive sizing
@@ -108,22 +129,24 @@ Follow existing design system:
 ```
 Page Load:
   1. Fetch /v1/population → populate server stats
-  2. Fetch /v1/items → cache item list for autocomplete
-  3. Fetch price history for curated trending items (parallel) → compute trends
+  2. Fetch trending items price history (5 at a time, concurrency limited)
+     → compute trends + most traded
+  3. Show dashboard
 
 User searches item:
-  1. Filter autocomplete from cached item list
-  2. On select → fetch /v1/market/analytics/{item_id}/prices/history
-  3. On select → fetch /v1/market?item=...&has_sold=false (live listings)
-  4. Render chart + listings
+  1. Debounced search → /v1/items?search=... (server-side search)
+  2. On select → cancel any in-flight requests (AbortController)
+  3. Fetch /v1/market/analytics/{item_id}/prices/history
+  4. Fetch /v1/market?item=...&has_sold=false (live listings)
+  5. Render chart + listings
 ```
 
 ## File Structure
 
 ```
 website/src/app/market/
-├── page.tsx              — metadata + MarketPage import
-├── MarketPage.tsx        — main client component, state management
+├── page.tsx              — server component, metadata export
+├── MarketPage.tsx        — "use client", main state management
 ├── MarketDashboard.tsx   — trending items, population, most traded
 ├── MarketSearch.tsx      — search bar with autocomplete
 ├── MarketItemDetail.tsx  — price chart + current stats
@@ -132,12 +155,15 @@ website/src/app/market/
 └── api.ts                — DarkerDB API client (fetch wrappers, types)
 ```
 
+If `market.module.css` exceeds ~300 lines, split into per-component modules.
+
 ## Error Handling
 
 - API unavailable → show "Market data temporarily unavailable" banner with retry button
+- CORS failure → specific message: "Cannot reach market data service"
 - No results → "No listings found for this item"
 - Slow response → loading skeleton states (same pattern as monsters page)
-- CORS: DarkerDB API allows cross-origin requests (verified)
+- Race conditions → AbortController on user-triggered fetches
 
 ## Constraints
 
@@ -146,6 +172,7 @@ website/src/app/market/
 - **No caching** — fresh data on every load (browser caching via standard HTTP headers)
 - **No user accounts** — no favorites, alerts, or saved searches in v1
 - **DarkerDB dependency** — if their API goes down, our market page goes down
+- **CORS verified** — tested 2026-03-15, third-party APIs can change this at any time
 
 ## Future Enhancements (not in v1)
 
@@ -154,3 +181,4 @@ website/src/app/market/
 - Item-to-item price correlation
 - Personal trade history tracking
 - Median price calculation (API only provides avg)
+- Switch to lighter charting lib (uplot) if bundle size becomes an issue

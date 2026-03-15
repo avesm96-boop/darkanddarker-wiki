@@ -59,13 +59,12 @@ function TrendTable({
         <div className={styles.trendTableHeader}>
           <span></span>
           <span>Item</span>
-          <span title="Outlier-adjusted average price over the last 14 days. RMT and troll listings are filtered out using a geometric mean when price spread exceeds 20x.">Avg 14d</span>
-          <span title="Outlier-adjusted average price over the last 7 days.">Avg 7d</span>
-          <span title="Outlier-adjusted average price over the last 24 hours.">Avg 24h</span>
-          <span title="Outlier-adjusted average from the most recent ~8 hours of aggregated data. Analytics data may be delayed 3-4 hours.">Current Avg</span>
-          <span title="The cheapest per-unit listing currently live on the marketplace. This is real-time data.">Lowest Now</span>
-          <span title="Price change comparing the last ~12 hours vs the previous ~24 hours, using outlier-adjusted prices.">Change</span>
-          <span title="Price trend over the available history (~7-14 days). Uses outlier-adjusted typical prices.">Chart</span>
+          <span title="What this item typically sold for over the past week. We ignore unrealistic prices (like 1g or 99,999g troll/RMT listings) to show what real players actually pay.">Avg 7d</span>
+          <span title="What this item typically sold for in the last 24 hours, with fake prices filtered out.">Avg 24h</span>
+          <span title="The most recent typical price based on the last few hours of trade data. Note: market data updates every few hours, so this may be slightly behind real-time.">Current Avg</span>
+          <span title="The cheapest listing per unit currently live on the marketplace right now. This updates in real-time.">Lowest Now</span>
+          <span title="How much the price moved recently — compares the last ~12 hours to the previous ~24 hours. A positive number means the price went up.">Change</span>
+          <span title="Visual price trend over the past week. The line shows typical trade prices with fake listings filtered out.">Trend</span>
         </div>
         {items.map((item) => (
           <div key={item.archetype} className={styles.trendTableRow}>
@@ -73,9 +72,6 @@ function TrendTable({
               <ItemIcon archetype={item.archetype} />
             </span>
             <span className={styles.trendItemName}>{item.label}</span>
-            <span className={styles.priceCell}>
-              <GoldIcon />{formatGold(item.avg14d)}
-            </span>
             <span className={styles.priceCell}>
               <GoldIcon />{formatGold(item.avg7d)}
             </span>
@@ -160,23 +156,17 @@ export default function MarketDashboard({ trending, loading }: Props) {
         maxWidth: 800,
       }}>
         <p style={{ marginBottom: 8 }}>
-          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>How we calculate prices:</strong>{" "}
-          Raw market averages are heavily skewed by RMT and troll listings (e.g. 10,000g for a 30g item).
-          We use an outlier-resistant method: when a time bucket&apos;s price spread is extreme
-          (max/min ratio &gt; 20x), we use a geometric mean of the minimum and average as a robust
-          central estimate. For moderate outliers, we average the minimum and mean. This filters out
-          RMT listings (e.g. 10,000g) and troll listings (e.g. 1g) to show what items actually trade for.
-        </p>
-        <p style={{ marginBottom: 8 }}>
-          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>Column definitions:</strong>{" "}
-          &quot;Avg 14d/7d/24h&quot; = outlier-adjusted average over that period.
-          &quot;Current Avg&quot; = most recent ~8 hours.
-          &quot;Lowest Now&quot; = cheapest per-unit listing currently live on the marketplace.
-          &quot;Change&quot; = price movement comparing last ~12h vs previous ~24h.
+          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>How we handle fake prices:</strong>{" "}
+          The marketplace often has troll listings (items posted at 1g or 99,999g) and RMT listings
+          that massively skew the average. We detect these by looking at the gap between the cheapest
+          and most expensive listing in each time window. When that gap is extreme, we ignore the
+          outliers and estimate what the item actually trades for based on real transactions. Hover
+          over any column header for details on what it shows.
         </p>
         <p>
-          Analytics data is aggregated hourly by DarkerDB and may be delayed 3-4 hours.
-          Use the <strong style={{ fontStyle: "normal" }}>Search</strong> tab for real-time listing prices.
+          Market data is provided by DarkerDB and updates every few hours.
+          For real-time prices, use the <strong style={{ fontStyle: "normal" }}>Search</strong> tab
+          which shows live marketplace listings.
         </p>
       </div>
     </div>

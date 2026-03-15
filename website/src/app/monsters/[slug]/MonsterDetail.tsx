@@ -252,7 +252,7 @@ const RARITY_COLORS: Record<string, string> = {
   Unique: "#e6cc80",
 };
 
-type TabId = "stats" | "attacks" | "combos" | "loot" | "abilities" | "behavior" | "strategy";
+type TabId = "stats" | "attacks" | "combos" | "loot" | "abilities" | "behavior" | "strategy" | "animations";
 
 // ---------------------------------------------------------------------------
 // Component
@@ -268,6 +268,8 @@ export default function MonsterDetail({ slug }: { slug: string }) {
   const [comboPlayback, setComboPlayback] = useState<ComboPlayback | null>(null);
   const [playingComboIdx, setPlayingComboIdx] = useState<number | null>(null);
   const [guide, setGuide] = useState<GuideData | null>(null);
+  const [animDefs, setAnimDefs] = useState<{ id: string; label: string; file: string; loop: boolean }[]>([]);
+  const [activeAnim, setActiveAnim] = useState<{ id: string; label: string; file: string; loop: boolean } | null>(null);
 
   const gradeVariant = grade.toLowerCase();
   const variantModelUrl = `${CDN_BASE}/monster-models/animations/${slug}/${slug}-${gradeVariant}.glb`;
@@ -320,6 +322,15 @@ export default function MonsterDetail({ slug }: { slug: string }) {
       .then((d: GuideData) => setGuide(d))
       .catch(() => {});
   }, [slug]);
+
+  // ── Load animation manifest ────────────────────────────────────────
+  useEffect(() => {
+    if (!animBasePath) return;
+    fetch(`${animBasePath}/manifest.json`)
+      .then(r => { if (!r.ok) throw new Error("no manifest"); return r.json(); })
+      .then(d => setAnimDefs(d.animations ?? []))
+      .catch(() => {});
+  }, [animBasePath]);
 
   // ── Set default tab ──────────────────────────────────────────────────
   useEffect(() => {
@@ -385,6 +396,7 @@ export default function MonsterDetail({ slug }: { slug: string }) {
   if (combos.length > 0) tabs.push({ id: "combos", label: `Combos (${combos.length})` });
   if ((monster.loot && monster.loot.length > 0) || monster.hunting_loot) tabs.push({ id: "loot", label: "Loot" });
   if (abilities.length > 0 && availableGrades.length > 1) tabs.push({ id: "abilities", label: `Abilities (${abilities.length})` });
+  if (animDefs.length > 0) tabs.push({ id: "animations", label: `Animations (${animDefs.length})` });
 
   const classBadgeClass = CLASS_BADGE_STYLE[monster.class_type] ?? "classBadgeNormal";
 
@@ -406,6 +418,8 @@ export default function MonsterDetail({ slug }: { slug: string }) {
                   modelUrl={activeModelUrl}
                   animationsBasePath={animBasePath}
                   comboPlayback={comboPlayback}
+                  animDefs={animDefs}
+                  activeAnim={activeAnim}
                 />
               ) : (
                 <div className={styles.noModel}>No 3D model available</div>
@@ -536,6 +550,14 @@ export default function MonsterDetail({ slug }: { slug: string }) {
                 grade={grade}
                 availableGrades={availableGrades}
                 allGrades={monster.grades}
+              />
+            )}
+
+            {activeTab === "animations" && (
+              <AnimationsTab
+                animDefs={animDefs}
+                activeAnim={activeAnim}
+                onSelect={(anim) => setActiveAnim(prev => prev?.id === anim.id ? null : anim)}
               />
             )}
           </div>
@@ -883,6 +905,40 @@ function GradeBadge({ grades }: { grades?: string[] }) {
     }}>
       {grades.join(" / ")} only
     </span>
+  );
+}
+
+function AnimationsTab({
+  animDefs, activeAnim, onSelect,
+}: {
+  animDefs: { id: string; label: string; file: string; loop: boolean }[];
+  activeAnim: { id: string; label: string; file: string; loop: boolean } | null;
+  onSelect: (anim: { id: string; label: string; file: string; loop: boolean }) => void;
+}) {
+  return (
+    <div>
+      <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "12px" }}>
+        Click an animation to play it in the 3D viewer. Click again to stop.
+      </p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+        {animDefs.map((anim) => {
+          const isActive = activeAnim?.id === anim.id;
+          return (
+            <button key={anim.id} onClick={() => onSelect(anim)} style={{
+              padding: "6px 14px", fontSize: "0.6875rem",
+              fontFamily: "var(--font-heading)", letterSpacing: "0.06em",
+              textTransform: "uppercase", cursor: "pointer",
+              border: isActive ? "1px solid rgba(201,168,76,0.55)" : "1px solid rgba(201,168,76,0.18)",
+              background: isActive ? "rgba(201,168,76,0.13)" : "rgba(201,168,76,0.04)",
+              color: isActive ? "rgba(201,168,76,0.95)" : "rgba(201,168,76,0.45)",
+              borderRadius: "2px", transition: "all 0.12s ease",
+            }}>
+              {isActive ? "■ " : "▶ "}{anim.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

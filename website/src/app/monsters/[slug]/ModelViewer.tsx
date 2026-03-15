@@ -22,6 +22,8 @@ interface ModelViewerProps {
   modelUrl: string;
   animationsBasePath?: string;
   comboPlayback?: ComboPlayback | null;
+  animDefs?: AnimDef[];
+  activeAnim?: AnimDef | null;
 }
 
 // ---------------------------------------------------------------------------
@@ -203,26 +205,9 @@ function Scene({
 // ModelViewer
 // ---------------------------------------------------------------------------
 
-export default function ModelViewer({ modelUrl, animationsBasePath, comboPlayback }: ModelViewerProps) {
-  const [animDefs, setAnimDefs] = useState<AnimDef[]>([]);
-  const [activeAnim, setActiveAnim] = useState<AnimDef | null>(null);
-
-  useEffect(() => {
-    if (!animationsBasePath) return;
-    fetch(`${animationsBasePath}/manifest.json`)
-      .then(r => { if (!r.ok) throw new Error("no manifest"); return r.json(); })
-      .then(d => setAnimDefs(d.animations ?? []))
-      .catch(() => {});
-  }, [animationsBasePath]);
-
-  const handleClick = useCallback((anim: AnimDef) => {
-    setActiveAnim(prev => prev?.id === anim.id ? null : anim);
-  }, []);
-
-  // Clear single-anim selection when combo starts
-  useEffect(() => {
-    if (comboPlayback) setActiveAnim(null);
-  }, [comboPlayback]);
+export default function ModelViewer({ modelUrl, animationsBasePath, comboPlayback, animDefs: externalAnimDefs, activeAnim: externalActiveAnim }: ModelViewerProps) {
+  const animDefs = externalAnimDefs ?? [];
+  const activeAnim = externalActiveAnim ?? null;
 
   return (
     <div>
@@ -276,37 +261,6 @@ export default function ModelViewer({ modelUrl, animationsBasePath, comboPlaybac
           </div>
         )}
       </div>
-
-      {/* Animation buttons */}
-      {animDefs.length > 0 && (
-        <div style={{ marginTop: "10px" }}>
-          <div style={{
-            fontSize: "0.5625rem", fontFamily: "var(--font-heading)",
-            letterSpacing: "0.22em", textTransform: "uppercase",
-            color: "var(--text-muted)", marginBottom: "6px",
-          }}>
-            Animations
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
-            {animDefs.map((anim) => {
-              const isActive = activeAnim?.id === anim.id;
-              return (
-                <button key={anim.id} onClick={() => handleClick(anim)} style={{
-                  padding: "5px 11px", fontSize: "0.6875rem",
-                  fontFamily: "var(--font-heading)", letterSpacing: "0.06em",
-                  textTransform: "uppercase", cursor: "pointer",
-                  border: isActive ? "1px solid rgba(201,168,76,0.55)" : "1px solid rgba(201,168,76,0.18)",
-                  background: isActive ? "rgba(201,168,76,0.13)" : "rgba(201,168,76,0.04)",
-                  color: isActive ? "rgba(201,168,76,0.95)" : "rgba(201,168,76,0.45)",
-                  borderRadius: "2px", transition: "all 0.12s ease",
-                }}>
-                  {anim.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

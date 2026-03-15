@@ -376,11 +376,11 @@ export async function fetchTrending(
     const changePct = ((recentTypical - previousTypical) / previousTypical) * 100;
     const totalVolume = sorted.reduce((s, p) => s + p.volume, 0);
 
-    // Get real lowest price from live listings using outlier filtering.
-    // Sort by price_per_unit, find the median, then take the lowest price
-    // that's within 5x of the median (filters 1g trolls and 99999g RMT).
+    // Get real lowest price and median from live listings.
+    // The median of 50 live listings is our ground truth for the item's real price.
     const itemListings = listings[i];
     let currentLowest = 0;
+    let liveMedian = 0;
     if (itemListings && itemListings.length > 0) {
       const prices = itemListings
         .map(l => l.price_per_unit)
@@ -388,23 +388,33 @@ export async function fetchTrending(
         .sort((a, b) => a - b);
 
       if (prices.length > 0) {
-        const median = prices[Math.floor(prices.length / 2)];
+        liveMedian = prices[Math.floor(prices.length / 2)];
         // Keep prices within reasonable range of the median (0.1x to 5x)
-        const reasonable = prices.filter(p => p >= median * 0.1 && p <= median * 5);
+        const reasonable = prices.filter(p => p >= liveMedian * 0.1 && p <= liveMedian * 5);
         currentLowest = reasonable.length > 0 ? reasonable[0] : prices[0];
       }
     }
+
+    // Sanity check: if historical averages are wildly off from live median,
+    // the item is RMT-polluted and historical data is unreliable.
+    // Override with live median in that case.
+    const sanitize = (val: number) => {
+      if (liveMedian > 0 && val > liveMedian * 10) return Math.round(liveMedian);
+      return val;
+    };
 
     trending.push({
       archetype,
       label,
       avg14d,
-      avg7d,
-      avg24h,
-      currentAvg,
+      avg7d: sanitize(avg7d),
+      avg24h: sanitize(avg24h),
+      currentAvg: sanitize(currentAvg),
       currentLowest,
-      previousAvg: previousTypical,
-      changePct,
+      previousAvg: sanitize(previousTypical),
+      changePct: liveMedian > 0 && (avg7d > liveMedian * 10 || previousTypical > liveMedian * 10)
+        ? 0  // Change % is meaningless for RMT-polluted items
+        : changePct,
       totalVolume,
       priceHistory: cleanHistory(sorted),
     });

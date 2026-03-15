@@ -84,14 +84,14 @@ function TrendTable({
           <div key={t.archetype} className={styles.trendTableRow}>
             <ItemIcon archetype={t.archetype} />
             <span className={styles.trendItemName}>{t.label}</span>
-            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-              <GoldIcon />{formatGold(t.currentAvg)}
+            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3 }}>
+              {formatGold(t.currentAvg)}<GoldIcon />
             </span>
-            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-              <GoldIcon />{formatGold(t.currentLowest)}
+            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3 }}>
+              {formatGold(t.currentLowest)}<GoldIcon />
             </span>
-            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", color: "var(--text-muted)" }}>
-              <GoldIcon />{formatGold(t.avg14d)}
+            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3, color: "var(--text-muted)" }}>
+              {formatGold(t.avg14d)}<GoldIcon />
             </span>
             <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
               {t.avg7d}

@@ -45,11 +45,9 @@ function ItemIcon({ archetype }: { archetype: string }) {
 function TrendTable({
   title,
   items,
-  columns,
 }: {
   title: string;
   items: TrendingItem[];
-  columns: "price" | "volume";
 }) {
   if (items.length === 0) return null;
 
@@ -58,20 +56,24 @@ function TrendTable({
       <div className={styles.sectionHeader}>
         <span className={styles.sectionTitle}>{title}</span>
       </div>
+      {/* 8-column grid matching CSS: icon | name | col3 | col4 | col5 | col6 | col7 | sparkline */}
       <div className={styles.trendTableHeader}>
+        <span></span>
         <span>Item</span>
         <span style={{ textAlign: "right" }}>
-          <span title="Average price across all active listings">Avg Price</span>
+          <span title="Average price per unit across all active listings">Avg Price</span>
         </span>
         <span style={{ textAlign: "right" }}>
-          <span title="Cheapest active listing right now">Lowest</span>
+          <span title="Cheapest active listing right now (per unit)">Lowest</span>
         </span>
         <span style={{ textAlign: "right" }}>
-          {columns === "volume" ? (
-            <span title="Number of active marketplace listings">Listings</span>
-          ) : (
-            <span title="Number of items sold (disappeared from marketplace)">Sold</span>
-          )}
+          <span title="Most expensive active listing (per unit)">Highest</span>
+        </span>
+        <span style={{ textAlign: "right" }}>
+          <span title="Number of active marketplace listings">Listings</span>
+        </span>
+        <span style={{ textAlign: "right" }}>
+          <span title="Number of items sold (disappeared between polls)">Sold</span>
         </span>
         <span style={{ textAlign: "right" }}>
           <span title="Price trend over recent polls">Trend</span>
@@ -80,22 +82,24 @@ function TrendTable({
       <div>
         {items.map((t) => (
           <div key={t.archetype} className={styles.trendTableRow}>
-            <span className={styles.trendItemCell}>
-              <ItemIcon archetype={t.archetype} />
-              <span className={styles.trendItemName}>{t.label}</span>
+            <ItemIcon archetype={t.archetype} />
+            <span className={styles.trendItemName}>{t.label}</span>
+            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+              <GoldIcon />{formatGold(t.currentAvg)}
             </span>
-            <span style={{ textAlign: "right" }}>
-              <GoldIcon />
-              {formatGold(t.currentAvg)}
+            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+              <GoldIcon />{formatGold(t.currentLowest)}
             </span>
-            <span style={{ textAlign: "right" }}>
-              <GoldIcon />
-              {formatGold(t.currentLowest)}
+            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", color: "var(--text-muted)" }}>
+              <GoldIcon />{formatGold(t.avg14d)}
             </span>
             <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
-              {columns === "volume" ? t.avg7d : t.totalVolume}
+              {t.avg7d}
             </span>
-            <span style={{ textAlign: "right", width: 80, height: 28 }}>
+            <span style={{ textAlign: "right", color: t.totalVolume > 0 ? "var(--gold-500)" : "var(--text-muted)" }}>
+              {t.totalVolume}
+            </span>
+            <span>
               {t.priceHistory.length > 1 ? (
                 <ResponsiveContainer width="100%" height={28}>
                   <AreaChart
@@ -115,8 +119,8 @@ function TrendTable({
                   </AreaChart>
                 </ResponsiveContainer>
               ) : (
-                <span style={{ color: "var(--text-muted)", fontSize: "0.7rem" }}>
-                  accumulating...
+                <span style={{ color: "var(--text-muted)", fontSize: "0.6rem" }}>
+                  building...
                 </span>
               )}
             </span>
@@ -143,12 +147,9 @@ export default function MarketDashboard({ trending, loading }: Props) {
     );
   }
 
-  // With limited historical data, show what we CAN show:
-  // - Most Listed: items with most active listings (market activity)
-  // - Most Sold: items with most detected sales (trade volume)
-  // - Most Valuable: highest average price items
+  // Show three views of the data
   const mostListed = [...trending]
-    .filter((t) => t.avg7d > 0)  // avg7d holds active_count from our API
+    .filter((t) => t.avg7d > 0)
     .sort((a, b) => b.avg7d - a.avg7d)
     .slice(0, 10);
 
@@ -164,9 +165,9 @@ export default function MarketDashboard({ trending, loading }: Props) {
 
   return (
     <div className={styles.dashboard}>
-      <TrendTable title="Most Listed" items={mostListed} columns="volume" />
-      <TrendTable title="Most Sold" items={mostSold} columns="price" />
-      <TrendTable title="Most Valuable" items={mostValuable} columns="price" />
+      <TrendTable title="Most Listed" items={mostListed} />
+      <TrendTable title="Most Sold" items={mostSold} />
+      <TrendTable title="Most Valuable" items={mostValuable} />
 
       <div style={{
         fontSize: "0.6875rem",
@@ -179,8 +180,8 @@ export default function MarketDashboard({ trending, loading }: Props) {
       }}>
         <p>
           Market data is collected directly from the in-game marketplace every ~60 seconds.
-          All 741 tradeable items are scanned each cycle. Price trends and sparklines will
-          become more detailed as historical data accumulates.
+          All 741 tradeable items are scanned each cycle. Prices shown are per unit.
+          Trend sparklines will become more detailed as historical data accumulates.
         </p>
       </div>
     </div>

@@ -328,13 +328,13 @@ export async function fetchTrending(
       return {
         archetype,
         label: item.name,
-        avg14d: item.avg_price,
-        avg7d: item.active_count,    // Used by dashboard as "Listings" count
+        avg14d: Math.round(item.max_price),   // Used as "Highest" column
+        avg7d: item.active_count,              // Used as "Listings" count
         avg24h: item.avg_price,
         currentAvg: Math.round(item.avg_price),
-        currentLowest: item.min_price,
+        currentLowest: Math.round(item.min_price),
         previousAvg: item.avg_price,
-        changePct: 0, // Will be meaningful once we have enough historical data
+        changePct: 0,
         totalVolume: item.sold_count,
         priceHistory,
       };

@@ -126,20 +126,35 @@ function typicalPrice(p: PricePoint): number {
   // In that case we return the raw avg — the caller's "currentLowest"
   // from live listings will be the reliable number.
 
-  let cleanTotal = p.avg * p.volume;
-  let cleanVol = p.volume;
-  let currentMax = p.max;
-  let currentAvg = p.avg;
+  // When max is extreme (e.g. 100,000g on a 90g item), many trades in the
+  // bucket are RMT at inflated prices. With only avg/min/max/volume we can
+  // estimate the "real" average by working backwards:
+  //
+  // If we assume legitimate trades cluster near min, and RMT trades are
+  // spread between avg and max, we can estimate:
+  //   real_avg ≈ min + (avg - min) * correction_factor
+  //
+  // The correction factor shrinks as the max/avg ratio grows (more pollution).
+  // When max/avg < 3: data is clean, use avg.
+  // When max/avg >= 3: scale down the distance between min and avg.
 
-  for (let iter = 0; iter < 3; iter++) {
-    if (currentMax <= currentAvg * 3 || cleanVol <= 1) break;
-    cleanTotal -= currentMax;
-    cleanVol -= 1;
-    currentAvg = cleanTotal / cleanVol;
-    currentMax = currentAvg * 2;
+  if (p.max <= p.avg * 3) {
+    return Math.round(p.avg);
   }
 
-  return Math.round(currentAvg);
+  // How polluted? Use the ratio of max to avg as a signal.
+  // Higher ratio = more extreme outliers = trust min more.
+  const pollutionRatio = p.max / p.avg;
+
+  // Correction: as pollution grows, weight towards min.
+  // At 3x pollution: 70% of (avg-min) kept
+  // At 10x: ~40%
+  // At 100x: ~15%
+  // At 1000x: ~5%
+  const correction = 1 / Math.log10(Math.max(pollutionRatio, 3));
+  const estimate = p.min + (p.avg - p.min) * correction;
+
+  return Math.round(Math.max(estimate, p.min));
 }
 
 function cleanHistory(points: PricePoint[]): CleanPricePoint[] {

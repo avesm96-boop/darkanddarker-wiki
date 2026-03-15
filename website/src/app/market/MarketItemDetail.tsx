@@ -118,23 +118,16 @@ export default function MarketItemDetail({ itemId, itemName }: Props) {
       .then((points) => {
         if (!ac.signal.aborted) {
           const chartData: ChartPoint[] = points.map((p) => {
-            // Outlier-resistant pricing — iteratively strip max outliers
+            // Outlier-resistant pricing — log-scale correction
             let typical: number;
             if (p.volume === 0) {
               typical = 0;
+            } else if (p.max <= p.avg * 3) {
+              typical = Math.round(p.avg);
             } else {
-              let cleanTotal = p.avg * p.volume;
-              let cleanVol = p.volume;
-              let curMax = p.max;
-              let curAvg = p.avg;
-              for (let iter = 0; iter < 3; iter++) {
-                if (curMax <= curAvg * 3 || cleanVol <= 1) break;
-                cleanTotal -= curMax;
-                cleanVol -= 1;
-                curAvg = cleanTotal / cleanVol;
-                curMax = curAvg * 2;
-              }
-              typical = Math.round(curAvg);
+              const ratio = p.max / p.avg;
+              const correction = 1 / Math.log10(Math.max(ratio, 3));
+              typical = Math.round(Math.max(p.min + (p.avg - p.min) * correction, p.min));
             }
             return {
               time: formatTime(p.timestamp, range),

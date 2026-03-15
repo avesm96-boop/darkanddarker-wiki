@@ -138,46 +138,67 @@ function Scene({
     if (!activeAnim) mixerRef.current?.stopAllAction();
   }, [activeAnim]);
 
-  // ── Combo playback: chain animations ───────────────────────────────────
+  // ── Combo playback: try candidates, play first match, then chain ──────
   useEffect(() => {
     if (!comboPlayback || !mixerRef.current || !model) return;
     const mixer = mixerRef.current;
-
-    // Store the queue and callback
-    comboQueueRef.current = [...comboPlayback.animations];
     comboCallbackRef.current = comboPlayback.onComplete;
 
-    const playNext = () => {
-      const nextId = comboQueueRef.current.shift();
-      if (!nextId) {
+    // The animations array contains candidate IDs — some are combined transitions
+    // (slug-to-from-from), some are individual attack animations (slug-attack).
+    // Try to load each and play the first ones that resolve.
+    const candidates = [...comboPlayback.animations];
+
+    const tryPlay = async () => {
+      const playable: THREE.AnimationClip[] = [];
+
+      for (const id of candidates) {
+        const clip = await loadClip(id);
+        if (clip) {
+          playable.push(clip);
+          // If we found a combined transition clip (contains "from"), just play that one
+          if (id.includes("-from-")) break;
+          // If we have 2 individual clips (from + to), that's enough
+          if (playable.length >= 2) break;
+        }
+      }
+
+      if (playable.length === 0) {
         comboCallbackRef.current?.();
         return;
       }
 
-      loadClip(nextId).then((clip) => {
-        if (!clip) { playNext(); return; }
+      // Play clips in sequence
+      comboQueueRef.current = [];
+      let idx = 0;
+
+      const playClip = (clip: THREE.AnimationClip) => {
         mixer.stopAllAction();
         const action = mixer.clipAction(clip, model);
         action.setLoop(THREE.LoopOnce, 1);
         action.clampWhenFinished = true;
         action.reset().play();
 
-        // Listen for animation finish to chain next
         const onFinished = (e: { action: THREE.AnimationAction }) => {
           if (e.action === action) {
             mixer.removeEventListener("finished", onFinished);
-            playNext();
+            idx++;
+            if (idx < playable.length) {
+              playClip(playable[idx]);
+            } else {
+              comboCallbackRef.current?.();
+            }
           }
         };
         mixer.addEventListener("finished", onFinished);
-      });
+      };
+
+      playClip(playable[0]);
     };
 
-    playNext();
+    tryPlay();
 
-    return () => {
-      comboQueueRef.current = [];
-    };
+    return () => { comboQueueRef.current = []; };
   }, [comboPlayback, model, loadClip]);
 
   // ── Per-frame: advance mixer ──────────────────────────────────────────

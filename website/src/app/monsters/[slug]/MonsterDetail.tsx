@@ -350,17 +350,36 @@ export default function MonsterDetail({ slug }: { slug: string }) {
 
   // ── Combo playback handler ─────────────────────────────────────────────
   const handlePlayCombo = useCallback((combo: Combo, index: number) => {
-    const animIds: string[] = [];
-    if (combo.from_animation_id) animIds.push(combo.from_animation_id);
-    if (combo.to_animation_id) animIds.push(combo.to_animation_id);
-    if (animIds.length === 0) return;
+    if (!combo.from_animation_id && !combo.to_animation_id) return;
+
+    // Build candidate animation IDs:
+    // 1. Try the combined transition animation: {slug}-{to}-from-{from}
+    // 2. Fall back to playing from + to as separate animations
+    const candidates: string[] = [];
+
+    if (combo.from_animation_id && combo.to_animation_id) {
+      // Combined transition animation (e.g., "skeleton-footman-slash-from-stab")
+      candidates.push(`${slug}-${combo.to_animation_id}-from-${combo.from_animation_id}`);
+    }
+
+    // Individual animations as fallback
+    if (combo.from_animation_id) {
+      candidates.push(`${slug}-${combo.from_animation_id}`);
+    }
+    if (combo.to_animation_id) {
+      candidates.push(`${slug}-${combo.to_animation_id}`);
+    }
+
+    // Also try without slug prefix (original IDs)
+    if (combo.from_animation_id) candidates.push(combo.from_animation_id);
+    if (combo.to_animation_id) candidates.push(combo.to_animation_id);
 
     setPlayingComboIdx(index);
     setComboPlayback({
-      animations: animIds,
+      animations: candidates,
       onComplete: () => setPlayingComboIdx(null),
     });
-  }, []);
+  }, [slug]);
 
   // ── Loading / Not Found ────────────────────────────────────────────────
   if (loading) {

@@ -327,7 +327,7 @@ export async function fetchTrending(
     mapWithConcurrency(
       CURATED_ITEMS,
       5,
-      ([, label]) => fetchMarketListings(label, 1, true, signal),
+      ([, label]) => fetchMarketListings(label, 50, true, signal),
     ),
   ]);
 
@@ -362,11 +362,24 @@ export async function fetchTrending(
     const changePct = ((recentTypical - previousTypical) / previousTypical) * 100;
     const totalVolume = sorted.reduce((s, p) => s + p.volume, 0);
 
-    // Get lowest listing price (per unit)
+    // Get real lowest price from live listings using outlier filtering.
+    // Sort by price_per_unit, find the median, then take the lowest price
+    // that's within 5x of the median (filters 1g trolls and 99999g RMT).
     const itemListings = listings[i];
-    const currentLowest = itemListings && itemListings.length > 0
-      ? itemListings[0].price_per_unit
-      : 0;
+    let currentLowest = 0;
+    if (itemListings && itemListings.length > 0) {
+      const prices = itemListings
+        .map(l => l.price_per_unit)
+        .filter(p => p > 0)
+        .sort((a, b) => a - b);
+
+      if (prices.length > 0) {
+        const median = prices[Math.floor(prices.length / 2)];
+        // Keep prices within reasonable range of the median (0.1x to 5x)
+        const reasonable = prices.filter(p => p >= median * 0.1 && p <= median * 5);
+        currentLowest = reasonable.length > 0 ? reasonable[0] : prices[0];
+      }
+    }
 
     trending.push({
       archetype,

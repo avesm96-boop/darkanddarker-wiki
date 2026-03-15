@@ -246,12 +246,15 @@ export async function fetchMarketListings(
   limit: number = 20,
   condense: boolean = true,
   signal?: AbortSignal,
+  price?: string,
 ): Promise<MarketListing[]> {
-  const res = await get<ApiResponse<MarketListing[]>>("/market", {
-    item,
+  const params: Record<string, string | number> = {
     limit,
     condense: condense ? "true" : "false",
-  }, signal);
+  };
+  if (item) params.item = item;
+  if (price) params.price = price;
+  const res = await get<ApiResponse<MarketListing[]>>("/market", params, signal);
   return res.body ?? [];
 }
 

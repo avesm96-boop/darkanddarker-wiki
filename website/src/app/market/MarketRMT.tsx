@@ -4,16 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./market.module.css";
 import { fetchMarketListings, type MarketListing, itemIconPath, GOLD_ICON } from "./api";
 
-// Items commonly used for RMT gold transfers + high-value items prone to manipulation
-const SCAN_ITEMS = [
-  "Silver Coin", "Gold Coin Purse", "Gold Coin Bag", "Golden Teeth",
-  "Wolf Pelt", "Bone Powder", "Shining Pearl", "Lockpick",
-  "Rotten Fluids", "Wolf Claw", "Gold Ingot", "Ruby",
-  "Diamond", "Surgical Kit", "Bandage", "Ale",
-];
-
 interface FlaggedListing {
   listing: MarketListing;
+  median: number;
+  multiplier: number;
   reason: string;
   severity: "high" | "medium";
 }
@@ -38,10 +32,120 @@ function GoldIcon() {
   );
 }
 
+// Broad scan: fetch expensive listings, then verify each against same-item same-rarity median
+async function scanMarket(signal: AbortSignal): Promise<FlaggedListing[]> {
+  const flagged: FlaggedListing[] = [];
+  const medianCache = new Map<string, number>(); // "item|rarity" → median
+
+  // Phase 1: Fetch listings at different price thresholds to cast a wide net
+  const thresholds = [
+    { price: "50000:999999", label: ">50k" },
+    { price: "20000:49999", label: "20k-50k" },
+    { price: "10000:19999", label: "10k-20k" },
+  ];
+
+  const allSuspicious: MarketListing[] = [];
+
+  for (const t of thresholds) {
+    if (signal.aborted) break;
+    try {
+      const listings = await fetchMarketListings("", 50, true, signal, t.price);
+      allSuspicious.push(...listings);
+    } catch { /* ignore */ }
+  }
+
+  // Phase 2: For each suspicious listing, get the median for that item+rarity
+  // Group by item name to batch API calls
+  const itemGroups = new Map<string, MarketListing[]>();
+  for (const l of allSuspicious) {
+    const key = l.item;
+    if (!itemGroups.has(key)) itemGroups.set(key, []);
+    itemGroups.get(key)!.push(l);
+  }
+
+  // Fetch comparison listings for each unique item (max 5 concurrent)
+  const itemNames = Array.from(itemGroups.keys());
+  for (let i = 0; i < itemNames.length; i += 5) {
+    if (signal.aborted) break;
+    const batch = itemNames.slice(i, i + 5);
+    const results = await Promise.all(
+      batch.map(name =>
+        fetchMarketListings(name, 50, true, signal)
+          .then(listings => ({ name, listings }))
+          .catch(() => ({ name, listings: [] as MarketListing[] }))
+      )
+    );
+
+    for (const { name, listings } of results) {
+      if (listings.length < 3) continue;
+
+      // Group by rarity to get per-rarity medians
+      const byRarity = new Map<string, number[]>();
+      for (const l of listings) {
+        if (l.price_per_unit <= 0) continue;
+        const r = l.rarity;
+        if (!byRarity.has(r)) byRarity.set(r, []);
+        byRarity.get(r)!.push(l.price_per_unit);
+      }
+
+      for (const [rarity, prices] of byRarity) {
+        prices.sort((a, b) => a - b);
+        const median = prices[Math.floor(prices.length / 2)];
+        medianCache.set(`${name}|${rarity}`, median);
+      }
+
+      // Now check each suspicious listing for this item
+      const suspects = itemGroups.get(name) ?? [];
+      for (const listing of suspects) {
+        const cacheKey = `${listing.item}|${listing.rarity}`;
+        const median = medianCache.get(cacheKey);
+        if (!median || median <= 0) continue;
+
+        const ppu = listing.price_per_unit;
+        const multiplier = ppu / median;
+
+        if (multiplier >= 50) {
+          flagged.push({
+            listing,
+            median,
+            multiplier,
+            reason: `${formatPrice(ppu)}g per unit is ${Math.round(multiplier)}x the typical ${listing.rarity} price of ~${formatPrice(median)}g. Almost certainly RMT gold transfer.`,
+            severity: "high",
+          });
+        } else if (multiplier >= 15) {
+          flagged.push({
+            listing,
+            median,
+            multiplier,
+            reason: `${formatPrice(ppu)}g per unit is ${Math.round(multiplier)}x the typical ${listing.rarity} price of ~${formatPrice(median)}g. Highly suspicious pricing.`,
+            severity: "high",
+          });
+        } else if (multiplier >= 5) {
+          flagged.push({
+            listing,
+            median,
+            multiplier,
+            reason: `${formatPrice(ppu)}g per unit is ${multiplier.toFixed(1)}x the typical ${listing.rarity} price of ~${formatPrice(median)}g. Possibly overpriced or RMT.`,
+            severity: "medium",
+          });
+        }
+        // Below 5x — could be legit (good rolls, unique stats)
+      }
+    }
+  }
+
+  // Sort: high severity first, then by multiplier descending
+  flagged.sort((a, b) => {
+    if (a.severity !== b.severity) return a.severity === "high" ? -1 : 1;
+    return b.multiplier - a.multiplier;
+  });
+
+  return flagged;
+}
+
 export default function MarketRMT() {
   const [flagged, setFlagged] = useState<FlaggedListing[]>([]);
   const [loading, setLoading] = useState(true);
-  const [scanned, setScanned] = useState(0);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -49,88 +153,17 @@ export default function MarketRMT() {
     const ac = new AbortController();
     abortRef.current = ac;
     setLoading(true);
-    setFlagged([]);
-    setScanned(0);
 
-    (async () => {
-      const allFlagged: FlaggedListing[] = [];
-      let done = 0;
-
-      // Process items in batches of 5
-      for (let i = 0; i < SCAN_ITEMS.length; i += 5) {
-        if (ac.signal.aborted) break;
-        const batch = SCAN_ITEMS.slice(i, i + 5);
-        const results = await Promise.all(
-          batch.map(item =>
-            fetchMarketListings(item, 50, true, ac.signal).catch(() => [] as MarketListing[])
-          )
-        );
-
-        for (const listings of results) {
-          if (listings.length < 3) continue;
-
-          // Compute median price_per_unit for this item
-          const prices = listings
-            .map(l => l.price_per_unit)
-            .filter(p => p > 0)
-            .sort((a, b) => a - b);
-          if (prices.length === 0) continue;
-
-          const median = prices[Math.floor(prices.length / 2)];
-
-          for (const listing of listings) {
-            const ppu = listing.price_per_unit;
-            if (ppu <= 0) continue;
-
-            // HIGH: price > 50x median — almost certainly RMT gold transfer
-            if (ppu > median * 50) {
-              allFlagged.push({
-                listing,
-                reason: `Listed at ${formatPrice(ppu)}g — ${Math.round(ppu / median)}x the typical price of ~${formatPrice(median)}g. Likely RMT gold transfer.`,
-                severity: "high",
-              });
-            }
-            // HIGH: price < median/50 — giving away for free (RMT buyer side or troll)
-            else if (ppu < median / 50 && median > 10) {
-              allFlagged.push({
-                listing,
-                reason: `Listed at ${formatPrice(ppu)}g — ${Math.round(median / ppu)}x below the typical price of ~${formatPrice(median)}g. Possible RMT (buyer receives gold via overpriced counter-trade).`,
-                severity: "high",
-              });
-            }
-            // MEDIUM: price > 10x median
-            else if (ppu > median * 10) {
-              allFlagged.push({
-                listing,
-                reason: `Listed at ${formatPrice(ppu)}g — ${Math.round(ppu / median)}x above the typical ~${formatPrice(median)}g. Suspicious pricing, possible RMT.`,
-                severity: "medium",
-              });
-            }
-            // MEDIUM: total price > 50,000g on a cheap item (gold laundering)
-            else if (listing.price > 50000 && median < 100) {
-              allFlagged.push({
-                listing,
-                reason: `Total listing price ${formatPrice(listing.price)}g for a ~${formatPrice(median)}g item (qty: ${listing.quantity}). Large gold amount on cheap item — possible gold laundering.`,
-                severity: "medium",
-              });
-            }
-          }
+    scanMarket(ac.signal)
+      .then(results => {
+        if (!ac.signal.aborted) {
+          setFlagged(results);
+          setLoading(false);
         }
-
-        done += batch.length;
-        if (!ac.signal.aborted) setScanned(done);
-      }
-
-      if (!ac.signal.aborted) {
-        // Sort: high severity first, then by price descending
-        allFlagged.sort((a, b) => {
-          if (a.severity !== b.severity) return a.severity === "high" ? -1 : 1;
-          return b.listing.price - a.listing.price;
-        });
-        setFlagged(allFlagged);
-        setLoading(false);
-      }
-    })();
+      })
+      .catch(() => {
+        if (!ac.signal.aborted) setLoading(false);
+      });
 
     return () => ac.abort();
   }, []);
@@ -147,15 +180,15 @@ export default function MarketRMT() {
         fontSize: "0.75rem", color: "var(--text-muted)",
         marginBottom: 16, lineHeight: 1.6,
       }}>
-        We scan current marketplace listings for prices that are dramatically above or below
-        the typical trade value. These are often RMT (real money trading) gold transfers —
-        a player buys a worthless item for 100,000g to transfer gold to another account.
-        Seller names are hidden by the API, so we can only show the listing details.
+        We scan the entire marketplace for listings priced dramatically higher than
+        the typical price for that item and rarity. These are often RMT (real money trading)
+        gold transfers — a player lists a cheap item at an absurd price so another account can
+        &quot;buy&quot; it to transfer gold. Only listings at 5x+ the typical same-rarity price are shown.
       </p>
 
       {loading && (
         <div style={{ color: "var(--gold-500)", fontSize: "0.8125rem", padding: "20px 0" }}>
-          Scanning {scanned}/{SCAN_ITEMS.length} items...
+          Scanning marketplace for suspicious activity...
         </div>
       )}
 
@@ -171,7 +204,7 @@ export default function MarketRMT() {
             fontSize: "0.75rem", color: "var(--gold-500)",
             marginBottom: 12,
           }}>
-            Found {flagged.length} suspicious listing{flagged.length !== 1 ? "s" : ""} across {SCAN_ITEMS.length} scanned items
+            Found {flagged.length} suspicious listing{flagged.length !== 1 ? "s" : ""}
           </div>
 
           <div className={styles.trendTable}>
@@ -181,11 +214,11 @@ export default function MarketRMT() {
               <span>Rarity</span>
               <span>Listed Price</span>
               <span>Qty</span>
-              <span>Per Unit</span>
-              <span>Listed</span>
+              <span>Typical Price</span>
+              <span>Markup</span>
               <span>Severity</span>
             </div>
-            {flagged.map((f, idx) => (
+            {flagged.slice(0, 100).map((f, idx) => (
               <div key={idx} className={styles.rmtTableRow}>
                 <span>
                   <img
@@ -195,23 +228,28 @@ export default function MarketRMT() {
                     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                   />
                 </span>
-                <span className={styles.trendItemName}>{f.listing.item}</span>
+                <span className={styles.trendItemName}>
+                  {f.listing.item}
+                </span>
                 <span>
                   <span className={styles[`rarity${f.listing.rarity}`] ?? styles.rarityCommon}>
                     {f.listing.rarity}
                   </span>
                 </span>
                 <span className={styles.priceCell}>
-                  <GoldIcon />{formatPrice(f.listing.price)}
+                  <GoldIcon />{formatPrice(f.listing.price_per_unit)}
                 </span>
-                <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
+                <span style={{ color: "var(--text-muted)", fontSize: "0.75rem", fontVariantNumeric: "tabular-nums" }}>
                   {f.listing.quantity}
                 </span>
                 <span className={styles.priceCell}>
-                  <GoldIcon />{formatPrice(f.listing.price_per_unit)}
+                  <GoldIcon />{formatPrice(f.median)}
                 </span>
-                <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
-                  {timeAgo(f.listing.created_at)}
+                <span style={{
+                  color: f.multiplier >= 15 ? "#e05555" : "var(--gold-500)",
+                  fontSize: "0.75rem", fontWeight: 600, fontVariantNumeric: "tabular-nums",
+                }}>
+                  {Math.round(f.multiplier)}x
                 </span>
                 <span className={f.severity === "high" ? styles.rmtHigh : styles.rmtMedium}>
                   {f.severity === "high" ? "HIGH" : "MEDIUM"}
@@ -220,13 +258,19 @@ export default function MarketRMT() {
             ))}
           </div>
 
-          {/* Reasoning panel — show on hover/click would be nice but for now show all */}
+          {flagged.length > 100 && (
+            <p style={{ color: "var(--text-muted)", fontSize: "0.6875rem", marginTop: 8, fontStyle: "italic" }}>
+              Showing top 100 of {flagged.length} suspicious listings.
+            </p>
+          )}
+
+          {/* Reasoning for top entries */}
           <div style={{ marginTop: 16 }}>
             <div className={styles.sectionHeader}>
-              <span className={styles.sectionTitle}>Detection Reasoning</span>
+              <span className={styles.sectionTitle}>Detection Reasoning (Top 20)</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {flagged.slice(0, 30).map((f, idx) => (
+              {flagged.slice(0, 20).map((f, idx) => (
                 <div key={idx} style={{
                   fontSize: "0.6875rem",
                   padding: "8px 12px",
@@ -246,11 +290,6 @@ export default function MarketRMT() {
                   {" — "}{f.reason}
                 </div>
               ))}
-              {flagged.length > 30 && (
-                <p style={{ color: "var(--text-muted)", fontSize: "0.6875rem", fontStyle: "italic" }}>
-                  ...and {flagged.length - 30} more suspicious listings.
-                </p>
-              )}
             </div>
           </div>
         </>
@@ -261,10 +300,17 @@ export default function MarketRMT() {
         fontStyle: "italic", marginTop: 20, opacity: 0.7, lineHeight: 1.7,
       }}>
         <p>
+          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>How it works:</strong>{" "}
+          We fetch all marketplace listings above 10,000g, then compare each one to the median
+          price of the same item at the same rarity. A Unique Longsword at 15,000g might be
+          perfectly normal, but a Common Longsword at 15,000g (when typical is 200g) is 75x markup
+          — almost certainly a gold transfer.
+        </p>
+        <p style={{ marginTop: 8 }}>
           <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>Disclaimer:</strong>{" "}
-          This is automated detection based on price anomalies only. Not all flagged listings
-          are necessarily RMT — some may be pricing mistakes or intentional gifts. Seller
-          identities are not available through the API. This tool is for community awareness only.
+          This is automated detection based on price anomalies. Not all flagged listings are RMT —
+          some may be pricing mistakes, items with exceptional stats, or intentional overpricing.
+          Seller names are not available through the API.
         </p>
       </div>
     </div>

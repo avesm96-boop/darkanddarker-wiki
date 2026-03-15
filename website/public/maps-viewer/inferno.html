@@ -646,7 +646,7 @@ function variantLabel(vn) {
 function isCatVisible(cat) { const lk = CAT_TO_LAYER[cat]; return lk ? LAYERS[lk].on : false; }
 function moduleName(dir) { return MODULE_NAMES[dir] || dir.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2'); }
 
-const IMG_BASE = '/data/map-tiles/Inferno/';
+const IMG_BASE = 'https://pub-fd64511c60894919bcb1e9967b471c7f.r2.dev/data/map-tiles/Inferno/';
 
 function uuToPercent(ux, uy, mod) {
   const uu = mod.uu || 3200, ox = mod.ox || 0, oy = mod.oy || 0, half = uu / 2;

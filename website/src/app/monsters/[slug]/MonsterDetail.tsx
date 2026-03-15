@@ -7,6 +7,9 @@ import styles from "./MonsterDetail.module.css";
 
 const ModelViewer = dynamic(() => import("./ModelViewer"), { ssr: false });
 
+// CDN base URL for large assets (3D models, map tiles)
+const CDN_BASE = "https://pub-fd64511c60894919bcb1e9967b471c7f.r2.dev";
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -267,9 +270,9 @@ export default function MonsterDetail({ slug }: { slug: string }) {
   const [guide, setGuide] = useState<GuideData | null>(null);
 
   const gradeVariant = grade.toLowerCase();
-  const variantModelUrl = `/monster-models/animations/${slug}/${slug}-${gradeVariant}.glb`;
-  const modelUrl = `/monster-models/${slug}.glb`;
-  const animBasePath = `/monster-models/animations/${slug}`;
+  const variantModelUrl = `${CDN_BASE}/monster-models/animations/${slug}/${slug}-${gradeVariant}.glb`;
+  const modelUrl = `${CDN_BASE}/monster-models/${slug}.glb`;
+  const animBasePath = `${CDN_BASE}/monster-models/animations/${slug}`;
   const [activeModelUrl, setActiveModelUrl] = useState(modelUrl);
 
   // ── Load monster data ──────────────────────────────────────────────────
@@ -298,7 +301,7 @@ export default function MonsterDetail({ slug }: { slug: string }) {
   // ── Switch model when grade changes ──────────────────────────────────
   useEffect(() => {
     const variant = grade.toLowerCase();
-    const varUrl = `/monster-models/animations/${slug}/${slug}-${variant}.glb`;
+    const varUrl = `${CDN_BASE}/monster-models/animations/${slug}/${slug}-${variant}.glb`;
     fetch(varUrl, { method: "HEAD" })
       .then((r) => {
         if (r.ok) {

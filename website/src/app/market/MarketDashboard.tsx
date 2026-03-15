@@ -162,9 +162,10 @@ export default function MarketDashboard({ trending, loading }: Props) {
         <p style={{ marginBottom: 8 }}>
           <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>How we calculate prices:</strong>{" "}
           Raw market averages are heavily skewed by RMT and troll listings (e.g. 10,000g for a 30g item).
-          We use an outlier-resistant method: when a time bucket&apos;s maximum price exceeds 3x the average
-          and 10x the minimum, we estimate the typical price as the minimum + 20% instead of using the
-          polluted average. This gives a much more accurate picture of what items actually trade for.
+          We use an outlier-resistant method: when a time bucket&apos;s price spread is extreme
+          (max/min ratio &gt; 20x), we use a geometric mean of the minimum and average as a robust
+          central estimate. For moderate outliers, we average the minimum and mean. This filters out
+          RMT listings (e.g. 10,000g) and troll listings (e.g. 1g) to show what items actually trade for.
         </p>
         <p style={{ marginBottom: 8 }}>
           <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>Column definitions:</strong>{" "}

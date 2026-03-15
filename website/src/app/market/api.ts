@@ -101,10 +101,30 @@ export interface CleanPricePoint extends PricePoint {
 }
 
 function typicalPrice(p: PricePoint): number {
-  if (p.max >= p.avg * 3 && p.max > p.min * 10) {
-    // Data is polluted by outliers — use min + 20% as estimate
-    return Math.round(p.min * 1.2);
+  // Both min and max can be trolled (1g listings, 99999g RMT).
+  // Strategy: use avg as baseline, but clamp it when outliers are detected.
+  //
+  // If max is extreme (>10x min), high outliers are pulling avg up.
+  // If min is extreme (<avg/10), low outliers are pulling avg down.
+  // In both cases, the true price is somewhere between min and avg.
+  //
+  // We use: median estimate = (min + avg) / 2, but only when data is polluted.
+  // For clean data, avg is reliable.
+
+  const spread = p.max / Math.max(p.min, 1);
+
+  if (spread > 20) {
+    // Heavy pollution on both ends — use geometric mean of min and avg
+    // as a robust central estimate, but floor at min and cap at avg
+    const estimate = Math.sqrt(p.min * p.avg);
+    return Math.round(Math.max(estimate, p.min));
   }
+
+  if (p.max >= p.avg * 3) {
+    // High-end outliers only — avg is inflated, true price closer to min
+    return Math.round((p.min + p.avg) / 2);
+  }
+
   return Math.round(p.avg);
 }
 

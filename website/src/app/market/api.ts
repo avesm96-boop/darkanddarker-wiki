@@ -1,16 +1,24 @@
 // DarkerDB API Client
 // Base URL: https://api.darkerdb.com/v1
 
-const BASE = "https://api.darkerdb.com/v1";
+// Use Vercel proxy to avoid CORS issues (DarkerDB API has no CORS headers)
+const BASE = "/api/darkerdb/v1";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
 export interface ApiResponse<T> {
-  data: T;
-  success: boolean;
-  error?: string;
+  version: string;
+  status: string;
+  code: number;
+  query_time: number;
+  body: T;
+  pagination?: {
+    count: number;
+    limit: number;
+    cursor?: number;
+  };
 }
 
 export interface PopulationData {
@@ -77,14 +85,16 @@ async function get<T>(
   params?: Record<string, string | number>,
   signal?: AbortSignal,
 ): Promise<T> {
-  const url = new URL(`${BASE}${path}`);
+  const qs = new URLSearchParams();
   if (params) {
     for (const [k, v] of Object.entries(params)) {
-      url.searchParams.set(k, String(v));
+      qs.set(k, String(v));
     }
   }
+  const qsStr = qs.toString();
+  const url = `${BASE}${path}${qsStr ? `?${qsStr}` : ""}`;
 
-  const res = await fetch(url.toString(), {
+  const res = await fetch(url, {
     signal,
     headers: { Accept: "application/json" },
   });
@@ -109,7 +119,7 @@ export async function fetchPopulation(
     undefined,
     signal,
   );
-  return res.data;
+  return res.body;
 }
 
 /**
@@ -128,7 +138,7 @@ export async function fetchPriceHistory(
     { interval },
     signal,
   );
-  return res.data ?? [];
+  return res.body ?? [];
 }
 
 /**
@@ -149,7 +159,7 @@ export async function fetchMarketListings(
     limit,
     condense: condense ? "true" : "false",
   }, signal);
-  return res.data ?? [];
+  return res.body ?? [];
 }
 
 /**
@@ -167,7 +177,7 @@ export async function searchItems(
     name,
     limit,
   }, signal);
-  return res.data ?? [];
+  return res.body ?? [];
 }
 
 // ---------------------------------------------------------------------------

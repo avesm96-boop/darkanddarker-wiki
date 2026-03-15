@@ -1,12 +1,14 @@
 "use client";
 
 import styles from "./market.module.css";
-import type { PopulationData, TrendingItem } from "./api";
+import type { PopulationData, TrendingItem, TrendingRange } from "./api";
 
 interface Props {
   population: PopulationData | null;
   trending: TrendingItem[];
   loading: boolean;
+  range: TrendingRange;
+  onRangeChange: (range: TrendingRange) => void;
 }
 
 function formatNum(n: number): string {
@@ -19,8 +21,51 @@ function formatGold(n: number): string {
   return Math.round(n).toLocaleString();
 }
 
-export default function MarketDashboard({ population, trending, loading }: Props) {
-  // Skeleton loading state
+function TrendTable({
+  title,
+  items,
+  showChange,
+}: {
+  title: string;
+  items: TrendingItem[];
+  showChange?: boolean;
+}) {
+  if (items.length === 0) return null;
+
+  return (
+    <>
+      <div className={styles.sectionHeader}>
+        <span className={styles.sectionTitle}>{title}</span>
+      </div>
+      <div className={styles.trendTable}>
+        <div className={styles.trendTableHeader}>
+          <span>Item</span>
+          <span>Avg Was</span>
+          <span>Avg Now</span>
+          {showChange && <span>Change</span>}
+          <span>Volume</span>
+        </div>
+        {items.map((item) => (
+          <div key={item.archetype} className={styles.trendTableRow}>
+            <span className={styles.trendItemName}>{item.label}</span>
+            <span className={styles.trendItemPrice}>{formatGold(item.previousAvg)}g</span>
+            <span className={styles.trendItemPrice}>{formatGold(item.currentAvg)}g</span>
+            {showChange && (
+              <span className={item.changePct >= 0 ? styles.trendUp : styles.trendDown}>
+                {item.changePct >= 0 ? "+" : ""}{item.changePct.toFixed(1)}%
+              </span>
+            )}
+            <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
+              {formatNum(item.recentVolume)}
+            </span>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+export default function MarketDashboard({ population, trending, loading, range, onRangeChange }: Props) {
   if (loading) {
     return (
       <div className={styles.dashboard}>
@@ -33,7 +78,7 @@ export default function MarketDashboard({ population, trending, loading }: Props
           ))}
         </div>
         <div className={styles.sectionHeader}>
-          <span className={styles.sectionTitle}>Trending</span>
+          <span className={styles.sectionTitle}>Loading market data...</span>
         </div>
         <div className={styles.trendingGrid}>
           {Array.from({ length: 6 }).map((_, i) => (
@@ -44,11 +89,19 @@ export default function MarketDashboard({ population, trending, loading }: Props
     );
   }
 
-  const gainers = trending.filter((t) => t.changePct > 0).slice(0, 5);
-  const losers = trending.filter((t) => t.changePct < 0).slice(0, 5);
+  const gainers = trending
+    .filter((t) => t.changePct > 0)
+    .sort((a, b) => b.changePct - a.changePct)
+    .slice(0, 5);
+  const losers = trending
+    .filter((t) => t.changePct < 0)
+    .sort((a, b) => a.changePct - b.changePct)
+    .slice(0, 5);
   const mostTraded = [...trending]
     .sort((a, b) => b.recentVolume - a.recentVolume)
     .slice(0, 5);
+
+  const rangeLabel = range === "24h" ? "Last 24 Hours" : "Last 7 Days";
 
   return (
     <div className={styles.dashboard}>
@@ -77,65 +130,28 @@ export default function MarketDashboard({ population, trending, loading }: Props
         </div>
       </div>
 
-      {/* Trending: Gainers */}
-      {gainers.length > 0 && (
-        <>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTitle}>Top Gainers</span>
-          </div>
-          <div className={styles.trendingGrid}>
-            {gainers.map((item) => (
-              <div key={item.archetype} className={styles.trendItem}>
-                <span className={styles.trendItemName}>{item.label}</span>
-                <span className={styles.trendItemPrice}>{formatGold(item.currentAvg)}g</span>
-                <span className={`${styles.trendItemChange} ${styles.trendUp}`}>
-                  +{item.changePct.toFixed(1)}%
-                </span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
+      {/* Range Selector */}
+      <div className={styles.sectionHeader} style={{ marginTop: 24 }}>
+        <span className={styles.sectionTitle}>Market Trends — {rangeLabel}</span>
+        <div className={styles.timeRangeBar}>
+          <button
+            className={range === "24h" ? styles.timeRangeBtnActive : styles.timeRangeBtn}
+            onClick={() => onRangeChange("24h")}
+          >
+            24h
+          </button>
+          <button
+            className={range === "7d" ? styles.timeRangeBtnActive : styles.timeRangeBtn}
+            onClick={() => onRangeChange("7d")}
+          >
+            7d
+          </button>
+        </div>
+      </div>
 
-      {/* Trending: Losers */}
-      {losers.length > 0 && (
-        <>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTitle}>Top Losers</span>
-          </div>
-          <div className={styles.trendingGrid}>
-            {losers.map((item) => (
-              <div key={item.archetype} className={styles.trendItem}>
-                <span className={styles.trendItemName}>{item.label}</span>
-                <span className={styles.trendItemPrice}>{formatGold(item.currentAvg)}g</span>
-                <span className={`${styles.trendItemChange} ${styles.trendDown}`}>
-                  {item.changePct.toFixed(1)}%
-                </span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-
-      {/* Most Traded */}
-      {mostTraded.length > 0 && (
-        <>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTitle}>Most Traded</span>
-          </div>
-          <div className={styles.trendingGrid}>
-            {mostTraded.map((item) => (
-              <div key={item.archetype} className={styles.trendItem}>
-                <span className={styles.trendItemName}>{item.label}</span>
-                <span className={styles.trendItemPrice}>{formatGold(item.currentAvg)}g</span>
-                <span className={styles.trendItemChange} style={{ color: "var(--text-muted)" }}>
-                  Vol: {formatNum(item.recentVolume)}
-                </span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
+      <TrendTable title="Top Gainers" items={gainers} showChange />
+      <TrendTable title="Top Losers" items={losers} showChange />
+      <TrendTable title="Most Traded" items={mostTraded} />
 
       {/* Last Updated */}
       {population?.timestamp && (

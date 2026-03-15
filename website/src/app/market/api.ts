@@ -231,24 +231,32 @@ async function mapWithConcurrency<T, R>(
   return results;
 }
 
+export type TrendingRange = "24h" | "7d";
+
 /**
  * Fetch trending data for the curated item list.
  *
- * Compares the average price over the last 6 hours against the previous 24
- * hours and returns items sorted by absolute change percentage (descending).
+ * @param range "24h" compares last 6h vs previous 18h. "7d" compares last 24h vs previous 6d.
  */
 export async function fetchTrending(
+  range: TrendingRange = "24h",
   signal?: AbortSignal,
 ): Promise<TrendingItem[]> {
+  // For 7d we need more data, use 4h interval
+  const interval = range === "7d" ? "4h" : "1h";
+
   const histories = await mapWithConcurrency(
     CURATED_ITEMS,
     5,
-    ([archetype]) => fetchPriceHistory(archetype, "1h", signal),
+    ([archetype]) => fetchPriceHistory(archetype, interval, signal),
   );
 
   const now = Date.now();
-  const SIX_HOURS = 6 * 60 * 60 * 1000;
-  const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
+
+  // Define "recent" and "previous" windows based on range
+  const recentWindow = range === "7d" ? 24 * 3600_000 : 6 * 3600_000;
+  const previousEnd = recentWindow;
+  const previousWindow = range === "7d" ? 6 * 24 * 3600_000 : 18 * 3600_000;
 
   const trending: TrendingItem[] = [];
 
@@ -258,15 +266,14 @@ export async function fetchTrending(
 
     const [archetype, label] = CURATED_ITEMS[i];
 
-    // Split points into recent (0-6h) and previous (6-24h) buckets.
     const recent: PricePoint[] = [];
     const previous: PricePoint[] = [];
 
     for (const p of points) {
       const age = now - new Date(p.timestamp).getTime();
-      if (age <= SIX_HOURS) {
+      if (age <= recentWindow) {
         recent.push(p);
-      } else if (age <= TWENTY_FOUR_HOURS) {
+      } else if (age <= previousEnd + previousWindow) {
         previous.push(p);
       }
     }
@@ -282,7 +289,8 @@ export async function fetchTrending(
     if (previousAvg === 0) continue;
 
     const changePct = ((currentAvg - previousAvg) / previousAvg) * 100;
-    const recentVolume = recent.reduce((s, p) => s + p.volume, 0);
+    const recentVolume = recent.reduce((s, p) => s + p.volume, 0)
+      + previous.reduce((s, p) => s + p.volume, 0);
 
     trending.push({
       archetype,

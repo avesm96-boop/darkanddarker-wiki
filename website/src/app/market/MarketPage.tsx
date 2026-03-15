@@ -7,6 +7,7 @@ import {
   fetchTrending,
   type PopulationData,
   type TrendingItem,
+  type TrendingRange,
 } from "./api";
 import MarketDashboard from "./MarketDashboard";
 import MarketSearch from "./MarketSearch";
@@ -24,6 +25,7 @@ export default function MarketPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<SelectedItem | null>(null);
+  const [trendingRange, setTrendingRange] = useState<TrendingRange>("24h");
 
   const loadData = useCallback(() => {
     const ac = new AbortController();
@@ -32,7 +34,7 @@ export default function MarketPage() {
 
     Promise.all([
       fetchPopulation(ac.signal).catch(() => null),
-      fetchTrending(ac.signal).catch(() => []),
+      fetchTrending(trendingRange, ac.signal).catch(() => []),
     ])
       .then(([pop, trend]) => {
         if (!ac.signal.aborted) {
@@ -49,7 +51,7 @@ export default function MarketPage() {
       });
 
     return () => ac.abort();
-  }, []);
+  }, [trendingRange]);
 
   useEffect(() => {
     const cleanup = loadData();
@@ -91,6 +93,8 @@ export default function MarketPage() {
           population={population}
           trending={trending}
           loading={loading}
+          range={trendingRange}
+          onRangeChange={setTrendingRange}
         />
 
         <div className={styles.sectionDivider} />

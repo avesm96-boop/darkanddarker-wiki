@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   images: {
     unoptimized: true,
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/darkerdb/:path*",
+        destination: "https://api.darkerdb.com/:path*",
+      },
+    ];
   },
 };
 

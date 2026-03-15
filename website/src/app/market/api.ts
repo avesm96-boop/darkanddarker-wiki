@@ -3,6 +3,7 @@
 
 // Use Vercel proxy to avoid CORS issues (DarkerDB API has no CORS headers)
 const BASE = "/api/darkerdb/v1";
+const API_KEY = "6f45b5a13f622bbe0f37";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -86,6 +87,7 @@ async function get<T>(
   signal?: AbortSignal,
 ): Promise<T> {
   const qs = new URLSearchParams();
+  qs.set("key", API_KEY);
   if (params) {
     for (const [k, v] of Object.entries(params)) {
       qs.set(k, String(v));

@@ -8,12 +8,22 @@ import styles from "./quests.module.css";
 // ---------------------------------------------------------------------------
 
 interface Objective {
-  type: string;
+  content_type: string;
   count?: number;
   target?: string;
-  item_id?: string;
+  target_tag?: string;
+  item?: string;
+  item_name?: string;
+  item_type?: string;
   rarity?: string;
   loot_state?: string;
+  dungeons?: string[];
+  module?: string;
+  description?: string;
+  single_session?: boolean;
+  kill_type?: string;
+  hold_time?: number;
+  props_type?: string;
 }
 
 interface Reward {
@@ -158,29 +168,29 @@ function MerchantPortrait({
 }
 
 function ObjectiveRow({ obj }: { obj: Objective }) {
-  const type = obj.type;
+  const type = obj.content_type;
   const badgeClass =
     type === "Kill" || type === "Damage"
       ? styles.objBadgeKill
-      : type === "Fetch" || type === "Hold" || type === "Use Item"
+      : type === "Fetch" || type === "Hold" || type === "UseItem"
       ? styles.objBadgeFetch
-      : type === "Explore" || type === "Escape" || type === "Survive"
+      : type === "Explore" || type === "Escape"
       ? styles.objBadgeExplore
       : styles.objBadgeGeneric;
 
-  let label = "";
+  let label = obj.description || type;
   let detail = "";
   let icon: string | null = null;
   let rarityColor: string | undefined;
 
   switch (type) {
     case "Kill":
-      label = obj.target ? `Kill ${formatId(obj.target)}` : "Kill enemies";
+      label = obj.target ? `Kill ${obj.target}` : "Kill enemies";
       detail = `Count: ${obj.count ?? "?"}`;
       break;
     case "Fetch":
-      label = obj.item_id ? `Fetch ${formatId(obj.item_id)}` : "Fetch items";
-      if (obj.item_id) icon = itemIconUrl(obj.item_id);
+      label = obj.item_name ? `Fetch ${obj.item_name}` : "Fetch items";
+      if (obj.item) icon = itemIconUrl(obj.item);
       if (obj.rarity) {
         label += ` (${obj.rarity})`;
         rarityColor = RARITY_COLORS[obj.rarity];
@@ -189,40 +199,46 @@ function ObjectiveRow({ obj }: { obj: Objective }) {
       if (obj.loot_state) detail += ` | Condition: ${obj.loot_state}`;
       break;
     case "Explore":
-      label = obj.target ? `Explore ${formatId(obj.target)}` : "Explore area";
+      label = obj.module ? `Explore ${obj.module}` : "Explore area";
       if (obj.count && obj.count > 1) detail = `Count: ${obj.count}`;
       break;
     case "Escape":
-    case "Survive":
-      label = `${type} ${obj.count ?? 1} time${(obj.count ?? 1) > 1 ? "s" : ""}`;
+      label = `Escape ${obj.count ?? 1} time${(obj.count ?? 1) > 1 ? "s" : ""}`;
       break;
     case "Damage":
-      label = obj.target
-        ? `Deal damage to ${formatId(obj.target)}`
+      label = obj.kill_type
+        ? `Deal damage to ${obj.kill_type}`
         : "Deal damage";
       detail = `Amount: ${obj.count ?? "?"}`;
       break;
     case "Hold":
-      label = obj.item_id ? `Hold ${formatId(obj.item_id)}` : "Hold items";
-      if (obj.item_id) icon = itemIconUrl(obj.item_id);
-      detail = `Count: ${obj.count ?? "?"}`;
+      label = obj.module ? `Hold ${obj.module}` : "Hold position";
+      detail = obj.hold_time ? `Duration: ${obj.hold_time}s` : `Count: ${obj.count ?? "?"}`;
       break;
-    case "Use Item":
-      label = obj.item_id
-        ? `Use ${formatId(obj.item_id)}`
+    case "UseItem":
+      label = obj.item_name
+        ? `Use ${obj.item_name}`
         : "Use items";
-      if (obj.item_id) icon = itemIconUrl(obj.item_id);
+      if (obj.item) icon = itemIconUrl(obj.item);
       detail = `Count: ${obj.count ?? "?"}`;
       break;
     case "Props":
       label = obj.target
-        ? `Interact with ${formatId(obj.target)}`
+        ? `${obj.props_type || "Interact"} ${obj.target}`
         : "Interact with props";
       detail = `Count: ${obj.count ?? "?"}`;
       break;
     default:
-      label = `${type}`;
+      label = obj.description || `${type}`;
       if (obj.count) detail = `Count: ${obj.count}`;
+  }
+
+  // Add dungeon info to detail
+  if (obj.dungeons && obj.dungeons.length > 0) {
+    detail += (detail ? " | " : "") + `Dungeon: ${obj.dungeons.join(", ")}`;
+  }
+  if (obj.single_session) {
+    detail += (detail ? " | " : "") + "Single session";
   }
 
   return (

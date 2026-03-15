@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T14:11:37.229476+00:00",
+  "generated_at": "2026-03-15T14:24:29.093907+00:00",
   "source": "Game data files (FModel extraction + localization)",
   "total_quests": 553,
   "total_merchants": 25,
@@ -15,11 +15,11 @@
           "quests": [
             {
               "id": "Id_Quest_Alchemist_01",
-              "title": "Oh Brother",
+              "title": "Hidden Within The Lines",
               "quest_number": 1,
               "required_level": 114,
-              "greeting": "You know, my brother, the Surgeon, has never forgiven me for abandoning traditional medicine. He still believes in the old ways, as if stitching up the body can heal the soul—curses, for example. I learned that lesson too late. Our mother died in agony, and I was powerless to help. That’s when alchemy called to me—its promise of real power, of true healing. I need these potions, not just for myself, but to show him the way forward. He’ll see the truth eventually... even if I have to make him understand the hard way.",
-              "completion_text": "Good. This is only the beginning, but it’s a step in the right direction. My brother’s methods are futile, bound by the limitations of the past. Alchemy has no such boundaries. I can feel it working already. The potions, the combinations—each one brings us closer to something greater. He may not see it now, but I will show him the power we could wield if he just opened his eyes.",
+              "greeting": "According to rumor, deep within the Forgotten Castle lies a chapel said to summon the dead... Could you seek it out for me?",
+              "completion_text": "It seems the rumor was not mere nonsense after all. A sanctuary that can call back and awaken lost souls... how fascinating. I must conduct further study on that place.",
               "prerequisite": {
                 "id": "Id_Quest_Treasurer_06",
                 "title": "Misplaced Muffin"
@@ -52,14 +52,14 @@
             },
             {
               "id": "Id_Quest_Alchemist_02",
-              "title": "The Kobold’s Chemistry",
+              "title": "Test Run",
               "quest_number": 2,
               "required_level": 115,
-              "greeting": "I’ve always been intrigued by the Ice Kobolds. Their adaptability, their strange tenacity... it’s more than mere survival—it’s something we can learn from. Their biology, their resistance to the cold, could unlock new alchemical properties. What I need from you is to search their territory—there may be something in their environment, or even within their own flesh, we can use. Their blood, their marrow, perhaps even their mucus.",
-              "completion_text": "Excellent. What you’ve uncovered is fascinating. The Kobolds are far more than just beasts—they’re carriers of hidden potential. This reminds me of another experiment I need to conduct. Visit me when you have the time.",
+              "greeting": "Here, take this list and fetch me these ingredients right away! There might be something to that book you brought me... and there’s only one way to find out.",
+              "completion_text": "That was quick! I hope it wasn’t too much trouble for you. Now, it’s time to cook!",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_01",
-                "title": "Oh Brother"
+                "title": "Hidden Within The Lines"
               },
               "dungeons": [],
               "objectives": [],
@@ -85,14 +85,14 @@
             },
             {
               "id": "Id_Quest_Alchemist_03",
-              "title": "More Than Meets the Eye",
+              "title": "Hocus Pocus",
               "quest_number": 3,
               "required_level": 116,
-              "greeting": "You’ve heard of the Frost Wolves, no doubt. The rumors say they’re guarding something precious, but I believe there’s more to it. My work with potions and alchemy has taught me that nothing is ever as simple as it seems. These wolves are just another puzzle to solve. I need you to investigate what they’re keeping from us. If there’s something powerful hidden away, it could hold the answers to many questions... perhaps even questions I never wanted to ask.",
-              "completion_text": "Impressive. You’ve uncovered more than I anticipated. The wolves were indeed guarding something of great value, something that could aid my studies. As I suspected, there’s more to this world than science can explain. You've done well, but we're not finished. I’ll need time to study what you found—come back when I’ve made some progress.",
+              "greeting": "I never thought much of old texts... but the power in that last recipe was undeniable. This next one is a little grim, but I think you can handle it.",
+              "completion_text": "Excellent! Don’t bother telling me where you found all of these... Here, take these for your trouble.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_02",
-                "title": "The Kobold’s Chemistry"
+                "title": "Test Run"
               },
               "dungeons": [],
               "objectives": [],
@@ -129,14 +129,14 @@
           "quests": [
             {
               "id": "Id_Quest_Alchemist_04",
-              "title": "Hidden Within The Lines",
+              "title": "Mixing Things Up",
               "quest_number": 4,
               "required_level": 117,
-              "greeting": "According to rumor, deep within the Forgotten Castle lies a chapel said to summon the dead... Could you seek it out for me?",
-              "completion_text": "It seems the rumor was not mere nonsense after all. A sanctuary that can call back and awaken lost souls... how fascinating. I must conduct further study on that place.",
+              "greeting": "Have you ever thought about what might happen if you used four different potions at the same time?! Well, I need you to find out! And, well... try to survive.",
+              "completion_text": "You really did it, and lived to tell the tale! Although... That didn’t turn out quite how I expected.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_03",
-                "title": "More Than Meets the Eye"
+                "title": "Hocus Pocus"
               },
               "dungeons": [],
               "objectives": [],
@@ -168,14 +168,14 @@
             },
             {
               "id": "Id_Quest_Alchemist_05",
-              "title": "Test Run",
+              "title": "Death In The Air",
               "quest_number": 5,
               "required_level": 118,
-              "greeting": "Here, take this list and fetch me these ingredients right away! There might be something to that book you brought me... and there’s only one way to find out.",
-              "completion_text": "That was quick! I hope it wasn’t too much trouble for you. Now, it’s time to cook!",
+              "greeting": "Flying skulls of the dead have infested parts of The Forgotten Castle... I need you to get rid of as many as you can... but you only have one shot.",
+              "completion_text": "Not bad... once you kill enough of those flying filth it starts getting easier and easier.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_04",
-                "title": "Hidden Within The Lines"
+                "title": "Mixing Things Up"
               },
               "dungeons": [],
               "objectives": [],
@@ -201,14 +201,14 @@
             },
             {
               "id": "Id_Quest_Alchemist_06",
-              "title": "Hocus Pocus",
+              "title": "Death Awakens",
               "quest_number": 6,
               "required_level": 119,
-              "greeting": "I never thought much of old texts... but the power in that last recipe was undeniable. This next one is a little grim, but I think you can handle it.",
-              "completion_text": "Excellent! Don’t bother telling me where you found all of these... Here, take these for your trouble.",
+              "greeting": "It seems my experiments have not gone unnoticed... Wraiths have risen, surrounded by animated skeletons. The longer we wait, the larger the undead horde will become... I need you to get rid of as many as you can. Please, hurry before this spirals out of control!",
+              "completion_text": "Thanks for taking care of that mess for me... I was beginning to think I might have gone too far with that last experiment. Here, these should cover any trouble I caused you.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_05",
-                "title": "Test Run"
+                "title": "Death In The Air"
               },
               "dungeons": [],
               "objectives": [],
@@ -252,14 +252,14 @@
           "quests": [
             {
               "id": "Id_Quest_Alchemist_07",
-              "title": "Mixing Things Up",
+              "title": "Oh Brother",
               "quest_number": 7,
               "required_level": 120,
-              "greeting": "Have you ever thought about what might happen if you used four different potions at the same time?! Well, I need you to find out! And, well... try to survive.",
-              "completion_text": "You really did it, and lived to tell the tale! Although... That didn’t turn out quite how I expected.",
+              "greeting": "You know, my brother, the Surgeon, has never forgiven me for abandoning traditional medicine. He still believes in the old ways, as if stitching up the body can heal the soul—curses, for example. I learned that lesson too late. Our mother died in agony, and I was powerless to help. That’s when alchemy called to me—its promise of real power, of true healing. I need these potions, not just for myself, but to show him the way forward. He’ll see the truth eventually... even if I have to make him understand the hard way.",
+              "completion_text": "Good. This is only the beginning, but it’s a step in the right direction. My brother’s methods are futile, bound by the limitations of the past. Alchemy has no such boundaries. I can feel it working already. The potions, the combinations—each one brings us closer to something greater. He may not see it now, but I will show him the power we could wield if he just opened his eyes.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_06",
-                "title": "Hocus Pocus"
+                "title": "Death Awakens"
               },
               "dungeons": [],
               "objectives": [],
@@ -291,14 +291,14 @@
             },
             {
               "id": "Id_Quest_Alchemist_08",
-              "title": "Death In The Air",
+              "title": "The Kobold’s Chemistry",
               "quest_number": 8,
               "required_level": 121,
-              "greeting": "Flying skulls of the dead have infested parts of The Forgotten Castle... I need you to get rid of as many as you can... but you only have one shot.",
-              "completion_text": "Not bad... once you kill enough of those flying filth it starts getting easier and easier.",
+              "greeting": "I’ve always been intrigued by the Ice Kobolds. Their adaptability, their strange tenacity... it’s more than mere survival—it’s something we can learn from. Their biology, their resistance to the cold, could unlock new alchemical properties. What I need from you is to search their territory—there may be something in their environment, or even within their own flesh, we can use. Their blood, their marrow, perhaps even their mucus.",
+              "completion_text": "Excellent. What you’ve uncovered is fascinating. The Kobolds are far more than just beasts—they’re carriers of hidden potential. This reminds me of another experiment I need to conduct. Visit me when you have the time.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_07",
-                "title": "Mixing Things Up"
+                "title": "Oh Brother"
               },
               "dungeons": [],
               "objectives": [],
@@ -324,14 +324,14 @@
             },
             {
               "id": "Id_Quest_Alchemist_09",
-              "title": "Death Awakens",
+              "title": "More Than Meets the Eye",
               "quest_number": 9,
               "required_level": 122,
-              "greeting": "It seems my experiments have not gone unnoticed... Wraiths have risen, surrounded by animated skeletons. The longer we wait, the larger the undead horde will become... I need you to get rid of as many as you can. Please, hurry before this spirals out of control!",
-              "completion_text": "Thanks for taking care of that mess for me... I was beginning to think I might have gone too far with that last experiment. Here, these should cover any trouble I caused you.",
+              "greeting": "You’ve heard of the Frost Wolves, no doubt. The rumors say they’re guarding something precious, but I believe there’s more to it. My work with potions and alchemy has taught me that nothing is ever as simple as it seems. These wolves are just another puzzle to solve. I need you to investigate what they’re keeping from us. If there’s something powerful hidden away, it could hold the answers to many questions... perhaps even questions I never wanted to ask.",
+              "completion_text": "Impressive. You’ve uncovered more than I anticipated. The wolves were indeed guarding something of great value, something that could aid my studies. As I suspected, there’s more to this world than science can explain. You've done well, but we're not finished. I’ll need time to study what you found—come back when I’ve made some progress.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_08",
-                "title": "Death In The Air"
+                "title": "The Kobold’s Chemistry"
               },
               "dungeons": [],
               "objectives": [],
@@ -375,7 +375,7 @@
               "completion_text": "As expected, it seems to possess a certain degree of resistance to fire. It is too early to draw a definitive conclusion, but further experimentation should make it clear. This should be sufficient to create a potion that prevents burns.",
               "prerequisite": {
                 "id": "Id_Quest_Alchemist_09",
-                "title": "Death Awakens"
+                "title": "More Than Meets the Eye"
               },
               "dungeons": [],
               "objectives": [],
@@ -1899,11 +1899,11 @@
           "quests": [
             {
               "id": "Id_Quest_FortuneTeller_01",
-              "title": "Tongue Twister",
+              "title": "Lights Out",
               "quest_number": 1,
               "required_level": 132,
-              "greeting": "The whispers are growing louder, their cadence sharp and desperate, yet they remain beyond our grasp. The dead do not merely wish to be heard—they crave a voice to speak through. To bridge the chasm between our realm and theirs, we must bind the tangible to the ethereal. The tongue of a mimic, that vile creature born of deception, holds the power to weave words across worlds. Seek out one of these lurking horrors, wrest its tongue from its snapping maw, and bring it to me. Only then can we compel the dead to answer.",
-              "completion_text": "Ah, the mimic’s tongue... slick with malice, yet brimming with potential. Its grotesque vitality pulses in my hands—a perfect conduit. Stand close, adventurer, and witness the veil parting. The afflicted bear runes etched into their flesh, their tongues torn from their mouths. They become husks—empty, their will consumed, and soon, they die, as though they were never truly alive. The dead have spoken. Darkness stirs, adventurer—press on, for the truth will demand its due.",
+              "greeting": "Those who foresaw an ill-fated future, peers of mine in their own ways, have sent you to me. They understand that this curse is no simple illness. To break it, one must look beyond the limits of human sight. Bring me the items that allow a glimpse of the truth hidden in the dark. But be warned. Do not look into them too deeply.",
+              "completion_text": "Hm. A disturbing sight reveals itself. A guardian bound by magical chains... the one within the frost. It seems to be watching over the vessel that sustains the curse. Adventurer, seek out that creature and uncover the truth it hides. But be wary. This cold conceals far more than you realize.",
               "prerequisite": {
                 "id": "Id_Quest_TavernMaster_01",
                 "title": "Is it you?"
@@ -1936,14 +1936,14 @@
             },
             {
               "id": "Id_Quest_FortuneTeller_02",
-              "title": "Premonitions of the Unknown",
+              "title": "Webs of Fate",
               "quest_number": 2,
               "required_level": 133,
-              "greeting": "The threads of fate twist and knot, veiling truths beyond our mortal sight. I have glimpsed a shadow, vast and formless, threatening to engulf the fragile balance of our world. Yet, my visions falter, shrouded in mist. We need a catalyst—something to pierce the veil. Deep within the cursed woods, the dire wolves prowl, their eyes glinting with unnatural light. One of their eyes must be extracted while the warmth of life still lingers—a gruesome act, but necessary. Bring me this eyeball, stained by blood, and together we shall unravel the first strand of this enigma.",
-              "completion_text": "Yes... the eye still gleams, its surface slick with gore. The blood of the beast has yet to dry—good. Its essence still thrums with the arcane. But as I gaze into its depths, the vision remains fractured, like shattered glass. The truth hides still, clawing at the edges of perception. Stay close, adventurer—the unknown awaits us.",
+              "greeting": "When you visited the castle... Did you see them? Spiders are everywhere. I heard some rooms are so bad, you can’t walk without them biting at your ankles. They crawl out from those wretched pots that have been sitting in the castle untouched for years! If you destroy enough of those pots, it might send those spiders back into hiding for good.",
+              "completion_text": "That will show them! I don’t expect to hear any more stories about spiders haunting the halls of that cursed castle... Thanks again for all your efforts.",
               "prerequisite": {
                 "id": "Id_Quest_FortuneTeller_01",
-                "title": "Tongue Twister"
+                "title": "Lights Out"
               },
               "dungeons": [],
               "objectives": [],
@@ -1969,14 +1969,14 @@
             },
             {
               "id": "Id_Quest_FortuneTeller_03",
-              "title": "Voices of the Dead",
+              "title": "That’s Batty",
               "quest_number": 3,
               "required_level": 134,
-              "greeting": "The eye failed us; its vision clouded... Sight has betrayed me, adventurer, but perhaps sound will not. The voices of the dead echo faintly, yearning to be heard. Deep within the caverns, the giant bats dwell, their ears attuned to the faintest of vibrations, even those that ripple from the beyond. Sever one ear from these shadowed predators—bloodied and raw—and bring it to me. Only then may we align with the spectral murmurs that seek to guide us.",
-              "completion_text": "You’ve done well. The ear still hums with unnatural resonance, as though it drinks in the very silence around us. Already, I feel the faint touch of voices long silenced, brushing against my thoughts. Yet, their message remains indistinct, a riddle without form. The connection must be strengthened, for the dead demand more than mere listening—they will soon seek communion. May the stars align in our favor.",
+              "greeting": "The bats in this area are unlike any other... if you bring me two of their wings I’ll prove it to you! Just be careful, you aren’t the only adventurer on this journey... but you must be the first to complete it.",
+              "completion_text": "Finally! It took you long enough! I hope you kept the wings in one piece. Either way, these should do the trick.",
               "prerequisite": {
                 "id": "Id_Quest_FortuneTeller_02",
-                "title": "Premonitions of the Unknown"
+                "title": "Webs of Fate"
               },
               "dungeons": [],
               "objectives": [],
@@ -2018,7 +2018,7 @@
               "required_level": 135,
               "prerequisite": {
                 "id": "Id_Quest_FortuneTeller_03",
-                "title": "Voices of the Dead"
+                "title": "That’s Batty"
               },
               "dungeons": [],
               "objectives": [],
@@ -2128,11 +2128,11 @@
           "quests": [
             {
               "id": "Id_Quest_FortuneTeller_07",
-              "title": "Lights Out",
+              "title": "Tongue Twister",
               "quest_number": 7,
               "required_level": 138,
-              "greeting": "Those who foresaw an ill-fated future, peers of mine in their own ways, have sent you to me. They understand that this curse is no simple illness. To break it, one must look beyond the limits of human sight. Bring me the items that allow a glimpse of the truth hidden in the dark. But be warned. Do not look into them too deeply.",
-              "completion_text": "Hm. A disturbing sight reveals itself. A guardian bound by magical chains... the one within the frost. It seems to be watching over the vessel that sustains the curse. Adventurer, seek out that creature and uncover the truth it hides. But be wary. This cold conceals far more than you realize.",
+              "greeting": "The whispers are growing louder, their cadence sharp and desperate, yet they remain beyond our grasp. The dead do not merely wish to be heard—they crave a voice to speak through. To bridge the chasm between our realm and theirs, we must bind the tangible to the ethereal. The tongue of a mimic, that vile creature born of deception, holds the power to weave words across worlds. Seek out one of these lurking horrors, wrest its tongue from its snapping maw, and bring it to me. Only then can we compel the dead to answer.",
+              "completion_text": "Ah, the mimic’s tongue... slick with malice, yet brimming with potential. Its grotesque vitality pulses in my hands—a perfect conduit. Stand close, adventurer, and witness the veil parting. The afflicted bear runes etched into their flesh, their tongues torn from their mouths. They become husks—empty, their will consumed, and soon, they die, as though they were never truly alive. The dead have spoken. Darkness stirs, adventurer—press on, for the truth will demand its due.",
               "prerequisite": {
                 "id": "Id_Quest_FortuneTeller_06",
                 "title": "Blood for the Truth"
@@ -2161,14 +2161,14 @@
             },
             {
               "id": "Id_Quest_FortuneTeller_08",
-              "title": "Webs of Fate",
+              "title": "Premonitions of the Unknown",
               "quest_number": 8,
               "required_level": 139,
-              "greeting": "When you visited the castle... Did you see them? Spiders are everywhere. I heard some rooms are so bad, you can’t walk without them biting at your ankles. They crawl out from those wretched pots that have been sitting in the castle untouched for years! If you destroy enough of those pots, it might send those spiders back into hiding for good.",
-              "completion_text": "That will show them! I don’t expect to hear any more stories about spiders haunting the halls of that cursed castle... Thanks again for all your efforts.",
+              "greeting": "The threads of fate twist and knot, veiling truths beyond our mortal sight. I have glimpsed a shadow, vast and formless, threatening to engulf the fragile balance of our world. Yet, my visions falter, shrouded in mist. We need a catalyst—something to pierce the veil. Deep within the cursed woods, the dire wolves prowl, their eyes glinting with unnatural light. One of their eyes must be extracted while the warmth of life still lingers—a gruesome act, but necessary. Bring me this eyeball, stained by blood, and together we shall unravel the first strand of this enigma.",
+              "completion_text": "Yes... the eye still gleams, its surface slick with gore. The blood of the beast has yet to dry—good. Its essence still thrums with the arcane. But as I gaze into its depths, the vision remains fractured, like shattered glass. The truth hides still, clawing at the edges of perception. Stay close, adventurer—the unknown awaits us.",
               "prerequisite": {
                 "id": "Id_Quest_FortuneTeller_07",
-                "title": "Lights Out"
+                "title": "Tongue Twister"
               },
               "dungeons": [],
               "objectives": [],
@@ -2200,14 +2200,14 @@
             },
             {
               "id": "Id_Quest_FortuneTeller_09",
-              "title": "That’s Batty",
+              "title": "Voices of the Dead",
               "quest_number": 9,
               "required_level": 140,
-              "greeting": "The bats in this area are unlike any other... if you bring me two of their wings I’ll prove it to you! Just be careful, you aren’t the only adventurer on this journey... but you must be the first to complete it.",
-              "completion_text": "Finally! It took you long enough! I hope you kept the wings in one piece. Either way, these should do the trick.",
+              "greeting": "The eye failed us; its vision clouded... Sight has betrayed me, adventurer, but perhaps sound will not. The voices of the dead echo faintly, yearning to be heard. Deep within the caverns, the giant bats dwell, their ears attuned to the faintest of vibrations, even those that ripple from the beyond. Sever one ear from these shadowed predators—bloodied and raw—and bring it to me. Only then may we align with the spectral murmurs that seek to guide us.",
+              "completion_text": "You’ve done well. The ear still hums with unnatural resonance, as though it drinks in the very silence around us. Already, I feel the faint touch of voices long silenced, brushing against my thoughts. Yet, their message remains indistinct, a riddle without form. The connection must be strengthened, for the dead demand more than mere listening—they will soon seek communion. May the stars align in our favor.",
               "prerequisite": {
                 "id": "Id_Quest_FortuneTeller_08",
-                "title": "Webs of Fate"
+                "title": "Premonitions of the Unknown"
               },
               "dungeons": [],
               "objectives": [],
@@ -2251,7 +2251,7 @@
               "completion_text": "These will do just the trick! Capturing these dreams is sure to unlock their secrets—and perhaps, bring you great fortune as well.",
               "prerequisite": {
                 "id": "Id_Quest_FortuneTeller_09",
-                "title": "That’s Batty"
+                "title": "Voices of the Dead"
               },
               "dungeons": [],
               "objectives": [],

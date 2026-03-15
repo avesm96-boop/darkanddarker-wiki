@@ -327,12 +327,18 @@ def load_chapters() -> tuple[dict[str, list[dict]], dict[str, dict]]:
 
         merchant_key = _derive_merchant_key(chapter_id, quest_ids)
 
+        # Extract original chapter number from the localization key
+        name_key = name_data.get("Key", "") if isinstance(name_data, dict) else ""
+        loc_key_match = re.search(r"_(\d+)_[A-Z]", name_key)
+        loc_key_num = int(loc_key_match.group(1)) if loc_key_match else 0
+
         ch = {
             "chapter_id": chapter_id,
             "name": chapter_name,
             "order": order,
             "quest_ids": quest_ids,
             "merchant_key": merchant_key,
+            "loc_key_num": loc_key_num,
         }
         merchant_chapters[merchant_key].append(ch)
         chapter_map[chapter_id] = ch
@@ -344,6 +350,71 @@ def load_chapters() -> tuple[dict[str, list[dict]], dict[str, dict]]:
     total = sum(len(v) for v in merchant_chapters.values())
     print(f"  {total} chapters across {len(merchant_chapters)} merchant keys")
     return dict(merchant_chapters), chapter_map
+
+
+def build_title_remap(merchant_chapters: dict[str, list[dict]]) -> dict[str, int]:
+    """
+    Build a quest_id -> remapped_title_number dict.
+
+    Some merchants had their chapters reordered after titles were assigned.
+    The localization title numbers follow the ORIGINAL chapter order (loc_key_num),
+    not the current display order. For reordered merchants, we need to map each
+    quest to the correct title number based on its chapter's loc_key_num.
+
+    Formula: title_start = ((loc_key + 1) % num_orig_chapters) * qpc + 1
+    Only applies to the first batch of reordered chapters (loc_keys form a
+    permutation). Later-added chapters use 1:1 mapping.
+    """
+    remap: dict[str, int] = {}
+
+    for merchant_key, chapters in merchant_chapters.items():
+        # Skip sub-type merchants
+        if any(s in merchant_key for s in _SUB_SUFFIXES):
+            continue
+
+        # Chapters sorted by display order
+        chapters_sorted = sorted(chapters, key=lambda c: c["order"])
+        if not chapters_sorted:
+            continue
+
+        qpc = len(chapters_sorted[0]["quest_ids"])
+        if qpc == 0:
+            continue
+
+        # Check if first N chapters are reordered
+        # (their loc_key_nums form a permutation but not in sequential order)
+        loc_keys = [c["loc_key_num"] for c in chapters_sorted]
+
+        # Find the SMALLEST N where first N loc_keys form a permutation AND are reordered.
+        # The original reordered batch is the first N chapters whose loc_keys are
+        # a shuffle of 1..N. Later chapters (with sequential loc_keys) were added after.
+        num_orig = 0
+        for n in range(2, min(len(loc_keys) + 1, 7)):
+            first_n = sorted(loc_keys[:n])
+            is_perm = (len(set(first_n)) == n and first_n == list(range(1, n + 1)))
+            is_reordered = (loc_keys[:n] != first_n)
+            if is_perm and is_reordered:
+                num_orig = n
+                break
+
+        if num_orig > 0:
+            # Reordered merchant: apply formula to first num_orig chapters
+            for ch_idx, ch in enumerate(chapters_sorted):
+                for pos, qid in enumerate(ch["quest_ids"]):
+                    if ch_idx < num_orig:
+                        title_num = ((ch["loc_key_num"] + 1) % num_orig) * qpc + pos + 1
+                        if title_num <= 0:
+                            title_num += num_orig * qpc
+                    else:
+                        # Later chapter: use quest number directly
+                        q_match = re.search(r"_(\d+)$", qid)
+                        title_num = int(q_match.group(1)) if q_match else 0
+                    remap[qid] = title_num
+
+            print(f"  Remap: {merchant_key} - {num_orig} reordered chapters (qpc={qpc})")
+        # Non-reordered: no entry in remap (will use default 1:1)
+
+    return remap
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -721,6 +792,7 @@ def build():
     loc = load_localization()
     title_idx, greeting_idx, complete_idx = build_loc_indices(loc)
     merchant_chapters, chapter_map = load_chapters()
+    title_remap = build_title_remap(merchant_chapters)
     quests = load_quests()
     rewards = load_rewards()
     content_lookup = load_all_content()
@@ -768,6 +840,12 @@ def build():
                 qnum = get_quest_number(quest_id)
                 loc_keys = get_loc_lookup_keys(quest_id)
 
+                # Apply title remap for merchants with reordered chapters
+                if quest_id in title_remap:
+                    remapped_num = f"{title_remap[quest_id]:02d}"
+                    merchant_key = get_merchant_quest_key(quest_id)
+                    loc_keys = [(merchant_key, remapped_num)] + loc_keys
+
                 def _loc_lookup(idx_dict, inline_key):
                     """Try inline text first, then loc index with multiple candidate keys."""
                     val = qdata.get(inline_key)
@@ -795,6 +873,11 @@ def build():
                 prereq_id = qdata.get("prerequisite_id")
                 if prereq_id:
                     prereq_keys = get_loc_lookup_keys(prereq_id)
+                    # Apply remap for prerequisites too
+                    if prereq_id in title_remap:
+                        rn = f"{title_remap[prereq_id]:02d}"
+                        pmk = get_merchant_quest_key(prereq_id)
+                        prereq_keys = [(pmk, rn)] + prereq_keys
                     prereq_title = None
                     for mk, np in prereq_keys:
                         prereq_title = title_idx.get((mk, np))

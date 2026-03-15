@@ -12,6 +12,7 @@ import MarketDashboard from "./MarketDashboard";
 import MarketSearch from "./MarketSearch";
 import MarketItemDetail from "./MarketItemDetail";
 import MarketListings from "./MarketListings";
+import MarketRMT from "./MarketRMT";
 
 interface SelectedItem {
   id: string;
@@ -24,7 +25,7 @@ export default function MarketPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<SelectedItem | null>(null);
-  const [activeTab, setActiveTab] = useState<"trends" | "search">("trends");
+  const [activeTab, setActiveTab] = useState<"trends" | "search" | "rmt">("trends");
 
   const loadData = useCallback(() => {
     const ac = new AbortController();
@@ -143,6 +144,12 @@ export default function MarketPage() {
           >
             Search
           </button>
+          <button
+            className={activeTab === "rmt" ? styles.tabBtnActive : styles.tabBtn}
+            onClick={() => setActiveTab("rmt")}
+          >
+            Suspicious Listings
+          </button>
         </div>
 
         {/* Tab Content */}
@@ -152,6 +159,8 @@ export default function MarketPage() {
             loading={loading}
           />
         )}
+
+        {activeTab === "rmt" && <MarketRMT />}
 
         {activeTab === "search" && (
           <>

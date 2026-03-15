@@ -257,6 +257,57 @@
   border-bottom: none;
 }
 
+/* RMT detection table */
+
+.rmtTableHeader {
+  composes: trendTableHeader;
+  grid-template-columns: 32px 2fr 80px 1fr 50px 1fr 80px 80px;
+}
+
+.rmtTableRow {
+  display: grid;
+  grid-template-columns: 32px 2fr 80px 1fr 50px 1fr 80px 80px;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.05);
+  align-items: center;
+  transition: background var(--t-fast);
+}
+
+.rmtTableRow:last-child {
+  border-bottom: none;
+}
+
+.rmtTableRow:hover {
+  background: rgba(220, 50, 50, 0.04);
+}
+
+.rmtHigh {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #e05555;
+  background: rgba(220, 50, 50, 0.1);
+  border: 1px solid rgba(220, 50, 50, 0.25);
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.rmtMedium {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold-500);
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-align: center;
+}
+
 .trendTableRow:hover {
   background: rgba(201, 168, 76, 0.04);
 }

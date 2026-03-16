@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./market.module.css";
 import { searchItems, fetchRawListings, GOLD_ICON, itemIconPath, type ItemDef, type RawListing } from "./api";
+import ItemTooltip from "./ItemTooltip";
 
 const BASE_RARITIES = ["Poor", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique", "Artifact"];
 
@@ -46,6 +47,7 @@ export default function MarketSearchTab() {
   const [soldListings, setSoldListings] = useState<RawListing[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
+  const [previewListing, setPreviewListing] = useState<RawListing | null>(null);
 
   // Available properties (discovered from results)
   const [availableProps, setAvailableProps] = useState<string[]>([]);
@@ -285,6 +287,17 @@ export default function MarketSearchTab() {
         </div>
       )}
 
+      {/* Item Preview Card */}
+      {previewListing && selectedItem && (
+        <div style={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
+          <ItemTooltip
+            itemName={selectedItem.name}
+            rarity={previewListing.base_rarity}
+            properties={previewListing.properties}
+          />
+        </div>
+      )}
+
       {/* Active Listings */}
       {searched && (
         <div style={{ marginTop: 24 }}>
@@ -311,7 +324,12 @@ export default function MarketSearchTab() {
                 </thead>
                 <tbody>
                   {filteredActive.slice(0, 50).map((l) => (
-                    <tr key={l.listing_id}>
+                    <tr
+                      key={l.listing_id}
+                      onClick={() => setPreviewListing(previewListing?.listing_id === l.listing_id ? null : l)}
+                      style={{ cursor: "pointer" }}
+                      className={previewListing?.listing_id === l.listing_id ? styles.msSelectedRow : ""}
+                    >
                       <td className={styles.msPrice}>
                         {formatGold(l.price)}
                         <img src={GOLD_ICON} alt="" width={12} height={12} />

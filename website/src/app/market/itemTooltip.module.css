@@ -1,0 +1,92 @@
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 28, 24, 0.97) 0%,
+    rgba(22, 20, 18, 0.99) 100%
+  );
+  border: 1px solid rgba(80, 70, 55, 0.5);
+  border-radius: 4px;
+  padding: 16px 24px 20px;
+  max-width: 380px;
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.6),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-heading), "Palatino Linotype", "Book Antiqua", serif;
+}
+
+/* Item Name */
+.itemName {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding-bottom: 8px;
+}
+
+/* Rarity divider line */
+.divider {
+  height: 2px;
+  margin: 0 -4px 12px;
+  border-radius: 1px;
+}
+
+/* Stats */
+.statsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 3px 0;
+  font-size: 0.85rem;
+}
+
+.dash {
+  color: rgba(180, 170, 150, 0.35);
+  font-weight: 300;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.primaryStat {
+  color: #e8e4dc;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.secondaryDash {
+  color: rgba(100, 200, 200, 0.35);
+}
+
+.secondaryStat {
+  color: #5ec4c4;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* Rarity colors */
+.rarityPoor { color: #808080; }
+.rarityCommon { color: #cccccc; }
+.rarityUncommon { color: #56ab56; }
+.rarityRare { color: #4b7dc9; }
+.rarityEpic { color: #b066d4; }
+.rarityLegendary { color: #d4a030; }
+.rarityUnique { color: #c9b84c; }
+.rarityArtifact { color: #d45050; }
+
+/* Divider gradient per rarity */
+.divider.rarityPoor { background: linear-gradient(90deg, transparent, #808080, transparent); }
+.divider.rarityCommon { background: linear-gradient(90deg, transparent, #cccccc, transparent); }
+.divider.rarityUncommon { background: linear-gradient(90deg, transparent, #56ab56, transparent); }
+.divider.rarityRare { background: linear-gradient(90deg, transparent, #4b7dc9, transparent); }
+.divider.rarityEpic { background: linear-gradient(90deg, transparent, #b066d4, transparent); }
+.divider.rarityLegendary { background: linear-gradient(90deg, transparent, #d4a030, transparent); }
+.divider.rarityUnique { background: linear-gradient(90deg, transparent, #c9b84c, transparent); }
+.divider.rarityArtifact { background: linear-gradient(90deg, transparent, #d45050, transparent); }

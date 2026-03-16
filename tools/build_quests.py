@@ -633,7 +633,8 @@ def load_all_content() -> dict[str, dict]:
                 # RarityType is a tag dict: {"TagName": "Type.Item.Rarity.Epic"}
                 rarity_tag = extract_tag_name(props.get("RarityType"))
                 if rarity_tag:
-                    entry["rarity"] = rarity_tag.split(".")[-1]  # "Type.Item.Rarity.Epic" -> "Epic"
+                    r = rarity_tag.split(".")[-1]  # "Type.Item.Rarity.Epic" -> "Epic"
+                    entry["rarity"] = "Legendary" if r == "Legend" else r
                 else:
                     # Fallback to legacy ItemRarity field
                     ir = props.get("ItemRarity", "")

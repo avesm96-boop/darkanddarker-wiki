@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-16T23:04:12.445481+00:00",
+  "generated_at": "2026-03-16T23:11:44.619538+00:00",
   "source": "Game data files (FModel extraction + localization)",
   "total_quests": 553,
   "total_merchants": 25,
@@ -2836,8 +2836,8 @@
                   "count": 5,
                   "item": "GoldChaliceA",
                   "item_name": "Gold Goblet (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Gold Goblet (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Gold Goblet (Cracked)"
                 },
                 {
                   "id": "Id_QuestContent_Fetch_Cockatrice_10_02",
@@ -2845,8 +2845,8 @@
                   "count": 5,
                   "item": "GoldWaterpot",
                   "item_name": "Gold Waterpot (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Gold Waterpot (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Gold Waterpot (Cracked)"
                 }
               ],
               "rewards": [
@@ -2910,8 +2910,8 @@
                   "count": 5,
                   "item": "GoldChaliceB",
                   "item_name": "Gold Chalice (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Gold Chalice (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Gold Chalice (Cracked)"
                 },
                 {
                   "id": "Id_QuestContent_Fetch_Cockatrice_11_02",
@@ -2919,8 +2919,8 @@
                   "count": 5,
                   "item": "LargeScroll",
                   "item_name": "Ancient Scroll (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Ancient Scroll (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Ancient Scroll (Cracked)"
                 }
               ],
               "rewards": [
@@ -2954,8 +2954,8 @@
                   "count": 5,
                   "item": "GoldCrown",
                   "item_name": "Gold Crown (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Gold Crown (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Gold Crown (Cracked)"
                 },
                 {
                   "id": "Id_QuestContent_Fetch_Cockatrice_12_02",
@@ -2963,8 +2963,8 @@
                   "count": 5,
                   "item": "MetalCup",
                   "item_name": "Goblet (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Goblet (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Goblet (Cracked)"
                 }
               ],
               "rewards": [
@@ -6221,8 +6221,8 @@
                   "count": 5,
                   "item": "Ruby",
                   "item_name": "Ruby (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Ruby (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Ruby (Cracked)"
                 }
               ],
               "rewards": [
@@ -6264,8 +6264,8 @@
                   "count": 5,
                   "item": "BlueSapphire",
                   "item_name": "Blue Sapphire (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Blue Sapphire (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Blue Sapphire (Cracked)"
                 }
               ],
               "rewards": [
@@ -6367,8 +6367,8 @@
                   "count": 5,
                   "item": "Diamond",
                   "item_name": "Diamond (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Diamond (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Diamond (Cracked)"
                 }
               ],
               "rewards": [
@@ -6410,8 +6410,8 @@
                   "count": 5,
                   "item": "Emerald",
                   "item_name": "Emerald (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 5 Legend Emerald (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 5 Legendary Emerald (Cracked)"
                 }
               ],
               "rewards": [
@@ -23097,8 +23097,8 @@
                   "count": 1,
                   "item": "GoldCrown",
                   "item_name": "Gold Crown (Cracked)",
-                  "rarity": "Legend",
-                  "description": "Collect 1 Legend Gold Crown (Cracked)"
+                  "rarity": "Legendary",
+                  "description": "Collect 1 Legendary Gold Crown (Cracked)"
                 }
               ],
               "rewards": [
@@ -24762,9 +24762,9 @@
                   "content_type": "Fetch",
                   "count": 5,
                   "loot_state": "Looted",
-                  "rarity": "Legend",
+                  "rarity": "Legendary",
                   "item_type_tag": "Weapon",
-                  "description": "Collect 5 Legend ?"
+                  "description": "Collect 5 Legendary ?"
                 }
               ],
               "rewards": [
@@ -29577,8 +29577,8 @@
       "count": 5,
       "item": "BlueSapphire",
       "item_name": "Blue Sapphire (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Blue Sapphire (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Blue Sapphire (Cracked)"
     },
     "Id_QuestContent_Fetch_Bone_01": {
       "id": "Id_QuestContent_Fetch_Bone_01",
@@ -29910,8 +29910,8 @@
       "count": 5,
       "item": "GoldChaliceA",
       "item_name": "Gold Goblet (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Gold Goblet (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Gold Goblet (Cracked)"
     },
     "Id_QuestContent_Fetch_Cockatrice_10_02": {
       "id": "Id_QuestContent_Fetch_Cockatrice_10_02",
@@ -29919,8 +29919,8 @@
       "count": 5,
       "item": "GoldWaterpot",
       "item_name": "Gold Waterpot (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Gold Waterpot (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Gold Waterpot (Cracked)"
     },
     "Id_QuestContent_Fetch_Cockatrice_11_01": {
       "id": "Id_QuestContent_Fetch_Cockatrice_11_01",
@@ -29928,8 +29928,8 @@
       "count": 5,
       "item": "GoldChaliceB",
       "item_name": "Gold Chalice (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Gold Chalice (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Gold Chalice (Cracked)"
     },
     "Id_QuestContent_Fetch_Cockatrice_11_02": {
       "id": "Id_QuestContent_Fetch_Cockatrice_11_02",
@@ -29937,8 +29937,8 @@
       "count": 5,
       "item": "LargeScroll",
       "item_name": "Ancient Scroll (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Ancient Scroll (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Ancient Scroll (Cracked)"
     },
     "Id_QuestContent_Fetch_Cockatrice_12_01": {
       "id": "Id_QuestContent_Fetch_Cockatrice_12_01",
@@ -29946,8 +29946,8 @@
       "count": 5,
       "item": "GoldCrown",
       "item_name": "Gold Crown (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Gold Crown (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Gold Crown (Cracked)"
     },
     "Id_QuestContent_Fetch_Cockatrice_12_02": {
       "id": "Id_QuestContent_Fetch_Cockatrice_12_02",
@@ -29955,8 +29955,8 @@
       "count": 5,
       "item": "MetalCup",
       "item_name": "Goblet (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Goblet (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Goblet (Cracked)"
     },
     "Id_QuestContent_Fetch_CoralFragment_01": {
       "id": "Id_QuestContent_Fetch_CoralFragment_01",
@@ -30066,8 +30066,8 @@
       "count": 5,
       "item": "Diamond",
       "item_name": "Diamond (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Diamond (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Diamond (Cracked)"
     },
     "Id_QuestContent_Fetch_DiaryoftheToz_01": {
       "id": "Id_QuestContent_Fetch_DiaryoftheToz_01",
@@ -30137,8 +30137,8 @@
       "count": 5,
       "item": "Emerald",
       "item_name": "Emerald (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Emerald (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Emerald (Cracked)"
     },
     "Id_QuestContent_Fetch_EnchantedDarkFabric_02": {
       "id": "Id_QuestContent_Fetch_EnchantedDarkFabric_02",
@@ -30327,8 +30327,8 @@
       "count": 1,
       "item": "GoldCrown",
       "item_name": "Gold Crown (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 1 Legend Gold Crown (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 1 Legendary Gold Crown (Cracked)"
     },
     "Id_QuestContent_Fetch_GoldIngots_01": {
       "id": "Id_QuestContent_Fetch_GoldIngots_01",
@@ -32319,8 +32319,8 @@
       "count": 5,
       "item": "Ruby",
       "item_name": "Ruby (Cracked)",
-      "rarity": "Legend",
-      "description": "Collect 5 Legend Ruby (Cracked)"
+      "rarity": "Legendary",
+      "description": "Collect 5 Legendary Ruby (Cracked)"
     },
     "Id_QuestContent_Fetch_RubysilverIngots_01": {
       "id": "Id_QuestContent_Fetch_RubysilverIngots_01",
@@ -32771,9 +32771,9 @@
       "content_type": "Fetch",
       "count": 5,
       "loot_state": "Looted",
-      "rarity": "Legend",
+      "rarity": "Legendary",
       "item_type_tag": "Weapon",
-      "description": "Collect 5 Legend ?"
+      "description": "Collect 5 Legendary ?"
     },
     "Id_QuestContent_Fetch_WendigoEntrails_01": {
       "id": "Id_QuestContent_Fetch_WendigoEntrails_01",

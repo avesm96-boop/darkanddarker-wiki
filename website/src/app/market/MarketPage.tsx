@@ -14,7 +14,7 @@ function useDataAge() {
   // Fetch last_seen from stats every 10 seconds
   useEffect(() => {
     const fetchAge = () => {
-      fetch(`${OUR_API}/stats`)
+      fetch(`${OUR_API}/stats?_t=${Date.now()}`, { cache: "no-store" })
         .then((r) => r.json())
         .then((d) => {
           if (d?.last_data_at) setLastSeen(d.last_data_at);

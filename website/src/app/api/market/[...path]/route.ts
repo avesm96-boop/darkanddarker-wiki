@@ -11,9 +11,14 @@ export async function GET(
   const url = `${UPSTREAM}/${path}${search}`;
 
   try {
+    // Skip cache for stats endpoint (needs real-time freshness indicator)
+    const cacheOpts = path === "stats"
+      ? { cache: "no-store" as const }
+      : { next: { revalidate: 10 } };
+
     const res = await fetch(url, {
       headers: { Accept: "application/json" },
-      next: { revalidate: 10 }, // Cache for 10 seconds on Vercel edge
+      ...cacheOpts,
     });
 
     if (!res.ok) {

@@ -85,8 +85,10 @@ const RARITY_COLORS: Record<string, string> = {
   Uncommon: "#55c075",
   Rare: "#5588dd",
   Epic: "#aa55cc",
+  Legend: "#c9a84c",
   Legendary: "#c9a84c",
   Unique: "#cc4444",
+  Artifact: "#d45050",
 };
 
 function formatId(id: string): string {

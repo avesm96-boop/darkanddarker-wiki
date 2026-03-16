@@ -41,6 +41,14 @@ QUEST_DIR = RAW_QUEST / "Quest"
 CHAPTER_DIR = RAW_QUEST / "QuestChapter"
 REWARD_DIR = RAW_QUEST / "QuestReward"
 
+ITEM_METADATA_FILE = ROOT / "website" / "public" / "data" / "item_metadata.json"
+
+# Load item metadata for proper localized names in fetch quests
+item_metadata: dict = {}
+if ITEM_METADATA_FILE.exists():
+    with open(ITEM_METADATA_FILE, encoding="utf-8") as f:
+        item_metadata = json.load(f)
+
 CONTENT_DIRS = {
     "Kill":    RAW_QUEST / "QuestContentKill",
     "Fetch":   RAW_QUEST / "QuestContentFetch",
@@ -612,14 +620,25 @@ def load_all_content() -> dict[str, dict]:
             elif ctype == "Fetch":
                 item_tag = extract_tag_name(props.get("ItemIdTag"))
                 if item_tag:
-                    entry["item"] = item_tag.replace("Id.Item.", "")
-                    entry["item_name"] = tag_to_name(item_tag, "Id.Item.")
+                    item_key = item_tag.replace("Id.Item.", "")
+                    entry["item"] = item_key
+                    # Use localized name from item_metadata if available
+                    if item_key in item_metadata:
+                        entry["item_name"] = item_metadata[item_key]["name"]
+                    else:
+                        entry["item_name"] = tag_to_name(item_tag, "Id.Item.")
                 ls = props.get("ItemLootState", "")
                 if ls:
                     entry["loot_state"] = ls.split("::")[-1] if "::" in ls else ls
-                ir = props.get("ItemRarity", "")
-                if ir:
-                    entry["rarity"] = ir.split("::")[-1] if "::" in ir else ir
+                # RarityType is a tag dict: {"TagName": "Type.Item.Rarity.Epic"}
+                rarity_tag = extract_tag_name(props.get("RarityType"))
+                if rarity_tag:
+                    entry["rarity"] = rarity_tag.split(".")[-1]  # "Type.Item.Rarity.Epic" -> "Epic"
+                else:
+                    # Fallback to legacy ItemRarity field
+                    ir = props.get("ItemRarity", "")
+                    if ir:
+                        entry["rarity"] = ir.split("::")[-1] if "::" in ir else ir
                 type_tag = extract_tag_name(props.get("TypeTag"))
                 if type_tag:
                     entry["item_type_tag"] = tag_to_name(type_tag, "Type.Item.")
@@ -796,6 +815,8 @@ def build():
     quests = load_quests()
     rewards = load_rewards()
     content_lookup = load_all_content()
+
+    print(f"  Item metadata: {len(item_metadata)} items loaded")
 
     # Load uasset-derived quest-to-objective mapping
     uasset_map_path = ROOT / "extracted" / "quest_objective_map.json"

@@ -186,9 +186,7 @@
   font-weight: 600;
   color: var(--gold-300);
   letter-spacing: 0.03em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-break: break-word;
   min-width: 0;
 }
 

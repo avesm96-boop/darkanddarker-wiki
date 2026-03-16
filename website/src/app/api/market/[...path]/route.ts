@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const UPSTREAM = "http://5.161.247.74:8080/api/v1";
+const UPSTREAM = process.env.MARKETPLACE_API_URL || "http://5.161.247.74:8080/api/v1";
 
 export async function GET(
   request: NextRequest,

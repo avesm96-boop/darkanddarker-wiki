@@ -5,9 +5,48 @@ import styles from "./market.module.css";
 import { fetchPopulation, type PopulationData } from "./api";
 import MarketSearchTab from "./MarketSearchTab";
 
+const OUR_API = "/api/market";
+
+function useDataAge() {
+  const [lastSeen, setLastSeen] = useState<number | null>(null);
+  const [agoText, setAgoText] = useState("—");
+
+  // Fetch last_seen from stats every 10 seconds
+  useEffect(() => {
+    const fetchAge = () => {
+      fetch(`${OUR_API}/stats`)
+        .then((r) => r.json())
+        .then((d) => {
+          const lp = d?.last_poll;
+          if (lp?.started_at) setLastSeen(lp.started_at);
+        })
+        .catch(() => {});
+    };
+    fetchAge();
+    const interval = setInterval(fetchAge, 10_000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Tick the "ago" display every second
+  useEffect(() => {
+    if (!lastSeen) return;
+    const tick = () => {
+      const sec = Math.floor(Date.now() / 1000 - lastSeen);
+      if (sec < 60) setAgoText(`${sec}s ago`);
+      else if (sec < 3600) setAgoText(`${Math.floor(sec / 60)}m ${sec % 60}s ago`);
+      else setAgoText(`${Math.floor(sec / 3600)}h ago`);
+    };
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, [lastSeen]);
+
+  return agoText;
+}
+
 export default function MarketPage() {
   const [population, setPopulation] = useState<PopulationData | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const dataAge = useDataAge();
 
   const loadPopulation = useCallback(() => {
     const ac = new AbortController();
@@ -41,6 +80,7 @@ export default function MarketPage() {
         <div style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "space-between",
           gap: 10,
           padding: "12px 20px",
           marginBottom: 24,
@@ -50,16 +90,26 @@ export default function MarketPage() {
           fontSize: "0.75rem",
           color: "var(--gold-500)",
           lineHeight: 1.6,
+          flexWrap: "wrap",
         }}>
+          <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{
+              width: 8, height: 8, flexShrink: 0,
+              background: "#4cc964",
+              borderRadius: "50%",
+              animation: "pulse-glow 2s ease-in-out infinite",
+            }} />
+            <span>
+              <strong>Live Data</strong> — Prices pulled from in-game marketplace every ~5 seconds
+            </span>
+          </span>
           <span style={{
-            width: 8, height: 8, flexShrink: 0,
-            background: "#4cc964",
-            borderRadius: "50%",
-            animation: "pulse-glow 2s ease-in-out infinite",
-          }} />
-          <span>
-            <strong>Live Data</strong> — Prices are pulled directly from the in-game marketplace
-            every ~5 seconds. All listings include full stat rolls and sale tracking.
+            fontSize: "0.7rem",
+            color: "rgba(76, 201, 100, 0.8)",
+            fontVariantNumeric: "tabular-nums",
+            whiteSpace: "nowrap",
+          }}>
+            Last scan: {dataAge}
           </span>
         </div>
 

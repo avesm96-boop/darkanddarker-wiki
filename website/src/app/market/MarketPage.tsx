@@ -2,62 +2,26 @@
 
 import { useState, useEffect, useCallback } from "react";
 import styles from "./market.module.css";
-import {
-  fetchPopulation,
-  fetchTrending,
-  type PopulationData,
-  type TrendingItem,
-} from "./api";
-import MarketDashboard from "./MarketDashboard";
-import MarketRMT from "./MarketRMT";
+import { fetchPopulation, type PopulationData } from "./api";
 import MarketSearchTab from "./MarketSearchTab";
 
 export default function MarketPage() {
   const [population, setPopulation] = useState<PopulationData | null>(null);
-  const [trending, setTrending] = useState<TrendingItem[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"trends" | "search" | "rmt">("trends");
 
-  const loadData = useCallback(() => {
+  const loadPopulation = useCallback(() => {
     const ac = new AbortController();
-    setLoading(true);
-    setError(null);
-
-    Promise.all([
-      fetchPopulation(ac.signal).catch(() => null),
-      fetchTrending(ac.signal).catch(() => []),
-    ])
-      .then(([pop, trend]) => {
-        if (!ac.signal.aborted) {
-          setPopulation(pop);
-          setTrending(trend as TrendingItem[]);
-          setLoading(false);
-        }
-      })
-      .catch(() => {
-        if (!ac.signal.aborted) {
-          setError("Failed to load market data. The API may be temporarily unavailable.");
-          setLoading(false);
-        }
-      });
-
+    fetchPopulation(ac.signal)
+      .then((pop) => { if (!ac.signal.aborted) setPopulation(pop); })
+      .catch(() => {});
     return () => ac.abort();
   }, []);
 
   useEffect(() => {
-    const cleanup = loadData();
-
-    // Auto-refresh every 30 seconds for near-real-time prices
-    const interval = setInterval(() => {
-      loadData();
-    }, 30_000);
-
-    return () => {
-      cleanup();
-      clearInterval(interval);
-    };
-  }, [loadData]);
+    const cleanup = loadPopulation();
+    const interval = setInterval(loadPopulation, 30_000);
+    return () => { cleanup(); clearInterval(interval); };
+  }, [loadPopulation]);
 
   const formatNum = (n: number): string => n.toLocaleString();
 
@@ -95,52 +59,34 @@ export default function MarketPage() {
           }} />
           <span>
             <strong>Live Data</strong> — Prices are pulled directly from the in-game marketplace
-            every ~60 seconds. All listings include full stat rolls, seller info, and sale tracking.
+            every ~5 seconds. All listings include full stat rolls and sale tracking.
           </span>
         </div>
 
-        {/* Error Banner */}
-        {error && (
-          <div className={styles.errorBanner}>
-            <span>{error}</span>
-            <button className={styles.retryBtn} onClick={loadData}>
-              Retry
-            </button>
-          </div>
-        )}
-
-        {/* Population Stats — always visible above tabs */}
+        {/* Population Stats */}
         <div className={styles.populationBar}>
           <div className={styles.sectionHeader}>
             <span className={styles.sectionTitle}>Server Population</span>
           </div>
           <div className={styles.dashboardGrid}>
-            {loading ? (
-              Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className={styles.skeletonCard} />
-              ))
-            ) : (
-              <>
-                <div className={styles.statCard}>
-                  <div className={styles.statValue}>
-                    {population ? formatNum(population.num_online) : "\u2014"}
-                  </div>
-                  <div className={styles.statLabel}>Online</div>
-                </div>
-                <div className={styles.statCard}>
-                  <div className={styles.statValue}>
-                    {population ? formatNum(population.num_lobby) : "\u2014"}
-                  </div>
-                  <div className={styles.statLabel}>In Lobby</div>
-                </div>
-                <div className={styles.statCard}>
-                  <div className={styles.statValue}>
-                    {population ? formatNum(population.num_dungeon) : "\u2014"}
-                  </div>
-                  <div className={styles.statLabel}>In Dungeon</div>
-                </div>
-              </>
-            )}
+            <div className={styles.statCard}>
+              <div className={styles.statValue}>
+                {population ? formatNum(population.num_online) : "\u2014"}
+              </div>
+              <div className={styles.statLabel}>Online</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statValue}>
+                {population ? formatNum(population.num_lobby) : "\u2014"}
+              </div>
+              <div className={styles.statLabel}>In Lobby</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statValue}>
+                {population ? formatNum(population.num_dungeon) : "\u2014"}
+              </div>
+              <div className={styles.statLabel}>In Dungeon</div>
+            </div>
           </div>
           {population?.timestamp && (
             <div className={styles.lastUpdated}>
@@ -149,39 +95,8 @@ export default function MarketPage() {
           )}
         </div>
 
-        {/* Tab Bar */}
-        <div className={styles.tabBar}>
-          <button
-            className={activeTab === "trends" ? styles.tabBtnActive : styles.tabBtn}
-            onClick={() => setActiveTab("trends")}
-          >
-            Trends
-          </button>
-          <button
-            className={activeTab === "search" ? styles.tabBtnActive : styles.tabBtn}
-            onClick={() => setActiveTab("search")}
-          >
-            Search
-          </button>
-          <button
-            className={activeTab === "rmt" ? styles.tabBtnActive : styles.tabBtn}
-            onClick={() => setActiveTab("rmt")}
-          >
-            Suspicious Listings
-          </button>
-        </div>
-
-        {/* Tab Content */}
-        {activeTab === "trends" && (
-          <MarketDashboard
-            trending={trending}
-            loading={loading}
-          />
-        )}
-
-        {activeTab === "search" && <MarketSearchTab />}
-
-        {activeTab === "rmt" && <MarketRMT />}
+        {/* Market Search */}
+        <MarketSearchTab />
       </div>
     </div>
   );

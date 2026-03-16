@@ -61,13 +61,13 @@ function TrendTable({
         <span></span>
         <span>Item</span>
         <span style={{ textAlign: "right" }}>
-          <span title="Average price per unit across all active listings">Avg Price</span>
+          <span title="Average price per unit from active listings (cheapest 10)">Avg Price</span>
         </span>
         <span style={{ textAlign: "right" }}>
-          <span title="Cheapest active listing right now (per unit)">Lowest</span>
+          <span title="Cheapest active listing right now (price per unit)">Lowest</span>
         </span>
         <span style={{ textAlign: "right" }}>
-          <span title="Most expensive active listing (per unit)">Highest</span>
+          <span title="Price range among the cheapest listings">Range</span>
         </span>
         <span style={{ textAlign: "right" }}>
           <span title="Number of active marketplace listings">Listings</span>
@@ -90,8 +90,8 @@ function TrendTable({
             <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3 }}>
               {formatGold(t.currentLowest)}<GoldIcon />
             </span>
-            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3, color: "var(--text-muted)" }}>
-              {formatGold(t.avg14d)}<GoldIcon />
+            <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3, color: "var(--text-muted)", fontSize: "0.75rem" }}>
+              {formatGold(t.currentLowest)}–{formatGold(t.avg14d)}<GoldIcon />
             </span>
             <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
               {t.avg7d}

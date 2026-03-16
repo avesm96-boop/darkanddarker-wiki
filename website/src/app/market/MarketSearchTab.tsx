@@ -123,7 +123,7 @@ export default function MarketSearchTab() {
         fetchRawListings(selectedItem.archetype, {
           base_rarity: selectedRarity || undefined,
           status: "sold",
-          limit: 10,
+          limit: 100,
           sort: "sold_desc",
         }, ac.signal),
       ]);
@@ -148,13 +148,16 @@ export default function MarketSearchTab() {
   }, [selectedItem, selectedRarity]);
 
   // Apply client-side property filters
-  const filteredActive = activeListings.filter((listing) => {
+  const applyPropFilters = (listing: RawListing) => {
     for (const f of propFilters) {
       const prop = listing.properties.find((p) => p.property_type === f.name && !p.is_primary);
       if (!prop || prop.property_value < f.min) return false;
     }
     return true;
-  });
+  };
+
+  const filteredActive = activeListings.filter(applyPropFilters);
+  const filteredSold = soldListings.filter(applyPropFilters).slice(0, 10);
 
   const addPropFilter = (propName: string) => {
     if (propFilters.some((f) => f.name === propName)) return;
@@ -301,7 +304,6 @@ export default function MarketSearchTab() {
                   <tr>
                     <th>Price</th>
                     <th>Rarity</th>
-                    <th>Enchant</th>
                     <th>Stats</th>
                     <th>Seller</th>
                     <th>Listed</th>
@@ -315,7 +317,6 @@ export default function MarketSearchTab() {
                         <img src={GOLD_ICON} alt="" width={12} height={12} />
                       </td>
                       <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>
-                      <td>{l.rarity_name === "None" ? "—" : l.rarity_name}</td>
                       <td className={styles.msStats}>
                         {l.properties
                           .filter((p) => !p.is_primary)
@@ -343,7 +344,7 @@ export default function MarketSearchTab() {
       )}
 
       {/* Recently Sold */}
-      {searched && soldListings.length > 0 && (
+      {searched && filteredSold.length > 0 && (
         <div style={{ marginTop: 32 }}>
           <div className={styles.sectionHeader}>
             <span className={styles.sectionTitle}>Recently Sold (Last 10)</span>
@@ -354,13 +355,12 @@ export default function MarketSearchTab() {
                 <tr>
                   <th>Sale Price</th>
                   <th>Rarity</th>
-                  <th>Enchant</th>
                   <th>Stats</th>
                   <th>Sold</th>
                 </tr>
               </thead>
               <tbody>
-                {soldListings.map((l) => (
+                {filteredSold.map((l) => (
                   <tr key={l.listing_id} className={styles.msSoldRow}>
                     <td className={styles.msPrice}>
                       {formatGold(l.price)}

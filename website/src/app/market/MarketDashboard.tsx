@@ -36,7 +36,7 @@ function ItemIcon({ archetype }: { archetype: string }) {
       height={32}
       className={styles.itemIcon}
       onError={(e) => {
-        (e.target as HTMLImageElement).style.display = "none";
+        (e.target as HTMLImageElement).style.visibility = "hidden";
       }}
     />
   );

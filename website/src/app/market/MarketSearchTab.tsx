@@ -344,7 +344,7 @@ export default function MarketSearchTab() {
       )}
 
       {/* Recently Sold */}
-      {searched && filteredSold.length > 0 && (
+      {searched && soldListings.length > 0 && (
         <div style={{ marginTop: 32 }}>
           <div className={styles.sectionHeader}>
             <span className={styles.sectionTitle}>Recently Sold (Last 10)</span>
@@ -360,27 +360,30 @@ export default function MarketSearchTab() {
                 </tr>
               </thead>
               <tbody>
-                {filteredSold.map((l) => (
-                  <tr key={l.listing_id} className={styles.msSoldRow}>
-                    <td className={styles.msPrice}>
-                      {formatGold(l.price)}
-                      <img src={GOLD_ICON} alt="" width={12} height={12} />
-                    </td>
-                    <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>
-                    <td>{l.rarity_name === "None" ? "—" : l.rarity_name}</td>
-                    <td className={styles.msStats}>
-                      {l.properties
-                        .filter((p) => !p.is_primary)
-                        .map((p, i) => (
-                          <span key={i} className={styles.msStat}>
-                            {cleanPropName(p.property_type)}: {p.property_value}
-                          </span>
-                        ))}
-                      {l.properties.filter((p) => !p.is_primary).length === 0 && "—"}
-                    </td>
-                    <td className={styles.msTime}>{l.sold_at ? timeAgo(l.sold_at) : "—"}</td>
-                  </tr>
-                ))}
+                {filteredSold.length === 0 ? (
+                  <tr><td colSpan={4} className={styles.msEmpty}>No sold items match the current filters.</td></tr>
+                ) : (
+                  filteredSold.map((l) => (
+                    <tr key={l.listing_id} className={styles.msSoldRow}>
+                      <td className={styles.msPrice}>
+                        {formatGold(l.price)}
+                        <img src={GOLD_ICON} alt="" width={12} height={12} />
+                      </td>
+                      <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>
+                      <td className={styles.msStats}>
+                        {l.properties
+                          .filter((p) => !p.is_primary)
+                          .map((p, i) => (
+                            <span key={i} className={styles.msStat}>
+                              {cleanPropName(p.property_type)}: {p.property_value}
+                            </span>
+                          ))}
+                        {l.properties.filter((p) => !p.is_primary).length === 0 && "—"}
+                      </td>
+                      <td className={styles.msTime}>{l.sold_at ? timeAgo(l.sold_at) : "—"}</td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

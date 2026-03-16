@@ -802,6 +802,53 @@
   gap: 8px;
 }
 
+/* Class filter row */
+.classFilter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.classBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 6px;
+  background: rgba(201, 168, 76, 0.04);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-family: var(--font-heading);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.classBtn:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: rgba(201, 168, 76, 0.3);
+  color: var(--gold-500);
+}
+
+.classBtnActive {
+  background: rgba(201, 168, 76, 0.15);
+  border-color: rgba(201, 168, 76, 0.5);
+  color: var(--gold-500);
+}
+
+.classBtnLabel {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .classBtnLabel {
+    display: inline;
+  }
+}
+
 .sectionTitle {
   font-family: var(--font-heading);
   font-size: 0.75rem;

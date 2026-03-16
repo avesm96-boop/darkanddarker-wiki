@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./market.module.css";
 import type { TrendingItem } from "./api";
 import { itemIconPath, GOLD_ICON } from "./api";
@@ -9,6 +10,13 @@ interface Props {
   trending: TrendingItem[];
   loading: boolean;
 }
+
+const CLASSES = [
+  "Fighter", "Barbarian", "Ranger", "Rogue", "Bard",
+  "Cleric", "Wizard", "Sorcerer", "Warlock", "Druid",
+];
+
+type ItemClassMap = Record<string, string[]>;
 
 function formatGold(n: number): string {
   if (!n || isNaN(n)) return "—";
@@ -63,6 +71,16 @@ function PriceCell({ value }: { value: number }) {
 }
 
 export default function MarketDashboard({ trending, loading }: Props) {
+  const [selectedClass, setSelectedClass] = useState<string | null>(null);
+  const [itemClasses, setItemClasses] = useState<ItemClassMap>({});
+
+  useEffect(() => {
+    fetch("/data/item_classes.json")
+      .then((res) => res.json())
+      .then((data: ItemClassMap) => setItemClasses(data))
+      .catch(() => {});
+  }, []);
+
   if (loading) {
     return (
       <div className={styles.dashboard}>
@@ -78,8 +96,17 @@ export default function MarketDashboard({ trending, loading }: Props) {
     );
   }
 
+  // Filter by class if selected
+  const filtered = selectedClass
+    ? trending.filter((t) => {
+        const classes = itemClasses[t.archetype];
+        if (!classes) return true; // unknown items show always
+        return classes.includes(selectedClass) || classes.includes("All");
+      })
+    : trending;
+
   // High Demand = most sold items (highest trading volume)
-  const highDemand = [...trending]
+  const highDemand = [...filtered]
     .filter((t) => t.totalVolume > 0)
     .sort((a, b) => b.totalVolume - a.totalVolume)
     .slice(0, 10);
@@ -90,6 +117,37 @@ export default function MarketDashboard({ trending, loading }: Props) {
         <div className={styles.sectionHeader}>
           <span className={styles.sectionTitle}>High Demand Products</span>
         </div>
+
+        {/* Class filter buttons */}
+        <div className={styles.classFilter}>
+          <button
+            className={`${styles.classBtn} ${!selectedClass ? styles.classBtnActive : ""}`}
+            onClick={() => setSelectedClass(null)}
+            title="All Classes"
+          >
+            All
+          </button>
+          {CLASSES.map((cls) => (
+            <button
+              key={cls}
+              className={`${styles.classBtn} ${selectedClass === cls ? styles.classBtnActive : ""}`}
+              onClick={() => setSelectedClass(selectedClass === cls ? null : cls)}
+              title={cls}
+            >
+              <img
+                src={`/class-icons/${cls.toLowerCase()}.png`}
+                alt={cls}
+                width={24}
+                height={24}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                }}
+              />
+              <span className={styles.classBtnLabel}>{cls}</span>
+            </button>
+          ))}
+        </div>
+
         {/* 8-column grid: icon | name | avg | lowest | highest | sold | listings | trend */}
         <div className={styles.trendTableHeader}>
           <span></span>
@@ -114,50 +172,61 @@ export default function MarketDashboard({ trending, loading }: Props) {
           </span>
         </div>
         <div>
-          {highDemand.map((t) => (
-            <div key={t.archetype} className={styles.trendTableRow}>
-              <ItemIcon archetype={t.archetype} />
-              <span className={styles.trendItemName}>{t.label}</span>
-              <PriceCell value={t.currentAvg} />
-              <PriceCell value={t.currentLowest} />
-              <PriceCell value={t.avg14d} />
-              <span style={{
-                textAlign: "right",
-                fontWeight: 600,
-                color: "var(--gold-500)",
-              }}>
-                {formatNum(t.totalVolume)}
-              </span>
-              <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
-                {formatNum(t.avg7d)}
-              </span>
-              <span>
-                {t.priceHistory.length > 1 ? (
-                  <ResponsiveContainer width="100%" height={28}>
-                    <AreaChart
-                      data={t.priceHistory.map((p) => ({
-                        t: p.timestamp,
-                        v: p.avg || p.min || 0,
-                      }))}
-                    >
-                      <Area
-                        type="monotone"
-                        dataKey="v"
-                        stroke="rgba(201,168,76,0.6)"
-                        fill="rgba(201,168,76,0.1)"
-                        strokeWidth={1.5}
-                        dot={false}
-                      />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <span style={{ color: "var(--text-muted)", fontSize: "0.6rem" }}>
-                    building...
-                  </span>
-                )}
-              </span>
+          {highDemand.length === 0 ? (
+            <div style={{
+              padding: "24px 16px",
+              color: "var(--text-muted)",
+              textAlign: "center",
+              fontSize: "0.8rem",
+            }}>
+              No items with sales data for this class yet.
             </div>
-          ))}
+          ) : (
+            highDemand.map((t) => (
+              <div key={t.archetype} className={styles.trendTableRow}>
+                <ItemIcon archetype={t.archetype} />
+                <span className={styles.trendItemName}>{t.label}</span>
+                <PriceCell value={t.currentAvg} />
+                <PriceCell value={t.currentLowest} />
+                <PriceCell value={t.avg14d} />
+                <span style={{
+                  textAlign: "right",
+                  fontWeight: 600,
+                  color: "var(--gold-500)",
+                }}>
+                  {formatNum(t.totalVolume)}
+                </span>
+                <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
+                  {formatNum(t.avg7d)}
+                </span>
+                <span>
+                  {t.priceHistory.length > 1 ? (
+                    <ResponsiveContainer width="100%" height={28}>
+                      <AreaChart
+                        data={t.priceHistory.map((p) => ({
+                          t: p.timestamp,
+                          v: p.avg || p.min || 0,
+                        }))}
+                      >
+                        <Area
+                          type="monotone"
+                          dataKey="v"
+                          stroke="rgba(201,168,76,0.6)"
+                          fill="rgba(201,168,76,0.1)"
+                          strokeWidth={1.5}
+                          dot={false}
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <span style={{ color: "var(--text-muted)", fontSize: "0.6rem" }}>
+                      building...
+                    </span>
+                  )}
+                </span>
+              </div>
+            ))
+          )}
         </div>
       </div>
 
@@ -173,6 +242,7 @@ export default function MarketDashboard({ trending, loading }: Props) {
         <p>
           High demand items ranked by number of sales detected. Market data is collected
           directly from the in-game marketplace every ~3 minutes across all 741 tradeable items.
+          {selectedClass && ` Showing items usable by ${selectedClass}.`}
         </p>
       </div>
     </div>

@@ -1,0 +1,1624 @@
+{
+  "AdventurerBoots": [
+    "All"
+  ],
+  "AdventurerCloak": [
+    "All"
+  ],
+  "AdventurerTunic": [
+    "All"
+  ],
+  "Ale": [
+    "All"
+  ],
+  "AquaglowLantern": [
+    "All"
+  ],
+  "ArcaneGarb": [
+    "Cleric",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "ArcaneGloves": [
+    "Cleric",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "ArcaneHood": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "Armet": [
+    "Fighter"
+  ],
+  "ArmingSword": [
+    "Bard",
+    "Fighter",
+    "Ranger"
+  ],
+  "AxeOfRighteousness": [
+    "Barbarian"
+  ],
+  "BadgerPendant": [
+    "All"
+  ],
+  "Bandage": [
+    "All"
+  ],
+  "BarbutaHelm": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "BardicPants": [
+    "Bard"
+  ],
+  "Bardiche": [
+    "Barbarian",
+    "Warlock"
+  ],
+  "BattleAxe": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "BearPendant": [
+    "All"
+  ],
+  "BladeOfRighteousness": [
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "BloodsapBlade": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue"
+  ],
+  "BloodwovenGloves": [
+    "Bard",
+    "Druid",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "BloodwovenRobe": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "Bolas": [
+    "Barbarian",
+    "Cleric"
+  ],
+  "BoneHelm": [
+    "Warlock"
+  ],
+  "Boneshaper": [
+    "Barbarian",
+    "Cleric",
+    "Druid"
+  ],
+  "BowOfRighteousness": [
+    "Ranger"
+  ],
+  "BraveHunterPants": [
+    "All"
+  ],
+  "BuckledBoots": [
+    "All"
+  ],
+  "Buckler": [
+    "Bard",
+    "Cleric",
+    "Fighter"
+  ],
+  "ButtonedBoots": [
+    "All"
+  ],
+  "ButtonedLeggings": [
+    "All"
+  ],
+  "Bycocket": [
+    "Ranger"
+  ],
+  "CampfireKit": [
+    "All"
+  ],
+  "CastillonDagger": [
+    "Bard",
+    "Druid",
+    "Fighter",
+    "Rogue"
+  ],
+  "CentaurMadness": [
+    "Ranger"
+  ],
+  "CeremonialHeaddress": [
+    "Cleric",
+    "Sorcerer"
+  ],
+  "CeremonialStaff": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "ChampionArmor": [
+    "Cleric",
+    "Warlock"
+  ],
+  "ChapelDeFer": [
+    "Cleric",
+    "Fighter"
+  ],
+  "Chaperon": [
+    "Cleric",
+    "Sorcerer"
+  ],
+  "CharmofFortune": [
+    "All"
+  ],
+  "ClarityPotion": [
+    "All"
+  ],
+  "CloakofDarkness": [
+    "All"
+  ],
+  "ClothPants": [
+    "All"
+  ],
+  "Club": [
+    "Barbarian",
+    "Cleric",
+    "Druid"
+  ],
+  "CobaltChapelDeFer": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CobaltFrock": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "CobaltHat": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "CobaltHeavyGauntlet": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CobaltHood": [
+    "Ranger",
+    "Rogue"
+  ],
+  "CobaltLeatherGloves": [
+    "All"
+  ],
+  "CobaltLightfootBoots": [
+    "All"
+  ],
+  "CobaltPlateBoots": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CobaltPlatePants": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CobaltRegalGambeson": [
+    "All"
+  ],
+  "CobaltTemplarArmor": [
+    "Cleric",
+    "Fighter",
+    "Warlock"
+  ],
+  "CobaltTrousers": [
+    "All"
+  ],
+  "CobaltVikingHelm": [
+    "Barbarian"
+  ],
+  "Coif": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "CopperlightAttire": [
+    "Bard",
+    "Ranger",
+    "Rogue"
+  ],
+  "CopperlightGauntlets": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CopperlightKettleHat": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CopperlightLeggings": [
+    "All"
+  ],
+  "CopperlightLightfootBoots": [
+    "All"
+  ],
+  "CopperlightOutfit": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "CopperlightPants": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "CopperlightPlateBoots": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CopperlightPlatePants": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CopperlightRivetedGloves": [
+    "All"
+  ],
+  "CopperlightSanctumPlateArmor": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CopperlightShadowHood": [
+    "Rogue",
+    "Warlock"
+  ],
+  "CopperlightStrawHat": [
+    "Barbarian",
+    "Bard",
+    "Druid",
+    "Ranger",
+    "Wizard"
+  ],
+  "CopperlightTunic": [
+    "All"
+  ],
+  "CourtlyDress": [
+    "Bard",
+    "Rogue",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "CowlofDarkness": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "Crossbow": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Wizard"
+  ],
+  "CrusaderArmor": [
+    "Cleric"
+  ],
+  "CrusaderHelm": [
+    "Cleric",
+    "Fighter"
+  ],
+  "CrystalBall": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "CrystalFrostRing": [
+    "All"
+  ],
+  "CrystalSword": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "CuffedBoots": [
+    "All"
+  ],
+  "Cutlass": [
+    "Bard",
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "CyclopsVisionCrystal": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "DaggerOfRighteousness": [
+    "Bard",
+    "Druid",
+    "Rogue",
+    "Wizard"
+  ],
+  "DarkCassock": [
+    "Cleric",
+    "Warlock"
+  ],
+  "DarkCuirass": [
+    "Fighter"
+  ],
+  "DarkLeatherLeggings": [
+    "All"
+  ],
+  "DarkMatterTunic": [
+    "All"
+  ],
+  "DarkPaddedHose": [
+    "All"
+  ],
+  "DarkPlateArmor": [
+    "Fighter"
+  ],
+  "DarkgroveHood": [
+    "Druid"
+  ],
+  "DarkgroveRobe": [
+    "Druid"
+  ],
+  "DarkleafBoots": [
+    "All"
+  ],
+  "DashingBoots": [
+    "All"
+  ],
+  "DeathstepBoots": [
+    "All"
+  ],
+  "DemonGripGloves": [
+    "All"
+  ],
+  "DemoncladLeggings": [
+    "All"
+  ],
+  "DemonsGlee": [
+    "Bard",
+    "Ranger",
+    "Rogue"
+  ],
+  "DivineAxe": [
+    "Barbarian"
+  ],
+  "DivineBlade": [
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "DivineBow": [
+    "Ranger"
+  ],
+  "DivineDagger": [
+    "Bard",
+    "Druid",
+    "Rogue",
+    "Wizard"
+  ],
+  "DivineRod": [
+    "Cleric",
+    "Druid",
+    "Fighter"
+  ],
+  "DivineShortSword": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue"
+  ],
+  "DivineStaff": [
+    "Barbarian",
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "DoubleAxe": [
+    "Barbarian"
+  ],
+  "Doublet": [
+    "Fighter",
+    "Ranger",
+    "Rogue"
+  ],
+  "DreadHood": [
+    "Ranger",
+    "Rogue",
+    "Warlock"
+  ],
+  "Drum": [
+    "All"
+  ],
+  "DryadMask": [
+    "Druid",
+    "Warlock"
+  ],
+  "ElkwoodCrown": [
+    "Druid"
+  ],
+  "ElkwoodGloves": [
+    "Druid",
+    "Ranger"
+  ],
+  "ExplosiveBottle": [
+    "All"
+  ],
+  "FairysRequiem": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "Falchion": [
+    "Bard",
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "FalchionofHonor": [
+    "Bard",
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "FangsofDeathNecklace": [
+    "All"
+  ],
+  "FeatheredHat": [
+    "Bard"
+  ],
+  "FellingAxe": [
+    "Barbarian"
+  ],
+  "FineCuirass": [
+    "Fighter"
+  ],
+  "FlangedMace": [
+    "Cleric",
+    "Druid",
+    "Fighter"
+  ],
+  "Flute": [
+    "All"
+  ],
+  "ForestBoots": [
+    "Druid",
+    "Ranger"
+  ],
+  "ForestHood": [
+    "Druid",
+    "Ranger"
+  ],
+  "FoulBoots": [
+    "All"
+  ],
+  "FoxPendant": [
+    "All"
+  ],
+  "FranciscaAxe": [
+    "Barbarian",
+    "Bard",
+    "Fighter"
+  ],
+  "Frock": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "FrostAmulet": [
+    "All"
+  ],
+  "FrostlightAbyssPlateArmor": [
+    "Cleric",
+    "Fighter"
+  ],
+  "FrostlightAketon": [
+    "All"
+  ],
+  "FrostlightCloak": [
+    "All"
+  ],
+  "FrostlightCrusaderHelm": [
+    "Cleric",
+    "Fighter"
+  ],
+  "FrostlightCrystalSword": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "FrostlightFeatheredHat": [
+    "Bard",
+    "Ranger"
+  ],
+  "FrostlightGauntlets": [
+    "Cleric",
+    "Fighter"
+  ],
+  "FrostlightHood": [
+    "Ranger",
+    "Rogue",
+    "Warlock"
+  ],
+  "FrostlightLanternShield": [
+    "Bard",
+    "Fighter"
+  ],
+  "FrostlightLeatherLeggings": [
+    "All"
+  ],
+  "FrostlightLightfootBoots": [
+    "All"
+  ],
+  "FrostlightMysticGloves": [
+    "Cleric",
+    "Warlock",
+    "Wizard"
+  ],
+  "FrostlightNormanNasalHelm": [
+    "Barbarian"
+  ],
+  "FrostlightOracleRobe": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "FrostlightPlateBoots": [
+    "Cleric",
+    "Fighter"
+  ],
+  "FrostlightPlatePants": [
+    "Cleric",
+    "Fighter"
+  ],
+  "FrostlightRivetedGloves": [
+    "All"
+  ],
+  "FrostlightRuggedBoots": [
+    "All"
+  ],
+  "FrostlightRunestoneGloves": [
+    "Barbarian",
+    "Druid",
+    "Ranger"
+  ],
+  "FrostlightSpear": [
+    "Druid",
+    "Fighter"
+  ],
+  "FrostlightTrousers": [
+    "All"
+  ],
+  "FrostlightWarMaul": [
+    "Barbarian",
+    "Cleric"
+  ],
+  "FrostlightWardenOutfit": [
+    "Druid",
+    "Ranger",
+    "Rogue",
+    "Warlock"
+  ],
+  "FrostlightWizardHat": [
+    "Druid",
+    "Warlock",
+    "Wizard"
+  ],
+  "GallantOutfit": [
+    "Bard",
+    "Fighter",
+    "Rogue",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "GhostdustPouch": [
+    "All"
+  ],
+  "Gjermundbu": [
+    "Barbarian"
+  ],
+  "GlovesOfUtility": [
+    "All"
+  ],
+  "GoldenArmet": [
+    "Fighter"
+  ],
+  "GoldenBoots": [
+    "All"
+  ],
+  "GoldenChausses": [
+    "All"
+  ],
+  "GoldenCloak": [
+    "All"
+  ],
+  "GoldenFellingAxe": [
+    "Barbarian"
+  ],
+  "GoldenGauntlets": [
+    "Cleric",
+    "Fighter"
+  ],
+  "GoldenGjermundbu": [
+    "Barbarian"
+  ],
+  "GoldenGloves": [
+    "All"
+  ],
+  "GoldenHounskull": [
+    "Cleric",
+    "Fighter"
+  ],
+  "GoldenLeafHood": [
+    "Bard",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "GoldenLeggings": [
+    "All"
+  ],
+  "GoldenPaddedTunic": [
+    "All"
+  ],
+  "GoldenPlate": [
+    "Cleric",
+    "Fighter"
+  ],
+  "GoldenPlateBoots": [
+    "Cleric",
+    "Fighter"
+  ],
+  "GoldenPlatePants": [
+    "Cleric",
+    "Fighter"
+  ],
+  "GoldenRobe": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "GoldenScarf": [
+    "Ranger",
+    "Rogue"
+  ],
+  "GoldenScriptureofSolaris": [
+    "All"
+  ],
+  "GoldenVikingSword": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "GrandBrigandine": [
+    "Barbarian",
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue",
+    "Warlock"
+  ],
+  "GravewolfGloves": [
+    "All"
+  ],
+  "GreatHelm": [
+    "Cleric",
+    "Fighter"
+  ],
+  "GrimSlayer": [
+    "Barbarian",
+    "Fighter",
+    "Warlock"
+  ],
+  "GrimsmileRing": [
+    "All"
+  ],
+  "Halberd": [
+    "Fighter",
+    "Warlock"
+  ],
+  "HandCannon": [
+    "Fighter",
+    "Ranger"
+  ],
+  "HandCrossbow": [
+    "Bard",
+    "Ranger",
+    "Rogue"
+  ],
+  "Hatchet": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "HazeBlade": [
+    "Bard",
+    "Druid",
+    "Rogue",
+    "Wizard"
+  ],
+  "HealingPotion": [
+    "All"
+  ],
+  "HeaterShield": [
+    "Cleric",
+    "Fighter",
+    "Warlock"
+  ],
+  "HeavyBoots": [
+    "All"
+  ],
+  "HeavyGambeson": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Warlock"
+  ],
+  "HeavyGauntlet": [
+    "Cleric",
+    "Fighter"
+  ],
+  "HeavyLeatherLeggings": [
+    "All"
+  ],
+  "Hemostatic": [
+    "All"
+  ],
+  "HolyRobe": [
+    "Cleric"
+  ],
+  "HorsemansAxe": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "Hounskull": [
+    "Cleric",
+    "Fighter"
+  ],
+  "HuntingTrap": [
+    "Ranger"
+  ],
+  "Icefang": [
+    "Bard",
+    "Druid",
+    "Fighter",
+    "Rogue"
+  ],
+  "InvisibilityPotion": [
+    "All"
+  ],
+  "JesterCap": [
+    "Bard",
+    "Rogue"
+  ],
+  "JesterOutfit": [
+    "Bard",
+    "Rogue"
+  ],
+  "JesterPants": [
+    "Bard",
+    "Rogue"
+  ],
+  "JesterPoulaines": [
+    "Bard",
+    "Rogue"
+  ],
+  "KettleHat": [
+    "Cleric",
+    "Fighter"
+  ],
+  "KrisDagger": [
+    "Rogue",
+    "Warlock"
+  ],
+  "LacedTurnshoe": [
+    "All"
+  ],
+  "Lantern": [
+    "All"
+  ],
+  "LanternShield": [
+    "Bard",
+    "Fighter"
+  ],
+  "LavishShirt": [
+    "Bard",
+    "Fighter",
+    "Rogue",
+    "Wizard"
+  ],
+  "LeatherBonnet": [
+    "Bard"
+  ],
+  "LeatherCap": [
+    "All"
+  ],
+  "LeatherChausses": [
+    "All"
+  ],
+  "LeatherGloves": [
+    "All"
+  ],
+  "LeatherLamellar": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "LeatherLeggings": [
+    "All"
+  ],
+  "LightAketon": [
+    "All"
+  ],
+  "LightBringer": [
+    "Cleric",
+    "Druid",
+    "Fighter"
+  ],
+  "LightCassock": [
+    "Cleric",
+    "Warlock",
+    "Wizard"
+  ],
+  "LightGauntlets": [
+    "Cleric",
+    "Fighter"
+  ],
+  "LightfootBoots": [
+    "All"
+  ],
+  "Longbow": [
+    "Ranger"
+  ],
+  "Longsword": [
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "LooseTrousers": [
+    "All"
+  ],
+  "LowBoots": [
+    "All"
+  ],
+  "Lute": [
+    "All"
+  ],
+  "Lyre": [
+    "All"
+  ],
+  "MagicProtectionPotion": [
+    "All"
+  ],
+  "ManaSphere": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "MarauderOutfit": [
+    "Rogue",
+    "Warlock"
+  ],
+  "MercurialCloak": [
+    "All"
+  ],
+  "Mitre": [
+    "Cleric"
+  ],
+  "MonkeyPendant": [
+    "All"
+  ],
+  "MorningStar": [
+    "Cleric",
+    "Druid"
+  ],
+  "MysticGloves": [
+    "Cleric",
+    "Warlock",
+    "Wizard"
+  ],
+  "MysticVestments": [
+    "Cleric",
+    "Druid",
+    "Warlock",
+    "Wizard"
+  ],
+  "NecklaceOfPeace": [
+    "All"
+  ],
+  "NormanNasalHelm": [
+    "Barbarian"
+  ],
+  "NorthernFullTunic": [
+    "Barbarian"
+  ],
+  "NorthernHalfTunic": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "OccultistBoots": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "OccultistHood": [
+    "Warlock"
+  ],
+  "OccultistPants": [
+    "Sorcerer",
+    "Warlock"
+  ],
+  "OccultistRobe": [
+    "Warlock"
+  ],
+  "OccultistTunic": [
+    "Sorcerer",
+    "Warlock"
+  ],
+  "OldShoes": [
+    "All"
+  ],
+  "OnyxGloves": [
+    "Barbarian",
+    "Fighter",
+    "Ranger",
+    "Rogue"
+  ],
+  "OpenSallet": [
+    "Bard",
+    "Cleric",
+    "Fighter",
+    "Ranger"
+  ],
+  "OracleRobe": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "OrnateJazerant": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue",
+    "Warlock"
+  ],
+  "OwlPendant": [
+    "All"
+  ],
+  "OxPendant": [
+    "All"
+  ],
+  "PaddedLeggings": [
+    "All"
+  ],
+  "PaddedTunic": [
+    "All"
+  ],
+  "PastoralTunic": [
+    "All"
+  ],
+  "Pavise": [
+    "Fighter",
+    "Ranger"
+  ],
+  "PhoenixChoker": [
+    "All"
+  ],
+  "Pickaxe": [
+    "All"
+  ],
+  "Pigache": [
+    "All"
+  ],
+  "PlateBoots": [
+    "Cleric",
+    "Fighter"
+  ],
+  "PlatePants": [
+    "Cleric",
+    "Fighter"
+  ],
+  "Plunderhosen": [
+    "Bard",
+    "Fighter",
+    "Rogue"
+  ],
+  "PoisonVial": [
+    "All"
+  ],
+  "PotionofWaterBreathing": [
+    "All"
+  ],
+  "Poupoint": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue",
+    "Sorcerer"
+  ],
+  "ProtectionPotion": [
+    "All"
+  ],
+  "ProwlerGloves": [
+    "Bard",
+    "Druid",
+    "Ranger",
+    "Rogue",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "Quarterstaff": [
+    "Barbarian",
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "RadiantCloak": [
+    "All"
+  ],
+  "RangerHood": [
+    "Ranger"
+  ],
+  "Rapier": [
+    "Bard",
+    "Ranger",
+    "Rogue"
+  ],
+  "RatPendant": [
+    "All"
+  ],
+  "RawhideGloves": [
+    "All"
+  ],
+  "RecurveBow": [
+    "Ranger"
+  ],
+  "RegalGambeson": [
+    "All"
+  ],
+  "RegalMitre": [
+    "Cleric"
+  ],
+  "ReinforcedGloves": [
+    "All"
+  ],
+  "RingOfCourage": [
+    "All"
+  ],
+  "RingOfFinesse": [
+    "All"
+  ],
+  "RingOfQuickness": [
+    "All"
+  ],
+  "RingOfResolve": [
+    "All"
+  ],
+  "RingOfSurvival": [
+    "All"
+  ],
+  "RingOfVitality": [
+    "All"
+  ],
+  "RingOfWisdom": [
+    "All"
+  ],
+  "RitualRobe": [
+    "Druid"
+  ],
+  "RivetedGloves": [
+    "All"
+  ],
+  "RobeofDarkness": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "RodOfRighteousness": [
+    "Cleric",
+    "Druid",
+    "Fighter"
+  ],
+  "RogueCowl": [
+    "Rogue"
+  ],
+  "RondelDagger": [
+    "Bard",
+    "Druid",
+    "Rogue",
+    "Wizard"
+  ],
+  "RoundShield": [
+    "Barbarian",
+    "Cleric",
+    "Fighter"
+  ],
+  "RubysilverHalberd": [
+    "Fighter",
+    "Warlock"
+  ],
+  "RuggedBoots": [
+    "All"
+  ],
+  "RunestoneGloves": [
+    "Barbarian",
+    "Druid",
+    "Ranger"
+  ],
+  "RusticTunic": [
+    "All"
+  ],
+  "Sallet": [
+    "Cleric",
+    "Fighter"
+  ],
+  "ScaledArmor": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "ShadowHood": [
+    "Rogue",
+    "Warlock"
+  ],
+  "ShadowMask": [
+    "Rogue",
+    "Warlock"
+  ],
+  "ShoesofDarkness": [
+    "All"
+  ],
+  "ShortSword": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue"
+  ],
+  "ShortSwordOfRighteousness": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue"
+  ],
+  "SleekHidePants": [
+    "All"
+  ],
+  "Sling": [
+    "Cleric",
+    "Druid"
+  ],
+  "SoulTorq": [
+    "All"
+  ],
+  "SovereignsGhostblade": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "Spangenhelm": [
+    "Cleric",
+    "Fighter",
+    "Ranger"
+  ],
+  "Spear": [
+    "Druid",
+    "Fighter"
+  ],
+  "SpearofRot": [
+    "Druid",
+    "Fighter"
+  ],
+  "SpectralBlade": [
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "SpectralCloak": [
+    "All"
+  ],
+  "Spellbook": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "SpellplunderRod": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "SpikedGauntlet": [
+    "Cleric",
+    "Fighter"
+  ],
+  "SplendidCloak": [
+    "All"
+  ],
+  "StaffOfRighteousness": [
+    "Barbarian",
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "StaffofGluttony": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "StefanBeret": [
+    "Bard",
+    "Rogue"
+  ],
+  "SterlingAxe": [
+    "Barbarian"
+  ],
+  "SterlingBlade": [
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "SterlingBow": [
+    "Ranger"
+  ],
+  "SterlingDagger": [
+    "Bard",
+    "Druid",
+    "Rogue",
+    "Wizard"
+  ],
+  "SterlingRod": [
+    "Cleric",
+    "Druid",
+    "Fighter"
+  ],
+  "SterlingShortSword": [
+    "Bard",
+    "Fighter",
+    "Ranger",
+    "Rogue"
+  ],
+  "SterlingStaff": [
+    "Barbarian",
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "StilettoDagger": [
+    "Rogue"
+  ],
+  "StillmendBoots": [
+    "All"
+  ],
+  "StitchedTurnshoe": [
+    "All"
+  ],
+  "StrawHat": [
+    "Bard",
+    "Druid"
+  ],
+  "StuddedLeather": [
+    "Barbarian"
+  ],
+  "StuddedWyvernLeather": [
+    "Barbarian"
+  ],
+  "SturdyBoots": [
+    "All"
+  ],
+  "SunburstOrb": [
+    "All"
+  ],
+  "SurgicalKit": [
+    "All"
+  ],
+  "SurvivalBow": [
+    "Bard",
+    "Ranger"
+  ],
+  "TanglethreadTrousers": [
+    "All"
+  ],
+  "TatteredChoker": [
+    "All"
+  ],
+  "TatteredCloak": [
+    "All"
+  ],
+  "TemplarArmor": [
+    "Cleric",
+    "Fighter"
+  ],
+  "ThornShield": [
+    "Bard",
+    "Cleric",
+    "Fighter"
+  ],
+  "ThrowingKnife": [
+    "Bard",
+    "Rogue",
+    "Wizard"
+  ],
+  "TidalArcaneGloves": [
+    "Cleric",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "TidalButtonedBoots": [
+    "All"
+  ],
+  "TidalCloak": [
+    "All"
+  ],
+  "TidalCoif": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "TidalCrystalBall": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "TidalElkwoodCrown": [
+    "Druid"
+  ],
+  "TidalElkwoodGloves": [
+    "Druid",
+    "Ranger"
+  ],
+  "TidalFalchion": [
+    "Bard",
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "TidalJesterCap": [
+    "Bard",
+    "Rogue"
+  ],
+  "TidalKrisDagger": [
+    "Rogue",
+    "Warlock"
+  ],
+  "TidalLightGauntlets": [
+    "Cleric",
+    "Fighter"
+  ],
+  "TidalOccultistBoots": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "TidalPlateBoots": [
+    "Cleric",
+    "Fighter"
+  ],
+  "TidalPlatePants": [
+    "Cleric",
+    "Fighter"
+  ],
+  "TidalProwlerGloves": [
+    "Bard",
+    "Druid",
+    "Ranger",
+    "Rogue",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "TidalRegalGambeson": [
+    "All"
+  ],
+  "TidalScaledArmor": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "TidalSleekHidePants": [
+    "All"
+  ],
+  "TidalSpangenhelm": [
+    "Cleric",
+    "Fighter",
+    "Ranger"
+  ],
+  "TidalSturdyBoots": [
+    "All"
+  ],
+  "TidalTimewornRobe": [
+    "Cleric",
+    "Druid",
+    "Warlock",
+    "Wizard"
+  ],
+  "TidalTrunkHose": [
+    "All"
+  ],
+  "TidalVisoredSallet": [
+    "Barbarian"
+  ],
+  "TidalWandererAttire": [
+    "Bard",
+    "Ranger",
+    "Rogue"
+  ],
+  "TimewornRobe": [
+    "Cleric",
+    "Warlock"
+  ],
+  "TomeofSheol": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "Topfhelm": [
+    "Cleric",
+    "Fighter"
+  ],
+  "Torch": [
+    "All"
+  ],
+  "TrapperHat": [
+    "Barbarian",
+    "Ranger"
+  ],
+  "TriPeltDoublet": [
+    "All"
+  ],
+  "TriPeltNorthernFullTunic": [
+    "Barbarian"
+  ],
+  "TrollBane": [
+    "Barbarian",
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "TrollBlood": [
+    "All"
+  ],
+  "TroubadourOutfit": [
+    "Bard"
+  ],
+  "TrunkHose": [
+    "All"
+  ],
+  "Turnshoe": [
+    "All"
+  ],
+  "ValiantAttire": [
+    "Bard",
+    "Fighter",
+    "Rogue",
+    "Wizard"
+  ],
+  "VigilantCloak": [
+    "All"
+  ],
+  "VikingHelm": [
+    "Barbarian"
+  ],
+  "VikingSword": [
+    "Barbarian",
+    "Fighter"
+  ],
+  "VisoredBarbutaHelm": [
+    "Fighter"
+  ],
+  "VisoredSallet": [
+    "Barbarian"
+  ],
+  "VoidBlade": [
+    "Fighter",
+    "Sorcerer",
+    "Warlock"
+  ],
+  "WandererAttire": [
+    "Bard",
+    "Ranger",
+    "Rogue"
+  ],
+  "WanderlightLantern": [
+    "All"
+  ],
+  "WarHammer": [
+    "Cleric",
+    "Druid",
+    "Fighter"
+  ],
+  "WarMaul": [
+    "Barbarian",
+    "Cleric"
+  ],
+  "WardenOutfit": [
+    "Ranger",
+    "Warlock"
+  ],
+  "WatchmanCloak": [
+    "All"
+  ],
+  "WindLocket": [
+    "All"
+  ],
+  "WindlassCrossbow": [
+    "Ranger"
+  ],
+  "WizardHat": [
+    "Warlock",
+    "Wizard"
+  ],
+  "WizardShoes": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "WizardStaff": [
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "WolfHunterLeggings": [
+    "All"
+  ],
+  "WoolenCap": [
+    "All"
+  ],
+  "Zweihander": [
+    "Barbarian",
+    "Fighter",
+    "Warlock"
+  ]
+}

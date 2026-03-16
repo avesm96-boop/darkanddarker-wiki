@@ -15,6 +15,11 @@ function formatGold(n: number): string {
   return Math.round(n).toLocaleString();
 }
 
+function formatNum(n: number): string {
+  if (!n || isNaN(n)) return "—";
+  return n.toLocaleString();
+}
+
 function GoldIcon() {
   return (
     <img
@@ -57,89 +62,6 @@ function PriceCell({ value }: { value: number }) {
   );
 }
 
-function TrendTable({
-  title,
-  items,
-}: {
-  title: string;
-  items: TrendingItem[];
-}) {
-  if (items.length === 0) return null;
-
-  return (
-    <div>
-      <div className={styles.sectionHeader}>
-        <span className={styles.sectionTitle}>{title}</span>
-      </div>
-      {/* 8-column grid: icon | name | avg | lowest | highest | listings | sold | trend */}
-      <div className={styles.trendTableHeader}>
-        <span></span>
-        <span>Item</span>
-        <span style={{ textAlign: "right" }}>
-          <span title="Average price per unit across active listings">Avg Price</span>
-        </span>
-        <span style={{ textAlign: "right" }}>
-          <span title="Cheapest active listing (price per unit)">Lowest</span>
-        </span>
-        <span style={{ textAlign: "right" }}>
-          <span title="Most expensive active listing (price per unit)">Highest</span>
-        </span>
-        <span style={{ textAlign: "right" }}>
-          <span title="Number of active marketplace listings">Listings</span>
-        </span>
-        <span style={{ textAlign: "right" }}>
-          <span title="Number of items sold (disappeared between polls)">Sold</span>
-        </span>
-        <span style={{ textAlign: "right" }}>
-          <span title="Price trend over recent polls">Trend</span>
-        </span>
-      </div>
-      <div>
-        {items.map((t) => (
-          <div key={t.archetype} className={styles.trendTableRow}>
-            <ItemIcon archetype={t.archetype} />
-            <span className={styles.trendItemName}>{t.label}</span>
-            <PriceCell value={t.currentAvg} />
-            <PriceCell value={t.currentLowest} />
-            <PriceCell value={t.avg14d} />
-            <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
-              {t.avg7d.toLocaleString()}
-            </span>
-            <span style={{ textAlign: "right", color: t.totalVolume > 0 ? "var(--gold-500)" : "var(--text-muted)" }}>
-              {t.totalVolume.toLocaleString()}
-            </span>
-            <span>
-              {t.priceHistory.length > 1 ? (
-                <ResponsiveContainer width="100%" height={28}>
-                  <AreaChart
-                    data={t.priceHistory.map((p) => ({
-                      t: p.timestamp,
-                      v: p.avg || p.min || 0,
-                    }))}
-                  >
-                    <Area
-                      type="monotone"
-                      dataKey="v"
-                      stroke="rgba(201,168,76,0.6)"
-                      fill="rgba(201,168,76,0.1)"
-                      strokeWidth={1.5}
-                      dot={false}
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              ) : (
-                <span style={{ color: "var(--text-muted)", fontSize: "0.6rem" }}>
-                  building...
-                </span>
-              )}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function MarketDashboard({ trending, loading }: Props) {
   if (loading) {
     return (
@@ -156,26 +78,88 @@ export default function MarketDashboard({ trending, loading }: Props) {
     );
   }
 
-  const mostListed = [...trending]
-    .filter((t) => t.avg7d > 0)
-    .sort((a, b) => b.avg7d - a.avg7d)
-    .slice(0, 10);
-
-  const mostSold = [...trending]
+  // High Demand = most sold items (highest trading volume)
+  const highDemand = [...trending]
     .filter((t) => t.totalVolume > 0)
     .sort((a, b) => b.totalVolume - a.totalVolume)
     .slice(0, 10);
 
-  const mostValuable = [...trending]
-    .filter((t) => t.currentAvg > 0)
-    .sort((a, b) => b.currentAvg - a.currentAvg)
-    .slice(0, 10);
-
   return (
     <div className={styles.dashboard}>
-      <TrendTable title="Most Listed" items={mostListed} />
-      {mostSold.length > 0 && <TrendTable title="Most Sold" items={mostSold} />}
-      <TrendTable title="Most Valuable" items={mostValuable} />
+      <div>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionTitle}>High Demand Products</span>
+        </div>
+        {/* 8-column grid: icon | name | avg | lowest | highest | sold | listings | trend */}
+        <div className={styles.trendTableHeader}>
+          <span></span>
+          <span>Item</span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Average price per unit across active listings">Avg Price</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Cheapest active listing (price per unit)">Lowest</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Most expensive active listing (price per unit)">Highest</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Number of items sold (detected between polling cycles)">Sold</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Number of active marketplace listings">Active</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Price trend over recent polls">Trend</span>
+          </span>
+        </div>
+        <div>
+          {highDemand.map((t) => (
+            <div key={t.archetype} className={styles.trendTableRow}>
+              <ItemIcon archetype={t.archetype} />
+              <span className={styles.trendItemName}>{t.label}</span>
+              <PriceCell value={t.currentAvg} />
+              <PriceCell value={t.currentLowest} />
+              <PriceCell value={t.avg14d} />
+              <span style={{
+                textAlign: "right",
+                fontWeight: 600,
+                color: "var(--gold-500)",
+              }}>
+                {formatNum(t.totalVolume)}
+              </span>
+              <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
+                {formatNum(t.avg7d)}
+              </span>
+              <span>
+                {t.priceHistory.length > 1 ? (
+                  <ResponsiveContainer width="100%" height={28}>
+                    <AreaChart
+                      data={t.priceHistory.map((p) => ({
+                        t: p.timestamp,
+                        v: p.avg || p.min || 0,
+                      }))}
+                    >
+                      <Area
+                        type="monotone"
+                        dataKey="v"
+                        stroke="rgba(201,168,76,0.6)"
+                        fill="rgba(201,168,76,0.1)"
+                        strokeWidth={1.5}
+                        dot={false}
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <span style={{ color: "var(--text-muted)", fontSize: "0.6rem" }}>
+                    building...
+                  </span>
+                )}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div style={{
         fontSize: "0.6875rem",
@@ -187,8 +171,8 @@ export default function MarketDashboard({ trending, loading }: Props) {
         maxWidth: 800,
       }}>
         <p>
-          Market data is collected directly from the in-game marketplace every ~6 minutes.
-          All 741 tradeable items are scanned with full pagination. Prices shown are per unit.
+          High demand items ranked by number of sales detected. Market data is collected
+          directly from the in-game marketplace every ~3 minutes across all 741 tradeable items.
         </p>
       </div>
     </div>

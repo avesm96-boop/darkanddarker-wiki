@@ -327,7 +327,7 @@ export async function fetchTrending(
 
       return {
         archetype,
-        label: item.name,
+        label: item.name.replace(/([A-Z])/g, " $1").trim(),
         avg14d: Math.round(item.max_price),   // Used as "Highest" column
         avg7d: item.active_count,              // Used as "Listings" count
         avg24h: item.avg_price,

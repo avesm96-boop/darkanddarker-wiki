@@ -186,7 +186,9 @@
   font-weight: 600;
   color: var(--gold-300);
   letter-spacing: 0.03em;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   min-width: 0;
 }
 
@@ -222,7 +224,7 @@
 
 .trendTableHeader {
   display: grid;
-  grid-template-columns: 32px 3fr 1fr 1fr 1fr 80px 100px;
+  grid-template-columns: 32px minmax(160px, 3fr) 100px 100px 100px 70px 90px;
   gap: 8px;
   padding: 10px 16px;
   background: rgba(201, 168, 76, 0.04);
@@ -243,7 +245,7 @@
 
 .trendTableRow {
   display: grid;
-  grid-template-columns: 32px 3fr 1fr 1fr 1fr 80px 100px;
+  grid-template-columns: 32px minmax(160px, 3fr) 100px 100px 100px 70px 90px;
   gap: 8px;
   padding: 10px 16px;
   border-bottom: 1px solid rgba(201, 168, 76, 0.05);

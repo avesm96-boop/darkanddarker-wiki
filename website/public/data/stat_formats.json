@@ -1,0 +1,327 @@
+{
+  "Id_ItemPropertyType_Effect_ActionSpeed": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.ActionSpeed"
+  },
+  "Id_ItemPropertyType_Effect_Agility": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Agility"
+  },
+  "Id_ItemPropertyType_Effect_ArmorPenetration": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.ArmorPenetration"
+  },
+  "Id_ItemPropertyType_Effect_ArmorRating": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.ArmorRating"
+  },
+  "Id_ItemPropertyType_Effect_ArmorRatingAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.ArmorRatingAdd"
+  },
+  "Id_ItemPropertyType_Effect_BuffDurationBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.BuffDurationBonus"
+  },
+  "Id_ItemPropertyType_Effect_CooldownReductionBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.CooldownReductionBonus"
+  },
+  "Id_ItemPropertyType_Effect_DebuffDurationBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.DebuffDurationBonus"
+  },
+  "Id_ItemPropertyType_Effect_DemonDamageMod": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.DemonDamageMod"
+  },
+  "Id_ItemPropertyType_Effect_DemonReductionMod": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.DemonReductionMod"
+  },
+  "Id_ItemPropertyType_Effect_Dexterity": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Dexterity"
+  },
+  "Id_ItemPropertyType_Effect_HeadshotDamageMod": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.HeadshotDamageMod"
+  },
+  "Id_ItemPropertyType_Effect_HeadshotReductionMod": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.HeadshotReductionMod"
+  },
+  "Id_ItemPropertyType_Effect_ItemEquipSpeed": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.ItemEquipSpeed"
+  },
+  "Id_ItemPropertyType_Effect_Knowledge": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Knowledge"
+  },
+  "Id_ItemPropertyType_Effect_Luck": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.Luck"
+  },
+  "Id_ItemPropertyType_Effect_MagicPenetration": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.MagicPenetration"
+  },
+  "Id_ItemPropertyType_Effect_MagicRegistance": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MagicRegistance"
+  },
+  "Id_ItemPropertyType_Effect_MagicalDamage": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MagicalDamage"
+  },
+  "Id_ItemPropertyType_Effect_MagicalDamageAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MagicalDamageAdd"
+  },
+  "Id_ItemPropertyType_Effect_MagicalDamageBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.MagicalDamageBonus"
+  },
+  "Id_ItemPropertyType_Effect_MagicalDamageReduction": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.MagicalDamageReduction"
+  },
+  "Id_ItemPropertyType_Effect_MagicalDamageTrue": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MagicalDamageTrue"
+  },
+  "Id_ItemPropertyType_Effect_MagicalHealing": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MagicalHealing"
+  },
+  "Id_ItemPropertyType_Effect_MagicalInteractionSpeed": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.MagicalInteractionSpeed"
+  },
+  "Id_ItemPropertyType_Effect_MagicalPower": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MagicalPower"
+  },
+  "Id_ItemPropertyType_Effect_MagicalWeaponDamage": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MagicalWeaponDamage"
+  },
+  "Id_ItemPropertyType_Effect_ManualDexterity": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.ManualDexterity"
+  },
+  "Id_ItemPropertyType_Effect_MaxHealthAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MaxHealthAdd"
+  },
+  "Id_ItemPropertyType_Effect_MaxHealthBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.MaxHealthBonus"
+  },
+  "Id_ItemPropertyType_Effect_MemoryCapacityAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MemoryCapacityAdd"
+  },
+  "Id_ItemPropertyType_Effect_MemoryCapacityBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.MemoryCapacityBonus"
+  },
+  "Id_ItemPropertyType_Effect_MoveSpeed": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MoveSpeed"
+  },
+  "Id_ItemPropertyType_Effect_MoveSpeedAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.MoveSpeedAdd"
+  },
+  "Id_ItemPropertyType_Effect_MoveSpeedBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.MoveSpeedBonus"
+  },
+  "Id_ItemPropertyType_Effect_Persuasiveness": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Persuasiveness"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalDamageAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.PhysicalDamageAdd"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalDamageBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.PhysicalDamageBonus"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalDamageReduction": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.PhysicalDamageReduction"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalDamageTrue": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.PhysicalDamageTrue"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalHealing": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.PhysicalHealing"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalPower": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.PhysicalPower"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalWeaponDamage": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.PhysicalWeaponDamage"
+  },
+  "Id_ItemPropertyType_Effect_PhysicalWeaponDamageAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.PhysicalWeaponDamageAdd"
+  },
+  "Id_ItemPropertyType_Effect_Primitive": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Primitive"
+  },
+  "Id_ItemPropertyType_Effect_ProjectileReductionMod": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.ProjectileReductionMod"
+  },
+  "Id_ItemPropertyType_Effect_RegularInteractionSpeed": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.RegularInteractionSpeed"
+  },
+  "Id_ItemPropertyType_Effect_Resourcefulness": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Resourcefulness"
+  },
+  "Id_ItemPropertyType_Effect_SpellCastingSpeed": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.SpellCastingSpeed"
+  },
+  "Id_ItemPropertyType_Effect_Strength": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Strength"
+  },
+  "Id_ItemPropertyType_Effect_UndeadDamageMod": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.UndeadDamageMod"
+  },
+  "Id_ItemPropertyType_Effect_UndeadReductionMod": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.UndeadReductionMod"
+  },
+  "Id_ItemPropertyType_Effect_UtilityEffectivenessAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.UtilityEffectivenessAdd"
+  },
+  "Id_ItemPropertyType_Effect_UtilityEffectivenessBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.UtilityEffectivenessBonus"
+  },
+  "Id_ItemPropertyType_Effect_Vigor": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Vigor"
+  },
+  "Id_ItemPropertyType_Effect_WeightLimitAdd": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.WeightLimitAdd"
+  },
+  "Id_ItemPropertyType_Effect_WeightLimitBonus": {
+    "valueRatio": 0.001,
+    "displayType": "percent",
+    "tagName": "Type.Item.Property.Effect.WeightLimitBonus"
+  },
+  "Id_ItemPropertyType_Effect_Will": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Effect.Will"
+  },
+  "Id_ItemPropertyType_Perk_All": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Perk.All"
+  },
+  "Id_ItemPropertyType_Perk_Robust": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Perk.Robust"
+  },
+  "Id_ItemPropertyType_Skill_All": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Skill.All"
+  },
+  "Id_ItemPropertyType_Skill_Sprint": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Skill.Sprint"
+  },
+  "Id_ItemPropertyType_Spell_All": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Spell.All"
+  },
+  "Id_ItemPropertyType_Spell_Fireball": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Spell.Fireball"
+  },
+  "Id_ItemPropertyType_Unidentified": {
+    "valueRatio": 1.0,
+    "displayType": "integer",
+    "tagName": "Type.Item.Property.Unidentified"
+  }
+}

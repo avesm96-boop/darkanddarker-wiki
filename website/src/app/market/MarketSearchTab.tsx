@@ -4,15 +4,9 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./market.module.css";
 import { searchItems, fetchRawListings, GOLD_ICON, itemIconPath, type ItemDef, type RawListing } from "./api";
 import ItemTooltip from "./ItemTooltip";
+import { cleanStatName, formatStatValue } from "./statFormat";
 
 const BASE_RARITIES = ["Poor", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique", "Artifact"];
-
-function cleanPropName(raw: string): string {
-  return raw
-    .replace("Id_ItemPropertyType_Effect_", "")
-    .replace(/([A-Z])/g, " $1")
-    .trim();
-}
 
 function timeAgo(epoch: number): string {
   const sec = Math.floor(Date.now() / 1000 - epoch);
@@ -163,7 +157,7 @@ export default function MarketSearchTab() {
 
   const addPropFilter = (propName: string) => {
     if (propFilters.some((f) => f.name === propName)) return;
-    setPropFilters([...propFilters, { name: propName, label: cleanPropName(propName), min: 1 }]);
+    setPropFilters([...propFilters, { name: propName, label: cleanStatName(propName), min: 1 }]);
   };
 
   const removePropFilter = (propName: string) => {
@@ -263,7 +257,7 @@ export default function MarketSearchTab() {
               {availableProps
                 .filter((p) => !propFilters.some((f) => f.name === p))
                 .map((p) => (
-                  <option key={p} value={p}>{cleanPropName(p)}</option>
+                  <option key={p} value={p}>{cleanStatName(p)}</option>
                 ))}
             </select>
           </div>
@@ -340,7 +334,7 @@ export default function MarketSearchTab() {
                           .filter((p) => !p.is_primary)
                           .map((p, i) => (
                             <span key={i} className={styles.msStat}>
-                              {cleanPropName(p.property_type)}: {p.property_value}
+                              {cleanStatName(p.property_type)}: {formatStatValue(p.property_type, p.property_value)}
                             </span>
                           ))}
                         {l.properties.filter((p) => !p.is_primary).length === 0 && "—"}
@@ -393,7 +387,7 @@ export default function MarketSearchTab() {
                           .filter((p) => !p.is_primary)
                           .map((p, i) => (
                             <span key={i} className={styles.msStat}>
-                              {cleanPropName(p.property_type)}: {p.property_value}
+                              {cleanStatName(p.property_type)}: {formatStatValue(p.property_type, p.property_value)}
                             </span>
                           ))}
                         {l.properties.filter((p) => !p.is_primary).length === 0 && "—"}

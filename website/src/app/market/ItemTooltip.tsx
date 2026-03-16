@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./itemTooltip.module.css";
+import { cleanStatName, formatStatValue } from "./statFormat";
 
 interface Property {
   property_type: string;
@@ -25,13 +26,6 @@ const RARITY_CLASS: Record<string, string> = {
   Artifact: styles.rarityArtifact,
 };
 
-function cleanStatName(raw: string): string {
-  return raw
-    .replace("Id_ItemPropertyType_Effect_", "")
-    .replace(/([A-Z])/g, " $1")
-    .trim();
-}
-
 export default function ItemTooltip({ itemName, rarity, properties }: Props) {
   const primary = properties.filter((p) => p.is_primary);
   const secondary = properties.filter((p) => !p.is_primary);
@@ -47,7 +41,7 @@ export default function ItemTooltip({ itemName, rarity, properties }: Props) {
           <div key={i} className={styles.statRow}>
             <span className={styles.dash}>-</span>
             <span className={styles.primaryStat}>
-              {cleanStatName(p.property_type)} {p.property_value}
+              {cleanStatName(p.property_type)} {formatStatValue(p.property_type, p.property_value)}
             </span>
             <span className={styles.dash}>-</span>
           </div>
@@ -56,7 +50,7 @@ export default function ItemTooltip({ itemName, rarity, properties }: Props) {
           <div key={i} className={styles.statRow}>
             <span className={`${styles.dash} ${styles.secondaryDash}`}>-</span>
             <span className={styles.secondaryStat}>
-              +{p.property_value} {cleanStatName(p.property_type)}
+              +{formatStatValue(p.property_type, p.property_value)} {cleanStatName(p.property_type)}
             </span>
             <span className={`${styles.dash} ${styles.secondaryDash}`}>-</span>
           </div>

@@ -71,7 +71,7 @@ function TrendTable({
       <div className={styles.sectionHeader}>
         <span className={styles.sectionTitle}>{title}</span>
       </div>
-      {/* 7-column grid: icon | name | avg | lowest | highest | listings | trend */}
+      {/* 8-column grid: icon | name | avg | lowest | highest | listings | sold | trend */}
       <div className={styles.trendTableHeader}>
         <span></span>
         <span>Item</span>
@@ -88,6 +88,9 @@ function TrendTable({
           <span title="Number of active marketplace listings">Listings</span>
         </span>
         <span style={{ textAlign: "right" }}>
+          <span title="Number of items sold (disappeared between polls)">Sold</span>
+        </span>
+        <span style={{ textAlign: "right" }}>
           <span title="Price trend over recent polls">Trend</span>
         </span>
       </div>
@@ -101,6 +104,9 @@ function TrendTable({
             <PriceCell value={t.avg14d} />
             <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
               {t.avg7d.toLocaleString()}
+            </span>
+            <span style={{ textAlign: "right", color: t.totalVolume > 0 ? "var(--gold-500)" : "var(--text-muted)" }}>
+              {t.totalVolume.toLocaleString()}
             </span>
             <span>
               {t.priceHistory.length > 1 ? (

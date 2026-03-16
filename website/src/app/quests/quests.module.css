@@ -582,9 +582,9 @@
 
 .objBadgeFetch {
   composes: objBadgeBase;
-  background: rgba(85, 136, 221, 0.12);
-  border: 1px solid rgba(85, 136, 221, 0.25);
-  color: #5588dd;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: #c9a84c;
 }
 
 .objBadgeExplore {

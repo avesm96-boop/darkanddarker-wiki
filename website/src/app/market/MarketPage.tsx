@@ -46,7 +46,16 @@ export default function MarketPage() {
 
   useEffect(() => {
     const cleanup = loadData();
-    return cleanup;
+
+    // Auto-refresh every 30 seconds for near-real-time prices
+    const interval = setInterval(() => {
+      loadData();
+    }, 30_000);
+
+    return () => {
+      cleanup();
+      clearInterval(interval);
+    };
   }, [loadData]);
 
   const formatNum = (n: number): string => n.toLocaleString();

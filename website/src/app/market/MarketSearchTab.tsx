@@ -270,8 +270,8 @@ export default function MarketSearchTab() {
                   <YAxis tick={{ fontSize: 10, fill: "#888" }} />
                   <Tooltip
                     contentStyle={{ background: "#1a1816", border: "1px solid rgba(201,168,76,0.3)", fontSize: "0.75rem" }}
-                    labelFormatter={formatShortDate}
-                    formatter={(value: number) => [formatGold(value) + "g", ""]}
+                    labelFormatter={(label) => formatShortDate(String(label))}
+                    formatter={(value) => [formatGold(Number(value)) + "g", ""]}
                   />
                   <Area type="monotone" dataKey="avg" stroke="rgba(201,168,76,0.8)" fill="rgba(201,168,76,0.15)" strokeWidth={2} name="Avg Price" />
                   <Area type="monotone" dataKey="min" stroke="rgba(76,201,100,0.5)" fill="none" strokeWidth={1} strokeDasharray="3 3" name="Min" />
@@ -294,7 +294,7 @@ export default function MarketSearchTab() {
                   <YAxis tick={{ fontSize: 10, fill: "#888" }} />
                   <Tooltip
                     contentStyle={{ background: "#1a1816", border: "1px solid rgba(201,168,76,0.3)", fontSize: "0.75rem" }}
-                    labelFormatter={formatShortDate}
+                    labelFormatter={(label) => formatShortDate(String(label))}
                   />
                   <Bar dataKey="volume" fill="rgba(201,168,76,0.4)" name="Active Listings" />
                 </BarChart>

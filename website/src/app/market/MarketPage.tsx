@@ -17,8 +17,7 @@ function useDataAge() {
       fetch(`${OUR_API}/stats`)
         .then((r) => r.json())
         .then((d) => {
-          const lp = d?.last_poll;
-          if (lp?.started_at) setLastSeen(lp.started_at);
+          if (d?.last_data_at) setLastSeen(d.last_data_at);
         })
         .catch(() => {});
     };

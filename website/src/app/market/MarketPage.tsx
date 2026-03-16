@@ -10,13 +10,14 @@ import {
 } from "./api";
 import MarketDashboard from "./MarketDashboard";
 import MarketRMT from "./MarketRMT";
+import MarketSearchTab from "./MarketSearchTab";
 
 export default function MarketPage() {
   const [population, setPopulation] = useState<PopulationData | null>(null);
   const [trending, setTrending] = useState<TrendingItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"trends" | "rmt">("trends");
+  const [activeTab, setActiveTab] = useState<"trends" | "search" | "rmt">("trends");
 
   const loadData = useCallback(() => {
     const ac = new AbortController();
@@ -157,6 +158,12 @@ export default function MarketPage() {
             Trends
           </button>
           <button
+            className={activeTab === "search" ? styles.tabBtnActive : styles.tabBtn}
+            onClick={() => setActiveTab("search")}
+          >
+            Search
+          </button>
+          <button
             className={activeTab === "rmt" ? styles.tabBtnActive : styles.tabBtn}
             onClick={() => setActiveTab("rmt")}
           >
@@ -171,6 +178,8 @@ export default function MarketPage() {
             loading={loading}
           />
         )}
+
+        {activeTab === "search" && <MarketSearchTab />}
 
         {activeTab === "rmt" && <MarketRMT />}
       </div>

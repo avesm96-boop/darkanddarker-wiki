@@ -204,6 +204,47 @@ export async function fetchMarketListings(
   return data.listings.map(adaptListing);
 }
 
+export interface RawListing {
+  listing_id: number;
+  item_base_name: string;
+  item_marketplace_id: string;
+  item_count: number;
+  rarity: number;
+  rarity_name: string;
+  base_rarity: string;
+  price: number;
+  price_per_unit: number;
+  seller_name: string;
+  seller_info: string;
+  first_seen_at: number;
+  sold_at: number | null;
+  status: string;
+  properties: Array<{
+    property_type: string;
+    property_value: number;
+    is_primary: number;
+  }>;
+}
+
+export async function fetchRawListings(
+  item: string,
+  opts: {
+    base_rarity?: string;
+    status?: string;
+    limit?: number;
+    sort?: string;
+  } = {},
+  signal?: AbortSignal,
+): Promise<RawListing[]> {
+  let path = `/listings?item=${encodeURIComponent(item)}`;
+  if (opts.base_rarity) path += `&base_rarity=${encodeURIComponent(opts.base_rarity)}`;
+  if (opts.status) path += `&status=${opts.status}`;
+  if (opts.limit) path += `&limit=${opts.limit}`;
+  if (opts.sort) path += `&sort=${opts.sort}`;
+  const data = await ourGet<{ listings: RawListing[]; count: number }>(path, signal);
+  return data.listings;
+}
+
 // ---------------------------------------------------------------------------
 // Price History — from our API
 // ---------------------------------------------------------------------------

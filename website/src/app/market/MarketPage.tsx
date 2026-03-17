@@ -48,9 +48,6 @@ export default function MarketPage() {
         <div className="section-head" style={{ marginBottom: "36px" }}>
           <span className="section-label">Economy</span>
           <h1 className="section-title">Market</h1>
-          <p className="section-desc">
-            Live marketplace data — direct from game servers
-          </p>
         </div>
 
         {/* Live data banner */}
@@ -77,7 +74,7 @@ export default function MarketPage() {
               animation: "pulse-glow 2s ease-in-out infinite",
             }} />
             <span>
-              <strong>Live Data</strong> — Prices pulled from in-game marketplace every ~5 seconds
+              <strong>Live</strong> — Prices update approximately every ~10 seconds
             </span>
           </span>
           <span style={{

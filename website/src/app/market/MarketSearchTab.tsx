@@ -142,8 +142,11 @@ export default function MarketSearchTab() {
         for (const l of active) for (const p of l.properties) if (!p.is_primary) ps.add(p.property_type);
         setAvailableProps(Array.from(ps).sort());
         const slotCount = getStatSlotCount();
-        if (slotCount > 0 && propFilters.length === 0) {
+        if (slotCount > 0) {
+          // Always reset filter slots to match current rarity's slot count
           setPropFilters(Array.from({ length: slotCount }, () => ({ name: "", label: "Any", min: "" })));
+        } else {
+          setPropFilters([]);
         }
         setLoading(false);
       }

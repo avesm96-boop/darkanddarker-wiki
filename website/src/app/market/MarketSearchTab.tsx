@@ -365,7 +365,7 @@ export default function MarketSearchTab() {
                 <thead><tr>
                   {isRarityOnly && <th>Item</th>}
                   <th style={{ width: 90 }}>Price</th>
-                  {!isGenericItem && !isRarityOnly && <th style={{ width: 80 }}>Rarity</th>}
+                  {!isGenericItem && <th style={{ width: 80 }}>Rarity</th>}
                   {!isGenericItem && <th>Stats</th>}
                   <th style={{ width: 70 }}>{isGenericItem ? "Qty" : "Listed"}</th>
                 </tr></thead>
@@ -385,7 +385,7 @@ export default function MarketSearchTab() {
                         </td>
                       )}
                       <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
-                      {!isGenericItem && !isRarityOnly && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
+                      {!isGenericItem && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
                       {!isGenericItem && (
                         <td className={styles.msStats}>
                           {l.properties.filter((p) => !p.is_primary).map((p, i) => (
@@ -414,7 +414,7 @@ export default function MarketSearchTab() {
               <thead><tr>
                 {isRarityOnly && <th>Item</th>}
                 <th style={{ width: 90 }}>Price</th>
-                {!isGenericItem && !isRarityOnly && <th style={{ width: 80 }}>Rarity</th>}
+                {!isGenericItem && <th style={{ width: 80 }}>Rarity</th>}
                 {!isGenericItem && <th>Stats</th>}
                 <th style={{ width: 70 }}>Sold</th>
               </tr></thead>
@@ -431,7 +431,7 @@ export default function MarketSearchTab() {
                       </td>
                     )}
                     <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
-                    {!isGenericItem && !isRarityOnly && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
+                    {!isGenericItem && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
                     {!isGenericItem && (
                       <td className={styles.msStats}>
                         {l.properties.filter((p) => !p.is_primary).map((p, i) => (

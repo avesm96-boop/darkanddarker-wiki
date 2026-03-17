@@ -109,11 +109,14 @@ export default function MarketSearchTab() {
   }, []);
 
   const getStatSlotCount = (): number => {
+    // Rarity determines slot count (Rare=2, Epic=3, Legendary=4, etc.)
+    if (selectedRarity) return RARITY_SECONDARY_SLOTS[selectedRarity] || 0;
+    // No rarity selected — use item metadata as fallback
     if (selectedItem) {
       const meta = itemMetadata[selectedItem.archetype];
       if (meta?.secondarySlots) return meta.secondarySlots;
     }
-    return RARITY_SECONDARY_SLOTS[selectedRarity] || 0;
+    return 0;
   };
 
   const canSearch = selectedItem || selectedRarity;

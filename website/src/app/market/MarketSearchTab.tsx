@@ -37,7 +37,7 @@ function formatChartTime(ts: string, timeframe: string): string {
   const d = new Date(ts);
   if (timeframe === "1d") return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   if (timeframe === "4h") return d.toLocaleDateString("en-US", { weekday: "short" }) + " " + d.getHours().toString().padStart(2, "0") + ":00";
-  return d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
+  return d.getHours().toString().padStart(2, "0") + ":00";
 }
 
 // Get proper display name for an item

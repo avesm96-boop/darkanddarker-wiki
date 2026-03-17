@@ -347,7 +347,7 @@ export default function MarketSearchTab() {
       {searched && selectedItem && priceHistory.length > 1 && (
         <div className={styles.msChartSection}>
           <div className={styles.msChartHeader}>
-            <span className={styles.sectionTitle}>Price History</span>
+            <span className={styles.sectionTitle}>Lowest Price History</span>
             <div className={styles.msChartToggle}>
               {(["1h", "4h", "1d"] as const).map((tf) => (
                 <button key={tf} className={chartTimeframe === tf ? styles.msChartBtnActive : styles.msChartBtn}
@@ -368,7 +368,7 @@ export default function MarketSearchTab() {
                 <Tooltip contentStyle={{ background: "rgba(20,18,14,0.95)", border: "1px solid rgba(201,168,76,0.25)", borderRadius: 6, fontSize: "0.75rem" }}
                   labelFormatter={(label) => formatChartTime(String(label), chartTimeframe)}
                   formatter={(value) => [formatGold(Number(value)) + "g", ""]} />
-                <Area type="monotone" dataKey="min" stroke="#c9a84c" fill="rgba(201,168,76,0.12)" strokeWidth={2} name="Lowest Price" />
+                <Area type="monotone" dataKey="min" stroke="rgba(76,201,100,0.8)" fill="rgba(76,201,100,0.1)" strokeWidth={2} name="Lowest Price" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

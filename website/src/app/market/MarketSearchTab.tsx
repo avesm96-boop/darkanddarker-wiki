@@ -187,7 +187,8 @@ export default function MarketSearchTab() {
   const lowestNow = activeListings.length > 0 ? activeListings[0].price / Math.max(activeListings[0].item_count, 1) : 0;
 
   const showHero = searched && selectedItem;
-  const isRarityOnly = searched && !selectedItem;
+  // Only show Item column when user searched by rarity without selecting a specific item
+  const isRarityOnly = searched && !selectedItem && selectedRarity !== "";
   const showStatFilters = searched && availableProps.length > 0 && !isGenericItem;
   const statSlotCount = getStatSlotCount();
 

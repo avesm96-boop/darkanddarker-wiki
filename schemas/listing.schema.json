@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketplace Listing",
+  "description": "Shape of a single listing from the marketplace API",
+  "type": "object",
+  "required": ["listing_id", "item_id", "item_base_name", "item_marketplace_id", "price", "status"],
+  "properties": {
+    "listing_id": {
+      "type": "integer",
+      "description": "Unique listing ID from the marketplace server"
+    },
+    "item_unique_id": {
+      "type": "integer",
+      "description": "Unique item instance ID"
+    },
+    "item_id": {
+      "type": "string",
+      "description": "Full item ID, e.g. DesignDataItem:Id_Item_AdventurerBoots_5001"
+    },
+    "item_base_name": {
+      "type": "string",
+      "description": "Base item name, e.g. AdventurerBoots"
+    },
+    "item_marketplace_id": {
+      "type": "string",
+      "description": "Marketplace search key, e.g. Id.Item.AdventurerBoots"
+    },
+    "item_count": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1
+    },
+    "rarity": {
+      "type": "integer",
+      "description": "Enchant level from proto"
+    },
+    "rarity_name": {
+      "type": "string",
+      "description": "Enchant level display name"
+    },
+    "base_rarity": {
+      "type": "string",
+      "enum": ["Poor", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique", "Artifact"]
+    },
+    "slot_count": { "type": "integer" },
+    "rarity_tier": { "type": "integer" },
+    "price": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Price in gold"
+    },
+    "seller_name": { "type": "string" },
+    "seller_info": {
+      "type": "string",
+      "description": "Format: Class#AccountNumber"
+    },
+    "listing_time": { "type": "integer" },
+    "first_seen_at": { "type": "number" },
+    "last_seen_at": { "type": "number" },
+    "sold_at": { "type": ["number", "null"] },
+    "status": {
+      "type": "string",
+      "enum": ["active", "sold", "expired"]
+    }
+  }
+}

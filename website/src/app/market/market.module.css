@@ -1180,10 +1180,14 @@
 
 .msTable td {
   padding: 7px 10px;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+  border-bottom: none;
   color: var(--gold-500);
   vertical-align: middle;
   height: 36px;
+}
+
+.msTable tbody tr {
+  border-bottom: 1px solid rgba(201, 168, 76, 0.06);
 }
 
 .msTable tbody tr:hover { background: rgba(201, 168, 76, 0.04); }

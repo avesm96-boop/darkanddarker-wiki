@@ -381,7 +381,7 @@ export default function MarketSearchTab() {
                       {isRarityOnly && (
                         <td className={styles.msItemName}>
                           <span className={styles.msItemNameInner}>
-                            <img src={itemIconPath(l.item_base_name)} width={20} height={20} alt=""
+                            <img src={itemIconPath(l.item_base_name)} alt=""
                               onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
                             {getItemDisplayName(l.item_base_name, itemMetadata)}
                           </span>

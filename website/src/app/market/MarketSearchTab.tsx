@@ -47,6 +47,33 @@ function getItemDisplayName(baseName: string, metadata: Record<string, ItemMeta>
   return baseName.replace(/([A-Z])/g, " $1").trim();
 }
 
+// Bucket price history points by time interval, take min price per bucket
+function bucketPriceHistory(points: PricePoint[], timeframe: string): PricePoint[] {
+  if (points.length === 0) return [];
+
+  // Bucket size in milliseconds
+  const bucketMs = timeframe === "1d" ? 86400000 : timeframe === "4h" ? 14400000 : 3600000;
+
+  const buckets = new Map<number, PricePoint[]>();
+  for (const p of points) {
+    const t = new Date(p.timestamp).getTime();
+    const key = Math.floor(t / bucketMs) * bucketMs;
+    if (!buckets.has(key)) buckets.set(key, []);
+    buckets.get(key)!.push(p);
+  }
+
+  return Array.from(buckets.entries())
+    .sort(([a], [b]) => a - b)
+    .map(([key, pts]) => ({
+      timestamp: new Date(key).toISOString(),
+      item_id: pts[0].item_id,
+      avg: Math.min(...pts.map((p) => p.avg).filter((v) => v > 0)) || 0,
+      min: Math.min(...pts.map((p) => p.min).filter((v) => v > 0)) || 0,
+      max: Math.max(...pts.map((p) => p.max)),
+      volume: pts.reduce((s, p) => s + p.volume, 0),
+    }));
+}
+
 interface PropertyFilter { name: string; label: string; min: string; }
 
 export default function MarketSearchTab() {
@@ -332,7 +359,7 @@ export default function MarketSearchTab() {
           </div>
           <div className={styles.msChart}>
             <ResponsiveContainer width="100%" height={220}>
-              <AreaChart data={priceHistory} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+              <AreaChart data={bucketPriceHistory(priceHistory, chartTimeframe)} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(201,168,76,0.08)" />
                 <XAxis dataKey="timestamp" tickFormatter={(ts) => formatChartTime(ts, chartTimeframe)}
                   tick={{ fontSize: 10, fill: "#666" }} interval="preserveStartEnd" minTickGap={60} />

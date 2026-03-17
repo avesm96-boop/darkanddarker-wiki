@@ -920,8 +920,14 @@
 }
 
 .msSelect option {
-  background: #1a1816;
-  color: var(--gold-500);
+  background: #0a0908;
+  color: #e8e0c8;
+  padding: 8px;
+}
+
+.msSelect option:checked,
+.msSelect option:hover {
+  background: #2a2520;
 }
 
 .msSearchBtn {

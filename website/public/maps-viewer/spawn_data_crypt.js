@@ -13,10 +13,10 @@ const SPAWN_VARIANTS = [
   [1000,[['Bandage',1000,1000]]],
   [600,[['Bookshelf',1000,600]]],
   [500,[['Coin',1000,500]]],
-  [555,[['Gems',1000,555]]],
+  [658,[['Gems',1000,658]]],
   [1000,[['Ground',1000,1000]]],
   [50,[['Lockpick',1000,50]]],
-  [740,[['Potion',1000,740]]],
+  [675,[['Potion',1000,675]]],
   [700,[['Trinkets',1000,700]]],
   [1000,[['Weapon',1000,1000]]],
   [1000,[['Weapon Common',1000,1000]]],
@@ -117,7 +117,17 @@ const SPAWN_VARIANTS = [
   [1000,[['Wooden Crate Small',1000,1000]]],
   [1000,[['Wooden Door With Lock',1000,1000]]],
   [1000,[['Wooden Door With Square Grating',1000,1000]]],
+  [100,[['Broken Wheel',1000,100]]],
+  [100,[['Hourglass',1000,100]]],
+  [980,[['Bandage',1000,980]]],
+  [950,[['Gems',1000,950]]],
+  [100,[['Potion',1000,100]]],
   [1000,[['Skeleton Wooden Barrel Elite',650,650],['Wooden Barrel01',350,350]]],
+  [200,[['Broken Wheel',1000,200]]],
+  [200,[['Hourglass',1000,200]]],
+  [875,[['Bandage',1000,875]]],
+  [100,[['Lockpick',1000,100]]],
+  [1000,[['Potion',1000,1000]]],
   [1000,[['Death Skull Nightmare',800,800],['Death Skull Elite',200,200]]],
   [1000,[['Giant Dragonfly Nightmare',800,800],['Giant Dragonfly Elite',200,200]]],
   [1000,[['Lich Elite',1000,1000]]],
@@ -140,14 +150,12 @@ const SPAWN_VARIANTS = [
   [1000,[['Zombie Nightmare',800,800],['Zombie Elite',200,200]]],
   [1000,[['Skeleton Wooden Barrel Nightmare',650,650],['Wooden Barrel01',350,350]]],
   [1000,[['Spider Pot Nightmare',800,800],['Spider Pot Elite',200,200]]],
-  [1000,[['Lich Common',500,500],['Skeleton Warlord Common',500,500]]],
-  [1000,[['Lich Elite',500,500],['Skeleton Warlord Elite',500,500]]],
 ];
 
 const SPAWN_VID = {
-  1022: [46,107,86,69,81,110,83,25,17,41,102,68,9,47,45,5,11,85,84,98,109,94,95,87,93,111,61,42,31,34,32,16,29,26,35,67,1,48,6,7,13,3,100,82,65,89,90,77,79,73,63,37,33,80,91,104,97,108,-1,28,20,101,36,27,40,71,50,53,57,55,78,51,56,54,92,74,8,96,12,15,4,81,21,0,88,75,10,76,39,106,14,-1,43,-1,135,73,64,99,58,60,3,62,30,105,44,72,22,24,2,103,19,23,59,52,49,66,70],
-  2022: [46,107,86,69,81,110,83,25,17,41,102,68,9,47,45,5,11,85,84,98,109,94,95,87,93,111,61,42,31,34,32,16,29,26,35,67,1,48,6,7,13,3,100,82,65,89,90,77,79,73,63,37,33,80,91,104,112,108,-1,28,20,101,36,27,40,71,50,53,57,55,78,51,56,54,92,74,8,96,12,15,4,81,21,0,88,75,10,76,39,106,14,-1,43,-1,135,73,64,99,58,60,3,62,30,105,44,72,22,24,2,103,19,23,59,52,49,66,70],
-  3022: [46,107,86,69,81,110,83,116,114,132,102,68,9,47,45,5,11,85,84,134,109,94,95,87,93,111,61,42,122,125,123,113,120,117,126,67,1,48,6,7,13,3,100,82,65,89,90,77,79,73,63,128,124,80,91,104,133,108,-1,119,20,101,127,118,131,71,50,53,57,55,78,51,56,54,92,74,8,96,12,15,4,81,21,0,88,75,10,76,130,106,14,-1,43,-1,136,73,64,99,58,60,3,62,121,105,44,72,22,24,2,103,19,23,59,52,49,66,70],
+  1022: [46,107,86,69,81,110,83,25,17,41,102,68,9,47,45,5,11,85,84,98,109,94,95,87,93,111,61,42,31,34,32,16,29,26,35,67,1,48,6,7,13,3,100,82,65,89,90,77,79,73,63,37,33,80,91,104,97,108,-1,28,20,101,36,27,40,71,50,53,57,55,78,51,56,54,92,74,8,96,12,15,4,81,21,0,88,75,10,76,39,106,14,-1,43,38,18,73,64,99,58,60,3,62,30,105,44,72,22,24,2,103,19,23,59,52,49,66,70],
+  2022: [46,107,86,69,81,110,83,25,17,41,102,68,9,47,45,114,116,85,84,98,109,94,95,87,93,111,61,42,31,34,32,16,29,26,35,67,113,48,6,7,13,3,100,82,65,89,90,77,79,73,63,37,33,80,91,104,117,108,-1,28,20,101,36,27,40,71,50,53,57,55,78,51,56,54,92,74,115,96,12,15,4,81,21,112,88,75,10,76,39,106,14,-1,43,38,18,73,64,99,58,60,3,62,30,105,44,72,22,24,2,103,19,23,59,52,49,66,70],
+  3022: [46,107,86,69,81,110,83,126,124,142,102,68,9,47,45,120,122,85,84,144,109,94,95,87,93,111,61,42,132,135,133,123,130,127,136,67,119,48,6,7,13,3,100,82,65,89,90,77,79,73,63,138,134,80,91,104,143,108,-1,129,20,101,137,128,141,71,50,53,57,55,78,51,56,54,92,74,115,96,12,15,4,81,21,118,88,75,121,76,140,106,14,-1,43,139,125,73,64,99,58,60,3,62,131,105,44,72,22,24,2,103,19,23,59,52,49,66,70],
 };
 
 const CRYPT_MODULES = {
@@ -181,18 +189,18 @@ const CRYPT_MODULES = {
         [844,381,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [-677,531,'Mummy',116,1000,7],
-        [-281,-1064,'Giant Dragonfly',114,1000,8],
-        [54,-1175,'Giant Dragonfly',114,1000,8],
-        [498,-750,'Giant Dragonfly',114,1000,8],
-        [-265,-477,'Giant Dragonfly',114,1000,8],
-        [-921,790,'Zombie',132,1000,9],
-        [-815,1054,'Zombie',132,1000,9],
-        [1130,480,'Zombie',132,1000,9],
-        [490,1120,'Zombie',132,1000,9],
-        [731,648,'Giant Dragonfly',114,1000,8],
-        [1089,1138,'Mummy',116,1000,7],
-        [-811,815,'Giant Dragonfly',114,1000,8]
+        [-677,531,'Mummy',126,1000,7],
+        [-281,-1064,'Giant Dragonfly',124,1000,8],
+        [54,-1175,'Giant Dragonfly',124,1000,8],
+        [498,-750,'Giant Dragonfly',124,1000,8],
+        [-265,-477,'Giant Dragonfly',124,1000,8],
+        [-921,790,'Zombie',142,1000,9],
+        [-815,1054,'Zombie',142,1000,9],
+        [1130,480,'Zombie',142,1000,9],
+        [490,1120,'Zombie',142,1000,9],
+        [731,648,'Giant Dragonfly',124,1000,8],
+        [1089,1138,'Mummy',126,1000,7],
+        [-811,815,'Giant Dragonfly',124,1000,8]
       ],
       PlayerSpawn: [
         [-791,-610,'Player Spawn',-1,1000,-1]
@@ -222,9 +230,6 @@ const CRYPT_MODULES = {
         [-501,575,'Ground',9,1000,12],
         [-525,487,'Ground',9,1000,12]
       ],
-          StairUp: [
-        [848,515,'Stairs Up',-1,1000,-1]
-      ],
     }
   },
   'AltarRoomAB': {
@@ -247,13 +252,13 @@ const CRYPT_MODULES = {
         [24,175,'Chest Large',45,1000,14]
       ],
       Consumable: [
-        [99,-1009,'Bandage',5,1000,15],
-        [-746,-652,'Bandage',5,926,15],
-        [-1110,-727,'Potion',11,926,16],
-        [-828,-1006,'Bandage',5,926,15],
-        [-1071,-24,'Potion',11,1000,16],
-        [-340,-833,'Bandage',5,813,15],
-        [-342,-792,'Potion',11,813,16]
+        [99,-1009,'Bandage',120,1000,15],
+        [-746,-652,'Bandage',120,926,15],
+        [-1110,-727,'Potion',122,926,16],
+        [-828,-1006,'Bandage',120,926,15],
+        [-1071,-24,'Potion',122,1000,16],
+        [-340,-833,'Bandage',120,813,15],
+        [-342,-792,'Potion',122,813,16]
       ],
       Container: [
         [-395,-1265,'Pot',85,1000,17],
@@ -261,7 +266,7 @@ const CRYPT_MODULES = {
         [-370,-1135,'Pot',84,1000,18],
         [-5,-895,'Wooden Barrel',107,1000,1],
         [95,-905,'Wooden Barrel',107,1000,1],
-        [-1370,90,'Spider Pot',134,1000,19],
+        [-1370,90,'Spider Pot',144,1000,19],
         [30,-390,'Wooden Barrel',107,1000,1],
         [421,-1127,'Wooden Barrel',107,1000,1],
         [1125,-1055,'Wooden Barrel',107,1000,1],
@@ -278,7 +283,7 @@ const CRYPT_MODULES = {
         [-1175,170,'Pot',85,1000,17],
         [-1295,150,'Pot',84,1000,18],
         [-990,-105,'Skeleton Corpse',93,1000,24],
-        [-1350,-1280,'Spider Pot',134,1000,19]
+        [-1350,-1280,'Spider Pot',144,1000,19]
       ],
       Herb: [
         [220,-1080,'Phantom Flower',81,1000,4],
@@ -288,21 +293,23 @@ const CRYPT_MODULES = {
       Interact: [
         [-400,300,'Wooden Door With Square Grating',111,1000,25],
         [1021,859,'Crypt Secret Wall Door',61,1000,26],
-        [1149,-293,'Crypt Secret Wall Door',61,1000,26]      ],
+        [1149,-293,'Crypt Secret Wall Door',61,1000,26],
+        [-305,860,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [635,-860,'Skeleton Footman From Fake Death',122,1000,28],
-        [750,-450,'Skeleton Melee 5type',125,1000,29],
-        [-645,720,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-670,1005,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-85,860,'Death Skull',113,1000,31],
-        [327,1120,'Skeleton Crossbowman',120,500,32],
-        [12,-197,'Death Skull',113,1000,31],
-        [1220,220,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [1335,730,'Skeleton Footman From Fake Death',122,1000,28],
-        [690,600,'Skeleton Archer',117,1000,33],
-        [690,1120,'Skeleton Archer',117,500,33],
-        [-1020,-520,'Death Skull',113,1000,31],
-        [440,-80,'Skeleton Ranged 2type',126,1000,34]
+        [635,-860,'Skeleton Footman From Fake Death',132,1000,28],
+        [750,-450,'Skeleton Melee 5type',135,1000,29],
+        [-645,720,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-670,1005,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-85,860,'Death Skull',123,1000,31],
+        [327,1120,'Skeleton Crossbowman',130,500,32],
+        [12,-197,'Death Skull',123,1000,31],
+        [1220,220,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [1335,730,'Skeleton Footman From Fake Death',132,1000,28],
+        [690,600,'Skeleton Archer',127,1000,33],
+        [690,1120,'Skeleton Archer',127,500,33],
+        [-1020,-520,'Death Skull',123,1000,31],
+        [440,-80,'Skeleton Ranged 2type',136,1000,34]
       ],
       PlayerSpawn: [
         [1339,-1334,'Player Spawn',-1,1000,-1]
@@ -341,7 +348,7 @@ const CRYPT_MODULES = {
         [-1019,-1145,'Floor Portal',67,1000,35]
       ],
       QuestItem: [
-        [-485,-1300,'Hourglass',1,1000,36]
+        [-485,-1300,'Hourglass',119,1000,36]
       ],
       SpecialChest: [
         [-1227,480,'Chest Special',48,1000,37],
@@ -435,9 +442,6 @@ const CRYPT_MODULES = {
         [230,-1542,'Coin',7,1000,39],
         [202,-1359,'Coin',7,1000,39]
       ],
-          Altar: [
-        [-304,861,'Altar Of Sacrifice',42,1000,27]
-      ],
     }
   },
   'Armory': {
@@ -465,7 +469,7 @@ const CRYPT_MODULES = {
         [1283,968,'Pot',87,1000,23],
         [-1452,967,'Pot',87,1000,23],
         [1376,978,'Pot',84,1000,18],
-        [1467,-1204,'Spider Pot',134,1000,19],
+        [1467,-1204,'Spider Pot',144,1000,19],
         [-1498,-1034,'Pot',85,1000,17],
         [1337,-1214,'Pot',86,1000,2],
         [-751,-17,'Wooden Crate Small',109,1000,20],
@@ -503,24 +507,24 @@ const CRYPT_MODULES = {
         [-1126,10,'Marvelous Chest',77,1000,47]
       ],
       Monster: [
-        [-255,-847,'Skeleton Melee 5type',125,1000,29],
-        [-66,-847,'Skeleton Melee 5type',125,1000,29],
-        [-1040,1215,'Mummy',116,1000,7],
-        [-1040,1343,'Mummy',116,1000,7],
-        [995,1215,'Mummy',116,1000,7],
-        [199,148,'Mummy',116,1000,7],
-        [-168,-504,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-158,516,'Skeleton Footman From Fake Death',122,1000,28],
-        [382,-424,'Skeleton Footman From Fake Death',122,1000,28],
-        [754,-151,'Skeleton Ranged 2type',126,1000,34],
-        [-811,-188,'Skeleton Footman From Fake Death',122,1000,28],
-        [-926,177,'Skeleton Archer',117,1000,33],
-        [-511,95,'Skeleton Archer',117,1000,33],
-        [-158,561,'Death Skull',113,1000,31],
-        [-158,-610,'Death Skull',113,1000,31],
-        [995,1343,'Mummy',116,1000,7],
-        [787,829,'Skeleton Melee 5type',125,250,29],
-        [-1,-1166,'Skeleton Melee 5type',125,1000,29]
+        [-255,-847,'Skeleton Melee 5type',135,1000,29],
+        [-66,-847,'Skeleton Melee 5type',135,1000,29],
+        [-1040,1215,'Mummy',126,1000,7],
+        [-1040,1343,'Mummy',126,1000,7],
+        [995,1215,'Mummy',126,1000,7],
+        [199,148,'Mummy',126,1000,7],
+        [-168,-504,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-158,516,'Skeleton Footman From Fake Death',132,1000,28],
+        [382,-424,'Skeleton Footman From Fake Death',132,1000,28],
+        [754,-151,'Skeleton Ranged 2type',136,1000,34],
+        [-811,-188,'Skeleton Footman From Fake Death',132,1000,28],
+        [-926,177,'Skeleton Archer',127,1000,33],
+        [-511,95,'Skeleton Archer',127,1000,33],
+        [-158,561,'Death Skull',123,1000,31],
+        [-158,-610,'Death Skull',123,1000,31],
+        [995,1343,'Mummy',126,1000,7],
+        [787,829,'Skeleton Melee 5type',135,250,29],
+        [-1,-1166,'Skeleton Melee 5type',135,1000,29]
       ],
       OrnateChest: [
         [249,-613,'Ornate Chest Medium',79,1000,48]
@@ -580,27 +584,29 @@ const CRYPT_MODULES = {
       ],
       Interact: [
         [625,230,'Double Wooden Door',63,1000,50],
-        [-619,-240,'Double Wooden Door',63,1000,50]      ],
+        [-619,-240,'Double Wooden Door',63,1000,50],
+        [85,-490,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [940,-1115,'Skeleton Archer',117,1000,33],
-        [-875,990,'Skeleton Archer',117,1000,33],
-        [-185,-325,'Death Skull',113,1000,31],
-        [425,-325,'Death Skull',113,1000,31],
-        [425,150,'Death Skull',113,1000,31],
-        [-220,150,'Death Skull',113,1000,31],
-        [-810,-35,'Skeleton Footman From Fake Death',122,1000,28],
-        [-1080,-405,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [1110,285,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [785,-185,'Skeleton Footman From Fake Death',122,1000,28],
-        [65,795,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-370,1130,'Skeleton Swordman',128,1000,51],
-        [-140,-835,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [400,-1125,'Skeleton Swordman',128,1000,51],
-        [785,-840,'Skeleton Footman From Fake Death',122,1000,28],
-        [-780,-780,'Skeleton Archer',117,1000,33],
-        [-765,775,'Skeleton Footman From Fake Death',122,1000,28],
-        [779,734,'Skeleton Archer',117,1000,33],
-        [-60,-20,'Skeleton Mage',124,1000,52]
+        [940,-1115,'Skeleton Archer',127,1000,33],
+        [-875,990,'Skeleton Archer',127,1000,33],
+        [-185,-325,'Death Skull',123,1000,31],
+        [425,-325,'Death Skull',123,1000,31],
+        [425,150,'Death Skull',123,1000,31],
+        [-220,150,'Death Skull',123,1000,31],
+        [-810,-35,'Skeleton Footman From Fake Death',132,1000,28],
+        [-1080,-405,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [1110,285,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [785,-185,'Skeleton Footman From Fake Death',132,1000,28],
+        [65,795,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-370,1130,'Skeleton Swordman',138,1000,51],
+        [-140,-835,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [400,-1125,'Skeleton Swordman',138,1000,51],
+        [785,-840,'Skeleton Footman From Fake Death',132,1000,28],
+        [-780,-780,'Skeleton Archer',127,1000,33],
+        [-765,775,'Skeleton Footman From Fake Death',132,1000,28],
+        [779,734,'Skeleton Archer',127,1000,33],
+        [-60,-20,'Skeleton Mage',134,1000,52]
       ],
       OrnateChest: [
         [-551,-825,'Ornate Chest Small',80,1000,53],
@@ -646,9 +652,6 @@ const CRYPT_MODULES = {
         [1168,-1145,'Wood Chest Medium',104,1000,55],
         [-1152,1153,'Wood Chest Medium',104,1000,55]
       ],
-          Altar: [
-        [86,-490,'Altar Of Sacrifice',42,1000,27]
-      ],
     }
   },
   'Barracks': {
@@ -671,17 +674,17 @@ const CRYPT_MODULES = {
         [500,1456,'Chest Large',45,1000,14]
       ],
       Consumable: [
-        [797,433,'Potion',11,250,16],
-        [840,260,'Potion',11,250,16],
-        [840,-240,'Potion',11,250,16],
-        [790,-400,'Potion',11,250,16],
-        [-990,755,'Potion',11,1000,16],
-        [-990,855,'Potion',11,1000,16],
-        [1041,-1185,'Potion',11,1000,16]
+        [797,433,'Potion',122,250,16],
+        [840,260,'Potion',122,250,16],
+        [840,-240,'Potion',122,250,16],
+        [790,-400,'Potion',122,250,16],
+        [-990,755,'Potion',122,1000,16],
+        [-990,855,'Potion',122,1000,16],
+        [1041,-1185,'Potion',122,1000,16]
       ],
       Container: [
-        [540,1195,'Skeleton Wooden Barrel Random',133,1000,56],
-        [450,1250,'Skeleton Wooden Barrel Random',133,1000,56],
+        [540,1195,'Skeleton Wooden Barrel Random',143,1000,56],
+        [450,1250,'Skeleton Wooden Barrel Random',143,1000,56],
         [1079,-1300,'Skeleton Corpse',94,1000,21],
         [1225,226,'Pot',85,1000,17],
         [896,-759,'Wooden Barrel',107,1000,1],
@@ -711,13 +714,13 @@ const CRYPT_MODULES = {
         [-1304,1124,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [537,-1224,'Skeleton Ranged 2type',126,1000,34],
-        [621,241,'Skeleton Footman From Fake Death',122,1000,28],
-        [1011,10,'Skeleton Footman From Fake Death',122,1000,28],
-        [575,-4,'Skeleton Champion',119,1000,59],
-        [1036,-349,'Skeleton Footman From Fake Death',122,1000,28],
-        [1245,1364,'Skeleton Melee 5type',125,1000,29],
-        [-800,-440,'Death Skull',113,1000,31],
+        [537,-1224,'Skeleton Ranged 2type',136,1000,34],
+        [621,241,'Skeleton Footman From Fake Death',132,1000,28],
+        [1011,10,'Skeleton Footman From Fake Death',132,1000,28],
+        [575,-4,'Skeleton Champion',129,1000,59],
+        [1036,-349,'Skeleton Footman From Fake Death',132,1000,28],
+        [1245,1364,'Skeleton Melee 5type',135,1000,29],
+        [-800,-440,'Death Skull',123,1000,31],
         [-1215,160,'Mimic Medium Mid Level Elite',20,1000,60]
       ],
       PlayerSpawn: [
@@ -756,9 +759,6 @@ const CRYPT_MODULES = {
         [357,251,'Ground',9,1000,12],
         [357,196,'Ground',9,1000,12]
       ],
-          StairUp: [
-        [-1507,1110,'Stairs Up',-1,1000,-1]
-      ],
     }
   },
   'BlindfallPit': {
@@ -782,38 +782,38 @@ const CRYPT_MODULES = {
         [-5,70,'Wooden Door With Square Grating',111,1000,25]
       ],
       Monster: [
-        [490,0,'Skeleton Spearman',127,167,62],
-        [490,-105,'Skeleton Swordman',128,167,51],
-        [125,-490,'Skeleton Guardsman From Fake Death',123,167,30],
-        [15,-490,'Skeleton Axeman',118,167,63],
-        [-90,-490,'Skeleton Swordman',128,167,51],
-        [-500,-110,'Skeleton Guardsman From Fake Death',123,167,30],
-        [-500,0,'Skeleton Spearman',127,167,62],
-        [-500,105,'Skeleton Swordman',128,167,51],
-        [-100,490,'Skeleton Crossbowman',120,167,32],
-        [485,105,'Skeleton Crossbowman',120,167,32],
-        [100,-490,'Skeleton Archer',117,167,33],
-        [-495,95,'Skeleton Archer',117,167,33],
-        [85,490,'Skeleton Archer',117,167,33],
-        [-485,-50,'Skeleton Crossbowman',120,167,32],
-        [-95,-490,'Skeleton Crossbowman',120,167,32],
-        [490,-95,'Skeleton Archer',117,167,33],
-        [555,5,'Wraith',131,167,64],
-        [20,455,'Skeleton Champion',119,167,59],
-        [-555,5,'Wraith',131,167,64],
-        [0,510,'Wraith',131,167,64],
-        [495,0,'Skeleton Champion',119,167,59],
-        [0,490,'Skeleton Champion',119,167,59],
-        [0,-530,'Wraith',131,167,64],
-        [495,100,'Skeleton Crossbowman',120,167,32],
-        [-490,100,'Skeleton Archer',117,167,33],
-        [-515,-100,'Skeleton Spearman',127,167,62],
-        [500,-100,'Skeleton Swordman',128,167,51],
-        [20,-445,'Skeleton Champion',119,167,59],
-        [-110,450,'Skeleton Guardsman From Fake Death',123,167,30],
-        [0,450,'Skeleton Axeman',118,167,63],
-        [105,450,'Skeleton Spearman',127,167,62],
-        [490,110,'Skeleton Guardsman From Fake Death',123,167,30]
+        [490,0,'Skeleton Spearman',137,167,62],
+        [490,-105,'Skeleton Swordman',138,167,51],
+        [125,-490,'Skeleton Guardsman From Fake Death',133,167,30],
+        [15,-490,'Skeleton Axeman',128,167,63],
+        [-90,-490,'Skeleton Swordman',138,167,51],
+        [-500,-110,'Skeleton Guardsman From Fake Death',133,167,30],
+        [-500,0,'Skeleton Spearman',137,167,62],
+        [-500,105,'Skeleton Swordman',138,167,51],
+        [-100,490,'Skeleton Crossbowman',130,167,32],
+        [485,105,'Skeleton Crossbowman',130,167,32],
+        [100,-490,'Skeleton Archer',127,167,33],
+        [-495,95,'Skeleton Archer',127,167,33],
+        [85,490,'Skeleton Archer',127,167,33],
+        [-485,-50,'Skeleton Crossbowman',130,167,32],
+        [-95,-490,'Skeleton Crossbowman',130,167,32],
+        [490,-95,'Skeleton Archer',127,167,33],
+        [555,5,'Wraith',141,167,64],
+        [20,455,'Skeleton Champion',129,167,59],
+        [-555,5,'Wraith',141,167,64],
+        [0,510,'Wraith',141,167,64],
+        [495,0,'Skeleton Champion',129,167,59],
+        [0,490,'Skeleton Champion',129,167,59],
+        [0,-530,'Wraith',141,167,64],
+        [495,100,'Skeleton Crossbowman',130,167,32],
+        [-490,100,'Skeleton Archer',127,167,33],
+        [-515,-100,'Skeleton Spearman',137,167,62],
+        [500,-100,'Skeleton Swordman',138,167,51],
+        [20,-445,'Skeleton Champion',129,167,59],
+        [-110,450,'Skeleton Guardsman From Fake Death',133,167,30],
+        [0,450,'Skeleton Axeman',128,167,63],
+        [105,450,'Skeleton Spearman',137,167,62],
+        [490,110,'Skeleton Guardsman From Fake Death',133,167,30]
       ],
       TreasureHoard: [
         [-640,-655,'Hoard',71,167,65],
@@ -848,8 +848,8 @@ const CRYPT_MODULES = {
         [-276,899,'Coffin R',55,1000,69]
       ],
       Consumable: [
-        [-112,-69,'Bandage',5,1000,15],
-        [431,-59,'Potion',11,1000,16]
+        [-112,-69,'Bandage',120,1000,15],
+        [431,-59,'Potion',122,1000,16]
       ],
       Container: [
         [-228,1076,'Skeleton Corpse',94,1000,21]
@@ -868,17 +868,17 @@ const CRYPT_MODULES = {
         [522,-1041,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [1083,-104,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [69,509,'Skeleton Melee 5type',125,1000,29],
-        [261,159,'Skeleton Ranged 2type',126,1000,34],
-        [-825,-457,'Skeleton Ranged 2type',126,1000,34],
-        [-885,-877,'Skeleton Footman From Fake Death',122,1000,28],
-        [145,-917,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [460,793,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-57,794,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-252,158,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [33,-151,'Skeleton Melee 5type',125,1000,29],
-        [-876,858,'Zombie',132,1000,9]
+        [1083,-104,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [69,509,'Skeleton Melee 5type',135,1000,29],
+        [261,159,'Skeleton Ranged 2type',136,1000,34],
+        [-825,-457,'Skeleton Ranged 2type',136,1000,34],
+        [-885,-877,'Skeleton Footman From Fake Death',132,1000,28],
+        [145,-917,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [460,793,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-57,794,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-252,158,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [33,-151,'Skeleton Melee 5type',135,1000,29],
+        [-876,858,'Zombie',142,1000,9]
       ],
       OrnateChest: [
         [160,-20,'Ornate Chest Large',78,1000,70]
@@ -906,9 +906,6 @@ const CRYPT_MODULES = {
         [-1058,-820,'Ground',9,1000,12],
         [-846,-1051,'Ground',9,1000,12],
         [-781,-1051,'Ground',9,1000,12]
-      ],
-          StairDown: [
-        [522,-1254,'Stairs Down',-1,1000,-1]
       ],
     }
   },
@@ -949,20 +946,23 @@ const CRYPT_MODULES = {
         [442,309,'Wooden Barrel',107,1000,1],
         [355,-1061,'Wooden Barrel',107,1000,1]
       ],
-      Interact: [      ],
+      Interact: [
+        [800,1210,'Altar Of Sacrifice',42,1000,27],
+        [-800,-1180,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [-1240,722,'Skeleton Footman From Fake Death',122,1000,28],
-        [-1156,-420,'Skeleton Footman From Fake Death',122,1000,28],
-        [-426,-146,'Skeleton Footman From Fake Death',122,1000,28],
-        [410,503,'Skeleton Footman From Fake Death',122,1000,28],
-        [810,-108,'Skeleton Footman From Fake Death',122,1000,28],
-        [1220,450,'Skeleton Footman From Fake Death',122,1000,28],
-        [469,-458,'Skeleton Footman From Fake Death',122,1000,28],
-        [739,-757,'Skeleton Footman From Fake Death',122,1000,28],
-        [-820,449,'Skeleton Footman From Fake Death',122,1000,28],
-        [-856,-196,'Skeleton Spearman',127,1000,62],
-        [-856,-358,'Skeleton Footman From Fake Death',122,1000,28],
-        [1057,-245,'Skeleton Axeman',118,1000,63]
+        [-1240,722,'Skeleton Footman From Fake Death',132,1000,28],
+        [-1156,-420,'Skeleton Footman From Fake Death',132,1000,28],
+        [-426,-146,'Skeleton Footman From Fake Death',132,1000,28],
+        [410,503,'Skeleton Footman From Fake Death',132,1000,28],
+        [810,-108,'Skeleton Footman From Fake Death',132,1000,28],
+        [1220,450,'Skeleton Footman From Fake Death',132,1000,28],
+        [469,-458,'Skeleton Footman From Fake Death',132,1000,28],
+        [739,-757,'Skeleton Footman From Fake Death',132,1000,28],
+        [-820,449,'Skeleton Footman From Fake Death',132,1000,28],
+        [-856,-196,'Skeleton Spearman',137,1000,62],
+        [-856,-358,'Skeleton Footman From Fake Death',132,1000,28],
+        [1057,-245,'Skeleton Axeman',128,1000,63]
       ],
       PlayerSpawn: [
         [1444,-777,'Player Spawn',-1,1000,-1]
@@ -990,7 +990,7 @@ const CRYPT_MODULES = {
         [1080,880,'Floor Portal',67,1000,35]
       ],
       QuestItem: [
-        [-1360,20,'Hourglass',1,1000,36]
+        [-1360,20,'Hourglass',119,1000,36]
       ],
       Valuable: [
         [-300,-680,'Ground',9,1000,12],
@@ -1010,10 +1010,6 @@ const CRYPT_MODULES = {
         [1348,-12,'Ground',9,1000,12],
         [498,862,'Ground',9,1000,12],
         [1194,1168,'Ground',9,1000,12]
-      ],
-          Altar: [
-        [800,1210,'Altar Of Sacrifice',42,1000,27],
-        [-800,-1181,'Altar Of Sacrifice',42,1000,27]
       ],
     }
   },
@@ -1053,16 +1049,16 @@ const CRYPT_MODULES = {
         [665,-640,'Jail Door',74,1000,75]
       ],
       Monster: [
-        [-160,-545,'Skeleton Ranged 2type',126,1000,34],
-        [160,-570,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [160,-1040,'Skeleton Ranged 2type',126,1000,34],
-        [-160,525,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-160,1070,'Skeleton Ranged 2type',126,1000,34],
-        [160,1030,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [160,560,'Skeleton Ranged 2type',126,1000,34],
-        [-160,-1026,'Skeleton Guardsman From Fake Death',123,333,30],
-        [-438,-1064,'Skeleton Axeman',118,333,63],
-        [-336,-531,'Skeleton Spearman',127,333,62]
+        [-160,-545,'Skeleton Ranged 2type',136,1000,34],
+        [160,-570,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [160,-1040,'Skeleton Ranged 2type',136,1000,34],
+        [-160,525,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-160,1070,'Skeleton Ranged 2type',136,1000,34],
+        [160,1030,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [160,560,'Skeleton Ranged 2type',136,1000,34],
+        [-160,-1026,'Skeleton Guardsman From Fake Death',133,333,30],
+        [-438,-1064,'Skeleton Axeman',128,333,63],
+        [-336,-531,'Skeleton Spearman',137,333,62]
       ],
       PlayerSpawn: [
         [1370,-225,'Player Spawn',-1,1000,-1]
@@ -1081,7 +1077,7 @@ const CRYPT_MODULES = {
         [965,-605,'Floor Portal',67,1000,35]
       ],
       QuestItem: [
-        [-1005,-450,'Hourglass',1,1000,36]
+        [-1005,-450,'Hourglass',119,1000,36]
       ],
       SpecialChest: [
         [425,-695,'Chest Special',48,1000,37]
@@ -1116,15 +1112,15 @@ const CRYPT_MODULES = {
         [-342,-252,'Ground',9,1000,12],
         [120,1325,'Ground',9,1000,12],
         [-768,-252,'Ground',9,1000,12],
-        [-623,647,'Gems',8,250,76],
-        [-572,968,'Gems',8,250,76],
-        [577,980,'Gems',8,250,76],
-        [548,593,'Gems',8,250,76],
-        [-578,-802,'Gems',8,250,76],
-        [533,-916,'Gems',8,250,76],
-        [-52,-1182,'Gems',8,250,76],
+        [-623,647,'Gems',115,250,76],
+        [-572,968,'Gems',115,250,76],
+        [577,980,'Gems',115,250,76],
+        [548,593,'Gems',115,250,76],
+        [-578,-802,'Gems',115,250,76],
+        [533,-916,'Gems',115,250,76],
+        [-52,-1182,'Gems',115,250,76],
         [-4,1312,'Ground',9,1000,12],
-        [-52,-363,'Gems',8,250,76],
+        [-52,-363,'Gems',115,250,76],
         [-151,1325,'Ground',9,1000,12],
         [-680,1120,'Ground',9,1000,12],
         [-365,1430,'Ground',9,1000,12]
@@ -1162,11 +1158,11 @@ const CRYPT_MODULES = {
         [-523,705,'Skeleton Wooden Barrel',96,1000,77],
         [-600,430,'Pot',85,1000,17],
         [680,-440,'Pot',84,1000,18],
-        [-595,-376,'Spider Pot',134,1000,19],
+        [-595,-376,'Spider Pot',144,1000,19],
         [185,415,'Skeleton Wooden Barrel',96,1000,77],
         [250,-407,'Pot',87,1000,23],
         [155,-377,'Pot',84,1000,18],
-        [885,-1375,'Skeleton Wooden Barrel Random',133,1000,56]
+        [885,-1375,'Skeleton Wooden Barrel Random',143,1000,56]
       ],
       Interact: [
         [620,-869,'Wooden Door With Lock',110,1000,5],
@@ -1175,16 +1171,16 @@ const CRYPT_MODULES = {
         [620,71,'Wooden Door With Lock',110,1000,5]
       ],
       Monster: [
-        [1270,-464,'Skeleton Footman From Fake Death',122,1000,28],
-        [1270,460,'Skeleton Footman From Fake Death',122,1000,28],
-        [-160,1130,'Skeleton Mage',124,1000,52],
-        [-160,-795,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-1027,-282,'Skeleton Footman From Fake Death',122,1000,28],
-        [993,293,'Skeleton Footman From Fake Death',122,1000,28],
-        [845,1168,'Skeleton Melee 5type',125,1000,29],
-        [-900,10,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-789,793,'Skeleton Melee 5type',125,1000,29],
-        [828,-708,'Skeleton Melee 5type',125,1000,29]
+        [1270,-464,'Skeleton Footman From Fake Death',132,1000,28],
+        [1270,460,'Skeleton Footman From Fake Death',132,1000,28],
+        [-160,1130,'Skeleton Mage',134,1000,52],
+        [-160,-795,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-1027,-282,'Skeleton Footman From Fake Death',132,1000,28],
+        [993,293,'Skeleton Footman From Fake Death',132,1000,28],
+        [845,1168,'Skeleton Melee 5type',135,1000,29],
+        [-900,10,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-789,793,'Skeleton Melee 5type',135,1000,29],
+        [828,-708,'Skeleton Melee 5type',135,1000,29]
       ],
       PlayerSpawn: [
         [330,-1,'Player Spawn',-1,1000,-1]
@@ -1283,19 +1279,19 @@ const CRYPT_MODULES = {
         [-4574,-1095,'Chest Large',45,1000,14]
       ],
       Consumable: [
-        [-4468,3727,'Potion',11,1000,16]
+        [-4468,3727,'Potion',122,1000,16]
       ],
       Container: [
         [-3533,4350,'Skeleton Corpse',95,1000,22],
-        [-643,3270,'Spider Pot',134,1000,19],
-        [646,1351,'Spider Pot',134,1000,19],
+        [-643,3270,'Spider Pot',144,1000,19],
+        [646,1351,'Spider Pot',144,1000,19],
         [-2564,-1454,'Wooden Barrel',107,1000,1],
         [-1381,4195,'Wooden Barrel',107,1000,1],
         [993,3870,'Wooden Barrel',107,1000,1],
         [902,3863,'Wooden Barrel',107,1000,1],
         [-1691,-1071,'Wooden Barrel',107,1000,1],
-        [-3831,1333,'Spider Pot',134,1000,19],
-        [-2420,1465,'Spider Pot',134,1000,19],
+        [-3831,1333,'Spider Pot',144,1000,19],
+        [-2420,1465,'Spider Pot',144,1000,19],
         [-2596,4671,'Wooden Barrel',107,1000,1],
         [1225,-477,'Skeleton Corpse',94,1000,21],
         [418,4435,'Skeleton Corpse',94,333,21],
@@ -1307,7 +1303,7 @@ const CRYPT_MODULES = {
         [1033,-1439,'Pot',87,1000,23],
         [1096,-1357,'Pot',85,1000,17],
         [941,-1457,'Pot',86,1000,2],
-        [-3008,2749,'Spider Pot',134,1000,19],
+        [-3008,2749,'Spider Pot',144,1000,19],
         [-1648,-938,'Skeleton Corpse',95,1000,22]
       ],
       Equipment: [
@@ -1338,60 +1334,62 @@ const CRYPT_MODULES = {
         [-1830,1620,'Double Wooden Door',63,1000,50],
         [197,-1026,'Jail Door',74,1000,75],
         [940,-277,'Jail Door',74,1000,75],
-        [263,4159,'Jail Door',74,1000,75],        [-3194,-572,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
+        [263,4159,'Jail Door',74,1000,75],
+        [-1582,4665,'Altar Of Sacrifice',42,1000,27],
+        [-3194,-572,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       MarvelousChest: [
         [-1593,1514,'Marvelous Chest',77,1000,47]
       ],
       Monster: [
-        [-3432,4239,'Skeleton Footman From Fake Death',122,333,28],
-        [1173,3495,'Skeleton Footman From Fake Death',122,500,28],
-        [-3497,4209,'Skeleton Archer',117,333,33],
-        [-960,1410,'Skeleton Ranged 2type',126,1000,34],
-        [-1200,2020,'Skeleton Ranged 2type',126,1000,34],
-        [-928,2780,'Skeleton Melee 5type',125,1000,29],
-        [275,4278,'Skeleton Melee 5type',125,333,29],
-        [-2809,-81,'Skeleton Melee 5type',125,1000,29],
-        [-291,3226,'Skeleton Melee 5type',125,1000,29],
-        [-2430,4410,'Skeleton Melee 5type',125,1000,29],
-        [1094,-198,'Death Skull',113,1000,31],
-        [944,-342,'Death Skull',113,1000,31],
-        [-1010,3930,'Skeleton Melee 5type',125,1000,29],
-        [924,-502,'Death Skull',113,1000,31],
-        [1233,-228,'Death Skull',113,1000,31],
-        [-1625,1181,'Mummy',116,1000,7],
-        [-1625,774,'Mummy',116,1000,7],
-        [-1625,98,'Mummy',116,1000,7],
-        [-2250,350,'Skeleton Melee 5type',125,1000,29],
-        [-1613,2473,'Mummy',116,1000,7],
-        [-1613,2792,'Mummy',116,1000,7],
-        [-900,320,'Skeleton Melee 5type',125,1000,29],
+        [-3432,4239,'Skeleton Footman From Fake Death',132,333,28],
+        [1173,3495,'Skeleton Footman From Fake Death',132,500,28],
+        [-3497,4209,'Skeleton Archer',127,333,33],
+        [-960,1410,'Skeleton Ranged 2type',136,1000,34],
+        [-1200,2020,'Skeleton Ranged 2type',136,1000,34],
+        [-928,2780,'Skeleton Melee 5type',135,1000,29],
+        [275,4278,'Skeleton Melee 5type',135,333,29],
+        [-2809,-81,'Skeleton Melee 5type',135,1000,29],
+        [-291,3226,'Skeleton Melee 5type',135,1000,29],
+        [-2430,4410,'Skeleton Melee 5type',135,1000,29],
+        [1094,-198,'Death Skull',123,1000,31],
+        [944,-342,'Death Skull',123,1000,31],
+        [-1010,3930,'Skeleton Melee 5type',135,1000,29],
+        [924,-502,'Death Skull',123,1000,31],
+        [1233,-228,'Death Skull',123,1000,31],
+        [-1625,1181,'Mummy',126,1000,7],
+        [-1625,774,'Mummy',126,1000,7],
+        [-1625,98,'Mummy',126,1000,7],
+        [-2250,350,'Skeleton Melee 5type',135,1000,29],
+        [-1613,2473,'Mummy',126,1000,7],
+        [-1613,2792,'Mummy',126,1000,7],
+        [-900,320,'Skeleton Melee 5type',135,1000,29],
         [-1513,4371,'Mimic Medium Simple',21,1000,82],
-        [-490,1270,'Death Skull',113,1000,31],
-        [-660,2230,'Death Skull',113,1000,31],
-        [-298,3298,'Death Skull',113,1000,31],
-        [-2040,2580,'Death Skull',113,1000,31],
-        [-3302,3039,'Death Skull',113,1000,31],
-        [-1990,1230,'Skeleton Ranged 2type',126,1000,34],
-        [-2590,1260,'Death Skull',113,1000,31],
-        [-1617,332,'Death Skull',113,1000,31],
-        [-1508,1451,'Death Skull',113,1000,31],
-        [-1590,1110,'Skeleton Ranged 2type',126,1000,34],
-        [-110,1625,'Skeleton Melee 5type',125,1000,29],
-        [1474,1614,'Skeleton Melee 5type',125,1000,29],
-        [-1774,-948,'Skeleton Ranged 2type',126,1000,34],
-        [-1588,1770,'Mummy',116,1000,7],
-        [-1602,3960,'Skeleton Mage',124,1000,52],
-        [-3730,1625,'Skeleton Melee 5type',125,1000,29],
-        [-3477,-1023,'Skeleton Melee 5type',125,1000,29],
-        [-1675,1440,'Death Skull',113,1000,31],
-        [-1481,1800,'Death Skull',113,1000,31],
-        [-1588,1443,'Mummy',116,1000,7],
-        [257,4296,'Skeleton Ranged 2type',126,333,34],
-        [-1720,1620,'Skeleton Champion',119,1000,59],
-        [-1564,2429,'Skeleton Melee 5type',125,1000,29],
-        [-1051,1122,'Skeleton Melee 5type',125,1000,29],
-        [473,1622,'Skeleton Ranged 2type',126,1000,34]
+        [-490,1270,'Death Skull',123,1000,31],
+        [-660,2230,'Death Skull',123,1000,31],
+        [-298,3298,'Death Skull',123,1000,31],
+        [-2040,2580,'Death Skull',123,1000,31],
+        [-3302,3039,'Death Skull',123,1000,31],
+        [-1990,1230,'Skeleton Ranged 2type',136,1000,34],
+        [-2590,1260,'Death Skull',123,1000,31],
+        [-1617,332,'Death Skull',123,1000,31],
+        [-1508,1451,'Death Skull',123,1000,31],
+        [-1590,1110,'Skeleton Ranged 2type',136,1000,34],
+        [-110,1625,'Skeleton Melee 5type',135,1000,29],
+        [1474,1614,'Skeleton Melee 5type',135,1000,29],
+        [-1774,-948,'Skeleton Ranged 2type',136,1000,34],
+        [-1588,1770,'Mummy',126,1000,7],
+        [-1602,3960,'Skeleton Mage',134,1000,52],
+        [-3730,1625,'Skeleton Melee 5type',135,1000,29],
+        [-3477,-1023,'Skeleton Melee 5type',135,1000,29],
+        [-1675,1440,'Death Skull',123,1000,31],
+        [-1481,1800,'Death Skull',123,1000,31],
+        [-1588,1443,'Mummy',126,1000,7],
+        [257,4296,'Skeleton Ranged 2type',136,333,34],
+        [-1720,1620,'Skeleton Champion',129,1000,59],
+        [-1564,2429,'Skeleton Melee 5type',135,1000,29],
+        [-1051,1122,'Skeleton Melee 5type',135,1000,29],
+        [473,1622,'Skeleton Ranged 2type',136,1000,34]
       ],
       OrnateChest: [
         [-2628,4430,'Ornate Chest Medium',79,1000,48],
@@ -1407,9 +1405,9 @@ const CRYPT_MODULES = {
         [-4141,4450,'Player Spawn',-1,1000,-1]
       ],
       QuestItem: [
-        [-1682,1278,'Broken Wheel',0,1000,83],
-        [-1562,1972,'Broken Wheel',0,1000,83],
-        [58,1135,'Broken Wheel',0,1000,83]
+        [-1682,1278,'Broken Wheel',118,1000,83],
+        [-1562,1972,'Broken Wheel',118,1000,83],
+        [58,1135,'Broken Wheel',118,1000,83]
       ],
       SpecialChest: [
         [-909,2004,'Chest Special',48,1000,37],
@@ -1434,12 +1432,6 @@ const CRYPT_MODULES = {
         [-3658,4522,'Ground',9,1000,12],
         [-4510,-484,'Ground',9,1000,12],
         [-3747,-1233,'Ground',9,1000,12]
-      ],
-          Altar: [
-        [-1581,4666,'Altar Of Sacrifice',42,1000,27]
-      ],
-      StairDown: [
-        [-3379,-416,'Stairs Down',-1,1000,-1]
       ],
     }
   },
@@ -1500,22 +1492,22 @@ const CRYPT_MODULES = {
         [-1450,1169,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [1054,-702,'Skeleton Melee 5type',125,1000,29],
-        [1381,1198,'Skeleton Ranged 2type',126,1000,34],
-        [110,390,'Death Skull',113,1000,31],
-        [110,-150,'Death Skull',113,1000,31],
-        [-919,601,'Skeleton Ranged 2type',126,1000,34],
-        [-18,1039,'Skeleton Mage',124,1000,52],
-        [986,611,'Skeleton Archer',117,1000,33],
-        [96,-1136,'Skeleton Melee 5type',125,1000,29],
-        [-86,-1136,'Skeleton Melee 5type',125,1000,29],
-        [-303,-696,'Skeleton Melee 5type',125,1000,29],
-        [403,-542,'Skeleton Footman From Fake Death',122,1000,28],
-        [-1111,323,'Skeleton Melee 5type',125,1000,29],
-        [-811,-647,'Skeleton Melee 5type',125,1000,29],
-        [839,-647,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-236,973,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [213,983,'Skeleton Guardsman From Fake Death',123,1000,30]
+        [1054,-702,'Skeleton Melee 5type',135,1000,29],
+        [1381,1198,'Skeleton Ranged 2type',136,1000,34],
+        [110,390,'Death Skull',123,1000,31],
+        [110,-150,'Death Skull',123,1000,31],
+        [-919,601,'Skeleton Ranged 2type',136,1000,34],
+        [-18,1039,'Skeleton Mage',134,1000,52],
+        [986,611,'Skeleton Archer',127,1000,33],
+        [96,-1136,'Skeleton Melee 5type',135,1000,29],
+        [-86,-1136,'Skeleton Melee 5type',135,1000,29],
+        [-303,-696,'Skeleton Melee 5type',135,1000,29],
+        [403,-542,'Skeleton Footman From Fake Death',132,1000,28],
+        [-1111,323,'Skeleton Melee 5type',135,1000,29],
+        [-811,-647,'Skeleton Melee 5type',135,1000,29],
+        [839,-647,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-236,973,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [213,983,'Skeleton Guardsman From Fake Death',133,1000,30]
       ],
       OrnateChest: [
         [-244,1163,'Ornate Chest Medium',79,1000,48],
@@ -1540,9 +1532,6 @@ const CRYPT_MODULES = {
       SpecialChest: [
         [-18,1212,'Chest Special',48,1000,37]
       ],
-          StairDown: [
-        [-1648,1178,'Stairs Down',-1,1000,-1]
-      ],
     }
   },
   'Cistern': {
@@ -1566,22 +1555,22 @@ const CRYPT_MODULES = {
         [0,-1135,'Chest Large',45,1000,14]
       ],
       Container: [
-        [-1228,-963,'Skeleton Wooden Barrel Random',133,1000,56],
+        [-1228,-963,'Skeleton Wooden Barrel Random',143,1000,56],
         [1238,-911,'Wooden Barrel',107,1000,1]
       ],
       GoldChest: [
         [76,1388,'Gold Chest',69,1000,3]
       ],
       Monster: [
-        [110,590,'Giant Dragonfly',114,1000,8],
-        [-720,-780,'Giant Dragonfly',114,1000,8],
-        [320,-690,'Zombie',132,250,9],
-        [320,740,'Zombie',132,250,9],
-        [-640,740,'Zombie',132,250,9],
-        [-640,-680,'Zombie',132,250,9],
-        [133,-16,'Skeleton Ranged 2type',126,1000,34],
-        [257,-36,'Skeleton Melee 5type',125,1000,29],
-        [-124,32,'Skeleton Melee 5type',125,1000,29]
+        [110,590,'Giant Dragonfly',124,1000,8],
+        [-720,-780,'Giant Dragonfly',124,1000,8],
+        [320,-690,'Zombie',142,250,9],
+        [320,740,'Zombie',142,250,9],
+        [-640,740,'Zombie',142,250,9],
+        [-640,-680,'Zombie',142,250,9],
+        [133,-16,'Skeleton Ranged 2type',136,1000,34],
+        [257,-36,'Skeleton Melee 5type',135,1000,29],
+        [-124,32,'Skeleton Melee 5type',135,1000,29]
       ],
       PlayerSpawn: [
         [-1413,1297,'Player Spawn',-1,1000,-1]
@@ -1592,9 +1581,6 @@ const CRYPT_MODULES = {
         [480,89,'Floor Spikes',68,500,11],
         [-331,-70,'Floor Spikes',68,500,11],
         [-331,83,'Floor Spikes',68,500,11]
-      ],
-          StairUp: [
-        [1507,-445,'Stairs Up',-1,1000,-1]
       ],
     }
   },
@@ -1626,10 +1612,10 @@ const CRYPT_MODULES = {
         [1444,183,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [750,-1250,'Potion',11,1000,16],
-        [-1005,-275,'Potion',11,1000,16],
-        [1495,-354,'Potion',11,1000,16],
-        [274,944,'Potion',11,1000,16]
+        [750,-1250,'Potion',122,1000,16],
+        [-1005,-275,'Potion',122,1000,16],
+        [1495,-354,'Potion',122,1000,16],
+        [274,944,'Potion',122,1000,16]
       ],
       Container: [
         [836,-878,'Wooden Crate Small',109,1000,20],
@@ -1695,22 +1681,22 @@ const CRYPT_MODULES = {
         [-1271,504,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [-193,75,'Mummy',116,1000,7],
-        [-240,100,'Zombie',132,1000,9],
-        [290,-395,'Zombie',132,1000,9],
-        [-240,-145,'Zombie',132,1000,9],
-        [85,25,'Zombie',132,1000,9],
-        [525,135,'Zombie',132,1000,9],
-        [160,-775,'Zombie',132,1000,9],
-        [-980,-1215,'Skeleton Melee 5type',125,1000,29],
-        [-1105,-820,'Skeleton Melee 5type',125,1000,29],
-        [1060,1070,'Skeleton Melee 5type',125,1000,29],
-        [-1090,-125,'Skeleton Footman From Fake Death',122,1000,28],
-        [599,1199,'Skeleton Ranged 2type',126,1000,34],
-        [90,15,'Death Skull',113,1000,31],
-        [35,-1155,'Death Skull',113,1000,31],
-        [760,80,'Death Skull',113,1000,31],
-        [-250,670,'Death Skull',113,1000,31]
+        [-193,75,'Mummy',126,1000,7],
+        [-240,100,'Zombie',142,1000,9],
+        [290,-395,'Zombie',142,1000,9],
+        [-240,-145,'Zombie',142,1000,9],
+        [85,25,'Zombie',142,1000,9],
+        [525,135,'Zombie',142,1000,9],
+        [160,-775,'Zombie',142,1000,9],
+        [-980,-1215,'Skeleton Melee 5type',135,1000,29],
+        [-1105,-820,'Skeleton Melee 5type',135,1000,29],
+        [1060,1070,'Skeleton Melee 5type',135,1000,29],
+        [-1090,-125,'Skeleton Footman From Fake Death',132,1000,28],
+        [599,1199,'Skeleton Ranged 2type',136,1000,34],
+        [90,15,'Death Skull',123,1000,31],
+        [35,-1155,'Death Skull',123,1000,31],
+        [760,80,'Death Skull',123,1000,31],
+        [-250,670,'Death Skull',123,1000,31]
       ],
       OrnateChest: [
         [640,1373,'Ornate Chest Large',78,1000,70]
@@ -1754,9 +1740,6 @@ const CRYPT_MODULES = {
         [367,-1330,'Ground',9,1000,12],
         [313,-1348,'Ground',9,1000,12]
       ],
-          StairDown: [
-        [-1395,502,'Stairs Down',-1,1000,-1]
-      ],
     }
   },
   'ComplexHalls': {
@@ -1780,17 +1763,17 @@ const CRYPT_MODULES = {
         [-715,1010,'Chest Small',47,1000,13]
       ],
       Consumable: [
-        [-85,995,'Lock Pick',10,500,86],
-        [600,780,'Lock Pick',10,500,86]
+        [-85,995,'Lock Pick',121,500,86],
+        [600,780,'Lock Pick',121,500,86]
       ],
       Container: [
-        [190,190,'Spider Pot',134,1000,19],
-        [-1047,432,'Skeleton Wooden Barrel Random',133,1000,56],
+        [190,190,'Spider Pot',144,1000,19],
+        [-1047,432,'Skeleton Wooden Barrel Random',143,1000,56],
         [-909,863,'Skeleton Corpse',94,1000,21],
         [-550,-1253,'Wooden Barrel',107,1000,1],
-        [-385,-815,'Spider Pot',134,1000,19],
+        [-385,-815,'Spider Pot',144,1000,19],
         [-549,-1253,'Wooden Barrel',107,1000,1],
-        [1210,-385,'Spider Pot',134,1000,19],
+        [1210,-385,'Spider Pot',144,1000,19],
         [-83,310,'Pot',87,1000,23],
         [-220,260,'Pot',86,1000,2],
         [-310,1220,'Pot',86,1000,2],
@@ -1821,32 +1804,35 @@ const CRYPT_MODULES = {
         [-1070,1093,'Wall Lever',100,1000,42],
         [625,-1115,'Jail Door Unlocked',76,1000,87],
         [165,835,'Jail Door Unlocked',76,1000,87],
-        [-615,-635,'Jail Door Unlocked',76,1000,87]      ],
+        [-615,-635,'Jail Door Unlocked',76,1000,87],
+        [-805,715,'Altar Of Sacrifice',42,1000,27],
+        [24,-1531,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [576,715,'Skeleton Archer',117,1000,33],
-        [580,75,'Mummy',116,1000,7],
-        [1429,1249,'Mummy',116,1000,7],
-        [1249,1463,'Mummy',116,1000,7],
-        [890,-375,'Mummy',116,1000,7],
-        [890,-750,'Mummy',116,1000,7],
-        [850,-900,'Death Skull',113,1000,31],
-        [165,-1025,'Mummy',116,1000,7],
-        [165,-590,'Mummy',116,1000,7],
-        [-170,-590,'Mummy',116,1000,7],
-        [-170,-1045,'Mummy',116,1000,7],
-        [30,-895,'Mummy',116,1000,7],
-        [15,1005,'Mummy',116,1000,7],
-        [970,-710,'Death Skull',113,1000,31],
-        [970,-975,'Death Skull',113,1000,31],
-        [-1090,-475,'Skeleton Archer',117,1000,33],
-        [-900,-1020,'Skeleton Footman From Fake Death',122,1000,28],
-        [-400,485,'Zombie',132,1000,9],
-        [900,-230,'Death Skull',113,1000,31],
-        [-380,935,'Zombie',132,1000,9],
-        [1290,705,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-800,1320,'Zombie',132,1000,9],
-        [-1300,835,'Giant Dragonfly',114,1000,8],
-        [890,125,'Death Skull',113,1000,31]
+        [576,715,'Skeleton Archer',127,1000,33],
+        [580,75,'Mummy',126,1000,7],
+        [1429,1249,'Mummy',126,1000,7],
+        [1249,1463,'Mummy',126,1000,7],
+        [890,-375,'Mummy',126,1000,7],
+        [890,-750,'Mummy',126,1000,7],
+        [850,-900,'Death Skull',123,1000,31],
+        [165,-1025,'Mummy',126,1000,7],
+        [165,-590,'Mummy',126,1000,7],
+        [-170,-590,'Mummy',126,1000,7],
+        [-170,-1045,'Mummy',126,1000,7],
+        [30,-895,'Mummy',126,1000,7],
+        [15,1005,'Mummy',126,1000,7],
+        [970,-710,'Death Skull',123,1000,31],
+        [970,-975,'Death Skull',123,1000,31],
+        [-1090,-475,'Skeleton Archer',127,1000,33],
+        [-900,-1020,'Skeleton Footman From Fake Death',132,1000,28],
+        [-400,485,'Zombie',142,1000,9],
+        [900,-230,'Death Skull',123,1000,31],
+        [-380,935,'Zombie',142,1000,9],
+        [1290,705,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-800,1320,'Zombie',142,1000,9],
+        [-1300,835,'Giant Dragonfly',124,1000,8],
+        [890,125,'Death Skull',123,1000,31]
       ],
       PlayerSpawn: [
         [-865,740,'Player Spawn',-1,1000,-1]
@@ -1886,27 +1872,23 @@ const CRYPT_MODULES = {
         [-834,909,'Ground',9,1000,12],
         [-1464,1079,'Ground',9,1000,12],
         [-1520,1229,'Ground',9,1000,12],
-        [186,-226,'Gems',8,91,76],
-        [116,-226,'Gems',8,91,76],
-        [-105,-182,'Gems',8,91,76],
-        [-184,-226,'Gems',8,91,76],
-        [72,-261,'Gems',8,91,76],
-        [-56,-261,'Gems',8,91,76],
-        [-92,-1448,'Gems',8,91,76],
-        [148,-1448,'Gems',8,91,76],
-        [102,-1453,'Gems',8,91,76],
-        [102,-1378,'Gems',8,91,76],
-        [-71,-1378,'Gems',8,91,76],
+        [186,-226,'Gems',115,91,76],
+        [116,-226,'Gems',115,91,76],
+        [-105,-182,'Gems',115,91,76],
+        [-184,-226,'Gems',115,91,76],
+        [72,-261,'Gems',115,91,76],
+        [-56,-261,'Gems',115,91,76],
+        [-92,-1448,'Gems',115,91,76],
+        [148,-1448,'Gems',115,91,76],
+        [102,-1453,'Gems',115,91,76],
+        [102,-1378,'Gems',115,91,76],
+        [-71,-1378,'Gems',115,91,76],
         [-275,180,'Bookshelf',6,1000,38],
         [1020,890,'Bookshelf',6,1000,38],
         [1000,845,'Bookshelf',6,1000,38],
         [1040,845,'Bookshelf',6,1000,38],
         [-1231,-1223,'Ground',9,1000,12],
         [880,610,'Coin',7,1000,39]
-      ],
-          Altar: [
-        [-806,714,'Altar Of Sacrifice',42,1000,27],
-        [22,-1530,'Altar Of Sacrifice',42,1000,27]
       ],
     }
   },
@@ -1933,11 +1915,11 @@ const CRYPT_MODULES = {
         [618,1119,'Crypt Secret Wall Door',61,1000,26]
       ],
       Monster: [
-        [819,-804,'Mummy',116,1000,7],
-        [-800,-800,'Skeleton Footman From Fake Death',122,500,28],
-        [-20,1011,'Giant Dragonfly',114,1000,8],
-        [-20,460,'Giant Dragonfly',114,1000,8],
-        [-810,800,'Skeleton Footman From Fake Death',122,500,28]
+        [819,-804,'Mummy',126,1000,7],
+        [-800,-800,'Skeleton Footman From Fake Death',132,500,28],
+        [-20,1011,'Giant Dragonfly',124,1000,8],
+        [-20,460,'Giant Dragonfly',124,1000,8],
+        [-810,800,'Skeleton Footman From Fake Death',132,500,28]
       ],
       PlayerSpawn: [
         [1446,-495,'Player Spawn',-1,1000,-1]
@@ -1994,15 +1976,15 @@ const CRYPT_MODULES = {
         [-1,-567,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [32,134,'Bandage',5,1000,15]
+        [32,134,'Bandage',120,1000,15]
       ],
       Container: [
-        [-70,-560,'Skeleton Wooden Barrel Random',133,500,56],
-        [-70,580,'Skeleton Wooden Barrel Random',133,500,56],
+        [-70,-560,'Skeleton Wooden Barrel Random',143,500,56],
+        [-70,580,'Skeleton Wooden Barrel Random',143,500,56],
         [375,405,'Pot',86,1000,2],
         [-495,380,'Wooden Barrel',107,1000,1],
         [-590,400,'Wooden Barrel',107,1000,1],
-        [-900,360,'Skeleton Wooden Barrel Random',133,1000,56],
+        [-900,360,'Skeleton Wooden Barrel Random',143,1000,56],
         [380,550,'Pot',85,1000,17],
         [580,590,'Pot',84,1000,18],
         [380,-230,'Pot',87,1000,23],
@@ -2017,16 +1999,16 @@ const CRYPT_MODULES = {
         [461,10,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [793,96,'Giant Dragonfly',114,1000,8],
-        [-186,-283,'Giant Dragonfly',114,1000,8],
-        [-186,284,'Giant Dragonfly',114,1000,8],
-        [-590,550,'Skeleton Footman From Fake Death',122,1000,28],
-        [773,806,'Skeleton Melee 5type',125,1000,29],
-        [773,-825,'Skeleton Melee 5type',125,1000,29],
-        [1046,9,'Skeleton Footman From Fake Death',122,1000,28],
-        [1047,23,'Skeleton Archer',117,1000,33],
-        [480,470,'Skeleton Footman From Fake Death',122,1000,28],
-        [1050,-430,'Skeleton Footman From Fake Death',122,1000,28]
+        [793,96,'Giant Dragonfly',124,1000,8],
+        [-186,-283,'Giant Dragonfly',124,1000,8],
+        [-186,284,'Giant Dragonfly',124,1000,8],
+        [-590,550,'Skeleton Footman From Fake Death',132,1000,28],
+        [773,806,'Skeleton Melee 5type',135,1000,29],
+        [773,-825,'Skeleton Melee 5type',135,1000,29],
+        [1046,9,'Skeleton Footman From Fake Death',132,1000,28],
+        [1047,23,'Skeleton Archer',127,1000,33],
+        [480,470,'Skeleton Footman From Fake Death',132,1000,28],
+        [1050,-430,'Skeleton Footman From Fake Death',132,1000,28]
       ],
       OrnateChest: [
         [1380,0,'Ornate Chest Large',78,1000,70]
@@ -2063,9 +2045,6 @@ const CRYPT_MODULES = {
         [990,0,'Ground',9,250,12],
         [1500,0,'Ground',9,250,12]
       ],
-          StairUp: [
-        [246,-6,'Stairs Up',-1,1000,-1]
-      ],
     }
   },
   'Connector_Trap_02': {
@@ -2081,16 +2060,16 @@ const CRYPT_MODULES = {
         [1220,-280,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [32,134,'Bandage',5,1000,15]
+        [32,134,'Bandage',120,1000,15]
       ],
       Container: [
         [415,405,'Pot',86,1000,2],
-        [-620,550,'Spider Pot',134,1000,19],
+        [-620,550,'Spider Pot',144,1000,19],
         [380,-430,'Pot',86,1000,2],
         [380,-355,'Pot',85,1000,17],
         [-510,400,'Pot',86,1000,2],
         [-590,400,'Pot',87,1000,23],
-        [-905,360,'Skeleton Wooden Barrel Random',133,1000,56],
+        [-905,360,'Skeleton Wooden Barrel Random',143,1000,56],
         [380,60,'Pot',85,1000,17],
         [580,590,'Pot',84,1000,18]
       ],
@@ -2106,14 +2085,14 @@ const CRYPT_MODULES = {
         [25,408,'Wooden Door With Lock',110,1000,5]
       ],
       Monster: [
-        [1030,588,'Skeleton Melee 5type',125,333,29],
-        [1055,5,'Skeleton Archer',117,1000,33],
-        [-422,-21,'Skeleton Melee 5type',125,1000,29],
-        [528,17,'Zombie',132,1000,9],
-        [1064,-825,'Skeleton Melee 5type',125,333,29],
-        [970,420,'Skeleton Archer',117,1000,33],
-        [710,-520,'Skeleton Melee 5type',125,1000,29],
-        [1220,-520,'Skeleton Melee 5type',125,1000,29]
+        [1030,588,'Skeleton Melee 5type',135,333,29],
+        [1055,5,'Skeleton Archer',127,1000,33],
+        [-422,-21,'Skeleton Melee 5type',135,1000,29],
+        [528,17,'Zombie',142,1000,9],
+        [1064,-825,'Skeleton Melee 5type',135,333,29],
+        [970,420,'Skeleton Archer',127,1000,33],
+        [710,-520,'Skeleton Melee 5type',135,1000,29],
+        [1220,-520,'Skeleton Melee 5type',135,1000,29]
       ],
       OrnateChest: [
         [960,-820,'Ornate Chest Large',78,1000,70]
@@ -2186,15 +2165,15 @@ const CRYPT_MODULES = {
         [-595,860,'Jail Door',74,1000,75]
       ],
       Monster: [
-        [1034,880,'Spider Mummy',130,1000,88],
-        [588,793,'Spider Mummy',130,1000,88],
-        [385,793,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-170,-592,'Spider Mummy',130,1000,88],
-        [124,-592,'Spider Mummy',130,1000,88],
-        [-4,-458,'Spider Mummy',130,1000,88],
-        [385,-815,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-415,-815,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-799,819,'Spider Mummy',130,1000,88]
+        [1034,880,'Spider Mummy',140,1000,88],
+        [588,793,'Spider Mummy',140,1000,88],
+        [385,793,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-170,-592,'Spider Mummy',140,1000,88],
+        [124,-592,'Spider Mummy',140,1000,88],
+        [-4,-458,'Spider Mummy',140,1000,88],
+        [385,-815,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-415,-815,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-799,819,'Spider Mummy',140,1000,88]
       ],
       OrnateChest: [
         [-182,1491,'Ornate Chest Medium',79,1000,48]
@@ -2239,28 +2218,30 @@ const CRYPT_MODULES = {
         [-93,-989,'Pot',86,1000,2],
         [27,-1063,'Pot',86,1000,2],
         [-840,-1325,'Wooden Barrel',107,1000,1],
-        [-760,-1240,'Skeleton Wooden Barrel Random',133,1000,56]
+        [-760,-1240,'Skeleton Wooden Barrel Random',143,1000,56]
       ],
       Herb: [
         [-1180,-1010,'Phantom Flower',81,1000,4],
         [1190,370,'Phantom Flower',81,1000,4],
         [1160,440,'Phantom Flower',81,1000,4]
       ],
-      Interact: [        [110,1142,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
+      Interact: [
+        [170,0,'Altar Of Sacrifice',42,1000,27],
+        [110,1142,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [1150,-1185,'Skeleton Melee 5type',125,1000,29],
-        [1175,25,'Skeleton Mage',124,500,52],
-        [-430,-1145,'Skeleton Melee 5type',125,1000,29],
-        [-1021,-6,'Mummy',116,1000,7],
-        [1100,1095,'Skeleton Mage',124,500,52],
-        [-540,1110,'Skeleton Mage',124,250,52],
-        [-455,10,'Skeleton Mage',124,250,52],
-        [-1100,-1125,'Skeleton Mage',124,250,52],
-        [-1160,1145,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [410,1115,'Skeleton Melee 5type',125,1000,29],
-        [524,-5,'Mummy',116,1000,7],
-        [-1175,325,'Skeleton Mage',124,250,52]
+        [1150,-1185,'Skeleton Melee 5type',135,1000,29],
+        [1175,25,'Skeleton Mage',134,500,52],
+        [-430,-1145,'Skeleton Melee 5type',135,1000,29],
+        [-1021,-6,'Mummy',126,1000,7],
+        [1100,1095,'Skeleton Mage',134,500,52],
+        [-540,1110,'Skeleton Mage',134,250,52],
+        [-455,10,'Skeleton Mage',134,250,52],
+        [-1100,-1125,'Skeleton Mage',134,250,52],
+        [-1160,1145,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [410,1115,'Skeleton Melee 5type',135,1000,29],
+        [524,-5,'Mummy',126,1000,7],
+        [-1175,325,'Skeleton Mage',134,250,52]
       ],
       PlayerSpawn: [
         [84,1108,'Player Spawn',-1,1000,-1]
@@ -2312,12 +2293,6 @@ const CRYPT_MODULES = {
         [440,-410,'Floor Spikes',68,1000,11],
         [440,400,'Floor Spikes',68,1000,11]
       ],
-          Altar: [
-        [170,0,'Altar Of Sacrifice',42,1000,27]
-      ],
-      StairDown: [
-        [112,979,'Stairs Down',-1,1000,-1]
-      ],
     }
   },
   'CrossRoad': {
@@ -2339,7 +2314,7 @@ const CRYPT_MODULES = {
         [-276,-546,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [-13,-1442,'Bandage',5,1000,15]
+        [-13,-1442,'Bandage',120,1000,15]
       ],
       Container: [
         [1110,-249,'Pot',86,1000,2],
@@ -2350,7 +2325,7 @@ const CRYPT_MODULES = {
         [1030,-269,'Pot',84,1000,18],
         [1179,893,'Wooden Barrel',107,1000,1],
         [890,-881,'Pot',85,1000,17],
-        [1232,279,'Spider Pot',134,1000,19],
+        [1232,279,'Spider Pot',144,1000,19],
         [412,72,'Pot',86,1000,2],
         [1107,279,'Pot',84,1000,18],
         [675,529,'Wooden Barrel',107,1000,1],
@@ -2364,23 +2339,26 @@ const CRYPT_MODULES = {
         [160,-120,'Phantom Flower',81,1000,4]
       ],
       Interact: [
-        [229,980,'Wooden Door With Lock',110,1000,5]      ],
+        [229,980,'Wooden Door With Lock',110,1000,5],
+        [-780,1110,'Altar Of Sacrifice',42,1000,27],
+        [0,1597,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [-5,1208,'Mummy',116,1000,7],
-        [-1042,215,'Skeleton Footman From Fake Death',122,1000,28],
-        [-512,215,'Skeleton Footman From Fake Death',122,1000,28],
-        [1147,189,'Skeleton Melee 5type',125,1000,29],
-        [468,5,'Skeleton Ranged 2type',126,1000,34],
-        [880,611,'Mummy',116,1000,7],
-        [710,911,'Mummy',116,1000,7],
-        [-491,-213,'Skeleton Melee 5type',125,1000,29],
-        [-879,345,'Skeleton Melee 5type',125,1000,29],
-        [-1075,-213,'Skeleton Melee 5type',125,1000,29],
-        [195,-449,'Death Skull',113,1000,31],
-        [-185,-449,'Death Skull',113,1000,31],
-        [-184,-1155,'Death Skull',113,1000,31],
-        [196,-1155,'Death Skull',113,1000,31],
-        [-575,354,'Skeleton Melee 5type',125,1000,29]
+        [-5,1208,'Mummy',126,1000,7],
+        [-1042,215,'Skeleton Footman From Fake Death',132,1000,28],
+        [-512,215,'Skeleton Footman From Fake Death',132,1000,28],
+        [1147,189,'Skeleton Melee 5type',135,1000,29],
+        [468,5,'Skeleton Ranged 2type',136,1000,34],
+        [880,611,'Mummy',126,1000,7],
+        [710,911,'Mummy',126,1000,7],
+        [-491,-213,'Skeleton Melee 5type',135,1000,29],
+        [-879,345,'Skeleton Melee 5type',135,1000,29],
+        [-1075,-213,'Skeleton Melee 5type',135,1000,29],
+        [195,-449,'Death Skull',123,1000,31],
+        [-185,-449,'Death Skull',123,1000,31],
+        [-184,-1155,'Death Skull',123,1000,31],
+        [196,-1155,'Death Skull',123,1000,31],
+        [-575,354,'Skeleton Melee 5type',135,1000,29]
       ],
       OrnateChest: [
         [-741,1125,'Ornate Chest Large',78,1000,70]
@@ -2397,13 +2375,9 @@ const CRYPT_MODULES = {
         [950,-520,'Wall Spike',102,500,10]
       ],
       Valuable: [
-        [-1415,-21,'Gems',8,1000,76],
+        [-1415,-21,'Gems',115,1000,76],
         [-480,-675,'Ground',9,1000,12],
         [-532,-809,'Ground',9,1000,12]
-      ],
-          Altar: [
-        [-781,1110,'Altar Of Sacrifice',42,1000,27],
-        [0,1597,'Altar Of Sacrifice',42,1000,27]
       ],
     }
   },
@@ -2413,14 +2387,14 @@ const CRYPT_MODULES = {
     count: 169,
     spawns: {
       Consumable: [
-        [1531,1142,'Potion',11,1000,16],
-        [360,-1083,'Lock Pick',10,1000,86],
-        [383,-1027,'Potion',11,1000,16],
-        [-178,742,'Potion',11,1000,16],
-        [-238,-74,'Potion',11,1000,16],
-        [-332,209,'Potion',11,1000,16],
-        [1545,-1269,'Lock Pick',10,1000,86],
-        [-332,251,'Potion',11,1000,16]
+        [1531,1142,'Potion',122,1000,16],
+        [360,-1083,'Lock Pick',121,1000,86],
+        [383,-1027,'Potion',122,1000,16],
+        [-178,742,'Potion',122,1000,16],
+        [-238,-74,'Potion',122,1000,16],
+        [-332,209,'Potion',122,1000,16],
+        [1545,-1269,'Lock Pick',121,1000,86],
+        [-332,251,'Potion',122,1000,16]
       ],
       Container: [
         [-1529,-131,'Pot',85,1000,17],
@@ -2432,8 +2406,8 @@ const CRYPT_MODULES = {
         [1222,1112,'Pot',86,1000,2],
         [-554,1193,'Pot',86,1000,2],
         [1221,-401,'Pot',86,1000,2],
-        [-1242,1243,'Spider Pot',134,1000,19],
-        [1250,-1242,'Spider Pot',134,1000,19],
+        [-1242,1243,'Spider Pot',144,1000,19],
+        [1250,-1242,'Spider Pot',144,1000,19],
         [-1223,170,'Pot',87,1000,23],
         [1168,-432,'Pot',85,1000,17],
         [-444,431,'Pot',84,1000,18],
@@ -2454,16 +2428,16 @@ const CRYPT_MODULES = {
         [-304,-391,'Weapon Common',14,1000,90]
       ],
       Monster: [
-        [1105,-178,'Skeleton Melee 5type',125,500,29],
-        [493,1388,'Skeleton Melee 5type',125,1000,29],
-        [-25,-1401,'Skeleton Archer',117,1000,33],
-        [468,582,'Skeleton Melee 5type',125,500,29],
-        [-1047,216,'Skeleton Melee 5type',125,500,29],
-        [781,44,'Skeleton Melee 5type',125,1000,29],
-        [-872,-94,'Skeleton Melee 5type',125,1000,29],
-        [185,665,'Skeleton Mage',124,1000,52],
-        [24,-1093,'Skeleton Mage',124,1000,52],
-        [-245,-1104,'Skeleton Melee 5type',125,500,29]
+        [1105,-178,'Skeleton Melee 5type',135,500,29],
+        [493,1388,'Skeleton Melee 5type',135,1000,29],
+        [-25,-1401,'Skeleton Archer',127,1000,33],
+        [468,582,'Skeleton Melee 5type',135,500,29],
+        [-1047,216,'Skeleton Melee 5type',135,500,29],
+        [781,44,'Skeleton Melee 5type',135,1000,29],
+        [-872,-94,'Skeleton Melee 5type',135,1000,29],
+        [185,665,'Skeleton Mage',134,1000,52],
+        [24,-1093,'Skeleton Mage',134,1000,52],
+        [-245,-1104,'Skeleton Melee 5type',135,500,29]
       ],
       PlayerSpawn: [
         [1433,780,'Player Spawn',-1,1000,-1]
@@ -2494,7 +2468,7 @@ const CRYPT_MODULES = {
         [-431,999,'Floor Portal',67,1000,35]
       ],
       QuestItem: [
-        [-205,763,'Hourglass',1,1000,36]
+        [-205,763,'Hourglass',119,1000,36]
       ],
       SpecialChest: [
         [236,-233,'Chest Special',48,1000,37]
@@ -2620,7 +2594,8 @@ const CRYPT_MODULES = {
         [1396,-44,'Marvelous Chest',77,1000,47]
       ],
       Monster: [
-        [0,0,'Crypt Boss',136,1000,94]
+        [0,0,'Skeleton Warlord',139,500,93],
+        [0,0,'Lich',125,500,94]
       ],
       TreasureHoard: [
         [1302,-2,'Hoard',73,1000,95]
@@ -2662,9 +2637,9 @@ const CRYPT_MODULES = {
       Container: [
         [234,559,'Wooden Barrel',107,1000,1],
         [324,499,'Wooden Barrel',107,1000,1],
-        [1450,216,'Skeleton Wooden Barrel Random',133,1000,56],
-        [-1120,618,'Spider Pot',134,333,19],
-        [-1120,-602,'Spider Pot',134,333,19],
+        [1450,216,'Skeleton Wooden Barrel Random',143,1000,56],
+        [-1120,618,'Spider Pot',144,333,19],
+        [-1120,-602,'Spider Pot',144,333,19],
         [1351,-691,'Pot',86,1000,2]
       ],
       Herb: [
@@ -2679,26 +2654,26 @@ const CRYPT_MODULES = {
         [680,-233,'Wall Lever',100,1000,42]
       ],
       Monster: [
-        [-520,1114,'Skeleton Melee 5type',125,500,29],
-        [1407,-114,'Mummy',116,1000,7],
-        [-512,-1141,'Skeleton Melee 5type',125,500,29],
-        [1197,-603,'Skeleton Axeman',118,1000,63],
-        [-1149,6,'Wraith',131,333,64],
-        [-1170,-82,'Skeleton Mage',124,333,52],
-        [-1163,76,'Skeleton Champion',119,333,59],
-        [-1260,-137,'Skeleton Archer',117,333,33],
-        [-1260,97,'Skeleton Archer',117,333,33],
-        [-1066,-178,'Skeleton Footman From Fake Death',122,333,28],
-        [-1062,170,'Skeleton Footman From Fake Death',122,333,28],
-        [23,-296,'Mummy',116,667,7],
-        [311,-500,'Mummy',116,667,7],
-        [-279,-621,'Mummy',116,667,7],
-        [-409,-521,'Mummy',116,667,7],
-        [-388,589,'Mummy',116,667,7],
-        [-13,248,'Mummy',116,667,7],
-        [478,1148,'Skeleton Melee 5type',125,500,29],
-        [461,-1153,'Skeleton Melee 5type',125,500,29],
-        [1103,14,'Skeleton Ranged 2type',126,1000,34]
+        [-520,1114,'Skeleton Melee 5type',135,500,29],
+        [1407,-114,'Mummy',126,1000,7],
+        [-512,-1141,'Skeleton Melee 5type',135,500,29],
+        [1197,-603,'Skeleton Axeman',128,1000,63],
+        [-1149,6,'Wraith',141,333,64],
+        [-1170,-82,'Skeleton Mage',134,333,52],
+        [-1163,76,'Skeleton Champion',129,333,59],
+        [-1260,-137,'Skeleton Archer',127,333,33],
+        [-1260,97,'Skeleton Archer',127,333,33],
+        [-1066,-178,'Skeleton Footman From Fake Death',132,333,28],
+        [-1062,170,'Skeleton Footman From Fake Death',132,333,28],
+        [23,-296,'Mummy',126,667,7],
+        [311,-500,'Mummy',126,667,7],
+        [-279,-621,'Mummy',126,667,7],
+        [-409,-521,'Mummy',126,667,7],
+        [-388,589,'Mummy',126,667,7],
+        [-13,248,'Mummy',126,667,7],
+        [478,1148,'Skeleton Melee 5type',135,500,29],
+        [461,-1153,'Skeleton Melee 5type',135,500,29],
+        [1103,14,'Skeleton Ranged 2type',136,1000,34]
       ],
       PlayerSpawn: [
         [-1276,605,'Player Spawn',-1,1000,-1]
@@ -2737,18 +2712,18 @@ const CRYPT_MODULES = {
       Valuable: [
         [1462,403,'Ground',9,1000,12],
         [1338,365,'Ground',9,1000,12],
-        [0,-69,'Gems',8,167,76],
-        [17,-69,'Gems',8,167,76],
-        [0,82,'Gems',8,167,76],
-        [17,82,'Gems',8,167,76],
-        [-66,15,'Gems',8,167,76],
-        [-66,-2,'Gems',8,167,76],
-        [84,15,'Gems',8,167,76],
-        [84,-2,'Gems',8,167,76],
-        [6,-97,'Gems',8,167,76],
-        [69,107,'Gems',8,167,76],
-        [88,8,'Gems',8,167,76],
-        [-83,8,'Gems',8,167,76]
+        [0,-69,'Gems',115,167,76],
+        [17,-69,'Gems',115,167,76],
+        [0,82,'Gems',115,167,76],
+        [17,82,'Gems',115,167,76],
+        [-66,15,'Gems',115,167,76],
+        [-66,-2,'Gems',115,167,76],
+        [84,15,'Gems',115,167,76],
+        [84,-2,'Gems',115,167,76],
+        [6,-97,'Gems',115,167,76],
+        [69,107,'Gems',115,167,76],
+        [88,8,'Gems',115,167,76],
+        [-83,8,'Gems',115,167,76]
       ],
     }
   },
@@ -2772,9 +2747,9 @@ const CRYPT_MODULES = {
         [1403,-110,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [-814,-93,'Potion',11,1000,16],
-        [-789,-93,'Potion',11,1000,16],
-        [-839,-93,'Potion',11,1000,16]
+        [-814,-93,'Potion',122,1000,16],
+        [-789,-93,'Potion',122,1000,16],
+        [-839,-93,'Potion',122,1000,16]
       ],
       Container: [
         [-735,-50,'Skeleton Corpse',93,500,24],
@@ -2806,22 +2781,22 @@ const CRYPT_MODULES = {
         [-1054,597,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [-719,263,'Skeleton Melee 5type',125,500,29],
-        [-1205,-64,'Mummy',116,500,7],
-        [-436,-43,'Mummy',116,500,7],
-        [-1128,1132,'Mummy',116,500,7],
-        [-274,1333,'Mummy',116,500,7],
-        [900,-1306,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-354,46,'Skeleton Archer',117,1000,33],
-        [-435,-563,'Skeleton Archer',117,1000,33],
-        [-779,-1312,'Skeleton Archer',117,1000,33],
-        [469,-1207,'Skeleton Archer',117,1000,33],
-        [873,744,'Zombie',132,1000,9],
-        [-121,921,'Zombie',132,1000,9],
-        [115,-1011,'Zombie',132,1000,9],
-        [-836,-920,'Zombie',132,1000,9],
-        [-1185,504,'Zombie',132,1000,9],
-        [-1095,69,'Zombie',132,1000,9]
+        [-719,263,'Skeleton Melee 5type',135,500,29],
+        [-1205,-64,'Mummy',126,500,7],
+        [-436,-43,'Mummy',126,500,7],
+        [-1128,1132,'Mummy',126,500,7],
+        [-274,1333,'Mummy',126,500,7],
+        [900,-1306,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-354,46,'Skeleton Archer',127,1000,33],
+        [-435,-563,'Skeleton Archer',127,1000,33],
+        [-779,-1312,'Skeleton Archer',127,1000,33],
+        [469,-1207,'Skeleton Archer',127,1000,33],
+        [873,744,'Zombie',142,1000,9],
+        [-121,921,'Zombie',142,1000,9],
+        [115,-1011,'Zombie',142,1000,9],
+        [-836,-920,'Zombie',142,1000,9],
+        [-1185,504,'Zombie',142,1000,9],
+        [-1095,69,'Zombie',142,1000,9]
       ],
       OrnateChest: [
         [-1120,-100,'Ornate Chest Medium',79,1000,48],
@@ -2856,7 +2831,7 @@ const CRYPT_MODULES = {
         [-250,-875,'Floor Portal',67,1000,35]
       ],
       QuestItem: [
-        [135,1451,'Hourglass',1,1000,36]
+        [135,1451,'Hourglass',119,1000,36]
       ],
       SpecialChest: [
         [1360,-1320,'Chest Special',48,1000,37]
@@ -2882,9 +2857,6 @@ const CRYPT_MODULES = {
         [-764,-1342,'Coin',7,1000,39],
         [-760,-1353,'Coin',7,1000,39],
         [69,1402,'Coin',7,1000,39]
-      ],
-          StairUp: [
-        [-842,598,'Stairs Up',-1,1000,-1]
       ],
     }
   },
@@ -2920,26 +2892,26 @@ const CRYPT_MODULES = {
         [-548,547,'Double Wooden Door Arched',64,1000,96]
       ],
       Monster: [
-        [0,100,'Mummy',116,1000,7],
-        [-117,71,'Mummy',116,1000,7],
-        [106,-57,'Mummy',116,1000,7],
-        [67,61,'Mummy',116,1000,7],
-        [-40,-138,'Mummy',116,1000,7],
-        [77,-99,'Mummy',116,1000,7],
-        [-162,-12,'Mummy',116,1000,7],
-        [-123,-129,'Mummy',116,1000,7],
-        [120,1144,'Skeleton Melee 5type',125,500,29],
-        [0,110,'Mummy',116,1000,7],
-        [1095,340,'Skeleton Melee 5type',125,500,29],
-        [285,-1100,'Skeleton Melee 5type',125,500,29],
-        [-335,-1100,'Skeleton Melee 5type',125,500,29],
-        [-1115,-330,'Skeleton Melee 5type',125,500,29],
-        [-1115,310,'Skeleton Melee 5type',125,500,29],
-        [150,0,'Mummy',116,1000,7],
-        [1115,-320,'Skeleton Melee 5type',125,500,29],
-        [0,-110,'Mummy',116,1000,7],
-        [-140,0,'Mummy',116,1000,7],
-        [-346,1100,'Skeleton Melee 5type',125,500,29]
+        [0,100,'Mummy',126,1000,7],
+        [-117,71,'Mummy',126,1000,7],
+        [106,-57,'Mummy',126,1000,7],
+        [67,61,'Mummy',126,1000,7],
+        [-40,-138,'Mummy',126,1000,7],
+        [77,-99,'Mummy',126,1000,7],
+        [-162,-12,'Mummy',126,1000,7],
+        [-123,-129,'Mummy',126,1000,7],
+        [120,1144,'Skeleton Melee 5type',135,500,29],
+        [0,110,'Mummy',126,1000,7],
+        [1095,340,'Skeleton Melee 5type',135,500,29],
+        [285,-1100,'Skeleton Melee 5type',135,500,29],
+        [-335,-1100,'Skeleton Melee 5type',135,500,29],
+        [-1115,-330,'Skeleton Melee 5type',135,500,29],
+        [-1115,310,'Skeleton Melee 5type',135,500,29],
+        [150,0,'Mummy',126,1000,7],
+        [1115,-320,'Skeleton Melee 5type',135,500,29],
+        [0,-110,'Mummy',126,1000,7],
+        [-140,0,'Mummy',126,1000,7],
+        [-346,1100,'Skeleton Melee 5type',135,500,29]
       ],
       PlayerSpawn: [
         [-1425,-505,'Player Spawn',-1,1000,-1]
@@ -3035,13 +3007,13 @@ const CRYPT_MODULES = {
         [-65,-560,'Black Rose Random',-1,1000,58]
       ],
       Monster: [
-        [347,-271,'Skeleton Archer',117,1000,33],
-        [-325,281,'Skeleton Archer',117,1000,33],
-        [0,10,'Wraith',131,1000,64],
-        [837,816,'Skeleton Melee 5type',125,1000,29],
-        [935,-787,'Skeleton Melee 5type',125,1000,29],
-        [-861,799,'Skeleton Melee 5type',125,1000,29],
-        [-839,-814,'Skeleton Melee 5type',125,1000,29]
+        [347,-271,'Skeleton Archer',127,1000,33],
+        [-325,281,'Skeleton Archer',127,1000,33],
+        [0,10,'Wraith',141,1000,64],
+        [837,816,'Skeleton Melee 5type',135,1000,29],
+        [935,-787,'Skeleton Melee 5type',135,1000,29],
+        [-861,799,'Skeleton Melee 5type',135,1000,29],
+        [-839,-814,'Skeleton Melee 5type',135,1000,29]
       ],
       OrnateChest: [
         [450,442,'Ornate Chest Large',78,1000,70]
@@ -3109,22 +3081,22 @@ const CRYPT_MODULES = {
         [643,-240,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [-1118,828,'Skeleton Footman From Fake Death',122,1000,28],
-        [420,-60,'Mummy',116,1000,7],
-        [680,-30,'Mummy',116,1000,7],
-        [1230,280,'Mummy',116,1000,7],
-        [1110,1090,'Mummy',116,1000,7],
-        [1030,-400,'Zombie',132,1000,9],
-        [-690,-730,'Mummy',116,1000,7],
-        [-890,-480,'Mummy',116,1000,7],
-        [-225,-810,'Skeleton Melee 5type',125,1000,29],
-        [-830,-810,'Skeleton Melee 5type',125,1000,29],
-        [-470,-810,'Skeleton Mage',124,1000,52],
-        [-668,770,'Skeleton Melee 5type',125,1000,29],
-        [-870,-1080,'Mummy',116,1000,7],
-        [710,903,'Skeleton Melee 5type',125,1000,29],
-        [1223,-1124,'Skeleton Melee 5type',125,1000,29],
-        [829,-1166,'Skeleton Melee 5type',125,500,29]
+        [-1118,828,'Skeleton Footman From Fake Death',132,1000,28],
+        [420,-60,'Mummy',126,1000,7],
+        [680,-30,'Mummy',126,1000,7],
+        [1230,280,'Mummy',126,1000,7],
+        [1110,1090,'Mummy',126,1000,7],
+        [1030,-400,'Zombie',142,1000,9],
+        [-690,-730,'Mummy',126,1000,7],
+        [-890,-480,'Mummy',126,1000,7],
+        [-225,-810,'Skeleton Melee 5type',135,1000,29],
+        [-830,-810,'Skeleton Melee 5type',135,1000,29],
+        [-470,-810,'Skeleton Mage',134,1000,52],
+        [-668,770,'Skeleton Melee 5type',135,1000,29],
+        [-870,-1080,'Mummy',126,1000,7],
+        [710,903,'Skeleton Melee 5type',135,1000,29],
+        [1223,-1124,'Skeleton Melee 5type',135,1000,29],
+        [829,-1166,'Skeleton Melee 5type',135,500,29]
       ],
       OrnateChest: [
         [-50,-805,'Ornate Chest Large',78,1000,70]
@@ -3153,9 +3125,6 @@ const CRYPT_MODULES = {
       Trap: [
         [722,-1137,'Floor Spikes',68,500,11]
       ],
-          StairUp: [
-        [794,-317,'Stairs Up',-1,1000,-1]
-      ],
     }
   },
   'FourRooms': {
@@ -3179,7 +3148,7 @@ const CRYPT_MODULES = {
       ],
       Container: [
         [1197,-592,'Skeleton Wooden Barrel',96,1000,77],
-        [-1139,-441,'Spider Pot',134,1000,19],
+        [-1139,-441,'Spider Pot',144,1000,19],
         [-1089,-551,'Pot',86,1000,2],
         [-459,-481,'Pot',86,1000,2],
         [-390,-1065,'Pot',86,1000,2],
@@ -3209,14 +3178,14 @@ const CRYPT_MODULES = {
         [-945,-265,'Floor Lever',65,1000,44]
       ],
       Monster: [
-        [-485,1076,'Mummy',116,1000,7],
-        [-943,1019,'Mummy',116,1000,7],
-        [-528,576,'Mummy',116,1000,7],
-        [1137,-724,'Skeleton Melee 5type',125,1000,29],
-        [770,-1093,'Skeleton Melee 5type',125,1000,29],
-        [-819,-692,'Skeleton Ranged 2type',126,1000,34],
-        [872,804,'Zombie',132,1000,9],
-        [-928,714,'Zombie',132,1000,9]
+        [-485,1076,'Mummy',126,1000,7],
+        [-943,1019,'Mummy',126,1000,7],
+        [-528,576,'Mummy',126,1000,7],
+        [1137,-724,'Skeleton Melee 5type',135,1000,29],
+        [770,-1093,'Skeleton Melee 5type',135,1000,29],
+        [-819,-692,'Skeleton Ranged 2type',136,1000,34],
+        [872,804,'Zombie',142,1000,9],
+        [-928,714,'Zombie',142,1000,9]
       ],
       OrnateChest: [
         [-1112,1070,'Ornate Chest Large',78,1000,70]
@@ -3253,20 +3222,20 @@ const CRYPT_MODULES = {
         [457,1492,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [1460,283,'Potion',11,200,16],
-        [1448,309,'Potion',11,200,16],
-        [1437,453,'Lock Pick',10,167,86],
-        [-1045,854,'Bandage',5,250,15],
-        [-180,-1210,'Bandage',5,333,15]
+        [1460,283,'Potion',122,200,16],
+        [1448,309,'Potion',122,200,16],
+        [1437,453,'Lock Pick',121,167,86],
+        [-1045,854,'Bandage',120,250,15],
+        [-180,-1210,'Bandage',120,333,15]
       ],
       Container: [
-        [-73,454,'Spider Pot',134,1000,19],
+        [-73,454,'Spider Pot',144,1000,19],
         [380,-1133,'Skeleton Corpse',93,1000,24],
         [677,1358,'Skeleton Corpse',94,500,21],
         [449,1400,'Skeleton Bones',92,600,74],
         [459,1094,'Skeleton Bones',92,600,74],
         [232,1261,'Skeleton Corpse',95,500,22],
-        [-81,1463,'Spider Pot',134,333,19],
+        [-81,1463,'Spider Pot',144,333,19],
         [-484,1084,'Pot',84,1000,18],
         [-892,-942,'Pot',87,1000,23],
         [440,-956,'Pot',86,1000,2],
@@ -3313,29 +3282,31 @@ const CRYPT_MODULES = {
         [-525,-268,'Wall Lever',100,1000,42],
         [506,-177,'Wall Lever',100,1000,42],
         [270,18,'Wall Lever',100,1000,42],
-        [250,197,'Crypt Secret Wall Door',61,1000,26]      ],
+        [250,197,'Crypt Secret Wall Door',61,1000,26],
+        [672,7,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [-25,-775,'Zombie',132,1000,9],
-        [-246,-337,'Skeleton Ranged 2type',126,1000,34],
-        [-273,230,'Skeleton Ranged 2type',126,1000,34],
-        [-247,320,'Skeleton Melee 5type',125,1000,29],
-        [677,1399,'Skeleton Melee 5type',125,500,29],
-        [236,1258,'Skeleton Melee 5type',125,500,29],
-        [340,-180,'Skeleton Melee 5type',125,1000,29],
-        [-61,1109,'Death Skull',113,333,31],
-        [-495,1109,'Death Skull',113,333,31],
-        [-807,793,'Zombie',132,1000,9],
-        [-407,-803,'Mummy',116,1000,7],
-        [509,-799,'Mummy',116,1000,7],
-        [-51,-801,'Skeleton Ranged 2type',126,1000,34],
-        [796,283,'Skeleton Ranged 2type',126,1000,34],
-        [-165,824,'Skeleton Ranged 2type',126,1000,34],
-        [426,809,'Mummy',116,1000,7],
-        [711,-12,'Mummy',116,1000,7],
-        [798,371,'Skeleton Melee 5type',125,1000,29],
-        [800,-352,'Zombie',132,1000,9],
-        [1011,1268,'Mummy',116,1000,7],
-        [-237,-438,'Skeleton Melee 5type',125,1000,29]
+        [-25,-775,'Zombie',142,1000,9],
+        [-246,-337,'Skeleton Ranged 2type',136,1000,34],
+        [-273,230,'Skeleton Ranged 2type',136,1000,34],
+        [-247,320,'Skeleton Melee 5type',135,1000,29],
+        [677,1399,'Skeleton Melee 5type',135,500,29],
+        [236,1258,'Skeleton Melee 5type',135,500,29],
+        [340,-180,'Skeleton Melee 5type',135,1000,29],
+        [-61,1109,'Death Skull',123,333,31],
+        [-495,1109,'Death Skull',123,333,31],
+        [-807,793,'Zombie',142,1000,9],
+        [-407,-803,'Mummy',126,1000,7],
+        [509,-799,'Mummy',126,1000,7],
+        [-51,-801,'Skeleton Ranged 2type',136,1000,34],
+        [796,283,'Skeleton Ranged 2type',136,1000,34],
+        [-165,824,'Skeleton Ranged 2type',136,1000,34],
+        [426,809,'Mummy',126,1000,7],
+        [711,-12,'Mummy',126,1000,7],
+        [798,371,'Skeleton Melee 5type',135,1000,29],
+        [800,-352,'Zombie',142,1000,9],
+        [1011,1268,'Mummy',126,1000,7],
+        [-237,-438,'Skeleton Melee 5type',135,1000,29]
       ],
       PlayerSpawn: [
         [1275,130,'Player Spawn',-1,1000,-1]
@@ -3426,7 +3397,7 @@ const CRYPT_MODULES = {
         [1528,416,'Ground',9,200,12],
         [-1234,-34,'Ground',9,500,12],
         [1407,579,'Ground',9,200,12],
-        [1362,579,'Gems',8,200,76],
+        [1362,579,'Gems',115,200,76],
         [-935,225,'Ground',9,1000,12],
         [-440,-1280,'Ground',9,333,12],
         [-460,-1060,'Ground',9,333,12],
@@ -3434,12 +3405,6 @@ const CRYPT_MODULES = {
         [57,-1301,'Ground',9,333,12],
         [68,-1282,'Ground',9,333,12],
         [1434,-57,'Coin',7,1000,39]
-      ],
-          Altar: [
-        [672,6,'Altar Of Sacrifice',42,1000,27]
-      ],
-      StairDown: [
-        [1206,-461,'Stairs Down',-1,1000,-1]
       ],
     }
   },
@@ -3470,31 +3435,33 @@ const CRYPT_MODULES = {
         [-1507,-1265,'Chest Small',47,1000,13]
       ],
       Container: [
-        [333,-144,'Spider Pot',134,1000,19]
+        [333,-144,'Spider Pot',144,1000,19]
       ],
-      Interact: [      ],
+      Interact: [
+        [-1230,440,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [385,375,'Skeleton Footman From Fake Death',122,1000,28],
-        [1385,700,'Skeleton Archer',117,1000,33],
-        [-636,-1423,'Skeleton Archer',117,1000,33],
-        [1280,-1175,'Skeleton Archer',117,1000,33],
-        [-1160,1280,'Skeleton Archer',117,1000,33],
-        [-1401,-698,'Skeleton Crossbowman',120,1000,32],
-        [790,1435,'Skeleton Crossbowman',120,1000,32],
-        [-665,1120,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-1120,715,'Skeleton Spearman',127,1000,62],
-        [1285,-655,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [10,-1050,'Skeleton Axeman',118,1000,63],
-        [40,1015,'Skeleton Axeman',118,1000,63],
-        [-805,-780,'Skeleton Axeman',118,1000,63],
-        [710,695,'Skeleton Axeman',118,1000,63],
-        [735,-1150,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-1055,-110,'Death Skull',113,1000,31],
-        [1035,90,'Death Skull',113,1000,31],
-        [0,0,'Wraith',131,1000,64],
-        [-160,165,'Mummy',116,1000,7],
-        [160,-170,'Mummy',116,1000,7],
-        [-450,-355,'Skeleton Footman From Fake Death',122,1000,28]
+        [385,375,'Skeleton Footman From Fake Death',132,1000,28],
+        [1385,700,'Skeleton Archer',127,1000,33],
+        [-636,-1423,'Skeleton Archer',127,1000,33],
+        [1280,-1175,'Skeleton Archer',127,1000,33],
+        [-1160,1280,'Skeleton Archer',127,1000,33],
+        [-1401,-698,'Skeleton Crossbowman',130,1000,32],
+        [790,1435,'Skeleton Crossbowman',130,1000,32],
+        [-665,1120,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-1120,715,'Skeleton Spearman',137,1000,62],
+        [1285,-655,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [10,-1050,'Skeleton Axeman',128,1000,63],
+        [40,1015,'Skeleton Axeman',128,1000,63],
+        [-805,-780,'Skeleton Axeman',128,1000,63],
+        [710,695,'Skeleton Axeman',128,1000,63],
+        [735,-1150,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-1055,-110,'Death Skull',123,1000,31],
+        [1035,90,'Death Skull',123,1000,31],
+        [0,0,'Wraith',141,1000,64],
+        [-160,165,'Mummy',126,1000,7],
+        [160,-170,'Mummy',126,1000,7],
+        [-450,-355,'Skeleton Footman From Fake Death',132,1000,28]
       ],
       PlayerSpawn: [
         [-1240,0,'Player Spawn',-1,1000,-1]
@@ -3523,9 +3490,6 @@ const CRYPT_MODULES = {
         [0,0,'Chest Special',48,1000,37],
         [1470,-50,'Chest Special',48,1000,37],
         [143,-381,'Chest Special',48,1000,37]
-      ],
-          Altar: [
-        [-1229,438,'Altar Of Sacrifice',42,1000,27]
       ],
     }
   },
@@ -3565,15 +3529,15 @@ const CRYPT_MODULES = {
         [-906,-820,'Wall Lever',100,1000,42]
       ],
       Monster: [
-        [720,33,'Skeleton Ranged 2type',126,1000,34],
-        [-194,33,'Skeleton Ranged 2type',126,1000,34],
-        [350,490,'Skeleton Archer',117,1000,33],
-        [899,-955,'Wraith',131,1000,64],
-        [-1030,685,'Mummy',116,1000,7],
-        [-1210,-260,'Mummy',116,1000,7],
-        [370,-480,'Skeleton Archer',117,1000,33],
-        [855,919,'Skeleton Melee 5type',125,1000,29],
-        [929,-31,'Skeleton Melee 5type',125,1000,29]
+        [720,33,'Skeleton Ranged 2type',136,1000,34],
+        [-194,33,'Skeleton Ranged 2type',136,1000,34],
+        [350,490,'Skeleton Archer',127,1000,33],
+        [899,-955,'Wraith',141,1000,64],
+        [-1030,685,'Mummy',126,1000,7],
+        [-1210,-260,'Mummy',126,1000,7],
+        [370,-480,'Skeleton Archer',127,1000,33],
+        [855,919,'Skeleton Melee 5type',135,1000,29],
+        [929,-31,'Skeleton Melee 5type',135,1000,29]
       ],
       PlayerSpawn: [
         [-1160,-1384,'Player Spawn',-1,1000,-1]
@@ -3622,32 +3586,34 @@ const CRYPT_MODULES = {
         [0,-640,'Portcullis',82,1000,43],
         [0,640,'Double Wooden Door',63,1000,50],
         [1010,-670,'Double Wooden Door',63,1000,50],
-        [-790,-670,'Double Wooden Door',63,1000,50]      ],
+        [-790,-670,'Double Wooden Door',63,1000,50],
+        [-1455,95,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [-530,-810,'Skeleton Archer',117,1000,33],
-        [545,-810,'Skeleton Archer',117,1000,33],
-        [-1180,-155,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-1090,340,'Skeleton Footman From Fake Death',122,1000,28],
-        [1300,80,'Skeleton Mage',124,1000,52],
-        [-5,-1150,'Skeleton Footman From Fake Death',122,1000,28],
-        [5,745,'Skeleton Champion',119,1000,59],
-        [-785,-760,'Wraith',131,1000,64],
-        [960,-785,'Skeleton Footman From Fake Death',122,1000,28],
-        [1090,-785,'Skeleton Footman From Fake Death',122,1000,28],
-        [-560,995,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [600,920,'Skeleton Footman From Fake Death',122,1000,28],
-        [-385,-80,'Zombie',132,1000,9],
-        [395,-80,'Zombie',132,1000,9],
-        [740,500,'Death Skull',113,1000,31],
-        [-85,185,'Death Skull',113,1000,31],
-        [-755,-465,'Death Skull',113,1000,31],
-        [990,-805,'Death Skull',113,1000,31],
-        [1055,-805,'Death Skull',113,1000,31],
-        [1030,-805,'Death Skull',113,1000,31],
-        [-35,815,'Skeleton Guardsman From Fake Death',123,1000,30],
+        [-530,-810,'Skeleton Archer',127,1000,33],
+        [545,-810,'Skeleton Archer',127,1000,33],
+        [-1180,-155,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-1090,340,'Skeleton Footman From Fake Death',132,1000,28],
+        [1300,80,'Skeleton Mage',134,1000,52],
+        [-5,-1150,'Skeleton Footman From Fake Death',132,1000,28],
+        [5,745,'Skeleton Champion',129,1000,59],
+        [-785,-760,'Wraith',141,1000,64],
+        [960,-785,'Skeleton Footman From Fake Death',132,1000,28],
+        [1090,-785,'Skeleton Footman From Fake Death',132,1000,28],
+        [-560,995,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [600,920,'Skeleton Footman From Fake Death',132,1000,28],
+        [-385,-80,'Zombie',142,1000,9],
+        [395,-80,'Zombie',142,1000,9],
+        [740,500,'Death Skull',123,1000,31],
+        [-85,185,'Death Skull',123,1000,31],
+        [-755,-465,'Death Skull',123,1000,31],
+        [990,-805,'Death Skull',123,1000,31],
+        [1055,-805,'Death Skull',123,1000,31],
+        [1030,-805,'Death Skull',123,1000,31],
+        [-35,815,'Skeleton Guardsman From Fake Death',133,1000,30],
         [-165,1128,'Mimic Medium Simple',21,1000,82],
         [470,1128,'Mimic Medium Simple',21,1000,82],
-        [2,-1196,'Zombie',132,1000,9]
+        [2,-1196,'Zombie',142,1000,9]
       ],
       OrnateChest: [
         [0,865,'Ornate Chest Large',78,1000,70],
@@ -3680,9 +3646,6 @@ const CRYPT_MODULES = {
         [-1390,1155,'Floor Portal',67,1000,35],
         [1415,1195,'Floor Portal',67,1000,35]
       ],
-          Altar: [
-        [-1456,96,'Altar Of Sacrifice',42,1000,27]
-      ],
     }
   },
   'Hallways': {
@@ -3702,7 +3665,7 @@ const CRYPT_MODULES = {
         [645,-1210,'Chest Small',47,1000,13]
       ],
       Consumable: [
-        [300,-1121,'Potion',11,1000,16]
+        [300,-1121,'Potion',122,1000,16]
       ],
       Container: [
         [-670,655,'Wooden Barrel',107,1000,1],
@@ -3746,16 +3709,16 @@ const CRYPT_MODULES = {
         [141,-1273,'Floor Lever',65,1000,44]
       ],
       Monster: [
-        [-220,-41,'Death Skull',113,1000,31],
-        [-815,-175,'Skeleton Footman From Fake Death',122,1000,28],
-        [-125,-388,'Spider Mummy',130,1000,88],
-        [-27,-424,'Spider Mummy',130,1000,88],
-        [195,-825,'Zombie',132,1000,9],
-        [-825,820,'Skeleton Melee 5type',125,1000,29],
-        [810,105,'Skeleton Melee 5type',125,1000,29],
-        [815,900,'Skeleton Ranged 2type',126,1000,34],
-        [-140,-180,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-210,95,'Skeleton Guardsman From Fake Death',123,1000,30]
+        [-220,-41,'Death Skull',123,1000,31],
+        [-815,-175,'Skeleton Footman From Fake Death',132,1000,28],
+        [-125,-388,'Spider Mummy',140,1000,88],
+        [-27,-424,'Spider Mummy',140,1000,88],
+        [195,-825,'Zombie',142,1000,9],
+        [-825,820,'Skeleton Melee 5type',135,1000,29],
+        [810,105,'Skeleton Melee 5type',135,1000,29],
+        [815,900,'Skeleton Ranged 2type',136,1000,34],
+        [-140,-180,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-210,95,'Skeleton Guardsman From Fake Death',133,1000,30]
       ],
       PlayerSpawn: [
         [1189,-1306,'Player Spawn',-1,1000,-1]
@@ -3864,19 +3827,19 @@ const CRYPT_MODULES = {
         [903,280,'Wall Lever',100,1000,42]
       ],
       Monster: [
-        [1169,421,'Death Skull',113,1000,31],
-        [999,1241,'Death Skull',113,1000,31],
-        [-819,843,'Skeleton Melee 5type',125,1000,29],
-        [999,791,'Death Skull',113,1000,31],
-        [-237,-232,'Skeleton Champion',119,1000,59],
-        [801,-889,'Skeleton Melee 5type',125,1000,29],
-        [462,-579,'Skeleton Footman From Fake Death',122,1000,28],
-        [-132,-1097,'Skeleton Footman From Fake Death',122,1000,28],
-        [-797,-735,'Skeleton Melee 5type',125,1000,29],
-        [-1175,1082,'Skeleton Footman From Fake Death',122,1000,28],
-        [-1173,-1022,'Skeleton Footman From Fake Death',122,1000,28],
-        [-259,223,'Skeleton Footman From Fake Death',122,1000,28],
-        [763,-436,'Skeleton Melee 5type',125,1000,29]
+        [1169,421,'Death Skull',123,1000,31],
+        [999,1241,'Death Skull',123,1000,31],
+        [-819,843,'Skeleton Melee 5type',135,1000,29],
+        [999,791,'Death Skull',123,1000,31],
+        [-237,-232,'Skeleton Champion',129,1000,59],
+        [801,-889,'Skeleton Melee 5type',135,1000,29],
+        [462,-579,'Skeleton Footman From Fake Death',132,1000,28],
+        [-132,-1097,'Skeleton Footman From Fake Death',132,1000,28],
+        [-797,-735,'Skeleton Melee 5type',135,1000,29],
+        [-1175,1082,'Skeleton Footman From Fake Death',132,1000,28],
+        [-1173,-1022,'Skeleton Footman From Fake Death',132,1000,28],
+        [-259,223,'Skeleton Footman From Fake Death',132,1000,28],
+        [763,-436,'Skeleton Melee 5type',135,1000,29]
       ],
       PlayerSpawn: [
         [-416,1362,'Player Spawn',-1,1000,-1]
@@ -3918,9 +3881,9 @@ const CRYPT_MODULES = {
         [905,1150,'Floor Spikes',68,1000,11]
       ],
       Valuable: [
-        [1369,720,'Gems',8,1000,76],
+        [1369,720,'Gems',115,1000,76],
         [-1304,-232,'Ground',9,1000,12],
-        [-814,-310,'Gems',8,1000,76],
+        [-814,-310,'Gems',115,1000,76],
         [1056,-957,'Ground',9,1000,12],
         [915,-783,'Ground',9,1000,12],
         [-987,1172,'Ground',9,1000,12],
@@ -4007,19 +3970,19 @@ const CRYPT_MODULES = {
         [-510,-1355,'Jail Door',74,1000,75]
       ],
       Monster: [
-        [59,56,'Zombie',132,1000,9],
-        [704,236,'Zombie',132,1000,9],
-        [800,-300,'Zombie',132,1000,9],
-        [-916,422,'Skeleton Ranged 2type',126,1000,34],
-        [-290,-813,'Zombie',132,1000,9],
-        [961,-325,'Skeleton Ranged 2type',126,1000,34],
-        [-763,-690,'Zombie',132,1000,9],
-        [-312,710,'Zombie',132,1000,9],
-        [-404,-14,'Giant Dragonfly',114,1000,8],
-        [372,18,'Giant Dragonfly',114,1000,8],
-        [-760,-25,'Skeleton Footman From Fake Death',122,1000,28],
-        [735,-10,'Skeleton Footman From Fake Death',122,1000,28],
-        [-192,380,'Zombie',132,1000,9]
+        [59,56,'Zombie',142,1000,9],
+        [704,236,'Zombie',142,1000,9],
+        [800,-300,'Zombie',142,1000,9],
+        [-916,422,'Skeleton Ranged 2type',136,1000,34],
+        [-290,-813,'Zombie',142,1000,9],
+        [961,-325,'Skeleton Ranged 2type',136,1000,34],
+        [-763,-690,'Zombie',142,1000,9],
+        [-312,710,'Zombie',142,1000,9],
+        [-404,-14,'Giant Dragonfly',124,1000,8],
+        [372,18,'Giant Dragonfly',124,1000,8],
+        [-760,-25,'Skeleton Footman From Fake Death',132,1000,28],
+        [735,-10,'Skeleton Footman From Fake Death',132,1000,28],
+        [-192,380,'Zombie',142,1000,9]
       ],
       PlayerSpawn: [
         [859,1280,'Player Spawn',-1,1000,-1]
@@ -4049,9 +4012,6 @@ const CRYPT_MODULES = {
         [1213,101,'Ground',9,1000,12],
         [1213,204,'Ground',9,1000,12],
         [1266,1210,'Ground',9,1000,12]
-      ],
-          StairDown: [
-        [1190,-1005,'Stairs Down',-1,1000,-1]
       ],
     }
   },
@@ -4103,17 +4063,17 @@ const CRYPT_MODULES = {
         [-28,-690,'Wall Lever Only Activate',101,250,61]
       ],
       Monster: [
-        [0,1000,'Mummy',116,1000,7],
-        [0,-1005,'Mummy',116,1000,7],
-        [-1000,0,'Mummy',116,1000,7],
-        [1110,100,'Mummy',116,1000,7],
-        [950,-100,'Mummy',116,500,7],
-        [-805,0,'Mummy',116,500,7],
-        [0,-800,'Mummy',116,500,7],
-        [0,800,'Mummy',116,500,7],
-        [240,-80,'Mummy',116,1000,7],
-        [35,-171,'Mummy',116,1000,7],
-        [222,57,'Mummy',116,1000,7]
+        [0,1000,'Mummy',126,1000,7],
+        [0,-1005,'Mummy',126,1000,7],
+        [-1000,0,'Mummy',126,1000,7],
+        [1110,100,'Mummy',126,1000,7],
+        [950,-100,'Mummy',126,500,7],
+        [-805,0,'Mummy',126,500,7],
+        [0,-800,'Mummy',126,500,7],
+        [0,800,'Mummy',126,500,7],
+        [240,-80,'Mummy',126,1000,7],
+        [35,-171,'Mummy',126,1000,7],
+        [222,57,'Mummy',126,1000,7]
       ],
       SpecialChest: [
         [-277,276,'Chest Special',48,500,37],
@@ -4230,13 +4190,13 @@ const CRYPT_MODULES = {
         [250,0,'Crypt Secret Wall Door',62,1000,101]
       ],
       Monster: [
-        [-220,0,'Skeleton Footman Fake Death',121,500,102],
-        [225,0,'Skeleton Footman Fake Death',121,500,102],
-        [0,-50,'Death Skull',113,400,31],
-        [-700,350,'Skeleton Footman From Fake Death',122,400,28],
-        [-500,-350,'Skeleton Footman From Fake Death',122,400,28],
-        [500,-350,'Skeleton Footman From Fake Death',122,400,28],
-        [700,350,'Skeleton Footman From Fake Death',122,400,28]
+        [-220,0,'Skeleton Footman Fake Death',131,500,102],
+        [225,0,'Skeleton Footman Fake Death',131,500,102],
+        [0,-50,'Death Skull',123,400,31],
+        [-700,350,'Skeleton Footman From Fake Death',132,400,28],
+        [-500,-350,'Skeleton Footman From Fake Death',132,400,28],
+        [500,-350,'Skeleton Footman From Fake Death',132,400,28],
+        [700,350,'Skeleton Footman From Fake Death',132,400,28]
       ],
       WoodChest: [
         [-672,1255,'Wood Chest Small',105,1000,103],
@@ -4283,24 +4243,26 @@ const CRYPT_MODULES = {
       Interact: [
         [-1188,-1082,'Wooden Door With Lock',110,1000,5],
         [-1400,620,'Wall Lever',100,1000,42],
-        [-1,-1035,'Wall Lever',100,1000,42]      ],
+        [-1,-1035,'Wall Lever',100,1000,42],
+        [-10,-1586,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [330,-320,'Death Skull',113,1000,31],
-        [-300,430,'Death Skull',113,1000,31],
-        [-500,360,'Death Skull',113,1000,31],
-        [110,630,'Death Skull',113,1000,31],
-        [120,330,'Death Skull',113,1000,31],
-        [-100,420,'Death Skull',113,1000,31],
-        [-400,110,'Death Skull',113,1000,31],
-        [310,50,'Death Skull',113,1000,31],
-        [-370,-230,'Death Skull',113,1000,31],
-        [300,0,'Death Skull',113,1000,31],
-        [-160,-430,'Death Skull',113,1000,31],
-        [-160,10,'Death Skull',113,1000,31],
-        [365,145,'Mummy',116,1000,7],
-        [-791,112,'Mummy',116,333,7],
-        [155,-140,'Mummy',116,1000,7],
-        [155,400,'Mummy',116,1000,7]
+        [330,-320,'Death Skull',123,1000,31],
+        [-300,430,'Death Skull',123,1000,31],
+        [-500,360,'Death Skull',123,1000,31],
+        [110,630,'Death Skull',123,1000,31],
+        [120,330,'Death Skull',123,1000,31],
+        [-100,420,'Death Skull',123,1000,31],
+        [-400,110,'Death Skull',123,1000,31],
+        [310,50,'Death Skull',123,1000,31],
+        [-370,-230,'Death Skull',123,1000,31],
+        [300,0,'Death Skull',123,1000,31],
+        [-160,-430,'Death Skull',123,1000,31],
+        [-160,10,'Death Skull',123,1000,31],
+        [365,145,'Mummy',126,1000,7],
+        [-791,112,'Mummy',126,333,7],
+        [155,-140,'Mummy',126,1000,7],
+        [155,400,'Mummy',126,1000,7]
       ],
       OrnateChest: [
         [500,155,'Ornate Chest Large',78,1000,70]
@@ -4341,9 +4303,6 @@ const CRYPT_MODULES = {
         [-452,392,'Ground',9,1000,12],
         [-452,356,'Ground',9,1000,12],
         [-496,368,'Ground',9,1000,12]
-      ],
-          Altar: [
-        [-10,-1587,'Altar Of Sacrifice',42,1000,27]
       ],
     }
   },
@@ -4395,17 +4354,17 @@ const CRYPT_MODULES = {
         [-455,-850,'Floor Lever',65,250,44]
       ],
       Monster: [
-        [0,10,'Death Skull',113,1000,31],
-        [0,-1350,'Death Skull',113,167,31],
-        [1350,0,'Death Skull',113,167,31],
-        [0,1350,'Death Skull',113,167,31],
-        [-1350,0,'Death Skull',113,167,31],
-        [-545,555,'Death Skull',113,500,31],
-        [-900,-950,'Death Skull',113,375,31],
-        [950,-900,'Death Skull',113,375,31],
-        [850,950,'Death Skull',113,375,31],
-        [-950,800,'Death Skull',113,375,31],
-        [555,-545,'Death Skull',113,500,31]
+        [0,10,'Death Skull',123,1000,31],
+        [0,-1350,'Death Skull',123,167,31],
+        [1350,0,'Death Skull',123,167,31],
+        [0,1350,'Death Skull',123,167,31],
+        [-1350,0,'Death Skull',123,167,31],
+        [-545,555,'Death Skull',123,500,31],
+        [-900,-950,'Death Skull',123,375,31],
+        [950,-900,'Death Skull',123,375,31],
+        [850,950,'Death Skull',123,375,31],
+        [-950,800,'Death Skull',123,375,31],
+        [555,-545,'Death Skull',123,500,31]
       ],
       SpecialChest: [
         [555,-535,'Chest Special',48,500,37],
@@ -4437,8 +4396,8 @@ const CRYPT_MODULES = {
         [-1384,-242,'Chest Large',45,1000,14]
       ],
       Consumable: [
-        [1420,-1096,'Potion',11,1000,16],
-        [-409,563,'Potion',11,1000,16]
+        [1420,-1096,'Potion',122,1000,16],
+        [-409,563,'Potion',122,1000,16]
       ],
       Container: [
         [1429,-1236,'Skeleton Corpse',94,1000,21],
@@ -4483,9 +4442,9 @@ const CRYPT_MODULES = {
         [-1204,-1395,'Portcullis',82,1000,43]
       ],
       Monster: [
-        [153,61,'Mummy',116,1000,7],
-        [-147,56,'Mummy',116,1000,7],
-        [0,-100,'Mummy',116,1000,7]
+        [153,61,'Mummy',126,1000,7],
+        [-147,56,'Mummy',126,1000,7],
+        [0,-100,'Mummy',126,1000,7]
       ],
       PlayerSpawn: [
         [-1330,1390,'Player Spawn',-1,1000,-1]
@@ -4539,14 +4498,14 @@ const CRYPT_MODULES = {
         [-803,1171,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [-1213,-532,'Potion',11,1000,16]
+        [-1213,-532,'Potion',122,1000,16]
       ],
       Container: [
         [1208,-76,'Wooden Barrel',107,333,1],
         [-690,-1440,'Pot',85,1000,17],
         [-1161,-485,'Skeleton Corpse',94,1000,21],
         [-690,-698,'Pot',86,1000,2],
-        [-375,160,'Spider Pot',134,1000,19]
+        [-375,160,'Spider Pot',144,1000,19]
       ],
       Interact: [
         [-697,-481,'Wall Lever',100,1000,42],
@@ -4571,13 +4530,13 @@ const CRYPT_MODULES = {
         [110,418,'Mimic Medium Mid Level Elite',20,1000,60],
         [872,402,'Mimic Medium Mid Level Elite',20,1000,60],
         [108,1200,'Mimic Medium Mid Level Elite',20,1000,60],
-        [-352,-146,'Skeleton Melee 5type',125,1000,29],
-        [-787,799,'Mummy',116,1000,7],
-        [-787,445,'Giant Dragonfly',114,1000,8],
-        [-787,1206,'Giant Dragonfly',114,1000,8],
-        [-1452,-246,'Skeleton Melee 5type',125,1000,29],
+        [-352,-146,'Skeleton Melee 5type',135,1000,29],
+        [-787,799,'Mummy',126,1000,7],
+        [-787,445,'Giant Dragonfly',124,1000,8],
+        [-787,1206,'Giant Dragonfly',124,1000,8],
+        [-1452,-246,'Skeleton Melee 5type',135,1000,29],
         [-798,409,'Mimic Medium Mid Level Elite',20,1000,60],
-        [-805,1105,'Skeleton Melee 5type',125,1000,29],
+        [-805,1105,'Skeleton Melee 5type',135,1000,29],
         [-1390,-780,'Mimic Medium Mid Level Elite',20,1000,60]
       ],
       OrnateChest: [
@@ -4622,8 +4581,8 @@ const CRYPT_MODULES = {
         [-1115,1360,'Coffin',50,1000,66]
       ],
       Consumable: [
-        [135,-1140,'Potion',11,1000,16],
-        [211,-1128,'Lock Pick',10,1000,86]
+        [135,-1140,'Potion',122,1000,16],
+        [211,-1128,'Lock Pick',121,1000,86]
       ],
       Container: [
         [-1142,-1004,'Wooden Barrel',107,1000,1],
@@ -4635,7 +4594,7 @@ const CRYPT_MODULES = {
         [-132,1210,'Wooden Barrel',107,1000,1],
         [-232,1210,'Wooden Barrel',107,1000,1],
         [-122,1110,'Wooden Barrel',107,1000,1],
-        [1252,1236,'Spider Pot',134,1000,19],
+        [1252,1236,'Spider Pot',144,1000,19],
         [1232,1086,'Pot',86,1000,2],
         [1112,1246,'Pot',86,1000,2],
         [1496,-920,'Wooden Barrel',107,1000,1],
@@ -4652,24 +4611,24 @@ const CRYPT_MODULES = {
         [731,-1080,'Wooden Door With Lock',110,1000,5]
       ],
       Monster: [
-        [516,-1350,'Zombie',132,667,9],
-        [-633,-1350,'Zombie',132,667,9],
-        [-350,250,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [348,-124,'Skeleton Champion',119,500,59],
-        [-350,-180,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [348,70,'Wraith',131,500,64],
-        [-30,550,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-30,-430,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [360,460,'Skeleton Archer',117,1000,33],
-        [30,-775,'Skeleton Archer',117,1000,33],
-        [-759,1233,'Mummy',116,1000,7],
-        [-1134,1199,'Mummy',116,1000,7],
-        [787,-23,'Skeleton Melee 5type',125,1000,29],
-        [-1090,1125,'Skeleton Melee 5type',125,1000,29],
-        [50,-1350,'Zombie',132,667,9],
-        [50,-900,'Zombie',132,1000,9],
-        [-1128,-764,'Mummy',116,1000,7],
-        [-1128,-894,'Mummy',116,1000,7]
+        [516,-1350,'Zombie',142,667,9],
+        [-633,-1350,'Zombie',142,667,9],
+        [-350,250,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [348,-124,'Skeleton Champion',129,500,59],
+        [-350,-180,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [348,70,'Wraith',141,500,64],
+        [-30,550,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-30,-430,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [360,460,'Skeleton Archer',127,1000,33],
+        [30,-775,'Skeleton Archer',127,1000,33],
+        [-759,1233,'Mummy',126,1000,7],
+        [-1134,1199,'Mummy',126,1000,7],
+        [787,-23,'Skeleton Melee 5type',135,1000,29],
+        [-1090,1125,'Skeleton Melee 5type',135,1000,29],
+        [50,-1350,'Zombie',142,667,9],
+        [50,-900,'Zombie',142,1000,9],
+        [-1128,-764,'Mummy',126,1000,7],
+        [-1128,-894,'Mummy',126,1000,7]
       ],
       OrnateChest: [
         [-1128,-630,'Ornate Chest Large',78,1000,70]
@@ -4717,22 +4676,22 @@ const CRYPT_MODULES = {
         [885,-1275,'Wooden Barrel',107,1000,1],
         [1170,890,'Wooden Barrel',107,1000,1],
         [1175,-865,'Wooden Crate Small',109,1000,20],
-        [-530,-1410,'Spider Pot',134,1000,19],
+        [-530,-1410,'Spider Pot',144,1000,19],
         [755,-401,'Pot',86,1000,2]
       ],
       Interact: [
         [-1105,-630,'Wooden Door With Lock',110,1000,5]
       ],
       Monster: [
-        [-470,1295,'Skeleton Mage',124,1000,52],
-        [1270,260,'Skeleton Ranged 2type',126,1000,34],
-        [-1270,700,'Skeleton Footman From Fake Death',122,1000,28],
-        [-919,96,'Skeleton Footman From Fake Death',122,500,28],
-        [-20,501,'Skeleton Melee 5type',125,500,29],
-        [392,10,'Skeleton Melee 5type',125,500,29],
-        [-20,-584,'Skeleton Melee 5type',125,500,29],
-        [-53,-1284,'Skeleton Melee 5type',125,1000,29],
-        [-503,-51,'Skeleton Melee 5type',125,500,29]
+        [-470,1295,'Skeleton Mage',134,1000,52],
+        [1270,260,'Skeleton Ranged 2type',136,1000,34],
+        [-1270,700,'Skeleton Footman From Fake Death',132,1000,28],
+        [-919,96,'Skeleton Footman From Fake Death',132,500,28],
+        [-20,501,'Skeleton Melee 5type',135,500,29],
+        [392,10,'Skeleton Melee 5type',135,500,29],
+        [-20,-584,'Skeleton Melee 5type',135,500,29],
+        [-53,-1284,'Skeleton Melee 5type',135,1000,29],
+        [-503,-51,'Skeleton Melee 5type',135,500,29]
       ],
       OrnateChest: [
         [835,-582,'Ornate Chest Large',78,1000,70]
@@ -4806,12 +4765,12 @@ const CRYPT_MODULES = {
         [-480,915,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [1240,-150,'Potion',11,1000,16]
+        [1240,-150,'Potion',122,1000,16]
       ],
       Container: [
-        [535,-440,'Skeleton Wooden Barrel Random',133,1000,56],
-        [95,465,'Skeleton Wooden Barrel Random',133,1000,56],
-        [-1125,690,'Skeleton Wooden Barrel Random',133,1000,56],
+        [535,-440,'Skeleton Wooden Barrel Random',143,1000,56],
+        [95,465,'Skeleton Wooden Barrel Random',143,1000,56],
+        [-1125,690,'Skeleton Wooden Barrel Random',143,1000,56],
         [-1210,-1370,'Wooden Barrel',107,1000,1],
         [-1020,-1480,'Wooden Barrel',107,1000,1],
         [-480,235,'Skeleton Corpse',94,1000,21]
@@ -4832,20 +4791,20 @@ const CRYPT_MODULES = {
         [-1171,-706,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [-1120,-1280,'Skeleton Melee 5type',125,1000,29],
-        [-242,-1056,'Skeleton Melee 5type',125,1000,29],
-        [790,-800,'Skeleton Footman From Fake Death',122,1000,28],
-        [-105,800,'Skeleton Footman From Fake Death',122,1000,28],
-        [1436,-1361,'Skeleton Melee 5type',125,1000,29],
+        [-1120,-1280,'Skeleton Melee 5type',135,1000,29],
+        [-242,-1056,'Skeleton Melee 5type',135,1000,29],
+        [790,-800,'Skeleton Footman From Fake Death',132,1000,28],
+        [-105,800,'Skeleton Footman From Fake Death',132,1000,28],
+        [1436,-1361,'Skeleton Melee 5type',135,1000,29],
         [1155,-147,'Mimic Small Simple Elite',24,1000,107],
-        [-1098,1118,'Skeleton Archer',117,1000,33],
-        [320,49,'Skeleton Melee 5type',125,1000,29],
-        [-105,135,'Skeleton Footman From Fake Death',122,1000,28],
-        [727,-178,'Skeleton Footman From Fake Death',122,1000,28],
-        [315,510,'Skeleton Archer',117,1000,33],
-        [970,485,'Skeleton Footman From Fake Death',122,1000,28],
-        [320,-495,'Skeleton Archer',117,1000,33],
-        [-255,-495,'Skeleton Footman From Fake Death',122,1000,28]
+        [-1098,1118,'Skeleton Archer',127,1000,33],
+        [320,49,'Skeleton Melee 5type',135,1000,29],
+        [-105,135,'Skeleton Footman From Fake Death',132,1000,28],
+        [727,-178,'Skeleton Footman From Fake Death',132,1000,28],
+        [315,510,'Skeleton Archer',127,1000,33],
+        [970,485,'Skeleton Footman From Fake Death',132,1000,28],
+        [320,-495,'Skeleton Archer',127,1000,33],
+        [-255,-495,'Skeleton Footman From Fake Death',132,1000,28]
       ],
       OrnateChest: [
         [-1213,142,'Ornate Chest Large',78,1000,70]
@@ -4882,9 +4841,6 @@ const CRYPT_MODULES = {
         [1240,455,'Ground',9,1000,12],
         [-590,810,'Ground',9,1000,12]
       ],
-          StairDown: [
-        [-1174,-861,'Stairs Down',-1,1000,-1]
-      ],
     }
   },
   'Ramparts': {
@@ -4908,22 +4864,24 @@ const CRYPT_MODULES = {
         [-920,1275,'Chest Small',47,1000,13]
       ],
       Container: [
-        [1054,1055,'Spider Pot',134,1000,19],
-        [-1057,-1049,'Spider Pot',134,1000,19]
+        [1054,1055,'Spider Pot',144,1000,19],
+        [-1057,-1049,'Spider Pot',144,1000,19]
       ],
-      Interact: [        [602,360,'Wooden Door With Square Grating',111,1000,25],
+      Interact: [
+        [2,480,'Altar Of Sacrifice',42,1000,27],
+        [602,360,'Wooden Door With Square Grating',111,1000,25],
         [-598,-360,'Wooden Door With Square Grating',111,1000,25]
       ],
       Monster: [
-        [4,-2,'Skeleton Mage',124,1000,52],
-        [504,538,'Skeleton Archer',117,1000,33],
-        [-556,-497,'Skeleton Crossbowman',120,1000,32],
-        [54,-1027,'Zombie',132,1000,9],
-        [29,1078,'Zombie',132,1000,9],
-        [-1031,-17,'Skeleton Spearman',127,1000,62],
-        [1089,-7,'Skeleton Spearman',127,1000,62],
-        [919,-7,'Death Skull',113,1000,31],
-        [-851,-7,'Death Skull',113,1000,31]
+        [4,-2,'Skeleton Mage',134,1000,52],
+        [504,538,'Skeleton Archer',127,1000,33],
+        [-556,-497,'Skeleton Crossbowman',130,1000,32],
+        [54,-1027,'Zombie',142,1000,9],
+        [29,1078,'Zombie',142,1000,9],
+        [-1031,-17,'Skeleton Spearman',137,1000,62],
+        [1089,-7,'Skeleton Spearman',137,1000,62],
+        [919,-7,'Death Skull',123,1000,31],
+        [-851,-7,'Death Skull',123,1000,31]
       ],
       OrnateChest: [
         [697,691,'Ornate Chest Small',80,1000,53],
@@ -4954,9 +4912,6 @@ const CRYPT_MODULES = {
         [-608,610,'Chest Special',48,1000,37],
         [612,-610,'Chest Special',48,1000,37]
       ],
-          Altar: [
-        [3,480,'Altar Of Sacrifice',42,1000,27]
-      ],
     }
   },
   'Sanctum': {
@@ -4979,7 +4934,7 @@ const CRYPT_MODULES = {
         [-4,739,'Skeleton Bones',92,1000,74],
         [156,679,'Skeleton Bones',92,1000,74],
         [1339,-1170,'Wooden Crate Small',109,1000,20],
-        [740,-770,'Spider Pot',134,1000,19],
+        [740,-770,'Spider Pot',144,1000,19],
         [12,-1140,'Skeleton Corpse',94,500,21],
         [-144,679,'Skeleton Bones',92,1000,74],
         [-1349,-1270,'Wooden Barrel',107,1000,1],
@@ -5009,18 +4964,18 @@ const CRYPT_MODULES = {
         [-1189,984,'Wooden Door With Lock',110,1000,5]
       ],
       Monster: [
-        [-1198,-458,'Skeleton Melee 5type',125,500,29],
-        [-865,-1100,'Skeleton Melee 5type',125,1000,29],
-        [1106,-315,'Skeleton Melee 5type',125,500,29],
-        [911,-1100,'Skeleton Melee 5type',125,1000,29],
-        [208,767,'Wraith',131,1000,64],
-        [1382,372,'Skeleton Melee 5type',125,1000,29],
-        [-1388,367,'Skeleton Melee 5type',125,1000,29],
-        [-240,-721,'Zombie',132,1000,9],
-        [220,-681,'Zombie',132,1000,9],
-        [200,469,'Skeleton Archer',117,1000,33],
-        [-200,470,'Skeleton Archer',117,1000,33],
-        [-13,-1155,'Skeleton Melee 5type',125,500,29]
+        [-1198,-458,'Skeleton Melee 5type',135,500,29],
+        [-865,-1100,'Skeleton Melee 5type',135,1000,29],
+        [1106,-315,'Skeleton Melee 5type',135,500,29],
+        [911,-1100,'Skeleton Melee 5type',135,1000,29],
+        [208,767,'Wraith',141,1000,64],
+        [1382,372,'Skeleton Melee 5type',135,1000,29],
+        [-1388,367,'Skeleton Melee 5type',135,1000,29],
+        [-240,-721,'Zombie',142,1000,9],
+        [220,-681,'Zombie',142,1000,9],
+        [200,469,'Skeleton Archer',127,1000,33],
+        [-200,470,'Skeleton Archer',127,1000,33],
+        [-13,-1155,'Skeleton Melee 5type',135,500,29]
       ],
       OrnateChest: [
         [691,790,'Ornate Chest Large',78,1000,70]
@@ -5040,8 +4995,8 @@ const CRYPT_MODULES = {
         [-670,290,'Floor Spikes',68,1000,11]
       ],
       Valuable: [
-        [76,529,'Gems',8,1000,76],
-        [-84,469,'Gems',8,1000,76],
+        [76,529,'Gems',115,1000,76],
+        [-84,469,'Gems',115,1000,76],
         [-84,529,'Trinkets',12,1000,78]
       ],
     }
@@ -5077,22 +5032,22 @@ const CRYPT_MODULES = {
         [-1295,-54,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [-390,-331,'Mummy',116,333,7],
-        [-466,154,'Giant Dragonfly',114,1000,8],
-        [-209,183,'Mummy',116,333,7],
-        [1095,-110,'Giant Dragonfly',114,1000,8],
-        [-1034,-851,'Mummy',116,1000,7],
-        [1171,-1320,'Mummy',116,1000,7],
-        [-1420,1343,'Skeleton Melee 5type',125,500,29],
-        [400,-450,'Zombie',132,1000,9],
-        [-241,-116,'Zombie',132,1000,9],
-        [-150,-910,'Zombie',132,1000,9],
-        [840,1370,'Zombie',132,1000,9],
-        [400,-110,'Giant Dragonfly',114,1000,8],
-        [-150,320,'Giant Dragonfly',114,1000,8],
-        [-1118,176,'Mummy',116,1000,7],
-        [394,284,'Mummy',116,333,7],
-        [1120,-490,'Zombie',132,1000,9]
+        [-390,-331,'Mummy',126,333,7],
+        [-466,154,'Giant Dragonfly',124,1000,8],
+        [-209,183,'Mummy',126,333,7],
+        [1095,-110,'Giant Dragonfly',124,1000,8],
+        [-1034,-851,'Mummy',126,1000,7],
+        [1171,-1320,'Mummy',126,1000,7],
+        [-1420,1343,'Skeleton Melee 5type',135,500,29],
+        [400,-450,'Zombie',142,1000,9],
+        [-241,-116,'Zombie',142,1000,9],
+        [-150,-910,'Zombie',142,1000,9],
+        [840,1370,'Zombie',142,1000,9],
+        [400,-110,'Giant Dragonfly',124,1000,8],
+        [-150,320,'Giant Dragonfly',124,1000,8],
+        [-1118,176,'Mummy',126,1000,7],
+        [394,284,'Mummy',126,333,7],
+        [1120,-490,'Zombie',142,1000,9]
       ],
       PlayerSpawn: [
         [-487,1067,'Player Spawn',-1,1000,-1]
@@ -5110,9 +5065,6 @@ const CRYPT_MODULES = {
       WoodChest: [
         [-501,-487,'Wood Chest Large',103,1000,109],
         [489,427,'Wood Chest Large',103,1000,109]
-      ],
-          StairUp: [
-        [-1462,-58,'Stairs Up',-1,1000,-1]
       ],
     }
   },
@@ -5144,20 +5096,20 @@ const CRYPT_MODULES = {
         [-1210,1140,'Phantom Flower',81,1000,4]
       ],
       Monster: [
-        [935,-585,'Skeleton Footman From Fake Death',122,1000,28],
-        [330,-930,'Skeleton Footman From Fake Death',122,1000,28],
-        [-204,909,'Skeleton Footman From Fake Death',122,1000,28],
-        [-1114,-306,'Skeleton Melee 5type',125,1000,29],
-        [-354,989,'Skeleton Footman From Fake Death',122,1000,28],
-        [-765,-835,'Skeleton Archer',117,1000,33],
-        [1384,-802,'Skeleton Footman From Fake Death',122,1000,28],
-        [1180,1206,'Skeleton Melee 5type',125,1000,29],
-        [-1354,703,'Death Skull',113,1000,31],
-        [495,1175,'Skeleton Archer',117,1000,33],
-        [1174,606,'Skeleton Archer',117,1000,33],
-        [1349,1364,'Death Skull',113,1000,31],
-        [1396,-1396,'Death Skull',113,1000,31],
-        [-1409,1373,'Death Skull',113,1000,31]
+        [935,-585,'Skeleton Footman From Fake Death',132,1000,28],
+        [330,-930,'Skeleton Footman From Fake Death',132,1000,28],
+        [-204,909,'Skeleton Footman From Fake Death',132,1000,28],
+        [-1114,-306,'Skeleton Melee 5type',135,1000,29],
+        [-354,989,'Skeleton Footman From Fake Death',132,1000,28],
+        [-765,-835,'Skeleton Archer',127,1000,33],
+        [1384,-802,'Skeleton Footman From Fake Death',132,1000,28],
+        [1180,1206,'Skeleton Melee 5type',135,1000,29],
+        [-1354,703,'Death Skull',123,1000,31],
+        [495,1175,'Skeleton Archer',127,1000,33],
+        [1174,606,'Skeleton Archer',127,1000,33],
+        [1349,1364,'Death Skull',123,1000,31],
+        [1396,-1396,'Death Skull',123,1000,31],
+        [-1409,1373,'Death Skull',123,1000,31]
       ],
       PlayerSpawn: [
         [-1116,-880,'Player Spawn',-1,1000,-1]
@@ -5222,9 +5174,9 @@ const CRYPT_MODULES = {
         [1169,-1174,'Chest Medium',46,1000,0]
       ],
       Consumable: [
-        [231,-264,'Bandage',5,1000,15],
-        [534,6,'Bandage',5,1000,15],
-        [1534,940,'Bandage',5,1000,15]
+        [231,-264,'Bandage',120,1000,15],
+        [534,6,'Bandage',120,1000,15],
+        [1534,940,'Bandage',120,1000,15]
       ],
       Container: [
         [-330,517,'Pot',85,1000,17],
@@ -5234,7 +5186,7 @@ const CRYPT_MODULES = {
         [-307,583,'Pot',86,1000,2],
         [-700,15,'Skeleton Corpse',94,1000,21],
         [300,520,'Pot',85,1000,17],
-        [-1245,-1220,'Spider Pot',134,1000,19],
+        [-1245,-1220,'Spider Pot',144,1000,19],
         [691,-130,'Wooden Barrel',107,1000,1],
         [323,586,'Pot',86,1000,2],
         [375,450,'Pot',87,1000,23],
@@ -5249,30 +5201,30 @@ const CRYPT_MODULES = {
         [-1004,-130,'Wall Lever',100,1000,42]
       ],
       Monster: [
-        [128,466,'Death Skull',113,1000,31],
-        [1130,-437,'Skeleton Melee 5type',125,1000,29],
-        [-798,951,'Skeleton Melee 5type',125,1000,29],
-        [128,466,'Death Skull',113,1000,31],
-        [496,-78,'Death Skull',113,1000,31],
+        [128,466,'Death Skull',123,1000,31],
+        [1130,-437,'Skeleton Melee 5type',135,1000,29],
+        [-798,951,'Skeleton Melee 5type',135,1000,29],
+        [128,466,'Death Skull',123,1000,31],
+        [496,-78,'Death Skull',123,1000,31],
         [0,0,'Mimic Large Simple',19,1000,110],
-        [566,876,'Giant Dragonfly',114,1000,8],
-        [-465,-78,'Death Skull',113,1000,31],
-        [391,-527,'Skeleton Melee 5type',125,1000,29],
-        [513,-5,'Skeleton Footman From Fake Death',122,1000,28],
-        [894,318,'Skeleton Footman From Fake Death',122,1000,28],
-        [899,-344,'Skeleton Footman From Fake Death',122,1000,28],
-        [-475,0,'Skeleton Footman From Fake Death',122,1000,28],
-        [-855,495,'Skeleton Footman From Fake Death',122,1000,28],
-        [-925,5,'Skeleton Footman From Fake Death',122,1000,28],
-        [-875,-475,'Skeleton Footman From Fake Death',122,1000,28],
-        [-800,-580,'Death Skull',113,1000,31],
-        [-800,605,'Death Skull',113,1000,31],
-        [-800,15,'Death Skull',113,1000,31],
+        [566,876,'Giant Dragonfly',124,1000,8],
+        [-465,-78,'Death Skull',123,1000,31],
+        [391,-527,'Skeleton Melee 5type',135,1000,29],
+        [513,-5,'Skeleton Footman From Fake Death',132,1000,28],
+        [894,318,'Skeleton Footman From Fake Death',132,1000,28],
+        [899,-344,'Skeleton Footman From Fake Death',132,1000,28],
+        [-475,0,'Skeleton Footman From Fake Death',132,1000,28],
+        [-855,495,'Skeleton Footman From Fake Death',132,1000,28],
+        [-925,5,'Skeleton Footman From Fake Death',132,1000,28],
+        [-875,-475,'Skeleton Footman From Fake Death',132,1000,28],
+        [-800,-580,'Death Skull',123,1000,31],
+        [-800,605,'Death Skull',123,1000,31],
+        [-800,15,'Death Skull',123,1000,31],
         [424,-428,'Mimic Small Simple',23,1000,111],
-        [774,-678,'Giant Dragonfly',114,1000,8],
-        [774,677,'Giant Dragonfly',114,1000,8],
-        [-1187,-423,'Skeleton Melee 5type',125,1000,29],
-        [797,289,'Skeleton Melee 5type',125,1000,29]
+        [774,-678,'Giant Dragonfly',124,1000,8],
+        [774,677,'Giant Dragonfly',124,1000,8],
+        [-1187,-423,'Skeleton Melee 5type',135,1000,29],
+        [797,289,'Skeleton Melee 5type',135,1000,29]
       ],
       OrnateChest: [
         [-306,-4,'Ornate Chest Large',78,1000,70]
@@ -5340,8 +5292,8 @@ const CRYPT_MODULES = {
         [-1435,-1232,'Chest Small',47,1000,13]
       ],
       Consumable: [
-        [735,237,'Potion',11,1000,16],
-        [545,237,'Potion',11,1000,16]
+        [735,237,'Potion',122,1000,16],
+        [545,237,'Potion',122,1000,16]
       ],
       Container: [
         [-513,1164,'Wooden Barrel',107,1000,1],
@@ -5370,19 +5322,19 @@ const CRYPT_MODULES = {
         [-1062,1066,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [472,138,'Mummy',116,500,7],
-        [824,593,'Skeleton Ranged 2type',126,333,34],
-        [1342,473,'Skeleton Melee 5type',125,500,29],
-        [1168,-319,'Mummy',116,1000,7],
-        [1360,-127,'Mummy',116,1000,7],
-        [1360,-319,'Mummy',116,1000,7],
-        [-1395,138,'Skeleton Footman From Fake Death',122,1000,28],
-        [-977,-139,'Skeleton Footman From Fake Death',122,1000,28],
-        [-115,111,'Skeleton Archer',117,1000,33],
-        [-342,880,'Skeleton Archer',117,1000,33],
-        [406,805,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [189,1088,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [111,-537,'Skeleton Mage',124,1000,52]
+        [472,138,'Mummy',126,500,7],
+        [824,593,'Skeleton Ranged 2type',136,333,34],
+        [1342,473,'Skeleton Melee 5type',135,500,29],
+        [1168,-319,'Mummy',126,1000,7],
+        [1360,-127,'Mummy',126,1000,7],
+        [1360,-319,'Mummy',126,1000,7],
+        [-1395,138,'Skeleton Footman From Fake Death',132,1000,28],
+        [-977,-139,'Skeleton Footman From Fake Death',132,1000,28],
+        [-115,111,'Skeleton Archer',127,1000,33],
+        [-342,880,'Skeleton Archer',127,1000,33],
+        [406,805,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [189,1088,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [111,-537,'Skeleton Mage',134,1000,52]
       ],
       PlayerSpawn: [
         [-110,-1200,'Player Spawn',-1,1000,-1]
@@ -5417,9 +5369,6 @@ const CRYPT_MODULES = {
         [258,1476,'Ground',9,1000,12],
         [550,237,'Ground',9,1000,12]
       ],
-          StairUp: [
-        [-1222,1222,'Stairs Up',-1,1000,-1]
-      ],
     }
   },
   'Swamp': {
@@ -5442,45 +5391,45 @@ const CRYPT_MODULES = {
         [8,-689,'Coffin R',59,1000,112]
       ],
       Consumable: [
-        [-368,1149,'Bandage',5,1000,15]
+        [-368,1149,'Bandage',120,1000,15]
       ],
       Container: [
-        [250,-1014,'Skeleton Wooden Barrel Random',133,1000,56],
-        [148,-1029,'Skeleton Wooden Barrel Random',133,1000,56],
+        [250,-1014,'Skeleton Wooden Barrel Random',143,1000,56],
+        [148,-1029,'Skeleton Wooden Barrel Random',143,1000,56],
         [194,-1122,'Skeleton Wooden Barrel',96,1000,77],
         [481,54,'Wooden Barrel',107,1000,1],
         [1186,373,'Wooden Barrel',107,1000,1],
         [-78,127,'Wooden Barrel',107,1000,1],
-        [522,720,'Spider Pot',134,1000,19],
+        [522,720,'Spider Pot',144,1000,19],
         [-1113,233,'Skeleton Corpse',93,1000,24]
       ],
       Monster: [
-        [260,710,'Spider Mummy',130,1000,88],
-        [-90,750,'Spider Mummy',130,1000,88],
-        [460,950,'Spider Mummy',130,1000,88],
-        [990,790,'Spider Mummy',130,1000,88],
-        [70,830,'Spider Mummy',130,1000,88],
-        [130,570,'Spider Mummy',130,1000,88],
-        [460,550,'Spider Mummy',130,1000,88],
-        [730,920,'Spider Mummy',130,1000,88],
-        [830,700,'Spider Mummy',130,1000,88],
-        [-408,-189,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-605,-448,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-526,-214,'Skeleton Footman From Fake Death',122,1000,28],
-        [-345,-502,'Skeleton Footman From Fake Death',122,1000,28],
-        [-264,-201,'Skeleton Footman From Fake Death',122,1000,28],
-        [-141,-377,'Skeleton Archer',117,1000,33],
-        [778,-535,'Skeleton Archer',117,1000,33],
-        [-135,-812,'Skeleton Mage',124,1000,52],
-        [74,-839,'Mummy',116,1000,7],
-        [728,-970,'Skeleton Footman From Fake Death',122,1000,28],
-        [1203,1152,'Skeleton Archer',117,500,33],
-        [790,1090,'Spider Mummy',130,1000,88],
-        [740,450,'Spider Mummy',130,1000,88],
-        [-1106,724,'Skeleton Melee 5type',125,333,29],
-        [77,-584,'Skeleton Melee 5type',125,1000,29],
-        [-400,-1064,'Skeleton Melee 5type',125,1000,29],
-        [-279,30,'Death Skull',113,1000,31]
+        [260,710,'Spider Mummy',140,1000,88],
+        [-90,750,'Spider Mummy',140,1000,88],
+        [460,950,'Spider Mummy',140,1000,88],
+        [990,790,'Spider Mummy',140,1000,88],
+        [70,830,'Spider Mummy',140,1000,88],
+        [130,570,'Spider Mummy',140,1000,88],
+        [460,550,'Spider Mummy',140,1000,88],
+        [730,920,'Spider Mummy',140,1000,88],
+        [830,700,'Spider Mummy',140,1000,88],
+        [-408,-189,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-605,-448,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-526,-214,'Skeleton Footman From Fake Death',132,1000,28],
+        [-345,-502,'Skeleton Footman From Fake Death',132,1000,28],
+        [-264,-201,'Skeleton Footman From Fake Death',132,1000,28],
+        [-141,-377,'Skeleton Archer',127,1000,33],
+        [778,-535,'Skeleton Archer',127,1000,33],
+        [-135,-812,'Skeleton Mage',134,1000,52],
+        [74,-839,'Mummy',126,1000,7],
+        [728,-970,'Skeleton Footman From Fake Death',132,1000,28],
+        [1203,1152,'Skeleton Archer',127,500,33],
+        [790,1090,'Spider Mummy',140,1000,88],
+        [740,450,'Spider Mummy',140,1000,88],
+        [-1106,724,'Skeleton Melee 5type',135,333,29],
+        [77,-584,'Skeleton Melee 5type',135,1000,29],
+        [-400,-1064,'Skeleton Melee 5type',135,1000,29],
+        [-279,30,'Death Skull',123,1000,31]
       ],
       PlayerSpawn: [
         [-1075,-525,'Player Spawn',-1,1000,-1]
@@ -5521,7 +5470,7 @@ const CRYPT_MODULES = {
         [26,-339,'Ground',9,1000,12],
         [-758,1047,'Ground',9,1000,12],
         [-359,472,'Ground',9,1000,12],
-        [972,1396,'Gems',8,1000,76],
+        [972,1396,'Gems',115,1000,76],
         [-1223,-1022,'Ground',9,1000,12],
         [-939,-1500,'Ground',9,1000,12],
         [324,-1299,'Ground',9,1000,12],
@@ -5552,8 +5501,8 @@ const CRYPT_MODULES = {
         [-470,650,'Chest Medium',46,1000,0]
       ],
       Container: [
-        [-1247,-646,'Spider Pot',134,1000,19],
-        [-225,-1307,'Spider Pot',134,1000,19],
+        [-1247,-646,'Spider Pot',144,1000,19],
+        [-225,-1307,'Spider Pot',144,1000,19],
         [1230,1235,'Wooden Barrel',107,1000,1],
         [1230,1135,'Wooden Barrel',107,1000,1],
         [1130,1215,'Wooden Barrel',107,1000,1],
@@ -5585,32 +5534,32 @@ const CRYPT_MODULES = {
         [-1139,-339,'Crypt Secret Wall Door',61,1000,26]
       ],
       Monster: [
-        [-10,-115,'Wraith',131,1000,64],
-        [1190,-460,'Zombie',132,1000,9],
-        [1070,-480,'Zombie',132,1000,9],
-        [310,-1100,'Spider Mummy',130,1000,88],
-        [310,-1190,'Spider Mummy',130,1000,88],
-        [0,990,'Skeleton Mage',124,1000,52],
-        [-70,790,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [70,695,'Skeleton Footman From Fake Death',122,1000,28],
-        [65,-115,'Spider Mummy',130,1000,88],
-        [-650,170,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [735,-115,'Skeleton Footman From Fake Death',122,1000,28],
-        [0,565,'Skeleton Ranged 2type',126,1000,34],
-        [1080,-15,'Skeleton Ranged 2type',126,1000,34],
-        [-1125,-20,'Skeleton Ranged 2type',126,1000,34],
-        [25,-1150,'Skeleton Melee 5type',125,1000,29],
-        [-1060,-555,'Zombie',132,1000,9],
-        [-43,-68,'Spider Mummy',130,1000,88],
-        [380,1000,'Death Skull',113,1000,31],
-        [-410,1000,'Death Skull',113,1000,31],
-        [215,-1150,'Skeleton Melee 5type',125,1000,29],
-        [1220,1220,'Skeleton Archer',117,1000,33],
-        [-1120,1180,'Skeleton Champion',119,1000,59],
+        [-10,-115,'Wraith',141,1000,64],
+        [1190,-460,'Zombie',142,1000,9],
+        [1070,-480,'Zombie',142,1000,9],
+        [310,-1100,'Spider Mummy',140,1000,88],
+        [310,-1190,'Spider Mummy',140,1000,88],
+        [0,990,'Skeleton Mage',134,1000,52],
+        [-70,790,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [70,695,'Skeleton Footman From Fake Death',132,1000,28],
+        [65,-115,'Spider Mummy',140,1000,88],
+        [-650,170,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [735,-115,'Skeleton Footman From Fake Death',132,1000,28],
+        [0,565,'Skeleton Ranged 2type',136,1000,34],
+        [1080,-15,'Skeleton Ranged 2type',136,1000,34],
+        [-1125,-20,'Skeleton Ranged 2type',136,1000,34],
+        [25,-1150,'Skeleton Melee 5type',135,1000,29],
+        [-1060,-555,'Zombie',142,1000,9],
+        [-43,-68,'Spider Mummy',140,1000,88],
+        [380,1000,'Death Skull',123,1000,31],
+        [-410,1000,'Death Skull',123,1000,31],
+        [215,-1150,'Skeleton Melee 5type',135,1000,29],
+        [1220,1220,'Skeleton Archer',127,1000,33],
+        [-1120,1180,'Skeleton Champion',129,1000,59],
         [235,-902,'Mimic Small Simple',23,1000,111],
         [0,-901,'Mimic Small Simple',23,1000,111],
         [-235,-895,'Mimic Small Simple',23,1000,111],
-        [1065,1205,'Zombie',132,1000,9]
+        [1065,1205,'Zombie',142,1000,9]
       ],
       PlayerSpawn: [
         [-1155,-55,'Player Spawn',-1,1000,-1]
@@ -5731,20 +5680,22 @@ const CRYPT_MODULES = {
         [95,310,'Black Rose Random',-1,1000,58],
         [40,-270,'Black Rose Random',-1,1000,58]
       ],
-      Interact: [      ],
+      Interact: [
+        [1555,0,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [180,-40,'Mummy',116,1000,7],
-        [-130,125,'Mummy',116,1000,7],
-        [45,210,'Skeleton Champion',119,1000,59],
-        [730,10,'Wraith',131,1000,64],
-        [763,754,'Zombie',132,1000,9],
-        [-760,-782,'Zombie',132,1000,9],
-        [-270,90,'Death Skull',113,1000,31],
-        [125,90,'Death Skull',113,1000,31],
-        [125,-270,'Death Skull',113,1000,31],
-        [160,1105,'Skeleton Mage',124,1000,52],
-        [-180,-1150,'Skeleton Ranged 2type',126,1000,34],
-        [-30,450,'Skeleton Guardsman From Fake Death',123,1000,30]
+        [180,-40,'Mummy',126,1000,7],
+        [-130,125,'Mummy',126,1000,7],
+        [45,210,'Skeleton Champion',129,1000,59],
+        [730,10,'Wraith',141,1000,64],
+        [763,754,'Zombie',142,1000,9],
+        [-760,-782,'Zombie',142,1000,9],
+        [-270,90,'Death Skull',123,1000,31],
+        [125,90,'Death Skull',123,1000,31],
+        [125,-270,'Death Skull',123,1000,31],
+        [160,1105,'Skeleton Mage',134,1000,52],
+        [-180,-1150,'Skeleton Ranged 2type',136,1000,34],
+        [-30,450,'Skeleton Guardsman From Fake Death',133,1000,30]
       ],
       OrnateChest: [
         [0,0,'Ornate Chest Large',78,1000,70],
@@ -5782,9 +5733,6 @@ const CRYPT_MODULES = {
         [105,-3,'Ground',9,1000,12],
         [105,-63,'Ground',9,1000,12],
         [150,-36,'Ground',9,1000,12]
-      ],
-          Altar: [
-        [1555,0,'Altar Of Sacrifice',42,1000,27]
       ],
     }
   },
@@ -5830,18 +5778,18 @@ const CRYPT_MODULES = {
         [-208,1119,'Pot',87,1000,23]
       ],
       Monster: [
-        [55,-1015,'Skeleton Ranged 2type',126,1000,34],
-        [55,995,'Skeleton Ranged 2type',126,1000,34],
-        [-193,96,'Skeleton Ranged 2type',126,1000,34],
-        [135,-145,'Skeleton Ranged 2type',126,1000,34],
-        [-1023,-13,'Skeleton Melee 5type',125,1000,29],
-        [-439,-23,'Skeleton Melee 5type',125,1000,29],
-        [415,43,'Skeleton Melee 5type',125,1000,29],
-        [887,795,'Zombie',132,1000,9],
-        [955,40,'Skeleton Melee 5type',125,1000,29],
-        [-925,-579,'Zombie',132,1000,9],
-        [-828,1110,'Mummy',116,1000,7],
-        [1156,-751,'Mummy',116,1000,7]
+        [55,-1015,'Skeleton Ranged 2type',136,1000,34],
+        [55,995,'Skeleton Ranged 2type',136,1000,34],
+        [-193,96,'Skeleton Ranged 2type',136,1000,34],
+        [135,-145,'Skeleton Ranged 2type',136,1000,34],
+        [-1023,-13,'Skeleton Melee 5type',135,1000,29],
+        [-439,-23,'Skeleton Melee 5type',135,1000,29],
+        [415,43,'Skeleton Melee 5type',135,1000,29],
+        [887,795,'Zombie',142,1000,9],
+        [955,40,'Skeleton Melee 5type',135,1000,29],
+        [-925,-579,'Zombie',142,1000,9],
+        [-828,1110,'Mummy',126,1000,7],
+        [1156,-751,'Mummy',126,1000,7]
       ],
       OrnateChest: [
         [0,0,'Ornate Chest Large',78,1000,70]
@@ -5917,18 +5865,18 @@ const CRYPT_MODULES = {
         [1169,1320,'Wooden Door With Lock',110,1000,5]
       ],
       Monster: [
-        [-1225,805,'Skeleton Ranged 2type',126,1000,34],
-        [1150,150,'Skeleton Mage',124,1000,52],
-        [681,815,'Skeleton Melee 5type',125,1000,29],
-        [-790,-880,'Mummy',116,1000,7],
-        [1279,971,'Skeleton Melee 5type',125,333,29],
-        [-1297,-931,'Skeleton Melee 5type',125,333,29],
-        [-481,-458,'Skeleton Melee 5type',125,1000,29],
-        [-1100,150,'Skeleton Melee 5type',125,1000,29],
-        [-170,520,'Mummy',116,1000,7],
-        [1005,-1070,'Zombie',132,1000,9],
-        [610,-900,'Zombie',132,1000,9],
-        [-230,-1140,'Mummy',116,1000,7]
+        [-1225,805,'Skeleton Ranged 2type',136,1000,34],
+        [1150,150,'Skeleton Mage',134,1000,52],
+        [681,815,'Skeleton Melee 5type',135,1000,29],
+        [-790,-880,'Mummy',126,1000,7],
+        [1279,971,'Skeleton Melee 5type',135,333,29],
+        [-1297,-931,'Skeleton Melee 5type',135,333,29],
+        [-481,-458,'Skeleton Melee 5type',135,1000,29],
+        [-1100,150,'Skeleton Melee 5type',135,1000,29],
+        [-170,520,'Mummy',126,1000,7],
+        [1005,-1070,'Zombie',142,1000,9],
+        [610,-900,'Zombie',142,1000,9],
+        [-230,-1140,'Mummy',126,1000,7]
       ],
       PlayerSpawn: [
         [829,1386,'Player Spawn',-1,1000,-1]
@@ -6019,12 +5967,12 @@ const CRYPT_MODULES = {
         [0,0,'Hoard',72,1000,105]
       ],
       Valuable: [
-        [230,-135,'Gems',8,1000,76],
-        [179,-198,'Gems',8,1000,76],
-        [-260,200,'Gems',8,1000,76],
-        [-130,240,'Gems',8,1000,76],
-        [190,190,'Gems',8,1000,76],
-        [234,153,'Gems',8,1000,76]
+        [230,-135,'Gems',115,1000,76],
+        [179,-198,'Gems',115,1000,76],
+        [-260,200,'Gems',115,1000,76],
+        [-130,240,'Gems',115,1000,76],
+        [190,190,'Gems',115,1000,76],
+        [234,153,'Gems',115,1000,76]
       ],
     }
   },
@@ -6052,9 +6000,9 @@ const CRYPT_MODULES = {
         [-40,1351,'Wooden Barrel',107,1000,1],
         [1135,-334,'Pot',87,1000,23],
         [1063,-354,'Pot',85,1000,17],
-        [659,-626,'Spider Pot',134,500,19],
-        [-705,295,'Spider Pot',134,333,19],
-        [-685,-300,'Spider Pot',134,333,19]
+        [659,-626,'Spider Pot',144,500,19],
+        [-705,295,'Spider Pot',144,333,19],
+        [-685,-300,'Spider Pot',144,333,19]
       ],
       Equipment: [
         [-905,165,'Armor Golden Room',4,1000,80]
@@ -6077,26 +6025,26 @@ const CRYPT_MODULES = {
         [-1069,-92,'Marvelous Chest',77,1000,47]
       ],
       Monster: [
-        [392,1123,'Skeleton Melee 5type',125,1000,29],
-        [-262,-1130,'Skeleton Ranged 2type',126,1000,34],
-        [1057,-205,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [497,500,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [785,333,'Skeleton Footman From Fake Death',122,1000,28],
-        [-806,-19,'Skeleton Archer',117,1000,33],
-        [-1071,-21,'Skeleton Guardsman From Fake Death',123,1000,30],
-        [-677,1126,'Skeleton Ranged 2type',126,1000,34],
-        [-782,184,'Skeleton Ranged 2type',126,333,34],
-        [-131,-10,'Skeleton Melee 5type',125,1000,29],
-        [-730,-265,'Skeleton Ranged 2type',126,333,34],
-        [725,255,'Skeleton Footman From Fake Death',122,1000,28],
-        [785,-92,'Skeleton Footman From Fake Death',122,1000,28],
-        [744,-281,'Death Skull',113,500,31],
-        [930,-20,'Skeleton Ranged 2type',126,500,34],
-        [-655,-130,'Death Skull',113,333,31],
-        [-655,95,'Death Skull',113,333,31],
-        [-1126,434,'Skeleton Melee 5type',125,1000,29],
-        [-561,-454,'Skeleton Melee 5type',125,1000,29],
-        [332,-1301,'Skeleton Melee 5type',125,1000,29]
+        [392,1123,'Skeleton Melee 5type',135,1000,29],
+        [-262,-1130,'Skeleton Ranged 2type',136,1000,34],
+        [1057,-205,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [497,500,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [785,333,'Skeleton Footman From Fake Death',132,1000,28],
+        [-806,-19,'Skeleton Archer',127,1000,33],
+        [-1071,-21,'Skeleton Guardsman From Fake Death',133,1000,30],
+        [-677,1126,'Skeleton Ranged 2type',136,1000,34],
+        [-782,184,'Skeleton Ranged 2type',136,333,34],
+        [-131,-10,'Skeleton Melee 5type',135,1000,29],
+        [-730,-265,'Skeleton Ranged 2type',136,333,34],
+        [725,255,'Skeleton Footman From Fake Death',132,1000,28],
+        [785,-92,'Skeleton Footman From Fake Death',132,1000,28],
+        [744,-281,'Death Skull',123,500,31],
+        [930,-20,'Skeleton Ranged 2type',136,500,34],
+        [-655,-130,'Death Skull',123,333,31],
+        [-655,95,'Death Skull',123,333,31],
+        [-1126,434,'Skeleton Melee 5type',135,1000,29],
+        [-561,-454,'Skeleton Melee 5type',135,1000,29],
+        [332,-1301,'Skeleton Melee 5type',135,1000,29]
       ],
       PlayerSpawn: [
         [1305,1102,'Player Spawn',-1,1000,-1]
@@ -6164,7 +6112,7 @@ const CRYPT_MODULES = {
         [-1194,-468,'Pot',87,1000,23],
         [-1019,-559,'Pot',86,1000,2],
         [-1137,-568,'Pot',85,1000,17],
-        [-1169,-369,'Spider Pot',134,1000,19],
+        [-1169,-369,'Spider Pot',144,1000,19],
         [-1076,-590,'Pot',84,1000,18],
         [-949,-544,'Pot',84,1000,18],
         [775,780,'Wooden Barrel',107,1000,1],
@@ -6193,56 +6141,55 @@ const CRYPT_MODULES = {
         [-294,798,'Crypt Secret Wall Door',61,1000,26],
         [-268,671,'Wall Lever',100,1000,42],
         [300,798,'Crypt Secret Wall Door',61,1000,26],
-        [348,621,'Floor Lever',65,1000,44]      ],
+        [348,621,'Floor Lever',65,1000,44],
+        [1294,-1308,'Altar Of Sacrifice',42,1000,27]
+      ],
       Monster: [
-        [-448,517,'Skeleton Axeman',118,200,63],
-        [-679,447,'Skeleton Footman From Fake Death',122,200,28],
-        [-869,-1083,'Skeleton Guardsman From Fake Death',123,200,30],
-        [-852,-1111,'Skeleton Swordman',128,200,51],
-        [-857,-1125,'Skeleton Spearman',127,200,62],
-        [-829,-1070,'Skeleton Footman From Fake Death',122,200,28],
-        [880,664,'Skeleton Axeman',118,200,63],
-        [28,-45,'Mummy',116,500,7],
-        [28,64,'Zombie',132,500,9],
-        [1019,-1020,'Skeleton Mage',124,1000,52],
-        [1150,-550,'Death Skull',113,1000,31],
-        [613,-1087,'Death Skull',113,1000,31],
-        [740,-720,'Death Skull',113,1000,31],
-        [894,679,'Skeleton Guardsman From Fake Death',123,200,30],
-        [-434,532,'Skeleton Guardsman From Fake Death',123,200,30],
-        [911,651,'Skeleton Swordman',128,200,51],
-        [-929,-38,'Death Skull',113,1000,31],
-        [-417,504,'Skeleton Swordman',128,200,51],
-        [-422,490,'Skeleton Spearman',127,200,62],
-        [906,637,'Skeleton Spearman',127,200,62],
-        [934,692,'Skeleton Footman From Fake Death',122,200,28],
-        [807,955,'Skeleton Axeman',118,200,63],
-        [821,970,'Skeleton Guardsman From Fake Death',123,200,30],
-        [838,942,'Skeleton Swordman',128,200,51],
-        [833,928,'Skeleton Spearman',127,200,62],
-        [861,983,'Skeleton Footman From Fake Death',122,200,28],
-        [635,-449,'Skeleton Axeman',118,200,63],
-        [649,-434,'Skeleton Guardsman From Fake Death',123,200,30],
-        [-394,545,'Skeleton Footman From Fake Death',122,200,28],
-        [666,-462,'Skeleton Swordman',128,200,51],
-        [661,-476,'Skeleton Spearman',127,200,62],
-        [689,-421,'Skeleton Footman From Fake Death',122,200,28],
-        [-733,419,'Skeleton Axeman',118,200,63],
-        [-719,434,'Skeleton Guardsman From Fake Death',123,200,30],
-        [444,-824,'Skeleton Axeman',118,200,63],
-        [458,-809,'Skeleton Guardsman From Fake Death',123,200,30],
-        [475,-837,'Skeleton Swordman',128,200,51],
-        [-702,406,'Skeleton Swordman',128,200,51],
-        [-707,392,'Skeleton Spearman',127,200,62],
-        [470,-851,'Skeleton Spearman',127,200,62],
-        [498,-796,'Skeleton Footman From Fake Death',122,200,28],
-        [-883,-1098,'Skeleton Axeman',118,200,63]
+        [-448,517,'Skeleton Axeman',128,200,63],
+        [-679,447,'Skeleton Footman From Fake Death',132,200,28],
+        [-869,-1083,'Skeleton Guardsman From Fake Death',133,200,30],
+        [-852,-1111,'Skeleton Swordman',138,200,51],
+        [-857,-1125,'Skeleton Spearman',137,200,62],
+        [-829,-1070,'Skeleton Footman From Fake Death',132,200,28],
+        [880,664,'Skeleton Axeman',128,200,63],
+        [28,-45,'Mummy',126,500,7],
+        [28,64,'Zombie',142,500,9],
+        [1019,-1020,'Skeleton Mage',134,1000,52],
+        [1150,-550,'Death Skull',123,1000,31],
+        [613,-1087,'Death Skull',123,1000,31],
+        [740,-720,'Death Skull',123,1000,31],
+        [894,679,'Skeleton Guardsman From Fake Death',133,200,30],
+        [-434,532,'Skeleton Guardsman From Fake Death',133,200,30],
+        [911,651,'Skeleton Swordman',138,200,51],
+        [-929,-38,'Death Skull',123,1000,31],
+        [-417,504,'Skeleton Swordman',138,200,51],
+        [-422,490,'Skeleton Spearman',137,200,62],
+        [906,637,'Skeleton Spearman',137,200,62],
+        [934,692,'Skeleton Footman From Fake Death',132,200,28],
+        [807,955,'Skeleton Axeman',128,200,63],
+        [821,970,'Skeleton Guardsman From Fake Death',133,200,30],
+        [838,942,'Skeleton Swordman',138,200,51],
+        [833,928,'Skeleton Spearman',137,200,62],
+        [861,983,'Skeleton Footman From Fake Death',132,200,28],
+        [635,-449,'Skeleton Axeman',128,200,63],
+        [649,-434,'Skeleton Guardsman From Fake Death',133,200,30],
+        [-394,545,'Skeleton Footman From Fake Death',132,200,28],
+        [666,-462,'Skeleton Swordman',138,200,51],
+        [661,-476,'Skeleton Spearman',137,200,62],
+        [689,-421,'Skeleton Footman From Fake Death',132,200,28],
+        [-733,419,'Skeleton Axeman',128,200,63],
+        [-719,434,'Skeleton Guardsman From Fake Death',133,200,30],
+        [444,-824,'Skeleton Axeman',128,200,63],
+        [458,-809,'Skeleton Guardsman From Fake Death',133,200,30],
+        [475,-837,'Skeleton Swordman',138,200,51],
+        [-702,406,'Skeleton Swordman',138,200,51],
+        [-707,392,'Skeleton Spearman',137,200,62],
+        [470,-851,'Skeleton Spearman',137,200,62],
+        [498,-796,'Skeleton Footman From Fake Death',132,200,28],
+        [-883,-1098,'Skeleton Axeman',128,200,63]
       ],
       PlayerSpawn: [
         [1311,-51,'Player Spawn',-1,1000,-1]
-      ],
-          Altar: [
-        [1293,-1309,'Altar Of Sacrifice',42,1000,27]
       ],
     }
   },
@@ -6286,18 +6233,18 @@ const CRYPT_MODULES = {
         [-1185,-1048,'Portcullis Fixed Stairs Small Deactivate',83,1000,6]
       ],
       Monster: [
-        [326,299,'Wraith',131,1000,64],
-        [-1429,148,'Mummy',116,1000,7],
-        [24,1414,'Mummy',116,1000,7],
-        [25,1099,'Skeleton Ranged 2type',126,1000,34],
-        [1400,135,'Mummy',116,1000,7],
-        [-1312,-156,'Skeleton Ranged 2type',126,1000,34],
-        [1152,-156,'Skeleton Ranged 2type',126,1000,34],
-        [434,-156,'Death Skull',113,1000,31],
-        [-118,221,'Death Skull',113,1000,31],
-        [25,-1205,'Skeleton Ranged 2type',126,1000,34],
-        [-319,-347,'Skeleton Champion',119,1000,59],
-        [-222,-1385,'Mummy',116,1000,7]
+        [326,299,'Wraith',141,1000,64],
+        [-1429,148,'Mummy',126,1000,7],
+        [24,1414,'Mummy',126,1000,7],
+        [25,1099,'Skeleton Ranged 2type',136,1000,34],
+        [1400,135,'Mummy',126,1000,7],
+        [-1312,-156,'Skeleton Ranged 2type',136,1000,34],
+        [1152,-156,'Skeleton Ranged 2type',136,1000,34],
+        [434,-156,'Death Skull',123,1000,31],
+        [-118,221,'Death Skull',123,1000,31],
+        [25,-1205,'Skeleton Ranged 2type',136,1000,34],
+        [-319,-347,'Skeleton Champion',129,1000,59],
+        [-222,-1385,'Mummy',126,1000,7]
       ],
       PlayerSpawn: [
         [-1400,1430,'Player Spawn',-1,1000,-1]
@@ -6313,9 +6260,6 @@ const CRYPT_MODULES = {
         [-210,0,'Ground',9,1000,12],
         [0,388,'Ground',9,1000,12],
         [0,-200,'Ground',9,1000,12]
-      ],
-          StairDown: [
-        [-1184,-1200,'Stairs Down',-1,1000,-1]
       ],
     }
   },

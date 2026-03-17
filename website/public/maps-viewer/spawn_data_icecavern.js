@@ -10,9 +10,9 @@ const SPAWN_VARIANTS = [
   [1000,[['Bandage',1000,1000]]],
   [600,[['Bookshelf',1000,600]]],
   [500,[['Coin',1000,500]]],
-  [555,[['Gems',1000,555]]],
+  [658,[['Gems',1000,658]]],
   [1000,[['Ground',1000,1000]]],
-  [740,[['Potion',1000,740]]],
+  [675,[['Potion',1000,675]]],
   [700,[['Trinkets',1000,700]]],
   [1000,[['Weapon',1000,1000]]],
   [1000,[['Death Skull Common',1000,1000]]],
@@ -79,6 +79,15 @@ const SPAWN_VARIANTS = [
   [1000,[['Wooden Crate Medium01',1000,1000]]],
   [1000,[['Wooden Crate Small',1000,1000]]],
   [1000,[['Wooden Door With Square Grating',1000,1000]]],
+  [100,[['Armillary Sphere',1000,100]]],
+  [100,[['Sturdy Cloth',1000,100]]],
+  [980,[['Bandage',1000,980]]],
+  [950,[['Gems',1000,950]]],
+  [100,[['Potion',1000,100]]],
+  [200,[['Armillary Sphere',1000,200]]],
+  [50,[['Sturdy Cloth',1000,50]]],
+  [875,[['Bandage',1000,875]]],
+  [1000,[['Potion',1000,1000]]],
   [1000,[['Death Skull Nightmare',800,800],['Death Skull Elite',200,200]]],
   [1000,[['Frost Giant Berserker Nightmare',800,800],['Frost Giant Berserker Elite',200,200]]],
   [1000,[['Frost Giant Shielder Nightmare',800,800],['Frost Giant Shielder Elite',200,200]]],
@@ -105,8 +114,8 @@ const SPAWN_VARIANTS = [
 
 const SPAWN_VID = {
   1011: [34,33,56,55,71,46,49,48,-1,23,11,27,31,26,44,2,7,35,73,12,51,36,8,3,21,50,58,59,6,9,5,17,14,19,65,54,57,28,29,45,68,53,13,40,41,42,32,16,18,43,52,74,66,22,25,1,4,64,72,10,24,69,60,47,62,63,20,15,0,67,30,39,37,38,61,70],
-  2011: [34,33,56,55,71,46,49,48,-1,23,11,27,31,26,44,2,7,35,73,12,51,36,8,3,21,50,58,59,6,9,5,17,14,19,65,54,57,28,29,45,68,53,13,40,41,42,32,16,18,43,52,74,66,22,25,1,4,64,72,10,24,69,60,47,62,63,20,15,0,67,30,39,37,38,61,70],
-  3011: [34,33,56,55,71,46,49,48,-1,87,75,91,95,90,44,2,7,35,73,76,51,36,8,3,85,50,58,59,6,9,5,81,78,83,96,54,57,92,93,45,68,53,77,40,41,42,32,80,82,43,52,74,66,86,89,1,4,64,72,10,88,69,60,47,62,63,84,79,0,67,94,39,37,38,61,70],
+  2011: [34,33,56,55,71,46,49,48,-1,23,11,27,31,26,44,2,7,35,73,12,51,36,79,77,21,50,58,59,78,9,5,17,14,19,65,54,57,28,29,45,68,53,13,40,41,42,32,16,18,43,52,74,66,22,25,76,4,64,72,10,24,69,60,47,62,63,20,15,75,67,30,39,37,38,61,70],
+  3011: [34,33,56,55,71,46,49,48,-1,96,84,100,104,99,44,2,7,35,73,85,51,36,83,82,94,50,58,59,78,9,5,90,87,92,105,54,57,101,102,45,68,53,86,40,41,42,32,89,91,43,52,74,66,95,98,81,4,64,72,10,97,69,60,47,62,63,93,88,80,67,103,39,37,38,61,70],
 };
 
 const ICECAVERN_MODULES = {
@@ -167,17 +176,17 @@ const ICECAVERN_MODULES = {
         [110,1115,'Black Rose Random',-1,1000,8]
       ],
       Monster: [
-        [137,-1078,'Giant Bat',87,1000,9],
-        [-220,-350,'Death Skull',75,1000,10],
-        [240,-350,'Death Skull',75,1000,10],
-        [979,44,'Ice Kobold Axeman',91,1000,11],
-        [-15,279,'Yeti',95,1000,12],
-        [-203,247,'Ice Kobold Archer',90,1000,13],
-        [227,262,'Ice Kobold Archer',90,1000,13],
-        [586,670,'Ice Kobold Axeman',91,1000,11],
-        [-395,606,'Ice Kobold Axeman',91,1000,11],
-        [-580,-459,'Ice Kobold Axeman',91,1000,11],
-        [548,-363,'Ice Kobold Axeman',91,1000,11]
+        [137,-1078,'Giant Bat',96,1000,9],
+        [-220,-350,'Death Skull',84,1000,10],
+        [240,-350,'Death Skull',84,1000,10],
+        [979,44,'Ice Kobold Axeman',100,1000,11],
+        [-15,279,'Yeti',104,1000,12],
+        [-203,247,'Ice Kobold Archer',99,1000,13],
+        [227,262,'Ice Kobold Archer',99,1000,13],
+        [586,670,'Ice Kobold Axeman',100,1000,11],
+        [-395,606,'Ice Kobold Axeman',100,1000,11],
+        [-580,-459,'Ice Kobold Axeman',100,1000,11],
+        [548,-363,'Ice Kobold Axeman',100,1000,11]
       ],
       PlayerSpawn: [
         [-983,-1171,'Player Spawn',-1,1000,-1]
@@ -272,11 +281,11 @@ const ICECAVERN_MODULES = {
         [1390,600,'Black Rose Random',-1,1000,8]
       ],
       Monster: [
-        [750,766,'Ice Kobold Axeman',91,1000,11],
-        [708,-7,'Frost Giant Berserker',76,1000,19],
-        [-285,-1,'Ice Kobold Axeman',91,1000,11],
-        [136,-600,'Ice Kobold Axeman',91,1000,11],
-        [-76,299,'Ice Kobold Axeman',91,1000,11]
+        [750,766,'Ice Kobold Axeman',100,1000,11],
+        [708,-7,'Frost Giant Berserker',85,1000,19],
+        [-285,-1,'Ice Kobold Axeman',100,1000,11],
+        [136,-600,'Ice Kobold Axeman',100,1000,11],
+        [-76,299,'Ice Kobold Axeman',100,1000,11]
       ],
       OrnateChest: [
         [1322,898,'Ornate Chest Large Random',51,1000,20]
@@ -310,12 +319,12 @@ const ICECAVERN_MODULES = {
     count: 100,
     spawns: {
       Consumable: [
-        [-196,-1112,'Potion',8,250,22],
-        [-331,-1300,'Potion',8,250,22],
-        [-345,-1399,'Bandage',3,250,23],
-        [103,-971,'Bandage',3,1000,23],
-        [-260,-400,'Bandage',3,1000,23],
-        [-210,-1211,'Bandage',3,250,23]
+        [-196,-1112,'Potion',83,250,22],
+        [-331,-1300,'Potion',83,250,22],
+        [-345,-1399,'Bandage',82,250,23],
+        [103,-971,'Bandage',82,1000,23],
+        [-260,-400,'Bandage',82,1000,23],
+        [-210,-1211,'Bandage',82,250,23]
       ],
       Container: [
         [-298,-1265,'Wooden Barrel',71,1000,4],
@@ -362,15 +371,15 @@ const ICECAVERN_MODULES = {
         [-40,-280,'Black Rose Random',-1,1000,8]
       ],
       Monster: [
-        [-158,297,'Frost Walker',85,1000,24],
-        [-691,-965,'Ice Kobold Archer',90,1000,13],
-        [-33,1266,'Ice Kobold Axeman',91,1000,11],
-        [-345,-651,'Frost Walker',85,1000,24],
-        [435,-171,'Frost Walker',85,1000,24],
-        [226,558,'Frost Walker',85,1000,24],
-        [1281,-1095,'Ice Kobold Axeman',91,1000,11],
-        [872,935,'Ice Kobold Archer',90,1000,13],
-        [644,-157,'Frost Giant Berserker',76,1000,19]
+        [-158,297,'Frost Walker',94,1000,24],
+        [-691,-965,'Ice Kobold Archer',99,1000,13],
+        [-33,1266,'Ice Kobold Axeman',100,1000,11],
+        [-345,-651,'Frost Walker',94,1000,24],
+        [435,-171,'Frost Walker',94,1000,24],
+        [226,558,'Frost Walker',94,1000,24],
+        [1281,-1095,'Ice Kobold Axeman',100,1000,11],
+        [872,935,'Ice Kobold Archer',99,1000,13],
+        [644,-157,'Frost Giant Berserker',85,1000,19]
       ],
       OrnateChest: [
         [-548,-955,'Ornate Chest Large',50,1000,25]
@@ -410,7 +419,7 @@ const ICECAVERN_MODULES = {
         [645,1020,'Simple Chest Small',59,1000,27]
       ],
       Valuable: [
-        [204,-417,'Gems',6,1000,28],
+        [204,-417,'Gems',78,1000,28],
         [-345,-1399,'Trinkets',9,250,29],
         [735,-746,'Coin',5,1000,30],
         [-325,-1297,'Trinkets',9,250,29],
@@ -438,8 +447,8 @@ const ICECAVERN_MODULES = {
         [414,1124,'Chest Large',33,1000,1]
       ],
       Consumable: [
-        [-53,46,'Potion',8,1000,22],
-        [513,-151,'Potion',8,1000,22]
+        [-53,46,'Potion',83,1000,22],
+        [513,-151,'Potion',83,1000,22]
       ],
       Container: [
         [-930,1230,'Wooden Barrel',71,1000,4],
@@ -448,17 +457,17 @@ const ICECAVERN_MODULES = {
         [87,440,'Wooden Barrel',71,1000,4]
       ],
       Monster: [
-        [1,1335,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-1328,12,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [359,12,'Frost Skeleton Archer',78,1000,32],
-        [76,228,'Frost Skeleton Halberdier',83,1000,33],
-        [-649,-449,'Frost Skeleton Halberdier',83,1000,33],
-        [437,-537,'Frost Skeleton Archer',78,1000,32],
-        [1174,1162,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [212,-99,'Frost Walker',85,1000,24],
-        [7,801,'Frost Walker',85,1000,24],
-        [76,-249,'Frost Skeleton Halberdier',83,1000,33],
-        [-553,-867,'Frost Walker',85,1000,24]
+        [1,1335,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-1328,12,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [359,12,'Frost Skeleton Archer',87,1000,32],
+        [76,228,'Frost Skeleton Halberdier',92,1000,33],
+        [-649,-449,'Frost Skeleton Halberdier',92,1000,33],
+        [437,-537,'Frost Skeleton Archer',87,1000,32],
+        [1174,1162,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [212,-99,'Frost Walker',94,1000,24],
+        [7,801,'Frost Walker',94,1000,24],
+        [76,-249,'Frost Skeleton Halberdier',92,1000,33],
+        [-553,-867,'Frost Walker',94,1000,24]
       ],
       PlayerSpawn: [
         [1112,-1243,'Player Spawn',-1,1000,-1]
@@ -522,7 +531,7 @@ const ICECAVERN_MODULES = {
       ],
       Container: [
         [-998,329,'Pot',56,1000,2],
-        [-1138,491,'Spider Pot',96,1000,34],
+        [-1138,491,'Spider Pot',105,1000,34],
         [786,536,'Wooden Barrel',71,1000,4],
         [560,1225,'Pot',54,1000,35],
         [440,805,'Pot',54,1000,35],
@@ -568,23 +577,23 @@ const ICECAVERN_MODULES = {
         [775,330,'Black Rose Random',-1,1000,8]
       ],
       Monster: [
-        [-16,128,'Mummy',92,1000,37],
-        [462,-490,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-16,318,'Mummy',92,1000,37],
-        [162,348,'Death Skull',75,1000,10],
-        [-238,548,'Death Skull',75,1000,10],
-        [-671,348,'Death Skull',75,1000,10],
-        [-137,218,'Mummy',92,1000,37],
-        [-243,-10,'Death Skull',75,1000,10],
-        [-243,348,'Death Skull',75,1000,10],
-        [265,255,'Skeleton Champion',93,1000,38],
-        [274,759,'Frost Skeleton Archer',78,1000,32],
-        [850,30,'Frost Skeleton Archer',78,1000,32],
-        [104,218,'Mummy',92,1000,37],
-        [585,730,'Mummy',92,1000,37],
-        [455,355,'Mummy',92,1000,37],
-        [-875,675,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [45,-150,'Frost Skeleton Footman From Fake Death',81,1000,31]
+        [-16,128,'Mummy',101,1000,37],
+        [462,-490,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-16,318,'Mummy',101,1000,37],
+        [162,348,'Death Skull',84,1000,10],
+        [-238,548,'Death Skull',84,1000,10],
+        [-671,348,'Death Skull',84,1000,10],
+        [-137,218,'Mummy',101,1000,37],
+        [-243,-10,'Death Skull',84,1000,10],
+        [-243,348,'Death Skull',84,1000,10],
+        [265,255,'Skeleton Champion',102,1000,38],
+        [274,759,'Frost Skeleton Archer',87,1000,32],
+        [850,30,'Frost Skeleton Archer',87,1000,32],
+        [104,218,'Mummy',101,1000,37],
+        [585,730,'Mummy',101,1000,37],
+        [455,355,'Mummy',101,1000,37],
+        [-875,675,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [45,-150,'Frost Skeleton Footman From Fake Death',90,1000,31]
       ],
       PlayerSpawn: [
         [1189,-1244,'Player Spawn',-1,1000,-1]
@@ -672,17 +681,17 @@ const ICECAVERN_MODULES = {
         [440,-933,'Portcullis Fixed Stairs Medium Deactivate',53,1000,41]
       ],
       Monster: [
-        [379,1118,'Ice Kobold Axeman',91,1000,11],
-        [161,-112,'Frost Giant Shielder',77,1000,42],
-        [-94,15,'Giant Bat',87,1000,9],
-        [175,-6,'Ice Kobold Axeman',91,1000,11],
-        [843,904,'Ice Kobold Axeman',91,1000,11],
-        [-1220,-500,'Ice Kobold Archer',90,1000,13],
-        [1273,57,'Ice Kobold Archer',90,1000,13],
-        [-82,-1050,'Ice Kobold Axeman',91,1000,11],
-        [-449,956,'Ice Kobold Axeman',91,1000,11],
-        [-1097,-296,'Ice Kobold Archer',90,1000,13],
-        [896,118,'Ice Kobold Axeman',91,1000,11]
+        [379,1118,'Ice Kobold Axeman',100,1000,11],
+        [161,-112,'Frost Giant Shielder',86,1000,42],
+        [-94,15,'Giant Bat',96,1000,9],
+        [175,-6,'Ice Kobold Axeman',100,1000,11],
+        [843,904,'Ice Kobold Axeman',100,1000,11],
+        [-1220,-500,'Ice Kobold Archer',99,1000,13],
+        [1273,57,'Ice Kobold Archer',99,1000,13],
+        [-82,-1050,'Ice Kobold Axeman',100,1000,11],
+        [-449,956,'Ice Kobold Axeman',100,1000,11],
+        [-1097,-296,'Ice Kobold Archer',99,1000,13],
+        [896,118,'Ice Kobold Axeman',100,1000,11]
       ],
       OrnateChest: [
         [-49,54,'Ornate Chest Large',50,1000,25]
@@ -803,19 +812,19 @@ const ICECAVERN_MODULES = {
         [1072,1047,'Altar Of Sacrifice',32,1000,46]
       ],
       Monster: [
-        [535,1018,'Frost Skeleton Crossbowman',80,1000,47],
-        [326,-876,'Ice Kobold Archer',90,1000,13],
-        [828,917,'Ice Kobold Axeman',91,1000,11],
-        [387,-940,'Frost Skeleton Archer',78,1000,32],
-        [1157,-423,'Ice Kobold Axeman',91,1000,11],
-        [1028,-727,'Ice Kobold Axeman',91,1000,11],
-        [-1298,-148,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [55,-271,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [1281,-209,'Ice Kobold Axeman',91,1000,11],
-        [126,523,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [408,824,'Frost Skeleton Archer',78,1000,32],
-        [186,-943,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [1281,-51,'Ice Kobold Archer',90,1000,13]
+        [535,1018,'Frost Skeleton Crossbowman',89,1000,47],
+        [326,-876,'Ice Kobold Archer',99,1000,13],
+        [828,917,'Ice Kobold Axeman',100,1000,11],
+        [387,-940,'Frost Skeleton Archer',87,1000,32],
+        [1157,-423,'Ice Kobold Axeman',100,1000,11],
+        [1028,-727,'Ice Kobold Axeman',100,1000,11],
+        [-1298,-148,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [55,-271,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [1281,-209,'Ice Kobold Axeman',100,1000,11],
+        [126,523,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [408,824,'Frost Skeleton Archer',87,1000,32],
+        [186,-943,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [1281,-51,'Ice Kobold Archer',99,1000,13]
       ],
       OrnateChest: [
         [981,-788,'Ornate Chest Large',50,1000,25]
@@ -875,9 +884,9 @@ const ICECAVERN_MODULES = {
         [-167,-1306,'Chest Medium',34,1000,0]
       ],
       Consumable: [
-        [-215,-127,'Bandage',3,571,23],
-        [-178,-188,'Potion',8,571,22],
-        [-163,-238,'Bandage',3,571,23]
+        [-215,-127,'Bandage',82,571,23],
+        [-178,-188,'Potion',83,571,22],
+        [-163,-238,'Bandage',82,571,23]
       ],
       Container: [
         [-913,784,'Wooden Crate Small',73,1000,18],
@@ -930,13 +939,13 @@ const ICECAVERN_MODULES = {
         [-125,155,'Altar Of Sacrifice',32,1000,46]
       ],
       Monster: [
-        [-519,-960,'Ice Kobold Axeman',91,1000,11],
-        [789,687,'Ice Kobold Axeman',91,1000,11],
-        [881,-1075,'Ice Kobold Axeman',91,1000,11],
-        [-504,684,'Ice Kobold Archer',90,1000,13],
-        [-850,-439,'Ice Kobold Archer',90,1000,13],
-        [-848,170,'Ice Kobold Axeman',91,1000,11],
-        [161,-253,'Frost Giant Berserker',76,1000,19]
+        [-519,-960,'Ice Kobold Axeman',100,1000,11],
+        [789,687,'Ice Kobold Axeman',100,1000,11],
+        [881,-1075,'Ice Kobold Axeman',100,1000,11],
+        [-504,684,'Ice Kobold Archer',99,1000,13],
+        [-850,-439,'Ice Kobold Archer',99,1000,13],
+        [-848,170,'Ice Kobold Axeman',100,1000,11],
+        [161,-253,'Frost Giant Berserker',85,1000,19]
       ],
       OrnateChest: [
         [1,46,'Ornate Chest Large Random',51,1000,20]
@@ -985,15 +994,15 @@ const ICECAVERN_MODULES = {
         [-1018,-316,'Chest Large',33,1000,1]
       ],
       Consumable: [
-        [-803,121,'Bandage',3,1000,23],
-        [279,866,'Bandage',3,571,23],
-        [265,778,'Potion',8,571,22],
-        [-799,35,'Bandage',3,1000,23],
-        [276,781,'Bandage',3,571,23],
-        [-29,-1394,'Bandage',3,571,23],
-        [353,-1193,'Potion',8,571,22],
-        [66,-1389,'Bandage',3,571,23],
-        [-792,124,'Potion',8,1000,22]
+        [-803,121,'Bandage',82,1000,23],
+        [279,866,'Bandage',82,571,23],
+        [265,778,'Potion',83,571,22],
+        [-799,35,'Bandage',82,1000,23],
+        [276,781,'Bandage',82,571,23],
+        [-29,-1394,'Bandage',82,571,23],
+        [353,-1193,'Potion',83,571,22],
+        [66,-1389,'Bandage',82,571,23],
+        [-792,124,'Potion',83,1000,22]
       ],
       Container: [
         [-152,-1387,'Wooden Barrel',71,1000,4]
@@ -1053,19 +1062,19 @@ const ICECAVERN_MODULES = {
         [-1125,219,'Altar Of Sacrifice',32,1000,46]
       ],
       Monster: [
-        [-1199,-1198,'Ice Kobold Axeman',91,1000,11],
-        [954,129,'Ice Kobold Archer',90,1000,13],
-        [-46,-873,'Ice Kobold Archer',90,1000,13],
-        [-59,830,'Ice Kobold Axeman',91,1000,11],
-        [245,-861,'Ice Kobold Axeman',91,1000,11],
-        [161,-924,'Ice Kobold Archer',90,1000,13],
-        [671,-795,'Ice Kobold Axeman',91,1000,11],
-        [-666,814,'Ice Kobold Axeman',91,1000,11],
-        [161,956,'Ice Kobold Archer',90,1000,13],
-        [-1065,295,'Ice Kobold Axeman',91,1000,11],
-        [-783,9,'Yeti',95,1000,12],
-        [-32,1027,'Ice Kobold Archer',90,1000,13],
-        [987,18,'Ice Kobold Archer',90,1000,13]
+        [-1199,-1198,'Ice Kobold Axeman',100,1000,11],
+        [954,129,'Ice Kobold Archer',99,1000,13],
+        [-46,-873,'Ice Kobold Archer',99,1000,13],
+        [-59,830,'Ice Kobold Axeman',100,1000,11],
+        [245,-861,'Ice Kobold Axeman',100,1000,11],
+        [161,-924,'Ice Kobold Archer',99,1000,13],
+        [671,-795,'Ice Kobold Axeman',100,1000,11],
+        [-666,814,'Ice Kobold Axeman',100,1000,11],
+        [161,956,'Ice Kobold Archer',99,1000,13],
+        [-1065,295,'Ice Kobold Axeman',100,1000,11],
+        [-783,9,'Yeti',104,1000,12],
+        [-32,1027,'Ice Kobold Archer',99,1000,13],
+        [987,18,'Ice Kobold Archer',99,1000,13]
       ],
       OrnateChest: [
         [-1133,-237,'Ornate Chest Large Random',51,1000,20]
@@ -1177,21 +1186,21 @@ const ICECAVERN_MODULES = {
         [-717,410,'Wall Lever',66,1000,52]
       ],
       Monster: [
-        [-1200,-80,'Ice Kobold Axeman',91,1000,11],
-        [-470,1420,'Ice Kobold Axeman',91,1000,11],
-        [-1250,1095,'Ice Kobold Archer',90,1000,13],
-        [-1250,795,'Ice Kobold Axeman',91,1000,11],
-        [-965,1280,'Ice Kobold Axeman',91,1000,11],
-        [895,-775,'Frost Wolf',86,1000,53],
-        [1025,-45,'Frost Wolf',86,1000,53],
-        [895,475,'Frost Wolf',86,1000,53],
-        [75,645,'Frost Walker',85,1000,24],
-        [75,-340,'Frost Walker',85,1000,24],
-        [1275,-1080,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [100,150,'Ice Harpy',89,1000,54],
-        [-945,305,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [100,150,'Ice Kobold Archer',90,1000,13],
-        [-1035,755,'Ice Kobold Axeman',91,1000,11]
+        [-1200,-80,'Ice Kobold Axeman',100,1000,11],
+        [-470,1420,'Ice Kobold Axeman',100,1000,11],
+        [-1250,1095,'Ice Kobold Archer',99,1000,13],
+        [-1250,795,'Ice Kobold Axeman',100,1000,11],
+        [-965,1280,'Ice Kobold Axeman',100,1000,11],
+        [895,-775,'Frost Wolf',95,1000,53],
+        [1025,-45,'Frost Wolf',95,1000,53],
+        [895,475,'Frost Wolf',95,1000,53],
+        [75,645,'Frost Walker',94,1000,24],
+        [75,-340,'Frost Walker',94,1000,24],
+        [1275,-1080,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [100,150,'Ice Harpy',98,1000,54],
+        [-945,305,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [100,150,'Ice Kobold Archer',99,1000,13],
+        [-1035,755,'Ice Kobold Axeman',100,1000,11]
       ],
       PlayerSpawn: [
         [-1350,-1350,'Player Spawn',-1,1000,-1]
@@ -1213,16 +1222,16 @@ const ICECAVERN_MODULES = {
         [-250,200,'Floor Portal',44,1000,14]
       ],
       QuestItem: [
-        [-1325,108,'Sturdy Cloth',1,1000,55],
-        [-1436,1061,'Sturdy Cloth',1,1000,55],
-        [-1445,-387,'Sturdy Cloth',1,1000,55]
+        [-1325,108,'Sturdy Cloth',81,1000,55],
+        [-1436,1061,'Sturdy Cloth',81,1000,55],
+        [-1445,-387,'Sturdy Cloth',81,1000,55]
       ],
       SpecialChest: [
         [65,300,'Chest Special',36,1000,21]
       ],
       Valuable: [
-        [15,-734,'Gems',6,1000,28],
-        [-105,-705,'Gems',6,1000,28],
+        [15,-734,'Gems',78,1000,28],
+        [-105,-705,'Gems',78,1000,28],
         [-55,-735,'Ground',7,1000,16],
         [-570,-550,'Trinkets',9,1000,29],
         [-661,-370,'Ground',7,1000,16],
@@ -1313,17 +1322,17 @@ const ICECAVERN_MODULES = {
         [850,-582,'Ice Crystal Roaster',48,1000,7]
       ],
       Monster: [
-        [1056,-251,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [146,-69,'Ice Harpy',89,1000,54],
-        [-54,240,'Mummy',92,1000,37],
-        [237,-176,'Mummy',92,1000,37],
-        [-342,-59,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [203,448,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [1090,85,'Frost Skeleton Archer',78,1000,32],
-        [-772,86,'Frost Skeleton Archer',78,1000,32],
-        [1199,1149,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [387,488,'Frost Skeleton Archer',78,1000,32],
-        [-1027,-1128,'Frost Skeleton Guardman From Fake Death',82,1000,48]
+        [1056,-251,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [146,-69,'Ice Harpy',98,1000,54],
+        [-54,240,'Mummy',101,1000,37],
+        [237,-176,'Mummy',101,1000,37],
+        [-342,-59,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [203,448,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [1090,85,'Frost Skeleton Archer',87,1000,32],
+        [-772,86,'Frost Skeleton Archer',87,1000,32],
+        [1199,1149,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [387,488,'Frost Skeleton Archer',87,1000,32],
+        [-1027,-1128,'Frost Skeleton Guardman From Fake Death',91,1000,48]
       ],
       OrnateChest: [
         [54,0,'Ornate Chest Large',50,1000,25]
@@ -1365,15 +1374,15 @@ const ICECAVERN_MODULES = {
         [-2702,-1268,'Chest Large',33,1000,1]
       ],
       Consumable: [
-        [721,-63,'Bandage',3,571,23],
-        [-2791,-1180,'Bandage',3,333,23],
-        [1368,-301,'Potion',8,571,22],
-        [684,-169,'Bandage',3,571,23],
-        [-3322,272,'Potion',8,546,22],
-        [-3309,300,'Bandage',3,546,23],
-        [-1911,-1026,'Potion',8,250,22],
-        [-3612,-334,'Bandage',3,1000,23],
-        [-1646,783,'Bandage',3,600,23]
+        [721,-63,'Bandage',82,571,23],
+        [-2791,-1180,'Bandage',82,333,23],
+        [1368,-301,'Potion',83,571,22],
+        [684,-169,'Bandage',82,571,23],
+        [-3322,272,'Potion',83,546,22],
+        [-3309,300,'Bandage',82,546,23],
+        [-1911,-1026,'Potion',83,250,22],
+        [-3612,-334,'Bandage',82,1000,23],
+        [-1646,783,'Bandage',82,600,23]
       ],
       Container: [
         [-2710,557,'Pot',56,1000,2],
@@ -1412,29 +1421,29 @@ const ICECAVERN_MODULES = {
         [-4750,-66,'Altar Of Sacrifice',32,1000,46]
       ],
       Monster: [
-        [-1529,398,'Frost Skeleton Archer',78,1000,32],
-        [-2030,340,'Frost Skeleton Halberdier',83,1000,33],
-        [-135,764,'Frost Skeleton Halberdier',83,1000,33],
-        [-451,-1303,'Frost Skeleton Halberdier',83,1000,33],
-        [455,-1024,'Frost Skeleton Halberdier',83,1000,33],
-        [-3521,-657,'Frost Skeleton Archer',78,1000,32],
-        [-4487,-10,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-1005,494,'Frost Skeleton Halberdier',83,1000,33],
-        [50,1264,'Frost Skeleton Halberdier',83,1000,33],
-        [-467,-1134,'Frost Skeleton Halberdier',83,1000,33],
-        [-2243,-951,'Frost Skeleton Halberdier',83,1000,33],
-        [-21,167,'Frost Skeleton Crossbowman',80,1000,47],
-        [1081,-1247,'Frost Skeleton Halberdier',83,1000,33],
-        [-237,-31,'Ice Harpy',89,1000,54],
-        [-2969,-1334,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [117,-1185,'Frost Skeleton Halberdier',83,1000,33],
-        [1280,-82,'Ice Giant Spider',88,1000,60],
-        [-2354,-31,'Ice Harpy',89,1000,54],
-        [-2974,-1189,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-4152,1105,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-2549,-796,'Frost Skeleton Halberdier',83,1000,33],
-        [-3291,725,'Frost Skeleton Archer',78,1000,32],
-        [-4349,211,'Frost Skeleton Halberdier',83,1000,33]
+        [-1529,398,'Frost Skeleton Archer',87,1000,32],
+        [-2030,340,'Frost Skeleton Halberdier',92,1000,33],
+        [-135,764,'Frost Skeleton Halberdier',92,1000,33],
+        [-451,-1303,'Frost Skeleton Halberdier',92,1000,33],
+        [455,-1024,'Frost Skeleton Halberdier',92,1000,33],
+        [-3521,-657,'Frost Skeleton Archer',87,1000,32],
+        [-4487,-10,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-1005,494,'Frost Skeleton Halberdier',92,1000,33],
+        [50,1264,'Frost Skeleton Halberdier',92,1000,33],
+        [-467,-1134,'Frost Skeleton Halberdier',92,1000,33],
+        [-2243,-951,'Frost Skeleton Halberdier',92,1000,33],
+        [-21,167,'Frost Skeleton Crossbowman',89,1000,47],
+        [1081,-1247,'Frost Skeleton Halberdier',92,1000,33],
+        [-237,-31,'Ice Harpy',98,1000,54],
+        [-2969,-1334,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [117,-1185,'Frost Skeleton Halberdier',92,1000,33],
+        [1280,-82,'Ice Giant Spider',97,1000,60],
+        [-2354,-31,'Ice Harpy',98,1000,54],
+        [-2974,-1189,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-4152,1105,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-2549,-796,'Frost Skeleton Halberdier',92,1000,33],
+        [-3291,725,'Frost Skeleton Archer',87,1000,32],
+        [-4349,211,'Frost Skeleton Halberdier',92,1000,33]
       ],
       PlayerSpawn: [
         [-3469,-529,'Player Spawn',-1,1000,-1],
@@ -1491,7 +1500,7 @@ const ICECAVERN_MODULES = {
         [1338,-299,'Ground',7,571,16],
         [1285,-273,'Ground',7,571,16],
         [1286,-280,'Ground',7,571,16],
-        [-1856,867,'Gems',6,1000,28],
+        [-1856,867,'Gems',78,1000,28],
         [-3285,239,'Coin',5,546,30],
         [-3241,243,'Coin',5,546,30],
         [-3526,-278,'Ground',7,1000,16],
@@ -1537,18 +1546,18 @@ const ICECAVERN_MODULES = {
         [314,-1388,'Wooden Crate Small',73,1000,18]
       ],
       Monster: [
-        [1181,-122,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [30,386,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-1031,654,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [780,801,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-197,429,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [312,-913,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [757,826,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-73,686,'Ice Harpy',89,1000,54],
-        [26,828,'Frost Skeleton Crossbowman',80,1000,47],
-        [157,208,'Frost Skeleton Crossbowman',80,1000,47],
-        [838,-753,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-771,634,'Frost Skeleton Footman From Fake Death',81,1000,31]
+        [1181,-122,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [30,386,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-1031,654,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [780,801,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-197,429,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [312,-913,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [757,826,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-73,686,'Ice Harpy',98,1000,54],
+        [26,828,'Frost Skeleton Crossbowman',89,1000,47],
+        [157,208,'Frost Skeleton Crossbowman',89,1000,47],
+        [838,-753,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-771,634,'Frost Skeleton Footman From Fake Death',90,1000,31]
       ],
       OrnateChest: [
         [-51,694,'Ornate Chest Large',50,1000,25]
@@ -1603,17 +1612,17 @@ const ICECAVERN_MODULES = {
         [-350,1391,'Wooden Crate Small',73,1000,18]
       ],
       Monster: [
-        [1235,195,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-120,-1196,'Frost Skeleton Archer',78,1000,32],
-        [402,29,'Frost Skeleton Archer',78,1000,32],
-        [806,859,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [933,-878,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [128,-1204,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [426,-157,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [437,-136,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-222,-538,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [825,729,'Frost Skeleton Archer',78,1000,32],
-        [449,-549,'Frost Skeleton Footman From Fake Death',81,1000,31]
+        [1235,195,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-120,-1196,'Frost Skeleton Archer',87,1000,32],
+        [402,29,'Frost Skeleton Archer',87,1000,32],
+        [806,859,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [933,-878,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [128,-1204,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [426,-157,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [437,-136,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-222,-538,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [825,729,'Frost Skeleton Archer',87,1000,32],
+        [449,-549,'Frost Skeleton Footman From Fake Death',90,1000,31]
       ],
       OrnateChest: [
         [283,-136,'Ornate Chest Large',50,1000,25]
@@ -1672,8 +1681,8 @@ const ICECAVERN_MODULES = {
         [-1370,350,'Chest Large',33,1000,1]
       ],
       Consumable: [
-        [298,-1412,'Bandage',3,1000,23],
-        [1044,-1254,'Bandage',3,1000,23]
+        [298,-1412,'Bandage',82,1000,23],
+        [1044,-1254,'Bandage',82,1000,23]
       ],
       Container: [
         [400,-1381,'Pot',57,1000,36],
@@ -1684,15 +1693,15 @@ const ICECAVERN_MODULES = {
         [-1154,-1125,'Portcullis Fixed Stairs Medium Deactivate',53,1000,41]
       ],
       Monster: [
-        [1105,-1026,'Frost Skeleton Halberdier',83,1000,33],
-        [737,-734,'Frost Skeleton Crossbowman',80,1000,47],
-        [-263,417,'Frost Skeleton Halberdier',83,1000,33],
-        [-26,1096,'Death Skull',75,1000,10],
-        [-226,1367,'Death Skull',75,1000,10],
-        [1053,-423,'Frost Skeleton Halberdier',83,1000,33],
-        [-443,472,'Frost Skeleton Halberdier',83,1000,33],
-        [846,239,'Ice Harpy',89,1000,54],
-        [-1004,227,'Frost Skeleton Halberdier',83,1000,33]
+        [1105,-1026,'Frost Skeleton Halberdier',92,1000,33],
+        [737,-734,'Frost Skeleton Crossbowman',89,1000,47],
+        [-263,417,'Frost Skeleton Halberdier',92,1000,33],
+        [-26,1096,'Death Skull',84,1000,10],
+        [-226,1367,'Death Skull',84,1000,10],
+        [1053,-423,'Frost Skeleton Halberdier',92,1000,33],
+        [-443,472,'Frost Skeleton Halberdier',92,1000,33],
+        [846,239,'Ice Harpy',98,1000,54],
+        [-1004,227,'Frost Skeleton Halberdier',92,1000,33]
       ],
       OrnateChest: [
         [-281,662,'Ornate Chest Large',50,1000,25]
@@ -1783,13 +1792,13 @@ const ICECAVERN_MODULES = {
         [610,-695,'Black Rose Random',-1,1000,8]
       ],
       Monster: [
-        [-204,827,'Ice Kobold Axeman',91,1000,11],
-        [-254,1038,'Frost Giant Shielder',77,1000,42],
-        [-237,323,'Ice Kobold Archer',90,1000,13],
-        [-1210,105,'Ice Kobold Archer',90,1000,13],
-        [-6,-134,'Ice Kobold Axeman',91,1000,11],
-        [-370,-90,'Ice Kobold Archer',90,1000,13],
-        [216,-331,'Yeti',95,1000,12]
+        [-204,827,'Ice Kobold Axeman',100,1000,11],
+        [-254,1038,'Frost Giant Shielder',86,1000,42],
+        [-237,323,'Ice Kobold Archer',99,1000,13],
+        [-1210,105,'Ice Kobold Archer',99,1000,13],
+        [-6,-134,'Ice Kobold Axeman',100,1000,11],
+        [-370,-90,'Ice Kobold Archer',99,1000,13],
+        [216,-331,'Yeti',104,1000,12]
       ],
       OrnateChest: [
         [70,-1295,'Ornate Chest Large',50,1000,25]
@@ -1833,10 +1842,10 @@ const ICECAVERN_MODULES = {
         [931,-1299,'Chest Large',33,1000,1]
       ],
       Consumable: [
-        [146,108,'Bandage',3,1000,23],
-        [183,47,'Potion',8,1000,22],
-        [199,-3,'Bandage',3,1000,23],
-        [-612,-1195,'Potion',8,1000,22]
+        [146,108,'Bandage',82,1000,23],
+        [183,47,'Potion',83,1000,22],
+        [199,-3,'Bandage',82,1000,23],
+        [-612,-1195,'Potion',83,1000,22]
       ],
       Container: [
         [307,-896,'Pot',56,1000,2],
@@ -1892,22 +1901,22 @@ const ICECAVERN_MODULES = {
         [279,-1142,'Wall Lever',66,1000,52]
       ],
       Monster: [
-        [829,495,'Frost Skeleton Archer',78,1000,32],
-        [176,-30,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-354,-304,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [471,-228,'Mummy',92,1000,37],
-        [-371,385,'Frost Skeleton Archer',78,1000,32],
-        [-471,-143,'Mummy',92,1000,37],
-        [371,-123,'Mummy',92,1000,37],
-        [-571,-199,'Death Skull',75,1000,10],
-        [-444,51,'Death Skull',75,1000,10],
-        [-490,-118,'Death Skull',75,1000,10],
-        [49,-174,'Frost Skeleton Archer',78,1000,32],
-        [-182,-170,'Frost Skeleton Archer',78,1000,32],
-        [-453,-1309,'Skeleton Champion',93,1000,38],
-        [1323,-99,'Frost Skeleton Archer',78,1000,32],
-        [407,-546,'Mummy',92,1000,37],
-        [-501,-785,'Mummy',92,1000,37]
+        [829,495,'Frost Skeleton Archer',87,1000,32],
+        [176,-30,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-354,-304,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [471,-228,'Mummy',101,1000,37],
+        [-371,385,'Frost Skeleton Archer',87,1000,32],
+        [-471,-143,'Mummy',101,1000,37],
+        [371,-123,'Mummy',101,1000,37],
+        [-571,-199,'Death Skull',84,1000,10],
+        [-444,51,'Death Skull',84,1000,10],
+        [-490,-118,'Death Skull',84,1000,10],
+        [49,-174,'Frost Skeleton Archer',87,1000,32],
+        [-182,-170,'Frost Skeleton Archer',87,1000,32],
+        [-453,-1309,'Skeleton Champion',102,1000,38],
+        [1323,-99,'Frost Skeleton Archer',87,1000,32],
+        [407,-546,'Mummy',101,1000,37],
+        [-501,-785,'Mummy',101,1000,37]
       ],
       OrnateChest: [
         [-579,-32,'Ornate Chest Large',50,1000,25]
@@ -1977,10 +1986,10 @@ const ICECAVERN_MODULES = {
         [-535,-115,'Chest Medium',34,1000,0]
       ],
       Consumable: [
-        [-635,655,'Bandage',3,1000,23],
-        [-680,705,'Potion',8,1000,22],
-        [1190,-385,'Potion',8,1000,22],
-        [-385,-965,'Potion',8,1000,22]
+        [-635,655,'Bandage',82,1000,23],
+        [-680,705,'Potion',83,1000,22],
+        [1190,-385,'Potion',83,1000,22],
+        [-385,-965,'Potion',83,1000,22]
       ],
       Container: [
         [-1145,-180,'Skeleton Corpse',62,1000,64],
@@ -2062,26 +2071,26 @@ const ICECAVERN_MODULES = {
         [0,-240,'Altar Of Sacrifice',32,1000,46]
       ],
       Monster: [
-        [-680,-625,'Ice Harpy',89,1000,54],
-        [-1041,-1093,'Yeti',95,1000,12],
-        [265,-580,'Frost Skeleton Maceman',84,500,66],
-        [-255,-145,'Frost Skeleton Halberdier',83,500,33],
-        [-95,-150,'Ice Kobold Axeman',91,1000,11],
-        [-1250,615,'Frost Skeleton Archer',78,1000,32],
-        [1225,-1330,'Ice Kobold Axeman',91,1000,11],
-        [-775,540,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-1140,245,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-925,885,'Ice Kobold Axeman',91,1000,11],
-        [365,1235,'Frost Skeleton Axeman',79,1000,67],
-        [-15,-245,'Ice Kobold Archer',90,1000,13],
-        [1265,665,'Frost Skeleton Archer',78,1000,32],
-        [1305,1150,'Ice Kobold Axeman',91,1000,11],
-        [1080,-540,'Mummy',92,1000,37],
-        [275,455,'Ice Kobold Axeman',91,1000,11],
-        [360,360,'Ice Kobold Archer',90,1000,13],
-        [-1075,-895,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [255,-585,'Mummy',92,500,37],
-        [-150,-190,'Mummy',92,500,37]
+        [-680,-625,'Ice Harpy',98,1000,54],
+        [-1041,-1093,'Yeti',104,1000,12],
+        [265,-580,'Frost Skeleton Maceman',93,500,66],
+        [-255,-145,'Frost Skeleton Halberdier',92,500,33],
+        [-95,-150,'Ice Kobold Axeman',100,1000,11],
+        [-1250,615,'Frost Skeleton Archer',87,1000,32],
+        [1225,-1330,'Ice Kobold Axeman',100,1000,11],
+        [-775,540,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-1140,245,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-925,885,'Ice Kobold Axeman',100,1000,11],
+        [365,1235,'Frost Skeleton Axeman',88,1000,67],
+        [-15,-245,'Ice Kobold Archer',99,1000,13],
+        [1265,665,'Frost Skeleton Archer',87,1000,32],
+        [1305,1150,'Ice Kobold Axeman',100,1000,11],
+        [1080,-540,'Mummy',101,1000,37],
+        [275,455,'Ice Kobold Axeman',100,1000,11],
+        [360,360,'Ice Kobold Archer',99,1000,13],
+        [-1075,-895,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [255,-585,'Mummy',101,500,37],
+        [-150,-190,'Mummy',101,500,37]
       ],
       PlayerSpawn: [
         [1260,1250,'Player Spawn',-1,1000,-1]
@@ -2107,8 +2116,8 @@ const ICECAVERN_MODULES = {
         [-1250,-700,'Floor Portal',44,1000,14]
       ],
       QuestItem: [
-        [-1280,-1300,'Armillary Sphere',0,1000,68],
-        [-1313,-1249,'Armillary Sphere',0,1000,68]
+        [-1280,-1300,'Armillary Sphere',80,1000,68],
+        [-1313,-1249,'Armillary Sphere',80,1000,68]
       ],
       SpecialChest: [
         [-1142,-1364,'Chest Special',36,1000,21],
@@ -2138,8 +2147,8 @@ const ICECAVERN_MODULES = {
         [1135,-140,'Trinkets',9,1000,29],
         [835,1170,'Trinkets',9,1000,29],
         [880,1235,'Trinkets',9,1000,29],
-        [-585,935,'Gems',6,1000,28],
-        [-585,875,'Gems',6,1000,28]
+        [-585,935,'Gems',78,1000,28],
+        [-585,875,'Gems',78,1000,28]
       ],
     }
   },
@@ -2157,9 +2166,9 @@ const ICECAVERN_MODULES = {
         [-244,58,'Chest Large',33,1000,1]
       ],
       Consumable: [
-        [146,108,'Bandage',3,571,23],
-        [183,47,'Potion',8,571,22],
-        [199,-3,'Bandage',3,571,23]
+        [146,108,'Bandage',82,571,23],
+        [183,47,'Potion',83,571,22],
+        [199,-3,'Bandage',82,571,23]
       ],
       Container: [
         [133,866,'Pot',54,1000,35],
@@ -2207,15 +2216,15 @@ const ICECAVERN_MODULES = {
         [1160,1172,'Portcullis Fixed Stairs Medium Deactivate',53,1000,41]
       ],
       Monster: [
-        [1002,977,'Frost Skeleton Archer',78,1000,32],
-        [-27,-1020,'Ice Kobold Axeman',91,1000,11],
-        [223,356,'Ice Kobold Axeman',91,1000,11],
-        [809,-745,'Frost Skeleton Archer',78,1000,32],
-        [-957,1191,'Frost Skeleton Archer',78,1000,32],
-        [1157,-423,'Ice Kobold Axeman',91,1000,11],
-        [-153,291,'Ice Kobold Axeman',91,1000,11],
-        [-772,-160,'Ice Kobold Archer',90,1000,13],
-        [-21,188,'Frost Giant Berserker',76,1000,19]
+        [1002,977,'Frost Skeleton Archer',87,1000,32],
+        [-27,-1020,'Ice Kobold Axeman',100,1000,11],
+        [223,356,'Ice Kobold Axeman',100,1000,11],
+        [809,-745,'Frost Skeleton Archer',87,1000,32],
+        [-957,1191,'Frost Skeleton Archer',87,1000,32],
+        [1157,-423,'Ice Kobold Axeman',100,1000,11],
+        [-153,291,'Ice Kobold Axeman',100,1000,11],
+        [-772,-160,'Ice Kobold Archer',99,1000,13],
+        [-21,188,'Frost Giant Berserker',85,1000,19]
       ],
       PlayerSpawn: [
         [-1276,-1218,'Player Spawn',-1,1000,-1]
@@ -2276,8 +2285,8 @@ const ICECAVERN_MODULES = {
         [1374,-1173,'Chest Medium',34,1000,0]
       ],
       Consumable: [
-        [-1350,1130,'Potion',8,1000,22],
-        [400,-75,'Potion',8,1000,22]
+        [-1350,1130,'Potion',83,1000,22],
+        [400,-75,'Potion',83,1000,22]
       ],
       Container: [
         [334,-76,'Pot',54,1000,35],
@@ -2347,25 +2356,25 @@ const ICECAVERN_MODULES = {
         [-773,-839,'Portcullis Fixed Stairs Medium Deactivate',53,1000,41]
       ],
       Monster: [
-        [-862,-360,'Frost Wolf',86,1000,53],
-        [-395,1125,'Frost Skeleton Archer',78,1000,32],
-        [330,1260,'Frost Skeleton Archer',78,1000,32],
-        [170,162,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-505,-630,'Frost Wolf',86,1000,53],
-        [335,-648,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [1200,176,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-1254,982,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [1174,-1185,'Frost Skeleton Archer',78,1000,32],
-        [424,-1133,'Ice Giant Spider',88,1000,60],
-        [108,-1080,'Ice Giant Spider',88,1000,60],
-        [-411,-1070,'Ice Harpy',89,1000,54],
-        [-1000,1287,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-440,1060,'Frost Wolf',86,1000,53],
-        [-854,713,'Frost Wolf',86,1000,53],
-        [126,544,'Frost Wolf',86,1000,53],
-        [-628,-413,'Frost Wolf',86,1000,53],
-        [691,-130,'Frost Wolf',86,1000,53],
-        [88,-108,'Skeleton Mage',94,1000,70]
+        [-862,-360,'Frost Wolf',95,1000,53],
+        [-395,1125,'Frost Skeleton Archer',87,1000,32],
+        [330,1260,'Frost Skeleton Archer',87,1000,32],
+        [170,162,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-505,-630,'Frost Wolf',95,1000,53],
+        [335,-648,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [1200,176,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-1254,982,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [1174,-1185,'Frost Skeleton Archer',87,1000,32],
+        [424,-1133,'Ice Giant Spider',97,1000,60],
+        [108,-1080,'Ice Giant Spider',97,1000,60],
+        [-411,-1070,'Ice Harpy',98,1000,54],
+        [-1000,1287,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-440,1060,'Frost Wolf',95,1000,53],
+        [-854,713,'Frost Wolf',95,1000,53],
+        [126,544,'Frost Wolf',95,1000,53],
+        [-628,-413,'Frost Wolf',95,1000,53],
+        [691,-130,'Frost Wolf',95,1000,53],
+        [88,-108,'Skeleton Mage',103,1000,70]
       ],
       OrnateChest: [
         [509,1074,'Ornate Chest Large',50,1000,25]
@@ -2482,28 +2491,28 @@ const ICECAVERN_MODULES = {
         [-1198,-1405,'Portcullis Fixed Stairs Medium Deactivate',53,1000,41]
       ],
       Monster: [
-        [139,83,'Frost Skeleton Archer',78,1000,32],
-        [133,-245,'Frost Skeleton Archer',78,1000,32],
-        [-12,-106,'Frost Skeleton Archer',78,1000,32],
-        [730,-190,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-990,-1049,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-65,-810,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [10,-561,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-730,216,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [70,-810,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [220,556,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [110,420,'Death Skull',75,1000,10],
-        [-120,470,'Death Skull',75,1000,10],
-        [-830,-500,'Death Skull',75,1000,10],
-        [-770,-300,'Death Skull',75,1000,10],
-        [-400,-750,'Death Skull',75,1000,10],
-        [-600,-840,'Death Skull',75,1000,10],
-        [-250,-1105,'Mummy',92,1000,37],
-        [-85,-1105,'Mummy',92,1000,37],
-        [30,-780,'Mummy',92,1000,37],
-        [-30,-650,'Mummy',92,1000,37],
-        [-405,710,'Mummy',92,1000,37],
-        [-555,710,'Mummy',92,1000,37]
+        [139,83,'Frost Skeleton Archer',87,1000,32],
+        [133,-245,'Frost Skeleton Archer',87,1000,32],
+        [-12,-106,'Frost Skeleton Archer',87,1000,32],
+        [730,-190,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-990,-1049,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-65,-810,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [10,-561,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-730,216,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [70,-810,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [220,556,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [110,420,'Death Skull',84,1000,10],
+        [-120,470,'Death Skull',84,1000,10],
+        [-830,-500,'Death Skull',84,1000,10],
+        [-770,-300,'Death Skull',84,1000,10],
+        [-400,-750,'Death Skull',84,1000,10],
+        [-600,-840,'Death Skull',84,1000,10],
+        [-250,-1105,'Mummy',101,1000,37],
+        [-85,-1105,'Mummy',101,1000,37],
+        [30,-780,'Mummy',101,1000,37],
+        [-30,-650,'Mummy',101,1000,37],
+        [-405,710,'Mummy',101,1000,37],
+        [-555,710,'Mummy',101,1000,37]
       ],
       PlayerSpawn: [
         [-1256,1189,'Player Spawn',-1,1000,-1]
@@ -2635,17 +2644,17 @@ const ICECAVERN_MODULES = {
         [0,0,'Floor Lever',42,1000,45]
       ],
       Monster: [
-        [-10,-5,'Ice Harpy',89,1000,54],
-        [-235,315,'Ice Kobold Archer',90,1000,13],
-        [-210,-655,'Ice Kobold Archer',90,1000,13],
-        [-535,130,'Ice Kobold Axeman',91,1000,11],
-        [555,-135,'Ice Kobold Axeman',91,1000,11],
-        [810,-1065,'Frost Walker',85,1000,24],
-        [-1055,370,'Frost Walker',85,1000,24],
-        [100,-40,'Mummy',92,1000,37],
-        [1355,-550,'Ice Kobold Axeman',91,1000,11],
-        [-1315,980,'Ice Kobold Axeman',91,1000,11],
-        [-1065,-380,'Ice Kobold Axeman',91,1000,11]
+        [-10,-5,'Ice Harpy',98,1000,54],
+        [-235,315,'Ice Kobold Archer',99,1000,13],
+        [-210,-655,'Ice Kobold Archer',99,1000,13],
+        [-535,130,'Ice Kobold Axeman',100,1000,11],
+        [555,-135,'Ice Kobold Axeman',100,1000,11],
+        [810,-1065,'Frost Walker',94,1000,24],
+        [-1055,370,'Frost Walker',94,1000,24],
+        [100,-40,'Mummy',101,1000,37],
+        [1355,-550,'Ice Kobold Axeman',100,1000,11],
+        [-1315,980,'Ice Kobold Axeman',100,1000,11],
+        [-1065,-380,'Ice Kobold Axeman',100,1000,11]
       ],
       PlayerSpawn: [
         [1300,1300,'Player Spawn',-1,1000,-1]
@@ -2666,7 +2675,7 @@ const ICECAVERN_MODULES = {
         [500,-100,'Floor Portal',44,1000,14]
       ],
       QuestItem: [
-        [-207,3,'Armillary Sphere',0,1000,68]
+        [-207,3,'Armillary Sphere',80,1000,68]
       ],
       SpecialChest: [
         [-145,125,'Chest Special',36,1000,21],
@@ -2689,9 +2698,9 @@ const ICECAVERN_MODULES = {
         [-20,-730,'Ground',7,1000,16],
         [-150,-730,'Ground',7,1000,16],
         [65,790,'Ground',7,1000,16],
-        [275,-150,'Gems',6,1000,28],
-        [162,-185,'Gems',6,1000,28],
-        [125,-180,'Gems',6,1000,28]
+        [275,-150,'Gems',78,1000,28],
+        [162,-185,'Gems',78,1000,28],
+        [125,-180,'Gems',78,1000,28]
       ],
     }
   },
@@ -2706,19 +2715,19 @@ const ICECAVERN_MODULES = {
         [-315,-855,'Chest Large',33,1000,1]
       ],
       Consumable: [
-        [-933,142,'Bandage',3,500,23],
-        [-932,120,'Potion',8,500,22],
-        [-928,57,'Bandage',3,500,23],
-        [-542,946,'Bandage',3,571,23],
-        [-556,849,'Potion',8,571,22],
-        [-544,851,'Bandage',3,571,23],
-        [-925,555,'Bandage',3,571,23],
-        [-918,474,'Potion',8,571,22],
-        [-926,-464,'Bandage',3,571,23],
-        [-51,-1425,'Bandage',3,571,23],
-        [329,-1411,'Potion',8,571,22],
-        [44,-1420,'Bandage',3,571,23],
-        [-928,50,'Potion',8,500,22]
+        [-933,142,'Bandage',82,500,23],
+        [-932,120,'Potion',83,500,22],
+        [-928,57,'Bandage',82,500,23],
+        [-542,946,'Bandage',82,571,23],
+        [-556,849,'Potion',83,571,22],
+        [-544,851,'Bandage',82,571,23],
+        [-925,555,'Bandage',82,571,23],
+        [-918,474,'Potion',83,571,22],
+        [-926,-464,'Bandage',82,571,23],
+        [-51,-1425,'Bandage',82,571,23],
+        [329,-1411,'Potion',83,571,22],
+        [44,-1420,'Bandage',82,571,23],
+        [-928,50,'Potion',83,500,22]
       ],
       Container: [
         [450,-485,'Wooden Barrel',71,1000,4],
@@ -2733,23 +2742,23 @@ const ICECAVERN_MODULES = {
         [1092,-1078,'Portcullis Fixed Stairs Medium Deactivate',53,1000,41]
       ],
       Monster: [
-        [659,495,'Frost Walker',85,1000,24],
-        [-124,-1251,'Frost Skeleton Archer',78,1000,32],
-        [84,1033,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [747,-883,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [656,-552,'Frost Walker',85,1000,24],
-        [247,-808,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-291,235,'Death Skull',75,1000,10],
-        [32,-100,'Frost Skeleton Archer',78,1000,32],
-        [-166,1103,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-291,-315,'Death Skull',75,1000,10],
-        [1186,18,'Frost Skeleton Archer',78,1000,32],
-        [-761,543,'Frost Walker',85,1000,24],
-        [1150,4,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-802,-664,'Frost Walker',85,1000,24],
-        [-53,-100,'Frost Skeleton Archer',78,1000,32],
-        [319,-395,'Death Skull',75,1000,10],
-        [319,215,'Death Skull',75,1000,10]
+        [659,495,'Frost Walker',94,1000,24],
+        [-124,-1251,'Frost Skeleton Archer',87,1000,32],
+        [84,1033,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [747,-883,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [656,-552,'Frost Walker',94,1000,24],
+        [247,-808,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-291,235,'Death Skull',84,1000,10],
+        [32,-100,'Frost Skeleton Archer',87,1000,32],
+        [-166,1103,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-291,-315,'Death Skull',84,1000,10],
+        [1186,18,'Frost Skeleton Archer',87,1000,32],
+        [-761,543,'Frost Walker',94,1000,24],
+        [1150,4,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-802,-664,'Frost Walker',94,1000,24],
+        [-53,-100,'Frost Skeleton Archer',87,1000,32],
+        [319,-395,'Death Skull',84,1000,10],
+        [319,215,'Death Skull',84,1000,10]
       ],
       OrnateChest: [
         [-119,-91,'Ornate Chest Large',50,1000,25],
@@ -2812,10 +2821,10 @@ const ICECAVERN_MODULES = {
     count: 90,
     spawns: {
       Consumable: [
-        [-526,478,'Potion',8,250,22],
-        [-540,379,'Bandage',3,250,23],
-        [-526,-707,'Potion',8,250,22],
-        [-540,-806,'Bandage',3,250,23]
+        [-526,478,'Potion',83,250,22],
+        [-540,379,'Bandage',82,250,23],
+        [-526,-707,'Potion',83,250,22],
+        [-540,-806,'Bandage',82,250,23]
       ],
       Herb: [
         [-28,1053,'Ice Crystal Roaster',49,1000,6],
@@ -2861,20 +2870,20 @@ const ICECAVERN_MODULES = {
         [833,-206,'Altar Of Sacrifice',32,1000,46]
       ],
       Monster: [
-        [1071,884,'Ice Kobold Axeman',91,1000,11],
-        [933,1173,'Ice Kobold Axeman',91,1000,11],
-        [1136,-52,'Giant Bat',87,1000,9],
-        [333,-1076,'Ice Kobold Axeman',91,1000,11],
-        [126,-1274,'Giant Bat',87,1000,9],
-        [437,-4,'Frost Skeleton Crossbowman',80,250,47],
-        [-764,-910,'Ice Kobold Axeman',91,1000,11],
-        [-1151,334,'Ice Kobold Axeman',91,1000,11],
-        [1158,-140,'Ice Kobold Archer',90,1000,13],
-        [217,-1056,'Ice Kobold Axeman',91,1000,11],
-        [-1237,214,'Ice Kobold Archer',90,1000,13],
-        [437,-409,'Frost Skeleton Crossbowman',80,250,47],
-        [289,-356,'Frost Giant Berserker',76,250,19],
-        [289,-40,'Frost Giant Shielder',77,250,42]
+        [1071,884,'Ice Kobold Axeman',100,1000,11],
+        [933,1173,'Ice Kobold Axeman',100,1000,11],
+        [1136,-52,'Giant Bat',96,1000,9],
+        [333,-1076,'Ice Kobold Axeman',100,1000,11],
+        [126,-1274,'Giant Bat',96,1000,9],
+        [437,-4,'Frost Skeleton Crossbowman',89,250,47],
+        [-764,-910,'Ice Kobold Axeman',100,1000,11],
+        [-1151,334,'Ice Kobold Axeman',100,1000,11],
+        [1158,-140,'Ice Kobold Archer',99,1000,13],
+        [217,-1056,'Ice Kobold Axeman',100,1000,11],
+        [-1237,214,'Ice Kobold Archer',99,1000,13],
+        [437,-409,'Frost Skeleton Crossbowman',89,250,47],
+        [289,-356,'Frost Giant Berserker',85,250,19],
+        [289,-40,'Frost Giant Shielder',86,250,42]
       ],
       OrnateChest: [
         [609,13,'Ornate Chest Large Random',51,1000,20]
@@ -2944,8 +2953,8 @@ const ICECAVERN_MODULES = {
         [-556,732,'Chest Medium',34,1000,0]
       ],
       Consumable: [
-        [1150,685,'Bandage',3,1000,23],
-        [-365,821,'Potion',8,1000,22]
+        [1150,685,'Bandage',82,1000,23],
+        [-365,821,'Potion',83,1000,22]
       ],
       Container: [
         [-201,1197,'Pot',57,1000,36],
@@ -2987,23 +2996,23 @@ const ICECAVERN_MODULES = {
         [-1043,-1655,'Portcullis Fixed Stairs Medium Deactivate',53,1000,41]
       ],
       Monster: [
-        [-121,-480,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-486,661,'Yeti',95,1000,12],
-        [10,-470,'Death Skull',75,1000,10],
-        [190,-570,'Death Skull',75,1000,10],
-        [190,-1120,'Death Skull',75,1000,10],
-        [-20,-1070,'Death Skull',75,1000,10],
-        [-1200,410,'Death Skull',75,1000,10],
-        [-1060,260,'Death Skull',75,1000,10],
-        [-980,-240,'Death Skull',75,1000,10],
-        [-1210,-50,'Death Skull',75,1000,10],
-        [-567,-124,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-973,-1000,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [686,207,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [548,102,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [-342,760,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [554,254,'Frost Skeleton Archer',78,1000,32],
-        [-1017,-99,'Frost Skeleton Footman From Fake Death',81,1000,31]
+        [-121,-480,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-486,661,'Yeti',104,1000,12],
+        [10,-470,'Death Skull',84,1000,10],
+        [190,-570,'Death Skull',84,1000,10],
+        [190,-1120,'Death Skull',84,1000,10],
+        [-20,-1070,'Death Skull',84,1000,10],
+        [-1200,410,'Death Skull',84,1000,10],
+        [-1060,260,'Death Skull',84,1000,10],
+        [-980,-240,'Death Skull',84,1000,10],
+        [-1210,-50,'Death Skull',84,1000,10],
+        [-567,-124,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-973,-1000,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [686,207,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [548,102,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [-342,760,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [554,254,'Frost Skeleton Archer',87,1000,32],
+        [-1017,-99,'Frost Skeleton Footman From Fake Death',90,1000,31]
       ],
       PlayerSpawn: [
         [903,-1140,'Player Spawn',-1,1000,-1]
@@ -3026,9 +3035,9 @@ const ICECAVERN_MODULES = {
         [650,-1135,'Trinkets',9,1000,29],
         [339,631,'Ground',7,1000,16],
         [408,608,'Ground',7,1000,16],
-        [-370,638,'Gems',6,1000,28],
-        [-363,665,'Gems',6,1000,28],
-        [-374,686,'Gems',6,1000,28],
+        [-370,638,'Gems',78,1000,28],
+        [-363,665,'Gems',78,1000,28],
+        [-374,686,'Gems',78,1000,28],
         [-1205,1189,'Trinkets',9,1000,29]
       ],
     }
@@ -3039,15 +3048,15 @@ const ICECAVERN_MODULES = {
     count: 73,
     spawns: {
       Consumable: [
-        [1398,339,'Potion',8,250,22],
-        [1384,240,'Bandage',3,250,23],
-        [-1203,-60,'Potion',8,250,22],
-        [-1217,-159,'Bandage',3,250,23],
-        [-498,1371,'Bandage',3,1000,23],
-        [369,1384,'Potion',8,1000,22],
-        [1006,-1,'Potion',8,1000,22],
-        [-583,-935,'Potion',8,1000,22],
-        [831,-301,'Potion',8,1000,22]
+        [1398,339,'Potion',83,250,22],
+        [1384,240,'Bandage',82,250,23],
+        [-1203,-60,'Potion',83,250,22],
+        [-1217,-159,'Bandage',82,250,23],
+        [-498,1371,'Bandage',82,1000,23],
+        [369,1384,'Potion',83,1000,22],
+        [1006,-1,'Potion',83,1000,22],
+        [-583,-935,'Potion',83,1000,22],
+        [831,-301,'Potion',83,1000,22]
       ],
       Container: [
         [910,110,'Wooden Barrel',71,1000,4],
@@ -3069,17 +3078,17 @@ const ICECAVERN_MODULES = {
         [1211,-99,'Altar Of Sacrifice',32,1000,46]
       ],
       Monster: [
-        [-69,1194,'Frost Skeleton Halberdier',83,1000,33],
-        [161,-49,'Frost Walker',85,1000,24],
-        [-1250,-116,'Frost Skeleton Footman From Fake Death',81,1000,31],
-        [548,256,'Frost Skeleton Halberdier',83,1000,33],
-        [-91,313,'Frost Skeleton Archer',78,1000,32],
-        [366,-1361,'Frost Skeleton Guardman From Fake Death',82,1000,48],
-        [-457,-398,'Skeleton Champion',93,1000,38],
-        [460,651,'Frost Walker',85,1000,24],
-        [-685,192,'Frost Walker',85,1000,24],
-        [-522,-728,'Frost Walker',85,1000,24],
-        [-1264,38,'Frost Skeleton Footman From Fake Death',81,1000,31]
+        [-69,1194,'Frost Skeleton Halberdier',92,1000,33],
+        [161,-49,'Frost Walker',94,1000,24],
+        [-1250,-116,'Frost Skeleton Footman From Fake Death',90,1000,31],
+        [548,256,'Frost Skeleton Halberdier',92,1000,33],
+        [-91,313,'Frost Skeleton Archer',87,1000,32],
+        [366,-1361,'Frost Skeleton Guardman From Fake Death',91,1000,48],
+        [-457,-398,'Skeleton Champion',102,1000,38],
+        [460,651,'Frost Walker',94,1000,24],
+        [-685,192,'Frost Walker',94,1000,24],
+        [-522,-728,'Frost Walker',94,1000,24],
+        [-1264,38,'Frost Skeleton Footman From Fake Death',90,1000,31]
       ],
       PlayerSpawn: [
         [1288,-58,'Player Spawn',-1,1000,-1]
@@ -3195,15 +3204,15 @@ const ICECAVERN_MODULES = {
         [1152,58,'Ice Crystal Roaster',48,1000,7]
       ],
       Monster: [
-        [1109,-159,'Frost Wolf',86,1000,53],
-        [-208,-1074,'Frost Wolf',86,1000,53],
-        [-992,-54,'Frost Wolf',86,1000,53],
-        [721,-451,'Frost Wolf',86,1000,53],
-        [-938,110,'Frost Wolf',86,1000,53],
-        [213,908,'Frost Wolf',86,1000,53],
-        [1091,-9,'Frost Wolf',86,1000,53],
-        [-31,-256,'Frost Wolf',86,1000,53],
-        [178,-896,'Frost Wolf',86,1000,53]
+        [1109,-159,'Frost Wolf',95,1000,53],
+        [-208,-1074,'Frost Wolf',95,1000,53],
+        [-992,-54,'Frost Wolf',95,1000,53],
+        [721,-451,'Frost Wolf',95,1000,53],
+        [-938,110,'Frost Wolf',95,1000,53],
+        [213,908,'Frost Wolf',95,1000,53],
+        [1091,-9,'Frost Wolf',95,1000,53],
+        [-31,-256,'Frost Wolf',95,1000,53],
+        [178,-896,'Frost Wolf',95,1000,53]
       ],
       OrnateChest: [
         [66,-1331,'Ornate Chest Large',50,1000,25]

@@ -97,12 +97,18 @@ const SPAWN_VARIANTS = [
   [1000,[['Wooden Crate Small',1000,1000]]],
   [1000,[['Wooden Door With Lock',1000,1000]]],
   [1000,[['Wooden Door With Square Grating',1000,1000]]],
+  [100,[['Sturdy Cloth',1000,100]]],
+  [975,[['Bandage',1000,975]]],
+  [950,[['Gems',1000,950]]],
+  [1000,[['Potion',1000,1000]]],
   [1000,[['Skeleton Champion Common',500,500],['Skeleton Champion Elite',500,500]]],
   [1000,[['Ore Cobalt Ore Low',900,900],['Ore Cobalt Ore Med',100,100]]],
   [1000,[['Ore Iron Ore Low',450,450],['Ore Copper Ore Low',270,270],['Ore Cobalt Ore Low',180,180],['Ore Iron Ore Med',50,50],['Ore Copper Ore Med',30,30],['Ore Cobalt Ore Med',20,20]]],
   [1000,[['Ore Iron Ore Low',602,602],['Ore Copper Ore Low',296,296],['Ore Copper Ore Med',56,56],['Ore Iron Ore Med',46,46]]],
   [1000,[['Ore Gold Ore Low',900,900],['Ore Gold Ore Med',100,100]]],
   [1000,[['Skeleton Wooden Barrel Elite',650,650],['Wooden Barrel01',350,350]]],
+  [50,[['Sturdy Cloth',1000,50]]],
+  [925,[['Bandage',1000,925]]],
   [1000,[['Cave Troll Elite',1000,1000]]],
   [1000,[['Cyclops Elite',1000,1000]]],
   [1000,[['Death Beetle Nightmare',800,800],['Death Beetle Elite',200,200]]],
@@ -138,8 +144,8 @@ const SPAWN_VARIANTS = [
 
 const SPAWN_VID = {
   1001: [41,42,43,3,7,68,87,81,69,82,90,89,67,66,76,11,2,-1,39,75,55,31,30,15,33,32,14,59,60,51,44,52,84,54,5,8,6,-1,50,22,25,36,26,18,72,73,74,79,88,10,49,17,24,27,16,9,13,58,38,28,29,19,80,53,83,34,37,0,86,40,62,4,65,85,56,12,91,35,54,77,20,48,61,21,1,23,78,63,57,70,64,45,46,47,92,71],
-  2001: [41,42,43,3,7,68,87,98,69,82,90,89,67,66,76,11,2,-1,39,75,55,31,93,15,33,32,14,97,60,51,44,52,84,54,5,8,6,-1,50,22,25,36,26,18,72,73,74,79,88,10,49,17,24,27,16,9,13,96,38,28,29,19,80,53,83,34,37,0,86,40,62,4,65,85,94,12,91,35,54,77,20,48,61,21,1,23,78,63,95,70,64,45,46,47,92,71],
-  3001: [41,42,43,3,7,68,87,128,69,129,90,89,67,66,76,11,2,-1,39,75,55,117,116,101,119,118,100,127,60,51,44,52,84,54,5,8,6,-1,50,108,111,122,112,104,72,73,74,79,88,10,49,103,110,113,102,9,99,126,38,114,115,105,80,53,83,120,123,0,86,40,62,4,65,85,124,12,91,121,54,77,106,48,61,107,1,109,78,63,125,70,64,45,46,47,92,71],
+  2001: [41,42,43,94,96,68,87,102,69,82,90,89,67,66,76,11,2,-1,39,75,55,31,97,15,33,32,14,101,60,51,44,52,84,54,95,8,6,-1,50,22,25,36,26,18,72,73,74,79,88,10,49,17,24,27,16,9,13,100,38,28,29,19,80,53,83,34,37,93,86,40,62,4,65,85,98,12,91,35,54,77,20,48,61,21,1,23,78,63,99,70,64,45,46,47,92,71],
+  3001: [41,42,43,104,96,68,87,134,69,135,90,89,67,66,76,11,2,-1,39,75,55,123,122,107,125,124,106,133,60,51,44,52,84,54,95,8,6,-1,50,114,117,128,118,110,72,73,74,79,88,10,49,109,116,119,108,9,105,132,38,120,121,111,80,53,83,126,129,103,86,40,62,4,65,85,130,12,91,127,54,77,112,48,61,113,1,115,78,63,131,70,64,45,46,47,92,71],
 };
 
 const CAVE_MODULES = {
@@ -158,13 +164,13 @@ const CAVE_MODULES = {
         [81,-1351,'Chest Medium',42,1000,1]
       ],
       Consumable: [
-        [2948,1855,'Bandage',3,1000,3],
-        [2927,1847,'Potion',7,1000,4]
+        [2948,1855,'Bandage',104,1000,3],
+        [2927,1847,'Potion',96,1000,4]
       ],
       Container: [
         [60,1220,'Pot',68,1000,5],
         [1300,-1076,'Wooden Barrel',87,1000,6],
-        [210,-628,'Skeleton Wooden Barrel Random',128,1000,7],
+        [210,-628,'Skeleton Wooden Barrel Random',134,1000,7],
         [-1273,-1090,'Pot',68,1000,5],
         [-1317,-1182,'Pot',68,1000,5],
         [-1224,-1182,'Pot',69,1000,8],
@@ -172,7 +178,7 @@ const CAVE_MODULES = {
         [-1040,-1320,'Pot',69,1000,8],
         [-964,-1368,'Pot',68,1000,5],
         [-964,-1287,'Pot',68,1000,5],
-        [-1285,-1369,'Spider Pot',129,1000,9],
+        [-1285,-1369,'Spider Pot',135,1000,9],
         [1069,1336,'Wooden Crate Small',90,1000,10],
         [1069,1336,'Wooden Crate Small',90,1000,10],
         [1065,1231,'Wooden Crate Small',90,1000,10],
@@ -181,7 +187,7 @@ const CAVE_MODULES = {
         [547,-1367,'Pot',67,1000,12],
         [-1355,-1090,'Pot',68,1000,5],
         [910,-1030,'Pot',66,1000,13],
-        [-551,-441,'Skeleton Wooden Barrel Random',128,1000,7],
+        [-551,-441,'Skeleton Wooden Barrel Random',134,1000,7],
         [590,-380,'Pot',67,1000,12],
         [60,1020,'Pot',68,1000,5],
         [1341,-254,'Pot',66,250,13],
@@ -190,15 +196,15 @@ const CAVE_MODULES = {
         [55,450,'Wooden Barrel',87,1000,6],
         [55,405,'Wooden Barrel',87,1000,6],
         [-1354,-996,'Skeleton Bones',76,1000,14],
-        [-120,980,'Skeleton Wooden Barrel Random',128,1000,7],
-        [-1074,993,'Skeleton Wooden Barrel Random',128,1000,7],
-        [-412,405,'Skeleton Wooden Barrel Random',128,1000,7],
+        [-120,980,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-1074,993,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-412,405,'Skeleton Wooden Barrel Random',134,1000,7],
         [-418,-1167,'Wooden Barrel',87,1000,6],
         [-493,-78,'Wooden Barrel',87,1000,6],
         [-32,-724,'Wooden Barrel',87,1000,6],
         [67,-684,'Wooden Barrel',87,1000,6],
         [-23,-604,'Wooden Barrel',87,1000,6],
-        [-230,980,'Skeleton Wooden Barrel Random',128,1000,7]
+        [-230,980,'Skeleton Wooden Barrel Random',134,1000,7]
       ],
       Equipment: [
         [2831,2645,'Weapon Dual Boss',11,1000,15],
@@ -218,26 +224,26 @@ const CAVE_MODULES = {
         [-141,-389,'Marvelous Chest',55,1000,20]
       ],
       Monster: [
-        [1215,1139,'Skeleton Footman From Fake Death',117,1000,21],
-        [300,320,'Skeleton Champion',116,500,22],
-        [855,-385,'Skeleton Footman From Fake Death',117,250,21],
-        [-848,1136,'Death Beetle',101,1000,23],
-        [652,235,'Death Beetle',101,1000,23],
-        [378,-841,'Death Beetle',101,1000,23],
-        [1324,-328,'Skeleton Footman From Fake Death',117,250,21],
-        [245,990,'Death Beetle',101,500,23],
-        [175,320,'Skeleton Mage',119,500,24],
-        [330,1120,'Skeleton Footman From Fake Death',117,500,21],
-        [-468,517,'Skeleton Footman From Fake Death',117,1000,21],
-        [243,387,'Skeleton Footman From Fake Death',117,1000,21],
-        [270,730,'Skeleton Guardsman From Fake Death',118,1000,25],
-        [388,-8,'Cyclops',100,1000,26]
+        [1215,1139,'Skeleton Footman From Fake Death',123,1000,21],
+        [300,320,'Skeleton Champion',122,500,22],
+        [855,-385,'Skeleton Footman From Fake Death',123,250,21],
+        [-848,1136,'Death Beetle',107,1000,23],
+        [652,235,'Death Beetle',107,1000,23],
+        [378,-841,'Death Beetle',107,1000,23],
+        [1324,-328,'Skeleton Footman From Fake Death',123,250,21],
+        [245,990,'Death Beetle',107,500,23],
+        [175,320,'Skeleton Mage',125,500,24],
+        [330,1120,'Skeleton Footman From Fake Death',123,500,21],
+        [-468,517,'Skeleton Footman From Fake Death',123,1000,21],
+        [243,387,'Skeleton Footman From Fake Death',123,1000,21],
+        [270,730,'Skeleton Guardsman From Fake Death',124,1000,25],
+        [388,-8,'Cyclops',106,1000,26]
       ],
       Ore: [
-        [2280,2740,'Gold Ore',127,1000,27],
-        [2966,2463,'Gold Ore',127,1000,27],
-        [3311,2685,'Gold Ore',127,1000,27],
-        [1970,3022,'Gold Ore',127,1000,27]
+        [2280,2740,'Gold Ore',133,1000,27],
+        [2966,2463,'Gold Ore',133,1000,27],
+        [3311,2685,'Gold Ore',133,1000,27],
+        [1970,3022,'Gold Ore',133,1000,27]
       ],
       OrnateChest: [
         [2422,2733,'Ornate Chest Large',60,1000,28]
@@ -285,13 +291,13 @@ const CAVE_MODULES = {
         [2611,2816,'Super Hoard',54,1000,33]
       ],
       Valuable: [
-        [-224,-432,'Gems',5,1000,34],
-        [-538,798,'Gems',5,1000,34],
+        [-224,-432,'Gems',95,1000,34],
+        [-538,798,'Gems',95,1000,34],
         [2641,2773,'Trinkets',8,1000,35],
         [18,-986,'Ground',6,1000,36],
-        [597,486,'Gems',5,1000,34],
+        [597,486,'Gems',95,1000,34],
         [2547,2773,'Trinkets',8,1000,35],
-        [80,540,'Gems',5,1000,34],
+        [80,540,'Gems',95,1000,34],
         [490,540,'Trinkets',8,1000,35],
         [2612,2647,'Trinkets',8,1000,35],
         [280,350,'Trinkets',8,1000,35],
@@ -304,13 +310,138 @@ const CAVE_MODULES = {
         [2643,2534,'Trinkets',8,1000,35],
         [-703,-233,'Trinkets',8,1000,35],
         [-925,-508,'Trinkets',8,1000,35],
-        [-923,-159,'Gems',5,1000,34],
+        [-923,-159,'Gems',95,1000,34],
         [-915,-200,'Trinkets',8,1000,35],
         [-966,-495,'Trinkets',8,1000,35],
         [-952,-538,'Trinkets',8,1000,35]
       ],
     }
-  },  'CaveTown': {
+  },
+  'CaveMaze_Center_02': {
+    location: 'Center',
+    img: 'CaveMaze_Center_02',
+    count: 97,
+    spawns: {
+      Container: [
+        [60,1127,'Pot',68,1000,5],
+        [60,1226,'Pot',68,1000,5],
+        [328,-562,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-1273,-1090,'Pot',68,1000,5],
+        [-1317,-1182,'Pot',68,1000,5],
+        [-1224,-1182,'Pot',69,1000,8],
+        [-1040,-1407,'Pot',68,1000,5],
+        [-1040,-1320,'Pot',69,1000,8],
+        [-964,-1368,'Pot',68,1000,5],
+        [-1040,-1233,'Pot',68,1000,5],
+        [-964,-1287,'Pot',68,1000,5],
+        [-1268,-1360,'Spider Pot',135,1000,9],
+        [1069,1336,'Wooden Crate Small',90,1000,10],
+        [1069,1336,'Wooden Crate Small',90,1000,10],
+        [1065,1231,'Wooden Crate Small',90,1000,10],
+        [1288,1061,'Wooden Crate Medium',89,1000,11],
+        [559,-1356,'Pot',67,1000,12],
+        [-1355,-1090,'Pot',68,1000,5],
+        [832,-1001,'Pot',66,1000,13],
+        [60,1036,'Pot',68,1000,5],
+        [1341,-254,'Pot',66,250,13],
+        [1335,-100,'Pot',69,1000,8],
+        [-1379,-978,'Skeleton Bones',76,1000,14],
+        [-906,976,'Pot',68,1000,5],
+        [-1372,-1372,'Spider Pot',135,500,9],
+        [-695,177,'Pot',68,1000,5],
+        [-379,-1280,'Spider Pot',135,500,9],
+        [-609,177,'Pot',68,1000,5],
+        [1149,1320,'Spider Pot',135,1000,9],
+        [-919,1038,'Pot',68,1000,5],
+        [-948,1100,'Pot',67,1000,12],
+        [-717,641,'Spider Pot',135,1000,9],
+        [-84,1010,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-1074,993,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-412,405,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-493,-78,'Wooden Barrel',87,1000,6],
+        [19,952,'Skeleton Wooden Barrel Random',134,1000,7]
+      ],
+      Herb: [
+        [-390,1270,'Black Rose Random',-1,1000,37],
+        [-550,760,'Black Rose Random',-1,1000,37],
+        [-970,1180,'Black Rose Random',-1,1000,37]
+      ],
+      Interact: [
+        [-946,1016,'Floor Lever',50,1000,38]
+      ],
+      Monster: [
+        [-263,-1178,'Goblin Axeman',114,250,39],
+        [-1356,842,'Death Beetle',107,1000,23],
+        [652,235,'Death Beetle',107,1000,23],
+        [-413,-356,'Death Beetle',107,1000,23],
+        [127,695,'Goblin Melee Random',117,333,40],
+        [574,-560,'Goblin Melee Random',117,250,40],
+        [245,1104,'Death Beetle',107,333,23],
+        [-565,-341,'Spider Mummy',128,1000,41],
+        [330,1120,'Goblin Melee Random',117,333,40],
+        [610,240,'Goblin Melee Random',117,1000,40],
+        [-651,-40,'Spider Mummy',128,1000,41],
+        [304,-50,'Goblin Ranged Random',118,1000,42],
+        [-742,1260,'Giant Centipede',110,1000,43]
+      ],
+      PlayerSpawn: [
+        [-1233,787,'Player Spawn',-1,1000,-1],
+        [1058,-150,'Player Spawn',-1,1000,-1]
+      ],
+      Portal: [
+        [-500,-780,'Floor Portal',51,1000,29],
+        [480,-780,'Floor Portal',51,1000,29],
+        [1166,-711,'Floor Portal',51,1000,29],
+        [528,556,'Floor Portal',51,1000,29],
+        [-597,490,'Floor Portal',51,1000,29],
+        [-820,1162,'Floor Portal',51,1000,29],
+        [-820,-853,'Floor Portal',51,1000,29],
+        [370,-903,'Floor Portal',51,1000,29],
+        [-780,-1147,'Floor Portal',51,1000,29],
+        [-1170,-780,'Floor Portal',51,1000,29],
+        [1127,399,'Floor Portal',51,1000,29],
+        [-800,1130,'Floor Portal',51,1000,29],
+        [810,1130,'Floor Portal',51,1000,29],
+        [1120,-1120,'Floor Portal',51,1000,29],
+        [-805,678,'Floor Portal',51,1000,29],
+        [1204,1169,'Floor Portal',51,1000,29],
+        [555,1144,'Floor Portal',51,1000,29]
+      ],
+      SimpleChest: [
+        [-30,-1406,'Simple Chest Large',72,1000,44],
+        [181,932,'Simple Chest Large',72,1000,44],
+        [892,430,'Simple Chest Large',72,1000,44],
+        [880,-480,'Simple Chest Medium',73,250,45],
+        [-283,-1260,'Simple Chest Small',74,1000,46],
+        [-192,-866,'Simple Chest Medium',73,1000,45],
+        [594,64,'Simple Chest Small',74,1000,46],
+        [556,-391,'Simple Chest Small',74,1000,46],
+        [-347,-1387,'Simple Chest Small',74,1000,46],
+        [-177,659,'Simple Chest Medium',73,1000,45],
+        [-897,-367,'Simple Chest Large',72,1000,44],
+        [96,-1339,'Simple Chest Medium',73,1000,45]
+      ],
+      SpecialChest: [
+        [1408,778,'Chest Special',44,1000,30]
+      ],
+      Trap: [
+        [791,-1274,'Floor Spikes',52,1000,31],
+        [-1361,-1311,'Wall Spike',84,1000,32]
+      ],
+      Valuable: [
+        [80,540,'Gems',95,1000,34],
+        [490,540,'Trinkets',8,1000,35],
+        [280,411,'Trinkets',8,1000,35],
+        [300,350,'Trinkets',8,1000,35],
+        [544,126,'Trinkets',8,1000,35],
+        [21,684,'Trinkets',8,1000,35],
+        [-1080,-871,'Trinkets',8,1000,35],
+        [-891,-808,'Trinkets',8,1000,35],
+        [-740,-808,'Trinkets',8,1000,35]
+      ],
+    }
+  },
+  'CaveTown': {
     location: 'Edge',
     img: 'CaveTown',
     count: 108,
@@ -332,11 +463,11 @@ const CAVE_MODULES = {
         [-470,-1286,'Chest Small',43,1000,2]
       ],
       Consumable: [
-        [934,-185,'Potion',7,500,4],
-        [886,-185,'Potion',7,500,4],
-        [934,-185,'Potion',7,500,4],
-        [886,-185,'Potion',7,500,4],
-        [1235,-844,'Potion',7,1000,4]
+        [934,-185,'Potion',96,500,4],
+        [886,-185,'Potion',96,500,4],
+        [934,-185,'Potion',96,500,4],
+        [886,-185,'Potion',96,500,4],
+        [1235,-844,'Potion',96,1000,4]
       ],
       Container: [
         [983,-545,'Wooden Barrel',87,1000,6],
@@ -368,24 +499,24 @@ const CAVE_MODULES = {
         [-692,1062,'Elevator Floor Lever',49,1000,50]
       ],
       Monster: [
-        [-333,463,'Giant Bat',103,500,51],
-        [1108,-1040,'Goblin Mage',110,1000,52],
-        [-729,651,'Goblin Warrior',113,1000,53],
-        [1210,-80,'Goblin Warrior',113,1000,53],
-        [1038,-70,'Goblin Warrior',113,1000,53],
-        [-151,-7,'Death Skull',102,500,54],
-        [-441,587,'Death Skull',102,500,54],
-        [214,890,'Death Skull',102,1000,54],
-        [-390,-795,'Goblin Warrior',113,1000,53],
-        [-1036,-1311,'Goblin Warrior',113,1000,53],
-        [-910,322,'Goblin Warrior',113,1000,53],
-        [-1015,225,'Goblin Ranged Random',112,1000,42],
-        [835,-785,'Goblin Warrior',113,1000,53],
-        [259,73,'Giant Bat',103,500,51],
-        [-1170,720,'Goblin Warrior',113,1000,53],
-        [836,-1207,'Goblin Axeman',108,1000,39],
-        [635,1095,'Goblin Axeman',108,1000,39],
-        [981,832,'Goblin Warrior',113,1000,53]
+        [-333,463,'Giant Bat',109,500,51],
+        [1108,-1040,'Goblin Mage',116,1000,52],
+        [-729,651,'Goblin Warrior',119,1000,53],
+        [1210,-80,'Goblin Warrior',119,1000,53],
+        [1038,-70,'Goblin Warrior',119,1000,53],
+        [-151,-7,'Death Skull',108,500,54],
+        [-441,587,'Death Skull',108,500,54],
+        [214,890,'Death Skull',108,1000,54],
+        [-390,-795,'Goblin Warrior',119,1000,53],
+        [-1036,-1311,'Goblin Warrior',119,1000,53],
+        [-910,322,'Goblin Warrior',119,1000,53],
+        [-1015,225,'Goblin Ranged Random',118,1000,42],
+        [835,-785,'Goblin Warrior',119,1000,53],
+        [259,73,'Giant Bat',109,500,51],
+        [-1170,720,'Goblin Warrior',119,1000,53],
+        [836,-1207,'Goblin Axeman',114,1000,39],
+        [635,1095,'Goblin Axeman',114,1000,39],
+        [981,832,'Goblin Warrior',119,1000,53]
       ],
       OrnateChest: [
         [926,-1306,'Ornate Chest Large',60,1000,28]
@@ -440,8 +571,8 @@ const CAVE_MODULES = {
         [46,191,'Wall Spike',84,1000,32]
       ],
       Valuable: [
-        [1379,1282,'Gems',5,500,34],
-        [1247,1282,'Gems',5,500,34],
+        [1379,1282,'Gems',95,500,34],
+        [1247,1282,'Gems',95,500,34],
         [1230,-815,'Trinkets',8,1000,35],
         [910,-185,'Trinkets',8,1000,35]
       ],
@@ -453,11 +584,11 @@ const CAVE_MODULES = {
     count: 131,
     spawns: {
       Consumable: [
-        [886,-185,'Potion',7,500,4],
-        [886,-185,'Potion',7,500,4],
-        [934,-185,'Potion',7,500,4],
-        [1235,-844,'Potion',7,1000,4],
-        [934,-185,'Potion',7,500,4]
+        [886,-185,'Potion',96,500,4],
+        [886,-185,'Potion',96,500,4],
+        [934,-185,'Potion',96,500,4],
+        [1235,-844,'Potion',96,1000,4],
+        [934,-185,'Potion',96,500,4]
       ],
       Container: [
         [995,-501,'Wooden Barrel',87,1000,6],
@@ -495,28 +626,28 @@ const CAVE_MODULES = {
         [-146,-442,'Marvelous Chest',55,1000,20]
       ],
       Monster: [
-        [388,-8,'Cave Troll',99,1000,56],
-        [-305,-764,'Goblin Warrior',113,1000,53],
-        [-1066,-1052,'Goblin Warrior',113,1000,53],
-        [-333,463,'Giant Bat',103,500,51],
-        [1108,-1040,'Goblin Mage',110,1000,52],
-        [968,-70,'Goblin Ranged Random',112,1000,42],
-        [-151,-7,'Death Skull',102,500,54],
-        [-441,587,'Death Skull',102,500,54],
-        [-910,322,'Goblin Warrior',113,1000,53],
-        [259,73,'Giant Bat',103,500,51],
-        [-1101,850,'Goblin Warrior',113,1000,53],
-        [1061,-1141,'Goblin Warrior',113,1000,53],
-        [635,1095,'Goblin Warrior',113,1000,53]
+        [388,-8,'Cave Troll',105,1000,56],
+        [-305,-764,'Goblin Warrior',119,1000,53],
+        [-1066,-1052,'Goblin Warrior',119,1000,53],
+        [-333,463,'Giant Bat',109,500,51],
+        [1108,-1040,'Goblin Mage',116,1000,52],
+        [968,-70,'Goblin Ranged Random',118,1000,42],
+        [-151,-7,'Death Skull',108,500,54],
+        [-441,587,'Death Skull',108,500,54],
+        [-910,322,'Goblin Warrior',119,1000,53],
+        [259,73,'Giant Bat',109,500,51],
+        [-1101,850,'Goblin Warrior',119,1000,53],
+        [1061,-1141,'Goblin Warrior',119,1000,53],
+        [635,1095,'Goblin Warrior',119,1000,53]
       ],
       Ore: [
-        [-1290,-138,'Copper Ore Random',126,1000,57],
-        [-366,-1275,'Copper Ore Random',126,1000,57],
-        [963,977,'Copper Ore Random',126,1000,57],
-        [1292,938,'Copper Ore Random',126,1000,57],
-        [-24,938,'Copper Ore Random',126,1000,57],
-        [-764,631,'Copper Ore Random',126,1000,57],
-        [-856,-1126,'Copper Ore Random',126,1000,57]
+        [-1290,-138,'Copper Ore Random',132,1000,57],
+        [-366,-1275,'Copper Ore Random',132,1000,57],
+        [963,977,'Copper Ore Random',132,1000,57],
+        [1292,938,'Copper Ore Random',132,1000,57],
+        [-24,938,'Copper Ore Random',132,1000,57],
+        [-764,631,'Copper Ore Random',132,1000,57],
+        [-856,-1126,'Copper Ore Random',132,1000,57]
       ],
       OrnateChest: [
         [926,-1306,'Ornate Chest Large',60,1000,28]
@@ -606,8 +737,8 @@ const CAVE_MODULES = {
         [910,-185,'Trinkets',8,1000,35],
         [-792,-114,'Trinkets',8,1000,35],
         [-664,-13,'Trinkets',8,1000,35],
-        [-902,-181,'Gems',5,1000,34],
-        [-896,-156,'Gems',5,1000,34],
+        [-902,-181,'Gems',95,1000,34],
+        [-896,-156,'Gems',95,1000,34],
         [-914,-200,'Trinkets',8,1000,35],
         [-932,-161,'Trinkets',8,1000,35]
       ],
@@ -619,10 +750,10 @@ const CAVE_MODULES = {
     count: 72,
     spawns: {
       Consumable: [
-        [-142,-195,'Potion',7,667,4],
-        [-115,-180,'Bandage',3,667,3],
-        [-434,1091,'Bandage',3,1000,3],
-        [-76,-898,'Bandage',3,1000,3]
+        [-142,-195,'Potion',96,667,4],
+        [-115,-180,'Bandage',104,667,3],
+        [-434,1091,'Bandage',104,1000,3],
+        [-76,-898,'Bandage',104,1000,3]
       ],
       Container: [
         [804,1016,'Wooden Barrel',87,1000,6],
@@ -642,27 +773,27 @@ const CAVE_MODULES = {
         [16,-64,'Altar Of Sacrifice',38,1000,58]
       ],
       Monster: [
-        [-177,-252,'Mummy',114,1000,59],
-        [-1149,57,'Goblin Warrior',113,1000,53],
-        [-1114,1123,'Goblin Warrior',113,1000,53],
-        [-17,-628,'Skeleton Archer',115,500,60],
-        [1142,-481,'Goblin Warrior',113,1000,53],
-        [941,-1123,'Goblin Warrior',113,1000,53],
-        [11,823,'Mummy',114,1000,59],
-        [-17,200,'Skeleton Archer',115,500,60],
-        [200,-252,'Mummy',114,1000,59],
-        [-1149,-1085,'Goblin Warrior',113,1000,53],
-        [13,-1309,'Giant Bat',103,333,51],
-        [6,-1236,'Giant Dragonfly',105,333,61],
-        [-65,-1276,'Death Beetle',101,333,23]
+        [-177,-252,'Mummy',120,1000,59],
+        [-1149,57,'Goblin Warrior',119,1000,53],
+        [-1114,1123,'Goblin Warrior',119,1000,53],
+        [-17,-628,'Skeleton Archer',121,500,60],
+        [1142,-481,'Goblin Warrior',119,1000,53],
+        [941,-1123,'Goblin Warrior',119,1000,53],
+        [11,823,'Mummy',120,1000,59],
+        [-17,200,'Skeleton Archer',121,500,60],
+        [200,-252,'Mummy',120,1000,59],
+        [-1149,-1085,'Goblin Warrior',119,1000,53],
+        [13,-1309,'Giant Bat',109,333,51],
+        [6,-1236,'Giant Dragonfly',111,333,61],
+        [-65,-1276,'Death Beetle',107,333,23]
       ],
       Ore: [
-        [379,1426,'Copper Ore Random',126,1000,57],
-        [990,714,'Copper Ore Random',126,1000,57],
-        [920,-572,'Copper Ore Random',126,1000,57],
-        [990,-1473,'Copper Ore Random',126,1000,57],
-        [-726,974,'Copper Ore Random',126,1000,57],
-        [-244,1344,'Copper Ore Random',126,1000,57]
+        [379,1426,'Copper Ore Random',132,1000,57],
+        [990,714,'Copper Ore Random',132,1000,57],
+        [920,-572,'Copper Ore Random',132,1000,57],
+        [990,-1473,'Copper Ore Random',132,1000,57],
+        [-726,974,'Copper Ore Random',132,1000,57],
+        [-244,1344,'Copper Ore Random',132,1000,57]
       ],
       OrnateChest: [
         [635,-573,'Ornate Chest Large',60,1000,28]
@@ -786,33 +917,33 @@ const CAVE_MODULES = {
         [843,676,'Altar Of Sacrifice',38,1000,58]
       ],
       Monster: [
-        [710,840,'Goblin Ranged Random',112,1000,42],
-        [-373,-589,'Goblin Melee Random',111,1000,40],
-        [71,840,'Goblin Ranged Random',112,1000,42],
-        [-7,840,'Goblin Melee Random',111,1000,40],
-        [-7,-812,'Goblin Melee Random',111,1000,40],
-        [-1049,-1051,'Skeleton Archer',115,750,60],
-        [-267,155,'Skeleton Melee 3type',120,1000,65],
-        [984,607,'Goblin Mage',110,1000,52],
-        [-1130,1085,'Skeleton Melee 3type',120,167,65],
-        [-1141,1102,'Zombie',123,1000,66],
-        [-1334,793,'Mummy',114,1000,59],
-        [-247,-1213,'Mummy',114,750,59],
-        [-238,1199,'Skeleton Melee 3type',120,750,65],
-        [77,1268,'Skeleton Melee 3type',120,750,65],
-        [378,1199,'Skeleton Melee 3type',120,750,65],
-        [1248,901,'Skeleton Melee 3type',120,750,65],
-        [401,-1245,'Skeleton Melee 3type',120,167,65],
-        [1118,-990,'Skeleton Melee 3type',120,167,65],
-        [80,-1239,'Skeleton Melee 3type',120,167,65],
-        [-225,-1243,'Skeleton Melee 3type',120,167,65],
-        [-1062,-1076,'Skeleton Melee 3type',120,167,65],
-        [102,-1213,'Zombie',123,750,66],
-        [416,-1213,'Mummy',114,750,59],
-        [-247,1255,'Zombie',123,200,66],
-        [102,1255,'Zombie',123,200,66],
-        [416,1255,'Mummy',114,200,59],
-        [1095,1097,'Mummy',114,200,59]
+        [710,840,'Goblin Ranged Random',118,1000,42],
+        [-373,-589,'Goblin Melee Random',117,1000,40],
+        [71,840,'Goblin Ranged Random',118,1000,42],
+        [-7,840,'Goblin Melee Random',117,1000,40],
+        [-7,-812,'Goblin Melee Random',117,1000,40],
+        [-1049,-1051,'Skeleton Archer',121,750,60],
+        [-267,155,'Skeleton Melee 3type',126,1000,65],
+        [984,607,'Goblin Mage',116,1000,52],
+        [-1130,1085,'Skeleton Melee 3type',126,167,65],
+        [-1141,1102,'Zombie',129,1000,66],
+        [-1334,793,'Mummy',120,1000,59],
+        [-247,-1213,'Mummy',120,750,59],
+        [-238,1199,'Skeleton Melee 3type',126,750,65],
+        [77,1268,'Skeleton Melee 3type',126,750,65],
+        [378,1199,'Skeleton Melee 3type',126,750,65],
+        [1248,901,'Skeleton Melee 3type',126,750,65],
+        [401,-1245,'Skeleton Melee 3type',126,167,65],
+        [1118,-990,'Skeleton Melee 3type',126,167,65],
+        [80,-1239,'Skeleton Melee 3type',126,167,65],
+        [-225,-1243,'Skeleton Melee 3type',126,167,65],
+        [-1062,-1076,'Skeleton Melee 3type',126,167,65],
+        [102,-1213,'Zombie',129,750,66],
+        [416,-1213,'Mummy',120,750,59],
+        [-247,1255,'Zombie',129,200,66],
+        [102,1255,'Zombie',129,200,66],
+        [416,1255,'Mummy',120,200,59],
+        [1095,1097,'Mummy',120,200,59]
       ],
       PlayerSpawn: [
         [1188,-1186,'Player Spawn',-1,1000,-1]
@@ -832,7 +963,7 @@ const CAVE_MODULES = {
         [509,833,'Floor Portal',51,1000,29]
       ],
       QuestItem: [
-        [-184,-4,'Sturdy Cloth',0,200,67]
+        [-184,-4,'Sturdy Cloth',103,200,67]
       ],
       SimpleChest: [
         [-537,-1436,'Simple Chest Small',74,1000,46],
@@ -893,23 +1024,23 @@ const CAVE_MODULES = {
         [90,-1110,'Black Rose Random',-1,1000,37]
       ],
       Monster: [
-        [277,-1028,'Giant Centipede',104,1000,43],
-        [-408,-1088,'Goblin Melee Random',111,1000,40],
-        [-846,696,'Goblin Ranged Random',112,1000,42],
-        [257,-151,'Goblin Warrior',113,1000,53],
-        [-853,-770,'Goblin Warrior',113,1000,53],
-        [1108,-188,'Goblin Mage',110,1000,52],
-        [1066,-675,'Goblin Ranged Random',112,1000,42],
-        [39,-247,'Death Skull',102,500,54],
-        [-60,-851,'Goblin Warrior',113,1000,53],
-        [-910,322,'Goblin Warrior',113,1000,53],
-        [-1239,-875,'Goblin Ranged Random',112,1000,42],
-        [116,-185,'Giant Bat',103,500,51],
-        [999,586,'Goblin Ranged Random',112,1000,42],
-        [-613,-582,'Goblin Mage',110,1000,52],
-        [659,-1148,'Goblin Warrior',113,1000,53],
-        [-997,39,'Goblin Melee Random',111,1000,40],
-        [556,944,'Goblin Warrior',113,1000,53]
+        [277,-1028,'Giant Centipede',110,1000,43],
+        [-408,-1088,'Goblin Melee Random',117,1000,40],
+        [-846,696,'Goblin Ranged Random',118,1000,42],
+        [257,-151,'Goblin Warrior',119,1000,53],
+        [-853,-770,'Goblin Warrior',119,1000,53],
+        [1108,-188,'Goblin Mage',116,1000,52],
+        [1066,-675,'Goblin Ranged Random',118,1000,42],
+        [39,-247,'Death Skull',108,500,54],
+        [-60,-851,'Goblin Warrior',119,1000,53],
+        [-910,322,'Goblin Warrior',119,1000,53],
+        [-1239,-875,'Goblin Ranged Random',118,1000,42],
+        [116,-185,'Giant Bat',109,500,51],
+        [999,586,'Goblin Ranged Random',118,1000,42],
+        [-613,-582,'Goblin Mage',116,1000,52],
+        [659,-1148,'Goblin Warrior',119,1000,53],
+        [-997,39,'Goblin Melee Random',117,1000,40],
+        [556,944,'Goblin Warrior',119,1000,53]
       ],
       OrnateChest: [
         [313,-1267,'Ornate Chest Large',60,1000,28]
@@ -985,16 +1116,16 @@ const CAVE_MODULES = {
     count: 94,
     spawns: {
       Consumable: [
-        [773,29,'Bandage',3,444,3],
-        [832,-62,'Potion',7,444,4],
-        [791,-192,'Bandage',3,444,3],
-        [-335,916,'Bandage',3,1000,3],
-        [-974,-269,'Potion',7,546,4],
-        [-866,-105,'Bandage',3,546,3],
-        [203,-68,'Potion',7,250,4],
-        [-82,946,'Bandage',3,1000,3],
-        [-76,-898,'Bandage',3,1000,3],
-        [-265,-870,'Bandage',3,1000,3]
+        [773,29,'Bandage',104,444,3],
+        [832,-62,'Potion',96,444,4],
+        [791,-192,'Bandage',104,444,3],
+        [-335,916,'Bandage',104,1000,3],
+        [-974,-269,'Potion',96,546,4],
+        [-866,-105,'Bandage',104,546,3],
+        [203,-68,'Potion',96,250,4],
+        [-82,946,'Bandage',104,1000,3],
+        [-76,-898,'Bandage',104,1000,3],
+        [-265,-870,'Bandage',104,1000,3]
       ],
       Container: [
         [540,497,'Wooden Crate Small',90,1000,10],
@@ -1026,26 +1157,26 @@ const CAVE_MODULES = {
         [-2161,-1504,'Portcullis Fixed Stairs Cave Deactivate',62,1000,70]
       ],
       Monster: [
-        [855,-1300,'Goblin Melee Random',111,1000,40],
-        [-880,337,'Goblin Warrior',113,1000,53],
-        [485,306,'Goblin Melee Random',111,1000,40],
-        [-976,-456,'Goblin Ranged Random',112,1000,42],
-        [445,-358,'Goblin Ranged Random',112,1000,42],
-        [-140,-139,'Skeleton Archer',115,333,60],
-        [-879,-904,'Mummy',114,1000,59],
-        [-161,1417,'Goblin Ranged Random',112,500,42],
-        [26,-1222,'Goblin Ranged Random',112,500,42],
-        [-763,-1125,'Giant Bat',103,333,51],
-        [-724,-1016,'Giant Dragonfly',105,333,61],
-        [-793,-1066,'Death Beetle',101,333,23],
-        [1297,-1259,'Giant Bat',103,333,51],
-        [1290,-1186,'Giant Dragonfly',105,333,61],
-        [1219,-1226,'Death Beetle',101,333,23],
-        [-140,-39,'Zombie',123,333,66],
-        [-77,-121,'Mummy',114,333,59],
-        [-1113,1085,'Giant Bat',103,333,51],
-        [-1120,1158,'Giant Dragonfly',105,333,61],
-        [-1191,1118,'Death Beetle',101,333,23]
+        [855,-1300,'Goblin Melee Random',117,1000,40],
+        [-880,337,'Goblin Warrior',119,1000,53],
+        [485,306,'Goblin Melee Random',117,1000,40],
+        [-976,-456,'Goblin Ranged Random',118,1000,42],
+        [445,-358,'Goblin Ranged Random',118,1000,42],
+        [-140,-139,'Skeleton Archer',121,333,60],
+        [-879,-904,'Mummy',120,1000,59],
+        [-161,1417,'Goblin Ranged Random',118,500,42],
+        [26,-1222,'Goblin Ranged Random',118,500,42],
+        [-763,-1125,'Giant Bat',109,333,51],
+        [-724,-1016,'Giant Dragonfly',111,333,61],
+        [-793,-1066,'Death Beetle',107,333,23],
+        [1297,-1259,'Giant Bat',109,333,51],
+        [1290,-1186,'Giant Dragonfly',111,333,61],
+        [1219,-1226,'Death Beetle',107,333,23],
+        [-140,-39,'Zombie',129,333,66],
+        [-77,-121,'Mummy',120,333,59],
+        [-1113,1085,'Giant Bat',109,333,51],
+        [-1120,1158,'Giant Dragonfly',111,333,61],
+        [-1191,1118,'Death Beetle',107,333,23]
       ],
       OrnateChest: [
         [-193,1033,'Ornate Chest Large',60,1000,28]
@@ -1054,8 +1185,8 @@ const CAVE_MODULES = {
         [1327,1358,'Player Spawn',-1,1000,-1]
       ],
       QuestItem: [
-        [1024,-195,'Sturdy Cloth',0,444,67],
-        [-1069,-20,'Sturdy Cloth',0,444,67]
+        [1024,-195,'Sturdy Cloth',103,444,67],
+        [-1069,-20,'Sturdy Cloth',103,444,67]
       ],
       SimpleChest: [
         [505,1427,'Simple Chest Medium',73,1000,45],
@@ -1087,7 +1218,7 @@ const CAVE_MODULES = {
         [993,-274,'Ground',6,444,36],
         [945,-258,'Ground',6,444,36],
         [906,-300,'Ground',6,444,36],
-        [-1354,1296,'Gems',5,1000,34],
+        [-1354,1296,'Gems',95,1000,34],
         [-867,-168,'Coin',4,546,71],
         [-303,844,'Ground',6,1000,36],
         [-878,-188,'Coin',4,546,71],
@@ -1109,19 +1240,19 @@ const CAVE_MODULES = {
         [987,993,'Portcullis Fixed Stairs Small Deactivate',65,1000,72]
       ],
       Monster: [
-        [-1050,-221,'Goblin Ranged Random',112,1000,42],
-        [1039,-726,'Goblin Ranged Random',112,1000,42],
-        [215,646,'Goblin Melee Random',111,1000,40],
-        [-754,1097,'Goblin Melee Random',111,1000,40],
-        [600,1111,'Goblin Melee Random',111,1000,40],
-        [-1160,566,'Goblin Ranged Random',112,1000,42],
-        [-547,366,'Goblin Mage',110,1000,52]
+        [-1050,-221,'Goblin Ranged Random',118,1000,42],
+        [1039,-726,'Goblin Ranged Random',118,1000,42],
+        [215,646,'Goblin Melee Random',117,1000,40],
+        [-754,1097,'Goblin Melee Random',117,1000,40],
+        [600,1111,'Goblin Melee Random',117,1000,40],
+        [-1160,566,'Goblin Ranged Random',118,1000,42],
+        [-547,366,'Goblin Mage',116,1000,52]
       ],
       Ore: [
-        [-794,242,'Copper Ore Random',126,1000,57],
-        [-633,82,'Copper Ore Random',126,1000,57],
-        [-235,-360,'Copper Ore Random',126,1000,57],
-        [-377,597,'Copper Ore Random',126,1000,57]
+        [-794,242,'Copper Ore Random',132,1000,57],
+        [-633,82,'Copper Ore Random',132,1000,57],
+        [-235,-360,'Copper Ore Random',132,1000,57],
+        [-377,597,'Copper Ore Random',132,1000,57]
       ],
       PlayerSpawn: [
         [346,-951,'Player Spawn',-1,1000,-1]
@@ -1209,26 +1340,26 @@ const CAVE_MODULES = {
         [-1230,1193,'Altar Of Sacrifice',38,250,58]
       ],
       Monster: [
-        [-1035,-683,'Goblin Axeman',108,1000,39],
-        [667,964,'Goblin Warrior',113,1000,53],
-        [-1061,52,'Goblin Melee Random',111,1000,40],
-        [168,-1002,'Goblin Melee Random',111,1000,40],
-        [1046,-283,'Goblin Melee Random',111,1000,40],
-        [-31,1013,'Goblin Melee Random',111,1000,40],
-        [85,81,'Goblin Mage',110,1000,52],
-        [1163,403,'Goblin Warrior',113,1000,53],
-        [-964,588,'Goblin Axeman',108,1000,39],
-        [-545,964,'Goblin Axeman',108,1000,39],
-        [-288,-992,'Goblin Warrior',113,1000,53],
-        [906,922,'Giant Centipede',104,1000,43],
-        [-1000,-907,'Giant Centipede',104,1000,43]
+        [-1035,-683,'Goblin Axeman',114,1000,39],
+        [667,964,'Goblin Warrior',119,1000,53],
+        [-1061,52,'Goblin Melee Random',117,1000,40],
+        [168,-1002,'Goblin Melee Random',117,1000,40],
+        [1046,-283,'Goblin Melee Random',117,1000,40],
+        [-31,1013,'Goblin Melee Random',117,1000,40],
+        [85,81,'Goblin Mage',116,1000,52],
+        [1163,403,'Goblin Warrior',119,1000,53],
+        [-964,588,'Goblin Axeman',114,1000,39],
+        [-545,964,'Goblin Axeman',114,1000,39],
+        [-288,-992,'Goblin Warrior',119,1000,53],
+        [906,922,'Giant Centipede',110,1000,43],
+        [-1000,-907,'Giant Centipede',110,1000,43]
       ],
       Ore: [
-        [-1466,-101,'Cobalt Ore',124,1000,74],
-        [-345,-1197,'Cobalt Ore',124,1000,74],
-        [1207,1026,'Cobalt Ore',124,1000,74],
-        [-122,-1430,'Cobalt Ore',124,1000,74],
-        [1486,434,'Cobalt Ore',124,1000,74]
+        [-1466,-101,'Cobalt Ore',130,1000,74],
+        [-345,-1197,'Cobalt Ore',130,1000,74],
+        [1207,1026,'Cobalt Ore',130,1000,74],
+        [-122,-1430,'Cobalt Ore',130,1000,74],
+        [1486,434,'Cobalt Ore',130,1000,74]
       ],
       PlayerSpawn: [
         [1226,-947,'Player Spawn',-1,1000,-1]
@@ -1326,21 +1457,21 @@ const CAVE_MODULES = {
         [518,391,'Marvelous Chest',55,1000,20]
       ],
       Monster: [
-        [237,341,'Skeleton Melee 3type',120,1000,65],
-        [-981,-1301,'Skeleton Melee 3type',120,1000,65],
-        [1316,-42,'Skeleton Guardsman From Fake Death',118,1000,25],
-        [189,1179,'Skeleton Melee 3type',120,1000,65],
-        [780,13,'Skeleton Swordman',121,1000,77],
-        [-1299,86,'Goblin Melee Random',111,1000,40],
-        [-739,1250,'Skeleton Melee 3type',120,1000,65],
-        [-620,94,'Skeleton Melee 3type',120,1000,65],
-        [631,-1257,'Goblin Melee Random',111,500,40],
-        [631,-1171,'Goblin Ranged Random',112,500,42],
-        [-41,-1232,'Mummy',114,333,59],
-        [-122,-1257,'Goblin Melee Random',111,333,40],
-        [-122,-1171,'Goblin Ranged Random',112,333,42],
-        [716,-404,'Skeleton Mage',119,1000,24],
-        [-687,9,'Goblin Melee Random',111,1000,40]
+        [237,341,'Skeleton Melee 3type',126,1000,65],
+        [-981,-1301,'Skeleton Melee 3type',126,1000,65],
+        [1316,-42,'Skeleton Guardsman From Fake Death',124,1000,25],
+        [189,1179,'Skeleton Melee 3type',126,1000,65],
+        [780,13,'Skeleton Swordman',127,1000,77],
+        [-1299,86,'Goblin Melee Random',117,1000,40],
+        [-739,1250,'Skeleton Melee 3type',126,1000,65],
+        [-620,94,'Skeleton Melee 3type',126,1000,65],
+        [631,-1257,'Goblin Melee Random',117,500,40],
+        [631,-1171,'Goblin Ranged Random',118,500,42],
+        [-41,-1232,'Mummy',120,333,59],
+        [-122,-1257,'Goblin Melee Random',117,333,40],
+        [-122,-1171,'Goblin Ranged Random',118,333,42],
+        [716,-404,'Skeleton Mage',125,1000,24],
+        [-687,9,'Goblin Melee Random',117,1000,40]
       ],
       PlayerSpawn: [
         [1231,1211,'Player Spawn',-1,1000,-1],
@@ -1374,14 +1505,14 @@ const CAVE_MODULES = {
     count: 72,
     spawns: {
       Container: [
-        [-941,-128,'Spider Pot',129,500,9],
-        [-209,-471,'Spider Pot',129,500,9],
+        [-941,-128,'Spider Pot',135,500,9],
+        [-209,-471,'Spider Pot',135,500,9],
         [-1209,-914,'Skeleton Wooden Barrel',80,1000,62],
         [342,1493,'Pot',67,1000,12],
-        [209,753,'Spider Pot',129,1000,9],
+        [209,753,'Spider Pot',135,1000,9],
         [1084,-453,'Pot',69,1000,8],
         [1166,-510,'Pot',69,1000,8],
-        [-1121,802,'Skeleton Wooden Barrel Random',128,1000,7],
+        [-1121,802,'Skeleton Wooden Barrel Random',134,1000,7],
         [567,1478,'Pot',68,1000,5],
         [288,184,'Skeleton Corpse',77,1000,79],
         [138,424,'Skeleton Corpse',77,1000,79],
@@ -1395,14 +1526,14 @@ const CAVE_MODULES = {
         [525,-655,'Black Rose Random',-1,1000,37]
       ],
       Monster: [
-        [-767,1495,'Giant Dragonfly',105,333,61],
-        [-682,1417,'Death Beetle',101,333,23],
-        [-725,1542,'Giant Bat',103,333,51],
-        [172,-785,'Giant Centipede',104,1000,43],
-        [-190,1207,'Giant Dragonfly',105,333,61],
-        [-105,1129,'Death Beetle',101,333,23],
-        [-148,1254,'Giant Bat',103,333,51],
-        [-511,459,'Giant Spider',106,1000,80]
+        [-767,1495,'Giant Dragonfly',111,333,61],
+        [-682,1417,'Death Beetle',107,333,23],
+        [-725,1542,'Giant Bat',109,333,51],
+        [172,-785,'Giant Centipede',110,1000,43],
+        [-190,1207,'Giant Dragonfly',111,333,61],
+        [-105,1129,'Death Beetle',107,333,23],
+        [-148,1254,'Giant Bat',109,333,51],
+        [-511,459,'Giant Spider',112,1000,80]
       ],
       OrnateChest: [
         [-57,-900,'Ornate Chest Large',60,1000,28]
@@ -1449,7 +1580,7 @@ const CAVE_MODULES = {
       Valuable: [
         [815,-186,'Ground',6,1000,36],
         [-644,1303,'Ground',6,1000,36],
-        [-637,1381,'Gems',5,1000,34],
+        [-637,1381,'Gems',95,1000,34],
         [-697,1346,'Ground',6,1000,36],
         [-982,-1163,'Ground',6,1000,36],
         [-923,-1121,'Ground',6,1000,36],
@@ -1459,7 +1590,7 @@ const CAVE_MODULES = {
         [599,-144,'Ground',6,1000,36],
         [751,-203,'Ground',6,1000,36],
         [540,-64,'Ground',6,1000,36],
-        [685,-104,'Gems',5,1000,34]
+        [685,-104,'Gems',95,1000,34]
       ],
     }
   },
@@ -1504,18 +1635,18 @@ const CAVE_MODULES = {
         [1057,-1142,'Wooden Door With Lock',91,1000,76]
       ],
       Monster: [
-        [433,335,'Skeleton Melee 3type',120,1000,65],
-        [1119,-108,'Goblin Warrior',113,1000,53],
-        [-780,403,'Goblin Ranged Random',112,1000,42],
-        [365,-989,'Goblin Warrior',113,1000,53],
-        [-42,-305,'Skeleton Melee 3type',120,1000,65],
-        [-1313,30,'Goblin Ranged Random',112,1000,42],
-        [-161,-883,'Giant Bat',103,1000,51],
-        [-2,794,'Goblin Warrior',113,1000,53],
-        [-485,771,'Skeleton Melee 3type',120,1000,65],
-        [-967,-1356,'Skeleton Melee 3type',120,1000,65],
-        [-781,7,'Skeleton Melee 3type',120,1000,65],
-        [1288,915,'Skeleton Melee 3type',120,1000,65]
+        [433,335,'Skeleton Melee 3type',126,1000,65],
+        [1119,-108,'Goblin Warrior',119,1000,53],
+        [-780,403,'Goblin Ranged Random',118,1000,42],
+        [365,-989,'Goblin Warrior',119,1000,53],
+        [-42,-305,'Skeleton Melee 3type',126,1000,65],
+        [-1313,30,'Goblin Ranged Random',118,1000,42],
+        [-161,-883,'Giant Bat',109,1000,51],
+        [-2,794,'Goblin Warrior',119,1000,53],
+        [-485,771,'Skeleton Melee 3type',126,1000,65],
+        [-967,-1356,'Skeleton Melee 3type',126,1000,65],
+        [-781,7,'Skeleton Melee 3type',126,1000,65],
+        [1288,915,'Skeleton Melee 3type',126,1000,65]
       ],
       PlayerSpawn: [
         [1259,-1319,'Player Spawn',-1,1000,-1],
@@ -1615,16 +1746,16 @@ const CAVE_MODULES = {
         [157,1233,'Altar Of Sacrifice',38,1000,58]
       ],
       Monster: [
-        [82,1165,'Giant Bat',103,1000,51],
-        [-230,1196,'Giant Bat',103,1000,51],
-        [-375,1129,'Giant Bat',103,1000,51],
-        [642,-342,'Goblin Archer',107,1000,83],
-        [1156,-1225,'Goblin Melee Random',111,1000,40],
-        [1247,902,'Goblin Melee Random',111,1000,40],
-        [144,679,'Goblin Mage',110,1000,52],
-        [-177,-499,'Zombie',123,1000,66],
-        [-1147,-241,'Zombie',123,1000,66],
-        [1188,240,'Zombie',123,1000,66]
+        [82,1165,'Giant Bat',109,1000,51],
+        [-230,1196,'Giant Bat',109,1000,51],
+        [-375,1129,'Giant Bat',109,1000,51],
+        [642,-342,'Goblin Archer',113,1000,83],
+        [1156,-1225,'Goblin Melee Random',117,1000,40],
+        [1247,902,'Goblin Melee Random',117,1000,40],
+        [144,679,'Goblin Mage',116,1000,52],
+        [-177,-499,'Zombie',129,1000,66],
+        [-1147,-241,'Zombie',129,1000,66],
+        [1188,240,'Zombie',129,1000,66]
       ],
       OrnateChest: [
         [-621,1163,'Ornate Chest Large',60,1000,28]
@@ -1672,10 +1803,10 @@ const CAVE_MODULES = {
         [391,-1003,'Chest Medium',42,1000,1]
       ],
       Consumable: [
-        [767,928,'Bandage',3,1000,3],
-        [-1455,-153,'Potion',7,1000,4],
-        [783,1080,'Potion',7,1000,4],
-        [936,-408,'Bandage',3,1000,3]
+        [767,928,'Bandage',104,1000,3],
+        [-1455,-153,'Potion',96,1000,4],
+        [783,1080,'Potion',96,1000,4],
+        [936,-408,'Bandage',104,1000,3]
       ],
       Container: [
         [1396,-1040,'Skeleton Wooden Barrel',80,1000,62],
@@ -1694,18 +1825,18 @@ const CAVE_MODULES = {
         [-115,-965,'Black Rose Random',-1,1000,37]
       ],
       Monster: [
-        [-159,-748,'Giant Centipede',104,1000,43],
-        [-124,957,'Goblin Ranged Random',112,1000,42],
-        [1226,-1183,'Goblin Melee Random',111,1000,40],
-        [-1225,-1039,'Goblin Melee Random',111,1000,40],
-        [-356,-1089,'Goblin Ranged Random',112,1000,42],
-        [-380,775,'Goblin Melee Random',111,1000,40],
-        [926,1200,'Goblin Melee Random',111,1000,40],
-        [1331,434,'Goblin Melee Random',111,1000,40],
-        [607,-756,'Goblin Melee Random',111,1000,40],
-        [-266,701,'Goblin Melee Random',111,1000,40],
-        [-149,157,'Goblin Warrior',113,1000,53],
-        [461,1088,'Goblin Mage',110,1000,52]
+        [-159,-748,'Giant Centipede',110,1000,43],
+        [-124,957,'Goblin Ranged Random',118,1000,42],
+        [1226,-1183,'Goblin Melee Random',117,1000,40],
+        [-1225,-1039,'Goblin Melee Random',117,1000,40],
+        [-356,-1089,'Goblin Ranged Random',118,1000,42],
+        [-380,775,'Goblin Melee Random',117,1000,40],
+        [926,1200,'Goblin Melee Random',117,1000,40],
+        [1331,434,'Goblin Melee Random',117,1000,40],
+        [607,-756,'Goblin Melee Random',117,1000,40],
+        [-266,701,'Goblin Melee Random',117,1000,40],
+        [-149,157,'Goblin Warrior',119,1000,53],
+        [461,1088,'Goblin Mage',116,1000,52]
       ],
       OrnateChest: [
         [-156,-580,'Ornate Chest Large',60,1000,28]
@@ -1786,13 +1917,13 @@ const CAVE_MODULES = {
         [352,-148,'Armor',1,1000,84]
       ],
       Monster: [
-        [-1043,-272,'Death Beetle',101,1000,23],
-        [-53,113,'Goblin Archer',107,500,83],
-        [-53,16,'Goblin Warrior',113,500,53],
-        [-515,21,'Goblin Melee Random',111,1000,40],
-        [1033,-122,'Goblin Axeman',108,1000,39],
-        [1005,-449,'Goblin Mage',110,1000,52],
-        [811,-681,'Goblin Bolaslinger',109,1000,85]
+        [-1043,-272,'Death Beetle',107,1000,23],
+        [-53,113,'Goblin Archer',113,500,83],
+        [-53,16,'Goblin Warrior',119,500,53],
+        [-515,21,'Goblin Melee Random',117,1000,40],
+        [1033,-122,'Goblin Axeman',114,1000,39],
+        [1005,-449,'Goblin Mage',116,1000,52],
+        [811,-681,'Goblin Bolaslinger',115,1000,85]
       ],
       PlayerSpawn: [
         [1277,819,'Player Spawn',-1,1000,-1],
@@ -1835,7 +1966,7 @@ const CAVE_MODULES = {
         [-551,1060,'Pot',68,1000,5],
         [-436,1060,'Pot',68,1000,5],
         [1235,-377,'Pot',67,1000,12],
-        [1237,-1241,'Spider Pot',129,1000,9],
+        [1237,-1241,'Spider Pot',135,1000,9],
         [-451,540,'Pot',67,1000,12],
         [-361,520,'Pot',67,1000,12],
         [1130,-357,'Pot',67,1000,12]
@@ -1844,15 +1975,15 @@ const CAVE_MODULES = {
         [-968,42,'Altar Of Sacrifice',38,1000,58]
       ],
       Monster: [
-        [540,1220,'Goblin Mage',110,1000,52],
-        [-481,1370,'Goblin Melee Random',111,1000,40],
-        [-327,-115,'Mummy',114,1000,59],
-        [50,-445,'Goblin Melee Random',111,1000,40],
-        [1225,-790,'Goblin Melee Random',111,1000,40],
-        [1095,-597,'Giant Bat',103,1000,51],
-        [-758,-38,'Zombie',123,1000,66],
-        [-851,801,'Goblin Melee Random',111,1000,40],
-        [-1140,-14,'Mummy',114,1000,59]
+        [540,1220,'Goblin Mage',116,1000,52],
+        [-481,1370,'Goblin Melee Random',117,1000,40],
+        [-327,-115,'Mummy',120,1000,59],
+        [50,-445,'Goblin Melee Random',117,1000,40],
+        [1225,-790,'Goblin Melee Random',117,1000,40],
+        [1095,-597,'Giant Bat',109,1000,51],
+        [-758,-38,'Zombie',129,1000,66],
+        [-851,801,'Goblin Melee Random',117,1000,40],
+        [-1140,-14,'Mummy',120,1000,59]
       ],
       PlayerSpawn: [
         [-1155,-615,'Player Spawn',-1,1000,-1]
@@ -1875,7 +2006,7 @@ const CAVE_MODULES = {
         [753,1043,'Floor Portal',51,1000,29]
       ],
       Valuable: [
-        [-1265,170,'Gems',5,1000,34],
+        [-1265,170,'Gems',95,1000,34],
         [275,-475,'Ground',6,1000,36],
         [215,-475,'Ground',6,1000,36],
         [215,-440,'Ground',6,1000,36],
@@ -1907,10 +2038,10 @@ const CAVE_MODULES = {
         [-1174,215,'Chest Small',43,1000,2]
       ],
       Consumable: [
-        [853,-232,'Potion',7,333,4],
-        [846,-213,'Bandage',3,333,3],
-        [631,-1296,'Potion',7,250,4],
-        [631,-1279,'Bandage',3,250,3]
+        [853,-232,'Potion',96,333,4],
+        [846,-213,'Bandage',104,333,3],
+        [631,-1296,'Potion',96,250,4],
+        [631,-1279,'Bandage',104,250,3]
       ],
       Container: [
         [1102,1015,'Wooden Barrel',87,1000,6],
@@ -1919,7 +2050,7 @@ const CAVE_MODULES = {
         [-566,-743,'Pot',67,1000,12],
         [-323,1247,'Wooden Barrel',87,1000,6],
         [-1125,498,'Wooden Barrel',87,1000,6],
-        [1328,186,'Spider Pot',129,333,9],
+        [1328,186,'Spider Pot',135,333,9],
         [1105,-1191,'Wooden Barrel',87,1000,6],
         [-610,-886,'Pot',69,1000,8],
         [-1213,-459,'Pot',68,1000,5],
@@ -1938,16 +2069,16 @@ const CAVE_MODULES = {
         [-475,-275,'Black Rose Random',-1,1000,37]
       ],
       Monster: [
-        [-747,721,'Goblin Warrior',113,1000,53],
-        [307,235,'Goblin Mage',110,1000,52],
-        [127,-25,'Goblin Axeman',108,1000,39],
-        [-660,-683,'Giant Centipede',104,1000,43],
-        [-1226,1235,'Goblin Warrior',113,333,53],
-        [-530,283,'Goblin Warrior',113,333,53],
-        [1208,-141,'Goblin Axeman',108,1000,39],
-        [939,-162,'Giant Dragonfly',105,500,61],
-        [1062,-120,'Goblin Warrior',113,1000,53],
-        [1096,-167,'Death Beetle',101,500,23]
+        [-747,721,'Goblin Warrior',119,1000,53],
+        [307,235,'Goblin Mage',116,1000,52],
+        [127,-25,'Goblin Axeman',114,1000,39],
+        [-660,-683,'Giant Centipede',110,1000,43],
+        [-1226,1235,'Goblin Warrior',119,333,53],
+        [-530,283,'Goblin Warrior',119,333,53],
+        [1208,-141,'Goblin Axeman',114,1000,39],
+        [939,-162,'Giant Dragonfly',111,500,61],
+        [1062,-120,'Goblin Warrior',119,1000,53],
+        [1096,-167,'Death Beetle',107,500,23]
       ],
       OrnateChest: [
         [-1026,-664,'Ornate Chest Large',60,1000,28]
@@ -2017,8 +2148,8 @@ const CAVE_MODULES = {
         [965,1225,'Chest Small',43,1000,2]
       ],
       Consumable: [
-        [-56,815,'Potion',7,1000,4],
-        [-1265,250,'Potion',7,1000,4]
+        [-56,815,'Potion',96,1000,4],
+        [-1265,250,'Potion',96,1000,4]
       ],
       Container: [
         [-170,910,'Skeleton Corpse',78,500,86],
@@ -2026,11 +2157,11 @@ const CAVE_MODULES = {
         [-280,-1240,'Pot',66,1000,13],
         [-82,-1306,'Skeleton Corpse',79,1000,47],
         [872,-1331,'Pot',67,1000,12],
-        [350,-1479,'Spider Pot',129,1000,9],
+        [350,-1479,'Spider Pot',135,1000,9],
         [360,-1376,'Pot',68,1000,5],
-        [-1090,-80,'Skeleton Wooden Barrel Random',128,1000,7],
-        [-1130,250,'Skeleton Wooden Barrel Random',128,1000,7],
-        [-1210,-100,'Skeleton Wooden Barrel Random',128,1000,7],
+        [-1090,-80,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-1130,250,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-1210,-100,'Skeleton Wooden Barrel Random',134,1000,7],
         [-589,-23,'Pot',68,1000,5],
         [-568,-114,'Pot',67,1000,12],
         [-593,-210,'Pot',69,1000,8],
@@ -2075,18 +2206,18 @@ const CAVE_MODULES = {
         [936,-140,'Portcullis Fixed Stairs Cave Deactivate',62,1000,70]
       ],
       Monster: [
-        [240,65,'Goblin Warrior',113,1000,53],
-        [-1170,107,'Giant Centipede',104,1000,43],
-        [925,-820,'Zombie',123,1000,66],
-        [1345,-880,'Goblin Warrior',113,1000,53],
-        [641,-350,'Goblin Archer',107,1000,83],
-        [1228,-393,'Goblin Archer',107,1000,83],
-        [1360,253,'Goblin Archer',107,1000,83],
-        [-710,-60,'Goblin Mage',110,1000,52],
-        [-155,1019,'Skeleton Footman From Fake Death',117,500,21],
-        [-935,-657,'Goblin Warrior',113,1000,53],
-        [739,-159,'Goblin Axeman',108,1000,39],
-        [-440,-210,'Goblin Bolaslinger',109,1000,85]
+        [240,65,'Goblin Warrior',119,1000,53],
+        [-1170,107,'Giant Centipede',110,1000,43],
+        [925,-820,'Zombie',129,1000,66],
+        [1345,-880,'Goblin Warrior',119,1000,53],
+        [641,-350,'Goblin Archer',113,1000,83],
+        [1228,-393,'Goblin Archer',113,1000,83],
+        [1360,253,'Goblin Archer',113,1000,83],
+        [-710,-60,'Goblin Mage',116,1000,52],
+        [-155,1019,'Skeleton Footman From Fake Death',123,500,21],
+        [-935,-657,'Goblin Warrior',119,1000,53],
+        [739,-159,'Goblin Axeman',114,1000,39],
+        [-440,-210,'Goblin Bolaslinger',115,1000,85]
       ],
       PlayerSpawn: [
         [-435,-1055,'Player Spawn',-1,1000,-1]
@@ -2102,10 +2233,10 @@ const CAVE_MODULES = {
         [-348,779,'Ground',6,1000,36],
         [-329,1203,'Trinkets',8,1000,35],
         [-252,903,'Trinkets',8,1000,35],
-        [-259,1468,'Gems',5,500,34],
+        [-259,1468,'Gems',95,500,34],
         [-1240,260,'Trinkets',8,1000,35],
         [-33,1129,'Ground',6,1000,36],
-        [1088,-58,'Gems',5,1000,34],
+        [1088,-58,'Gems',95,1000,34],
         [833,-102,'Ground',6,1000,36],
         [833,160,'Ground',6,1000,36],
         [1088,72,'Trinkets',8,1000,35],
@@ -2130,9 +2261,9 @@ const CAVE_MODULES = {
         [251,1467,'Skeleton Corpse',77,1000,79],
         [-269,-1362,'Pot',66,1000,13],
         [-82,-1306,'Skeleton Corpse',79,1000,47],
-        [918,-1276,'Spider Pot',129,1000,9],
-        [-711,-151,'Skeleton Wooden Barrel Random',128,1000,7],
-        [-822,-142,'Skeleton Wooden Barrel Random',128,1000,7],
+        [918,-1276,'Spider Pot',135,1000,9],
+        [-711,-151,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-822,-142,'Skeleton Wooden Barrel Random',134,1000,7],
         [585,1217,'Wooden Barrel',87,1000,6],
         [815,-1055,'Pot',68,1000,5],
         [845,-391,'Pot',66,1000,13],
@@ -2163,15 +2294,15 @@ const CAVE_MODULES = {
         [-574,-521,'Wooden Door With Lock',91,1000,76]
       ],
       Monster: [
-        [-134,353,'Giant Centipede',104,1000,43],
-        [925,-820,'Zombie',123,1000,66],
-        [876,-1225,'Goblin Warrior',113,1000,53],
-        [1384,-53,'Goblin Ranged Random',112,1000,42],
-        [156,-195,'Mummy',114,1000,59],
-        [518,-23,'Mummy',114,1000,59],
-        [-479,486,'Mummy',114,1000,59],
-        [229,1302,'Goblin Warrior',113,1000,53],
-        [-597,54,'Goblin Warrior',113,1000,53]
+        [-134,353,'Giant Centipede',110,1000,43],
+        [925,-820,'Zombie',129,1000,66],
+        [876,-1225,'Goblin Warrior',119,1000,53],
+        [1384,-53,'Goblin Ranged Random',118,1000,42],
+        [156,-195,'Mummy',120,1000,59],
+        [518,-23,'Mummy',120,1000,59],
+        [-479,486,'Mummy',120,1000,59],
+        [229,1302,'Goblin Warrior',119,1000,53],
+        [-597,54,'Goblin Warrior',119,1000,53]
       ],
       PlayerSpawn: [
         [-587,-1261,'Player Spawn',-1,1000,-1],
@@ -2221,27 +2352,27 @@ const CAVE_MODULES = {
         [1023,-882,'Wooden Door With Lock',91,1000,76]
       ],
       Monster: [
-        [-1109,-1243,'Goblin Axeman',108,1000,39],
-        [-331,-1159,'Goblin Warrior',113,1000,53],
-        [1324,401,'Goblin Warrior',113,1000,53],
-        [1234,1063,'Goblin Warrior',113,1000,53],
-        [466,-977,'Goblin Axeman',108,1000,39],
-        [1141,192,'Goblin Axeman',108,1000,39],
-        [608,1162,'Goblin Warrior',113,1000,53],
-        [-803,-703,'Goblin Archer',107,1000,83],
-        [-191,141,'Goblin Ranged Random',112,1000,42]
+        [-1109,-1243,'Goblin Axeman',114,1000,39],
+        [-331,-1159,'Goblin Warrior',119,1000,53],
+        [1324,401,'Goblin Warrior',119,1000,53],
+        [1234,1063,'Goblin Warrior',119,1000,53],
+        [466,-977,'Goblin Axeman',114,1000,39],
+        [1141,192,'Goblin Axeman',114,1000,39],
+        [608,1162,'Goblin Warrior',119,1000,53],
+        [-803,-703,'Goblin Archer',113,1000,83],
+        [-191,141,'Goblin Ranged Random',118,1000,42]
       ],
       Ore: [
-        [-1360,-1338,'Cobalt Ore Random',125,500,88],
-        [1100,1329,'Cobalt Ore Random',125,500,88],
-        [-519,-1095,'Cobalt Ore Random',125,500,88],
-        [-1147,419,'Cobalt Ore Random',125,500,88],
-        [-331,-1242,'Cobalt Ore Random',125,500,88],
-        [373,-1147,'Cobalt Ore Random',125,500,88],
-        [1089,964,'Cobalt Ore Random',125,500,88],
-        [639,1399,'Cobalt Ore Random',125,500,88],
-        [-52,-1375,'Cobalt Ore Random',125,500,88],
-        [1368,629,'Cobalt Ore Random',125,500,88]
+        [-1360,-1338,'Cobalt Ore Random',131,500,88],
+        [1100,1329,'Cobalt Ore Random',131,500,88],
+        [-519,-1095,'Cobalt Ore Random',131,500,88],
+        [-1147,419,'Cobalt Ore Random',131,500,88],
+        [-331,-1242,'Cobalt Ore Random',131,500,88],
+        [373,-1147,'Cobalt Ore Random',131,500,88],
+        [1089,964,'Cobalt Ore Random',131,500,88],
+        [639,1399,'Cobalt Ore Random',131,500,88],
+        [-52,-1375,'Cobalt Ore Random',131,500,88],
+        [1368,629,'Cobalt Ore Random',131,500,88]
       ],
       OrnateChest: [
         [1261,73,'Ornate Chest Large',60,200,28]
@@ -2257,22 +2388,22 @@ const CAVE_MODULES = {
         [-1117,1103,'Floor Spikes',52,1000,31]
       ],
       Valuable: [
-        [-253,-253,'Gems',5,167,34],
-        [-1255,-851,'Gems',5,1000,34],
+        [-253,-253,'Gems',95,167,34],
+        [-1255,-851,'Gems',95,1000,34],
         [-1135,-1011,'Trinkets',8,1000,35],
-        [-448,-325,'Gems',5,167,34],
-        [-296,-246,'Gems',5,167,34],
-        [-406,-1363,'Gems',5,167,34],
-        [-557,-1755,'Gems',5,167,34],
-        [-399,-2200,'Gems',5,167,34],
-        [22,522,'Gems',5,333,34],
+        [-448,-325,'Gems',95,167,34],
+        [-296,-246,'Gems',95,167,34],
+        [-406,-1363,'Gems',95,167,34],
+        [-557,-1755,'Gems',95,167,34],
+        [-399,-2200,'Gems',95,167,34],
+        [22,522,'Gems',95,333,34],
         [-1351,-1142,'Ground',6,500,36],
-        [647,417,'Gems',5,333,34],
-        [1904,641,'Gems',5,333,34],
-        [752,-2,'Gems',5,200,34],
-        [1584,75,'Gems',5,200,34],
-        [1230,744,'Gems',5,200,34],
-        [2085,664,'Gems',5,200,34],
+        [647,417,'Gems',95,333,34],
+        [1904,641,'Gems',95,333,34],
+        [752,-2,'Gems',95,200,34],
+        [1584,75,'Gems',95,200,34],
+        [1230,744,'Gems',95,200,34],
+        [2085,664,'Gems',95,200,34],
         [-1408,1155,'Ground',6,1000,36]
       ],
     }
@@ -2284,7 +2415,7 @@ const CAVE_MODULES = {
     spawns: {
       Container: [
         [-370,439,'Pot',68,1000,5],
-        [-304,434,'Spider Pot',129,1000,9],
+        [-304,434,'Spider Pot',135,1000,9],
         [-229,523,'Pot',67,1000,12],
         [-977,-977,'Wooden Barrel',87,1000,6],
         [41,180,'Pot',68,1000,5],
@@ -2301,8 +2432,8 @@ const CAVE_MODULES = {
         [929,1076,'Pot',68,1000,5],
         [1183,1016,'Wooden Crate Small',90,1000,10],
         [377,1195,'Wooden Barrel',87,1000,6],
-        [1214,1198,'Skeleton Wooden Barrel Random',128,1000,7],
-        [1243,627,'Skeleton Wooden Barrel Random',128,1000,7],
+        [1214,1198,'Skeleton Wooden Barrel Random',134,1000,7],
+        [1243,627,'Skeleton Wooden Barrel Random',134,1000,7],
         [-473,-226,'Pot',66,1000,13],
         [-455,-149,'Pot',66,1000,13],
         [-429,-69,'Pot',66,1000,13],
@@ -2317,18 +2448,18 @@ const CAVE_MODULES = {
         [-1095,-1015,'Black Rose Random',-1,1000,37]
       ],
       Monster: [
-        [580,1222,'Goblin Mage',110,1000,52],
-        [82,899,'Giant Spider',106,1000,80],
-        [-1215,-1112,'Goblin Melee Random',111,1000,40],
-        [-295,-249,'Giant Spider',106,1000,80],
-        [-697,703,'Goblin Warrior',113,1000,53],
-        [-1026,-503,'Goblin Ranged Random',112,1000,42],
-        [-589,1060,'Death Beetle',101,1000,23],
-        [583,-1243,'Goblin Melee Random',111,1000,40],
-        [-723,-949,'Giant Centipede',104,1000,43],
-        [898,-497,'Goblin Melee Random',111,1000,40],
-        [1108,-49,'Goblin Melee Random',111,1000,40],
-        [1061,-387,'Giant Spider',106,1000,80]
+        [580,1222,'Goblin Mage',116,1000,52],
+        [82,899,'Giant Spider',112,1000,80],
+        [-1215,-1112,'Goblin Melee Random',117,1000,40],
+        [-295,-249,'Giant Spider',112,1000,80],
+        [-697,703,'Goblin Warrior',119,1000,53],
+        [-1026,-503,'Goblin Ranged Random',118,1000,42],
+        [-589,1060,'Death Beetle',107,1000,23],
+        [583,-1243,'Goblin Melee Random',117,1000,40],
+        [-723,-949,'Giant Centipede',110,1000,43],
+        [898,-497,'Goblin Melee Random',117,1000,40],
+        [1108,-49,'Goblin Melee Random',117,1000,40],
+        [1061,-387,'Giant Spider',112,1000,80]
       ],
       PlayerSpawn: [
         [1059,1218,'Player Spawn',-1,1000,-1],
@@ -2386,7 +2517,7 @@ const CAVE_MODULES = {
         [669,-1449,'Chest Small',43,1000,2]
       ],
       Consumable: [
-        [-1415,311,'Potion',7,1000,4]
+        [-1415,311,'Potion',96,1000,4]
       ],
       Container: [
         [27,496,'Pot',68,1000,5],
@@ -2395,7 +2526,7 @@ const CAVE_MODULES = {
         [-977,-977,'Wooden Barrel',87,1000,6],
         [27,17,'Pot',68,1000,5],
         [-741,-732,'Wooden Crate Medium',89,1000,11],
-        [-117,-1330,'Skeleton Wooden Barrel Random',128,1000,7],
+        [-117,-1330,'Skeleton Wooden Barrel Random',134,1000,7],
         [-728,483,'Pot',67,1000,12],
         [-1350,525,'Pot',67,1000,12],
         [-1350,120,'Pot',68,1000,5],
@@ -2410,8 +2541,8 @@ const CAVE_MODULES = {
         [651,-383,'Wooden Crate Small',90,1000,10],
         [-234,-1330,'Skeleton Wooden Barrel',80,1000,62],
         [303,953,'Pot',68,1000,5],
-        [1214,1198,'Skeleton Wooden Barrel Random',128,1000,7],
-        [1210,395,'Skeleton Wooden Barrel Random',128,1000,7],
+        [1214,1198,'Skeleton Wooden Barrel Random',134,1000,7],
+        [1210,395,'Skeleton Wooden Barrel Random',134,1000,7],
         [-809,325,'Skeleton Corpse',77,1000,79],
         [374,957,'Pot',67,1000,12],
         [270,-800,'Pot',66,1000,13],
@@ -2435,19 +2566,19 @@ const CAVE_MODULES = {
         [-341,-1005,'Portcullis Fixed Stairs Small',64,1000,90]
       ],
       Monster: [
-        [-476,-963,'Spider Mummy',122,500,41],
-        [735,-125,'Goblin Warrior',113,1000,53],
-        [495,175,'Goblin Axeman',108,1000,39],
-        [799,218,'Goblin Mage',110,1000,52],
-        [-495,557,'Goblin Bolaslinger',109,1000,85],
-        [-1209,1026,'Goblin Warrior',113,1000,53],
-        [423,169,'Spider Mummy',122,1000,41],
-        [-1135,-305,'Goblin Warrior',113,1000,53],
-        [447,730,'Goblin Warrior',113,1000,53],
-        [1160,-320,'Goblin Axeman',108,1000,39],
-        [1130,580,'Mummy',114,1000,59],
-        [150,580,'Mummy',114,1000,59],
-        [120,1040,'Goblin Archer',107,1000,83]
+        [-476,-963,'Spider Mummy',128,500,41],
+        [735,-125,'Goblin Warrior',119,1000,53],
+        [495,175,'Goblin Axeman',114,1000,39],
+        [799,218,'Goblin Mage',116,1000,52],
+        [-495,557,'Goblin Bolaslinger',115,1000,85],
+        [-1209,1026,'Goblin Warrior',119,1000,53],
+        [423,169,'Spider Mummy',128,1000,41],
+        [-1135,-305,'Goblin Warrior',119,1000,53],
+        [447,730,'Goblin Warrior',119,1000,53],
+        [1160,-320,'Goblin Axeman',114,1000,39],
+        [1130,580,'Mummy',120,1000,59],
+        [150,580,'Mummy',120,1000,59],
+        [120,1040,'Goblin Archer',113,1000,83]
       ],
       PlayerSpawn: [
         [-91,1072,'Player Spawn',-1,1000,-1],
@@ -2485,7 +2616,7 @@ const CAVE_MODULES = {
         [560,364,'Trinkets',8,250,35],
         [560,364,'Trinkets',8,250,35],
         [-1163,1099,'Trinkets',8,1000,35],
-        [-367,254,'Gems',5,1000,34],
+        [-367,254,'Gems',95,1000,34],
         [626,-268,'Ground',6,1000,36],
         [-892,287,'Ground',6,1000,36],
         [-734,287,'Ground',6,1000,36],
@@ -2494,10 +2625,10 @@ const CAVE_MODULES = {
         [1091,-109,'Trinkets',8,250,35],
         [1091,-109,'Trinkets',8,250,35],
         [1091,-109,'Trinkets',8,250,35],
-        [1103,-40,'Gems',5,250,34],
-        [1103,-40,'Gems',5,250,34],
-        [1103,-40,'Gems',5,250,34],
-        [1103,-40,'Gems',5,250,34],
+        [1103,-40,'Gems',95,250,34],
+        [1103,-40,'Gems',95,250,34],
+        [1103,-40,'Gems',95,250,34],
+        [1103,-40,'Gems',95,250,34],
         [1086,34,'Ground',6,200,36],
         [1086,34,'Ground',6,200,36],
         [1086,34,'Ground',6,200,36],
@@ -2524,11 +2655,11 @@ const CAVE_MODULES = {
         [-1414,531,'Pot',69,200,8],
         [-379,719,'Pot',69,1000,8],
         [-418,797,'Pot',67,1000,12],
-        [390,-340,'Spider Pot',129,1000,9],
-        [-590,-322,'Spider Pot',129,200,9],
+        [390,-340,'Spider Pot',135,1000,9],
+        [-590,-322,'Spider Pot',135,200,9],
         [-1005,-903,'Pot',68,1000,5],
-        [-159,335,'Spider Pot',129,200,9],
-        [-1418,513,'Spider Pot',129,200,9],
+        [-159,335,'Spider Pot',135,200,9],
+        [-1418,513,'Spider Pot',135,200,9],
         [147,325,'Pot',68,1000,5],
         [192,905,'Pot',68,1000,5],
         [95,877,'Pot',68,1000,5],
@@ -2548,25 +2679,25 @@ const CAVE_MODULES = {
         [-863,-273,'Wall Lever',83,1000,64]
       ],
       Monster: [
-        [1265,480,'Giant Bat',103,1000,51],
-        [-670,-370,'Giant Bat',103,1000,51],
-        [9,400,'Giant Bat',103,1000,51],
-        [1240,-555,'Giant Bat',103,1000,51],
-        [434,-381,'Giant Bat',103,1000,51],
-        [550,-874,'Death Beetle',101,1000,23],
-        [-140,755,'Mummy',114,1000,59],
-        [-790,-215,'Mummy',114,1000,59],
-        [580,-529,'Giant Dragonfly',105,1000,61],
-        [-1014,-1230,'Mummy',114,500,59],
-        [1125,-1192,'Skeleton Swordman',121,1000,77]
+        [1265,480,'Giant Bat',109,1000,51],
+        [-670,-370,'Giant Bat',109,1000,51],
+        [9,400,'Giant Bat',109,1000,51],
+        [1240,-555,'Giant Bat',109,1000,51],
+        [434,-381,'Giant Bat',109,1000,51],
+        [550,-874,'Death Beetle',107,1000,23],
+        [-140,755,'Mummy',120,1000,59],
+        [-790,-215,'Mummy',120,1000,59],
+        [580,-529,'Giant Dragonfly',111,1000,61],
+        [-1014,-1230,'Mummy',120,500,59],
+        [1125,-1192,'Skeleton Swordman',127,1000,77]
       ],
       Ore: [
-        [-345,394,'Copper Ore Random',126,1000,57],
-        [1303,873,'Copper Ore Random',126,1000,57],
-        [564,682,'Copper Ore Random',126,1000,57],
-        [190,-666,'Copper Ore Random',126,1000,57],
-        [283,-923,'Copper Ore Random',126,1000,57],
-        [509,-1158,'Copper Ore Random',126,1000,57]
+        [-345,394,'Copper Ore Random',132,1000,57],
+        [1303,873,'Copper Ore Random',132,1000,57],
+        [564,682,'Copper Ore Random',132,1000,57],
+        [190,-666,'Copper Ore Random',132,1000,57],
+        [283,-923,'Copper Ore Random',132,1000,57],
+        [509,-1158,'Copper Ore Random',132,1000,57]
       ],
       OrnateChest: [
         [989,-1372,'Ornate Chest Large',60,1000,28]
@@ -2592,7 +2723,7 @@ const CAVE_MODULES = {
         [-1246,-1295,'Floor Spikes',52,500,31]
       ],
       Valuable: [
-        [1351,214,'Gems',5,1000,34],
+        [1351,214,'Gems',95,1000,34],
         [1411,214,'Ground',6,1000,36],
         [-807,453,'Ground',6,1000,36],
         [-1106,641,'Ground',6,1000,36],
@@ -2669,20 +2800,20 @@ const CAVE_MODULES = {
         [819,-20,'Floor Lever',50,1000,38]
       ],
       Monster: [
-        [620,-140,'Skeleton Champion',116,250,22],
-        [-175,-1183,'Goblin Warrior',113,1000,53],
-        [-7,337,'Goblin Warrior',113,1000,53],
-        [793,-872,'Goblin Mage',110,1000,52],
-        [1225,-465,'Mummy',114,1000,59],
-        [1221,289,'Mummy',114,1000,59],
-        [1379,159,'Goblin Archer',107,1000,83],
-        [113,215,'Goblin Mage',110,1000,52],
-        [240,51,'Goblin Warrior',113,1000,53],
-        [408,871,'Goblin Warrior',113,1000,53],
-        [424,-1287,'Goblin Warrior',113,1000,53],
-        [-333,-1282,'Goblin Warrior',113,1000,53],
-        [-1202,-3,'Goblin Warrior',113,1000,53],
-        [-1230,-269,'Goblin Warrior',113,1000,53]
+        [620,-140,'Skeleton Champion',122,250,22],
+        [-175,-1183,'Goblin Warrior',119,1000,53],
+        [-7,337,'Goblin Warrior',119,1000,53],
+        [793,-872,'Goblin Mage',116,1000,52],
+        [1225,-465,'Mummy',120,1000,59],
+        [1221,289,'Mummy',120,1000,59],
+        [1379,159,'Goblin Archer',113,1000,83],
+        [113,215,'Goblin Mage',116,1000,52],
+        [240,51,'Goblin Warrior',119,1000,53],
+        [408,871,'Goblin Warrior',119,1000,53],
+        [424,-1287,'Goblin Warrior',119,1000,53],
+        [-333,-1282,'Goblin Warrior',119,1000,53],
+        [-1202,-3,'Goblin Warrior',119,1000,53],
+        [-1230,-269,'Goblin Warrior',119,1000,53]
       ],
       PlayerSpawn: [
         [-868,241,'Player Spawn',-1,1000,-1],
@@ -2698,7 +2829,7 @@ const CAVE_MODULES = {
         [-1359,6,'Ground',6,1000,36],
         [-1359,-294,'Ground',6,1000,36],
         [-1067,283,'Ground',6,1000,36],
-        [1103,266,'Gems',5,1000,34],
+        [1103,266,'Gems',95,1000,34],
         [1448,220,'Coin',4,1000,71],
         [91,-826,'Coin',4,1000,71],
         [146,-879,'Trinkets',8,1000,35],
@@ -2708,7 +2839,7 @@ const CAVE_MODULES = {
         [1305,130,'Ground',6,1000,36],
         [143,765,'Ground',6,1000,36],
         [1298,383,'Ground',6,1000,36],
-        [1332,258,'Gems',5,1000,34]
+        [1332,258,'Gems',95,1000,34]
       ],
     }
   },
@@ -2730,13 +2861,13 @@ const CAVE_MODULES = {
         [-745,1055,'Pot',69,1000,8],
         [-1110,-1415,'Skeleton Wooden Barrel',80,1000,62],
         [746,-836,'Pot',69,1000,8],
-        [-317,72,'Spider Pot',129,1000,9],
-        [-247,-1330,'Spider Pot',129,1000,9],
+        [-317,72,'Spider Pot',135,1000,9],
+        [-247,-1330,'Spider Pot',135,1000,9],
         [1070,-564,'Pot',69,1000,8],
         [1172,-517,'Pot',69,1000,8],
-        [-1166,619,'Skeleton Wooden Barrel Random',128,1000,7],
-        [-1247,-438,'Skeleton Wooden Barrel Random',128,1000,7],
-        [-1366,-299,'Spider Pot',129,1000,9],
+        [-1166,619,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-1247,-438,'Skeleton Wooden Barrel Random',134,1000,7],
+        [-1366,-299,'Spider Pot',135,1000,9],
         [471,-1133,'Pot',69,1000,8],
         [882,-539,'Pot',69,1000,8],
         [813,-568,'Pot',67,1000,12],
@@ -2773,55 +2904,55 @@ const CAVE_MODULES = {
         [1028,421,'Wooden Door With Square Grating',92,714,94]
       ],
       Monster: [
-        [-924,-813,'Giant Spider',106,1000,80],
-        [-808,825,'Skeleton Mage',119,1000,24],
-        [-60,1423,'Giant Bat',103,333,51],
-        [-629,549,'Giant Dragonfly',105,333,61],
-        [-544,471,'Death Beetle',101,333,23],
-        [-587,596,'Giant Bat',103,333,51],
-        [777,277,'Giant Spider',106,1000,80],
-        [-1290,-42,'Giant Dragonfly',105,333,61],
-        [-1368,-168,'Giant Spider',106,333,80],
-        [-1235,-490,'Giant Spider',106,333,80],
-        [-1009,1172,'Death Beetle',101,333,23],
-        [-1179,737,'Giant Bat',103,333,51],
-        [-1040,673,'Giant Spider',106,333,80],
-        [-141,1330,'Death Beetle',101,250,23],
-        [-164,1248,'Giant Dragonfly',105,250,61],
-        [-807,-958,'Spider Mummy',122,1000,41],
-        [-252,1312,'Giant Spider',106,250,80],
-        [1237,292,'Giant Dragonfly',105,500,61],
-        [1141,1327,'Skeleton Champion',116,1000,22],
-        [1322,214,'Death Beetle',101,500,23],
-        [908,1376,'Giant Dragonfly',105,333,61],
-        [171,-120,'Giant Spider',106,1000,80],
-        [1141,1146,'Giant Dragonfly',105,333,61],
-        [1226,1068,'Death Beetle',101,333,23],
-        [993,1298,'Death Beetle',101,333,23],
-        [-1177,1036,'Giant Spider',106,1000,80],
-        [950,1423,'Giant Bat',103,333,51],
-        [-102,1376,'Giant Dragonfly',105,333,61],
-        [-719,-164,'Giant Spider',106,1000,80],
-        [166,-1292,'Giant Centipede',104,1000,43],
-        [171,-120,'Spider Mummy',122,1000,41],
-        [1074,1309,'Giant Spider',106,333,80],
-        [255,-253,'Giant Spider',106,1000,80],
-        [-1004,-679,'Spider Mummy',122,1000,41],
-        [171,-120,'Spider Mummy',122,1000,41],
-        [-974,-810,'Giant Centipede',104,333,43],
-        [-875,-888,'Giant Spider',106,333,80],
-        [1276,62,'Giant Dragonfly',105,500,61],
-        [1361,-16,'Death Beetle',101,500,23],
-        [-991,-812,'Giant Bat',103,333,51],
-        [-17,1298,'Death Beetle',101,333,23]
+        [-924,-813,'Giant Spider',112,1000,80],
+        [-808,825,'Skeleton Mage',125,1000,24],
+        [-60,1423,'Giant Bat',109,333,51],
+        [-629,549,'Giant Dragonfly',111,333,61],
+        [-544,471,'Death Beetle',107,333,23],
+        [-587,596,'Giant Bat',109,333,51],
+        [777,277,'Giant Spider',112,1000,80],
+        [-1290,-42,'Giant Dragonfly',111,333,61],
+        [-1368,-168,'Giant Spider',112,333,80],
+        [-1235,-490,'Giant Spider',112,333,80],
+        [-1009,1172,'Death Beetle',107,333,23],
+        [-1179,737,'Giant Bat',109,333,51],
+        [-1040,673,'Giant Spider',112,333,80],
+        [-141,1330,'Death Beetle',107,250,23],
+        [-164,1248,'Giant Dragonfly',111,250,61],
+        [-807,-958,'Spider Mummy',128,1000,41],
+        [-252,1312,'Giant Spider',112,250,80],
+        [1237,292,'Giant Dragonfly',111,500,61],
+        [1141,1327,'Skeleton Champion',122,1000,22],
+        [1322,214,'Death Beetle',107,500,23],
+        [908,1376,'Giant Dragonfly',111,333,61],
+        [171,-120,'Giant Spider',112,1000,80],
+        [1141,1146,'Giant Dragonfly',111,333,61],
+        [1226,1068,'Death Beetle',107,333,23],
+        [993,1298,'Death Beetle',107,333,23],
+        [-1177,1036,'Giant Spider',112,1000,80],
+        [950,1423,'Giant Bat',109,333,51],
+        [-102,1376,'Giant Dragonfly',111,333,61],
+        [-719,-164,'Giant Spider',112,1000,80],
+        [166,-1292,'Giant Centipede',110,1000,43],
+        [171,-120,'Spider Mummy',128,1000,41],
+        [1074,1309,'Giant Spider',112,333,80],
+        [255,-253,'Giant Spider',112,1000,80],
+        [-1004,-679,'Spider Mummy',128,1000,41],
+        [171,-120,'Spider Mummy',128,1000,41],
+        [-974,-810,'Giant Centipede',110,333,43],
+        [-875,-888,'Giant Spider',112,333,80],
+        [1276,62,'Giant Dragonfly',111,500,61],
+        [1361,-16,'Death Beetle',107,500,23],
+        [-991,-812,'Giant Bat',109,333,51],
+        [-17,1298,'Death Beetle',107,333,23]
       ],
       Ore: [
-        [-932,134,'Copper Ore Random',126,1000,57],
-        [-1447,418,'Copper Ore Random',126,1000,57],
-        [442,331,'Copper Ore Random',126,1000,57],
-        [542,157,'Copper Ore Random',126,1000,57],
-        [-987,-828,'Copper Ore Random',126,1000,57],
-        [-265,-244,'Copper Ore Random',126,1000,57]
+        [-932,134,'Copper Ore Random',132,1000,57],
+        [-1447,418,'Copper Ore Random',132,1000,57],
+        [442,331,'Copper Ore Random',132,1000,57],
+        [542,157,'Copper Ore Random',132,1000,57],
+        [-987,-828,'Copper Ore Random',132,1000,57],
+        [-265,-244,'Copper Ore Random',132,1000,57]
       ],
       PlayerSpawn: [
         [709,-775,'Player Spawn',-1,1000,-1],
@@ -2865,34 +2996,34 @@ const CAVE_MODULES = {
         [1355,88,'Ground',6,1000,36],
         [1309,1120,'Ground',6,1000,36],
         [340,1200,'Ground',6,1000,36],
-        [301,1268,'Gems',5,1000,34],
+        [301,1268,'Gems',95,1000,34],
         [271,1205,'Ground',6,1000,36],
         [-456,1189,'Ground',6,1000,36],
-        [-449,1267,'Gems',5,1000,34],
+        [-449,1267,'Gems',95,1000,34],
         [-510,1232,'Ground',6,1000,36],
         [-1315,1139,'Ground',6,1000,36],
-        [-1171,1216,'Gems',5,1000,34],
+        [-1171,1216,'Gems',95,1000,34],
         [-1259,1179,'Ground',6,1000,36],
         [377,-1260,'Ground',6,1000,36],
         [166,-1295,'Ground',6,1000,36],
-        [210,-1293,'Gems',5,1000,34],
+        [210,-1293,'Gems',95,1000,34],
         [-1188,-1334,'Ground',6,1000,36],
         [-1194,-1287,'Ground',6,1000,36],
-        [-1254,-1330,'Gems',5,1000,34],
+        [-1254,-1330,'Gems',95,1000,34],
         [-1281,-91,'Ground',6,1000,36],
         [-1269,-148,'Ground',6,1000,36],
-        [-1348,-72,'Gems',5,1000,34],
+        [-1348,-72,'Gems',95,1000,34],
         [-1157,447,'Ground',6,1000,36],
         [-1176,392,'Ground',6,1000,36],
-        [-1182,471,'Gems',5,1000,34],
+        [-1182,471,'Gems',95,1000,34],
         [1272,1151,'Ground',6,1000,36],
-        [1358,1217,'Gems',5,1000,34],
+        [1358,1217,'Gems',95,1000,34],
         [-664,104,'Ground',6,1000,36],
         [-664,304,'Ground',6,1000,36],
         [1266,288,'Ground',6,1000,36],
         [1305,130,'Ground',6,1000,36],
         [1298,383,'Ground',6,1000,36],
-        [1348,241,'Gems',5,1000,34]
+        [1348,241,'Gems',95,1000,34]
       ],
     }
   },

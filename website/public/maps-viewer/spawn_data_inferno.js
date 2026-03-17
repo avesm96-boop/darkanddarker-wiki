@@ -7,9 +7,9 @@ const SPAWN_VARIANTS = [
   [1000,[['Armor Armory',1000,1000]]],
   [1000,[['Bandage',1000,1000]]],
   [500,[['Coin',1000,500]]],
-  [555,[['Gems',1000,555]]],
+  [760,[['Gems',1000,760]]],
   [1000,[['Ground',1000,1000]]],
-  [740,[['Potion',1000,740]]],
+  [550,[['Potion',1000,550]]],
   [700,[['Trinkets',1000,700]]],
   [1000,[['Weapon',1000,1000]]],
   [1000,[['Weapon Skull Room',1000,1000]]],
@@ -88,7 +88,11 @@ const SPAWN_VARIANTS = [
   [1000,[['Wood Chest Small',1000,1000]]],
   [1000,[['Wooden Barrel02',1000,1000]]],
   [1000,[['Wooden Crate Small',1000,1000]]],
+  [925,[['Bandage',1000,925]]],
+  [950,[['Gems',1000,950]]],
+  [1000,[['Potion',1000,1000]]],
   [1000,[['Ore Rubysilver Ore Low',900,900],['Ore Rubysilver Ore Med',100,100]]],
+  [775,[['Bandage',1000,775]]],
   [1000,[['Abomination Nightmare',800,800],['Abomination Elite',200,200]]],
   [1000,[['Centaur Demon Nightmare',800,800],['Centaur Demon Elite',200,200]]],
   [1000,[['Cerberus Nightmare',800,800],['Cerberus Elite',200,200]]],
@@ -126,8 +130,8 @@ const SPAWN_VARIANTS = [
 
 const SPAWN_VID = {
   1023: [5,82,70,61,63,68,26,33,34,45,6,81,-1,41,55,20,52,43,42,44,1,64,71,62,-1,40,46,60,31,18,23,16,32,15,22,25,48,2,3,72,12,10,56,13,39,38,28,11,17,57,8,53,76,74,49,52,4,73,7,50,54,14,37,58,80,79,75,65,59,77,21,36,35,27,9,19,67,66,78,24,83,0,29,47,30,51,69],
-  2023: [5,82,70,61,63,68,26,33,34,45,6,81,-1,41,55,20,52,43,42,44,1,64,71,62,-1,40,46,60,31,18,23,16,32,15,22,25,48,2,3,72,12,10,84,13,39,38,28,11,17,57,8,53,76,74,49,52,4,73,7,50,54,14,37,58,80,79,75,65,59,77,21,36,35,27,9,19,67,66,78,24,83,0,29,47,30,51,69],
-  3023: [5,82,70,61,63,68,102,109,110,45,6,81,-1,41,55,96,52,43,42,44,1,64,71,62,-1,40,46,60,107,94,99,92,108,91,98,101,48,2,3,72,88,86,116,89,115,114,104,87,93,57,8,53,76,74,49,52,4,73,7,50,54,90,113,58,80,79,117,65,59,77,97,112,111,103,85,95,67,66,78,100,83,0,105,47,106,51,69],
+  2023: [86,82,70,61,63,68,26,33,34,45,6,81,-1,41,55,20,52,43,42,44,84,64,71,62,-1,40,46,60,31,18,23,16,32,15,22,25,48,2,85,72,12,10,87,13,39,38,28,11,17,57,8,53,76,74,49,52,4,73,7,50,54,14,37,58,80,79,75,65,59,77,21,36,35,27,9,19,67,66,78,24,83,0,29,47,30,51,69],
+  3023: [86,82,70,61,63,68,106,113,114,45,6,81,-1,41,55,100,52,43,42,44,88,64,71,62,-1,40,46,60,111,98,103,96,112,95,102,105,48,2,85,72,92,90,120,93,119,118,108,91,97,57,8,53,76,74,49,52,4,73,7,50,54,94,117,58,80,79,121,65,59,77,101,116,115,107,89,99,67,66,78,104,83,0,109,47,110,51,69],
 };
 
 const INFERNO_MODULES = {
@@ -137,7 +141,7 @@ const INFERNO_MODULES = {
     count: 45,
     spawns: {
       Consumable: [
-        [-627,-771,'Potion',5,1000,0]
+        [-627,-771,'Potion',86,1000,0]
       ],
       Container: [
         [-1,48,'Wooden Barrel',82,1000,1],
@@ -160,20 +164,20 @@ const INFERNO_MODULES = {
         [707,-345,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [-200,-950,'Skeleton Archer',102,1000,6],
-        [200,-930,'Skeleton Archer',102,1000,6],
-        [190,944,'Skeleton Archer',102,1000,6],
-        [-200,936,'Skeleton Archer',102,1000,6],
-        [372,214,'Skeleton Melee 5type',109,1000,7],
-        [-408,-236,'Skeleton Melee 5type',109,1000,7],
-        [122,414,'Skeleton Melee 5type',109,1000,7],
-        [-183,-245,'Skeleton Melee 5type',109,1000,7],
-        [662,-586,'Skeleton Melee 5type',109,500,7],
-        [-598,-666,'Skeleton Melee 5type',109,1000,7],
-        [-548,574,'Skeleton Ranged 2type',110,1000,8],
-        [572,-586,'Skeleton Ranged 2type',110,500,8],
-        [642,554,'Skeleton Melee 5type',109,1000,7],
-        [-648,534,'Skeleton Melee 5type',109,1000,7]
+        [-200,-950,'Skeleton Archer',106,1000,6],
+        [200,-930,'Skeleton Archer',106,1000,6],
+        [190,944,'Skeleton Archer',106,1000,6],
+        [-200,936,'Skeleton Archer',106,1000,6],
+        [372,214,'Skeleton Melee 5type',113,1000,7],
+        [-408,-236,'Skeleton Melee 5type',113,1000,7],
+        [122,414,'Skeleton Melee 5type',113,1000,7],
+        [-183,-245,'Skeleton Melee 5type',113,1000,7],
+        [662,-586,'Skeleton Melee 5type',113,500,7],
+        [-598,-666,'Skeleton Melee 5type',113,1000,7],
+        [-548,574,'Skeleton Ranged 2type',114,1000,8],
+        [572,-586,'Skeleton Ranged 2type',114,500,8],
+        [642,554,'Skeleton Melee 5type',113,1000,7],
+        [-648,534,'Skeleton Melee 5type',113,1000,7]
       ],
       PlayerSpawn: [
         [-1164,-775,'Player Spawn',-1,1000,-1]
@@ -216,7 +220,7 @@ const INFERNO_MODULES = {
         [1396,-1,'Marvelous Chest',55,1000,14]
       ],
       Monster: [
-        [0,0,'Ghost King',96,1000,15]
+        [0,0,'Ghost King',100,1000,15]
       ],
       TreasureHoard: [
         [1302,17,'Hoard',52,1000,16]
@@ -258,8 +262,8 @@ const INFERNO_MODULES = {
         [900,400,'Chest Medium',43,1000,17]
       ],
       Consumable: [
-        [795,0,'Bandage',1,1000,20],
-        [882,128,'Potion',5,1000,0]
+        [795,0,'Bandage',88,1000,20],
+        [882,128,'Potion',86,1000,0]
       ],
       Container: [
         [1436,-429,'Pot',64,1000,21],
@@ -283,29 +287,29 @@ const INFERNO_MODULES = {
         [490,121,'Floor Lever',46,1000,26]
       ],
       Monster: [
-        [-1353,-1293,'Skeleton Melee 5type',109,1000,7],
-        [-1192,1162,'Skeleton Melee 5type',109,1000,7],
-        [-1454,714,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-1395,25,'Skeleton Melee 5type',109,1000,7],
-        [53,-25,'Demon Imp',94,1000,29],
-        [-400,-950,'Hell Maggot',99,1000,30],
-        [-450,-950,'Hell Maggot',99,1000,30],
-        [-450,-1000,'Hell Maggot',99,1000,30],
-        [-400,1050,'Hell Maggot',99,1000,30],
-        [-450,1050,'Hell Maggot',99,1000,30],
-        [-450,1000,'Hell Maggot',99,1000,30],
-        [310,-320,'Demon Dog',92,1000,31],
-        [310,290,'Demon Dog',92,1000,31],
-        [675,0,'Skeleton Mage',108,1000,32],
-        [-78,-5,'Demon Berserker',91,1000,33],
-        [-710,0,'Skeleton Melee 5type',109,1000,7],
-        [-460,-680,'Giant Dragonfly',98,1000,34],
-        [-460,910,'Giant Dragonfly',98,1000,34],
-        [310,-1090,'Giant Dragonfly',98,1000,34],
-        [310,1050,'Giant Dragonfly',98,1000,34],
-        [820,0,'Mummy',101,1000,35],
-        [1150,290,'Mummy',101,1000,35],
-        [1150,-210,'Mummy',101,1000,35]
+        [-1353,-1293,'Skeleton Melee 5type',113,1000,7],
+        [-1192,1162,'Skeleton Melee 5type',113,1000,7],
+        [-1454,714,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-1395,25,'Skeleton Melee 5type',113,1000,7],
+        [53,-25,'Demon Imp',98,1000,29],
+        [-400,-950,'Hell Maggot',103,1000,30],
+        [-450,-950,'Hell Maggot',103,1000,30],
+        [-450,-1000,'Hell Maggot',103,1000,30],
+        [-400,1050,'Hell Maggot',103,1000,30],
+        [-450,1050,'Hell Maggot',103,1000,30],
+        [-450,1000,'Hell Maggot',103,1000,30],
+        [310,-320,'Demon Dog',96,1000,31],
+        [310,290,'Demon Dog',96,1000,31],
+        [675,0,'Skeleton Mage',112,1000,32],
+        [-78,-5,'Demon Berserker',95,1000,33],
+        [-710,0,'Skeleton Melee 5type',113,1000,7],
+        [-460,-680,'Giant Dragonfly',102,1000,34],
+        [-460,910,'Giant Dragonfly',102,1000,34],
+        [310,-1090,'Giant Dragonfly',102,1000,34],
+        [310,1050,'Giant Dragonfly',102,1000,34],
+        [820,0,'Mummy',105,1000,35],
+        [1150,290,'Mummy',105,1000,35],
+        [1150,-210,'Mummy',105,1000,35]
       ],
       PlayerSpawn: [
         [-1232,-1310,'Player Spawn',-1,1000,-1]
@@ -331,10 +335,10 @@ const INFERNO_MODULES = {
       ],
       Valuable: [
         [-342,-340,'Coin',2,1000,37],
-        [849,340,'Gems',3,250,38],
-        [831,212,'Gems',3,250,38],
-        [831,-216,'Gems',3,250,38],
-        [843,-337,'Gems',3,250,38],
+        [849,340,'Gems',85,250,38],
+        [831,212,'Gems',85,250,38],
+        [831,-216,'Gems',85,250,38],
+        [843,-337,'Gems',85,250,38],
         [-85,-1482,'Coin',2,1000,37],
         [1170,-100,'Coin',2,1000,37]
       ],
@@ -371,7 +375,7 @@ const INFERNO_MODULES = {
         [2,1393,'Chest Medium',43,1000,17]
       ],
       Consumable: [
-        [585,-758,'Bandage',1,1000,20]
+        [585,-758,'Bandage',88,1000,20]
       ],
       Container: [
         [1362,1450,'Wooden Barrel',82,1000,1],
@@ -397,23 +401,23 @@ const INFERNO_MODULES = {
         [0,220,'Altar Of Sacrifice',40,500,25]
       ],
       Monster: [
-        [-176,121,'Death Beetle',88,1000,40],
-        [-5,1180,'Demon Dog',92,1000,31],
-        [185,121,'Death Beetle',88,1000,40],
-        [-1210,178,'Giant Dragonfly',98,1000,34],
-        [905,18,'Giant Dragonfly',98,1000,34],
-        [-33,-610,'Demon Imp',94,1000,29],
-        [-1046,-1029,'Demon Berserker',91,1000,33],
-        [610,-297,'Skeleton Archer',102,1000,6],
-        [-625,-297,'Skeleton Archer',102,1000,6],
-        [-365,-155,'Skeleton Melee 5type',109,1000,7],
-        [1205,1248,'Skeleton Ranged 2type',110,1000,8],
-        [-1110,-1127,'Skeleton Ranged 2type',110,1000,8],
-        [3,-45,'Centaur Demon',86,1000,41]
+        [-176,121,'Death Beetle',92,1000,40],
+        [-5,1180,'Demon Dog',96,1000,31],
+        [185,121,'Death Beetle',92,1000,40],
+        [-1210,178,'Giant Dragonfly',102,1000,34],
+        [905,18,'Giant Dragonfly',102,1000,34],
+        [-33,-610,'Demon Imp',98,1000,29],
+        [-1046,-1029,'Demon Berserker',95,1000,33],
+        [610,-297,'Skeleton Archer',106,1000,6],
+        [-625,-297,'Skeleton Archer',106,1000,6],
+        [-365,-155,'Skeleton Melee 5type',113,1000,7],
+        [1205,1248,'Skeleton Ranged 2type',114,1000,8],
+        [-1110,-1127,'Skeleton Ranged 2type',114,1000,8],
+        [3,-45,'Centaur Demon',90,1000,41]
       ],
       Ore: [
-        [-45,625,'Rubysilver Ore',116,1000,42],
-        [1455,1440,'Rubysilver Ore',116,1000,42]
+        [-45,625,'Rubysilver Ore',120,1000,42],
+        [1455,1440,'Rubysilver Ore',120,1000,42]
       ],
       PlayerSpawn: [
         [1304,1280,'Player Spawn',-1,1000,-1]
@@ -454,7 +458,7 @@ const INFERNO_MODULES = {
         [-810,1390,'Chest Medium',43,1000,17]
       ],
       Consumable: [
-        [310,-768,'Potion',5,1000,0]
+        [310,-768,'Potion',86,1000,0]
       ],
       Container: [
         [1430,-708,'Wooden Barrel',82,1000,1],
@@ -483,22 +487,22 @@ const INFERNO_MODULES = {
         [-1420,-1420,'Altar Of Sacrifice',40,1000,25]
       ],
       Monster: [
-        [751,-462,'Skeleton Ranged 2type',110,1000,8],
-        [-1167,-1401,'Death Skull',89,1000,43],
-        [-1037,-1101,'Death Skull',89,1000,43],
-        [-1167,-1371,'Death Skull',89,1000,43],
-        [963,-798,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-531,667,'Skeleton Ranged 2type',110,1000,8],
-        [495,885,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [963,502,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [1305,-68,'Skeleton Archer',102,1000,6],
-        [11,1307,'Skeleton Ranged 2type',110,1000,8],
-        [-662,989,'Skeleton Melee 5type',109,1000,7],
-        [526,681,'Demon Imp',94,1000,29],
-        [-662,505,'Skeleton Melee 5type',109,1000,7],
-        [-607,178,'Zombie',115,1000,44],
-        [866,-639,'Wraith',114,1000,45],
-        [568,534,'Skeleton Champion',104,1000,46]
+        [751,-462,'Skeleton Ranged 2type',114,1000,8],
+        [-1167,-1401,'Death Skull',93,1000,43],
+        [-1037,-1101,'Death Skull',93,1000,43],
+        [-1167,-1371,'Death Skull',93,1000,43],
+        [963,-798,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-531,667,'Skeleton Ranged 2type',114,1000,8],
+        [495,885,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [963,502,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [1305,-68,'Skeleton Archer',106,1000,6],
+        [11,1307,'Skeleton Ranged 2type',114,1000,8],
+        [-662,989,'Skeleton Melee 5type',113,1000,7],
+        [526,681,'Demon Imp',98,1000,29],
+        [-662,505,'Skeleton Melee 5type',113,1000,7],
+        [-607,178,'Zombie',119,1000,44],
+        [866,-639,'Wraith',118,1000,45],
+        [568,534,'Skeleton Champion',108,1000,46]
       ],
       PlayerSpawn: [
         [1287,-1292,'Player Spawn',-1,1000,-1]
@@ -547,25 +551,25 @@ const INFERNO_MODULES = {
         [-572,-577,'Altar Of Sacrifice',40,1000,25]
       ],
       Monster: [
-        [331,382,'Cerberus',87,1000,47],
-        [1177,1371,'Demon Dog',92,1000,31],
-        [1362,1186,'Demon Dog',92,1000,31],
-        [-732,-749,'Centaur Demon',86,1000,41],
-        [286,-923,'Mummy',101,1000,35],
-        [286,-1131,'Skeleton Melee 5type',109,1000,7],
-        [-1156,95,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [1025,-482,'Demon Berserker',91,1000,33],
-        [2,-1086,'Mummy',101,1000,35],
-        [-743,1047,'Skeleton Ranged 2type',110,1000,8],
-        [-152,42,'Skeleton Melee 5type',109,1000,7],
-        [-152,-343,'Skeleton Melee 5type',109,1000,7],
-        [-143,-194,'Demon Fly',93,1000,48],
-        [-143,74,'Demon Fly',93,1000,48],
-        [-1143,-870,'Demon Fly',93,1000,48],
-        [-599,-914,'Demon Fly',93,1000,48],
-        [976,-1054,'Giant Dragonfly',98,1000,34],
-        [-823,-646,'Demon Imp',94,500,29],
-        [1039,-265,'Demon Imp',94,500,29]
+        [331,382,'Cerberus',91,1000,47],
+        [1177,1371,'Demon Dog',96,1000,31],
+        [1362,1186,'Demon Dog',96,1000,31],
+        [-732,-749,'Centaur Demon',90,1000,41],
+        [286,-923,'Mummy',105,1000,35],
+        [286,-1131,'Skeleton Melee 5type',113,1000,7],
+        [-1156,95,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [1025,-482,'Demon Berserker',95,1000,33],
+        [2,-1086,'Mummy',105,1000,35],
+        [-743,1047,'Skeleton Ranged 2type',114,1000,8],
+        [-152,42,'Skeleton Melee 5type',113,1000,7],
+        [-152,-343,'Skeleton Melee 5type',113,1000,7],
+        [-143,-194,'Demon Fly',97,1000,48],
+        [-143,74,'Demon Fly',97,1000,48],
+        [-1143,-870,'Demon Fly',97,1000,48],
+        [-599,-914,'Demon Fly',97,1000,48],
+        [976,-1054,'Giant Dragonfly',102,1000,34],
+        [-823,-646,'Demon Imp',98,500,29],
+        [1039,-265,'Demon Imp',98,500,29]
       ],
       OrnateChest: [
         [565,277,'Ornate Chest Large',57,1000,49]
@@ -629,7 +633,7 @@ const INFERNO_MODULES = {
         [1420,1250,'Chest Medium',43,1000,17]
       ],
       Consumable: [
-        [1020,-160,'Potion',5,1000,0]
+        [1020,-160,'Potion',86,1000,0]
       ],
       Container: [
         [21,-1442,'Wooden Barrel',82,1000,1],
@@ -672,24 +676,24 @@ const INFERNO_MODULES = {
         [1201,-160,'Marvelous Chest',55,1000,14]
       ],
       Monster: [
-        [1040,22,'Skeleton Archer',102,1000,6],
-        [540,0,'Giant Dragonfly',98,1000,34],
-        [830,-10,'Giant Dragonfly',98,1000,34],
-        [-669,130,'Skeleton Ranged 2type',110,1000,8],
-        [1291,-1122,'Skeleton Ranged 2type',110,1000,8],
-        [1300,1070,'Skeleton Archer',102,1000,6],
-        [170,1190,'Skeleton Melee 5type',109,1000,7],
-        [31,-1192,'Skeleton Melee 5type',109,1000,7],
-        [230,1280,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-300,1280,'Skeleton Archer',102,1000,6],
-        [911,1308,'Skeleton Melee 5type',109,1000,7],
-        [1170,1290,'Skeleton Melee 5type',109,1000,7],
-        [920,-1240,'Giant Dragonfly',98,500,34],
-        [1230,-1290,'Skeleton Archer',102,500,6],
-        [1210,100,'Mummy',101,1000,35],
-        [1050,-70,'Mummy',101,1000,35],
-        [-530,0,'Skeleton Melee 5type',109,1000,7],
-        [-669,-122,'Skeleton Guardsman From Fake Death',107,1000,28]
+        [1040,22,'Skeleton Archer',106,1000,6],
+        [540,0,'Giant Dragonfly',102,1000,34],
+        [830,-10,'Giant Dragonfly',102,1000,34],
+        [-669,130,'Skeleton Ranged 2type',114,1000,8],
+        [1291,-1122,'Skeleton Ranged 2type',114,1000,8],
+        [1300,1070,'Skeleton Archer',106,1000,6],
+        [170,1190,'Skeleton Melee 5type',113,1000,7],
+        [31,-1192,'Skeleton Melee 5type',113,1000,7],
+        [230,1280,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-300,1280,'Skeleton Archer',106,1000,6],
+        [911,1308,'Skeleton Melee 5type',113,1000,7],
+        [1170,1290,'Skeleton Melee 5type',113,1000,7],
+        [920,-1240,'Giant Dragonfly',102,500,34],
+        [1230,-1290,'Skeleton Archer',106,500,6],
+        [1210,100,'Mummy',105,1000,35],
+        [1050,-70,'Mummy',105,1000,35],
+        [-530,0,'Skeleton Melee 5type',113,1000,7],
+        [-669,-122,'Skeleton Guardsman From Fake Death',111,1000,28]
       ],
       OrnateChest: [
         [1190,166,'Ornate Chest Large',57,1000,49]
@@ -758,10 +762,10 @@ const INFERNO_MODULES = {
         [194,504,'Chest Large',42,1000,18]
       ],
       Consumable: [
-        [-1329,871,'Bandage',1,1000,20],
-        [3,-1141,'Bandage',1,1000,20],
-        [-343,150,'Bandage',1,1000,20],
-        [1323,-476,'Potion',5,1000,0]
+        [-1329,871,'Bandage',88,1000,20],
+        [3,-1141,'Bandage',88,1000,20],
+        [-343,150,'Bandage',88,1000,20],
+        [1323,-476,'Potion',86,1000,0]
       ],
       Container: [
         [-40,960,'Pot',63,1000,4],
@@ -824,24 +828,24 @@ const INFERNO_MODULES = {
         [-327,-1055,'Floor Lever',46,1000,26]
       ],
       Monster: [
-        [664,-704,'Zombie',115,1000,44],
-        [217,-523,'Zombie',115,1000,44],
-        [750,-700,'Giant Dragonfly',98,1000,34],
-        [1070,890,'Demon Bat',90,1000,61],
-        [-1170,30,'Demon Bat',90,1000,61],
-        [810,-280,'Demon Bat',90,1000,61],
-        [-830,400,'Giant Dragonfly',98,1000,34],
-        [178,-1107,'Skeleton Melee 5type',109,1000,7],
-        [-168,-1087,'Skeleton Melee 5type',109,1000,7],
-        [514,-1221,'Zombie',115,1000,44],
-        [156,1206,'Skeleton Melee 5type',109,1000,7],
-        [-118,1097,'Zombie',115,1000,44],
-        [-432,1312,'Mummy',101,1000,35],
-        [-471,1118,'Skeleton Melee 5type',109,1000,7],
-        [1187,-536,'Spider Mummy',113,1000,62],
-        [1096,240,'Wraith',114,1000,45],
-        [28,1312,'Mummy',101,1000,35],
-        [1187,-416,'Spider Mummy',113,1000,62]
+        [664,-704,'Zombie',119,1000,44],
+        [217,-523,'Zombie',119,1000,44],
+        [750,-700,'Giant Dragonfly',102,1000,34],
+        [1070,890,'Demon Bat',94,1000,61],
+        [-1170,30,'Demon Bat',94,1000,61],
+        [810,-280,'Demon Bat',94,1000,61],
+        [-830,400,'Giant Dragonfly',102,1000,34],
+        [178,-1107,'Skeleton Melee 5type',113,1000,7],
+        [-168,-1087,'Skeleton Melee 5type',113,1000,7],
+        [514,-1221,'Zombie',119,1000,44],
+        [156,1206,'Skeleton Melee 5type',113,1000,7],
+        [-118,1097,'Zombie',119,1000,44],
+        [-432,1312,'Mummy',105,1000,35],
+        [-471,1118,'Skeleton Melee 5type',113,1000,7],
+        [1187,-536,'Spider Mummy',117,1000,62],
+        [1096,240,'Wraith',118,1000,45],
+        [28,1312,'Mummy',105,1000,35],
+        [1187,-416,'Spider Mummy',117,1000,62]
       ],
       OrnateChest: [
         [163,-1331,'Ornate Chest Large',57,1000,49]
@@ -920,25 +924,25 @@ const INFERNO_MODULES = {
         [-1257,-1261,'Altar Of Sacrifice',40,1000,25]
       ],
       Monster: [
-        [-788,689,'Mummy',101,1000,35],
-        [-1021,1288,'Demon Dog',92,1000,31],
-        [-882,-883,'Centaur Demon',86,1000,41],
-        [1261,-637,'Skeleton Melee 5type',109,1000,7],
-        [-55,-620,'Skeleton Archer',102,1000,6],
-        [-904,303,'Skeleton Archer',102,1000,6],
-        [1402,1197,'Demon Dog',92,1000,31],
-        [1197,1425,'Demon Dog',92,1000,31],
-        [-230,-196,'Demon Bat',90,1000,61],
-        [934,878,'Death Skull',89,1000,43],
-        [881,778,'Death Skull',89,1000,43],
-        [746,-661,'Mummy',101,1000,35],
-        [-371,-153,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-1246,-1218,'Demon Bat',90,1000,61],
-        [-919,-1068,'Demon Imp',94,1000,29]
+        [-788,689,'Mummy',105,1000,35],
+        [-1021,1288,'Demon Dog',96,1000,31],
+        [-882,-883,'Centaur Demon',90,1000,41],
+        [1261,-637,'Skeleton Melee 5type',113,1000,7],
+        [-55,-620,'Skeleton Archer',106,1000,6],
+        [-904,303,'Skeleton Archer',106,1000,6],
+        [1402,1197,'Demon Dog',96,1000,31],
+        [1197,1425,'Demon Dog',96,1000,31],
+        [-230,-196,'Demon Bat',94,1000,61],
+        [934,878,'Death Skull',93,1000,43],
+        [881,778,'Death Skull',93,1000,43],
+        [746,-661,'Mummy',105,1000,35],
+        [-371,-153,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-1246,-1218,'Demon Bat',94,1000,61],
+        [-919,-1068,'Demon Imp',98,1000,29]
       ],
       Ore: [
-        [-570,330,'Rubysilver Ore',116,1000,42],
-        [-1325,-1470,'Rubysilver Ore',116,1000,42]
+        [-570,330,'Rubysilver Ore',120,1000,42],
+        [-1325,-1470,'Rubysilver Ore',120,1000,42]
       ],
       OrnateChest: [
         [-1193,-1428,'Ornate Chest Medium',58,1000,63],
@@ -1006,7 +1010,7 @@ const INFERNO_MODULES = {
         [805,1190,'Chest Medium',43,1000,17]
       ],
       Container: [
-        [-905,-1345,'Spider Pot',117,1000,66],
+        [-905,-1345,'Spider Pot',121,1000,66],
         [-805,-315,'Pot',61,1000,3],
         [-1030,480,'Pot',64,1000,21],
         [-1120,450,'Pot',61,1000,3],
@@ -1031,7 +1035,7 @@ const INFERNO_MODULES = {
         [-257,1251,'Pot',63,1000,4],
         [-118,1397,'Pot',63,1000,4],
         [-418,1257,'Pot',61,1000,3],
-        [-173,1324,'Spider Pot',117,1000,66],
+        [-173,1324,'Spider Pot',121,1000,66],
         [-990,410,'Pot',62,1000,23],
         [-238,426,'Wooden Barrel',82,1000,1],
         [-705,-1275,'Pot',62,1000,23],
@@ -1044,7 +1048,7 @@ const INFERNO_MODULES = {
         [-167,1022,'Pot',64,1000,21],
         [-508,156,'Wooden Barrel',82,1000,1],
         [-64,1002,'Pot',61,1000,3],
-        [-204,1207,'Spider Pot',117,1000,66],
+        [-204,1207,'Spider Pot',121,1000,66],
         [-518,246,'Wooden Barrel',82,1000,1],
         [-598,201,'Wooden Barrel',82,1000,1]
       ],
@@ -1079,26 +1083,26 @@ const INFERNO_MODULES = {
         [-1200,620,'Single Stone Door',68,500,5]
       ],
       Monster: [
-        [-358,126,'Skeleton Melee 5type',109,1000,7],
-        [1427,1400,'Skeleton Melee 5type',109,1000,7],
-        [468,1191,'Skeleton Melee 5type',109,1000,7],
-        [-1282,1122,'Skeleton Melee 5type',109,1000,7],
-        [-1147,452,'Skeleton Melee 5type',109,1000,7],
-        [-607,477,'Skeleton Melee 5type',109,1000,7],
-        [-690,480,'Skeleton Ranged 2type',110,1000,8],
-        [561,408,'Skeleton Ranged 2type',110,1000,8],
-        [1283,467,'Skeleton Ranged 2type',110,1000,8],
-        [1308,-1133,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [328,-1308,'Skeleton Melee 5type',109,1000,7],
-        [-472,-1168,'Skeleton Melee 5type',109,1000,7],
-        [-1377,-1158,'Skeleton Melee 5type',109,1000,7],
-        [-1172,-468,'Skeleton Melee 5type',109,1000,7],
-        [-597,-463,'Skeleton Melee 5type',109,1000,7],
-        [1112,-186,'Skeleton Ranged 2type',110,1000,8],
-        [473,-1178,'Skeleton Melee 5type',109,1000,7],
-        [118,-1188,'Skeleton Melee 5type',109,1000,7],
-        [513,-1338,'Skeleton Melee 5type',109,1000,7],
-        [-865,-800,'Skeleton Mage',108,1000,32]
+        [-358,126,'Skeleton Melee 5type',113,1000,7],
+        [1427,1400,'Skeleton Melee 5type',113,1000,7],
+        [468,1191,'Skeleton Melee 5type',113,1000,7],
+        [-1282,1122,'Skeleton Melee 5type',113,1000,7],
+        [-1147,452,'Skeleton Melee 5type',113,1000,7],
+        [-607,477,'Skeleton Melee 5type',113,1000,7],
+        [-690,480,'Skeleton Ranged 2type',114,1000,8],
+        [561,408,'Skeleton Ranged 2type',114,1000,8],
+        [1283,467,'Skeleton Ranged 2type',114,1000,8],
+        [1308,-1133,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [328,-1308,'Skeleton Melee 5type',113,1000,7],
+        [-472,-1168,'Skeleton Melee 5type',113,1000,7],
+        [-1377,-1158,'Skeleton Melee 5type',113,1000,7],
+        [-1172,-468,'Skeleton Melee 5type',113,1000,7],
+        [-597,-463,'Skeleton Melee 5type',113,1000,7],
+        [1112,-186,'Skeleton Ranged 2type',114,1000,8],
+        [473,-1178,'Skeleton Melee 5type',113,1000,7],
+        [118,-1188,'Skeleton Melee 5type',113,1000,7],
+        [513,-1338,'Skeleton Melee 5type',113,1000,7],
+        [-865,-800,'Skeleton Mage',112,1000,32]
       ],
       OrnateChest: [
         [677,1222,'Ornate Chest Small',59,1000,68]
@@ -1165,10 +1169,10 @@ const INFERNO_MODULES = {
         [760,125,'Chest Large',42,1000,18]
       ],
       Consumable: [
-        [640,-1120,'Bandage',1,1000,20],
-        [-685,-1405,'Potion',5,1000,0],
-        [655,1130,'Potion',5,1000,0],
-        [-795,1475,'Bandage',1,1000,20]
+        [640,-1120,'Bandage',88,1000,20],
+        [-685,-1405,'Potion',86,1000,0],
+        [655,1130,'Potion',86,1000,0],
+        [-795,1475,'Bandage',88,1000,20]
       ],
       Interact: [
         [500,-850,'Wall Lever Only Activate',77,1000,69],
@@ -1179,17 +1183,17 @@ const INFERNO_MODULES = {
         [-1050,-1230,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [-50,0,'Demon Bat',90,1000,61],
-        [200,-300,'Ghoul',97,1000,70],
-        [-5,-1290,'Skeleton Archer',102,1000,6],
-        [-5,1290,'Skeleton Archer',102,1000,6],
-        [-200,300,'Ghoul',97,1000,70],
-        [-790,-535,'Zombie',115,1000,44],
-        [-765,520,'Zombie',115,1000,44],
-        [700,-485,'Zombie',115,1000,44],
-        [725,505,'Zombie',115,1000,44],
-        [1275,-260,'Skeleton Swordman',112,1000,71],
-        [-1310,300,'Skeleton Swordman',112,1000,71]
+        [-50,0,'Demon Bat',94,1000,61],
+        [200,-300,'Ghoul',101,1000,70],
+        [-5,-1290,'Skeleton Archer',106,1000,6],
+        [-5,1290,'Skeleton Archer',106,1000,6],
+        [-200,300,'Ghoul',101,1000,70],
+        [-790,-535,'Zombie',119,1000,44],
+        [-765,520,'Zombie',119,1000,44],
+        [700,-485,'Zombie',119,1000,44],
+        [725,505,'Zombie',119,1000,44],
+        [1275,-260,'Skeleton Swordman',116,1000,71],
+        [-1310,300,'Skeleton Swordman',116,1000,71]
       ],
       PlayerSpawn: [
         [-1395,1400,'Player Spawn',-1,1000,-1]
@@ -1279,29 +1283,29 @@ const INFERNO_MODULES = {
         [-1230,-1055,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [600,-600,'Demon Bat',90,500,61],
-        [-635,50,'Hell Maggot',99,1000,30],
-        [-600,-600,'Demon Bat',90,500,61],
-        [-635,-50,'Hell Maggot',99,1000,30],
-        [620,-50,'Hell Maggot',99,1000,30],
-        [620,50,'Hell Maggot',99,1000,30],
-        [148,-5,'Demon Imp',94,1000,29],
-        [605,1100,'Skeleton Archer',102,1000,6],
-        [760,15,'Demon Dog',92,250,31],
-        [-765,15,'Demon Dog',92,250,31],
-        [0,755,'Demon Dog',92,250,31],
-        [0,-765,'Demon Dog',92,250,31],
-        [1140,-720,'Skeleton Archer',102,1000,6],
-        [-715,-1255,'Skeleton Spearman',111,1000,72],
-        [-600,600,'Demon Bat',90,500,61],
-        [-1305,750,'Skeleton Archer',102,1000,6],
-        [-765,1330,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [1295,1290,'Zombie',115,1000,44],
-        [1360,-5,'Skeleton Axeman',103,1000,73],
-        [700,-1075,'Skeleton Archer',102,1000,6],
-        [760,-1345,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-1330,-740,'Skeleton Swordman',112,1000,71],
-        [600,600,'Demon Bat',90,500,61]
+        [600,-600,'Demon Bat',94,500,61],
+        [-635,50,'Hell Maggot',103,1000,30],
+        [-600,-600,'Demon Bat',94,500,61],
+        [-635,-50,'Hell Maggot',103,1000,30],
+        [620,-50,'Hell Maggot',103,1000,30],
+        [620,50,'Hell Maggot',103,1000,30],
+        [148,-5,'Demon Imp',98,1000,29],
+        [605,1100,'Skeleton Archer',106,1000,6],
+        [760,15,'Demon Dog',96,250,31],
+        [-765,15,'Demon Dog',96,250,31],
+        [0,755,'Demon Dog',96,250,31],
+        [0,-765,'Demon Dog',96,250,31],
+        [1140,-720,'Skeleton Archer',106,1000,6],
+        [-715,-1255,'Skeleton Spearman',115,1000,72],
+        [-600,600,'Demon Bat',94,500,61],
+        [-1305,750,'Skeleton Archer',106,1000,6],
+        [-765,1330,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [1295,1290,'Zombie',119,1000,44],
+        [1360,-5,'Skeleton Axeman',107,1000,73],
+        [700,-1075,'Skeleton Archer',106,1000,6],
+        [760,-1345,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-1330,-740,'Skeleton Swordman',116,1000,71],
+        [600,600,'Demon Bat',94,500,61]
       ],
       PlayerSpawn: [
         [-1390,1395,'Player Spawn',-1,1000,-1]
@@ -1365,8 +1369,8 @@ const INFERNO_MODULES = {
         [504,188,'Chest Small',44,1000,19]
       ],
       Consumable: [
-        [835,-745,'Potion',5,1000,0],
-        [665,-925,'Bandage',1,1000,20]
+        [835,-745,'Potion',86,1000,0],
+        [665,-925,'Bandage',88,1000,20]
       ],
       Herb: [
         [160,-465,'Black Rose Random',-1,1000,24],
@@ -1390,28 +1394,28 @@ const INFERNO_MODULES = {
         [-1210,1045,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [-211,-58,'Demon Imp',94,1000,29],
-        [-596,602,'Ghoul',97,1000,70],
-        [-870,885,'Skeleton Archer',102,1000,6],
-        [1410,110,'Skeleton Spearman',111,1000,72],
-        [1085,25,'Skeleton Archer',102,1000,6],
-        [-1115,10,'Skeleton Archer',102,1000,6],
-        [5,-325,'Mummy',101,1000,35],
-        [-275,0,'Mummy',101,1000,35],
-        [0,305,'Mummy',101,1000,35],
-        [335,-25,'Mummy',101,1000,35],
-        [1000,-1010,'Mummy',101,1000,35],
-        [-1010,965,'Mummy',101,1000,35],
-        [890,-875,'Skeleton Archer',102,1000,6],
-        [-1380,95,'Skeleton Spearman',111,1000,72],
-        [0,0,'Abomination',85,333,74],
-        [0,0,'Cerberus',87,333,47],
-        [40,1360,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-10,-1245,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-518,-503,'Demon Dog',92,1000,31],
-        [-5,-10,'Dreadspine',95,333,75],
-        [515,509,'Demon Dog',92,1000,31],
-        [600,-585,'Ghoul',97,1000,70]
+        [-211,-58,'Demon Imp',98,1000,29],
+        [-596,602,'Ghoul',101,1000,70],
+        [-870,885,'Skeleton Archer',106,1000,6],
+        [1410,110,'Skeleton Spearman',115,1000,72],
+        [1085,25,'Skeleton Archer',106,1000,6],
+        [-1115,10,'Skeleton Archer',106,1000,6],
+        [5,-325,'Mummy',105,1000,35],
+        [-275,0,'Mummy',105,1000,35],
+        [0,305,'Mummy',105,1000,35],
+        [335,-25,'Mummy',105,1000,35],
+        [1000,-1010,'Mummy',105,1000,35],
+        [-1010,965,'Mummy',105,1000,35],
+        [890,-875,'Skeleton Archer',106,1000,6],
+        [-1380,95,'Skeleton Spearman',115,1000,72],
+        [0,0,'Abomination',89,333,74],
+        [0,0,'Cerberus',91,333,47],
+        [40,1360,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-10,-1245,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-518,-503,'Demon Dog',96,1000,31],
+        [-5,-10,'Dreadspine',99,333,75],
+        [515,509,'Demon Dog',96,1000,31],
+        [600,-585,'Ghoul',101,1000,70]
       ],
       PlayerSpawn: [
         [-1350,1350,'Player Spawn',-1,1000,-1],
@@ -1462,9 +1466,9 @@ const INFERNO_MODULES = {
         [-600,943,'Wall Spike',78,500,78]
       ],
       Valuable: [
-        [1115,-1080,'Gems',3,1000,38],
-        [785,-850,'Gems',3,1000,38],
-        [-865,805,'Gems',3,1000,38],
+        [1115,-1080,'Gems',85,1000,38],
+        [785,-850,'Gems',85,1000,38],
+        [-865,805,'Gems',85,1000,38],
         [-110,-1115,'Trinkets',6,1000,10],
         [380,-480,'Trinkets',6,1000,10],
         [-455,-165,'Trinkets',6,1000,10],
@@ -1472,7 +1476,7 @@ const INFERNO_MODULES = {
         [475,155,'Trinkets',6,1000,10],
         [860,-115,'Trinkets',6,1000,10],
         [-855,750,'Trinkets',6,1000,10],
-        [-820,860,'Gems',3,1000,38],
+        [-820,860,'Gems',85,1000,38],
         [-335,-1345,'Ground',4,1000,56],
         [450,-1145,'Ground',4,1000,56],
         [160,1460,'Ground',4,1000,56],
@@ -1499,9 +1503,9 @@ const INFERNO_MODULES = {
         [560,560,'Chest Small',44,1000,19]
       ],
       Consumable: [
-        [-475,-706,'Bandage',1,1000,20],
-        [480,-964,'Bandage',1,1000,20],
-        [627,694,'Bandage',1,1000,20]
+        [-475,-706,'Bandage',88,1000,20],
+        [480,-964,'Bandage',88,1000,20],
+        [627,694,'Bandage',88,1000,20]
       ],
       Container: [
         [1300,-1060,'Pot',62,1000,23],
@@ -1516,17 +1520,17 @@ const INFERNO_MODULES = {
         [-1220,-1120,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [500,-888,'Demon Dog',92,1000,31],
-        [-96,-70,'Demon Bat',90,1000,61],
-        [1170,0,'Zombie',115,1000,44],
-        [-35,-1130,'Zombie',115,1000,44],
-        [0,1130,'Zombie',115,1000,44],
-        [-1110,-110,'Zombie',115,1000,44],
-        [1120,-1120,'Skeleton Melee 5type',109,1000,7],
-        [-468,1059,'Demon Imp',94,1000,29],
-        [-165,-1133,'Demon Imp',94,1000,29],
-        [-1120,1130,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-476,866,'Centaur Demon',86,1000,41]
+        [500,-888,'Demon Dog',96,1000,31],
+        [-96,-70,'Demon Bat',94,1000,61],
+        [1170,0,'Zombie',119,1000,44],
+        [-35,-1130,'Zombie',119,1000,44],
+        [0,1130,'Zombie',119,1000,44],
+        [-1110,-110,'Zombie',119,1000,44],
+        [1120,-1120,'Skeleton Melee 5type',113,1000,7],
+        [-468,1059,'Demon Imp',98,1000,29],
+        [-165,-1133,'Demon Imp',98,1000,29],
+        [-1120,1130,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-476,866,'Centaur Demon',90,1000,41]
       ],
       PlayerSpawn: [
         [-1350,-1345,'Player Spawn',-1,1000,-1]
@@ -1536,10 +1540,10 @@ const INFERNO_MODULES = {
       ],
       Valuable: [
         [-594,534,'Coin',2,1000,37],
-        [361,234,'Gems',3,1000,38],
-        [-250,335,'Gems',3,1000,38],
-        [-438,165,'Gems',3,1000,38],
-        [160,205,'Gems',3,1000,38],
+        [361,234,'Gems',85,1000,38],
+        [-250,335,'Gems',85,1000,38],
+        [-438,165,'Gems',85,1000,38],
+        [160,205,'Gems',85,1000,38],
         [802,-31,'Coin',2,1000,37],
         [-53,-638,'Coin',2,1000,37],
         [691,445,'Coin',2,1000,37]
@@ -1574,9 +1578,9 @@ const INFERNO_MODULES = {
         [1195,-650,'Chest Small',44,1000,19]
       ],
       Consumable: [
-        [50,200,'Potion',5,1000,0],
-        [175,-275,'Potion',5,1000,0],
-        [-285,-270,'Potion',5,1000,0]
+        [50,200,'Potion',86,1000,0],
+        [175,-275,'Potion',86,1000,0],
+        [-285,-270,'Potion',86,1000,0]
       ],
       Interact: [
         [-400,-950,'Wall Lever',76,1000,52],
@@ -1591,20 +1595,20 @@ const INFERNO_MODULES = {
         [1370,1050,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [1260,-295,'Skeleton Archer',102,1000,6],
-        [350,-1235,'Zombie',115,1000,44],
-        [700,965,'Zombie',115,1000,44],
-        [-690,-825,'Zombie',115,1000,44],
-        [1293,1255,'Demon Dog',92,1000,31],
-        [0,0,'Demon Fly',93,1000,48],
-        [200,100,'Living Statue',100,500,79],
-        [-1415,-475,'Skeleton Archer',102,1000,6],
-        [-1315,-90,'Skeleton Swordman',112,1000,71],
-        [-205,10,'Living Statue',100,500,79],
-        [1320,110,'Skeleton Swordman',112,1000,71],
-        [-345,1135,'Zombie',115,1000,44],
-        [15,940,'Zombie',115,1000,44],
-        [5,-1005,'Zombie',115,1000,44]
+        [1260,-295,'Skeleton Archer',106,1000,6],
+        [350,-1235,'Zombie',119,1000,44],
+        [700,965,'Zombie',119,1000,44],
+        [-690,-825,'Zombie',119,1000,44],
+        [1293,1255,'Demon Dog',96,1000,31],
+        [0,0,'Demon Fly',97,1000,48],
+        [200,100,'Living Statue',104,500,79],
+        [-1415,-475,'Skeleton Archer',106,1000,6],
+        [-1315,-90,'Skeleton Swordman',116,1000,71],
+        [-205,10,'Living Statue',104,500,79],
+        [1320,110,'Skeleton Swordman',116,1000,71],
+        [-345,1135,'Zombie',119,1000,44],
+        [15,940,'Zombie',119,1000,44],
+        [5,-1005,'Zombie',119,1000,44]
       ],
       PlayerSpawn: [
         [-1300,1350,'Player Spawn',-1,1000,-1]
@@ -1639,10 +1643,10 @@ const INFERNO_MODULES = {
         [1165,-275,'Trinkets',6,1000,10],
         [1165,-550,'Trinkets',6,1000,10],
         [1225,-1420,'Trinkets',6,1000,10],
-        [306,-53,'Gems',3,1000,38],
-        [405,-95,'Gems',3,1000,38],
-        [330,-5,'Gems',3,1000,38],
-        [-330,5,'Gems',3,1000,38],
+        [306,-53,'Gems',85,1000,38],
+        [405,-95,'Gems',85,1000,38],
+        [330,-5,'Gems',85,1000,38],
+        [-330,5,'Gems',85,1000,38],
         [210,120,'Coin',2,1000,37],
         [-115,250,'Trinkets',6,1000,10],
         [-115,-275,'Ground',4,1000,56],
@@ -1699,11 +1703,11 @@ const INFERNO_MODULES = {
         [1000,-1440,'Chest Medium',43,1000,17]
       ],
       Consumable: [
-        [-100,-600,'Bandage',1,1000,20],
-        [100,700,'Potion',5,1000,0],
-        [-1450,1045,'Potion',5,1000,0],
-        [1350,-1450,'Bandage',1,1000,20],
-        [1450,-1350,'Potion',5,1000,0]
+        [-100,-600,'Bandage',88,1000,20],
+        [100,700,'Potion',86,1000,0],
+        [-1450,1045,'Potion',86,1000,0],
+        [1350,-1450,'Bandage',88,1000,20],
+        [1450,-1350,'Potion',86,1000,0]
       ],
       Container: [
         [330,-935,'Wooden Barrel',82,1000,1],
@@ -1744,23 +1748,23 @@ const INFERNO_MODULES = {
         [1200,1200,'Altar Of Sacrifice',40,1000,25]
       ],
       Monster: [
-        [-48,104,'Demon Imp',94,1000,29],
-        [-20,0,'Skeleton Archer',102,1000,6],
-        [0,0,'Cerberus',87,500,47],
-        [-1325,-1345,'Skeleton Archer',102,1000,6],
-        [-810,5,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [865,-5,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-5,-1285,'Skeleton Axeman',103,1000,73],
-        [10,1290,'Skeleton Swordman',112,1000,71],
-        [5,1410,'Zombie',115,1000,44],
-        [0,-1415,'Zombie',115,1000,44],
-        [-790,-490,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [740,505,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [1260,-1275,'Skeleton Crossbowman',105,1000,82],
-        [1265,-1170,'Skeleton Spearman',111,1000,72],
-        [1275,-1275,'Skeleton Mage',108,1000,32],
-        [1120,-1135,'Death Skull',89,1000,43],
-        [-70,0,'Cerberus',87,500,47]
+        [-48,104,'Demon Imp',98,1000,29],
+        [-20,0,'Skeleton Archer',106,1000,6],
+        [0,0,'Cerberus',91,500,47],
+        [-1325,-1345,'Skeleton Archer',106,1000,6],
+        [-810,5,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [865,-5,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-5,-1285,'Skeleton Axeman',107,1000,73],
+        [10,1290,'Skeleton Swordman',116,1000,71],
+        [5,1410,'Zombie',119,1000,44],
+        [0,-1415,'Zombie',119,1000,44],
+        [-790,-490,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [740,505,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [1260,-1275,'Skeleton Crossbowman',109,1000,82],
+        [1265,-1170,'Skeleton Spearman',115,1000,72],
+        [1275,-1275,'Skeleton Mage',112,1000,32],
+        [1120,-1135,'Death Skull',93,1000,43],
+        [-70,0,'Cerberus',91,500,47]
       ],
       PlayerSpawn: [
         [-1335,1335,'Player Spawn',-1,1000,-1]
@@ -1799,10 +1803,10 @@ const INFERNO_MODULES = {
         [-100,700,'Trinkets',6,1000,10],
         [-100,-650,'Ground',4,1000,56],
         [100,-650,'Trinkets',6,1000,10],
-        [100,-700,'Gems',3,1000,38],
+        [100,-700,'Gems',85,1000,38],
         [200,-600,'Ground',4,1000,56],
         [100,650,'Ground',4,1000,56],
-        [100,600,'Gems',3,1000,38],
+        [100,600,'Gems',85,1000,38],
         [350,1000,'Ground',4,1000,56],
         [545,900,'Ground',4,1000,56],
         [1185,1080,'Trinkets',6,1000,10],
@@ -1859,8 +1863,8 @@ const INFERNO_MODULES = {
         [-260,1135,'Chest Medium',43,1000,17]
       ],
       Consumable: [
-        [-200,150,'Potion',5,1000,0],
-        [200,-150,'Bandage',1,1000,20]
+        [-200,150,'Potion',86,1000,0],
+        [200,-150,'Bandage',88,1000,20]
       ],
       Container: [
         [720,-730,'Wooden Barrel',82,1000,1],
@@ -1901,32 +1905,32 @@ const INFERNO_MODULES = {
         [-1050,-1370,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [865,-565,'Hell Maggot',99,1000,30],
-        [560,1370,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-555,-1370,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-15,695,'Skeleton Mage',108,1000,32],
-        [10,-695,'Skeleton Archer',102,1000,6],
-        [25,-1100,'Skeleton Archer',102,1000,6],
-        [-950,0,'Demon Bat',90,500,61],
-        [950,0,'Demon Bat',90,500,61],
-        [-5,1120,'Skeleton Archer',102,1000,6],
-        [850,1205,'Skeleton Archer',102,1000,6],
-        [-80,-100,'Mummy',101,1000,35],
-        [795,1110,'Skeleton Swordman',112,1000,71],
-        [-835,-1065,'Skeleton Swordman',112,1000,71],
-        [865,-465,'Hell Maggot',99,1000,30],
-        [865,-665,'Hell Maggot',99,1000,30],
-        [70,95,'Mummy',101,1000,35],
-        [10,-1385,'Zombie',115,1000,44],
-        [-985,535,'Hell Maggot',99,1000,30],
-        [-10,1390,'Zombie',115,1000,44],
-        [-965,1190,'Demon Fly',93,1000,48],
-        [-1135,1190,'Demon Fly',93,1000,48],
-        [-985,435,'Hell Maggot',99,1000,30],
-        [1200,-1190,'Demon Fly',93,1000,48],
-        [1015,-1190,'Demon Fly',93,1000,48],
-        [1355,1310,'Ghoul',97,1000,70],
-        [-985,335,'Hell Maggot',99,1000,30]
+        [865,-565,'Hell Maggot',103,1000,30],
+        [560,1370,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-555,-1370,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-15,695,'Skeleton Mage',112,1000,32],
+        [10,-695,'Skeleton Archer',106,1000,6],
+        [25,-1100,'Skeleton Archer',106,1000,6],
+        [-950,0,'Demon Bat',94,500,61],
+        [950,0,'Demon Bat',94,500,61],
+        [-5,1120,'Skeleton Archer',106,1000,6],
+        [850,1205,'Skeleton Archer',106,1000,6],
+        [-80,-100,'Mummy',105,1000,35],
+        [795,1110,'Skeleton Swordman',116,1000,71],
+        [-835,-1065,'Skeleton Swordman',116,1000,71],
+        [865,-465,'Hell Maggot',103,1000,30],
+        [865,-665,'Hell Maggot',103,1000,30],
+        [70,95,'Mummy',105,1000,35],
+        [10,-1385,'Zombie',119,1000,44],
+        [-985,535,'Hell Maggot',103,1000,30],
+        [-10,1390,'Zombie',119,1000,44],
+        [-965,1190,'Demon Fly',97,1000,48],
+        [-1135,1190,'Demon Fly',97,1000,48],
+        [-985,435,'Hell Maggot',103,1000,30],
+        [1200,-1190,'Demon Fly',97,1000,48],
+        [1015,-1190,'Demon Fly',97,1000,48],
+        [1355,1310,'Ghoul',101,1000,70],
+        [-985,335,'Hell Maggot',103,1000,30]
       ],
       PlayerSpawn: [
         [-1400,-1300,'Player Spawn',-1,1000,-1]
@@ -1947,8 +1951,8 @@ const INFERNO_MODULES = {
         [-230,-1400,'Chest Special',45,1000,9]
       ],
       Valuable: [
-        [-200,-150,'Gems',3,1000,38],
-        [150,150,'Gems',3,1000,38],
+        [-200,-150,'Gems',85,1000,38],
+        [150,150,'Gems',85,1000,38],
         [1460,1425,'Trinkets',6,1000,10],
         [1300,1455,'Trinkets',6,1000,10],
         [1245,1455,'Trinkets',6,1000,10],
@@ -1985,10 +1989,10 @@ const INFERNO_MODULES = {
         [1050,1150,'Chest Small',44,1000,19]
       ],
       Consumable: [
-        [-1075,475,'Potion',5,1000,0],
-        [-1130,475,'Bandage',1,1000,20],
-        [-1075,-475,'Potion',5,1000,0],
-        [-1130,-475,'Bandage',1,1000,20]
+        [-1075,475,'Potion',86,1000,0],
+        [-1130,475,'Bandage',88,1000,20],
+        [-1075,-475,'Potion',86,1000,0],
+        [-1130,-475,'Bandage',88,1000,20]
       ],
       Equipment: [
         [-350,-200,'Armor',0,333,81],
@@ -2020,28 +2024,28 @@ const INFERNO_MODULES = {
         [1000,650,'Altar Of Sacrifice',40,500,25]
       ],
       Monster: [
-        [-101,-46,'Demon Berserker',91,1000,33],
-        [-13,-61,'Demon Imp',94,1000,29],
-        [-101,-46,'Demon Berserker',91,1000,33],
-        [-320,820,'Skeleton Footman From Fake Death',106,1000,84],
-        [328,-830,'Skeleton Footman From Fake Death',106,1000,84],
-        [-13,-61,'Demon Imp',94,1000,29],
-        [-350,230,'Skeleton Axeman',103,250,73],
-        [250,-265,'Skeleton Axeman',103,250,73],
-        [-1245,305,'Mummy',101,1000,35],
-        [-1175,-295,'Mummy',101,1000,35],
-        [100,-640,'Hell Maggot',99,1000,30],
-        [5,-1265,'Skeleton Archer',102,1000,6],
-        [5,1280,'Skeleton Archer',102,1000,6],
-        [-770,180,'Skeleton Archer',102,1000,6],
-        [-755,-155,'Skeleton Archer',102,1000,6],
-        [620,625,'Skeleton Archer',102,1000,6],
-        [630,-640,'Skeleton Archer',102,1000,6],
-        [835,-735,'Skeleton Mage',108,1000,32],
-        [150,840,'Hell Maggot',99,1000,30],
-        [830,765,'Skeleton Mage',108,1000,32],
-        [1360,235,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [1335,-205,'Skeleton Guardsman From Fake Death',107,1000,28]
+        [-101,-46,'Demon Berserker',95,1000,33],
+        [-13,-61,'Demon Imp',98,1000,29],
+        [-101,-46,'Demon Berserker',95,1000,33],
+        [-320,820,'Skeleton Footman From Fake Death',110,1000,84],
+        [328,-830,'Skeleton Footman From Fake Death',110,1000,84],
+        [-13,-61,'Demon Imp',98,1000,29],
+        [-350,230,'Skeleton Axeman',107,250,73],
+        [250,-265,'Skeleton Axeman',107,250,73],
+        [-1245,305,'Mummy',105,1000,35],
+        [-1175,-295,'Mummy',105,1000,35],
+        [100,-640,'Hell Maggot',103,1000,30],
+        [5,-1265,'Skeleton Archer',106,1000,6],
+        [5,1280,'Skeleton Archer',106,1000,6],
+        [-770,180,'Skeleton Archer',106,1000,6],
+        [-755,-155,'Skeleton Archer',106,1000,6],
+        [620,625,'Skeleton Archer',106,1000,6],
+        [630,-640,'Skeleton Archer',106,1000,6],
+        [835,-735,'Skeleton Mage',112,1000,32],
+        [150,840,'Hell Maggot',103,1000,30],
+        [830,765,'Skeleton Mage',112,1000,32],
+        [1360,235,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [1335,-205,'Skeleton Guardsman From Fake Death',111,1000,28]
       ],
       PlayerSpawn: [
         [-1350,-1350,'Player Spawn',-1,1000,-1],
@@ -2068,12 +2072,12 @@ const INFERNO_MODULES = {
         [925,-645,'Chest Special',45,250,9]
       ],
       Valuable: [
-        [-400,-100,'Gems',3,1000,38],
-        [-250,-100,'Gems',3,1000,38],
-        [250,100,'Gems',3,1000,38],
-        [400,100,'Gems',3,1000,38],
-        [-350,-200,'Gems',3,333,38],
-        [150,300,'Gems',3,333,38],
+        [-400,-100,'Gems',85,1000,38],
+        [-250,-100,'Gems',85,1000,38],
+        [250,100,'Gems',85,1000,38],
+        [400,100,'Gems',85,1000,38],
+        [-350,-200,'Gems',85,333,38],
+        [150,300,'Gems',85,333,38],
         [-1095,865,'Trinkets',6,1000,10],
         [-1095,800,'Trinkets',6,1000,10],
         [-1095,-880,'Trinkets',6,1000,10],
@@ -2131,26 +2135,26 @@ const INFERNO_MODULES = {
         [1230,1050,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [250,-250,'Demon Dog',92,250,31],
-        [1325,-10,'Skeleton Archer',102,1000,6],
-        [-20,-1330,'Skeleton Archer',102,1000,6],
-        [250,250,'Demon Dog',92,250,31],
-        [-1300,10,'Skeleton Archer',102,1000,6],
-        [-710,740,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-250,250,'Demon Dog',92,250,31],
-        [750,735,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-250,-250,'Demon Dog',92,250,31],
-        [745,-779,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [0,250,'Demon Bat',90,500,61],
-        [0,-250,'Demon Bat',90,500,61],
-        [250,0,'Demon Bat',90,500,61],
-        [-250,0,'Demon Bat',90,500,61],
-        [810,-892,'Zombie',115,1000,44],
-        [10,1355,'Skeleton Archer',102,1000,6],
-        [-805,-795,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [1285,1295,'Skeleton Swordman',112,1000,71],
-        [1315,-1295,'Skeleton Axeman',103,1000,73],
-        [-1300,-1310,'Skeleton Spearman',111,1000,72]
+        [250,-250,'Demon Dog',96,250,31],
+        [1325,-10,'Skeleton Archer',106,1000,6],
+        [-20,-1330,'Skeleton Archer',106,1000,6],
+        [250,250,'Demon Dog',96,250,31],
+        [-1300,10,'Skeleton Archer',106,1000,6],
+        [-710,740,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-250,250,'Demon Dog',96,250,31],
+        [750,735,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-250,-250,'Demon Dog',96,250,31],
+        [745,-779,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [0,250,'Demon Bat',94,500,61],
+        [0,-250,'Demon Bat',94,500,61],
+        [250,0,'Demon Bat',94,500,61],
+        [-250,0,'Demon Bat',94,500,61],
+        [810,-892,'Zombie',119,1000,44],
+        [10,1355,'Skeleton Archer',106,1000,6],
+        [-805,-795,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [1285,1295,'Skeleton Swordman',116,1000,71],
+        [1315,-1295,'Skeleton Axeman',107,1000,73],
+        [-1300,-1310,'Skeleton Spearman',115,1000,72]
       ],
       OrnateChest: [
         [0,300,'Ornate Chest Large',57,1000,49],
@@ -2209,10 +2213,10 @@ const INFERNO_MODULES = {
         [1465,1185,'Chest Small',44,1000,19]
       ],
       Consumable: [
-        [45,175,'Potion',5,1000,0],
-        [-1405,1425,'Potion',5,1000,0],
-        [-1435,1375,'Potion',5,1000,0],
-        [-1345,1375,'Potion',5,1000,0]
+        [45,175,'Potion',86,1000,0],
+        [-1405,1425,'Potion',86,1000,0],
+        [-1435,1375,'Potion',86,1000,0],
+        [-1345,1375,'Potion',86,1000,0]
       ],
       Interact: [
         [0,950,'Floor Lever Only Activate',47,1000,83],
@@ -2238,23 +2242,23 @@ const INFERNO_MODULES = {
         [1293,1213,'Altar Of Sacrifice',40,1000,25]
       ],
       Monster: [
-        [-11,394,'Zombie',115,1000,44],
-        [0,-850,'Abomination',85,1000,74],
-        [800,-100,'Skeleton Spearman',111,1000,72],
-        [-450,0,'Skeleton Crossbowman',105,1000,82],
-        [450,0,'Skeleton Crossbowman',105,1000,82],
-        [900,850,'Skeleton Swordman',112,1000,71],
-        [-950,850,'Skeleton Swordman',112,1000,71],
-        [0,750,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-346,9,'Zombie',115,1000,44],
-        [-11,-331,'Zombie',115,1000,44],
-        [319,9,'Zombie',115,1000,44],
-        [-90,58,'Demon Imp',94,1000,29],
-        [0,-1150,'Skeleton Mage',108,1000,32],
-        [1287,1232,'Demon Dog',92,1000,31],
-        [770,-770,'Skeleton Axeman',103,1000,73],
-        [-738,-738,'Skeleton Axeman',103,1000,73],
-        [-800,-100,'Skeleton Spearman',111,1000,72]
+        [-11,394,'Zombie',119,1000,44],
+        [0,-850,'Abomination',89,1000,74],
+        [800,-100,'Skeleton Spearman',115,1000,72],
+        [-450,0,'Skeleton Crossbowman',109,1000,82],
+        [450,0,'Skeleton Crossbowman',109,1000,82],
+        [900,850,'Skeleton Swordman',116,1000,71],
+        [-950,850,'Skeleton Swordman',116,1000,71],
+        [0,750,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-346,9,'Zombie',119,1000,44],
+        [-11,-331,'Zombie',119,1000,44],
+        [319,9,'Zombie',119,1000,44],
+        [-90,58,'Demon Imp',98,1000,29],
+        [0,-1150,'Skeleton Mage',112,1000,32],
+        [1287,1232,'Demon Dog',96,1000,31],
+        [770,-770,'Skeleton Axeman',107,1000,73],
+        [-738,-738,'Skeleton Axeman',107,1000,73],
+        [-800,-100,'Skeleton Spearman',115,1000,72]
       ],
       PlayerSpawn: [
         [-1385,-1385,'Player Spawn',-1,1000,-1],
@@ -2347,18 +2351,18 @@ const INFERNO_MODULES = {
         [300,1100,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [-1170,-89,'Skeleton Mage',108,1000,32],
-        [324,777,'Dreadspine',95,1000,75],
-        [197,810,'Demon Imp',94,1000,29],
-        [-539,349,'Ghoul',97,1000,70],
-        [0,-1140,'Skeleton Ranged 2type',110,1000,8],
-        [422,333,'Skeleton Melee 5type',109,1000,7],
-        [176,-659,'Skeleton Melee 5type',109,1000,7],
-        [-1151,76,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-420,331,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-1151,-283,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-119,-575,'Skeleton Melee 5type',109,1000,7],
-        [5,-185,'Skeleton Guardsman From Fake Death',107,1000,28]
+        [-1170,-89,'Skeleton Mage',112,1000,32],
+        [324,777,'Dreadspine',99,1000,75],
+        [197,810,'Demon Imp',98,1000,29],
+        [-539,349,'Ghoul',101,1000,70],
+        [0,-1140,'Skeleton Ranged 2type',114,1000,8],
+        [422,333,'Skeleton Melee 5type',113,1000,7],
+        [176,-659,'Skeleton Melee 5type',113,1000,7],
+        [-1151,76,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-420,331,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-1151,-283,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-119,-575,'Skeleton Melee 5type',113,1000,7],
+        [5,-185,'Skeleton Guardsman From Fake Death',111,1000,28]
       ],
       OrnateChest: [
         [863,-713,'Ornate Chest Small',59,1000,68]
@@ -2371,7 +2375,7 @@ const INFERNO_MODULES = {
         [0,-950,'Chest Special',45,1000,9]
       ],
       Valuable: [
-        [111,897,'Gems',3,1000,38]
+        [111,897,'Gems',85,1000,38]
       ],
       WoodChest: [
         [-1445,-275,'Wood Chest Large',79,1000,65],
@@ -2396,22 +2400,22 @@ const INFERNO_MODULES = {
       ],
       Container: [
         [65,225,'Pot',64,1000,21],
-        [693,-528,'Spider Pot',117,1000,66],
-        [-406,-1205,'Spider Pot',117,1000,66],
-        [23,221,'Spider Pot',117,1000,66],
+        [693,-528,'Spider Pot',121,1000,66],
+        [-406,-1205,'Spider Pot',121,1000,66],
+        [23,221,'Spider Pot',121,1000,66],
         [93,346,'Pot',62,1000,23],
         [24,325,'Pot',63,1000,4]
       ],
       Monster: [
-        [-1066,842,'Zombie',115,1000,44],
-        [1014,-537,'Giant Dragonfly',98,1000,34],
-        [-291,116,'Giant Dragonfly',98,1000,34],
-        [-1201,1214,'Giant Dragonfly',98,1000,34],
-        [-1167,878,'Giant Dragonfly',98,1000,34]
+        [-1066,842,'Zombie',119,1000,44],
+        [1014,-537,'Giant Dragonfly',102,1000,34],
+        [-291,116,'Giant Dragonfly',102,1000,34],
+        [-1201,1214,'Giant Dragonfly',102,1000,34],
+        [-1167,878,'Giant Dragonfly',102,1000,34]
       ],
       Ore: [
-        [-579,-1220,'Rubysilver Ore',116,1000,42],
-        [-238,657,'Rubysilver Ore',116,1000,42]
+        [-579,-1220,'Rubysilver Ore',120,1000,42],
+        [-238,657,'Rubysilver Ore',120,1000,42]
       ],
       PlayerSpawn: [
         [-1199,-809,'Player Spawn',-1,1000,-1]
@@ -2448,19 +2452,19 @@ const INFERNO_MODULES = {
         [-604,1011,'Single Stone Door',68,1000,5]
       ],
       Monster: [
-        [-612,366,'Skeleton Footman From Fake Death',106,1000,84],
-        [-587,-393,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [210,70,'Skeleton Guardsman From Fake Death',107,1000,28],
-        [-118,480,'Skeleton Archer',102,1000,6],
-        [-108,-480,'Skeleton Archer',102,1000,6],
-        [-470,0,'Dreadspine',95,1000,75],
-        [925,868,'Demon Dog',92,1000,31],
-        [1038,-1049,'Demon Dog',92,1000,31],
-        [-789,864,'Skeleton Swordman',112,1000,71],
-        [1086,-9,'Demon Berserker',91,1000,33],
-        [-30,860,'Skeleton Melee 5type',109,1000,7],
-        [270,-890,'Skeleton Melee 5type',109,1000,7],
-        [-483,90,'Demon Imp',94,1000,29]
+        [-612,366,'Skeleton Footman From Fake Death',110,1000,84],
+        [-587,-393,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [210,70,'Skeleton Guardsman From Fake Death',111,1000,28],
+        [-118,480,'Skeleton Archer',106,1000,6],
+        [-108,-480,'Skeleton Archer',106,1000,6],
+        [-470,0,'Dreadspine',99,1000,75],
+        [925,868,'Demon Dog',96,1000,31],
+        [1038,-1049,'Demon Dog',96,1000,31],
+        [-789,864,'Skeleton Swordman',116,1000,71],
+        [1086,-9,'Demon Berserker',95,1000,33],
+        [-30,860,'Skeleton Melee 5type',113,1000,7],
+        [270,-890,'Skeleton Melee 5type',113,1000,7],
+        [-483,90,'Demon Imp',98,1000,29]
       ],
       OrnateChest: [
         [-820,0,'Ornate Chest Large',57,1000,49],

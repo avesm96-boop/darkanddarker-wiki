@@ -215,6 +215,15 @@
   margin-bottom: 12px;
 }
 
+.classIcon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
 .className {
   font-family: var(--font-heading);
   font-size: 1.125rem;

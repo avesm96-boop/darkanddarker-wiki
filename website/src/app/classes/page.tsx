@@ -28,6 +28,7 @@ interface DerivedStats {
 interface GameClass {
   slug: string;
   name: string;
+  icon?: string;
   flavor_text: string;
   role: string;
   base_stats: BaseStats;
@@ -319,6 +320,15 @@ export default function ClassesPage() {
               >
                 {/* Card Header */}
                 <div className={styles.cardHeader}>
+                  {cls.icon && (
+                    <img
+                      src={cls.icon}
+                      alt=""
+                      width={48}
+                      height={48}
+                      className={styles.classIcon}
+                    />
+                  )}
                   <Link
                     href={`/classes/${cls.slug}`}
                     className={styles.className}

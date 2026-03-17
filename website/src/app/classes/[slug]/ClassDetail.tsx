@@ -11,6 +11,7 @@ import styles from "./ClassDetail.module.css";
 interface Perk {
   id: string;
   name: string;
+  icon?: string;
   description: string;
   is_default: boolean;
 }
@@ -18,6 +19,7 @@ interface Perk {
 interface Skill {
   id: string;
   name: string;
+  icon?: string;
   description: string;
   skill_type: string;
   skill_tier: number;
@@ -27,6 +29,7 @@ interface Skill {
 interface Spell {
   id: string;
   name: string;
+  icon?: string;
   description: string;
   spell_tier: number;
   casting_time: number | null;
@@ -48,6 +51,7 @@ interface Spell {
 interface Shapeshift {
   id: string;
   name: string;
+  icon?: string;
   description: string;
   casting_time: number;
   capsule_radius_scale: number;
@@ -60,6 +64,7 @@ interface Shapeshift {
 interface ClassData {
   slug: string;
   name: string;
+  icon?: string;
   flavor_text: string;
   role: string;
   base_stats: Record<string, number>;
@@ -130,6 +135,13 @@ const DERIVED_STAT_META: { key: string; label: string; pct: boolean }[] = [
   { key: "debuff_duration_pct", label: "Debuff Duration", pct: true },
   { key: "regular_interaction_speed_pct", label: "Interaction Speed", pct: true },
   { key: "health_recovery_bonus_pct", label: "Health Recovery", pct: true },
+  { key: "physical_damage_reduction_pct", label: "Physical Damage Reduction", pct: true },
+  { key: "physical_power_bonus_pct", label: "Physical Power Bonus", pct: true },
+  { key: "magic_power_bonus_pct", label: "Magic Power Bonus", pct: true },
+  { key: "magical_interaction_speed_pct", label: "Magical Interaction Speed", pct: true },
+  { key: "spell_recovery_bonus_pct", label: "Spell Recovery Bonus", pct: true },
+  { key: "persuasiveness", label: "Persuasiveness", pct: false },
+  { key: "cooldown_reduction_pct", label: "Cooldown Reduction", pct: true },
 ];
 
 const ROLE_STYLE: Record<string, string> = {
@@ -328,7 +340,18 @@ export default function ClassDetail({ slug }: { slug: string }) {
 
         {/* === Hero Section === */}
         <div className={styles.heroSection}>
-          <h1 className={styles.className}>{classData.name}</h1>
+          <div className={styles.heroHeader}>
+            {classData.icon && (
+              <img
+                src={classData.icon}
+                alt=""
+                width={72}
+                height={72}
+                className={styles.classIcon}
+              />
+            )}
+            <h1 className={styles.className}>{classData.name}</h1>
+          </div>
           <div className={styles.tagRow}>
             <span className={styles[roleBadgeClass]}>{classData.role}</span>
           </div>
@@ -400,6 +423,15 @@ export default function ClassDetail({ slug }: { slug: string }) {
                   className={styles.expandCardHeader}
                   onClick={() => togglePerk(perk.id)}
                 >
+                  {perk.icon && (
+                    <img
+                      src={perk.icon}
+                      alt=""
+                      width={24}
+                      height={24}
+                      className={styles.abilityIcon}
+                    />
+                  )}
                   <span className={styles.expandCardName}>{perk.name}</span>
                   {perk.is_default && (
                     <span className={styles.badgeDefault}>Default</span>
@@ -450,6 +482,15 @@ export default function ClassDetail({ slug }: { slug: string }) {
                   className={styles.expandCardHeader}
                   onClick={() => toggleSkill(skill.id)}
                 >
+                  {skill.icon && (
+                    <img
+                      src={skill.icon}
+                      alt=""
+                      width={24}
+                      height={24}
+                      className={styles.abilityIcon}
+                    />
+                  )}
                   <span className={styles.expandCardName}>{skill.name}</span>
                   <span className={styles[typeBadgeClass]}>
                     {skill.skill_type}
@@ -522,6 +563,15 @@ export default function ClassDetail({ slug }: { slug: string }) {
                             className={styles.expandCardHeader}
                             onClick={() => toggleSpell(spell.id)}
                           >
+                            {spell.icon && (
+                              <img
+                                src={spell.icon}
+                                alt=""
+                                width={24}
+                                height={24}
+                                className={styles.abilityIcon}
+                              />
+                            )}
                             <span className={styles.expandCardName}>
                               {spell.name}
                             </span>
@@ -683,7 +733,18 @@ export default function ClassDetail({ slug }: { slug: string }) {
             </h2>
             {classData.shapeshifts.map((form) => (
               <div key={form.id} className={styles.shapeshiftCard}>
-                <h3 className={styles.shapeshiftName}>{form.name}</h3>
+                <div className={styles.shapeshiftHeader}>
+                  {form.icon && (
+                    <img
+                      src={form.icon}
+                      alt=""
+                      width={32}
+                      height={32}
+                      className={styles.shapeshiftIcon}
+                    />
+                  )}
+                  <h3 className={styles.shapeshiftName}>{form.name}</h3>
+                </div>
                 <div className={styles.shapeshiftMeta}>
                   <span className={styles.shapeshiftMetaItem}>
                     Cast Time:{" "}

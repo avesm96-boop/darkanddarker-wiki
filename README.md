@@ -95,6 +95,44 @@ FModel → raw/ → pipeline/ → extracted/ → website/ (build time)
 
 The pipeline transforms Unreal Engine DataTable and Blueprint JSON into clean, normalized schemas. The website reads these at build time (Next.js static generation), so the live site has zero runtime dependency on the pipeline.
 
+## FModel Export Process
+
+Game data lives in `raw/` (gitignored). This directory must be populated locally using FModel before running the pipeline.
+
+### FModel Setup
+
+- **FModel version:** 4.6+ recommended (must support UE5 .utoc/.ucas archives)
+- **Game directory:** Point FModel at your Dark and Darker installation (e.g., `C:\Program Files\Steam\steamapps\common\Dark and Darker`)
+- **Export format:** JSON (`Settings > Models > Export as JSON`)
+- **Output directory:** Set FModel's output to `raw/` inside this repo
+
+### Export Settings
+
+1. Open FModel and load the game's `.utoc` archive
+2. Navigate to `DungeonCrawler/Content/` in the asset browser
+3. Right-click the `DungeonCrawler` folder and select **Export Folder**
+4. Also export `Localization/Game/en/` for quest titles and UI strings
+5. The resulting directory structure should be:
+   ```
+   raw/
+     DungeonCrawler/
+       Content/
+         DungeonCrawler/
+           Data/Generated/V2/   # Items, spawners, loot tables, quests
+           Maps/Dungeon/Modules/ # Module layouts per dungeon
+         Localization/
+           Game/en/Game.json    # English localization strings
+   ```
+
+### Refreshing After a Game Update
+
+1. Open FModel and let it detect the updated archives
+2. Re-export the `DungeonCrawler/Content/` tree to `raw/`
+3. Run the build pipeline: `bash scripts/build.sh --all`
+4. Verify extracted data: `bash scripts/build.sh --validate`
+
+> FModel exports are deterministic for the same game version. Two people exporting the same patch will get identical JSON output.
+
 ## License
 
 MIT

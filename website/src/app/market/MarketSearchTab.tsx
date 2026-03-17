@@ -9,6 +9,19 @@ import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianG
 
 const BASE_RARITIES = ["Poor", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique", "Artifact"];
 
+// Secondary slot counts by rarity
+const RARITY_SECONDARY_SLOTS: Record<string, number> = {
+  Common: 1, Uncommon: 1, Rare: 2, Epic: 3, Legendary: 4, Unique: 1,
+};
+
+interface ItemMeta {
+  name: string;
+  fixedRarity: string | null;
+  secondarySlots: number;
+  itemType: string;
+  [key: string]: unknown;
+}
+
 function timeAgo(epoch: number): string {
   const sec = Math.floor(Date.now() / 1000 - epoch);
   if (sec < 60) return `${sec}s ago`;
@@ -29,7 +42,7 @@ function formatChartTime(ts: string, timeframe: string): string {
   return d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
 }
 
-interface PropertyFilter { name: string; label: string; min: number; }
+interface PropertyFilter { name: string; label: string; min: string; }
 
 export default function MarketSearchTab() {
   const [query, setQuery] = useState("");
@@ -38,7 +51,6 @@ export default function MarketSearchTab() {
   const [selectedItem, setSelectedItem] = useState<{ id: string; name: string; archetype: string } | null>(null);
   const [selectedRarity, setSelectedRarity] = useState("");
   const [propFilters, setPropFilters] = useState<PropertyFilter[]>([]);
-  const [showFilters, setShowFilters] = useState(false);
   const [activeListings, setActiveListings] = useState<RawListing[]>([]);
   const [soldListings, setSoldListings] = useState<RawListing[]>([]);
   const [priceHistory, setPriceHistory] = useState<PricePoint[]>([]);
@@ -48,10 +60,19 @@ export default function MarketSearchTab() {
   const [chartTimeframe, setChartTimeframe] = useState<"1d" | "4h" | "1h">("4h");
   const [isGenericItem, setIsGenericItem] = useState(false);
   const [availableProps, setAvailableProps] = useState<string[]>([]);
+  const [itemMetadata, setItemMetadata] = useState<Record<string, ItemMeta>>({});
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Load item metadata once
+  useEffect(() => {
+    fetch("/data/item_metadata.json")
+      .then((r) => r.json())
+      .then((d) => setItemMetadata(d))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -60,6 +81,20 @@ export default function MarketSearchTab() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  // Auto-set rarity for fixed-rarity items
+  const handleSelectItem = useCallback((item: ItemDef) => {
+    setSelectedItem({ id: item.id, name: item.name, archetype: item.archetype });
+    setQuery(item.name);
+    setShowSuggestions(false);
+    setSuggestions([]);
+
+    // Auto-fill rarity if item has a fixed rarity
+    const meta = itemMetadata[item.archetype];
+    if (meta?.fixedRarity) {
+      setSelectedRarity(meta.fixedRarity);
+    }
+  }, [itemMetadata]);
 
   const handleQueryChange = useCallback((val: string) => {
     setQuery(val);
@@ -77,24 +112,33 @@ export default function MarketSearchTab() {
     }, 250);
   }, []);
 
-  const handleSelectItem = useCallback((item: ItemDef) => {
-    setSelectedItem({ id: item.id, name: item.name, archetype: item.archetype });
-    setQuery(item.name);
-    setShowSuggestions(false);
-    setSuggestions([]);
-  }, []);
+  // Determine how many stat filter slots to show
+  const getStatSlotCount = (): number => {
+    if (selectedItem) {
+      const meta = itemMetadata[selectedItem.archetype];
+      if (meta?.secondarySlots) return meta.secondarySlots;
+    }
+    // Rarity-only search
+    return RARITY_SECONDARY_SLOTS[selectedRarity] || 0;
+  };
+
+  const canSearch = selectedItem || selectedRarity;
 
   const doSearch = useCallback(async () => {
-    if (!selectedItem) return;
+    if (!canSearch) return;
     if (abortRef.current) abortRef.current.abort();
     const ac = new AbortController();
     abortRef.current = ac;
-    setLoading(true); setSearched(true); setPreviewListing(null); setPropFilters([]); setShowFilters(false);
+    setLoading(true); setSearched(true); setPreviewListing(null);
+
+    // For rarity-only search, use empty item
+    const itemArch = selectedItem?.archetype || "";
+
     try {
       const [active, sold, history] = await Promise.all([
-        fetchRawListings(selectedItem.archetype, { base_rarity: selectedRarity || undefined, status: "active", limit: 500, sort: "price_asc" }, ac.signal),
-        fetchRawListings(selectedItem.archetype, { base_rarity: selectedRarity || undefined, status: "sold", limit: 100, sort: "sold_desc" }, ac.signal),
-        fetchPriceHistory(selectedItem.archetype, chartTimeframe === "1d" ? "1d" : chartTimeframe === "4h" ? "4h" : "1h", ac.signal),
+        fetchRawListings(itemArch, { base_rarity: selectedRarity || undefined, status: "active", limit: 500, sort: "price_asc" }, ac.signal),
+        fetchRawListings(itemArch, { base_rarity: selectedRarity || undefined, status: "sold", limit: 100, sort: "sold_desc" }, ac.signal),
+        itemArch ? fetchPriceHistory(itemArch, chartTimeframe === "1d" ? "1d" : chartTimeframe === "4h" ? "4h" : "1h", ac.signal) : Promise.resolve([]),
       ]);
       if (!ac.signal.aborted) {
         setActiveListings(active); setSoldListings(sold); setPriceHistory(history);
@@ -102,10 +146,17 @@ export default function MarketSearchTab() {
         const ps = new Set<string>();
         for (const l of active) for (const p of l.properties) if (!p.is_primary) ps.add(p.property_type);
         setAvailableProps(Array.from(ps).sort());
+
+        // Initialize stat filter slots based on rarity
+        const slotCount = getStatSlotCount();
+        if (slotCount > 0 && propFilters.length === 0) {
+          setPropFilters(Array.from({ length: slotCount }, () => ({ name: "", label: "Any", min: "" })));
+        }
+
         setLoading(false);
       }
     } catch { if (!ac.signal.aborted) setLoading(false); }
-  }, [selectedItem, selectedRarity, chartTimeframe]);
+  }, [selectedItem, selectedRarity, chartTimeframe, canSearch]);
 
   useEffect(() => {
     if (!searched || !selectedItem) return;
@@ -117,14 +168,16 @@ export default function MarketSearchTab() {
 
   const applyPropFilters = (listing: RawListing) => {
     for (const f of propFilters) {
+      if (!f.name) continue; // "Any" — skip
       const prop = listing.properties.find((p) => p.property_type === f.name && !p.is_primary);
-      if (!prop || prop.property_value < f.min) return false;
+      if (!prop) return false;
+      if (f.min && prop.property_value < parseInt(f.min)) return false;
     }
     return true;
   };
   const filteredActive = activeListings.filter(applyPropFilters);
   const filteredSold = soldListings.filter(applyPropFilters).slice(0, 10);
-  const handleKeyDown = (e: React.KeyboardEvent) => { if (e.key === "Enter" && selectedItem) doSearch(); };
+  const handleKeyDown = (e: React.KeyboardEvent) => { if (e.key === "Enter" && canSearch) doSearch(); };
 
   const now_s = Date.now() / 1000;
   const avgPrice = (since: number) => {
@@ -132,6 +185,10 @@ export default function MarketSearchTab() {
     return p.length ? Math.round(p.reduce((a, b) => a + b, 0) / p.length) : 0;
   };
   const lowestNow = activeListings.length > 0 ? activeListings[0].price / Math.max(activeListings[0].item_count, 1) : 0;
+
+  const showHero = searched && selectedItem;
+  const showStatFilters = searched && availableProps.length > 0 && !isGenericItem;
+  const statSlotCount = getStatSlotCount();
 
   return (
     <div className={styles.dashboard}>
@@ -141,7 +198,7 @@ export default function MarketSearchTab() {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.4, flexShrink: 0 }}>
             <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
-          <input type="text" className={styles.msSearchInput} placeholder="Search item name..."
+          <input type="text" className={styles.msSearchInput} placeholder="Search item name or select rarity..."
             value={query} onChange={(e) => handleQueryChange(e.target.value)}
             onFocus={() => { if (suggestions.length > 0) setShowSuggestions(true); }}
             onKeyDown={handleKeyDown} />
@@ -150,24 +207,32 @@ export default function MarketSearchTab() {
           <option value="">All Rarities</option>
           {BASE_RARITIES.map((r) => (<option key={r} value={r}>{r}</option>))}
         </select>
-        <button className={styles.msSearchBtn} onClick={doSearch} disabled={!selectedItem || loading}>
+        <button className={styles.msSearchBtn} onClick={doSearch} disabled={!canSearch || loading}>
           {loading ? "..." : "Search"}
         </button>
         {showSuggestions && suggestions.length > 0 && (
           <div className={styles.msSuggestions}>
-            {suggestions.map((item) => (
-              <div key={item.id} className={styles.msSuggestionItem} onClick={() => handleSelectItem(item)}>
-                <img src={itemIconPath(item.archetype)} width={20} height={20} alt=""
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                <span>{item.name}</span>
-              </div>
-            ))}
+            {suggestions.map((item) => {
+              const meta = itemMetadata[item.archetype];
+              return (
+                <div key={item.id} className={styles.msSuggestionItem} onClick={() => handleSelectItem(item)}>
+                  <img src={itemIconPath(item.archetype)} width={20} height={20} alt=""
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <span>{item.name}</span>
+                  {meta?.fixedRarity && (
+                    <span className={styles[`rarity${meta.fixedRarity}`]} style={{ fontSize: "0.65rem", marginLeft: "auto" }}>
+                      {meta.fixedRarity}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
 
-      {/* ── Item Hero ── */}
-      {searched && selectedItem && (
+      {/* ── Item Hero (only when specific item selected) ── */}
+      {showHero && (
         <div className={styles.msHero}>
           <img src={itemIconPath(selectedItem.archetype)} alt={selectedItem.name}
             width={64} height={64} className={styles.msHeroIcon}
@@ -204,8 +269,8 @@ export default function MarketSearchTab() {
         </div>
       )}
 
-      {/* ── Price Chart ── */}
-      {searched && priceHistory.length > 1 && (
+      {/* ── Price Chart (only for specific item search) ── */}
+      {searched && selectedItem && priceHistory.length > 1 && (
         <div className={styles.msChartSection}>
           <div className={styles.msChartHeader}>
             <span className={styles.sectionTitle}>Price History</span>
@@ -238,37 +303,38 @@ export default function MarketSearchTab() {
         </div>
       )}
 
-      {/* ── Stat Filters ── */}
-      {searched && availableProps.length > 0 && !isGenericItem && (
-        <div className={styles.msFilterBar}>
-          <button className={styles.msFilterToggle} onClick={() => setShowFilters(!showFilters)}>
-            {showFilters ? "▾ Hide Filters" : "▸ Filter by Stats"}{propFilters.length > 0 ? ` (${propFilters.length})` : ""}
-          </button>
-          {showFilters && (
-            <div className={styles.msFilterContent}>
-              <select className={styles.msSelect} value="" onChange={(e) => {
-                if (e.target.value) setPropFilters([...propFilters, { name: e.target.value, label: cleanStatName(e.target.value), min: 1 }]);
-                e.target.value = "";
-              }} style={{ maxWidth: 220 }}>
-                <option value="">+ Add attribute...</option>
-                {availableProps.filter((p) => !propFilters.some((f) => f.name === p)).map((p) => (
-                  <option key={p} value={p}>{cleanStatName(p)}</option>
-                ))}
-              </select>
-              {propFilters.length > 0 && (
-                <div className={styles.msAttrList}>
-                  {propFilters.map((f) => (
-                    <div key={f.name} className={styles.msAttrChip}>
-                      <span>{f.label} ≥</span>
-                      <input type="number" className={styles.msAttrInput} value={f.min}
-                        onChange={(e) => setPropFilters(propFilters.map((pf) => pf.name === f.name ? { ...pf, min: parseInt(e.target.value) || 0 } : pf))} min={0} />
-                      <button className={styles.msAttrRemove} onClick={() => setPropFilters(propFilters.filter((pf) => pf.name !== f.name))}>×</button>
-                    </div>
+      {/* ── Stat Filters (always visible, with default slots) ── */}
+      {showStatFilters && statSlotCount > 0 && (
+        <div className={styles.msFilterSection}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTitle}>Filter by Stats</span>
+          </div>
+          <div className={styles.msFilterSlots}>
+            {propFilters.slice(0, statSlotCount).map((f, idx) => (
+              <div key={idx} className={styles.msFilterSlot}>
+                <select className={styles.msSelect} value={f.name}
+                  onChange={(e) => {
+                    const updated = [...propFilters];
+                    updated[idx] = { name: e.target.value, label: e.target.value ? cleanStatName(e.target.value) : "Any", min: f.min };
+                    setPropFilters(updated);
+                  }}>
+                  <option value="">Any</option>
+                  {availableProps.map((p) => (
+                    <option key={p} value={p}>{cleanStatName(p)}</option>
                   ))}
-                </div>
-              )}
-            </div>
-          )}
+                </select>
+                {f.name && (
+                  <input type="number" className={styles.msFilterMinInput} value={f.min}
+                    placeholder="Min"
+                    onChange={(e) => {
+                      const updated = [...propFilters];
+                      updated[idx] = { ...f, min: e.target.value };
+                      setPropFilters(updated);
+                    }} min={0} />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
@@ -283,7 +349,7 @@ export default function MarketSearchTab() {
       {searched && (
         <div className={styles.msSection}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionTitle}>Active Listings ({filteredActive.length}{propFilters.length > 0 ? ` of ${activeListings.length}` : ""})</span>
+            <span className={styles.sectionTitle}>Active Listings ({filteredActive.length}{propFilters.some((f) => f.name) ? ` of ${activeListings.length}` : ""})</span>
           </div>
           {filteredActive.length === 0 ? (
             <div className={styles.msEmpty}>{loading ? "Loading..." : "No listings found."}</div>

@@ -1120,6 +1120,39 @@
 }
 .msAttrRemove:hover { color: #e05555; }
 
+/* Filter section with default slots */
+.msFilterSection {
+  margin-bottom: 20px;
+}
+
+.msFilterSlots {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.msFilterSlot {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.msFilterMinInput {
+  width: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  color: var(--gold-500);
+  text-align: center;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+.msFilterMinInput::placeholder {
+  color: rgba(201, 168, 76, 0.3);
+}
+
 /* Sections */
 .msSection {
   margin-bottom: 24px;

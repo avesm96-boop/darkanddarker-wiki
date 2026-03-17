@@ -190,11 +190,11 @@
 }
 
 .trendItemPrice {
-  font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-bright);
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .trendItemChange {
@@ -539,11 +539,11 @@
 }
 
 .statsGridValue {
-  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--gold-300);
   margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
 }
 
 .statsGridLabel {
@@ -1000,7 +1000,6 @@
 }
 
 .msPriceCardValue {
-  font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--gold-300);

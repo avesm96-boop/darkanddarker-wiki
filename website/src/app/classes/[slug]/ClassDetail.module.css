@@ -361,7 +361,7 @@
 
 .expandCardBodyOpen {
   composes: expandCardBody;
-  max-height: 600px;
+  max-height: 800px;
 }
 
 .expandCardContent {
@@ -656,6 +656,108 @@
   color: var(--text-dim);
   line-height: 1.7;
   white-space: pre-line;
+}
+
+/* === Shapeshift Stat Modifiers === */
+
+.statModifiers {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+
+.statModPositive {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #4ec94e;
+}
+
+.statModNegative {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--red-300);
+}
+
+/* === Shapeshift Form Skill === */
+
+.formSkill {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(201, 168, 76, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 6px;
+}
+
+.formSkillLabel {
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 6px;
+}
+
+.formSkillName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gold-400);
+}
+
+.formSkillDesc {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-top: 6px;
+}
+
+/* === Bard Song Performance Tier Table === */
+
+.tierTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 0.6875rem;
+}
+
+.tierTable th {
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.tierTable td {
+  padding: 6px 10px;
+  color: var(--text-dim);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.tierTable tr:last-child td {
+  border-bottom: none;
+}
+
+.tierBad {
+  font-weight: 600;
+  color: var(--red-300);
+}
+
+.tierGood {
+  font-weight: 600;
+  color: #e8c830;
+}
+
+.tierPerfect {
+  font-weight: 600;
+  color: #4ec94e;
 }
 
 /* === Equipment Section === */

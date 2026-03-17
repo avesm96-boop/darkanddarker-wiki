@@ -35,6 +35,14 @@ interface Spell {
   source_type: string;
   cost_type: string;
   casting_type: string;
+  bad_range?: number;
+  good_range?: number;
+  perfect_range?: number;
+  tier_effects?: {
+    bad?: Record<string, any>;
+    good?: Record<string, any>;
+    perfect?: Record<string, any>;
+  };
 }
 
 interface Shapeshift {
@@ -44,6 +52,9 @@ interface Shapeshift {
   casting_time: number;
   capsule_radius_scale: number;
   capsule_height_scale: number;
+  stat_modifiers?: Record<string, number>;
+  form_skill?: string;
+  form_skill_description?: string;
 }
 
 interface ClassData {
@@ -574,6 +585,58 @@ export default function ClassDetail({ slug }: { slug: string }) {
                                 </span>
                               </div>
                               <p>{cleanDescription(spell.description)}</p>
+
+                              {/* Bard Song Tier Effects */}
+                              {spell.tier_effects && (
+                                <table className={styles.tierTable}>
+                                  <thead>
+                                    <tr>
+                                      <th>Tier</th>
+                                      <th>Range</th>
+                                      <th>Duration</th>
+                                      <th>Effect</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {(
+                                      ["bad", "good", "perfect"] as const
+                                    ).map((tier) => {
+                                      const fx =
+                                        spell.tier_effects?.[tier];
+                                      if (!fx) return null;
+                                      const rangeVal =
+                                        tier === "bad"
+                                          ? spell.bad_range
+                                          : tier === "good"
+                                            ? spell.good_range
+                                            : spell.perfect_range;
+                                      const { duration, description } =
+                                        summarizeTierEffect(fx);
+                                      const tierClass =
+                                        tier === "bad"
+                                          ? styles.tierBad
+                                          : tier === "good"
+                                            ? styles.tierGood
+                                            : styles.tierPerfect;
+                                      return (
+                                        <tr key={tier}>
+                                          <td className={tierClass}>
+                                            {tier.charAt(0).toUpperCase() +
+                                              tier.slice(1)}
+                                          </td>
+                                          <td>
+                                            {rangeVal != null
+                                              ? gameUnitsToMeters(rangeVal)
+                                              : "--"}
+                                          </td>
+                                          <td>{duration ?? "--"}</td>
+                                          <td>{description}</td>
+                                        </tr>
+                                      );
+                                    })}
+                                  </tbody>
+                                </table>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -639,6 +702,40 @@ export default function ClassDetail({ slug }: { slug: string }) {
                 <p className={styles.shapeshiftDesc}>
                   {cleanDescription(form.description)}
                 </p>
+
+                {/* Stat Modifiers */}
+                {form.stat_modifiers &&
+                  Object.keys(form.stat_modifiers).length > 0 && (
+                    <ul className={styles.statModifiers}>
+                      {Object.entries(form.stat_modifiers).map(([k, v]) => (
+                        <li
+                          key={k}
+                          className={
+                            v >= 0
+                              ? styles.statModPositive
+                              : styles.statModNegative
+                          }
+                        >
+                          {formatStatModValue(k, v)} {formatStatModKey(k)}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                {/* Form Skill */}
+                {form.form_skill && (
+                  <div className={styles.formSkill}>
+                    <span className={styles.formSkillLabel}>Form Skill:</span>
+                    <span className={styles.formSkillName}>
+                      {form.form_skill}
+                    </span>
+                    {form.form_skill_description && (
+                      <p className={styles.formSkillDesc}>
+                        {cleanDescription(form.form_skill_description)}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </>
@@ -694,4 +791,64 @@ function getDerivedStatClass(value: number, isPct: boolean): string {
   if (isPct && value > 0) return styles.derivedStatValuePositive;
   if (isPct && value < 0) return styles.derivedStatValueNegative;
   return styles.derivedStatValue;
+}
+
+/** Convert stat modifier keys like `max_health_pct` → "Max Health" */
+function formatStatModKey(key: string): string {
+  // Remove trailing _pct suffix (we show % separately)
+  const cleaned = key.replace(/_pct$/, "");
+  return cleaned
+    .split("_")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+/** Format a stat modifier value: "+50%" or "-20%" */
+function formatStatModValue(key: string, value: number): string {
+  const sign = value > 0 ? "+" : "";
+  const suffix = key.endsWith("_pct") ? "%" : "";
+  return `${sign}${value}${suffix}`;
+}
+
+/** Convert game units to meters (divide by 100) */
+function gameUnitsToMeters(units: number): string {
+  const meters = units / 100;
+  // Avoid floating point artifacts
+  return `${parseFloat(meters.toFixed(2))}m`;
+}
+
+/** Convert milliseconds to a human-friendly duration string */
+function msToDuration(ms: number): string {
+  const seconds = ms / 1000;
+  if (seconds >= 60 && seconds % 60 === 0) {
+    return `${seconds / 60}min`;
+  }
+  return `${parseFloat(seconds.toFixed(1))}s`;
+}
+
+/** Summarise a tier_effects entry into a single human-readable string */
+function summarizeTierEffect(effect: Record<string, any>): {
+  duration: string | null;
+  description: string;
+} {
+  const parts: string[] = [];
+  let duration: string | null = null;
+
+  for (const [k, v] of Object.entries(effect)) {
+    if (k === "duration" && typeof v === "number") {
+      duration = msToDuration(v);
+      continue;
+    }
+    // Format the key the same way as stat modifiers
+    const label = formatStatModKey(k);
+    if (typeof v === "number") {
+      const sign = v > 0 ? "+" : "";
+      const suffix = k.endsWith("_pct") ? "%" : "";
+      parts.push(`${sign}${v}${suffix} ${label}`);
+    } else {
+      parts.push(`${label}: ${String(v)}`);
+    }
+  }
+
+  return { duration, description: parts.join(", ") || "--" };
 }

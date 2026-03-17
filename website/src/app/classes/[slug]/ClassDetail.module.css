@@ -1,0 +1,860 @@
+/* ═══════════════════════════════════════════════════════════════
+   Class Detail Page — CSS Module (Glassmorphism Dark Fantasy)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* === Page Layout === */
+
+.page {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  background: var(--bg-deep);
+}
+
+.pageInner {
+  padding: 16px 32px 56px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* === Breadcrumb === */
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold-700);
+  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all var(--t-fast);
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.breadcrumb:hover {
+  color: var(--gold-400);
+  border-color: var(--border-mid);
+  background: var(--glass-bg-h);
+}
+
+.breadcrumbArrow {
+  color: var(--gold-500);
+  font-size: 0.875rem;
+}
+
+/* === Hero Section === */
+
+.heroSection {
+  margin-bottom: 32px;
+}
+
+.className {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 700;
+  color: var(--gold-300);
+  text-shadow: 0 0 32px rgba(201, 168, 76, 0.35);
+  margin: 0 0 12px;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+}
+
+.tagRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.roleBadge {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.roleMelee {
+  composes: roleBadge;
+  background: rgba(220, 80, 60, 0.12);
+  border: 1px solid rgba(220, 80, 60, 0.25);
+  color: #e06050;
+}
+
+.roleCaster {
+  composes: roleBadge;
+  background: rgba(80, 140, 220, 0.12);
+  border: 1px solid rgba(80, 140, 220, 0.25);
+  color: #68a8e0;
+}
+
+.roleHybrid {
+  composes: roleBadge;
+  background: rgba(180, 140, 60, 0.12);
+  border: 1px solid rgba(180, 140, 60, 0.25);
+  color: var(--gold-400);
+}
+
+.flavorText {
+  font-size: 0.8125rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-style: italic;
+  padding: 14px 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  border-left: 3px solid var(--gold-700);
+}
+
+/* === Section Divider === */
+
+.sectionDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 20px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201, 168, 76, 0.1), transparent);
+}
+
+.dividerLineRight {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.1));
+}
+
+.dividerDiamond {
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* === Section Title === */
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.sectionCount {
+  color: var(--gold-700);
+  margin-left: 4px;
+}
+
+/* === Base Stats Bars === */
+
+.baseStatsSection {
+  margin-bottom: 8px;
+}
+
+.statBarRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.statBarLabel {
+  width: 170px;
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: right;
+  line-height: 1.3;
+}
+
+.statBarLabelSub {
+  display: block;
+  font-size: 0.5rem;
+  color: var(--text-ghost);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+
+.statBarTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--bg-void);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.statBarFill {
+  height: 100%;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--gold-800), var(--gold-500));
+  transition: width 0.6s var(--ease);
+  position: relative;
+}
+
+.statBarFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gold-300);
+  border-radius: 0 1px 1px 0;
+  opacity: 0.6;
+}
+
+.statBarValue {
+  width: 24px;
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  text-align: right;
+  font-family: var(--font-body);
+}
+
+/* === Derived Stats Grid === */
+
+.derivedStatsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.derivedStatCard {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  transition: background var(--t-fast);
+}
+
+.derivedStatCard:hover {
+  background: var(--glass-bg-h);
+}
+
+.derivedStatLabel {
+  font-size: 0.5625rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.derivedStatValue {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+
+.derivedStatValuePositive {
+  composes: derivedStatValue;
+  color: #4ec94e;
+}
+
+.derivedStatValueNegative {
+  composes: derivedStatValue;
+  color: var(--red-300);
+}
+
+.derivedStatValueZero {
+  composes: derivedStatValue;
+  color: var(--text-muted);
+}
+
+/* === Expandable Card === */
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.expandCard {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+
+.expandCard:hover {
+  background: var(--glass-bg-h);
+}
+
+.expandCardOpen {
+  composes: expandCard;
+  border-color: var(--border-mid);
+}
+
+.expandCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--t-fast);
+}
+
+.expandCardHeader:hover {
+  background: rgba(201, 168, 76, 0.03);
+}
+
+.expandCardName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  flex: 1;
+}
+
+.expandCardChevron {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  transition: transform 0.2s var(--ease);
+  flex-shrink: 0;
+}
+
+.expandCardChevronOpen {
+  composes: expandCardChevron;
+  transform: rotate(180deg);
+  color: var(--gold-600);
+}
+
+.expandCardBody {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s var(--ease);
+}
+
+.expandCardBodyOpen {
+  composes: expandCardBody;
+  max-height: 600px;
+}
+
+.expandCardContent {
+  padding: 0 16px 14px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* === Badges === */
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.badgeDefault {
+  composes: badge;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: var(--gold-500);
+}
+
+.badgeInstant {
+  composes: badge;
+  background: rgba(43, 171, 43, 0.1);
+  border: 1px solid rgba(43, 171, 43, 0.2);
+  color: #4ec94e;
+}
+
+.badgeChanneling {
+  composes: badge;
+  background: rgba(80, 140, 220, 0.1);
+  border: 1px solid rgba(80, 140, 220, 0.2);
+  color: #68a8e0;
+}
+
+.badgeMemory {
+  composes: badge;
+  background: rgba(155, 43, 171, 0.1);
+  border: 1px solid rgba(155, 43, 171, 0.2);
+  color: #c06ce0;
+}
+
+.badgeTier {
+  composes: badge;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+}
+
+.badgeMoving {
+  composes: badge;
+  background: rgba(201, 168, 76, 0.06);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  color: var(--gold-600);
+}
+
+/* === Source Type Badges (Spell Element Colors) === */
+
+.sourceTypeBadge {
+  composes: badge;
+}
+
+.sourceFire {
+  composes: sourceTypeBadge;
+  background: rgba(220, 60, 40, 0.12);
+  border: 1px solid rgba(220, 60, 40, 0.25);
+  color: #e05040;
+}
+
+.sourceIce {
+  composes: sourceTypeBadge;
+  background: rgba(80, 180, 240, 0.12);
+  border: 1px solid rgba(80, 180, 240, 0.25);
+  color: #60c0f0;
+}
+
+.sourceLightning {
+  composes: sourceTypeBadge;
+  background: rgba(240, 200, 40, 0.12);
+  border: 1px solid rgba(240, 200, 40, 0.25);
+  color: #e8c830;
+}
+
+.sourceDark {
+  composes: sourceTypeBadge;
+  background: rgba(140, 60, 180, 0.12);
+  border: 1px solid rgba(140, 60, 180, 0.25);
+  color: #b060e0;
+}
+
+.sourceDivine {
+  composes: sourceTypeBadge;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: var(--gold-400);
+}
+
+.sourceSpirit {
+  composes: sourceTypeBadge;
+  background: rgba(43, 171, 80, 0.12);
+  border: 1px solid rgba(43, 171, 80, 0.25);
+  color: #40c870;
+}
+
+.sourceArcane {
+  composes: sourceTypeBadge;
+  background: rgba(60, 200, 220, 0.12);
+  border: 1px solid rgba(60, 200, 220, 0.25);
+  color: #50d0e0;
+}
+
+.sourceEarth {
+  composes: sourceTypeBadge;
+  background: rgba(140, 120, 60, 0.12);
+  border: 1px solid rgba(140, 120, 60, 0.25);
+  color: #b0a060;
+}
+
+.sourceWater {
+  composes: sourceTypeBadge;
+  background: rgba(40, 100, 200, 0.12);
+  border: 1px solid rgba(40, 100, 200, 0.25);
+  color: #5090e0;
+}
+
+.sourceDefault {
+  composes: sourceTypeBadge;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+}
+
+/* === Spell Tier Group === */
+
+.tierGroup {
+  margin-bottom: 16px;
+}
+
+.tierHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.tierCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: var(--gold-500);
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tierLabel {
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* === Spell Detail Row (inside expand body) === */
+
+.spellMeta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.spellMetaItem {
+  font-size: 0.6875rem;
+  color: var(--text-dim);
+}
+
+.spellMetaValue {
+  font-weight: 600;
+  color: var(--text-mid);
+}
+
+/* === Spell Merge Recipes === */
+
+.mergeSection {
+  margin-top: 20px;
+}
+
+.mergeCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  margin-bottom: 4px;
+  transition: background var(--t-fast);
+  flex-wrap: wrap;
+}
+
+.mergeCard:hover {
+  background: var(--glass-bg-h);
+}
+
+.mergeResult {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gold-400);
+}
+
+.mergeArrow {
+  color: var(--gold-700);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+}
+
+.mergeSource {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  padding: 2px 8px;
+  background: rgba(201, 168, 76, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  border-radius: 3px;
+}
+
+.mergePlus {
+  color: var(--text-muted);
+  font-size: 0.6875rem;
+}
+
+/* === Shapeshift Card === */
+
+.shapeshiftCard {
+  padding: 16px 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: background var(--t-fast);
+}
+
+.shapeshiftCard:hover {
+  background: var(--glass-bg-h);
+}
+
+.shapeshiftName {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.shapeshiftMeta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.shapeshiftMetaItem {
+  font-size: 0.6875rem;
+  color: var(--text-dim);
+}
+
+.shapeshiftMetaValue {
+  font-weight: 600;
+  color: var(--text-mid);
+}
+
+.shapeshiftDesc {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* === Equipment Section === */
+
+.equipmentCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  transition: background var(--t-fast);
+}
+
+.equipmentCard:hover {
+  background: var(--glass-bg-h);
+}
+
+.equipmentCount {
+  font-size: 0.875rem;
+  color: var(--text-mid);
+  font-weight: 500;
+}
+
+.equipmentCountValue {
+  font-weight: 700;
+  color: var(--gold-400);
+  font-family: var(--font-heading);
+}
+
+.equipmentLink {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  padding: 6px 14px;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 5px;
+  background: rgba(201, 168, 76, 0.06);
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+
+.equipmentLink:hover {
+  color: var(--gold-400);
+  border-color: rgba(201, 168, 76, 0.35);
+  background: rgba(201, 168, 76, 0.1);
+  box-shadow: var(--glow-sm);
+}
+
+/* === Loading / Error / Not Found === */
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+}
+
+.notFound {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.notFoundTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold-300);
+  margin-bottom: 12px;
+}
+
+.notFoundDesc {
+  color: var(--text-dim);
+  font-size: 0.875rem;
+  margin-bottom: 24px;
+}
+
+.errorState {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.errorText {
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.retryButton {
+  padding: 8px 20px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-dim);
+  border-radius: 2px;
+  color: var(--gold-500);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+
+.retryButton:hover {
+  border-color: var(--gold-600);
+  color: var(--gold-300);
+}
+
+/* === Skeleton Loading === */
+
+.skeletonBar {
+  height: 12px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--bg-raised) 25%, var(--bg-card-h) 50%, var(--bg-raised) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonSection {
+  margin-bottom: 24px;
+}
+
+.skeletonStatRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* === Responsive === */
+
+@media (max-width: 1024px) {
+  .pageInner {
+    padding: 14px 20px 48px;
+  }
+
+  .derivedStatsGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageInner {
+    padding: 12px 16px 40px;
+  }
+
+  .derivedStatsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .statBarLabel {
+    width: 120px;
+    font-size: 0.5rem;
+  }
+
+  .statBarLabelSub {
+    display: none;
+  }
+
+  .spellMeta {
+    gap: 8px;
+  }
+
+  .mergeCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .shapeshiftMeta {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .derivedStatsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statBarLabel {
+    width: 90px;
+  }
+
+  .tagRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

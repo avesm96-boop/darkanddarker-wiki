@@ -867,50 +867,45 @@
 
 /* === Market Search === */
 
-.msForm {
+/* Search bar */
+.msSearchBar {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  align-items: flex-end;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
 }
 
-.msField {
+.msSearchInputWrap {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
   flex: 1;
-  min-width: 160px;
-}
-
-.msLabel {
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-}
-
-.msInput {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(201, 168, 76, 0.15);
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 0.8rem;
-  color: var(--gold-500);
-  font-family: inherit;
-  outline: none;
+  border-radius: 8px;
+  padding: 10px 14px;
   transition: border-color 0.15s;
 }
-.msInput:focus {
+.msSearchInputWrap:focus-within {
   border-color: rgba(201, 168, 76, 0.4);
+}
+
+.msSearchInput {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 0.85rem;
+  color: var(--gold-500);
+  font-family: inherit;
+  width: 100%;
 }
 
 .msSelect {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(201, 168, 76, 0.15);
-  border-radius: 6px;
-  padding: 8px 12px;
+  border-radius: 8px;
+  padding: 10px 14px;
   font-size: 0.8rem;
   color: var(--gold-500);
   font-family: inherit;
@@ -921,8 +916,8 @@
 .msSearchBtn {
   background: rgba(201, 168, 76, 0.15);
   border: 1px solid rgba(201, 168, 76, 0.4);
-  border-radius: 6px;
-  padding: 8px 20px;
+  border-radius: 8px;
+  padding: 10px 24px;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--gold-500);
@@ -930,13 +925,8 @@
   transition: all 0.15s;
   white-space: nowrap;
 }
-.msSearchBtn:hover:not(:disabled) {
-  background: rgba(201, 168, 76, 0.25);
-}
-.msSearchBtn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
+.msSearchBtn:hover:not(:disabled) { background: rgba(201, 168, 76, 0.25); }
+.msSearchBtn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .msSuggestions {
   position: absolute;
@@ -945,47 +935,156 @@
   right: 0;
   background: rgba(20, 18, 14, 0.98);
   border: 1px solid rgba(201, 168, 76, 0.2);
-  border-radius: 6px;
-  max-height: 240px;
+  border-radius: 8px;
+  max-height: 260px;
   overflow-y: auto;
   z-index: 50;
-  margin-top: 2px;
+  margin-top: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .msSuggestionItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: 10px;
+  padding: 10px 14px;
   cursor: pointer;
   font-size: 0.8rem;
   color: var(--gold-500);
   transition: background 0.1s;
 }
-.msSuggestionItem:hover {
-  background: rgba(201, 168, 76, 0.1);
+.msSuggestionItem:hover { background: rgba(201, 168, 76, 0.1); }
+
+/* Hero section */
+.msHero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 10px;
 }
 
-.msAttrFilters {
+.msHeroIcon {
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.msHeroName {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold-300);
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Price cards */
+.msPriceCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.msPriceCard {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.msPriceCardValue {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-300);
+  font-variant-numeric: tabular-nums;
+}
+
+.msPriceCardLabel {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* Chart section */
+.msChartSection {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  border-radius: 10px;
+}
+
+.msChartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.msChartToggle {
+  display: flex;
+  gap: 4px;
+}
+
+.msChartBtn, .msChartBtnActive {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+}
+.msChartBtn:hover { color: var(--gold-500); }
+.msChartBtnActive {
+  background: rgba(201, 168, 76, 0.15);
+  border-color: rgba(201, 168, 76, 0.3);
+  color: var(--gold-500);
+}
+
+.msChart {
+  margin: 0 -8px;
+}
+
+/* Filter bar */
+.msFilterBar {
   margin-bottom: 16px;
+}
+
+.msFilterToggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 6px 0;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.msFilterToggle:hover { color: var(--gold-500); }
+
+.msFilterContent {
+  margin-top: 8px;
   padding: 12px;
   background: rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(201, 168, 76, 0.1);
   border-radius: 6px;
 }
 
-.msAttrHeader {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.msAttrList {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+/* Shared filter chip styles */
+.msAttrList { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
 
 .msAttrChip {
   display: flex;
@@ -1020,13 +1119,15 @@
   padding: 0 2px;
   line-height: 1;
 }
-.msAttrRemove:hover {
-  color: #e05555;
+.msAttrRemove:hover { color: #e05555; }
+
+/* Sections */
+.msSection {
+  margin-bottom: 24px;
 }
 
-.msTableWrap {
-  overflow-x: auto;
-}
+/* Tables */
+.msTableWrap { overflow-x: auto; }
 
 .msTable {
   width: 100%;
@@ -1040,7 +1141,7 @@
   font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
   border-bottom: 1px solid rgba(201, 168, 76, 0.15);
 }
@@ -1052,9 +1153,7 @@
   vertical-align: middle;
 }
 
-.msTable tbody tr:hover {
-  background: rgba(201, 168, 76, 0.04);
-}
+.msTable tbody tr:hover { background: rgba(201, 168, 76, 0.04); }
 
 .msSelectedRow {
   background: rgba(201, 168, 76, 0.08) !important;
@@ -1070,11 +1169,7 @@
   white-space: nowrap;
 }
 
-.msStats {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
+.msStats { display: flex; gap: 5px; flex-wrap: wrap; }
 
 .msStat {
   background: rgba(201, 168, 76, 0.06);
@@ -1084,26 +1179,26 @@
   white-space: nowrap;
 }
 
-.msSeller {
-  color: var(--text-muted);
-  font-size: 0.7rem;
-}
-
 .msTime {
   color: var(--text-muted);
   font-size: 0.68rem;
   white-space: nowrap;
 }
 
-.msSoldRow td {
-  opacity: 0.7;
-}
+.msSoldRow td { opacity: 0.7; }
 
 .msEmpty {
   padding: 24px 16px;
   color: var(--text-muted);
   text-align: center;
   font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .msSearchBar { flex-wrap: wrap; }
+  .msSearchInputWrap { min-width: 100%; }
+  .msPriceCards { grid-template-columns: repeat(2, 1fr); }
+  .msHeroName { font-size: 1rem; }
 }
 
 /* === Responsive === */

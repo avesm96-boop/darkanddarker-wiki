@@ -1193,12 +1193,14 @@
 }
 
 .msPrice {
-  display: flex;
-  align-items: center;
-  gap: 3px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+.msPrice img {
+  vertical-align: middle;
+  margin-left: 3px;
 }
 
 .msStats { display: flex; gap: 5px; flex-wrap: wrap; }
@@ -1212,12 +1214,14 @@
 }
 
 .msItemName {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
+}
+
+.msItemName img {
+  vertical-align: middle;
+  margin-right: 6px;
 }
 
 .msTime {

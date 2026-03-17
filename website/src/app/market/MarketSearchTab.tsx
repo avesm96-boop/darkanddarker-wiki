@@ -4,12 +4,10 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./market.module.css";
 import { searchItems, fetchRawListings, fetchPriceHistory, GOLD_ICON, itemIconPath, type ItemDef, type RawListing, type PricePoint } from "./api";
 import ItemTooltip from "./ItemTooltip";
-import { cleanStatName, formatStatValue } from "./statFormat";
+import { cleanStatName, formatStatValue, isPercentStat } from "./statFormat";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const BASE_RARITIES = ["Poor", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique", "Artifact"];
-
-// Secondary slot counts by rarity
 const RARITY_SECONDARY_SLOTS: Record<string, number> = {
   Common: 1, Uncommon: 1, Rare: 2, Epic: 3, Legendary: 4, Unique: 1,
 };
@@ -42,6 +40,13 @@ function formatChartTime(ts: string, timeframe: string): string {
   return d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
 }
 
+// Get proper display name for an item
+function getItemDisplayName(baseName: string, metadata: Record<string, ItemMeta>): string {
+  const meta = metadata[baseName];
+  if (meta?.name) return meta.name;
+  return baseName.replace(/([A-Z])/g, " $1").trim();
+}
+
 interface PropertyFilter { name: string; label: string; min: string; }
 
 export default function MarketSearchTab() {
@@ -66,12 +71,8 @@ export default function MarketSearchTab() {
   const abortRef = useRef<AbortController | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  // Load item metadata once
   useEffect(() => {
-    fetch("/data/item_metadata.json")
-      .then((r) => r.json())
-      .then((d) => setItemMetadata(d))
-      .catch(() => {});
+    fetch("/data/item_metadata.json").then((r) => r.json()).then((d) => setItemMetadata(d)).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -87,13 +88,8 @@ export default function MarketSearchTab() {
     setQuery(item.name);
     setShowSuggestions(false);
     setSuggestions([]);
-
-    // Fixed-rarity items (e.g. Hard Crab Shell) are stored as "Unknown" in DB
-    // so don't auto-fill the rarity filter — keep "All Rarities"
     const meta = itemMetadata[item.archetype];
-    if (meta?.fixedRarity) {
-      setSelectedRarity("");
-    }
+    if (meta?.fixedRarity) setSelectedRarity("");
   }, [itemMetadata]);
 
   const handleQueryChange = useCallback((val: string) => {
@@ -112,13 +108,11 @@ export default function MarketSearchTab() {
     }, 250);
   }, []);
 
-  // Determine how many stat filter slots to show
   const getStatSlotCount = (): number => {
     if (selectedItem) {
       const meta = itemMetadata[selectedItem.archetype];
       if (meta?.secondarySlots) return meta.secondarySlots;
     }
-    // Rarity-only search
     return RARITY_SECONDARY_SLOTS[selectedRarity] || 0;
   };
 
@@ -131,9 +125,7 @@ export default function MarketSearchTab() {
     abortRef.current = ac;
     setLoading(true); setSearched(true); setPreviewListing(null);
 
-    // For rarity-only search, use empty item
     const itemArch = selectedItem?.archetype || "";
-
     try {
       const [active, sold, history] = await Promise.all([
         fetchRawListings(itemArch, { base_rarity: selectedRarity || undefined, status: "active", limit: 500, sort: "price_asc" }, ac.signal),
@@ -146,13 +138,10 @@ export default function MarketSearchTab() {
         const ps = new Set<string>();
         for (const l of active) for (const p of l.properties) if (!p.is_primary) ps.add(p.property_type);
         setAvailableProps(Array.from(ps).sort());
-
-        // Initialize stat filter slots based on rarity
         const slotCount = getStatSlotCount();
         if (slotCount > 0 && propFilters.length === 0) {
           setPropFilters(Array.from({ length: slotCount }, () => ({ name: "", label: "Any", min: "" })));
         }
-
         setLoading(false);
       }
     } catch { if (!ac.signal.aborted) setLoading(false); }
@@ -166,12 +155,23 @@ export default function MarketSearchTab() {
     return () => ac.abort();
   }, [chartTimeframe, searched, selectedItem]);
 
+  // Convert user input to raw DB value for filtering
+  const userInputToRawValue = (propName: string, userVal: string): number => {
+    const num = parseFloat(userVal);
+    if (isNaN(num)) return 0;
+    if (isPercentStat(propName)) return Math.round(num * 10); // 2.3% → 23 raw
+    return num;
+  };
+
   const applyPropFilters = (listing: RawListing) => {
     for (const f of propFilters) {
-      if (!f.name) continue; // "Any" — skip
+      if (!f.name) continue;
       const prop = listing.properties.find((p) => p.property_type === f.name && !p.is_primary);
       if (!prop) return false;
-      if (f.min && prop.property_value < parseInt(f.min)) return false;
+      if (f.min) {
+        const rawMin = userInputToRawValue(f.name, f.min);
+        if (prop.property_value < rawMin) return false;
+      }
     }
     return true;
   };
@@ -187,7 +187,6 @@ export default function MarketSearchTab() {
   const lowestNow = activeListings.length > 0 ? activeListings[0].price / Math.max(activeListings[0].item_count, 1) : 0;
 
   const showHero = searched && selectedItem;
-  // Only show Item column when user searched by rarity without selecting a specific item
   const isRarityOnly = searched && !selectedItem && selectedRarity !== "";
   const showStatFilters = searched && availableProps.length > 0 && !isGenericItem;
   const statSlotCount = getStatSlotCount();
@@ -233,6 +232,42 @@ export default function MarketSearchTab() {
         )}
       </div>
 
+      {/* ── Attributes (moved under search bar) ── */}
+      {showStatFilters && statSlotCount > 0 && (
+        <div className={styles.msFilterSection}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTitle}>Attributes</span>
+          </div>
+          <div className={styles.msFilterSlots}>
+            {propFilters.slice(0, statSlotCount).map((f, idx) => (
+              <div key={idx} className={styles.msFilterSlot}>
+                <select className={styles.msSelect} value={f.name}
+                  onChange={(e) => {
+                    const updated = [...propFilters];
+                    updated[idx] = { name: e.target.value, label: e.target.value ? cleanStatName(e.target.value) : "Any", min: "" };
+                    setPropFilters(updated);
+                  }}>
+                  <option value="">Any</option>
+                  {availableProps.map((p) => (
+                    <option key={p} value={p}>{cleanStatName(p)}</option>
+                  ))}
+                </select>
+                {f.name && (
+                  <input type="text" className={styles.msFilterMinInput} value={f.min}
+                    placeholder={isPercentStat(f.name) ? "Min %" : "Min"}
+                    onChange={(e) => {
+                      const updated = [...propFilters];
+                      updated[idx] = { ...f, min: e.target.value };
+                      setPropFilters(updated);
+                    }} />
+                )}
+                {f.name && isPercentStat(f.name) && <span style={{ color: "var(--text-muted)", fontSize: "0.7rem" }}>%</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* ── Item Hero (only when specific item selected) ── */}
       {showHero && (() => {
         const meta = itemMetadata[selectedItem.archetype];
@@ -275,7 +310,7 @@ export default function MarketSearchTab() {
         </div>
       )}
 
-      {/* ── Price Chart (only for specific item search) ── */}
+      {/* ── Price Chart ── */}
       {searched && selectedItem && priceHistory.length > 1 && (
         <div className={styles.msChartSection}>
           <div className={styles.msChartHeader}>
@@ -309,41 +344,6 @@ export default function MarketSearchTab() {
         </div>
       )}
 
-      {/* ── Stat Filters (always visible, with default slots) ── */}
-      {showStatFilters && statSlotCount > 0 && (
-        <div className={styles.msFilterSection}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTitle}>Filter by Stats</span>
-          </div>
-          <div className={styles.msFilterSlots}>
-            {propFilters.slice(0, statSlotCount).map((f, idx) => (
-              <div key={idx} className={styles.msFilterSlot}>
-                <select className={styles.msSelect} value={f.name}
-                  onChange={(e) => {
-                    const updated = [...propFilters];
-                    updated[idx] = { name: e.target.value, label: e.target.value ? cleanStatName(e.target.value) : "Any", min: f.min };
-                    setPropFilters(updated);
-                  }}>
-                  <option value="">Any</option>
-                  {availableProps.map((p) => (
-                    <option key={p} value={p}>{cleanStatName(p)}</option>
-                  ))}
-                </select>
-                {f.name && (
-                  <input type="number" className={styles.msFilterMinInput} value={f.min}
-                    placeholder="Min"
-                    onChange={(e) => {
-                      const updated = [...propFilters];
-                      updated[idx] = { ...f, min: e.target.value };
-                      setPropFilters(updated);
-                    }} min={0} />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* ── Item Preview ── */}
       {previewListing && selectedItem && (
         <div style={{ display: "flex", justifyContent: "center", margin: "16px 0" }}>
@@ -372,14 +372,14 @@ export default function MarketSearchTab() {
                 <tbody>
                   {filteredActive.slice(0, 50).map((l) => (
                     <tr key={l.listing_id}
-                      onClick={() => !isGenericItem && setPreviewListing(previewListing?.listing_id === l.listing_id ? null : l)}
-                      style={!isGenericItem ? { cursor: "pointer" } : undefined}
+                      onClick={() => !isGenericItem && !isRarityOnly && setPreviewListing(previewListing?.listing_id === l.listing_id ? null : l)}
+                      style={!isGenericItem && !isRarityOnly ? { cursor: "pointer" } : undefined}
                       className={previewListing?.listing_id === l.listing_id ? styles.msSelectedRow : ""}>
                       {isRarityOnly && (
                         <td className={styles.msItemName}>
                           <img src={itemIconPath(l.item_base_name)} width={20} height={20} alt=""
                             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                          {l.item_base_name.replace(/([A-Z])/g, " $1").trim()}
+                          {getItemDisplayName(l.item_base_name, itemMetadata)}
                         </td>
                       )}
                       <td className={styles.msPrice}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></td>
@@ -425,7 +425,7 @@ export default function MarketSearchTab() {
                       <td className={styles.msItemName}>
                         <img src={itemIconPath(l.item_base_name)} width={20} height={20} alt=""
                           onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                        {l.item_base_name.replace(/([A-Z])/g, " $1").trim()}
+                        {getItemDisplayName(l.item_base_name, itemMetadata)}
                       </td>
                     )}
                     <td className={styles.msPrice}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></td>

@@ -1205,14 +1205,16 @@
   gap: 3px;
 }
 
-.msStats { display: flex; gap: 5px; flex-wrap: wrap; }
+.msStats { display: inline; }
 
 .msStat {
+  display: inline-block;
   background: rgba(201, 168, 76, 0.06);
   padding: 2px 6px;
   border-radius: 3px;
   font-size: 0.68rem;
   white-space: nowrap;
+  margin: 1px 2px;
 }
 
 .msItemName {

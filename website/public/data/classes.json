@@ -1,0 +1,2658 @@
+{
+  "version": "2026-03-17",
+  "generated_at": "2026-03-17T22:09:33.343720+00:00",
+  "data": {
+    "classes": [
+      {
+        "slug": "barbarian",
+        "name": "Barbarian",
+        "flavor_text": "The Barbarian is known for his hardy nature, fiery temper, and ability to endure immense pain. His rage and reckless abandon allow him to lead the charge into battle.",
+        "role": "Melee",
+        "base_stats": {
+          "strength": 20,
+          "vigor": 25,
+          "agility": 13,
+          "dexterity": 12,
+          "will": 18,
+          "knowledge": 5,
+          "resourcefulness": 12
+        },
+        "derived_stats": {
+          "health": 131.5,
+          "move_speed": 298.0,
+          "move_speed_pct": -0.7,
+          "action_speed_pct": -2.0,
+          "spell_casting_speed_pct": -35.0,
+          "memory_capacity": 0,
+          "magic_resistance_pct": 42.0,
+          "physical_power": 20.0,
+          "manual_dexterity_pct": -3.0,
+          "equip_speed_pct": -21.0,
+          "buff_duration_pct": 3.0,
+          "debuff_duration_pct": -2.9,
+          "regular_interaction_speed_pct": -4.5,
+          "health_recovery_bonus_pct": -9.0
+        },
+        "perks": [
+          {
+            "id": "AxeSpecialization",
+            "name": "Axe Specialization",
+            "description": "While using axes, gain <PhysicalDamageWeaponPrimary>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "Berserker",
+            "name": "Berserker",
+            "description": "Gain <YellowColor>3%</> <PhysicalDamageMod>_</> and <YellowColor>0.5%</> <MoveSpeedMod>_</> for every <YellowColor>10%</> of your maximum health missing, up to <YellowColor>30%</> and <YellowColor>5%</> respectively.",
+            "is_default": true
+          },
+          {
+            "id": "Carnage",
+            "name": "Carnage",
+            "description": "When you hit 2 or more players with a melee weapon within 1.5 seconds, gain <PhysicalDamageMod>[0]% _</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "Crush",
+            "name": "Crush",
+            "description": "While equipped with a two-handed weapon, gain the ability to destroy unreinforced containers. Also gain <ImpactPower>[0] _</> on your two-handed weapon attacks, making it easier to break blocks and parries.",
+            "is_default": true
+          },
+          {
+            "id": "Executioner",
+            "name": "Executioner",
+            "description": "While using axes, gain <PhysicalHeadshotPower>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "HeavySwing",
+            "name": "Heavy Swing",
+            "description": "Hitting a target with a two-handed weapon reduces their move speed by <GEMod Type=\"Add\" Format=\"AbsFromOne\">[0]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "IronWill",
+            "name": "Iron Will",
+            "description": "Gain <MagicResistance>[0] _</> and ignore knockback effects. The maximum <MagicalReduction>_</> limit is increased to <Constant Type=\"float\" Format=\"FromZero\">[0]%</>.",
+            "is_default": true
+          },
+          {
+            "id": "MoraleBoost",
+            "name": "Morale Boost",
+            "description": "Recover <Exec.AddHealthByMaxHealthRatio>[0]% _</> after killing a player.",
+            "is_default": false
+          },
+          {
+            "id": "PotionChugger",
+            "name": "Potion Chugger",
+            "description": "Gain <GEMod Type=\"Multiply\" Format=\"FromOne\">[1]%</> increased potency towards all drinks, while reducing the duration by <GEMod Type=\"Multiply\" Format=\"AbsFromZero\">[0]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "Robust",
+            "name": "Robust",
+            "description": "Gain <MaxHealthMod>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "Savage",
+            "name": "Savage",
+            "description": "While not wearing any chest armor, gain <PhysicalDamageMod>[0]% _</> and <ImpactPower>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "SkullSplitter",
+            "name": "Skull Splitter",
+            "description": "Targets hit by a headshot are inflicted with Bleed.\n\nBleed: Deals a total of <Exec.PhysicalDamageBase>[0] _</> over <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "TreacherousLungs",
+            "name": "Treacherous Lungs",
+            "description": "Increases the duration of all shouting abilities by <GEMod Type=\"Multiply\" Format=\"AbsFromOne\">[0]%</> and reduces their cooldown by <CooldownReductionMod>[0]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "TwoHander",
+            "name": "Two-Hander",
+            "description": "When attacking with a two-handed weapon, gain <PhysicalDamageMod>[0]% _</> and <ArmorPenetration>[0]% _</>.",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "AchillesStrike",
+            "name": "Achilles Strike",
+            "description": "Strike a target, reducing their <MoveSpeedMod>_ by [0]%</> for <Duration>[0] seconds</>. While debuffed, each time the target moves they receive <Exec.PhysicalDamageBase>[1] _</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "BloodExchange",
+            "name": "Blood Exchange",
+            "description": "Lose <Exec.AddHealthbyMaxHealthRatio>[1]% of _</>, but gain <ActionSpeed>[0]% _</> for <Duration>[0] seconds</> and heal for <Constant Type=\"Float\" Format=\"FromZero\">[0]%</> of damage dealt while active.",
+            "skill_type": "instant",
+            "skill_tier": 5,
+            "use_moving": true
+          },
+          {
+            "id": "FinishingBlow",
+            "name": "Finishing Blow",
+            "description": "Your next attack deals an additional <Exec.PhysicalDamageTrue>[0] _</>. If the target’s health is <Exec.ExecutionHealthRatioThreshold>[0]%</> or lower after the attack, they are instantly killed.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "GrapplingHook",
+            "name": "Grappling Hook",
+            "description": "Throws a grappling rope at a target up to 4m away, pulling them toward you.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "HurlWeapon",
+            "name": "Hurl Weapon",
+            "description": "Throws an axe to deal <Constant Type=\"Float\" Format=\"FromZero\">[0]%</> weapon damage. Can only be used when an axe is equipped as your primary weapon.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Rage",
+            "name": "Rage",
+            "description": "Gain <StrengthBase>[0] _</>, <Vigorbase>[0] _</>, <MoveSpeedMod>[0]% _</>. While active, lose <PhysicalReduction>[0]% _</> for <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "RecklessAttack",
+            "name": "Reckless Attack",
+            "description": "Grants an additional <ArmorPenetration>[1]% _</> on your next attack, but reduces your <ArmorRating>_ by [0]</> while active. The effect is consumed when you hit a target or object with a melee attack.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SavageRoar",
+            "name": "Savage Roar",
+            "description": "Frightens all enemies within a <Skill Type=\"Range\">[0]m</> range radius for <Duration>[0] seconds</> reducing their <PhysicalDamageMod>_ by [0]%</> and <MoveSpeedMod>_ by [0]%</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "WarCry",
+            "name": "War Cry",
+            "description": "Gain <MaxHealthMod>[0]% _</> for <Duration>[0] seconds</>. This effect applies to yourself and allies within a <Skill Type=\"Range\">[0]m radius</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "WarSacrifice",
+            "name": "War Sacrifice",
+            "description": "While active, gain <AllAttributes>[0] _</>. In exchange, lose <Exec.AddHealthByMaxHealthRatio>[1]% of your _</> over <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Whirlwind",
+            "name": "Whirlwind",
+            "description": "Spin rapidly with a two-handed weapon, dealing <MeleeAttack Type=\"DamageRatio\" Format=\"FromZero\">[0]%</> of weapon damage to all nearby enemies. While spinning, your weapon cannot be interrupted by any impact.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [],
+        "shapeshifts": [],
+        "usable_item_count": 187
+      },
+      {
+        "slug": "bard",
+        "name": "Bard",
+        "flavor_text": "The Bard is a weaver of moving melodies and fantastic tales. They manage to get out of the stickiest of situations using their uncanny ability to mysteriously control the mood of crowds and creatures.",
+        "role": "Hybrid",
+        "base_stats": {
+          "strength": 13,
+          "vigor": 13,
+          "agility": 13,
+          "dexterity": 20,
+          "will": 11,
+          "knowledge": 20,
+          "resourcefulness": 15
+        },
+        "derived_stats": {
+          "health": 111.0,
+          "move_speed": 298.0,
+          "move_speed_pct": -0.7,
+          "action_speed_pct": -2.0,
+          "spell_casting_speed_pct": 10.5,
+          "memory_capacity": 14,
+          "magic_resistance_pct": 18.0,
+          "physical_power": 13.0,
+          "manual_dexterity_pct": 15.0,
+          "equip_speed_pct": 25.0,
+          "buff_duration_pct": -8.0,
+          "debuff_duration_pct": 8.7,
+          "regular_interaction_speed_pct": 0.0,
+          "health_recovery_bonus_pct": 0.0
+        },
+        "perks": [
+          {
+            "id": "CharismaticPerformance",
+            "name": "Charismatic Performance",
+            "description": "Upgrades a ‘good’ performance into a ‘perfect’ performance.",
+            "is_default": true
+          },
+          {
+            "id": "DancingFeet",
+            "name": "Dancing Feet",
+            "description": "While holding an instrument, gain <MoveSpeedAdd>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "Fermata",
+            "name": "Fermata",
+            "description": "Gain <ResourcefulnessBase>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "JollyTime",
+            "name": "Jolly Time",
+            "description": "Drinking ale recovers <Exec.PhysicalHealBase>[0] _</>, and grants <MoveSpeedAdd>[1] _</> while drunk.",
+            "is_default": false
+          },
+          {
+            "id": "LoreMastery",
+            "name": "Lore Mastery",
+            "description": "Grants <RegularInteractionSpeed>[0]% _</> and <MemoryCapacityAdd>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "MelodicProtection",
+            "name": "Melodic Protection",
+            "description": "While playing music, gain <PhysicalReduction>[0]% _</> and <MagicalReduction>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "RapierMastery",
+            "name": "Rapier Mastery",
+            "description": "While using a Rapier, gain <PhysicalDamageWeaponPrimary>[0] _</> and <ActionSpeed>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "ReinforcedInstruments",
+            "name": "Reinforced Instruments",
+            "description": "When attacking with an instrument, gain <PhysicalDamageMod>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "StoryTeller",
+            "name": "Story Teller",
+            "description": "Give all nearby party members around a <WillBase>+[0] _</> and <KnowledgeBase>+[0] _</> buff.",
+            "is_default": false
+          },
+          {
+            "id": "SuperiorDexterity",
+            "name": "Superior Dexterity",
+            "description": "<Constant Type=\"Float\" Format=\"FromZero\">[0]%</> faster switching time when switching between weapons/utility items.",
+            "is_default": true
+          },
+          {
+            "id": "WanderersLuck",
+            "name": "Wanderer's Luck",
+            "description": "Gain <Luck>[0] _</> and increases the chance of finding high-quality items when opening treasure chests.",
+            "is_default": true
+          },
+          {
+            "id": "WarSong",
+            "name": "War Song",
+            "description": "A successful performance increases nearby allies' <PhysicalDamageWeaponPrimary>_ by [0]</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "Dissonance",
+            "name": "Dissonance",
+            "description": "Plays an instrument to make an unpleasant noise that silences all enemy targets for <Duration>[0] seconds</>.\nSilence: Disables skills/spells/performance abilities.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Encore",
+            "name": "Encore",
+            "description": "Resets the duration of all active music buffs on nearby party members.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "MusicMemory1",
+            "name": "Music Memory",
+            "description": "Gain the ability to store up to 5 sheets of music.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "MusicMemory2",
+            "name": "Music Memory II",
+            "description": "Gain the ability to store up to 5 sheets of music.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "PartyMaker",
+            "name": "Party Maker",
+            "description": "Play an instrument to grant all nearby allies immunity to drunkenness for <Duration>[0] seconds</>. While immune, drinking alcohol restores <Exec.PhysicalHealBase>[1] _</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [],
+        "shapeshifts": [],
+        "usable_item_count": 196
+      },
+      {
+        "slug": "cleric",
+        "name": "Cleric",
+        "flavor_text": "The Cleric is a soldier of immense faith. The Cleric uses his sacred bonds to his gods to call forth the protective powers of light and to vanquish the forces of dark.",
+        "role": "Caster",
+        "base_stats": {
+          "strength": 11,
+          "vigor": 13,
+          "agility": 12,
+          "dexterity": 14,
+          "will": 23,
+          "knowledge": 20,
+          "resourcefulness": 12
+        },
+        "derived_stats": {
+          "health": 111.0,
+          "move_speed": 297.0,
+          "move_speed_pct": -1.0,
+          "action_speed_pct": -4.0,
+          "spell_casting_speed_pct": 10.5,
+          "memory_capacity": 14,
+          "magic_resistance_pct": 62.0,
+          "physical_power": 11.0,
+          "manual_dexterity_pct": -1.0,
+          "equip_speed_pct": -7.0,
+          "buff_duration_pct": 8.0,
+          "debuff_duration_pct": -7.4,
+          "regular_interaction_speed_pct": -4.5,
+          "health_recovery_bonus_pct": -9.0
+        },
+        "perks": [
+          {
+            "id": "AdvancedHealer",
+            "name": "Advanced Healer",
+            "description": "Gain <MagicalHealBase>[0] _</>.",
+            "is_default": true
+          },
+          {
+            "id": "BluntWeaponMastery",
+            "name": "Blunt Weapon Mastery",
+            "description": "While using a blunt weapon, gain <PhysicalDamageMod>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "Brewmaster",
+            "name": "Brewmaster",
+            "description": "When you drink alcohol, you no longer exhibit the detrimental drunk effects and gain <StrengthBase>[0] _</>. The duration of the drunk effect is increased by <YellowColor>50%</>.",
+            "is_default": false
+          },
+          {
+            "id": "Faithfulness",
+            "name": "Faithfulness",
+            "description": "Gain <MagicalDivineDamageMod>[0]% _</>. When a divine attack is successful, reduce their <MoveSpeedMod>_ by [1]%</> for <Duration>[1] seconds</>. Does not inflict while on cooldown.",
+            "is_default": false
+          },
+          {
+            "id": "HolyAura",
+            "name": "Holy Aura",
+            "description": "Gain <ArmorRating>[0] _</> and <MagicResistance>[0] _</>. This effects both yourself and allies.",
+            "is_default": false
+          },
+          {
+            "id": "HolyWater",
+            "name": "Holy Water",
+            "description": "Drinking any drink removes all removable curses and harmful magic effects, and grants the Bless effect.",
+            "is_default": false
+          },
+          {
+            "id": "Kindness",
+            "name": "Kindness",
+            "description": "Heal yourself for <Constant Type=\"Float\" Format=\"FromZero\">[0]%</> of the spell's total heal amount when healing another target.",
+            "is_default": false
+          },
+          {
+            "id": "Overhealing",
+            "name": "Over Healing",
+            "description": "Even if the target's health is at full health, additional healing can be done by <Constant Type=\"Float\" Format=\"AbsFromZero\">[0]%</> of the target's maximum health. <OverhealedHealth>^</> degenerates at <Exec.AddHealthbyMaxHealthRatio>[0]%</> per second.",
+            "is_default": true
+          },
+          {
+            "id": "Perseverance",
+            "name": "Perseverance",
+            "description": "Reduces all types of incoming damage by <PhysicalAbsoluteReduction>[0]</>.",
+            "is_default": true
+          },
+          {
+            "id": "ProtectionfromEvil",
+            "name": "Protection from Evil",
+            "description": "Reduce the duration of all harmful effects by <DebuffDurationMod>[0]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "Requiem",
+            "name": "Requiem",
+            "description": "Resurrecting an ally revives them with <Constant Type=\"Float\" Format=\"AbsFromZero\">[0]%</> HP instead of a sliver of life. When reviving an ally at the Altar of Sacrifice, you do not need to sacrifice any of your own health. Using the Resurrection spell also grants <SpellCastingSpeed>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "UndeadSlaying",
+            "name": "Undead Slaying",
+            "description": "Gain <UndeadDamageMod>[0]% _</> against undead monsters.",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "DivineProtection",
+            "name": "Divine Protection",
+            "description": "Gain <PhysicalReduction>[0]% _</> for <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "HolyPurification",
+            "name": "Holy Purification",
+            "description": "After channeling for <Skill Type=\"CastingTime\">[0] seconds</>, deal <Exec.MagicalDamageBase>[0] divine _</> to all undead monsters within a <Skill Type=\"Range\">[0]m radius</> around you.",
+            "skill_type": "casting",
+            "skill_tier": 1,
+            "use_moving": false
+          },
+          {
+            "id": "Judgement",
+            "name": "Judgement",
+            "description": "After channeling for <Skill Type=\"CastingTime\">[0] seconds</>, deal <Exec.MagicalDamageBase>[0]</> <MagicalDivineDamageBase>_</> to a target and reduce their <MoveSpeedMod>_ by [1]%</> for <Duration>[1] seconds</>. Once the channel begins on a target, crosshair targeting is no longer required. This spell has a <Skill Type=\"Range\">[0]m range</> and will fail if the target goes out of range.",
+            "skill_type": "casting",
+            "skill_tier": 1,
+            "use_moving": false
+          },
+          {
+            "id": "Smite",
+            "name": "Smite",
+            "description": "Deal an additional <Exec.MagicalDamageBase>[1]</> <MagicalDivineDamageBase>_</> to all enemies you hit within <Duration>[0] seconds</>. Only when melee attacking.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellMemory1",
+            "name": "Spell Memory I",
+            "description": "Gain the ability to memorize spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellMemory2",
+            "name": "Spell Memory II",
+            "description": "Gain the ability to memorize additional spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [
+          {
+            "id": "BindEvil",
+            "name": "Bind",
+            "description": "Binds the target for <Duration>[0] seconds</>.",
+            "spell_tier": 3,
+            "casting_time": 1.0,
+            "max_count": 4,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Bless",
+            "name": "Bless",
+            "description": "Grants the target <AllAttributes>[0] _</> for <Duration>[0] seconds</>. Self cast if no target is found.",
+            "spell_tier": 2,
+            "casting_time": 0.75,
+            "max_count": 5,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Cleanse",
+            "name": "Cleanse",
+            "description": "Removes poison and curse effects from the target. Self cast if no target is found.",
+            "spell_tier": 2,
+            "casting_time": 1.0,
+            "max_count": 5,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "DivineStrike",
+            "name": "Divine Strike",
+            "description": "Grants the target <PhysicalDamageBase>[0] _</> for <Duration>[0] seconds</>. Self cast if no target is found.",
+            "spell_tier": 3,
+            "casting_time": 1.0,
+            "max_count": 4,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Earthquake",
+            "name": "Earthquake",
+            "description": "Channel an earthquake in a <Spell Type=\"AreaRadius\">[0]m radius</> over <Spell Type=\"ChannelingDuration\">[0] seconds</>. Any target within the area is dealt <Exec.MagicalDamageBase>[1]</> <MagicalEarthDamageBase>_</> per step and receives <MoveSpeedMod>[0]% _</> reduction.",
+            "spell_tier": 7,
+            "casting_time": 2.5,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "count",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "HolyLight",
+            "name": "Holy Light",
+            "description": "Heals a target for <Exec.MagicalHealBase>[0] _</> or deals <Exec.MagicalDamageBase>[1]</> <MagicalDivineDamageBase>_</> to an undead target.",
+            "spell_tier": 5,
+            "casting_time": 1.75,
+            "max_count": 3,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "HolyStrike",
+            "name": "Holy Strike",
+            "description": "Deal <Exec.MagicalDamageBase>[0]</> <MagicalDivineDamageBase> _</> to all targets in an area, blinding them for <Duration>[1] seconds</>.",
+            "spell_tier": 4,
+            "casting_time": 2.0,
+            "max_count": 4,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "LesserHeal",
+            "name": "Lesser Heal",
+            "description": "Heals the target for <Exec.MagicalHealBase>[0] _</>. Self cast if no target is found.",
+            "spell_tier": 3,
+            "casting_time": 1.25,
+            "max_count": 4,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "LocustsSwarm",
+            "name": "Locust Swarm",
+            "description": "Channel a swarm of locusts in a <Spell Type=\"AreaRadius\">[0]m radius</> over <Spell Type=\"ChannelingDuration\">[0] seconds</>. Any target within the area is dealt <Exec.MagicalDamageBase>[0]</> <MagicalDivineDamageBase>_</> per 1 second. The target also suffers reduced <MagicalHealingReceiveMod>_ by [1]%</> and <PhysicalHealingReceiveMod>_ by [1]%</>.",
+            "spell_tier": 7,
+            "casting_time": 2.5,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "Protection",
+            "name": "Protection",
+            "description": "Grants the target a shield that blocks <MaxPhysicalShield>[0]</> physical damage for <Duration>[0] seconds</>.",
+            "spell_tier": 1,
+            "casting_time": 0.75,
+            "max_count": 5,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Resurrection",
+            "name": "Resurrection",
+            "description": "Target an ally to resurrect them from the dead (the corpse must have a soul heart).",
+            "spell_tier": 8,
+            "casting_time": 2.75,
+            "max_count": 1,
+            "range": 700,
+            "source_type": "resurrection",
+            "cost_type": "count",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "Sanctuary",
+            "name": "Sanctuary",
+            "description": "Channel for <Spell Type=\"ChannelingDuration\">[0] seconds</>, healing all targets within <Spell Type=\"AreaRadius\">[0]m</> for <Exec.MagicalHealBase>[0]</> per second and deals <Exec.MagicalDamageBase>[1]</> <MagicalDivineDamageBase>_</> per second to the undead.",
+            "spell_tier": 6,
+            "casting_time": 2.25,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "divine",
+            "cost_type": "count",
+            "casting_type": "channeling"
+          }
+        ],
+        "shapeshifts": [],
+        "usable_item_count": 235
+      },
+      {
+        "slug": "druid",
+        "name": "Druid",
+        "flavor_text": "The Druid is a spirit mage with a deep connection to nature. Able to wield the powers of the wilderness, they can even transform their bodies to mimic the powers of beasts.",
+        "role": "Caster",
+        "base_stats": {
+          "strength": 12,
+          "vigor": 13,
+          "agility": 12,
+          "dexterity": 12,
+          "will": 18,
+          "knowledge": 20,
+          "resourcefulness": 18
+        },
+        "derived_stats": {
+          "health": 111.0,
+          "move_speed": 297.0,
+          "move_speed_pct": -1.0,
+          "action_speed_pct": -4.0,
+          "spell_casting_speed_pct": 10.5,
+          "memory_capacity": 14,
+          "magic_resistance_pct": 42.0,
+          "physical_power": 12.0,
+          "manual_dexterity_pct": -3.0,
+          "equip_speed_pct": -21.0,
+          "buff_duration_pct": 3.0,
+          "debuff_duration_pct": -2.9,
+          "regular_interaction_speed_pct": 16.8,
+          "health_recovery_bonus_pct": 21.0
+        },
+        "perks": [
+          {
+            "id": "AnimalKinship",
+            "name": "Animal Kinship",
+            "description": "Not all animals and insects attack first.",
+            "is_default": false
+          },
+          {
+            "id": "Dreamwalk",
+            "name": "Dreamwalk",
+            "description": "When you take damage, your <MagicalPower>_</> increases by <MagicalPower>[0]</> for <Duration>[0] seconds</> and you become spiritual. The player does not collide with other targets and cannot attack or use skills, but can cast spells. This ability triggers once every <Duration>[1] seconds</>.",
+            "is_default": true
+          },
+          {
+            "id": "EnhancedWildness",
+            "name": "Enhanced Wildness",
+            "description": "While you are in animal form, you gain <PhysicalDamageMod>[0]% _</> and <ArmorRating>[0] _</>.",
+            "is_default": true
+          },
+          {
+            "id": "ForceOfNature",
+            "name": "Force of Nature",
+            "description": "When you heal a target, the target gains <PhysicalPower>[0] _</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "HerbalSensing",
+            "name": "Herbal Sensing",
+            "description": "Detects nearby herbs and increases the chance of gathering higher-grade herbs.",
+            "is_default": false
+          },
+          {
+            "id": "LifebloomAura",
+            "name": "Lifebloom Aura",
+            "description": "Restores an additional <Constant Type=\"float\" Format=\"Normal\">[0]</> health to target when caster heals self or allies within aura range. Disables shapeshift.",
+            "is_default": false
+          },
+          {
+            "id": "NaturalHealing",
+            "name": "Natural Healing",
+            "description": "Recover yourself and nearby allies <Exec.MagicalHealBase>[0] _</> every <YellowColor>3 seconds</>.",
+            "is_default": true
+          },
+          {
+            "id": "Prophecy",
+            "name": "Prophecy",
+            "description": "Targets near the aiming point are automatically selected, and single-target magic aimed at the selected target will not miss.",
+            "is_default": false
+          },
+          {
+            "id": "ShapeshiftMastery",
+            "name": "Shapeshift Mastery",
+            "description": "Reduces shapeshifting time by <YellowColor>25%</> and reduces the cooldown of Wild skills by <GEMod Format=\"AbsFromOne\" Type=\"Multiply\">[0]%</>, but prevents the use of spirit spells.",
+            "is_default": false
+          },
+          {
+            "id": "SpiritBond",
+            "name": "Spirit Bond",
+            "description": "Once every <Duration>[0] second</>, You will receive <Constant Type=\"Float\" Format=\"FromZero\">[0]%</> of damage received by party members instead. Can receive damage up to <Constant Type=\"Integer\">[1]</>.",
+            "is_default": false
+          },
+          {
+            "id": "SpiritMagicMastery",
+            "name": "Spirit Magic Mastery",
+            "description": "When you cast spirit magic, you gain <MagicalPower>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "SunAndMoon",
+            "name": "Sun and Moon",
+            "description": "Nearby allies gain <VigorBase>[0] _</> and <MagicalPower>[0] _</>.",
+            "is_default": true
+          },
+          {
+            "id": "ThornCoat",
+            "name": "Thorn Coat",
+            "description": "When melee attacked, return <Exec.PhysicalDamageTrue>[0] _</> to the attacker.",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "ShapeShiftMemory1",
+            "name": "Shapeshift Memory",
+            "description": "Transforms into the selected creature. Tools cannot be used in a non-human state.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "ShapeShiftMemory2",
+            "name": "Shapeshift Memory II",
+            "description": "Transforms into the selected creature. Tools cannot be used in a non-human state.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellMemory1",
+            "name": "Spell Memory I",
+            "description": "Gain the ability to memorize spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellMemory2",
+            "name": "Spell Memory II",
+            "description": "Gain the ability to memorize additional spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [
+          {
+            "id": "BarkskinArmor",
+            "name": "Barkskin Armor",
+            "description": "Encloses the target in a protective bark for <Duration>[0] seconds</>, increasing <ArmorRating>_ by [0]</>, <HeadshotReductionMod>_ by [0]%</>.",
+            "spell_tier": 2,
+            "casting_time": 0.75,
+            "max_count": 4,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Dreamfire",
+            "name": "Dreamfire",
+            "description": "Deals <Exec.MagicalDamageBase>[0]</> <MagicalSpiritDamageBase>_</> to all enemies in an area. Instantly heals caster and allies currently affected by Nature’s Touch for <Exec.MagicalHealBase>[1] _</> per target damaged. This effect applies within a <Spell Type=\"Range\">[0] m radius</> of the caster.",
+            "spell_tier": 3,
+            "casting_time": 1.0,
+            "max_count": 4,
+            "range": 700,
+            "source_type": "spirit",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "EntanglingVines",
+            "name": "Entangling Vines",
+            "description": "Spreads roots across the floor in a <Spell Type=\"AreaRadius\">[0]m radius</> that last for <YellowColor>3 seconds</>. Any targets that pass through the area of ​​effect are frozen in place for <Duration>[0] seconds</>. After the effect removed, the target gets immunity to the entangling effects for <Duration>[1] seconds</>.",
+            "spell_tier": 4,
+            "casting_time": 1.25,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "MendingGrove",
+            "name": "Mending Grove",
+            "description": "While standing on the ground, create a forest area centered around you within a <Spell Type=\"AreaRadius\">[0]m radius</>. Targets in the area gain <MaxHealthMod>[1]% _</> and are healed for <Exec.MagicalHealBase>[0] _</> per second.",
+            "spell_tier": 6,
+            "casting_time": 2.0,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "NaturesTouch",
+            "name": "Nature's Touch",
+            "description": "The target gains <Exec.AddRecoverableHealth>[0] _</>. Also healed <Exec.MagicalHealBase>[1] _</> over <Duration>[1] seconds</>. Casts instantly and casts on yourself if no target is found.",
+            "spell_tier": 1,
+            "casting_time": 0.75,
+            "max_count": 4,
+            "range": 700,
+            "source_type": "spirit",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "OrbofNature",
+            "name": "Orb of Nature",
+            "description": "Fires an orb that deals <Exec.MagicalDamageBase>[0]</> <MagicalSpiritDamageBase>_</> on contact with an enemy, or grants Nature's Touch on contact with an ally.",
+            "spell_tier": 2,
+            "casting_time": 1.0,
+            "max_count": 4,
+            "range": 999999,
+            "source_type": "spirit",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Restore",
+            "name": "Restore",
+            "description": "Restore the health of all allies within <Spell Type=\"AreaRadius\">[0]m radius</> by <Exec.MagicalHealBase>[0] _</> for <Duration>[0] seconds</>.",
+            "spell_tier": 3,
+            "casting_time": 1.5,
+            "max_count": 3,
+            "range": 700,
+            "source_type": "spirit",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "SummonTreant",
+            "name": "Summon Treant",
+            "description": "Summons a treant to fight with you for <Duration>[0] seconds</>. Treants become more powerful when summoned underwater.",
+            "spell_tier": 5,
+            "casting_time": 1.0,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "ThornBarrier",
+            "name": "Thorn Barrier",
+            "description": "Creates a thorn barrier that lasts for <Duration>[0] seconds</>. Any character standing near the thorn barrier will takes <Exec.PhysicalDamageBase>[1] _</> per second.",
+            "spell_tier": 4,
+            "casting_time": 1.25,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "TreeOfLife",
+            "name": "Tree of Life",
+            "description": "Sprout a tree of life, granting <AllAttributes>[1] _</> and granting <Exec.AddRecoverableHealth>[0] _</> over <Duration>[0] seconds</>. Also heals for <Exec.MagicalHealBase>[2] _</> over <Duration>[2] seconds</>. Cannot cast on self.",
+            "spell_tier": 6,
+            "casting_time": 1.0,
+            "max_count": 2,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "count",
+            "casting_type": "casting"
+          }
+        ],
+        "shapeshifts": [
+          {
+            "id": "Bear",
+            "name": "Bear",
+            "description": "Transform into a wild bear. Slow and too large to pass through single doors. Gain <PhysicalReductionMod>[0]% _</>, <ProjectileReductionMod> [0]% _</> and <MaxHealthMod>[0]% _</>. Lose <MoveSpeedMod>[0]% _</> and <ActionSpeed>[0]% _</>. Your jump lowered by <MovementMod Type=\"JumpZMultiply\" Format=\"AbsFromOne\">[0]%</>.\n\n[Left-Click] Swipe\nClaws the target with your right hand, inflicting <Strength>_ curve</><Exec.PrimitiveCalcMultiply> * [1]%</><Exec.PrimitiveCalcAdd> + [1]</> <Exec.PhysicalDamageBase>_</> and pushing the target away.\n\n[Right-Click] Bash\nRaise your body and deal <Strength>_ curve</><Exec.PrimitiveCalcMultiply> * [2]%</><Exec.PrimitiveCalcAdd> + [2]</> <Exec.PhysicalDamageBase>_</> with both hands, and gain the ability to push targets away and destroy unreinforced doors and containers.\n\n[Wild] Wild Fury\nFor <Duration>[3] seconds</>, <PhysicalReduction>_</> increases by <PhysicalReduction>[3]%</> and <MagicalReduction>_</> increases by <MagicalReduction>[3]%</>.",
+            "casting_time": 1.0,
+            "capsule_radius_scale": 2.05,
+            "capsule_height_scale": 1.0
+          },
+          {
+            "id": "Chicken",
+            "name": "Chicken",
+            "description": "Transform into a chicken. Able to fly for a while by spreading wings. Lose <MaxHealthMod>[0]% _</>, <PhysicalHealingReceiveMod>[0]% _</> and <MagicalHealingReceiveMod>[0]% _</>.\n\n[Left-Click] Pecking\nPecks the target with its beak, inflicting <Resourcefulness>_ curve</><Exec.PrimitiveCalcMultiply> * [1]%</><Exec.PrimitiveCalcAdd> + [1]</> <Exec.PhysicalDamageBase>_</>. This attack penetrate <Exec.ArmorPenetration>[1]%</> of target’s armor.\n\n[Right-Click] Clucking\nThe chicken clucks loudly.\n\n[Wild] Insect Predation\nEats crawling insects and heals <Resourcefulness>_ curve</><Exec.PrimitiveCalcMultiply> * [2]%</> <Exec.PhysicalHealBase>_</>.",
+            "casting_time": 1.0,
+            "capsule_radius_scale": 0.5,
+            "capsule_height_scale": 0.3
+          },
+          {
+            "id": "Panther",
+            "name": "Panther",
+            "description": "Transform into a wild panther. Very quick and agile. Gain <MoveSpeedAdd>[0] _</>. Lose <PhysicalReductionMod>[0]% _</>, <PhysicalHealingReceiveMod>[0]% _</> and <MagicalHealingReceiveMod>[0]% _</>. Your jump is <MovementMod Type=\"JumpZMultiply\" Format=\"AbsFromOne\">[0]%</> higher.\n\n[Left-Click] Scratch\nClaws the target with his right hand, inflicting <Agility>_ curve</><Exec.PrimitiveCalcMultiply> * [1]%</><Exec.PrimitiveCalcAdd> + [1]</> <Exec.PhysicalDamageBase>_</> and causing the target to bleed, inflicting <Exec.PhysicalDamageBase>[2] _</> for <Duration>[2] seconds</>.\n\n[Right-Click] Neckbite\nBite the target's neck, inflicting <Agility>_ curve</><Exec.PrimitiveCalcMultiply> * [3]%</><Exec.PrimitiveCalcAdd> + [3]</> <Exec.PhysicalDamageBase>_</>. While you are frenzied, Neckbite silences the target for <Duration>[4] seconds</>.\n\n[Wild] Rush\nRush forward, entering a frenzied state for <Duration>[5] seconds</> after initiating the rush. You can use attacks while jumping, and this can be used in the air.",
+            "casting_time": 1.0,
+            "capsule_radius_scale": 1.0,
+            "capsule_height_scale": 1.0
+          },
+          {
+            "id": "Penguin",
+            "name": "Penguin",
+            "description": "Transforms into a penguin. Slow on land, but very fast in water. Lose <MaxHealthMod>[4]% _</>, <PhysicalHealingReceiveMod>[4]% _</> and <MagicalHealingReceiveMod>[4]% _</>.\n\n[Left-Click] Sharp Beak\nBites the target with its beak, dealing <WillBase>_ curve</><Exec.PrimitiveCalcMultiply> * [2]%</><Exec.PrimitiveCalcAdd> + [2]</> <Exec.PhysicalDamageBase>_</> and causing bleeding, inflicting <Exec.PhysicalDamageBase>[3] _</> over <Duration>[3] seconds</>\n\n[Right-Click] Water Cannon\nAfter casting, spit a stream of water forward, dealing <WillBase>_ curve</><YellowColor> * 100%</><Exec.MagicalDamageBase> + [0]</> <MagicalIceDamageBase>_</>.\n\n[Wild] Penguin Dash\nGain <MoveSpeedMod>[1]% _</> while in water for <Duration>[1] seconds</>.",
+            "casting_time": 1.0,
+            "capsule_radius_scale": 0.52,
+            "capsule_height_scale": 0.42
+          },
+          {
+            "id": "Rat",
+            "name": "Rat",
+            "description": "Transform into a wild rat. Small in size and moves quickly, but has very little stamina. Lose <MaxHealthMod>[0]% _</>, <PhysicalReduction>[0]% _</>, <MagicalReduction>[0]% _</>, <PhysicalHealingReceiveMod>[0]% _</> and <MagicalHealingReceiveMod>[0]% _</>. Your jump is <MovementMod Type=\"JumpZMultiply\" Format=\"AbsFromOne\">[0]%</> higher.\n\n[Left-Click] Infected Fangs\nBites the target, inflicting <Exec.PhysicalDamageBase>[1] _</> and spreading a plague that deals <Exec.MagicalDamageBase>[2] _</> for <Duration>[2] seconds</>.\n\n[Right-Click] Squeak\nMakes a squeak.\n\n[Wild] Survival Instinct\nGain <MaxHealthAdd>[3] _</>, <MoveSpeedAdd>[3] _</> for <Duration>[3] seconds</>. When the effect ends, lose <MoveSpeedMod>[4]% _</> for <Duration>[4] seconds</>.",
+            "casting_time": 1.0,
+            "capsule_radius_scale": 0.15,
+            "capsule_height_scale": 0.1
+          }
+        ],
+        "usable_item_count": 211
+      },
+      {
+        "slug": "fighter",
+        "name": "Fighter",
+        "flavor_text": "The Fighter is a jack of all trades when it comes to combat. Well-versed with a multitude of weapons and armaments, the Fighter can hold his own against anyone.",
+        "role": "Melee",
+        "base_stats": {
+          "strength": 15,
+          "vigor": 15,
+          "agility": 15,
+          "dexterity": 15,
+          "will": 15,
+          "knowledge": 15,
+          "resourcefulness": 15
+        },
+        "derived_stats": {
+          "health": 115.0,
+          "move_speed": 300.0,
+          "move_speed_pct": 0.0,
+          "action_speed_pct": 0.0,
+          "spell_casting_speed_pct": 0.0,
+          "memory_capacity": 9,
+          "magic_resistance_pct": 30.0,
+          "physical_power": 15.0,
+          "manual_dexterity_pct": 0.0,
+          "equip_speed_pct": 0.0,
+          "buff_duration_pct": 0.0,
+          "debuff_duration_pct": 0.0,
+          "regular_interaction_speed_pct": 0.0,
+          "health_recovery_bonus_pct": 0.0
+        },
+        "perks": [
+          {
+            "id": "AdrenalineSpike",
+            "name": "Adrenaline Spike",
+            "description": "When your health goes below <Constant Type=\"Float\" Format=\"FromZero\">[0]%</>, gain <ActionSpeed>[0]% _</>, <MoveSpeedMod>[0]% _</>, and <RegularInteractionSpeed>[0]% _</> for <Duration>[0] seconds</>, and suffer no penalty from using the Adrenaline Rush skill.",
+            "is_default": false
+          },
+          {
+            "id": "Barricade",
+            "name": "Barricade",
+            "description": "While in defensive stance, gain <ArmorRating>[0] _</> and <MagicResistance>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "ComboAttack",
+            "name": "Combo Attack",
+            "description": "When you successfully land consecutive melee attacks within <Duration>[0] seconds</>, gain <PhysicalDamageMod>[0]% _</> per stack, up to 2 stacks.",
+            "is_default": false
+          },
+          {
+            "id": "Counterattack",
+            "name": "Counterattack",
+            "description": "When you successfully block an attack, gain <MoveSpeedMod>[0]% _</> and <ActionSpeed>[0]% _</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "DefenseMastery",
+            "name": "Defense Mastery",
+            "description": "Gain an additional <ItemArmorRatingMod>[0]% _</> from equipped armor. The maximum <PhysicalReduction>_</> limit is Increased to <Constant Type=\"float\" Format=\"FromZero\">[0]%</>.",
+            "is_default": true
+          },
+          {
+            "id": "DualWield",
+            "name": "Dual Wield",
+            "description": "While you have weapons equipped in both hands, gain <ActionSpeed>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "LastBastion",
+            "name": "Last Bastion",
+            "description": "When your Health falls to <Constant Type=\"float\" Format=\"FromZero\">[0]%</> or below, you gain <ArmorRating>[0] _</>, <MagicResistance>[0] _</> and <ProjectileReductionMod>[0]% _</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "ProjectileResistance",
+            "name": "Projectile Resistance",
+            "description": "Gain <ProjectileReductionMod>[0]% _</>. While in defensive stance, gain an additional <ProjectileReductionMod>[1]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "ShieldMastery",
+            "name": "Shield Mastery",
+            "description": "While in defensive stance, gain <MoveSpeedMod>[0]% _</>. When you successfully block an attack, gain <ActionSpeed>[1]% _</> towards your next block.",
+            "is_default": false
+          },
+          {
+            "id": "Slayer",
+            "name": "Slayer",
+            "description": "While holding a weapon in each hand, gain <PhysicalDamageWeaponPrimary>[0] _</>, <MoveSpeedAdd>[0] _</> but lose the ability to equip plate armor.",
+            "is_default": false
+          },
+          {
+            "id": "SurvivalistTongue",
+            "name": "Survivalist Tongue",
+            "description": "All consumables have a {0}% effect increase.",
+            "is_default": false
+          },
+          {
+            "id": "Swift",
+            "name": "Swift",
+            "description": "Reduces the <MoveSpeedArmorPenaltyMod>_ by [0]%</>. Only applies to armor-related penalties.",
+            "is_default": false
+          },
+          {
+            "id": "SwordMastery",
+            "name": "Sword Mastery",
+            "description": "When using a sword-type weapon, gain <PhysicalDamageWeaponPrimary>[0] _</> and <ActionSpeed>[0]% _</>. Also gain <MoveSpeedAdd>[1] _</> when taking a defensive stance with your sword.",
+            "is_default": true
+          },
+          {
+            "id": "VeteranInstinct",
+            "name": "Veteran Instinct",
+            "description": "When you enter combat, <PhysicalReductionMod>_</> is increased by <PhysicalReductionMod>[0]%</> of its current value and <PhysicalDamageMod>_</> is increased by <PhysicalDamageMod>[0]%</> for <Duration>[0] seconds</>.",
+            "is_default": true
+          },
+          {
+            "id": "WeaponGuard",
+            "name": "Weapon Guard",
+            "description": "While blocking with a weapon, gain <ImpactResistance>[0] _</> and <PhysicalReduction>[0]% _</>. Upon a successful block, you gain <PhysicalDamageMod>[1]% _</> for <Duration>[1] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "WeaponMastery",
+            "name": "Weapon Mastery",
+            "description": "Gain the ability to use any weapon.",
+            "is_default": true
+          }
+        ],
+        "skills": [
+          {
+            "id": "AdrenalineRush",
+            "name": "Adrenaline Rush",
+            "description": "Gain <ActionSpeed>[0]% _</>, <MoveSpeedMod>[0]% _</> for <Duration>[0] seconds</>. After the duration ends, lose <ActionSpeed>[1]% _</> and <MoveSpeedMod>[1]% _</> for <Duration>[1] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 6,
+            "use_moving": true
+          },
+          {
+            "id": "Breakthrough",
+            "name": "Breakthrough",
+            "description": "Removes debuffs that slow move speed, grants a <MoveSpeedAdd>[0] _</>, and ignores all move speed debuff effects for <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Disarm",
+            "name": "Disarm",
+            "description": "If you block a melee attack with your weapon within <Duration>[1] seconds</>, you disarm the attacker for <Duration>[0] seconds</>. Disarmed targets cannot use weapons. This effect can only be applied once and is consumed when you block a melee attack. Can only be used while a weapon is equipped.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "FortifiedGround",
+            "name": "Fortified Ground",
+            "description": "",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "PerfectBlock",
+            "name": "Perfect Block",
+            "description": "Gain <ImpactResistance>[0] _</> for <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "PommelStrike",
+            "name": "Pommel Strike",
+            "description": "When attacking with the hilt while a one-handed weapon is equipped as your main weapon, it deals an additional <Exec.PhysicalDamageBase>[0] _</> and silences the target. If the silence interrupts the enemy’s action, it deals an additional <Exec.PhysicalDamageBase>[1] _</> and reduces <MoveSpeedMod>_ by [2]%</> for <Duration>[2] seconds</>.\n\nSilence: Disables skills/spells/performance abilities.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SecondWind",
+            "name": "Second Wind",
+            "description": "Recover <Exec.AddHealthByMaxHealthRatio>[0]% _</> over <Duration>[0] seconds</>. Additionally, Second Wind removes the negative effects of Adrenaline Rush.",
+            "skill_type": "instant",
+            "skill_tier": 5,
+            "use_moving": true
+          },
+          {
+            "id": "ShieldSlam",
+            "name": "Shield Slam",
+            "description": "Inflicts <Exec.PhysicalDamageBase>[0] _</> on the target, and reduces the targets <MoveSpeedMod>_ by [1]%</> for <Duration>[1] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellReflection",
+            "name": "Spell Reflection",
+            "description": "While blocking, gain the ability to reflect spells. This buff persists until triggered, lasting <Duration>[0] seconds</>. Before activation, gain <MagicalReduction>[1]% _</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Sprint",
+            "name": "Sprint",
+            "description": "Gain <YellowColor>3</> stacks of Momentum, granting <MoveSpeedAdd>[0] _</> per stack. Lose <YellowColor>1</> stack every <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Taunt",
+            "name": "Taunt",
+            "description": "Increases the aggro value to all monsters within a <Skill Type=\"Range\">[0]m area</> by <YellowColor>300%</>. Gain <PhysicalReduction>[0]% _</> and <MagicalReduction>[0]% _</> for <Duration>[0] seconds</>",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "VictoryStrike",
+            "name": "Victory Strike",
+            "description": "Your next attack deals an additional <PhysicalDamageMod>[0]% _</>. If this attack kills a player, the skill triggers again with no cooldown.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [],
+        "shapeshifts": [],
+        "usable_item_count": 244
+      },
+      {
+        "slug": "ranger",
+        "name": "Ranger",
+        "flavor_text": "The Ranger is an excellent survivalist. With a keen eye and quick hands, the Ranger tracks his enemies, sets traps and ambushes unsuspecting prey.",
+        "role": "Melee",
+        "base_stats": {
+          "strength": 12,
+          "vigor": 10,
+          "agility": 20,
+          "dexterity": 18,
+          "will": 10,
+          "knowledge": 12,
+          "resourcefulness": 23
+        },
+        "derived_stats": {
+          "health": 105.0,
+          "move_speed": 302.5,
+          "move_speed_pct": 0.8,
+          "action_speed_pct": 6.2,
+          "spell_casting_speed_pct": -9.0,
+          "memory_capacity": 6,
+          "magic_resistance_pct": 15.0,
+          "physical_power": 12.0,
+          "manual_dexterity_pct": 9.0,
+          "equip_speed_pct": 15.0,
+          "buff_duration_pct": -11.0,
+          "debuff_duration_pct": 12.4,
+          "regular_interaction_speed_pct": 42.4,
+          "health_recovery_bonus_pct": 56.0
+        },
+        "perks": [
+          {
+            "id": "CampingMastery",
+            "name": "Camping Mastery",
+            "description": "Instantly place a campfire and increase its duration by 100%.",
+            "is_default": false
+          },
+          {
+            "id": "Chase",
+            "name": "Chase",
+            "description": "Detect recent enemy footsteps and can hear enemy footstep sounds from farther away.",
+            "is_default": true
+          },
+          {
+            "id": "CripplingShot",
+            "name": "Crippling Shot",
+            "description": "Hitting the target’s leg reduces their <MoveSpeedMod>_ by [0]%</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "CrossbowMastery",
+            "name": "Crossbow Mastery",
+            "description": "While using a crossbow, gain <PhysicalDamageMod>[0]% _</> and an additional <ActionSpeed>[1]% _</> while reloading.",
+            "is_default": false
+          },
+          {
+            "id": "Kinesthesia",
+            "name": "Kinesthesia",
+            "description": "When moving with the bowstring drawn, move speed bonus increases by <MovementMod Type=\"Multiply\" Format=\"FromOne\">[0]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "LongshotExpert",
+            "name": "Longshot Expert",
+            "description": "Deals additional damage as the distance to the target increases, up to <Exec.PhysicalDamageBase>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "NimbleHands",
+            "name": "Nimble Hands",
+            "description": "When using a bow, increases your draw speed by <YellowColor>15%</>.",
+            "is_default": true
+          },
+          {
+            "id": "PointBlankExpert",
+            "name": "Point-Blank Expert",
+            "description": "Deals an additional <Exec.PhysicalDamageTrue>[0] _</> to targets within <Constant Type=\"float\">[0]m</>.",
+            "is_default": false
+          },
+          {
+            "id": "PurgeShot",
+            "name": "Purge Shot",
+            "description": "Each time you hit a target with a ranged weapon, remove one random magical buff and deal <Exec.MagicalDamageTrue>[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "QuickReload",
+            "name": "Quick Reload",
+            "description": "When reloading a bow-type or firearm-type weapon, gain <ActionSpeed>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "RangedWeaponsMastery",
+            "name": "Ranged Weapons Mastery",
+            "description": "When attacking with a ranged weapon, gain <PhysicalDamageMod>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "Sharpshooter",
+            "name": "Sharpshooter",
+            "description": "When attacking with a ranged weapon, gain <PhysicalHeadshotPower>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "SpearProficiency",
+            "name": "Spear Proficiency",
+            "description": "Gain the ability to equip spears.",
+            "is_default": false
+          },
+          {
+            "id": "TrapMastery",
+            "name": "Trap Mastery",
+            "description": "",
+            "is_default": false
+          },
+          {
+            "id": "WindFletch",
+            "name": "Windfletch",
+            "description": "Increases projectile speed of arrows and bolts by <Constant Type=\"float\" Format=\"FromZero\">[0]%</>.",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "Backstep",
+            "name": "Backstep",
+            "description": "Quickly retreats a short distance. It can also be used in the air.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "FieldRation",
+            "name": "Field Ration",
+            "description": "Forage food and recover <Exec.PhysicalHealBase>[0] _</>.",
+            "skill_type": "instant",
+            "skill_tier": 2,
+            "use_moving": true
+          },
+          {
+            "id": "ForcefulShot",
+            "name": "Forceful Shot",
+            "description": "When using a bow-type weapon, gain the ability to knock targets back for <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "MultiShot",
+            "name": "Multishot",
+            "description": "Fire <YellowColor>5</> arrows at once in a cone shaped dispersion.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "PenetratingShot",
+            "name": "Penetrating Shot",
+            "description": "Gain <PhysicalHeadshotPenetration>[0]% _</> and <ArmorPenetration>[0]% _</> for <Duration>[0] seconds</>. Bow and crossbow attacks pierce targets.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "QuickFire",
+            "name": "Quick Fire",
+            "description": "Gain an additional <ActionSpeed>[1]% _</> for <Duration>[0] seconds</> while using bow-type weapons.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "QuickShot",
+            "name": "Quickshot",
+            "description": "Fire arrows in a quick succession. Each bow-type will fire a different amount of arrows.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "TrueShot",
+            "name": "True Shot",
+            "description": "Projectile flight speed is greatly increased, also increasing <PhysicalDamageMod>_ by [0]%</> for <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [],
+        "shapeshifts": [],
+        "usable_item_count": 190
+      },
+      {
+        "slug": "rogue",
+        "name": "Rogue",
+        "flavor_text": "The Rogue is a master of deception able to silently slip between the shadows to work his dastardly deeds. His dexterous hands enable him to quickly loot riches, pick locks, and disable various traps.",
+        "role": "Melee",
+        "base_stats": {
+          "strength": 9,
+          "vigor": 6,
+          "agility": 25,
+          "dexterity": 20,
+          "will": 10,
+          "knowledge": 10,
+          "resourcefulness": 25
+        },
+        "derived_stats": {
+          "health": 97.0,
+          "move_speed": 305.0,
+          "move_speed_pct": 1.7,
+          "action_speed_pct": 12.5,
+          "spell_casting_speed_pct": -15.0,
+          "memory_capacity": 4,
+          "magic_resistance_pct": 15.0,
+          "physical_power": 9.0,
+          "manual_dexterity_pct": 15.0,
+          "equip_speed_pct": 25.0,
+          "buff_duration_pct": -11.0,
+          "debuff_duration_pct": 12.4,
+          "regular_interaction_speed_pct": 52.0,
+          "health_recovery_bonus_pct": 70.0
+        },
+        "perks": [
+          {
+            "id": "Ambush",
+            "name": "Ambush",
+            "description": "When coming out of hide, you gain an additional <MoveSpeedMod>[0]% _</> and <PhysicalDamageMod>[1]% _</> for <Duration>[0] seconds</>. If the melee attack is successful, the effect disappears.",
+            "is_default": true
+          },
+          {
+            "id": "BackAttack",
+            "name": "Back Attack",
+            "description": "When attacking a target from behind, gain <PhysicalBackstabPower>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "Creep",
+            "name": "Creep",
+            "description": "While crouch walking, reduce the volume of footsteps significantly and gain <MoveSpeedMod>[1]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "DaggerMastery",
+            "name": "Dagger Mastery",
+            "description": "When using a dagger, gain <PhysicalDamageMod>[0]% _</> and <PhysicalDamageTrue>[0] _</>.",
+            "is_default": true
+          },
+          {
+            "id": "DoubleJump",
+            "name": "Double Jump",
+            "description": "You gain the ability to jump an additional time in the air.",
+            "is_default": false
+          },
+          {
+            "id": "HandCrossbowMastery",
+            "name": "Hand Crossbow Mastery",
+            "description": "Gain the ability to equip the Hand Crossbow, while using it gain <PhysicalDamageWeaponSecondary>+[0] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "HideMastery",
+            "name": "Hide Mastery",
+            "description": "Increases the duration of the hide skill by <GEMod Type=\"Multiply\">[0]</> times and reduces its cooldown time by <GEMod Type=\"Multiply\" Format=\"AbsFromOne\">[1]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "Jokester",
+            "name": "Jokester",
+            "description": "Give all party members <AllAttributes>[0] _</>.",
+            "is_default": true
+          },
+          {
+            "id": "LethalMark",
+            "name": "Lethal Mark",
+            "description": "A target hit by a throwing knife loses <PhysicalReductionMod>[0]% _ </> for <Duration>[0] seconds</>. This effect does not stack on the same target.",
+            "is_default": false
+          },
+          {
+            "id": "Pickpocket",
+            "name": "Pickpocket",
+            "description": "Steal items from nearby enemies. Additionally, your hide will not be revealed when you are bumped into. Items worn in utility slots do not appear on the waist.",
+            "is_default": false
+          },
+          {
+            "id": "PoisonedWeapon",
+            "name": "Poisoned Weapon",
+            "description": "A successful attack applies poison that deals <Exec.MagicalDamageBase>[0] _</> and reduces their <PhysicalHealingReceiveMod>_ by [1]%</> and <MagicalHealingReceiveMod>_ by [1]%</> over <Duration>[0] seconds</>. The poison can stack up to <YellowColor>5</> times.",
+            "is_default": false
+          },
+          {
+            "id": "Stealth",
+            "name": "Stealth",
+            "description": "While hiding, gain the ability to move <YellowColor>10</> steps while crouching or slow walking. Also gain <MoveSpeedAdd>[0] _</> per remaining step.",
+            "is_default": true
+          },
+          {
+            "id": "Thrust",
+            "name": "Thrust",
+            "description": "While using dagger, gain an additional <ArmorPenetration>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "TrapsandLocks",
+            "name": "Traps and Locks",
+            "description": "You can unlock locked locks without a lockpick and detect traps within a certain range to disarm them.",
+            "is_default": false
+          },
+          {
+            "id": "Trickster",
+            "name": "Trickster",
+            "description": "While using throwing weapons, gain <ActionSpeed>[0]% _</>.",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "Caltrop",
+            "name": "Caltrops",
+            "description": "Drops Caltrops at your feet that deal <Exec.PhysicalDamageBase>[1] _</> and slows the <MoveSpeedMod>_ by [0]%</> of anything that steps on them for <Duration>[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 2,
+            "use_moving": true
+          },
+          {
+            "id": "CutThroat",
+            "name": "Cut Throat",
+            "description": "When you successfully hit a target, silence them for <Duration>[0] seconds</>, disabling the targets skills/spells/performance abilities.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Hide",
+            "name": "Hide",
+            "description": "Become invisible for <Duration>[0] seconds</>. It is possible to change your equipment in this state. You are revealed when you attempt an action, such as moving, attacking, or using a skill.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Rupture",
+            "name": "Rupture",
+            "description": "The next successful attack causes the target to bleed for <Exec.PhysicalDamageBase>[0] _</> over <Duration>[0] seconds</>. The buff is consumed when an attack hits an object or target.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SmokePot",
+            "name": "Smoke Pot",
+            "description": "A smoke pot is deployed creating a smoke screen. The smoke screen lasts <Duration>[0] seconds</> and covers a <Skill Type=\"Range\">[0]m area</>.When an enemy target enters the smoke screen, reduces their <MoveSpeedMod>_ by [1]%</>.",
+            "skill_type": "instant",
+            "skill_tier": 3,
+            "use_moving": true
+          },
+          {
+            "id": "SneakAttack",
+            "name": "Sneak Attack",
+            "description": "Your next melee attack deals an additional <Exec.PhysicalDamageBase>[0] _</>. If the target is not in combat, it deals an additional <Exec.PhysicalDamageBase>[1] _</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Tumbling",
+            "name": "Tumbling",
+            "description": "When used, backtumbles in the opposite direction the player is facing.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "WeakpointAttack",
+            "name": "Weakpoint Attack",
+            "description": "When you successfully hit a target, reduce their <ItemArmorRatingMod>_ by [0]%</> for <Duration>[0] seconds</>. Only when melee attacking.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [],
+        "shapeshifts": [],
+        "usable_item_count": 188
+      },
+      {
+        "slug": "sorcerer",
+        "name": "Sorcerer",
+        "flavor_text": "The Sorcerer is a master of the elements and can weave together multiple spells to devastating results. With an innate aptitude for magic, they can cast spells using their bare hands.",
+        "role": "Caster",
+        "base_stats": {
+          "strength": 10,
+          "vigor": 10,
+          "agility": 10,
+          "dexterity": 18,
+          "will": 25,
+          "knowledge": 20,
+          "resourcefulness": 12
+        },
+        "derived_stats": {
+          "health": 105.0,
+          "move_speed": 295.0,
+          "move_speed_pct": -1.7,
+          "action_speed_pct": -8.0,
+          "spell_casting_speed_pct": 10.5,
+          "memory_capacity": 14,
+          "magic_resistance_pct": 70.0,
+          "physical_power": 10.0,
+          "manual_dexterity_pct": 9.0,
+          "equip_speed_pct": 15.0,
+          "buff_duration_pct": 10.0,
+          "debuff_duration_pct": -9.1,
+          "regular_interaction_speed_pct": -4.5,
+          "health_recovery_bonus_pct": -9.0
+        },
+        "perks": [
+          {
+            "id": "AirMastery",
+            "name": "Air Mastery",
+            "description": "Gain <MagicalAirKnockbackMod>[0]% _</> and <MagicalAirDamageMod>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "ApexOfSorcery",
+            "name": "Apex of Sorcery",
+            "description": "While casting spells, reduce movement speed by <MovementMod Type=\"Multiply\" Format=\"AbsFromOne\">[0]%</>, but gain <MagicalDamageMod>[0]% _</> and <SpellCastingSpeed>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "ElementalFury",
+            "name": "Elemental Fury",
+            "description": "For every <YellowColor>1%</> of health lost, gain a <YellowColor>0.5%</> cooldown reduction bonus and <YellowColor>0.25%</> magical damage bonus.",
+            "is_default": false
+          },
+          {
+            "id": "InnateTalent",
+            "name": "Innate Talent",
+            "description": "When casting spells with bare hands, gain <MagicalPower>[0] _</> and <SpellCastingSpeed>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "LightningMastery",
+            "name": "Lightning Mastery",
+            "description": "Gain <MagicalLightningDamageMod>[2]% _</>. Once every <Duration>[0] seconds</> while dealing lightning magical damage, inflict electric shock for <GEMod Type=\"Add\">[0] seconds</>, transferring <Exec.MagicalDamageBase>[1]</> <MagicalLightningDamageBase>_</> to the closest target within <Perk Type=\"AreaRadius\">[0]m</> of the primary target.",
+            "is_default": false
+          },
+          {
+            "id": "ManaFlow",
+            "name": "Mana Flow",
+            "description": "For each successful spell cast, gain <MagicalDamageMod>[0]% _</>. This effect stacks up to <YellowColor>3</> times and resets on the next successful cast.",
+            "is_default": false
+          },
+          {
+            "id": "ManaFold",
+            "name": "Mana Fold",
+            "description": "Reduce all spell cooldowns by <GEMod Type=\"Multiply\" Format=\"AbsFromOne\">[0]%</>, but lose <SpellCastingSpeed>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "MergedMight",
+            "name": "Merged Might",
+            "description": "When casting a merge spell, gain <MagicalPower>[1] _</>. After casting, gain a <MovespeedMod>[0]% _</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "SpellMerge",
+            "name": "Spell Merge",
+            "description": "While using bare hands, casting two combinable spells simultaneously allows you to use a new spell.",
+            "is_default": true
+          },
+          {
+            "id": "SpellSculpting",
+            "name": "Spell Sculpting",
+            "description": "Increases the range of all spells by <Constant Type=\"float\" Format=\"FromOne\">[0]%</> and the area of ​​effect by <Constant Type=\"float\" Format=\"FromOne\">[1]%</>, but increases the cooldown time by <GEMod Type=\"Multiply\" Format=\"AbsFromOne\">[0]%</>.",
+            "is_default": true
+          },
+          {
+            "id": "SpellStride",
+            "name": "Spell Stride",
+            "description": "Gain <MoveSpeedMod>[0]% _</> while casting two spells simultaneously.",
+            "is_default": true
+          },
+          {
+            "id": "TimeDistortion",
+            "name": "Time Distortion",
+            "description": "Reduces cast time of all spells by <Constant Type=\"Float\">[0]%</>, but increases cooldown time for all spells by <GEMod Type=\"Multiply\" Format=\"FromZero\">[0]%</> .",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "Sorcery1",
+            "name": "Sorcery I",
+            "description": "Gain the ability to use sorcery in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Sorcery2",
+            "name": "Sorcery II",
+            "description": "Gain the ability to use sorcery in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [
+          {
+            "id": "Eruption",
+            "name": "Eruption",
+            "description": "Cause a ground explosion, dealing <Exec.MagicalDamageBase>[0]</> <MagicalEarthDamageBase>_</> and lifting all targets within the area into the air.",
+            "spell_tier": 2,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "cooldown",
+            "casting_type": "casting"
+          },
+          {
+            "id": "FireArrow",
+            "name": "Fire Arrow",
+            "description": "Fire 3 homing arrows in a radial pattern, each dealing <Exec.MagicalDamageBase>[0]</> <MagicalFireDamageBase>_</> and inflicting <BurnEffect>burn</> over <Duration>[1] seconds</>.\n\n<BurnEffect>Burn</>: The target takes <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</>.",
+            "spell_tier": 1,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 999999,
+            "source_type": "fire",
+            "cost_type": "end",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "FireOrb",
+            "name": "Fire Orb",
+            "description": "Launch a fire orb forward, dealing <Exec.MagicalDamageBase>[2]</> <MagicalFireDamageBase>_</> per second to nearby targets. The orb lasts for <YellowColor>6 seconds</> and deals <Exec.MagicalDamageBase>[0]</> <MagicalFireDamageBase>_</> to targets it touches. Upon contact, it explodes, dealing <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</> to nearby targets and inflicting <BurnEffect>burn</> over <Duration>[2] seconds</>.\n\n<BurnEffect>Burn</>: The target takes <Exec.MagicalDamageBase>[2]</> <MagicalFireDamageBase>_</>.",
+            "spell_tier": 3,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "fire",
+            "cost_type": "end",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Flamestrike",
+            "name": "Flamestrike",
+            "description": "Create a fire pillar lasting <YellowColor>3 seconds</>, dealing <Exec.MagicalDamageBase>[0]</> <MagicalFireDamageBase>_</> on creation and <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</> per second to enemies inside while inflicting <BurnEffect>burn</> over <Duration>[2] seconds</>.\n\n<BurnEffect>Burn</>: The target takes <Exec.MagicalDamageBase>[2]</> <MagicalFireDamageBase>_</>.",
+            "spell_tier": 2,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "fire",
+            "cost_type": "cooldown",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Glaciate",
+            "name": "Glaciate",
+            "description": "Envelop your weapon in ice for <Duration>[1] seconds</>, inflicting <FrostbiteEffect>frostbite</> for <Duration>[0] seconds</> on hit.\n\n<FrostbiteEffect>Frostbite</>: The target loses <MoveSpeedMod>[0]% _</> and <ActionSpeed>[0]% _</>.",
+            "spell_tier": 2,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "ice",
+            "cost_type": "buffremoved",
+            "casting_type": "casting"
+          },
+          {
+            "id": "IceSpear",
+            "name": "Ice Spear",
+            "description": "Fire an ice spear that deals <Exec.MagicalDamageBase>[0]</> <MagicalIceDamageBase>_</>, piercing and damaging all targets in its path.",
+            "spell_tier": 2,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 999999,
+            "source_type": "ice",
+            "cost_type": "cooldown",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Levitation",
+            "name": "Levitation",
+            "description": "Lift the target into the air and gently lower them back down.",
+            "spell_tier": 4,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "air",
+            "cost_type": "cooldown",
+            "casting_type": "casting"
+          },
+          {
+            "id": "LightningBolt",
+            "name": "Lightning Bolt",
+            "description": "Fire a lightning beam for <Spell Type=\"ChannelingDuration\">[0] seconds</>, <ElectrifiedEffect>electrifying</> the target and dealing <Exec.MagicalDamageBase>[0]</> <MagicalLightningDamageBase>_</> per second.\n\n<ElectrifiedEffect>Electrified</>: The target loses <MoveSpeedMod>[1]% _</>.",
+            "spell_tier": 3,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "lightning",
+            "cost_type": "end",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "LightningSphere",
+            "name": "Lightning Sphere",
+            "description": "Surround yourself with an electromagnetic field for <Duration>[0] seconds</>, <ElectrifiedEffect>shocking</> all nearby targets for <Exec.MagicalDamageBase>[1]</> <MagicalLightningDamageBase>_</> per second.\n\n<ElectrifiedEffect>Electrified</>: The target loses <MoveSpeedMod>[2]% _</>.",
+            "spell_tier": 4,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "lightning",
+            "cost_type": "cooldown",
+            "casting_type": "casting"
+          },
+          {
+            "id": "SorceryCombat1",
+            "name": "Suppress Sorcery",
+            "description": "",
+            "spell_tier": 0,
+            "casting_time": 0.0,
+            "max_count": 0,
+            "range": 0,
+            "source_type": "",
+            "cost_type": "",
+            "casting_type": "combat"
+          },
+          {
+            "id": "SorceryCombat2",
+            "name": "Suppress Sorcery",
+            "description": "",
+            "spell_tier": 0,
+            "casting_time": 0.0,
+            "max_count": 0,
+            "range": 0,
+            "source_type": "",
+            "cost_type": "",
+            "casting_type": "combat"
+          },
+          {
+            "id": "StoneSkin",
+            "name": "Stone Skin",
+            "description": "Surround yourself with stone for <Duration>[0] seconds</>, gaining <PhysicalReduction>[0]% _</> and <PhysicalDamageMod>[0]% _</>, but losing <MoveSpeedAdd>[0] _</>.",
+            "spell_tier": 1,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "buffremoved",
+            "casting_type": "casting"
+          },
+          {
+            "id": "SummonEarthElemental",
+            "name": "Summon Earth Elemental",
+            "description": "Summon an Earth Elemental for <Duration>[1] seconds</>. The Earth Elemental increases the caster's <ArmorRating>_ by [0]</> and hurls rocks at nearby enemies, dealing <Exec.PhysicalDamageBase>[2] _</>.",
+            "spell_tier": 5,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "earth",
+            "cost_type": "end",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Vortex",
+            "name": "Vortex",
+            "description": "Create a vortex centered on the caster. Targets touching the vortex take <Exec.MagicalDamageBase>[0]</> <MagicalAirDamageBase>_</> and are pushed back.",
+            "spell_tier": 4,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 0,
+            "source_type": "air",
+            "cost_type": "cooldown",
+            "casting_type": "casting"
+          },
+          {
+            "id": "WaterBolt",
+            "name": "Water Bolt",
+            "description": "Launch a condensed water orb, dealing <Exec.MagicalDamageBase>[0]</> <MagicalIceDamageBase>_</> to targets it touches and inflicting <WetEffect>wet</> for <Duration>[1] seconds</>. The orb stops upon hitting an object or reaching its maximum range and lasts for <YellowColor>12 seconds</>. Up to <YellowColor>3</> water orbs can exist simultaneously.\n\n<WetEffect>Wet</>: The target loses <MoveSpeedMod>[1]% _</> and jump height is reduced by <MovementMod Type=\"JumpZMultiply\" Format=\"AbsFromOne\">[0]%</>.",
+            "spell_tier": 1,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 700,
+            "source_type": "ice",
+            "cost_type": "cooldown",
+            "casting_type": "casting"
+          },
+          {
+            "id": "WindBlast",
+            "name": "Windblast",
+            "description": "Deal <Exec.MagicalDamageBase>[0]</> <MagicalAirDamageBase>_</> to the target and push them back.",
+            "spell_tier": 2,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 400,
+            "source_type": "air",
+            "cost_type": "cooldown",
+            "casting_type": "channeling"
+          }
+        ],
+        "shapeshifts": [],
+        "usable_item_count": 198
+      },
+      {
+        "slug": "warlock",
+        "name": "Warlock",
+        "flavor_text": "The Warlock is a brooding manipulator of dark magic. They sacrifice their life force to call upon unknown forces of pain and evil. A worthy adversary proficient in both magic and weapons.",
+        "role": "Hybrid",
+        "base_stats": {
+          "strength": 11,
+          "vigor": 14,
+          "agility": 14,
+          "dexterity": 15,
+          "will": 22,
+          "knowledge": 15,
+          "resourcefulness": 14
+        },
+        "derived_stats": {
+          "health": 113.0,
+          "move_speed": 299.0,
+          "move_speed_pct": -0.3,
+          "action_speed_pct": -1.0,
+          "spell_casting_speed_pct": 0.0,
+          "memory_capacity": 9,
+          "magic_resistance_pct": 58.0,
+          "physical_power": 11.0,
+          "manual_dexterity_pct": 0.0,
+          "equip_speed_pct": 0.0,
+          "buff_duration_pct": 7.0,
+          "debuff_duration_pct": -6.5,
+          "regular_interaction_speed_pct": -1.5,
+          "health_recovery_bonus_pct": -3.0
+        },
+        "perks": [
+          {
+            "id": "Antimagic",
+            "name": "Antimagic",
+            "description": "Gain <FireMagicalReduction>[0]% magical damage reduction</> except against <DivineMagicalReduction>divine magic</>.",
+            "is_default": true
+          },
+          {
+            "id": "CurseMastery",
+            "name": "Curse Mastery",
+            "description": "Gain <YellowColor>30%</> duration towards all curses you cast.",
+            "is_default": false
+          },
+          {
+            "id": "DarkEnhancement",
+            "name": "Dark Enhancement",
+            "description": "Gain <MagicalDarkDamageMod>[0]% _</> towards dark magic spells.",
+            "is_default": false
+          },
+          {
+            "id": "DarkReflection",
+            "name": "Dark Reflection",
+            "description": "While active, reflect <Exec.MagicalDamageBase>[0]</> <MagicalDarkDamageBase>_</> to the melee attacker. Does not reflect while on cooldown.",
+            "is_default": false
+          },
+          {
+            "id": "DemonArmor",
+            "name": "Demon Armor",
+            "description": "Gain the ability to equip plate armor, but lose <SpellCastingSpeed>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "ImmortalLament",
+            "name": "Immortal Lament",
+            "description": "Casting spells will no longer take you below <YellowColor>1</> health. When your health falls below <YellowColor>5%</>, gain <YellowColor>100%</> increased <MagicalHealMod>_</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "InfernalPledge",
+            "name": "Infernal Pledge",
+            "description": "Reduces damage taken from Undead and Demons by <UndeadReductionMod>[0]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "Malice",
+            "name": "Malice",
+            "description": "Gain <WillMod>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "ShadowTouch",
+            "name": "Shadow Touch",
+            "description": "Dealing physical damage to an enemy with a melee weapon deals <Exec.MagicalDamageTrue>[0]</> <MagicalDarkDamageBase>true _</> and heals you for <Exec.MagicalHealBase>[1] _</>.",
+            "is_default": false
+          },
+          {
+            "id": "SoulCollector",
+            "name": "Soul Collector",
+            "description": "When you deal the final blow to an enemy, one darkness shard is collected. Gain <AllAttributes>[0] _</>, <MagicalDarkDamageMod>[0]% _</> for each shard collected, up to a maximum of <Constant Type=\"Integer\" Format=\"Normal\">[0]</> shards. When you deal dark magic damage, consume all collected shards.",
+            "is_default": true
+          },
+          {
+            "id": "TortureMastery",
+            "name": "Torture Mastery",
+            "description": "All curses inflicted upon enemies restores <Exec.RecoveryHealBase>[0] _</> to the caster with each instance of damage dealt. All Warlock spell costs are doubled when this perk is equipped.",
+            "is_default": true
+          },
+          {
+            "id": "Vampirism",
+            "name": "Vampirism",
+            "description": "Gain <MagicalHealMod>[0]% _</>.",
+            "is_default": true
+          }
+        ],
+        "skills": [
+          {
+            "id": "BloodPact",
+            "name": "Blood Pact",
+            "description": "Take the form of your contracted demon, gaining an additional <MaxHealthAdd>[0] _</>, <ArmorRating>[0] _</>, and <MagicResistance>[0] _</>. Your entire body is covered in Abyssal Flame, taking <Exec.HealthCostByMaxHealthRatio>[2]%</> damage per second and dealing <Exec.MagicalDamageBase>[3] _</> per second to nearby characters. Once activated, the effect cannot be stopped until the contract is complete. Additionally, by consuming Darkness Shards, you gain <AllAttributes>[1] _</>, <MagicalDarkDamageMod>[1]% _</> for each Darkness Shard consumed. When you become a demon your skills change to demon-only skills.\n\nLeft-Click: Use equipped item. If no item is equipped, then performs bare-handed attack. Perform up to 4 combo attacks using both hands.\n\nRight-Click: Use equipped item. If no item is equipped, then fires a bolt of darkness.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "BlowofCorruption",
+            "name": "Blow of Corruption",
+            "description": "Your next physical attack deals <Exec.MagicalDamageBase>[0]</> <MagicalEvilDamageBase>_</> to the target and reduces their <PhysicalHealingReceiveMod>_ by [1]%</> and <MagicalHealingReceiveMod>_ by [1]%</> for <Duration>[1] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "DarkOffering",
+            "name": "Dark Offering",
+            "description": "Channel your mind, sacrificing <Exec.AddHealthByMaxHealthRatio>[1]% of your max health</> per second to gain <MagicalDamageMod>[0]% _</> and <PhysicalDamageMod>[0]% _</>. This bonus lasts for <Duration>[0] seconds</>.",
+            "skill_type": "channeling",
+            "skill_tier": 1,
+            "use_moving": false
+          },
+          {
+            "id": "Phantomize",
+            "name": "Phantomize",
+            "description": "Phase through melee attacks and projectiles for <Duration>[0] seconds</>. While active, gain <MoveSpeedMod>[0]% _</> and lose <MagicalReduction>[0]% _</>. During this period you can only move and do not collide with other players or monsters.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellMemory1",
+            "name": "Spell Memory I",
+            "description": "Gain the ability to memorize spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellMemory2",
+            "name": "Spell Memory II",
+            "description": "Gain the ability to memorize additional spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [
+          {
+            "id": "BloodstainedBlade",
+            "name": "Bloodstained Blade",
+            "description": "While active, the target gains <PhysicalDamageWeaponPrimary>[0] _</> for <Duration>[0] seconds</>. When the target swings their weapon, they take <Exec.MagicalDamageBase>[1]</> <MagicalEvilDamageBase>_</>. Self cast if no target is found.",
+            "spell_tier": 2,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "BoltofDarkness",
+            "name": "Bolt of Darkness",
+            "description": "Fires a bolt that deals <Exec.MagicalDamageBase>[0]</> <MagicalDarkDamageBase>_</> to the target.",
+            "spell_tier": 1,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 999999,
+            "source_type": "dark",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "CurseofPain",
+            "name": "Curse of Pain",
+            "description": "",
+            "spell_tier": 2,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "CurseofWeakness",
+            "name": "Curse of Weakness",
+            "description": "Reduce the target <AllAttributesMod>_ by [0]%</>, <PhysicalReductionMod>_ by [0]%</>, <MagicalReductionMod>_ by [0]%</> for <Duration>[0] seconds</>.",
+            "spell_tier": 1,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "EldritchShield",
+            "name": "Eldritch Shield",
+            "description": "Grants the target a shield that protects against <MaxMagicalShield>[0]</> magical damage for <Duration>[0] seconds</>. When the shield absorbs its maximum damage, gain <MagicalDarkDamageMod>[1]% _</> and <SpellCastingSpeed>[2]% _</> towards the next dark spell cast within <Duration>[1] seconds</>.",
+            "spell_tier": 5,
+            "casting_time": 0.75,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "dark",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "EvilEye",
+            "name": "Evil Eye",
+            "description": "Channel for <Spell Type=\"CastingTime\">[0] seconds</> and summon an evil eye that can be possessed by the caster for <Spell Type=\"ChannelingDuration\">[0] seconds</>.",
+            "spell_tier": 3,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 5000,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "FlameWalker",
+            "name": "Flame Walker",
+            "description": "While active, gain the ability to leave a trail of Hellfire for <Duration>[0] seconds</>. Each step leaves a trail that lasts for <YellowColor>4 seconds</>. Targets that enter the flame area will <BurnEffect>burn</>, taking <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</> per <YellowColor>0.2 second</>.",
+            "spell_tier": 5,
+            "casting_time": 1.25,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "fire",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Hellfire",
+            "name": "Hellfire",
+            "description": "Cast eternal hellfire and blast it towards the targets. Deal <Exec.MagicalDamageBase>[0]</> <MagicalFireDamageBase>_</> per second to any target within the area of effect. The hellfire does not dissipate when it reaches a target.",
+            "spell_tier": 4,
+            "casting_time": 2.0,
+            "max_count": 0,
+            "range": 999999,
+            "source_type": "fire",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "LifeDrain",
+            "name": "Life Drain",
+            "description": "Channel for <Spell Type=\"ChannelingDuration\">[0] seconds</>, dealing <Exec.MagicalDamageBase>[0]</> <MagicalEvilDamageBase>_</> to the target per second. Convert a portion of the damage dealt into health for the caster.",
+            "spell_tier": 4,
+            "casting_time": 1.5,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "PowerofSacrifice",
+            "name": "Power of Sacrifice",
+            "description": "Deal <Exec.MagicalDamageBase>[0]</> <MagicalEvilDamageBase>_</> per second to the target while increasing their <StrengthBase>_ by [1]</> and <VigorBase>_ by [1]</> for <Duration>[2] seconds</>. Self casts if no target is found.",
+            "spell_tier": 1,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "RayOfDarkness",
+            "name": "Ray of Darkness",
+            "description": "Channel a dark beam dealing <Exec.MagicalDamageBase>[0]</> <MagicalDarkDamageBase>_</> per second to any target the beam touches. Moving and aiming are possible while channeling.",
+            "spell_tier": 4,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "dark",
+            "cost_type": "health",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "SpellPredation",
+            "name": "Spell Predation",
+            "description": "Consume up to all removable magical buffs from the enemy and gain <YellowColor>1</> Darkness Shard per effect. Inflict <Exec.MagicalDamageBase>[1] evil _</> per effect.\n\nDarkness Shard : Each Darkness Shard grants <AllAttributes>[0] _</>, <MagicalDarkDamageMod>[0]% _</> and can store up to <Constant Type=\"Integer\" Format=\"Normal\">[0]</>. This effect is consumed when casting a dark spell.",
+            "spell_tier": 3,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "casting"
+          },
+          {
+            "id": "SummonHydra",
+            "name": "Summon Hydra",
+            "description": "Summon a Hydra that spits fireballs dealing <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</> to enemy targets for <Duration>[0] seconds</>. The hydra can also detect hidden targets.",
+            "spell_tier": 6,
+            "casting_time": 1.0,
+            "max_count": 0,
+            "range": 750,
+            "source_type": "evil",
+            "cost_type": "health",
+            "casting_type": "casting"
+          }
+        ],
+        "shapeshifts": [],
+        "usable_item_count": 222
+      },
+      {
+        "slug": "wizard",
+        "name": "Wizard",
+        "flavor_text": "The Wizard calls forth the immense powers of magic to suit his needs. Whether that means summoning a powerful fireball to cast asunder his foes or to temporarily vanishing into thin air, his incantations are a sight to behold.",
+        "role": "Caster",
+        "base_stats": {
+          "strength": 6,
+          "vigor": 7,
+          "agility": 15,
+          "dexterity": 17,
+          "will": 20,
+          "knowledge": 25,
+          "resourcefulness": 15
+        },
+        "derived_stats": {
+          "health": 99.0,
+          "move_speed": 300.0,
+          "move_speed_pct": 0.0,
+          "action_speed_pct": 0.0,
+          "spell_casting_speed_pct": 21.0,
+          "memory_capacity": 19,
+          "magic_resistance_pct": 50.0,
+          "physical_power": 6.0,
+          "manual_dexterity_pct": 6.0,
+          "equip_speed_pct": 10.0,
+          "buff_duration_pct": 5.0,
+          "debuff_duration_pct": -4.8,
+          "regular_interaction_speed_pct": 0.0,
+          "health_recovery_bonus_pct": 0.0
+        },
+        "perks": [
+          {
+            "id": "ArcaneFeedback",
+            "name": "Arcane Feedback",
+            "description": "When you deal damage with an arcane spell, gain a stacking bonus granting <SpellCastingSpeed>[0]% _</> and <MagicalArcaneDamageMod>[0]% _</> per stack for <Duration>[0] seconds</>. This skill can stack up to <YellowColor>5</> times and the duration resets with each successful stack.",
+            "is_default": false
+          },
+          {
+            "id": "ArcaneMastery",
+            "name": "Arcane Mastery",
+            "description": "Gain <MagicalArcaneDamageMod>[0]% _</> and reduce the cast time of arcane spells by <Constant Type=\"Float\">[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "FireMastery",
+            "name": "Fire Mastery",
+            "description": "Gain <MagicalFireDamageMod>[0]% _</>. The duration of applied <BurnEffect>burns</> are increased by <YellowColor>2 seconds</>, and a burned target reduces <PhysicalHealingReceiveMod>_ by [1]%</> and <MagicalHealingReceiveMod>_ by [1]%</> for <Duration>[1] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "IceMastery",
+            "name": "Ice Mastery",
+            "description": "Dealing damage with ice magic freezes the target's feet and prevents them from moving for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "IceShield",
+            "name": "Ice Shield",
+            "description": "Gain <ArmorRating>[1] _</>. Inflict <FrostbiteEffect>frostbite</> for <Duration>[0] seconds</> on melee attacker. Does not inflict while on cooldown.\n\n<FrostbiteEffect>Frostbite</>: The target loses <MoveSpeedMod>[0]% _</> and <ActionSpeed>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "ManaSurge",
+            "name": "Mana Surge",
+            "description": "Gain <MagicalDamageMod>[0]% _</>.",
+            "is_default": false
+          },
+          {
+            "id": "Melt",
+            "name": "Melt",
+            "description": "When you deal magical fire damage to a target, the target loses <PhysicalReduction>[0]% _</> and <ProjectileReductionMod>[0]% _</> for <Duration>[0] seconds</>.",
+            "is_default": false
+          },
+          {
+            "id": "QuickChant",
+            "name": "Quick Chant",
+            "description": "Gain <SpellCastingSpeed>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "ReactiveShield",
+            "name": "Reactive Shield",
+            "description": "When you take damage, gain an arcane shield that lasts for <Duration>[0] seconds</>. The shield can absorb <MaxTotalShield>[0]</> total damage and will only reactivate after a cooldown period.",
+            "is_default": true
+          },
+          {
+            "id": "Sage",
+            "name": "Sage",
+            "description": "Gain <knowledgeMod>[0]% _</>.",
+            "is_default": true
+          },
+          {
+            "id": "SpellOverload",
+            "name": "Spell Overload",
+            "description": "Reduces <KnowledgeMod>_ by [0]%</> and increases all spells counts by <MaxSpellCountMod>[0]%</>.",
+            "is_default": false
+          },
+          {
+            "id": "StaffMastery",
+            "name": "Staff Mastery",
+            "description": "When using a staff-type weapon, you gain <MagicalDamageWeaponPrimary>[0] _</>.",
+            "is_default": false
+          }
+        ],
+        "skills": [
+          {
+            "id": "ArcaneShield",
+            "name": "Arcane Shield",
+            "description": "Gain a shield around you that absorbs <MaxTotalShield>[0]</> damage from all damage sources for <Duration>[0] seconds</>. When the maximum amount of absorb has been reached, the shield unleashes an Arcane Explosion, dealing <Exec.MagicalDamageBase>[1] _</> to enemy targets in a <Skill Type=\"Range\">[0]m radius</> around you.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "IntenseFocus",
+            "name": "Intense Focus",
+            "description": "Reduce the cast time of your next spell to <Constant Type=\"Float\">[0] seconds</>.",
+            "skill_type": "instant",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "Meditation",
+            "name": "Meditation",
+            "description": "Enter a meditative state and recover spells at a rate of <Constant Type=\"Integer\">[0]</> spells costs over <Skill Type=\"ChannelingDuration\">[0] seconds</>.",
+            "skill_type": "channeling",
+            "skill_tier": 1,
+            "use_moving": false
+          },
+          {
+            "id": "SpellMemory1",
+            "name": "Spell Memory I",
+            "description": "Gain the ability to memorize spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          },
+          {
+            "id": "SpellMemory2",
+            "name": "Spell Memory II",
+            "description": "Gain the ability to memorize additional spells to use in the dungeon.",
+            "skill_type": "memory",
+            "skill_tier": 1,
+            "use_moving": true
+          }
+        ],
+        "spells": [
+          {
+            "id": "ChainLightning",
+            "name": "Chain Lightning",
+            "description": "<ElectrifiedEffect>Electrocute</> the target for <Duration>[1] seconds</>, dealing <Exec.MagicalDamageBase>[0]</> <MagicalLightningDamageBase>_</>, and fires lightning that is transferred to targets within a <Spell Type=\"Range\">[0]m</> area up to <YellowColor>3</> times. It does not transfer to a target it was transferred to previously, and it transfers to the caster if you are nearby.\n\n<ElectrifiedEffect>Electrified</> : The target loses <MoveSpeedMod>[1]% _</>.",
+            "spell_tier": 6,
+            "casting_time": 2.5,
+            "max_count": 2,
+            "range": 800,
+            "source_type": "lightning",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Explosion",
+            "name": "Explosion",
+            "description": "When cast, an explosion occurs in the targeted area after <YellowColor>3 seconds</>, dealing <Exec.MagicalDamageBase>[0]</> <MagicalFireDamageBase>_</> and inflicting <BurnEffect>burn</> over <Duration>[1] seconds</> within a 1m area.\n\n<BurnEffect>Burn</>: The target takes <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</>.",
+            "spell_tier": 5,
+            "casting_time": 1.75,
+            "max_count": 4,
+            "range": 800,
+            "source_type": "fire",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Fireball",
+            "name": "Fireball",
+            "description": "Shoot a burning fireball, dealing <Exec.MagicalDamageBase>[0]</> <MagicalFireDamageBase>direct _</> to a target and <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>splash _</>, knocking back nearby targets and inflicting <BurnEffect>burn</> over <Duration>[2] seconds</>.\n\n<BurnEffect>Burn</>: The target takes <Exec.MagicalDamageBase>[2]</> <MagicalFireDamageBase>_</>.",
+            "spell_tier": 4,
+            "casting_time": 2.0,
+            "max_count": 4,
+            "range": 999999,
+            "source_type": "fire",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Haste",
+            "name": "Haste",
+            "description": "Grants the target <MoveSpeedMod>[0]% _</>, <ActionSpeed>[0]% _</>, <SpellCastingSpeed>[0]% _</> for <Duration>[0] seconds</>. Self cast if no target is found.",
+            "spell_tier": 3,
+            "casting_time": 0.75,
+            "max_count": 4,
+            "range": 800,
+            "source_type": "light",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "IceBolt",
+            "name": "Ice Bolt",
+            "description": "Deal <Exec.MagicalDamageBase>[0]</> <MagicalIceDamageBase>_</> to the target, inflicting <FrostbiteEffect>frostbite</> for <Duration>[1] seconds</>.\n\n<FrostbiteEffect>Frostbite</>: The target loses <MoveSpeedMod>[1]% _</> and <ActionSpeed>[1]% _</>.",
+            "spell_tier": 2,
+            "casting_time": 1.25,
+            "max_count": 5,
+            "range": 999999,
+            "source_type": "ice",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Ignite",
+            "name": "Ignite",
+            "description": "Set the target's weapon on fire for <Duration>[2] seconds</>. While active, deal <Exec.MagicalDamageBase>[0]</> <MagicalFireDamageBase>_</> and inflict <BurnEffect>burn</> over <Duration>[1] seconds</> on successful attacks.\n\n<BurnEffect>Burn</>: The target takes <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</>.",
+            "spell_tier": 2,
+            "casting_time": 0.75,
+            "max_count": 10,
+            "range": 800,
+            "source_type": "fire",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Invisibility",
+            "name": "Invisibility",
+            "description": "Grants the target invisibility for <Duration>[0] seconds</>. While active, the target also gains <MoveSpeedMod>[0]% _</>. Self cast if no target is found.",
+            "spell_tier": 4,
+            "casting_time": 0.75,
+            "max_count": 4,
+            "range": 800,
+            "source_type": "arcane",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Lazy",
+            "name": "Slow",
+            "description": "Slows the target's <MoveSpeedMod>_ by [0]%</> for <Duration>[0] seconds</>.",
+            "spell_tier": 2,
+            "casting_time": 1.25,
+            "max_count": 3,
+            "range": 800,
+            "source_type": "light",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "Light",
+            "name": "Light Orb",
+            "description": "Cast spheres of floating light to brightly illuminate your surroundings. Can force rogues out of hiding.",
+            "spell_tier": 1,
+            "casting_time": 1.0,
+            "max_count": 4,
+            "range": 999999,
+            "source_type": "light",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "LightningStrike",
+            "name": "Lightning Strike",
+            "description": "When cast, a bolt of lightning strikes the targeted area, <ElectrifiedEffect>Electrocuting</> enemies for <Duration>[1] seconds</> and dealing <Exec.MagicalDamageBase>[0]</> <MagicalLightningDamageBase>_</>.\n\n<ElectrifiedEffect>Electrified</> : The target loses <MoveSpeedMod>[1]% _</>.",
+            "spell_tier": 4,
+            "casting_time": 2.0,
+            "max_count": 5,
+            "range": 800,
+            "source_type": "lightning",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "MagicLock",
+            "name": "Magic Lock",
+            "description": "Lockable objects such as doors or boxes will be locked for <Duration>[0] seconds</>.",
+            "spell_tier": 2,
+            "casting_time": 1.0,
+            "max_count": 5,
+            "range": 800,
+            "source_type": "arcane",
+            "cost_type": "count",
+            "casting_type": "casting"
+          },
+          {
+            "id": "MagicMissile",
+            "name": "Magic Missile",
+            "description": "Fire up to <YellowColor>10</> homing missile that each deal <Exec.MagicalDamageBase>[0]</> <MagicalArcaneDamageBase>_</>. Stops firing when you move.",
+            "spell_tier": 3,
+            "casting_time": 1.25,
+            "max_count": 10,
+            "range": 999999,
+            "source_type": "arcane",
+            "cost_type": "count",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "Zap",
+            "name": "Zap",
+            "description": "Deals <Exec.MagicalDamageBase>[0]</> <MagicalLightDamageBase>_</> and <BurnEffect>burns</> the target over <Duration>[1] second</>.\n\n<BurnEffect>Burn</>: The target takes <Exec.MagicalDamageBase>[1]</> <MagicalFireDamageBase>_</>.",
+            "spell_tier": 1,
+            "casting_time": 1.25,
+            "max_count": 5,
+            "range": 800,
+            "source_type": "light",
+            "cost_type": "count",
+            "casting_type": "casting"
+          }
+        ],
+        "shapeshifts": [],
+        "usable_item_count": 197
+      }
+    ],
+    "spell_merge_recipes": [
+      {
+        "result": "Flamefrost Spear",
+        "result_slug": "flamefrost-spear",
+        "sources": [
+          "Ice Spear",
+          "Flamestrike"
+        ]
+      },
+      {
+        "result": "Lightning Vortex",
+        "result_slug": "lightning-vortex",
+        "sources": [
+          "Vortex",
+          "Lightning Sphere"
+        ]
+      },
+      {
+        "result": "Elemental Bolt",
+        "result_slug": "elemental-bolt",
+        "sources": [
+          "Water Bolt",
+          "Fire Arrow"
+        ]
+      },
+      {
+        "result": "Flamethrower",
+        "result_slug": "flamethrower",
+        "sources": [
+          "Fire Arrow",
+          "Windblast"
+        ]
+      },
+      {
+        "result": "Summon Lava Elemental",
+        "result_slug": "summon-lava-elemental",
+        "sources": [
+          "Fire Orb",
+          "Summon Earth Elemental"
+        ]
+      },
+      {
+        "result": "Thorn of Earth",
+        "result_slug": "thorn-of-earth",
+        "sources": [
+          "Eruption",
+          "Levitation"
+        ]
+      },
+      {
+        "result": "Lightning Storm",
+        "result_slug": "lightning-storm",
+        "sources": [
+          "Lightning Sphere",
+          "Levitation"
+        ]
+      },
+      {
+        "result": "Mud Shield",
+        "result_slug": "mud-shield",
+        "sources": [
+          "Water Bolt",
+          "Stone Skin"
+        ]
+      },
+      {
+        "result": "Wall of Fire",
+        "result_slug": "wall-of-fire",
+        "sources": [
+          "Eruption",
+          "Flamestrike"
+        ]
+      },
+      {
+        "result": "Icebound",
+        "result_slug": "icebound",
+        "sources": [
+          "Glaciate",
+          "Stone Skin"
+        ]
+      },
+      {
+        "result": "Electric Dash",
+        "result_slug": "electric-dash",
+        "sources": [
+          "Lightning Bolt",
+          "Vortex"
+        ]
+      },
+      {
+        "result": "Aqua Prison",
+        "result_slug": "aqua-prison",
+        "sources": [
+          "Water Bolt",
+          "Levitation"
+        ]
+      },
+      {
+        "result": "Plasma Blast",
+        "result_slug": "plasma-blast",
+        "sources": [
+          "Fire Orb",
+          "Lightning Sphere"
+        ]
+      },
+      {
+        "result": "Frost Breath",
+        "result_slug": "frost-breath",
+        "sources": [
+          "Glaciate",
+          "Windblast"
+        ]
+      },
+      {
+        "result": "Frost Lightning",
+        "result_slug": "frost-lightning",
+        "sources": [
+          "Lightning Bolt",
+          "Ice Spear"
+        ]
+      }
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./market.module.css";
 import type { TrendingItem } from "./api";
 import { itemIconPath, GOLD_ICON } from "./api";
@@ -10,8 +11,21 @@ interface Props {
   loading: boolean;
 }
 
+const CLASSES = [
+  "Fighter", "Barbarian", "Ranger", "Rogue", "Bard",
+  "Cleric", "Wizard", "Sorcerer", "Warlock", "Druid",
+];
+
+type ItemClassMap = Record<string, string[]>;
+
 function formatGold(n: number): string {
+  if (!n || isNaN(n)) return "—";
   return Math.round(n).toLocaleString();
+}
+
+function formatNum(n: number): string {
+  if (!n || isNaN(n)) return "—";
+  return n.toLocaleString();
 }
 
 function GoldIcon() {
@@ -35,84 +49,38 @@ function ItemIcon({ archetype }: { archetype: string }) {
       height={32}
       className={styles.itemIcon}
       onError={(e) => {
-        (e.target as HTMLImageElement).style.display = "none";
+        (e.target as HTMLImageElement).style.visibility = "hidden";
       }}
     />
   );
 }
 
-function TrendTable({
-  title,
-  items,
-}: {
-  title: string;
-  items: TrendingItem[];
-}) {
-  if (items.length === 0) return null;
-
+function PriceCell({ value }: { value: number }) {
   return (
-    <div className={styles.trendSection}>
-      <div className={styles.sectionHeader}>
-        <span className={styles.sectionTitle}>{title}</span>
-      </div>
-      <div className={styles.trendTable}>
-        <div className={styles.trendTableHeader}>
-          <span></span>
-          <span>Item</span>
-          <span title="What this item typically sold for over the past week. We ignore unrealistic prices (like 1g or 99,999g troll/RMT listings) to show what real players actually pay.">Avg 7d</span>
-          <span title="What this item typically sold for in the last 24 hours, with fake prices filtered out.">Avg 24h</span>
-          <span title="The most recent typical price based on the last few hours of trade data. Note: market data updates every few hours, so this may be slightly behind real-time.">Current Avg</span>
-          <span title="A realistic low-end price from current marketplace listings. DarkerDB data has a lag, so the absolute cheapest listings have often already sold. We use the 25th percentile to show what you'd realistically find available right now.">Low Range</span>
-          <span title="How much the price moved recently — compares the last ~12 hours to the previous ~24 hours. A positive number means the price went up.">Change</span>
-          <span title="Visual price trend over the past week. The line shows typical trade prices with fake listings filtered out.">Trend</span>
-        </div>
-        {items.map((item) => (
-          <div key={item.archetype} className={styles.trendTableRow}>
-            <span>
-              <ItemIcon archetype={item.archetype} />
-            </span>
-            <span className={styles.trendItemName}>{item.label}</span>
-            <span className={styles.priceCell}>
-              <GoldIcon />{formatGold(item.avg7d)}
-            </span>
-            <span className={styles.priceCell}>
-              <GoldIcon />{formatGold(item.avg24h)}
-            </span>
-            <span className={styles.priceCell}>
-              <GoldIcon />{formatGold(item.currentAvg)}
-            </span>
-            <span className={styles.priceCell}>
-              {item.currentLowest > 0 ? (
-                <><GoldIcon />{formatGold(item.currentLowest)}</>
-              ) : (
-                <span style={{ color: "var(--text-muted)" }}>&mdash;</span>
-              )}
-            </span>
-            <span className={item.changePct >= 0 ? styles.trendUp : styles.trendDown}>
-              {item.changePct >= 0 ? "+" : ""}{item.changePct.toFixed(1)}%
-            </span>
-            <span className={styles.sparkline}>
-              <ResponsiveContainer width={100} height={32}>
-                <AreaChart data={item.priceHistory}>
-                  <Area
-                    type="monotone"
-                    dataKey="typical"
-                    stroke="rgba(201,168,76,0.6)"
-                    fill="rgba(201,168,76,0.1)"
-                    strokeWidth={1.5}
-                    dot={false}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <span style={{
+      textAlign: "right",
+      fontVariantNumeric: "tabular-nums",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      gap: 3,
+    }}>
+      {formatGold(value)}<GoldIcon />
+    </span>
   );
 }
 
 export default function MarketDashboard({ trending, loading }: Props) {
+  const [selectedClass, setSelectedClass] = useState<string | null>(null);
+  const [itemClasses, setItemClasses] = useState<ItemClassMap>({});
+
+  useEffect(() => {
+    fetch("/data/item_classes.json")
+      .then((res) => res.json())
+      .then((data: ItemClassMap) => setItemClasses(data))
+      .catch(() => {});
+  }, []);
+
   if (loading) {
     return (
       <div className={styles.dashboard}>
@@ -128,23 +96,139 @@ export default function MarketDashboard({ trending, loading }: Props) {
     );
   }
 
-  const gainers = trending
-    .filter((t) => t.changePct > 0)
-    .sort((a, b) => b.changePct - a.changePct)
-    .slice(0, 10);
-  const losers = trending
-    .filter((t) => t.changePct < 0)
-    .sort((a, b) => a.changePct - b.changePct)
-    .slice(0, 10);
-  const mostTraded = [...trending]
+  // Filter by class if selected
+  const filtered = selectedClass
+    ? trending.filter((t) => {
+        const classes = itemClasses[t.archetype];
+        if (!classes) return true; // unknown items show always
+        return classes.includes(selectedClass) || classes.includes("All");
+      })
+    : trending;
+
+  // High Demand = most sold items (highest trading volume)
+  const highDemand = [...filtered]
+    .filter((t) => t.totalVolume > 0)
     .sort((a, b) => b.totalVolume - a.totalVolume)
     .slice(0, 10);
 
   return (
     <div className={styles.dashboard}>
-      <TrendTable title="Top 10 Gainers" items={gainers} />
-      <TrendTable title="Top 10 Losers" items={losers} />
-      <TrendTable title="Most Traded" items={mostTraded} />
+      <div>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionTitle}>High Demand Products</span>
+        </div>
+
+        {/* Class filter buttons */}
+        <div className={styles.classFilter}>
+          <button
+            className={`${styles.classBtn} ${!selectedClass ? styles.classBtnActive : ""}`}
+            onClick={() => setSelectedClass(null)}
+            title="All Classes"
+          >
+            All
+          </button>
+          {CLASSES.map((cls) => (
+            <button
+              key={cls}
+              className={`${styles.classBtn} ${selectedClass === cls ? styles.classBtnActive : ""}`}
+              onClick={() => setSelectedClass(selectedClass === cls ? null : cls)}
+              title={cls}
+            >
+              <img
+                src={`/class-icons/${cls.toLowerCase()}.png`}
+                alt={cls}
+                width={24}
+                height={24}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                }}
+              />
+              <span className={styles.classBtnLabel}>{cls}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* 8-column grid: icon | name | avg | lowest | highest | sold | listings | trend */}
+        <div className={styles.trendTableHeader}>
+          <span></span>
+          <span>Item</span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Average price per unit across active listings">Avg Price</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Cheapest active listing (price per unit)">Lowest</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Most expensive active listing (price per unit)">Highest</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Number of items sold (detected between polling cycles)">Sold</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Number of active marketplace listings">Active</span>
+          </span>
+          <span style={{ textAlign: "right" }}>
+            <span title="Price trend over recent polls">Trend</span>
+          </span>
+        </div>
+        <div>
+          {highDemand.length === 0 ? (
+            <div style={{
+              padding: "24px 16px",
+              color: "var(--text-muted)",
+              textAlign: "center",
+              fontSize: "0.8rem",
+            }}>
+              No items with sales data for this class yet.
+            </div>
+          ) : (
+            highDemand.map((t) => (
+              <div key={t.archetype} className={styles.trendTableRow}>
+                <ItemIcon archetype={t.archetype} />
+                <span className={styles.trendItemName}>{t.label}</span>
+                <PriceCell value={t.currentAvg} />
+                <PriceCell value={t.currentLowest} />
+                <PriceCell value={t.avg14d} />
+                <span style={{
+                  textAlign: "right",
+                  fontWeight: 600,
+                  color: "var(--gold-500)",
+                }}>
+                  {formatNum(t.totalVolume)}
+                </span>
+                <span style={{ textAlign: "right", color: "var(--text-muted)" }}>
+                  {formatNum(t.avg7d)}
+                </span>
+                <span>
+                  {t.priceHistory.length > 1 ? (
+                    <ResponsiveContainer width="100%" height={28}>
+                      <AreaChart
+                        data={t.priceHistory.map((p) => ({
+                          t: p.timestamp,
+                          v: p.avg || p.min || 0,
+                        }))}
+                      >
+                        <Area
+                          type="monotone"
+                          dataKey="v"
+                          stroke="rgba(201,168,76,0.6)"
+                          fill="rgba(201,168,76,0.1)"
+                          strokeWidth={1.5}
+                          dot={false}
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <span style={{ color: "var(--text-muted)", fontSize: "0.6rem" }}>
+                      building...
+                    </span>
+                  )}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
 
       <div style={{
         fontSize: "0.6875rem",
@@ -155,26 +239,10 @@ export default function MarketDashboard({ trending, loading }: Props) {
         lineHeight: 1.7,
         maxWidth: 800,
       }}>
-        <p style={{ marginBottom: 8 }}>
-          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>How we handle fake prices:</strong>{" "}
-          The marketplace has many troll listings (items at 1g) and RMT listings (items at 99,999g)
-          that ruin the average. We automatically strip the most extreme prices from each time window
-          to get closer to what the item actually trades for. However, some items (especially currency
-          items like Silver Coin) have so many fake listings that even cleaned averages may be off.
-          For those items, the <strong style={{ fontStyle: "normal" }}>&quot;Low Range&quot;</strong> column
-          is the most reliable — it shows the real cheapest price on the market right now, with
-          troll prices filtered out.
-        </p>
-        <p style={{ marginBottom: 8 }}>
-          <strong style={{ color: "var(--gold-500)", fontStyle: "normal" }}>What to trust most:</strong>{" "}
-          &quot;Low Range&quot; is always real-time and outlier-filtered from 50 live listings.
-          The averages (7d, 24h, Current) are best for items with clean trading patterns
-          (like Wolf Pelt, Bone Powder). For RMT-heavy items, focus on &quot;Low Range&quot; instead.
-        </p>
         <p>
-          Market data is provided by DarkerDB and updates every few hours.
-          Hover over column headers for details. Use the <strong style={{ fontStyle: "normal" }}>Search</strong> tab
-          for real-time listing prices.
+          High demand items ranked by number of sales detected. Market data is collected
+          directly from the in-game marketplace every ~3 minutes across all 741 tradeable items.
+          {selectedClass && ` Showing items usable by ${selectedClass}.`}
         </p>
       </div>
     </div>

@@ -186,18 +186,15 @@
   font-weight: 600;
   color: var(--gold-300);
   letter-spacing: 0.03em;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  min-width: 0;
 }
 
 .trendItemPrice {
-  font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-bright);
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .trendItemChange {
@@ -542,11 +539,11 @@
 }
 
 .statsGridValue {
-  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--gold-300);
   margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
 }
 
 .statsGridLabel {
@@ -805,6 +802,53 @@
   gap: 8px;
 }
 
+/* Class filter row */
+.classFilter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.classBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 6px;
+  background: rgba(201, 168, 76, 0.04);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-family: var(--font-heading);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.classBtn:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: rgba(201, 168, 76, 0.3);
+  color: var(--gold-500);
+}
+
+.classBtnActive {
+  background: rgba(201, 168, 76, 0.15);
+  border-color: rgba(201, 168, 76, 0.5);
+  color: var(--gold-500);
+}
+
+.classBtnLabel {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .classBtnLabel {
+    display: inline;
+  }
+}
+
 .sectionTitle {
   font-family: var(--font-heading);
   font-size: 0.75rem;
@@ -819,6 +863,411 @@
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold-700), transparent);
   margin: 32px auto;
+}
+
+/* === Market Search === */
+
+/* Search bar */
+.msSearchBar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.msSearchInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition: border-color 0.15s;
+}
+.msSearchInputWrap:focus-within {
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+.msSearchInput {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 0.85rem;
+  color: var(--gold-500);
+  font-family: inherit;
+  width: 100%;
+}
+
+.msSelect {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: var(--gold-500);
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.msSearchBtn {
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold-500);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.msSearchBtn:hover:not(:disabled) { background: rgba(201, 168, 76, 0.25); }
+.msSearchBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.msSuggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(20, 18, 14, 0.98);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 50;
+  margin-top: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.msSuggestionItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--gold-500);
+  transition: background 0.1s;
+}
+.msSuggestionItem:hover { background: rgba(201, 168, 76, 0.1); }
+
+/* Hero section */
+.msHero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 10px;
+}
+
+.msHeroIcon {
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.msHeroName {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold-300);
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Price cards */
+.msPriceCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.msPriceCard {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.msPriceCardValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-300);
+  font-variant-numeric: tabular-nums;
+}
+
+.msPriceCardLabel {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* Chart section */
+.msChartSection {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  border-radius: 10px;
+}
+
+.msChartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.msChartToggle {
+  display: flex;
+  gap: 4px;
+}
+
+.msChartBtn, .msChartBtnActive {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+}
+.msChartBtn:hover { color: var(--gold-500); }
+.msChartBtnActive {
+  background: rgba(201, 168, 76, 0.15);
+  border-color: rgba(201, 168, 76, 0.3);
+  color: var(--gold-500);
+}
+
+.msChart {
+  margin: 0 -8px;
+}
+
+/* Filter bar */
+.msFilterBar {
+  margin-bottom: 16px;
+}
+
+.msFilterToggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 6px 0;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.msFilterToggle:hover { color: var(--gold-500); }
+
+.msFilterContent {
+  margin-top: 8px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 6px;
+}
+
+/* Shared filter chip styles */
+.msAttrList { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+
+.msAttrChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--gold-500);
+}
+
+.msAttrInput {
+  width: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  color: var(--gold-500);
+  text-align: center;
+  outline: none;
+}
+
+.msAttrRemove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0 2px;
+  line-height: 1;
+}
+.msAttrRemove:hover { color: #e05555; }
+
+/* Filter section with default slots */
+.msFilterSection {
+  margin-bottom: 20px;
+}
+
+.msFilterSlots {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.msFilterSlot {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.msFilterMinInput {
+  width: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  color: var(--gold-500);
+  text-align: center;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+.msFilterMinInput::placeholder {
+  color: rgba(201, 168, 76, 0.3);
+}
+
+/* Sections */
+.msSection {
+  margin-bottom: 24px;
+}
+
+/* Tables */
+.msTableWrap { overflow-x: auto; }
+
+.msTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.msTable th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.msTable td {
+  padding: 7px 10px;
+  border-bottom: none;
+  color: var(--gold-500);
+  vertical-align: middle;
+  height: 36px;
+}
+
+.msTable tbody tr {
+  border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+}
+
+.msTable tbody tr:hover { background: rgba(201, 168, 76, 0.04); }
+
+.msSelectedRow {
+  background: rgba(201, 168, 76, 0.08) !important;
+  outline: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.msPrice {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.msPriceInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  line-height: 1;
+}
+
+.msStats {
+  display: inline-flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.msStat {
+  background: rgba(201, 168, 76, 0.06);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.msItemName {
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.msItemNameInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.msItemNameInner img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.msTime {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.msSoldRow td { opacity: 0.7; }
+
+.msEmpty {
+  padding: 24px 16px;
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .msSearchBar { flex-wrap: wrap; }
+  .msSearchInputWrap { min-width: 100%; }
+  .msPriceCards { grid-template-columns: repeat(2, 1fr); }
+  .msHeroName { font-size: 1rem; }
 }
 
 /* === Responsive === */

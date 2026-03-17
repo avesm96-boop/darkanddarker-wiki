@@ -78,8 +78,9 @@ interface Monster {
 }
 
 interface MonstersData {
+  version: string;
   generated_at: string;
-  monsters: Monster[];
+  data: Monster[];
 }
 
 export interface ComboPlayback {
@@ -286,7 +287,7 @@ export default function MonsterDetail({ slug }: { slug: string }) {
     fetch("/data/monsters.json")
       .then((r) => r.json())
       .then((d: MonstersData) => {
-        const found = d.monsters.find((m) => m.slug === slug);
+        const found = d.data.find((m) => m.slug === slug);
         setMonster(found ?? null);
         if (found) {
           const grades = Object.keys(found.grades);

@@ -1089,8 +1089,9 @@ def main():
 
     # Build output
     output = {
+        "version": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "monsters": monsters,
+        "data": monsters,
     }
 
     # Write output

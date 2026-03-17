@@ -264,7 +264,7 @@ export default function ItemSearch() {
   useEffect(() => {
     fetch("/data/items.json")
       .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-      .then((d: ItemsData) => { setData(d); setLoading(false); })
+      .then((json: { version: string; generated_at: string; data: ItemsData }) => { setData(json.data); setLoading(false); })
       .catch(e => { setError(e.message); setLoading(false); });
   }, []);
 

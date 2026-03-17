@@ -3,7 +3,9 @@ import path from "path";
 import MonsterDetail from "./MonsterDetail";
 
 interface MonstersData {
-  monsters: { slug: string }[];
+  version: string;
+  generated_at: string;
+  data: { slug: string }[];
 }
 
 export async function generateStaticParams() {
@@ -11,7 +13,7 @@ export async function generateStaticParams() {
   try {
     const raw = fs.readFileSync(filePath, "utf-8");
     const data: MonstersData = JSON.parse(raw);
-    return data.monsters.map((m) => ({ slug: m.slug }));
+    return data.data.map((m) => ({ slug: m.slug }));
   } catch {
     return [];
   }

@@ -838,7 +838,7 @@ def main() -> None:
     # Build output
     print(f"    Modules: {len(module_list)}")
 
-    output = {
+    inner = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "dungeons": [{"n": d["name"], "g": [[g, l] for g, l in d["grades"]]} for d in DUNGEONS],
         "rarities": RARITIES,
@@ -856,6 +856,11 @@ def main() -> None:
             for s in db.sources
         ],
         "fixed_rarity": {str(k): v for k, v in db.fixed_rarity.items()},
+    }
+    output = {
+        "version": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "data": inner,
     }
 
     out_path.parent.mkdir(parents=True, exist_ok=True)

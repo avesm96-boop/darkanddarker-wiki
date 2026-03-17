@@ -26,6 +26,12 @@ interface Monster {
   attacks: { name: string; damage_ratio: number; impact_power: number }[];
 }
 
+interface MonstersDataInner {
+  version: string;
+  generated_at: string;
+  data: Monster[];
+}
+
 interface MonstersData {
   generated_at: string;
   monsters: Monster[];
@@ -108,7 +114,9 @@ export default function MonstersPage() {
         if (!r.ok) throw new Error("fetch failed");
         return r.json();
       })
-      .then(setData)
+      .then((json: MonstersDataInner) => {
+        setData({ generated_at: json.generated_at, monsters: json.data });
+      })
       .catch(() => setError(true));
   }, []);
 

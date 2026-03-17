@@ -341,8 +341,7 @@ export default function MarketSearchTab() {
                 <Tooltip contentStyle={{ background: "rgba(20,18,14,0.95)", border: "1px solid rgba(201,168,76,0.25)", borderRadius: 6, fontSize: "0.75rem" }}
                   labelFormatter={(label) => formatChartTime(String(label), chartTimeframe)}
                   formatter={(value) => [formatGold(Number(value)) + "g", ""]} />
-                <Area type="monotone" dataKey="avg" stroke="#c9a84c" fill="rgba(201,168,76,0.12)" strokeWidth={2} name="Avg" />
-                <Area type="monotone" dataKey="min" stroke="rgba(76,201,100,0.5)" fill="rgba(76,201,100,0.05)" strokeWidth={1.5} name="Min" />
+                <Area type="monotone" dataKey="min" stroke="#c9a84c" fill="rgba(201,168,76,0.12)" strokeWidth={2} name="Lowest Price" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

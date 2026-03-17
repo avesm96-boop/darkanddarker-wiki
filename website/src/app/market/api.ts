@@ -86,7 +86,34 @@ const ICON_OVERRIDES: Record<string, string> = {
   GoldenTeeth: "GoldenTeeth",
 };
 
+// Items where the plain icon doesn't exist — use suffixed variant
+const ICON_SUFFIX: Record<string, string> = {
+  Armingsword: "Item_Icon_Armingsword_5001.png", BattleAxe: "Item_Icon_BattleAxe_5001.png",
+  Buckler: "Item_Icon_Buckler_5001.png", CastillonDagger: "Item_Icon_CastillonDagger_5001.png",
+  Crossbow: "Item_Icon_Crossbow_5001.png", CrystalSword: "Item_Icon_CrystalSword_5001.png",
+  Cutlass: "Item_Icon_Cutlass_5001.png", DarkLeatherLeggings: "Item_Icon_DarkLeatherLeggings_5001.png",
+  DoubleAxe: "Item_Icon_DoubleAxe_5001.png", Drum: "Item_Icon_Drum_5001.png",
+  Falchion: "Item_Icon_Falchion_5001.png", FellingAxe: "Item_Icon_FellingAxe_5001.png",
+  FlangedMace: "Item_Icon_FlangedMace_5001.png", Gjermundbu: "Item_Icon_Gjermundbu_5001.png",
+  HandCrossbow: "Item_Icon_HandCrossbow_5001.png", Handcannon: "Item_Icon_Handcannon_5001.png",
+  Hatchet: "Item_Icon_Hatchet_5001.png", HeaterShield: "Item_Icon_HeaterShield_5001.png",
+  HorsemansAxe: "Item_Icon_HorsemansAxe_5001.png", KrisDagger: "Item_Icon_KrisDagger_5001.png",
+  Lantern: "Item_Icon_Lantern_2001.png", Longbow: "Item_Icon_Longbow_5001.png",
+  Lute: "Item_Icon_Lute_5001.png", Lyre: "Item_Icon_Lyre_5001.png",
+  Morningstar: "Item_Icon_Morningstar_5001.png", Pavise: "Item_Icon_Pavise_5001.png",
+  Pickaxe: "Item_Icon_Pickaxe_0001.png", Quarterstaff: "Item_Icon_Quarterstaff_5001.png",
+  Rapier: "Item_Icon_Rapier_5001.png", RecurveBow: "Item_Icon_RecurveBow_5001.png",
+  RondelDagger: "Item_Icon_RondelDagger_5001.png", RoundShield: "Item_Icon_RoundShield_5001.png",
+  ShortSword: "Item_Icon_ShortSword_5001.png", Spear: "Item_Icon_Spear_5001.png",
+  SpellBook: "Item_Icon_SpellBook_5001.png", StilettoDagger: "Item_Icon_StilettoDagger_5001.png",
+  SurvivalBow: "Item_Icon_SurvivalBow_5001.png", VikingSword: "Item_Icon_VikingSword_5001.png",
+  WarHammer: "Item_Icon_WarHammer_5001.png", WarMaul: "Item_Icon_WarMaul_5001.png",
+  WindlassCrossbow: "Item_Icon_WindlassCrossbow_5001.png", WizardStaff: "Item_Icon_WizardStaff_5001.png",
+  Zweihander: "Item_Icon_Zweihander_5001.png",
+};
+
 export function itemIconPath(archetype: string): string {
+  if (ICON_SUFFIX[archetype]) return `/item-icons/${ICON_SUFFIX[archetype]}`;
   const name = ICON_OVERRIDES[archetype] ?? archetype;
   return `/item-icons/Item_Icon_${name}.png`;
 }

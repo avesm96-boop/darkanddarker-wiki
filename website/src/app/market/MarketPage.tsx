@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import styles from "./market.module.css";
-import { fetchPopulation, type PopulationData } from "./api";
 import MarketSearchTab from "./MarketSearchTab";
 
 const OUR_API = "/api/market";
@@ -11,14 +10,11 @@ function useDataAge() {
   const [lastSeen, setLastSeen] = useState<number | null>(null);
   const [agoText, setAgoText] = useState("—");
 
-  // Fetch last_seen from stats every 10 seconds
   useEffect(() => {
     const fetchAge = () => {
       fetch(`${OUR_API}/stats?_t=${Date.now()}`, { cache: "no-store" })
         .then((r) => r.json())
-        .then((d) => {
-          if (d?.last_data_at) setLastSeen(d.last_data_at);
-        })
+        .then((d) => { if (d?.last_data_at) setLastSeen(d.last_data_at); })
         .catch(() => {});
     };
     fetchAge();
@@ -26,7 +22,6 @@ function useDataAge() {
     return () => clearInterval(interval);
   }, []);
 
-  // Tick the "ago" display every second
   useEffect(() => {
     if (!lastSeen) return;
     const tick = () => {
@@ -44,24 +39,7 @@ function useDataAge() {
 }
 
 export default function MarketPage() {
-  const [population, setPopulation] = useState<PopulationData | null>(null);
   const dataAge = useDataAge();
-
-  const loadPopulation = useCallback(() => {
-    const ac = new AbortController();
-    fetchPopulation(ac.signal)
-      .then((pop) => { if (!ac.signal.aborted) setPopulation(pop); })
-      .catch(() => {});
-    return () => ac.abort();
-  }, []);
-
-  useEffect(() => {
-    const cleanup = loadPopulation();
-    const interval = setInterval(loadPopulation, 30_000);
-    return () => { cleanup(); clearInterval(interval); };
-  }, [loadPopulation]);
-
-  const formatNum = (n: number): string => n.toLocaleString();
 
   return (
     <div className={styles.page}>
@@ -110,38 +88,6 @@ export default function MarketPage() {
           }}>
             Last scan: {dataAge}
           </span>
-        </div>
-
-        {/* Population Stats */}
-        <div className={styles.populationBar}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionTitle}>Server Population</span>
-          </div>
-          <div className={styles.dashboardGrid}>
-            <div className={styles.statCard}>
-              <div className={styles.statValue}>
-                {population ? formatNum(population.num_online) : "\u2014"}
-              </div>
-              <div className={styles.statLabel}>Online</div>
-            </div>
-            <div className={styles.statCard}>
-              <div className={styles.statValue}>
-                {population ? formatNum(population.num_lobby) : "\u2014"}
-              </div>
-              <div className={styles.statLabel}>In Lobby</div>
-            </div>
-            <div className={styles.statCard}>
-              <div className={styles.statValue}>
-                {population ? formatNum(population.num_dungeon) : "\u2014"}
-              </div>
-              <div className={styles.statLabel}>In Dungeon</div>
-            </div>
-          </div>
-          {population?.timestamp && (
-            <div className={styles.lastUpdated}>
-              Last updated: {new Date(population.timestamp).toLocaleTimeString()}
-            </div>
-          )}
         </div>
 
         {/* Market Search */}

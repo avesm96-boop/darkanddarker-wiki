@@ -82,17 +82,17 @@ export default function MarketSearchTab() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Auto-set rarity for fixed-rarity items
   const handleSelectItem = useCallback((item: ItemDef) => {
     setSelectedItem({ id: item.id, name: item.name, archetype: item.archetype });
     setQuery(item.name);
     setShowSuggestions(false);
     setSuggestions([]);
 
-    // Auto-fill rarity if item has a fixed rarity
+    // Fixed-rarity items (e.g. Hard Crab Shell) are stored as "Unknown" in DB
+    // so don't auto-fill the rarity filter — keep "All Rarities"
     const meta = itemMetadata[item.archetype];
     if (meta?.fixedRarity) {
-      setSelectedRarity(meta.fixedRarity);
+      setSelectedRarity("");
     }
   }, [itemMetadata]);
 
@@ -233,20 +233,24 @@ export default function MarketSearchTab() {
       </div>
 
       {/* ── Item Hero (only when specific item selected) ── */}
-      {showHero && (
-        <div className={styles.msHero}>
-          <img src={itemIconPath(selectedItem.archetype)} alt={selectedItem.name}
-            width={64} height={64} className={styles.msHeroIcon}
-            onError={(e) => { (e.target as HTMLImageElement).style.visibility = "hidden"; }} />
-          <div>
-            <h2 className={styles.msHeroName}>{selectedItem.name}</h2>
-            <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
-              {selectedRarity && <span className={styles[`rarity${selectedRarity}`]} style={{ marginRight: 8 }}>{selectedRarity}</span>}
-              {filteredActive.length} active · {soldListings.length} sold
-            </span>
+      {showHero && (() => {
+        const meta = itemMetadata[selectedItem.archetype];
+        const displayRarity = selectedRarity || meta?.fixedRarity || null;
+        return (
+          <div className={styles.msHero}>
+            <img src={itemIconPath(selectedItem.archetype)} alt={selectedItem.name}
+              width={64} height={64} className={styles.msHeroIcon}
+              onError={(e) => { (e.target as HTMLImageElement).style.visibility = "hidden"; }} />
+            <div>
+              <h2 className={styles.msHeroName}>{selectedItem.name}</h2>
+              <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
+                {displayRarity && <span className={styles[`rarity${displayRarity}`]} style={{ marginRight: 8 }}>{displayRarity}</span>}
+                {filteredActive.length} active · {soldListings.length} sold
+              </span>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* ── Price Cards ── */}
       {searched && (

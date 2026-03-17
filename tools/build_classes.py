@@ -26,6 +26,7 @@ Reads from:
 
 import json
 import re
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -37,6 +38,9 @@ CURVE_DIR = RAW / "Data" / "GameplayAbility"
 LOC_FILE = ROOT / "raw" / "DungeonCrawler" / "Content" / "Localization" / "Game" / "en" / "Game.json"
 ITEM_CLASSES_FILE = ROOT / "website" / "public" / "data" / "item_classes.json"
 OUTPUT_FILE = ROOT / "website" / "public" / "data" / "classes.json"
+
+ICONS_SRC = Path(r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\UI\Resources")
+ICONS_DST = ROOT / "website" / "public" / "icons"
 
 PERK_DESC_DIR = RAW / "Perk"
 SKILL_DESC_DIR = RAW / "Data" / "DataAsset" / "Skill"
@@ -77,6 +81,12 @@ DIV10_PROPERTIES = {
     "MagicalHealingReceiveMod", "SpellCastingSpeed", "CooldownReductionMod",
     "ImpactPower", "PhysicalHeadshotPower", "MagicalLightningDamageMod",
     "PhysicalReduction", "MagicalReduction",
+    "MagicalDivineDamageMod", "MagicalFireDamageMod", "MagicalDarkDamageMod",
+    "MoveSpeedArmorPenaltyMod", "AllAttributesMod", "MaxSpellCountMod",
+    "HeadshotReductionMod", "MovespeedMod", "knowledgeMod", "KnowledgeMod",
+    "MagicalReductionMod", "PhysicalReductionMod",
+    "StrengthMod", "VigorMod", "AgilityMod", "DexterityMod",
+    "WillMod", "KnowledgeMod", "ResourcefulnessMod",
 }
 
 # Properties that are used as-is (no division)
@@ -87,6 +97,12 @@ RAW_PROPERTIES = {
     "AgilityBase", "DexterityBase", "WillBase", "KnowledgeBase",
     "ResourcefulnessBase", "AllAttributes", "PhysicalPower",
     "MaxHealthAdd", "ExecPhysicalHealBase", "ExecMagicalDamageTrue",
+    "ExecAddRecoverableHealth", "ExecAddHealthByMaxHealthRatio",
+    "ExecAddHealthbyMaxHealthRatio", "ExecHealthCostByMaxHealthRatio",
+    "MagicalDamageWeaponPrimary", "MaxTotalShield",
+    "ExecExecutionHealthRatioThreshold", "ExecPhysicalDamageTrue",
+    "ExecRecoveryHealBase", "ExecMagicalHealBase",
+    "PhysicalDamageWeaponSecondary",
 }
 
 # Fallback property name mappings: description tag name -> actual data property names
@@ -103,6 +119,102 @@ PROPERTY_NAME_FALLBACKS = {
     "MagicalEvilDamageBase": ["ExecMagicalDamageBase"],
     "MagicalArcaneDamageBase": ["ExecMagicalDamageBase"],
     "MagicalIceDamageBase": ["ExecMagicalDamageBase"],
+    "AddHealthbyMaxHealthRatio": ["ExecAddHealthByMaxHealthRatio", "ExecAddHealthbyMaxHealthRatio"],
+    "AddHealthByMaxHealthRatio": ["ExecAddHealthByMaxHealthRatio", "ExecAddHealthbyMaxHealthRatio"],
+    "AddRecoverableHealth": ["ExecAddRecoverableHealth"],
+    "HealthCostByMaxHealthRatio": ["ExecHealthCostByMaxHealthRatio"],
+    "MagicalSpiritDamageBase": ["ExecMagicalDamageBase"],
+    "MagicalDivineDamageBase": ["ExecMagicalDamageBase"],
+    "MagicalFireDamageBase": ["ExecMagicalDamageBase"],
+    "MagicalEarthDamageBase": ["ExecMagicalDamageBase"],
+    "MagicalDarkDamageBase": ["ExecMagicalDamageBase"],
+    "RecoveryHealBase": ["ExecRecoveryHealBase"],
+    "ExecutionHealthRatioThreshold": ["ExecExecutionHealthRatioThreshold"],
+    "PhysicalDamageTrue": ["ExecPhysicalDamageTrue", "ExecMagicalDamageTrue"],
+    "ImpactPower": ["ExecImpactPower"],
+    "Vigorbase": ["VigorBase"],  # case-sensitivity fix
+    "knowledgeMod": ["KnowledgeMod"],  # case-sensitivity fix
+    "MovespeedMod": ["MoveSpeedMod"],  # case-sensitivity fix
+    "MoveSpeedArmorPenaltyMod": ["MoveSpeedArmorPenaltyMod"],
+    "PhysicalDamageWeaponSecondary": ["PhysicalDamageWeapon", "PhysicalDamageWeaponPrimary"],
+    "MagicalDamageWeaponPrimary": ["MagicalDamageWeapon"],
+}
+
+# Tag property name -> human-readable display name
+PROPERTY_DISPLAY_NAMES = {
+    "MoveSpeedMod": "Move Speed",
+    "MoveSpeedAdd": "Move Speed",
+    "MoveSpeedArmorPenaltyMod": "Move Speed Penalty",
+    "ActionSpeed": "Action Speed",
+    "PhysicalDamageWeaponPrimary": "Physical Damage",
+    "PhysicalDamageWeaponSecondary": "Physical Damage",
+    "PhysicalDamageWeapon": "Physical Damage",
+    "ItemArmorRatingMod": "Armor Rating",
+    "ArmorRating": "Armor Rating",
+    "MagicResistance": "Magic Resistance",
+    "MaxHealthMod": "Max Health",
+    "MaxHealthAdd": "Max Health",
+    "RegularInteractionSpeed": "Interaction Speed",
+    "PhysicalReduction": "Physical Damage Reduction",
+    "PhysicalReductionMod": "Physical Damage Reduction",
+    "ProjectileReductionMod": "Projectile Damage Reduction",
+    "MagicalReduction": "Magical Damage Reduction",
+    "MagicalReductionMod": "Magical Damage Reduction",
+    "SpellCastingSpeed": "Spell Casting Speed",
+    "KnowledgeMod": "Knowledge",
+    "knowledgeMod": "Knowledge",
+    "StrengthBase": "Strength",
+    "VigorBase": "Vigor",
+    "Vigorbase": "Vigor",
+    "WillBase": "Will",
+    "KnowledgeBase": "Knowledge",
+    "AgilityBase": "Agility",
+    "DexterityBase": "Dexterity",
+    "ResourcefulnessBase": "Resourcefulness",
+    "AllAttributes": "All Attributes",
+    "AllAttributesMod": "All Attributes",
+    "PhysicalHealingReceiveMod": "Physical Healing",
+    "MagicalHealingReceiveMod": "Magical Healing",
+    "PhysicalPower": "Physical Power",
+    "MagicalPower": "Magical Power",
+    "PhysicalDamageBase": "Physical Damage",
+    "PhysicalDamageMod": "Physical Damage",
+    "MagicalDamageBase": "Magical Damage",
+    "MagicalDamageMod": "Magical Damage",
+    "ExecMagicalDamageBase": "Magical Damage",
+    "ExecPhysicalDamageBase": "Physical Damage",
+    "ImpactPowerMod": "Impact Power",
+    "ImpactPower": "Impact Power",
+    "HeadshotPowerMod": "Headshot Power",
+    "HeadshotReductionMod": "Headshot Damage Reduction",
+    "ArmorPenetration": "Armor Penetration",
+    "ExecArmorPenetration": "Armor Penetration",
+    "CooldownReductionMod": "Cooldown",
+    "MagicalDivineDamageMod": "Magical Divine Damage",
+    "MagicalFireDamageMod": "Magical Fire Damage",
+    "MagicalLightningDamageMod": "Magical Lightning Damage",
+    "MagicalDarkDamageMod": "Magical Dark Damage",
+    "MagicalDivineDamageBase": "magical divine damage",
+    "MagicalFireDamageBase": "magical fire damage",
+    "MagicalLightningDamageBase": "magical lightning damage",
+    "MagicalDarkDamageBase": "magical dark damage",
+    "MagicalEvilDamageBase": "magical evil damage",
+    "MagicalSpiritDamageBase": "magical spirit damage",
+    "MagicalArcaneDamageBase": "magical arcane damage",
+    "MagicalIceDamageBase": "magical ice damage",
+    "MagicalEarthDamageBase": "magical earth damage",
+    "MovespeedMod": "Move Speed",
+    "MoveSpeedArmorPenaltyMod": "Move Speed Penalty",
+    "MaxSpellCountMod": "Spell Count",
+    "MagicalDamageWeaponPrimary": "Magical Damage",
+    "MaxTotalShield": "Shield",
+    "AddHealthByMaxHealthRatio": "Max Health",
+    "AddHealthbyMaxHealthRatio": "Max Health",
+    "AddRecoverableHealth": "Recoverable Health",
+    "HealthCostByMaxHealthRatio": "Max Health",
+    "ExecutionHealthRatioThreshold": "Health Threshold",
+    "PhysicalDamageTrue": "true physical damage",
+    "RecoveryHealBase": "Recovery Heal",
 }
 
 
@@ -191,10 +303,22 @@ def compute_derived_stats(base_stats):
     ct_phys_power = load_curve_table("CT_Strength.json", "PhysicalPower")
     ct_interact = load_curve_table("CT_RegularInteractionSpeedBase.json", "RegularInteractionSpeed")
     ct_recovery = load_curve_table("CT_RecoveryMod.json", "HealthRecoveryMod")
+    ct_phys_dmg_mod = load_curve_table("CT_PhysicalPower.json", "PhysicalDamageMod")
+    ct_mag_dmg_mod = load_curve_table("CT_MagicalPower.json", "MagicalDamageMod")
+    ct_mag_interact = load_curve_table("CT_Will.json", "MagicalInteractionSpeed")
+    ct_spell_recovery = load_curve_table("CT_RecoveryMod.json", "MemoryRecoveryMod")
+    ct_persuasiveness = load_curve_table("CT_Resourcefulness.json", "Persuasiveness")
+    ct_cooldown = load_curve_table("CT_Resourcefulness.json", "CooldownReduction")
+    ct_armor_reduction = load_curve_table("CT_ArmorRating.json", "PhysicalReduction")
 
     health = lerp_curve(ct_health, vigor)
     move_speed_mod = lerp_curve(ct_move_speed, agility)
     move_speed = 300 + move_speed_mod
+
+    # Physical Damage Reduction from armor rating (base = 0 armor for naked character)
+    # At 0 armor rating the curve gives PhysicalReduction directly
+    phys_dmg_reduction_raw = lerp_curve(ct_armor_reduction, 0)
+    phys_dmg_reduction_pct = round(phys_dmg_reduction_raw * 100, 1)
 
     return {
         "health": round(health, 1),
@@ -211,6 +335,13 @@ def compute_derived_stats(base_stats):
         "debuff_duration_pct": round(lerp_curve(ct_debuff_dur, will) * 100, 1),
         "regular_interaction_speed_pct": round(lerp_curve(ct_interact, resourcefulness) * 100, 1),
         "health_recovery_bonus_pct": round(lerp_curve(ct_recovery, resourcefulness) * 100, 1),
+        "physical_damage_reduction_pct": phys_dmg_reduction_pct,
+        "physical_power_bonus_pct": round(lerp_curve(ct_phys_dmg_mod, strength) * 100, 1),
+        "magic_power_bonus_pct": round(lerp_curve(ct_mag_dmg_mod, will) * 100, 1),
+        "magical_interaction_speed_pct": round(lerp_curve(ct_mag_interact, will) * 100, 1),
+        "spell_recovery_bonus_pct": round(lerp_curve(ct_spell_recovery, knowledge) * 100, 1),
+        "persuasiveness": round(lerp_curve(ct_persuasiveness, resourcefulness), 1),
+        "cooldown_reduction_pct": round(lerp_curve(ct_cooldown, resourcefulness) * 100, 1),
     }
 
 
@@ -276,16 +407,16 @@ def _load_effect_file(object_path):
 
 
 def _load_desc_file(desc_path):
-    """Load a _Desc.json file and return (effects_list, constants_list, gemodifiers_list)."""
+    """Load a _Desc.json file and return (effects_list, constants_list, gemodifiers_list, skill_spell_data_list)."""
     data = load_json_silent(desc_path)
     if data is None:
-        return [], [], []
+        return [], [], [], []
     if isinstance(data, list) and len(data) > 0:
         props = data[0].get("Properties", {})
     elif isinstance(data, dict):
         props = data.get("Properties", {})
     else:
-        return [], [], []
+        return [], [], [], []
 
     effects = []
     for ref in props.get("DCGameplayEffectDataAssetArray", []):
@@ -305,7 +436,15 @@ def _load_desc_file(desc_path):
         gemod_props = _load_effect_file(obj_path)
         gemodifiers.append(gemod_props if gemod_props else {})
 
-    return effects, constants, gemodifiers
+    # Skill/Spell metadata (range, casting time, channeling duration)
+    skill_spell_data = []
+    for key in ("SkillDataAssetArray", "SpellDataAssetArray"):
+        for ref in props.get(key, []):
+            obj_path = ref.get("ObjectPath", "")
+            ss_props = _load_effect_file(obj_path)
+            skill_spell_data.append(ss_props if ss_props else {})
+
+    return effects, constants, gemodifiers, skill_spell_data
 
 
 def _format_number(value):
@@ -321,7 +460,22 @@ def _get_effect_value(effects, index, prop_name):
     """Get a property value from an effect at the given index."""
     if index < 0 or index >= len(effects):
         return None
-    return effects[index].get(prop_name)
+    val = effects[index].get(prop_name)
+    if val is not None:
+        return val
+    # Special case: AllAttributes is virtual - check individual base stats
+    if prop_name in ("AllAttributes", "AllAttributesMod"):
+        # Try Base keys first, then Mod keys
+        base_keys = ["StrengthBase", "VigorBase", "AgilityBase", "DexterityBase",
+                      "WillBase", "KnowledgeBase", "ResourcefulnessBase"]
+        mod_keys = ["StrengthMod", "VigorMod", "AgilityMod", "DexterityMod",
+                     "WillMod", "KnowledgeMod", "ResourcefulnessMod"]
+        for keys in [base_keys, mod_keys]:
+            vals = [effects[index].get(k) for k in keys]
+            real_vals = [v for v in vals if v is not None]
+            if real_vals and all(v == real_vals[0] for v in real_vals):
+                return real_vals[0]
+    return None
 
 
 def _scale_property(prop_name, raw_value):
@@ -336,6 +490,14 @@ def _scale_property(prop_name, raw_value):
     return raw_value
 
 
+def _display_name(prop_name):
+    """Get the human-readable display name for a property tag name."""
+    if prop_name in PROPERTY_DISPLAY_NAMES:
+        return PROPERTY_DISPLAY_NAMES[prop_name]
+    # Fallback: CamelCase to spaced words
+    return to_display_name(prop_name)
+
+
 def resolve_description(raw_desc, desc_path):
     """Resolve description placeholders using effect/constant data from _Desc.json.
 
@@ -343,26 +505,67 @@ def resolve_description(raw_desc, desc_path):
       <Constant Type="Float" Format="FromZero">[N]%</>  -> constants[N].FloatValue * 100
       <Constant Type="Float">[N]%</>                    -> constants[N].FloatValue * 100
       <Constant Type="float" Format="FromOne">[N]%</>   -> abs(constants[N].FloatValue - 1) * 100
+      <Constant Type="Float" Format="AbsFromZero">[N]%</>  -> abs(constants[N].FloatValue) * 100
+      <Constant Type="Integer">[N]</>                   -> constants[N].IntValue or FloatValue as int
+      <Constant Type="float" Format="Normal">[N]</>     -> constants[N].FloatValue as-is
       <Duration>[N] seconds</>                          -> effects[N].Duration / 1000
       <Duration>[N]</>                                  -> effects[N].Duration / 1000
       <PropertyName>[N]% _</>                           -> effects[N].PropertyName scaled
       <PropertyName>[N] _</>                            -> effects[N].PropertyName scaled
+      <PropertyName>_ by [N]%</>                        -> display_name by value%
       <PropertyName>[N1]/[N2]/[N3] _</>                 -> val1/val2/val3
-      <GEMod Type="..." Format="...">[N]%</>            -> gemodifiers (best-effort)
+      <GEMod Type="..." Format="...">[N]%</>            -> gemodifiers (best-effort strip)
       <Exec.PropertyName>[N]</>                         -> effects[N].ExecPropertyName
-      <Perk Type="...">[N]...</>                        -> effects[N].PerkProperty (best-effort)
+      <Exec.PropertyName>[N] _</>                       -> value + display name
+      <Skill Type="Range">[N]m</>                       -> strip tags, keep content
+      <Spell Type="AreaRadius">[N]m</>                  -> strip tags, keep content
+      <MeleeAttack Type="..." Format="...">[N]%</>      -> strip tags, keep content
+      <MovementMod Type="..." Format="...">[N]%</>      -> strip tags, keep content
       <YellowColor>text</>                              -> text (just strip tags)
+      <BurnEffect>text</>                               -> text
       <PropertyName>_</>                                -> display name of property
       <PropertyName>_ text</>                           -> display name + text
     """
     if not raw_desc:
         return raw_desc
 
-    effects, constants, gemodifiers = _load_desc_file(desc_path)
+    effects, constants, gemodifiers, skill_spell_data = _load_desc_file(desc_path)
 
     text = raw_desc
 
-    # 1. Handle <Constant Type="Float" Format="FromZero">[N]%</> and variants
+    # --- Skill/Spell metadata tags ---
+    # <Skill Type="Range">[N]m</>, <Spell Type="AreaRadius">[N]m radius</>
+    # <Skill Type="CastingTime">[N] seconds</>, <Spell Type="ChannelingDuration">[N] seconds</>
+    # These reference skill/spell data properties
+    _metadata_field_map = {
+        "Range": ("Range", 100.0),           # divide by 100 for meters
+        "AreaRadius": ("AreaRadius", 100.0),  # divide by 100 for meters
+        "CastingTime": ("CastingTime", 1.0),  # seconds as-is
+        "ChannelingDuration": ("ChannelingDuration", 1.0),
+    }
+
+    def replace_skill_spell_meta(m):
+        field = m.group("field")
+        idx = int(m.group("idx"))
+        suffix = m.group("suffix")
+        if field in _metadata_field_map:
+            prop_key, divisor = _metadata_field_map[field]
+            # Look up in skill_spell_data array
+            if idx < len(skill_spell_data) and skill_spell_data[idx]:
+                val = skill_spell_data[idx].get(prop_key)
+                if val is not None:
+                    scaled = val / divisor if divisor != 1.0 else val
+                    return _format_number(scaled) + suffix
+        return "[" + str(idx) + "]" + suffix
+
+    text = re.sub(
+        r'<(?:Skill|Spell)\s+Type="(?P<field>[^"]+)">\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        replace_skill_spell_meta, text
+    )
+
+    # --- Constant tags ---
+
+    # 1a. <Constant Type="Float" Format="FromZero">[N]%</>
     def replace_constant_from_zero(m):
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
@@ -373,11 +576,11 @@ def resolve_description(raw_desc, desc_path):
         return m.group(0)
 
     text = re.sub(
-        r'<Constant\s+Type="[Ff]loat"\s+Format="FromZero">\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        r'<Constant\s+[^>]*?Format="(?:FromZero|AbsFromZero)"[^>]*>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
         replace_constant_from_zero, text
     )
 
-    # 1b. Handle <Constant Type="float" Format="FromOne">[N]%</> (relative to 1.0)
+    # 1b. <Constant Type="float" Format="FromOne">[N]%</>
     def replace_constant_from_one(m):
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
@@ -388,17 +591,50 @@ def resolve_description(raw_desc, desc_path):
         return m.group(0)
 
     text = re.sub(
-        r'<Constant\s+Type="[Ff]loat"\s+Format="FromOne">\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        r'<Constant\s+[^>]*?Format="FromOne"[^>]*>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
         replace_constant_from_one, text
     )
 
-    # 1c. Handle <Constant Type="Float">[N]%</> (no format specified, assume raw * 100)
+    # 1c. <Constant Type="Integer">[N]</>
+    def replace_constant_integer(m):
+        idx = int(m.group("idx"))
+        suffix = m.group("suffix")
+        if idx < len(constants) and constants[idx]:
+            val = constants[idx].get("IntValue", constants[idx].get("FloatValue", 0))
+            formatted = _format_number(int(val) if isinstance(val, float) else val)
+            return formatted + suffix
+        return m.group(0)
+
+    text = re.sub(
+        r'<Constant\s+[^>]*?Type="Integer"[^>]*>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        replace_constant_integer, text
+    )
+
+    # 1d. <Constant Type="float" Format="Normal">[N]</>
+    def replace_constant_normal(m):
+        idx = int(m.group("idx"))
+        suffix = m.group("suffix")
+        if idx < len(constants) and constants[idx]:
+            val = constants[idx].get("FloatValue", 0)
+            formatted = _format_number(val)
+            return formatted + suffix
+        return m.group(0)
+
+    text = re.sub(
+        r'<Constant\s+[^>]*?Format="Normal"[^>]*>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        replace_constant_normal, text
+    )
+
+    # 1e. Generic <Constant Type="Float">[N]...</> (no format, assume * 100 for %)
     def replace_constant_plain(m):
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
         if idx < len(constants) and constants[idx]:
             val = constants[idx].get("FloatValue", 0)
-            formatted = _format_number(abs(val) * 100)
+            if "%" in suffix:
+                formatted = _format_number(abs(val) * 100)
+            else:
+                formatted = _format_number(val)
             return formatted + suffix
         return m.group(0)
 
@@ -407,59 +643,109 @@ def resolve_description(raw_desc, desc_path):
         replace_constant_plain, text
     )
 
-    # 2. Handle <Duration>[N] seconds</> and <Duration>[N]</>
-    def replace_duration(m):
-        idx = int(m.group("idx"))
+    # --- Duration tags ---
+
+    # 2. <Duration>[N] seconds</> and <Duration>[N]</>
+    #    Also handle multi-index: <Duration>[N1]/[N2]/[N3] seconds</>
+    def replace_duration_multi(m):
+        indices_str = m.group("indices")
         suffix = m.group("suffix")
-        val = _get_effect_value(effects, idx, "Duration")
-        if val is not None:
-            seconds = val / 1000.0
-            return _format_number(seconds) + suffix
-        return m.group(0)
+        indices = [int(x) for x in re.findall(r'\[(\d+)\]', indices_str)]
+        values = []
+        for idx in indices:
+            val = _get_effect_value(effects, idx, "Duration")
+            if val is not None:
+                values.append(_format_number(val / 1000.0))
+            else:
+                values.append(f"[{idx}]")
+        return "/".join(values) + suffix
 
     text = re.sub(
-        r'<Duration>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
-        replace_duration, text
+        r'<Duration>(?P<indices>(?:\[\d+\]/?)+)(?P<suffix>[^<]*)</>',
+        replace_duration_multi, text
     )
 
-    # 3. Handle <GEMod Type="Multiply" Format="FromOne">[N]%</> and similar
-    # GEMod tags are complex; best-effort: strip tags but keep content
-    def replace_gemod(m):
-        fmt = m.group("format") or ""
-        content = m.group("content")
-        # Try to resolve index references in the content
-        return content
+    # --- GEMod tags (best-effort: strip tags, keep [N]% content) ---
+    text = re.sub(
+        r'<GEMod\s+[^>]*>([^<]*)</>',
+        r'\1', text
+    )
+
+    # --- Remaining metadata tags: Perk/MeleeAttack/MovementMod Type="..." ---
+    # Strip tags, keep content (Skill/Spell metadata already handled above)
+    text = re.sub(
+        r'<(?:Skill|Spell|Perk|MeleeAttack|MovementMod)\s+[^>]*>([^<]*)</>',
+        r'\1', text
+    )
+
+    # --- Exec.PropertyName tags ---
+
+    # 4a. <Exec.PropertyName>[N1]/[N2]/[N3] suffix</> (multi-index exec)
+    def replace_exec_multi(m):
+        prop_name = m.group("prop")
+        indices_str = m.group("indices")
+        suffix = m.group("suffix")
+        exec_key = "Exec" + prop_name
+        indices = [int(x) for x in re.findall(r'\[(\d+)\]', indices_str)]
+        values = []
+        for idx in indices:
+            val = _get_effect_value(effects, idx, exec_key)
+            if val is None:
+                val = _get_effect_value(effects, idx, prop_name)
+                # Also try fallbacks
+                if val is None:
+                    fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
+                    for fb in fallbacks:
+                        val = _get_effect_value(effects, idx, fb)
+                        if val is not None:
+                            break
+            if val is not None:
+                values.append(_format_number(val))
+            else:
+                values.append(f"[{idx}]")
+        result = "/".join(values)
+        has_label = "_" in suffix
+        clean_suffix = suffix.replace(" _", "").replace("_", "").strip()
+        if has_label:
+            prop_display = _display_name(prop_name)
+            if clean_suffix:
+                return result + " " + clean_suffix + " " + prop_display
+            return result + " " + prop_display
+        if clean_suffix:
+            return result + " " + clean_suffix
+        return result
 
     text = re.sub(
-        r'<GEMod\s+[^>]*?(?:Format="(?P<format>[^"]*)")?\s*[^>]*>\s*(?P<content>[^<]*)</>',
-        replace_gemod, text
+        r'<Exec\.(?P<prop>\w+)>(?P<indices>(?:\[\d+\]/)+\[\d+\])(?P<suffix>[^<]*)</>',
+        replace_exec_multi, text
     )
 
-    # 4. Handle <Exec.PropertyName>[N] .../> patterns
+    # 4b. <Exec.PropertyName>[N] suffix</> (single index exec)
     def replace_exec_prop(m):
         prop_name = m.group("prop")
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
-        # Map Exec.X to ExecX in effect properties
         exec_key = "Exec" + prop_name
-        # Also try without the Exec prefix
         val = _get_effect_value(effects, idx, exec_key)
         if val is None:
             val = _get_effect_value(effects, idx, prop_name)
+        if val is None:
+            fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
+            for fb in fallbacks:
+                val = _get_effect_value(effects, idx, fb)
+                if val is not None:
+                    break
         if val is not None:
-            # PrimitiveCalcMultiply and PrimitiveCalcAdd need /100 scaling
-            if "PrimitiveCalcMultiply" in prop_name and "%" in suffix:
-                val = val / 100.0
             formatted = _format_number(val)
             has_label = "_" in suffix
             clean_suffix = suffix.replace(" _", "").replace("_", "").strip()
             if has_label:
-                prop_display = to_display_name(prop_name)
+                prop_display = _display_name(prop_name)
                 if clean_suffix:
-                    return formatted + clean_suffix + " " + prop_display
+                    return formatted + " " + clean_suffix + " " + prop_display
                 return formatted + " " + prop_display
             if clean_suffix:
-                return formatted + clean_suffix
+                return formatted + " " + clean_suffix
             return formatted
         return m.group(0)
 
@@ -468,7 +754,49 @@ def resolve_description(raw_desc, desc_path):
         replace_exec_prop, text
     )
 
-    # 5. Handle <PropertyName>[N1]/[N2]/[N3] _</> (multi-index, e.g., bad/good/perfect)
+    # --- Property tags with _ before [N] ---
+    # 5a. <PropertyName>_ by [N1]/[N2]/[N3]%</> or <PropertyName>_ by [N]%</> (label then value)
+    def replace_label_then_value(m):
+        prop_name = m.group("prop")
+        prefix_text = m.group("prefix")
+        indices_and_suffix = m.group("rest")
+        # Extract all indices from the rest
+        indices = [int(x) for x in re.findall(r'\[(\d+)\]', indices_and_suffix)]
+        # Extract suffix after last index
+        suffix = re.sub(r'(?:\[\d+\]/?)+', '', indices_and_suffix, count=1)
+        # Remove leading separators
+        suffix = re.sub(r'^/+', '', suffix)
+
+        values = []
+        for idx in indices:
+            val = _get_effect_value(effects, idx, prop_name)
+            if val is None:
+                fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
+                for fb in fallbacks:
+                    val = _get_effect_value(effects, idx, fb)
+                    if val is not None:
+                        break
+            if val is not None:
+                scaled = _scale_property(prop_name, val)
+                values.append(_format_number(abs(scaled)))
+            else:
+                values.append(f"[{idx}]")
+
+        result = "/".join(values)
+        prop_display = _display_name(prop_name)
+        clean_prefix = prefix_text.replace("_", "").strip()
+        clean_suffix = suffix.strip()
+        if clean_prefix:
+            return prop_display + " " + clean_prefix + " " + result + clean_suffix
+        return prop_display + " " + result + clean_suffix
+
+    text = re.sub(
+        r'<(?P<prop>[A-Za-z]\w+)>(?P<prefix>[^<\[]*_[^<\[]*)(?P<rest>(?:\[\d+\]/?)+[^<]*)</>',
+        replace_label_then_value, text
+    )
+
+    # --- Multi-index property tags ---
+    # 6. <PropertyName>[N1]/[N2]/[N3] _</> or <PropertyName>[N1]/[N2]/[N3]% _</>
     def replace_multi_index(m):
         prop_name = m.group("prop")
         indices_str = m.group("indices")
@@ -477,18 +805,22 @@ def resolve_description(raw_desc, desc_path):
         values = []
         for idx in indices:
             val = _get_effect_value(effects, idx, prop_name)
+            if val is None:
+                fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
+                for fb in fallbacks:
+                    val = _get_effect_value(effects, idx, fb)
+                    if val is not None:
+                        break
             if val is not None:
                 scaled = _scale_property(prop_name, val)
                 values.append(_format_number(scaled))
             else:
                 values.append(f"[{idx}]")
         result = "/".join(values)
-        # Check if _ is present as a label placeholder
         has_label = "_" in suffix
-        # Clean suffix: replace leading " _" marker
         clean_suffix = suffix.replace(" _", "").replace("_", "").strip()
         if has_label:
-            prop_display = to_display_name(prop_name)
+            prop_display = _display_name(prop_name)
             if clean_suffix:
                 return result + clean_suffix + " " + prop_display
             return result + " " + prop_display
@@ -497,18 +829,17 @@ def resolve_description(raw_desc, desc_path):
         return result
 
     text = re.sub(
-        r'<(?P<prop>[A-Z]\w+)>(?P<indices>(?:\[\d+\]/)+\[\d+\])(?P<suffix>[^<]*)</>',
+        r'<(?P<prop>[A-Za-z]\w+)>(?P<indices>(?:\[\d+\]/)+\[\d+\])(?P<suffix>[^<]*)</>',
         replace_multi_index, text
     )
 
-    # 6. Handle <PropertyName>[N]% _</> and <PropertyName>[N] _</>
-    #    Also handles <PropertyName> [N]% _</> (space after tag opening)
+    # --- Single-index property tags ---
+    # 7. <PropertyName>[N]% _</> and <PropertyName>[N] _</>
     def replace_property_with_index(m):
         prop_name = m.group("prop")
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
         val = _get_effect_value(effects, idx, prop_name)
-        # Try fallback property name mappings
         if val is None:
             fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
             for fb in fallbacks:
@@ -518,13 +849,10 @@ def resolve_description(raw_desc, desc_path):
         if val is not None:
             scaled = _scale_property(prop_name, val)
             formatted = _format_number(scaled)
-            # Check if _ is present as a label placeholder for the property name
             has_label = "_" in suffix
-            # Clean suffix: remove the _ marker
             clean_suffix = suffix.replace(" _", "").replace("_", "").strip()
             if has_label:
-                # Include the property display name
-                prop_display = to_display_name(prop_name)
+                prop_display = _display_name(prop_name)
                 if clean_suffix:
                     return formatted + clean_suffix + " " + prop_display
                 return formatted + " " + prop_display
@@ -534,65 +862,49 @@ def resolve_description(raw_desc, desc_path):
         return m.group(0)
 
     text = re.sub(
-        r'<(?P<prop>[A-Z]\w+)>\s*\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        r'<(?P<prop>[A-Za-z]\w+)>\s*[+\-]?\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
         replace_property_with_index, text
     )
 
-    # 7. Handle <MovementMod Type="..." Format="...">[N]%</> - best effort strip
-    text = re.sub(
-        r'<MovementMod\s+[^>]*>\[(\d+)\]([^<]*)</>',
-        lambda m: m.group(0),  # Keep as-is since we can't resolve movement mods
-        text
-    )
-
-    # 8. Handle <Perk Type="...">[N]...</>  - best effort strip
-    text = re.sub(
-        r'<Perk\s+[^>]*>\[(\d+)\]([^<]*)</>',
-        lambda m: m.group(0),  # Keep as-is since we can't resolve perk refs
-        text
-    )
-
-    # 9. Handle <YellowColor>text</> - just keep the inner text
+    # --- Color/Effect tags: strip, keep inner text ---
     text = re.sub(r'<YellowColor>([^<]*)</>', r'\1', text)
+    text = re.sub(r'<(?:BurnEffect|WetEffect|ElectrifiedEffect|Burn)>([^<]*)</>', r'\1', text)
 
-    # 10. Handle remaining <PropertyName>_</> (label-only tags, no value)
-    # These are display labels like <MagicalReduction>_</> meaning "Magical Reduction"
+    # --- Label-only property tags ---
+    # 8. <PropertyName>_</> or <PropertyName>text</> (no [N] index)
     def replace_label_tag(m):
         prop_name = m.group("prop")
         inner = m.group("inner").strip()
         if inner == "_" or inner == "":
-            # Convert property name to display name
-            display = to_display_name(prop_name)
-            # Lowercase it since it appears mid-sentence
-            return display.lower()
-        # If there's content besides _, keep it
+            return _display_name(prop_name)
+        # If content is just _ with some text around it
         clean = inner.replace("_", "").strip()
-        if clean:
-            return clean
-        return to_display_name(prop_name).lower()
+        if "_" in inner:
+            # Has both _ and other text (rare)
+            display = _display_name(prop_name)
+            if clean:
+                return display + " " + clean
+            return display
+        # No underscore, just text (like <BurnEffect>burns</>)
+        return clean if clean else _display_name(prop_name)
 
     text = re.sub(
-        r'<(?P<prop>[A-Z]\w+)>(?P<inner>[^<\[]*)</>' ,
+        r'<(?P<prop>[A-Za-z]\w+)>(?P<inner>[^<\[]*)</>',
         replace_label_tag, text
     )
 
-    # 11. Handle <Exec.PropertyName>_</> (label-only exec tags)
+    # --- Exec label-only tags ---
     text = re.sub(
         r'<Exec\.(\w+)>([^<\[]*)</>',
-        lambda m: to_display_name(m.group(1)).lower() if m.group(2).strip() in ("_", "") else m.group(2).replace("_", "").strip(),
+        lambda m: _display_name(m.group(1)) if m.group(2).strip() in ("_", "") else m.group(2).replace("_", "").strip(),
         text
     )
 
-    # 12. Clean up remaining artifacts
-    # Remove any leftover </> tags
+    # --- Final cleanup ---
     text = re.sub(r'</>', '', text)
-    # Remove any remaining <...> tags that weren't matched
     text = re.sub(r'<[^>]+>', '', text)
-    # Clean up double spaces
     text = re.sub(r'  +', ' ', text)
-    # Clean up spaces before punctuation
     text = re.sub(r' +([,.])', r'\1', text)
-    # Strip
     text = text.strip()
 
     return text
@@ -600,17 +912,52 @@ def resolve_description(raw_desc, desc_path):
 
 def _find_desc_path_perk(short_name):
     """Find the _Desc.json file for a perk."""
-    return PERK_DESC_DIR / short_name / f"{short_name}_Desc.json"
+    # Primary path: folder matches perk name
+    primary = PERK_DESC_DIR / short_name / f"{short_name}_Desc.json"
+    if primary.exists():
+        return primary
+    # Search all subdirectories for the desc file (handles folder name mismatches)
+    for desc_file in PERK_DESC_DIR.glob(f"*/{short_name}_Desc.json"):
+        return desc_file
+    return primary  # Return primary path even if not found (caller checks existence)
 
 
 def _find_desc_path_skill(short_name):
     """Find the _Desc.json file for a skill."""
-    return SKILL_DESC_DIR / f"{short_name}_Desc.json"
+    primary = SKILL_DESC_DIR / f"{short_name}_Desc.json"
+    if primary.exists():
+        return primary
+    # Try variant: CutThroat -> CutThroat_Skill, Caltrops -> Caltrop
+    for desc_file in SKILL_DESC_DIR.glob("*_Desc.json"):
+        stem = desc_file.stem.replace("_Desc", "").replace("_Skill", "")
+        if stem.lower() == short_name.lower() or stem.lower() == short_name.lower().rstrip("s"):
+            return desc_file
+    # Try with "of" variant
+    alt_name = short_name.replace("Of", "of")
+    alt_path = SKILL_DESC_DIR / f"{alt_name}_Desc.json"
+    if alt_path.exists():
+        return alt_path
+    return primary
 
 
 def _find_desc_path_spell(short_name):
     """Find the _Desc.json file for a spell."""
-    return SPELL_DESC_DIR / f"{short_name}_Desc.json"
+    primary = SPELL_DESC_DIR / f"{short_name}_Desc.json"
+    if primary.exists():
+        return primary
+    # Try case-insensitive and variant name matching
+    # e.g., Explosion -> ExplosionSpell, LocustSwarm -> LocustsSwarm
+    lower_name = short_name.lower()
+    for desc_file in SPELL_DESC_DIR.glob("*_Desc.json"):
+        stem = desc_file.stem.replace("_Desc", "")
+        if stem.lower().startswith(lower_name) or lower_name.startswith(stem.lower()):
+            return desc_file
+    # Try with "of" case variants: PowerOfSacrifice -> PowerofSacrifice
+    alt_name = short_name.replace("Of", "of")
+    alt_path = SPELL_DESC_DIR / f"{alt_name}_Desc.json"
+    if alt_path.exists():
+        return alt_path
+    return primary
 
 
 def _find_desc_path_music(short_name):
@@ -825,12 +1172,16 @@ def collect_perks(class_name, loc):
         desc_path = _find_desc_path_perk(short_name)
         description = try_resolve_description(raw_description, desc_path)
         is_default = perk_id in default_ids
-        perks.append({
+        perk_entry = {
             "id": short_name,
             "name": display_name,
             "description": description,
             "is_default": is_default,
-        })
+        }
+        icon_path = _find_icon("perks", short_name)
+        if icon_path:
+            perk_entry["icon"] = icon_path
+        perks.append(perk_entry)
     return perks
 
 
@@ -856,14 +1207,18 @@ def collect_skills(class_name, loc):
         # Extract skill_type last segment (e.g., "Type.Skill.Instant" -> "instant")
         raw_type = data.get("skill_type", "")
         skill_type = raw_type.split(".")[-1].lower() if raw_type else ""
-        skills.append({
+        skill_entry = {
             "id": short_name,
             "name": display_name,
             "description": description,
             "skill_type": skill_type,
             "skill_tier": data.get("skill_tier", 1),
             "use_moving": data.get("use_moving", False),
-        })
+        }
+        icon_path = _find_icon("skills", short_name)
+        if icon_path:
+            skill_entry["icon"] = icon_path
+        skills.append(skill_entry)
     return skills
 
 
@@ -905,7 +1260,7 @@ def collect_spells(class_name, loc):
         # Extract casting_type last segment
         casting_type_tag = props.get("CastingType", {}).get("TagName", "")
         casting_type = casting_type_tag.split(".")[-1].lower() if casting_type_tag else ""
-        spells.append({
+        spell_entry = {
             "id": short_name,
             "name": display_name,
             "description": description,
@@ -916,7 +1271,11 @@ def collect_spells(class_name, loc):
             "source_type": source_type,
             "cost_type": cost_type,
             "casting_type": casting_type,
-        })
+        }
+        icon_path = _find_icon("spells", short_name)
+        if icon_path:
+            spell_entry["icon"] = icon_path
+        spells.append(spell_entry)
     return spells
 
 
@@ -968,6 +1327,9 @@ def collect_songs(class_name, loc):
             "cost_type": "music",
             "casting_type": casting_type,
         }
+        icon_path = _find_icon("music", short_name)
+        if icon_path:
+            song_entry["icon"] = icon_path
 
         # Enhancement 3: Add performance tier ranges
         bad_range = props.get("BadRange")
@@ -1020,6 +1382,9 @@ def collect_shapeshifts(class_name, loc):
             "capsule_radius_scale": data.get("capsule_radius_scale", 1.0),
             "capsule_height_scale": data.get("capsule_height_scale", 1.0),
         }
+        icon_path = _find_icon("shapeshifts", short_name)
+        if icon_path:
+            ss_entry["icon"] = icon_path
 
         # Enhancement 2: Add stat modifiers from StatusEffect file
         stat_mods = _read_shapeshift_stat_modifiers(short_name)
@@ -1149,7 +1514,10 @@ def build_class(class_name, loc):
     # Usable item count
     usable_item_count = get_usable_item_count(class_name)
 
-    return {
+    # Class icon
+    class_icon = _find_icon("classes", class_name)
+
+    result = {
         "slug": slug,
         "name": class_name,
         "flavor_text": flavor_text,
@@ -1162,11 +1530,75 @@ def build_class(class_name, loc):
         "shapeshifts": shapeshifts,
         "usable_item_count": usable_item_count,
     }
+    if class_icon:
+        result["icon"] = class_icon
+    return result
+
+
+def copy_icons():
+    """Copy icon PNGs from export directory to website/public/icons/."""
+    icon_mappings = {
+        "classes": "IconClass",
+        "perks": "IconPerk",
+        "skills": "IconSkill",
+        "spells": "IconSpell",
+        "music": "IconMusic",
+        "shapeshifts": "IconShapeShift",
+    }
+
+    total = 0
+    for dest_subdir, src_subdir in icon_mappings.items():
+        src_dir = ICONS_SRC / src_subdir
+        dst_dir = ICONS_DST / dest_subdir
+        if not src_dir.exists():
+            print(f"  WARNING: Icon source not found: {src_dir}")
+            continue
+        dst_dir.mkdir(parents=True, exist_ok=True)
+        for png in src_dir.glob("*.png"):
+            # For class icons, only copy the large variants (ClassIcon_L_*)
+            # Skip Small (S) and extra-large (XL) variants
+            if dest_subdir == "classes":
+                if not png.name.startswith("ClassIcon_L_"):
+                    continue
+            dst_path = dst_dir / png.name
+            if not dst_path.exists() or png.stat().st_mtime > dst_path.stat().st_mtime:
+                shutil.copy2(png, dst_path)
+            total += 1
+    print(f"  Synced {total} icon files to {ICONS_DST}")
+
+
+def _find_icon(subdir, pattern_name):
+    """Check if an icon file exists and return its web path, or None."""
+    # Build candidate filenames based on subdirectory
+    candidates = []
+    if subdir == "perks":
+        candidates.append(f"Icon_Perk_{pattern_name}.png")
+    elif subdir == "skills":
+        candidates.append(f"Icon_Skill_{pattern_name}.png")
+    elif subdir == "spells":
+        candidates.append(f"Icon_Spell_{pattern_name}.png")
+    elif subdir == "music":
+        candidates.append(f"Icon_Music_{pattern_name}.png")
+    elif subdir == "shapeshifts":
+        candidates.append(f"Icon_ShapeShift_{pattern_name}.png")
+    elif subdir == "classes":
+        candidates.append(f"ClassIcon_L_{pattern_name}.png")
+
+    for fname in candidates:
+        if (ICONS_DST / subdir / fname).exists():
+            return f"/icons/{subdir}/{fname}"
+    return None
 
 
 def main():
     print("Building classes.json...")
     now = datetime.now(timezone.utc)
+
+    # Copy icons from export directory
+    if ICONS_SRC.exists():
+        copy_icons()
+    else:
+        print(f"  WARNING: Icon source directory not found: {ICONS_SRC}")
 
     # Load localization
     loc = load_localization()

@@ -1,6 +1,6 @@
 {
   "version": "2026-03-17",
-  "generated_at": "2026-03-17T22:46:52.837077+00:00",
+  "generated_at": "2026-03-17T23:25:53.678382+00:00",
   "data": {
     "classes": [
       {
@@ -31,118 +31,142 @@
           "buff_duration_pct": 3.0,
           "debuff_duration_pct": -2.9,
           "regular_interaction_speed_pct": -4.5,
-          "health_recovery_bonus_pct": -9.0
+          "health_recovery_bonus_pct": -9.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": 5.0,
+          "magic_power_bonus_pct": 3.0,
+          "magical_interaction_speed_pct": 21.0,
+          "spell_recovery_bonus_pct": 50.5,
+          "persuasiveness": 12.0,
+          "cooldown_reduction_pct": -6.0
         },
         "perks": [
           {
             "id": "AxeSpecialization",
             "name": "Axe Specialization",
-            "description": "While using axes, gain 3 Physical Damage Weapon Primary.",
-            "is_default": false
+            "description": "While using axes, gain 3 Physical Damage.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_AxeSpecialization.png"
           },
           {
             "id": "Berserker",
             "name": "Berserker",
-            "description": "Gain 3% physical damage mod and 0.5% move speed mod for every 10% of your maximum health missing, up to 30% and 5% respectively.",
-            "is_default": true
+            "description": "Gain 3% Physical Damage and 0.5% Move Speed for every 10% of your maximum health missing, up to 30% and 5% respectively.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Berserker.png"
           },
           {
             "id": "Carnage",
             "name": "Carnage",
-            "description": "When you hit 2 or more players with a melee weapon within 1.5 seconds, gain 40% Physical Damage Mod for 3 seconds.",
-            "is_default": false
+            "description": "When you hit 2 or more players with a melee weapon within 1.5 seconds, gain 40% Physical Damage for 3 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Carnage.png"
           },
           {
             "id": "Crush",
             "name": "Crush",
             "description": "While equipped with a two-handed weapon, gain the ability to destroy unreinforced containers. Also gain 0.1 Impact Power on your two-handed weapon attacks, making it easier to break blocks and parries.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Crush.png"
           },
           {
             "id": "Executioner",
             "name": "Executioner",
             "description": "While using axes, gain 20% Physical Headshot Power.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Executioner.png"
           },
           {
             "id": "HeavySwing",
             "name": "Heavy Swing",
             "description": "Hitting a target with a two-handed weapon reduces their move speed by [0]%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_HeavySwing.png"
           },
           {
             "id": "IronWill",
             "name": "Iron Will",
-            "description": "Gain 75 Magic Resistance and ignore knockback effects. The maximum magical reduction limit is increased to 75%.",
-            "is_default": true
+            "description": "Gain 75 Magic Resistance and ignore knockback effects. The maximum Magical Damage Reduction limit is increased to 75%.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_IronWill.png"
           },
           {
             "id": "MoraleBoost",
             "name": "Morale Boost",
-            "description": "Recover 250% Add Health By Max Health Ratio after killing a player.",
-            "is_default": false
+            "description": "Recover 250 % Max Health after killing a player.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_MoraleBoost.png"
           },
           {
             "id": "PotionChugger",
             "name": "Potion Chugger",
             "description": "Gain [1]% increased potency towards all drinks, while reducing the duration by [0]%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_PotionChugger.png"
           },
           {
             "id": "Robust",
             "name": "Robust",
-            "description": "Gain 10% Max Health Mod.",
-            "is_default": true
+            "description": "Gain 10% Max Health.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Robust.png"
           },
           {
             "id": "Savage",
             "name": "Savage",
-            "description": "While not wearing any chest armor, gain 10% Physical Damage Mod and 0.1 Impact Power.",
-            "is_default": false
+            "description": "While not wearing any chest armor, gain 10% Physical Damage and 0.1 Impact Power.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Savage.png"
           },
           {
             "id": "SkullSplitter",
             "name": "Skull Splitter",
-            "description": "Targets hit by a headshot are inflicted with Bleed.\n\nBleed: Deals a total of 12 Physical Damage Base over 4 seconds.",
-            "is_default": false
+            "description": "Targets hit by a headshot are inflicted with Bleed.\n\nBleed: Deals a total of 12 Physical Damage over 4 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_SkullSplitter.png"
           },
           {
             "id": "TreacherousLungs",
             "name": "Treacherous Lungs",
             "description": "Increases the duration of all shouting abilities by [0]% and reduces their cooldown by 10%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_TreacherousLungs.png"
           },
           {
             "id": "TwoHander",
             "name": "Two-Hander",
-            "description": "When attacking with a two-handed weapon, gain 5% Physical Damage Mod and 100% Armor Penetration.",
-            "is_default": false
+            "description": "When attacking with a two-handed weapon, gain 5% Physical Damage and 100% Armor Penetration.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_TwoHander.png"
           }
         ],
         "skills": [
           {
             "id": "AchillesStrike",
             "name": "Achilles Strike",
-            "description": "Strike a target, reducing their _ by [0]% for 2 seconds. While debuffed, each time the target moves they receive 1 Physical Damage Base.",
+            "description": "Strike a target, reducing their Move Speed by 30% for 2 seconds. While debuffed, each time the target moves they receive 1 Physical Damage.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_AchillesStrike.png"
           },
           {
             "id": "BloodExchange",
             "name": "Blood Exchange",
-            "description": "Lose [1]% of _, but gain 15% Action Speed for 8 seconds and heal for 10% of damage dealt while active.",
+            "description": "Lose -100 % of Max Health, but gain 15% Action Speed for 8 seconds and heal for 10% of damage dealt while active.",
             "skill_type": "instant",
             "skill_tier": 5,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_BloodExchange.png"
           },
           {
             "id": "FinishingBlow",
             "name": "Finishing Blow",
-            "description": "Your next attack deals an additional 5 Physical Damage True. If the target’s health is [0]% or lower after the attack, they are instantly killed.",
+            "description": "Your next attack deals an additional 5 true physical damage. If the target’s health is [0]% or lower after the attack, they are instantly killed.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_FinishingBlow.png"
           },
           {
             "id": "GrapplingHook",
@@ -150,7 +174,8 @@
             "description": "Throws a grappling rope at a target up to 4m away, pulling them toward you.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_GrapplingHook.png"
           },
           {
             "id": "HurlWeapon",
@@ -158,47 +183,53 @@
             "description": "Throws an axe to deal 120% weapon damage. Can only be used when an axe is equipped as your primary weapon.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_HurlWeapon.png"
           },
           {
             "id": "Rage",
             "name": "Rage",
-            "description": "Gain 15 Strength Base, [0] _, 7% Move Speed Mod. While active, lose -15% Physical Reduction for 6 seconds.",
+            "description": "Gain 15 Strength, 15 Vigor, 7% Move Speed. While active, lose -15% Physical Damage Reduction for 6 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Rage.png"
           },
           {
             "id": "RecklessAttack",
             "name": "Reckless Attack",
-            "description": "Grants an additional 600% Armor Penetration on your next attack, but reduces your _ by [0] while active. The effect is consumed when you hit a target or object with a melee attack.",
+            "description": "Grants an additional 600% Armor Penetration on your next attack, but reduces your Armor Rating by 100 while active. The effect is consumed when you hit a target or object with a melee attack.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_RecklessAttack.png"
           },
           {
             "id": "SavageRoar",
             "name": "Savage Roar",
-            "description": "Frightens all enemies within a [0]m range radius for 6 seconds reducing their _ by [0]% and _ by [0]%.",
+            "description": "Frightens all enemies within a 7.5m range radius for 6 seconds reducing their Physical Damage by 30% and Move Speed by 2.5%.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SavageRoar.png"
           },
           {
             "id": "WarCry",
             "name": "War Cry",
-            "description": "Gain 20% Max Health Mod for 10 seconds. This effect applies to yourself and allies within a [0]m radius.",
+            "description": "Gain 20% Max Health for 10 seconds. This effect applies to yourself and allies within a 7.5m radius.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_WarCry.png"
           },
           {
             "id": "WarSacrifice",
             "name": "War Sacrifice",
-            "description": "While active, gain [0] _. In exchange, lose -100% of your Add Health By Max Health Ratio over 8 seconds.",
+            "description": "While active, gain 8 All Attributes. In exchange, lose -100 % of your Max Health over 8 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_WarSacrifice.png"
           },
           {
             "id": "Whirlwind",
@@ -206,12 +237,14 @@
             "description": "Spin rapidly with a two-handed weapon, dealing [0]% of weapon damage to all nearby enemies. While spinning, your weapon cannot be interrupted by any impact.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Whirlwind.png"
           }
         ],
         "spells": [],
         "shapeshifts": [],
-        "usable_item_count": 187
+        "usable_item_count": 187,
+        "icon": "/icons/classes/ClassIcon_L_Barbarian.png"
       },
       {
         "slug": "bard",
@@ -241,80 +274,99 @@
           "buff_duration_pct": -8.0,
           "debuff_duration_pct": 8.7,
           "regular_interaction_speed_pct": 0.0,
-          "health_recovery_bonus_pct": 0.0
+          "health_recovery_bonus_pct": 0.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -4.0,
+          "magic_power_bonus_pct": -8.0,
+          "magical_interaction_speed_pct": -20.0,
+          "spell_recovery_bonus_pct": 73.0,
+          "persuasiveness": 15.0,
+          "cooldown_reduction_pct": 0.0
         },
         "perks": [
           {
             "id": "CharismaticPerformance",
             "name": "Charismatic Performance",
             "description": "Upgrades a ‘good’ performance into a ‘perfect’ performance.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_CharismaticPerformance.png"
           },
           {
             "id": "DancingFeet",
             "name": "Dancing Feet",
-            "description": "While holding an instrument, gain 10 Move Speed Add.",
-            "is_default": false
+            "description": "While holding an instrument, gain 10 Move Speed.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_DancingFeet.png"
           },
           {
             "id": "Fermata",
             "name": "Fermata",
-            "description": "Gain 5 Resourcefulness Base.",
-            "is_default": false
+            "description": "Gain 5 Resourcefulness.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Fermata.png"
           },
           {
             "id": "JollyTime",
             "name": "Jolly Time",
-            "description": "Drinking ale recovers 5 Physical Heal Base, and grants 5 Move Speed Add while drunk.",
-            "is_default": false
+            "description": "Drinking ale recovers 5 Physical Heal Base, and grants 5 Move Speed while drunk.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_JollyTime.png"
           },
           {
             "id": "LoreMastery",
             "name": "Lore Mastery",
-            "description": "Grants 30% Regular Interaction Speed and 5 Memory Capacity Add.",
-            "is_default": false
+            "description": "Grants 30% Interaction Speed and 5 Memory Capacity Add.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_LoreMastery.png"
           },
           {
             "id": "MelodicProtection",
             "name": "Melodic Protection",
-            "description": "While playing music, gain 25% Physical Reduction and 25% Magical Reduction.",
-            "is_default": false
+            "description": "While playing music, gain 25% Physical Damage Reduction and 25% Magical Damage Reduction.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_MelodicProtection.png"
           },
           {
             "id": "RapierMastery",
             "name": "Rapier Mastery",
-            "description": "While using a Rapier, gain 3 Physical Damage Weapon Primary and 5% Action Speed.",
-            "is_default": true
+            "description": "While using a Rapier, gain 3 Physical Damage and 5% Action Speed.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_RapierMastery.png"
           },
           {
             "id": "ReinforcedInstruments",
             "name": "Reinforced Instruments",
-            "description": "When attacking with an instrument, gain 50% Physical Damage Mod.",
-            "is_default": false
+            "description": "When attacking with an instrument, gain 50% Physical Damage.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ReinforcedInstruments.png"
           },
           {
             "id": "StoryTeller",
             "name": "Story Teller",
-            "description": "Give all nearby party members around a +[0] _ and +[0] _ buff.",
-            "is_default": false
+            "description": "Give all nearby party members around a 5 Will and 3 Knowledge buff.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_StoryTeller.png"
           },
           {
             "id": "SuperiorDexterity",
             "name": "Superior Dexterity",
             "description": "50% faster switching time when switching between weapons/utility items.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_SuperiorDexterity.png"
           },
           {
             "id": "WanderersLuck",
             "name": "Wanderer's Luck",
             "description": "Gain 100 Luck and increases the chance of finding high-quality items when opening treasure chests.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_WanderersLuck.png"
           },
           {
             "id": "WarSong",
             "name": "War Song",
-            "description": "A successful performance increases nearby allies' _ by [0] for 6 seconds.",
-            "is_default": false
+            "description": "A successful performance increases nearby allies' Physical Damage by 3 for 6 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_WarSong.png"
           }
         ],
         "skills": [
@@ -324,7 +376,8 @@
             "description": "Plays an instrument to make an unpleasant noise that silences all enemy targets for 2 seconds.\nSilence: Disables skills/spells/performance abilities.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Dissonance.png"
           },
           {
             "id": "Encore",
@@ -332,7 +385,8 @@
             "description": "Resets the duration of all active music buffs on nearby party members.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Encore.png"
           },
           {
             "id": "MusicMemory1",
@@ -356,14 +410,15 @@
             "description": "Play an instrument to grant all nearby allies immunity to drunkenness for 15 seconds. While immune, drinking alcohol restores 5 Physical Heal Base.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_PartyMaker.png"
           }
         ],
         "spells": [
           {
             "id": "Accelerando",
             "name": "Accelerando",
-            "description": "You and nearby allies gain 1/3/5 Move Speed Add per second for 6 seconds based on your performance. Stacks up to 3 times.",
+            "description": "You and nearby allies gain 1/3/5 Move Speed per second for 6 seconds based on your performance. Stacks up to 3 times.",
             "spell_tier": 4,
             "casting_time": null,
             "max_count": null,
@@ -371,6 +426,7 @@
             "source_type": "drum",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_Accelerando.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -397,6 +453,7 @@
             "source_type": "drum",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_Allegro.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -415,7 +472,7 @@
           {
             "id": "AriaOfAlacrity",
             "name": "Aria of Alacrity",
-            "description": "The performer gains 4/6/8% Action Speed for 60/[1]/[2] seconds. Song does not stack on itself.",
+            "description": "The performer gains 4/6/8% Action Speed for 60/120/240 seconds. Song does not stack on itself.",
             "spell_tier": 1,
             "casting_time": null,
             "max_count": null,
@@ -423,6 +480,7 @@
             "source_type": "lute",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_AriaOfAlacrity.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -444,7 +502,7 @@
           {
             "id": "BalladOfCourage",
             "name": "Ballad of Courage",
-            "description": "Grants the performer 5/7/10 Physical Power for 60/[1]/[2] seconds. Song does not stack on itself.",
+            "description": "Grants the performer 5/7/10 Physical Power for 60/120/240 seconds. Song does not stack on itself.",
             "spell_tier": 1,
             "casting_time": null,
             "max_count": null,
@@ -452,6 +510,7 @@
             "source_type": "lyre",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_BalladOfCourage.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -473,7 +532,7 @@
           {
             "id": "BansheesHowl",
             "name": "Banshees Howl",
-            "description": "Reduces nearby enemy _ by [0]/[1]/[2] for 20 seconds. Does not work on Boss or Subboss monsters.",
+            "description": "Reduces nearby enemy All Attributes by 1/2/3 for 20 seconds. Does not work on Boss or Subboss monsters.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -481,6 +540,7 @@
             "source_type": "flute",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_BansheesHowl.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -520,7 +580,7 @@
           {
             "id": "BeatsOfAlacrity",
             "name": "Beats of Alacrity",
-            "description": "The performer gains 4/5/6 Move Speed Add for 60/[1]/[2] seconds. Song does not stack on itself.",
+            "description": "The performer gains 4/5/6 Move Speed for 60/120/240 seconds. Song does not stack on itself.",
             "spell_tier": 1,
             "casting_time": null,
             "max_count": null,
@@ -528,6 +588,7 @@
             "source_type": "drum",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_BeatsOfAlacrity.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -557,6 +618,7 @@
             "source_type": "lute",
             "cost_type": "music",
             "casting_type": "channeling",
+            "icon": "/icons/music/Icon_Music_ChaoticDiscord.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600
@@ -564,7 +626,7 @@
           {
             "id": "ChoraleOfClarity",
             "name": "Chorale of Clarity",
-            "description": "Restore [0] spell memory per second of all nearby allies who rest for 8/[1]/[2] seconds.",
+            "description": "Restore 0 spell memory per second of all nearby allies who rest for 8/16/24 seconds.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -572,6 +634,7 @@
             "source_type": "lyre",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_ChoraleOfClarity.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -590,7 +653,7 @@
           {
             "id": "DinOfDarkness",
             "name": "Din of Darkness",
-            "description": "Deal 1/[1]/[2] magical dark damage base to all enemies in an area around the performer, based on performance.",
+            "description": "Deal 1/3/5 magical dark damage to all enemies in an area around the performer, based on performance.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -598,6 +661,7 @@
             "source_type": "drum",
             "cost_type": "music",
             "casting_type": "channeling",
+            "icon": "/icons/music/Icon_Music_DinOfDarkness.png",
             "bad_range": 450,
             "good_range": 450,
             "perfect_range": 450,
@@ -619,7 +683,7 @@
           {
             "id": "HarmonicShield",
             "name": "Harmonic Shield",
-            "description": "The performer gains 25 Armor Rating and 25 Magic Resistance for 60/[1]/[2] seconds.",
+            "description": "The performer gains 25 Armor Rating and 25 Magic Resistance for 60/120/240 seconds.",
             "spell_tier": 1,
             "casting_time": null,
             "max_count": null,
@@ -627,6 +691,7 @@
             "source_type": "lyre",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_HarmonicShield.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -651,7 +716,7 @@
           {
             "id": "LamentOfLanguor",
             "name": "Lament of Languor",
-            "description": "Reduces the _ by [0] of all enemy targets in the area for 6/[1]/[2] seconds.",
+            "description": "Reduces the Move Speed by 10 of all enemy targets in the area for 6/12/18 seconds.",
             "spell_tier": 2,
             "casting_time": null,
             "max_count": null,
@@ -659,6 +724,7 @@
             "source_type": "lute",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_LamentOfLanguor.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -688,6 +754,7 @@
             "source_type": "lute",
             "cost_type": "music",
             "casting_type": "channeling",
+            "icon": "/icons/music/Icon_Music_Peacemaking.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600
@@ -695,7 +762,7 @@
           {
             "id": "PiercingShrill",
             "name": "Piercing Shrill",
-            "description": "Deal 20/[1]/[2] Physical Damage Base to a target. Causes the echo sound effect on player targets for 3 seconds.",
+            "description": "Deal 20/25/30 Physical Damage to a target. Causes the echo sound effect on player targets for 3 seconds.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -703,6 +770,7 @@
             "source_type": "flute",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_PiercingShrill.png",
             "bad_range": 450,
             "good_range": 450,
             "perfect_range": 450,
@@ -727,7 +795,7 @@
           {
             "id": "RousingRhythms",
             "name": "Rousing Rhythms",
-            "description": "Nearby allies gain [0]/[1]/[2] All Attributes for 60/[1]/[2] seconds.",
+            "description": "Nearby allies gain 2/2/2 All Attributes for 60/120/240 seconds.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -735,6 +803,7 @@
             "source_type": "drum",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_RousingRhythms.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -774,7 +843,7 @@
           {
             "id": "ShriekOfWeakness",
             "name": "Shriek of Weakness",
-            "description": "Nearby enemies lose -3/-4/-5 Physical Power and -10/-20/-30 Armor Rating for 6/[1]/[2] seconds.",
+            "description": "Nearby enemies lose -3/-4/-5 Physical Power and -10/-20/-30 Armor Rating for 6/12/18 seconds.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -782,6 +851,7 @@
             "source_type": "flute",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_ShriekOfWeakness.png",
             "bad_range": 450,
             "good_range": 450,
             "perfect_range": 450,
@@ -806,7 +876,7 @@
           {
             "id": "SongOfShadow",
             "name": "Song of Shadow",
-            "description": "You and all nearby allies gain invisibility for 10/[1]/[2] seconds. Invisibility breaks upon movement.",
+            "description": "You and all nearby allies gain invisibility for 10/20/30 seconds. Invisibility breaks upon movement.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -814,6 +884,7 @@
             "source_type": "lyre",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_SongOfShadow.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -832,7 +903,7 @@
           {
             "id": "SongOfSilence",
             "name": "Song of Silence",
-            "description": "Interrupts all skills, spells, and songs used by nearby enemies, and prevents them from using skills, casting spells, or playing songs for 1/[1]/[2] seconds. Does not work on boss or sub-boss monsters.",
+            "description": "Interrupts all skills, spells, and songs used by nearby enemies, and prevents them from using skills, casting spells, or playing songs for 1/1.5/2 seconds. Does not work on boss or sub-boss monsters.",
             "spell_tier": 2,
             "casting_time": null,
             "max_count": null,
@@ -840,6 +911,7 @@
             "source_type": "lute",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_SongOfSilence.png",
             "bad_range": 450,
             "good_range": 450,
             "perfect_range": 450,
@@ -858,7 +930,7 @@
           {
             "id": "Tranquility",
             "name": "Tranquility",
-            "description": "Restore 2 Recovery Heal Base of yourself and nearby allies every second while resting for 10/[2]/[3] seconds.",
+            "description": "Restore 2 Recovery Heal of yourself and nearby allies every second while resting for 10/15/20 seconds.",
             "spell_tier": 2,
             "casting_time": null,
             "max_count": null,
@@ -866,6 +938,7 @@
             "source_type": "lyre",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_Tranquility.png",
             "bad_range": 300,
             "good_range": 450,
             "perfect_range": 600,
@@ -892,13 +965,15 @@
             "source_type": "flute",
             "cost_type": "music",
             "casting_type": "playing",
+            "icon": "/icons/music/Icon_Music_UnchainedHarmony.png",
             "bad_range": 300,
             "good_range": 300,
             "perfect_range": 300
           }
         ],
         "shapeshifts": [],
-        "usable_item_count": 196
+        "usable_item_count": 196,
+        "icon": "/icons/classes/ClassIcon_L_Bard.png"
       },
       {
         "slug": "cleric",
@@ -928,114 +1003,137 @@
           "buff_duration_pct": 8.0,
           "debuff_duration_pct": -7.4,
           "regular_interaction_speed_pct": -4.5,
-          "health_recovery_bonus_pct": -9.0
+          "health_recovery_bonus_pct": -9.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -8.0,
+          "magic_power_bonus_pct": 8.0,
+          "magical_interaction_speed_pct": 56.0,
+          "spell_recovery_bonus_pct": 73.0,
+          "persuasiveness": 12.0,
+          "cooldown_reduction_pct": -6.0
         },
         "perks": [
           {
             "id": "AdvancedHealer",
             "name": "Advanced Healer",
             "description": "Gain 5 Magical Heal Base.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_AdvancedHealer.png"
           },
           {
             "id": "BluntWeaponMastery",
             "name": "Blunt Weapon Mastery",
-            "description": "While using a blunt weapon, gain 10% Physical Damage Mod.",
-            "is_default": true
+            "description": "While using a blunt weapon, gain 10% Physical Damage.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_BluntWeaponMastery.png"
           },
           {
             "id": "Brewmaster",
             "name": "Brewmaster",
-            "description": "When you drink alcohol, you no longer exhibit the detrimental drunk effects and gain 10 Strength Base. The duration of the drunk effect is increased by 50%.",
-            "is_default": false
+            "description": "When you drink alcohol, you no longer exhibit the detrimental drunk effects and gain 10 Strength. The duration of the drunk effect is increased by 50%.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Brewmaster.png"
           },
           {
             "id": "Faithfulness",
             "name": "Faithfulness",
-            "description": "Gain 150% Magical Divine Damage Mod. When a divine attack is successful, reduce their _ by [1]% for 1 seconds. Does not inflict while on cooldown.",
-            "is_default": false
+            "description": "Gain 15% Magical Divine Damage. When a divine attack is successful, reduce their Move Speed by 15% for 1 seconds. Does not inflict while on cooldown.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Faithfulness.png"
           },
           {
             "id": "HolyAura",
             "name": "Holy Aura",
             "description": "Gain 15 Armor Rating and 15 Magic Resistance. This effects both yourself and allies.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_HolyAura.png"
           },
           {
             "id": "HolyWater",
             "name": "Holy Water",
             "description": "Drinking any drink removes all removable curses and harmful magic effects, and grants the Bless effect.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_HolyWater.png"
           },
           {
             "id": "Kindness",
             "name": "Kindness",
             "description": "Heal yourself for 30% of the spell's total heal amount when healing another target.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Kindness.png"
           },
           {
             "id": "Overhealing",
             "name": "Over Healing",
-            "description": "Even if the target's health is at full health, additional healing can be done by [0]% of the target's maximum health. ^ degenerates at [0]% per second.",
-            "is_default": true
+            "description": "Even if the target's health is at full health, additional healing can be done by 20% of the target's maximum health. ^ degenerates at -20 % per second.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Overhealing.png"
           },
           {
             "id": "Perseverance",
             "name": "Perseverance",
             "description": "Reduces all types of incoming damage by 2.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Perseverance.png"
           },
           {
             "id": "ProtectionfromEvil",
             "name": "Protection from Evil",
             "description": "Reduce the duration of all harmful effects by -300%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ProtectionfromEvil.png"
           },
           {
             "id": "Requiem",
             "name": "Requiem",
-            "description": "Resurrecting an ally revives them with [0]% HP instead of a sliver of life. When reviving an ally at the Altar of Sacrifice, you do not need to sacrifice any of your own health. Using the Resurrection spell also grants 100% Spell Casting Speed.",
-            "is_default": false
+            "description": "Resurrecting an ally revives them with 50% HP instead of a sliver of life. When reviving an ally at the Altar of Sacrifice, you do not need to sacrifice any of your own health. Using the Resurrection spell also grants 100% Spell Casting Speed.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Requiem.png"
           },
           {
             "id": "UndeadSlaying",
             "name": "Undead Slaying",
             "description": "Gain 200% Undead Damage Mod against undead monsters.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_UndeadSlaying.png"
           }
         ],
         "skills": [
           {
             "id": "DivineProtection",
             "name": "Divine Protection",
-            "description": "Gain 30% Physical Reduction for 6 seconds.",
+            "description": "Gain 30% Physical Damage Reduction for 6 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_DivineProtection.png"
           },
           {
             "id": "HolyPurification",
             "name": "Holy Purification",
-            "description": "After channeling for [0] seconds, deal 100divine Magical Damage Base to all undead monsters within a [0]m radius around you.",
+            "description": "After channeling for 1.5 seconds, deal 100 divine Magical Damage to all undead monsters within a 7.5m radius around you.",
             "skill_type": "casting",
             "skill_tier": 1,
-            "use_moving": false
+            "use_moving": false,
+            "icon": "/icons/skills/Icon_Skill_HolyPurification.png"
           },
           {
             "id": "Judgement",
             "name": "Judgement",
-            "description": "After channeling for [0] seconds, deal 25 magical divine damage base to a target and reduce their _ by [1]% for 2 seconds. Once the channel begins on a target, crosshair targeting is no longer required. This spell has a [0]m range and will fail if the target goes out of range.",
+            "description": "After channeling for 1 seconds, deal 25 magical divine damage to a target and reduce their Move Speed by 30% for 2 seconds. Once the channel begins on a target, crosshair targeting is no longer required. This spell has a 5m range and will fail if the target goes out of range.",
             "skill_type": "casting",
             "skill_tier": 1,
-            "use_moving": false
+            "use_moving": false,
+            "icon": "/icons/skills/Icon_Skill_Judgement.png"
           },
           {
             "id": "Smite",
             "name": "Smite",
-            "description": "Deal an additional 10 magical divine damage base to all enemies you hit within 7 seconds. Only when melee attacking.",
+            "description": "Deal an additional 10 magical divine damage to all enemies you hit within 7 seconds. Only when melee attacking.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Smite.png"
           },
           {
             "id": "SpellMemory1",
@@ -1065,19 +1163,21 @@
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_BindEvil.png"
           },
           {
             "id": "Bless",
             "name": "Bless",
-            "description": "Grants the target [0] _ for 30 seconds. Self cast if no target is found.",
+            "description": "Grants the target 2 All Attributes for 30 seconds. Self cast if no target is found.",
             "spell_tier": 2,
             "casting_time": 0.75,
             "max_count": 5,
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Bless.png"
           },
           {
             "id": "Cleanse",
@@ -1089,55 +1189,60 @@
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Cleanse.png"
           },
           {
             "id": "DivineStrike",
             "name": "Divine Strike",
-            "description": "Grants the target 5 Physical Damage Base for 12 seconds. Self cast if no target is found.",
+            "description": "Grants the target 5 Physical Damage for 12 seconds. Self cast if no target is found.",
             "spell_tier": 3,
             "casting_time": 1.0,
             "max_count": 4,
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_DivineStrike.png"
           },
           {
             "id": "Earthquake",
             "name": "Earthquake",
-            "description": "Channel an earthquake in a [0]m radius over [0] seconds. Any target within the area is dealt 7 magical earth damage base per step and receives -50% Move Speed Mod reduction.",
+            "description": "Channel an earthquake in a 2.5m radius over 6 seconds. Any target within the area is dealt 7 magical earth damage per step and receives -50% Move Speed reduction.",
             "spell_tier": 7,
             "casting_time": 2.5,
             "max_count": 2,
             "range": 700,
             "source_type": "earth",
             "cost_type": "count",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_Earthquake.png"
           },
           {
             "id": "HolyLight",
             "name": "Holy Light",
-            "description": "Heals a target for 35 Magical Heal Base or deals 100 magical divine damage base to an undead target.",
+            "description": "Heals a target for 35 Magical Heal Base or deals 100 magical divine damage to an undead target.",
             "spell_tier": 5,
             "casting_time": 1.75,
             "max_count": 3,
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_HolyLight.png"
           },
           {
             "id": "HolyStrike",
             "name": "Holy Strike",
-            "description": "Deal 20 magical divine damage base to all targets in an area, blinding them for 4 seconds.",
+            "description": "Deal 20 magical divine damage to all targets in an area, blinding them for 4 seconds.",
             "spell_tier": 4,
             "casting_time": 2.0,
             "max_count": 4,
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_HolyStrike.png"
           },
           {
             "id": "LesserHeal",
@@ -1149,19 +1254,21 @@
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_LesserHeal.png"
           },
           {
             "id": "LocustsSwarm",
             "name": "Locust Swarm",
-            "description": "Channel a swarm of locusts in a [0]m radius over [0] seconds. Any target within the area is dealt 13 magical divine damage base per 1 second. The target also suffers reduced _ by [1]% and _ by [1]%.",
+            "description": "Channel a swarm of locusts in a 3m radius over 6 seconds. Any target within the area is dealt 13 magical divine damage per 1 second. The target also suffers reduced Magical Healing by 50% and Physical Healing by 50%.",
             "spell_tier": 7,
             "casting_time": 2.5,
             "max_count": 2,
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_LocustsSwarm.png"
           },
           {
             "id": "Protection",
@@ -1173,7 +1280,8 @@
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Protection.png"
           },
           {
             "id": "Resurrection",
@@ -1185,23 +1293,26 @@
             "range": 700,
             "source_type": "resurrection",
             "cost_type": "count",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_Resurrection.png"
           },
           {
             "id": "Sanctuary",
             "name": "Sanctuary",
-            "description": "Channel for [0] seconds, healing all targets within [0]m for 5 per second and deals 14 magical divine damage base per second to the undead.",
+            "description": "Channel for 5 seconds, healing all targets within 3.5m for 5 per second and deals 14 magical divine damage per second to the undead.",
             "spell_tier": 6,
             "casting_time": 2.25,
             "max_count": 2,
             "range": 700,
             "source_type": "divine",
             "cost_type": "count",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_Sanctuary.png"
           }
         ],
         "shapeshifts": [],
-        "usable_item_count": 235
+        "usable_item_count": 235,
+        "icon": "/icons/classes/ClassIcon_L_Cleric.png"
       },
       {
         "slug": "druid",
@@ -1231,86 +1342,106 @@
           "buff_duration_pct": 3.0,
           "debuff_duration_pct": -2.9,
           "regular_interaction_speed_pct": 16.8,
-          "health_recovery_bonus_pct": 21.0
+          "health_recovery_bonus_pct": 21.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -6.0,
+          "magic_power_bonus_pct": 3.0,
+          "magical_interaction_speed_pct": 21.0,
+          "spell_recovery_bonus_pct": 73.0,
+          "persuasiveness": 18.0,
+          "cooldown_reduction_pct": 6.0
         },
         "perks": [
           {
             "id": "AnimalKinship",
             "name": "Animal Kinship",
             "description": "Not all animals and insects attack first.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_AnimalKinship.png"
           },
           {
             "id": "Dreamwalk",
             "name": "Dreamwalk",
-            "description": "When you take damage, your magical power increases by 5 for 2 seconds and you become spiritual. The player does not collide with other targets and cannot attack or use skills, but can cast spells. This ability triggers once every 18 seconds.",
-            "is_default": true
+            "description": "When you take damage, your Magical Power increases by 5 for 2 seconds and you become spiritual. The player does not collide with other targets and cannot attack or use skills, but can cast spells. This ability triggers once every 18 seconds.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Dreamwalk.png"
           },
           {
             "id": "EnhancedWildness",
             "name": "Enhanced Wildness",
-            "description": "While you are in animal form, you gain 5% Physical Damage Mod and 20 Armor Rating.",
-            "is_default": true
+            "description": "While you are in animal form, you gain 5% Physical Damage and 20 Armor Rating.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_EnhancedWildness.png"
           },
           {
             "id": "ForceOfNature",
             "name": "Force of Nature",
             "description": "When you heal a target, the target gains 5 Physical Power for 3 seconds.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ForceOfNature.png"
           },
           {
             "id": "HerbalSensing",
             "name": "Herbal Sensing",
             "description": "Detects nearby herbs and increases the chance of gathering higher-grade herbs.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_HerbalSensing.png"
           },
           {
             "id": "LifebloomAura",
             "name": "Lifebloom Aura",
-            "description": "Restores an additional [0] health to target when caster heals self or allies within aura range. Disables shapeshift.",
-            "is_default": false
+            "description": "Restores an additional 1 health to target when caster heals self or allies within aura range. Disables shapeshift.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_LifebloomAura.png"
           },
           {
             "id": "NaturalHealing",
             "name": "Natural Healing",
             "description": "Recover yourself and nearby allies 1 Magical Heal Base every 3 seconds.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_NaturalHealing.png"
           },
           {
             "id": "Prophecy",
             "name": "Prophecy",
             "description": "Targets near the aiming point are automatically selected, and single-target magic aimed at the selected target will not miss.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Prophecy.png"
           },
           {
             "id": "ShapeshiftMastery",
             "name": "Shapeshift Mastery",
             "description": "Reduces shapeshifting time by 25% and reduces the cooldown of Wild skills by [0]%, but prevents the use of spirit spells.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ShapeshiftMastery.png"
           },
           {
             "id": "SpiritBond",
             "name": "Spirit Bond",
-            "description": "Once every 1 second, You will receive 20% of damage received by party members instead. Can receive damage up to [1].",
-            "is_default": false
+            "description": "Once every 1 second, You will receive 20% of damage received by party members instead. Can receive damage up to 0.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_SpiritBond.png"
           },
           {
             "id": "SpiritMagicMastery",
             "name": "Spirit Magic Mastery",
-            "description": "When you cast spirit magic, you gain [0] _.",
-            "is_default": false
+            "description": "When you cast spirit magic, you gain 10 Magical Power.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_SpiritMagicMastery.png"
           },
           {
             "id": "SunAndMoon",
             "name": "Sun and Moon",
-            "description": "Nearby allies gain 3 Vigor Base and 5 Magical Power.",
-            "is_default": true
+            "description": "Nearby allies gain 3 Vigor and 5 Magical Power.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_SunAndMoon.png"
           },
           {
             "id": "ThornCoat",
             "name": "Thorn Coat",
-            "description": "When melee attacked, return 5 Physical Damage True to the attacker.",
-            "is_default": false
+            "description": "When melee attacked, return 5 true physical damage to the attacker.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ThornCoat.png"
           }
         ],
         "skills": [
@@ -1351,86 +1482,93 @@
           {
             "id": "BarkskinArmor",
             "name": "Barkskin Armor",
-            "description": "Encloses the target in a protective bark for 10 seconds, increasing _ by [0], _ by [0]%.",
+            "description": "Encloses the target in a protective bark for 10 seconds, increasing Armor Rating by 50, Headshot Damage Reduction by 10%.",
             "spell_tier": 2,
             "casting_time": 0.75,
             "max_count": 4,
             "range": 700,
             "source_type": "earth",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_BarkskinArmor.png"
           },
           {
             "id": "Dreamfire",
             "name": "Dreamfire",
-            "description": "Deals 15 magical spirit damage base to all enemies in an area. Instantly heals caster and allies currently affected by Nature’s Touch for 10 Magical Heal Base per target damaged. This effect applies within a [0] m radius of the caster.",
+            "description": "Deals 15 magical spirit damage to all enemies in an area. Instantly heals caster and allies currently affected by Nature’s Touch for 10 Magical Heal Base per target damaged. This effect applies within a 7 m radius of the caster.",
             "spell_tier": 3,
             "casting_time": 1.0,
             "max_count": 4,
             "range": 700,
             "source_type": "spirit",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Dreamfire.png"
           },
           {
             "id": "EntanglingVines",
             "name": "Entangling Vines",
-            "description": "Spreads roots across the floor in a [0]m radius that last for 3 seconds. Any targets that pass through the area of ​​effect are frozen in place for 1 seconds. After the effect removed, the target gets immunity to the entangling effects for 1 seconds.",
+            "description": "Spreads roots across the floor in a 1m radius that last for 3 seconds. Any targets that pass through the area of ​​effect are frozen in place for 1 seconds. After the effect removed, the target gets immunity to the entangling effects for 1 seconds.",
             "spell_tier": 4,
             "casting_time": 1.25,
             "max_count": 2,
             "range": 700,
             "source_type": "earth",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_EntanglingVines.png"
           },
           {
             "id": "MendingGrove",
             "name": "Mending Grove",
-            "description": "While standing on the ground, create a forest area centered around you within a [0]m radius. Targets in the area gain 10% Max Health Mod and are healed for 10 Magical Heal Base per second.",
+            "description": "While standing on the ground, create a forest area centered around you within a 3m radius. Targets in the area gain 10% Max Health and are healed for 10 Magical Heal Base per second.",
             "spell_tier": 6,
             "casting_time": 2.0,
             "max_count": 2,
             "range": 700,
             "source_type": "earth",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_MendingGrove.png"
           },
           {
             "id": "NaturesTouch",
             "name": "Nature's Touch",
-            "description": "The target gains 15 Add Recoverable Health. Also healed 15 Magical Heal Base over 10 seconds. Casts instantly and casts on yourself if no target is found.",
+            "description": "The target gains 15 Recoverable Health. Also healed 15 Magical Heal Base over 10 seconds. Casts instantly and casts on yourself if no target is found.",
             "spell_tier": 1,
             "casting_time": 0.75,
             "max_count": 4,
             "range": 700,
             "source_type": "spirit",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_NaturesTouch.png"
           },
           {
             "id": "OrbofNature",
             "name": "Orb of Nature",
-            "description": "Fires an orb that deals 15 magical spirit damage base on contact with an enemy, or grants Nature's Touch on contact with an ally.",
+            "description": "Fires an orb that deals 15 magical spirit damage on contact with an enemy, or grants Nature's Touch on contact with an ally.",
             "spell_tier": 2,
             "casting_time": 1.0,
             "max_count": 4,
             "range": 999999,
             "source_type": "spirit",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_OrbofNature.png"
           },
           {
             "id": "Restore",
             "name": "Restore",
-            "description": "Restore the health of all allies within [0]m radius by 20 Magical Heal Base for 10 seconds.",
+            "description": "Restore the health of all allies within 3m radius by 20 Magical Heal Base for 10 seconds.",
             "spell_tier": 3,
             "casting_time": 1.5,
             "max_count": 3,
             "range": 700,
             "source_type": "spirit",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Restore.png"
           },
           {
             "id": "SummonTreant",
@@ -1442,41 +1580,45 @@
             "range": 700,
             "source_type": "earth",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_SummonTreant.png"
           },
           {
             "id": "ThornBarrier",
             "name": "Thorn Barrier",
-            "description": "Creates a thorn barrier that lasts for 4 seconds. Any character standing near the thorn barrier will takes 4 Physical Damage Base per second.",
+            "description": "Creates a thorn barrier that lasts for 4 seconds. Any character standing near the thorn barrier will takes 4 Physical Damage per second.",
             "spell_tier": 4,
             "casting_time": 1.25,
             "max_count": 2,
             "range": 700,
             "source_type": "earth",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_ThornBarrier.png"
           },
           {
             "id": "TreeOfLife",
             "name": "Tree of Life",
-            "description": "Sprout a tree of life, granting [1] _ and granting 20 Add Recoverable Health over 8 seconds. Also heals for 15 Magical Heal Base over 8 seconds. Cannot cast on self.",
+            "description": "Sprout a tree of life, granting 3 All Attributes and granting 20 Recoverable Health over 8 seconds. Also heals for 15 Magical Heal Base over 8 seconds. Cannot cast on self.",
             "spell_tier": 6,
             "casting_time": 1.0,
             "max_count": 2,
             "range": 700,
             "source_type": "earth",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_TreeOfLife.png"
           }
         ],
         "shapeshifts": [
           {
             "id": "Bear",
             "name": "Bear",
-            "description": "Transform into a wild bear. Slow and too large to pass through single doors. Gain 50% Physical Reduction Mod, 10% Projectile Reduction Mod and 50% Max Health Mod. Lose -20% Move Speed Mod and -30% Action Speed. Your jump lowered by [0]%.\n\n[Left-Click] Swipe\nClaws the target with your right hand, inflicting curve * [1]% + [1] physical damage base and pushing the target away.\n\n[Right-Click] Bash\nRaise your body and deal curve * [2]% + [2] physical damage base with both hands, and gain the ability to push targets away and destroy unreinforced doors and containers.\n\n[Wild] Wild Fury\nFor 8 seconds, physical reduction increases by 20% and magical reduction increases by 20%.",
+            "description": "Transform into a wild bear. Slow and too large to pass through single doors. Gain 50% Physical Damage Reduction, 10% Projectile Damage Reduction and 50% Max Health. Lose -20% Move Speed and -30% Action Speed. Your jump lowered by [0]%.\n\n[Left-Click] Swipe\nClaws the target with your right hand, inflicting Strength curve * [1]% + [1] Physical Damage and pushing the target away.\n\n[Right-Click] Bash\nRaise your body and deal Strength curve * [2]% + [2] Physical Damage with both hands, and gain the ability to push targets away and destroy unreinforced doors and containers.\n\n[Wild] Wild Fury\nFor 8 seconds, Physical Damage Reduction increases by 20% and Magical Damage Reduction increases by 20%.",
             "casting_time": 1.0,
             "capsule_radius_scale": 2.05,
             "capsule_height_scale": 1.0,
+            "icon": "/icons/shapeshifts/Icon_ShapeShift_Bear.png",
             "stat_modifiers": {
               "max_health_pct": 50.0,
               "physical_reduction_pct": 50.0,
@@ -1485,30 +1627,32 @@
               "action_speed_pct": -30.0
             },
             "form_skill": "Wild Fury",
-            "form_skill_description": "Gain 20% Physical Reduction and 20% Magical Reduction for 8 seconds."
+            "form_skill_description": "Gain 20% Physical Damage Reduction and 20% Magical Damage Reduction for 8 seconds."
           },
           {
             "id": "Chicken",
             "name": "Chicken",
-            "description": "Transform into a chicken. Able to fly for a while by spreading wings. Lose -60% Max Health Mod, -60% Physical Healing Receive Mod and -60% Magical Healing Receive Mod.\n\n[Left-Click] Pecking\nPecks the target with its beak, inflicting curve * [1]% + [1] physical damage base. This attack penetrate 300% of target’s armor.\n\n[Right-Click] Clucking\nThe chicken clucks loudly.\n\n[Wild] Insect Predation\nEats crawling insects and heals curve * [2]% physical heal base.",
+            "description": "Transform into a chicken. Able to fly for a while by spreading wings. Lose -60% Max Health, -60% Physical Healing and -60% Magical Healing.\n\n[Left-Click] Pecking\nPecks the target with its beak, inflicting Resourcefulness curve * [1]% + [1] Physical Damage. This attack penetrate 300 % of target’s armor.\n\n[Right-Click] Clucking\nThe chicken clucks loudly.\n\n[Wild] Insect Predation\nEats crawling insects and heals Resourcefulness curve * [2]% Physical Heal Base.",
             "casting_time": 1.0,
             "capsule_radius_scale": 0.5,
             "capsule_height_scale": 0.3,
+            "icon": "/icons/shapeshifts/Icon_ShapeShift_Chicken.png",
             "stat_modifiers": {
               "max_health_pct": -60.0,
               "physical_healing_receive_pct": -60.0,
               "magical_healing_receive_pct": -60.0
             },
             "form_skill": "Insect Predation",
-            "form_skill_description": "Eats crawling insects and recovers health by 40% of your curve."
+            "form_skill_description": "Eats crawling insects and recovers health by 4000 % of your Resourcefulness curve."
           },
           {
             "id": "Panther",
             "name": "Panther",
-            "description": "Transform into a wild panther. Very quick and agile. Gain 5 Move Speed Add. Lose -30% Physical Reduction Mod, -10% Physical Healing Receive Mod and -10% Magical Healing Receive Mod. Your jump is [0]% higher.\n\n[Left-Click] Scratch\nClaws the target with his right hand, inflicting curve * [1]% + [1] physical damage base and causing the target to bleed, inflicting 5 Physical Damage Base for 3 seconds.\n\n[Right-Click] Neckbite\nBite the target's neck, inflicting curve * [3]% + [3] physical damage base. While you are frenzied, Neckbite silences the target for 0.1 seconds.\n\n[Wild] Rush\nRush forward, entering a frenzied state for 2 seconds after initiating the rush. You can use attacks while jumping, and this can be used in the air.",
+            "description": "Transform into a wild panther. Very quick and agile. Gain 5 Move Speed. Lose -30% Physical Damage Reduction, -10% Physical Healing and -10% Magical Healing. Your jump is [0]% higher.\n\n[Left-Click] Scratch\nClaws the target with his right hand, inflicting Agility curve * [1]% + [1] Physical Damage and causing the target to bleed, inflicting 5 Physical Damage for 3 seconds.\n\n[Right-Click] Neckbite\nBite the target's neck, inflicting Agility curve * [3]% + [3] Physical Damage. While you are frenzied, Neckbite silences the target for 0.1 seconds.\n\n[Wild] Rush\nRush forward, entering a frenzied state for 2 seconds after initiating the rush. You can use attacks while jumping, and this can be used in the air.",
             "casting_time": 1.0,
             "capsule_radius_scale": 1.0,
             "capsule_height_scale": 1.0,
+            "icon": "/icons/shapeshifts/Icon_ShapeShift_Panther.png",
             "stat_modifiers": {
               "physical_reduction_pct": -30.0,
               "move_speed_add": 5,
@@ -1521,10 +1665,11 @@
           {
             "id": "Penguin",
             "name": "Penguin",
-            "description": "Transforms into a penguin. Slow on land, but very fast in water. Lose -40% Max Health Mod, -40% Physical Healing Receive Mod and -40% Magical Healing Receive Mod.\n\n[Left-Click] Sharp Beak\nBites the target with its beak, dealing curve * [2]% + [2] physical damage base and causing bleeding, inflicting 3 Physical Damage Base over 3 seconds\n\n[Right-Click] Water Cannon\nAfter casting, spit a stream of water forward, dealing curve * 100% + [0] magical ice damage base.\n\n[Wild] Penguin Dash\nGain 15% Move Speed Mod while in water for 3 seconds.",
+            "description": "Transforms into a penguin. Slow on land, but very fast in water. Lose -40% Max Health, -40% Physical Healing and -40% Magical Healing.\n\n[Left-Click] Sharp Beak\nBites the target with its beak, dealing Will curve * [2]% + [2] Physical Damage and causing bleeding, inflicting 3 Physical Damage over 3 seconds\n\n[Right-Click] Water Cannon\nAfter casting, spit a stream of water forward, dealing Will curve * 100% + [0] magical ice damage.\n\n[Wild] Penguin Dash\nGain 15% Move Speed while in water for 3 seconds.",
             "casting_time": 1.0,
             "capsule_radius_scale": 0.52,
             "capsule_height_scale": 0.42,
+            "icon": "/icons/shapeshifts/Icon_ShapeShift_Penguin.png",
             "stat_modifiers": {
               "max_health_pct": -40.0,
               "move_speed_add": -20,
@@ -1532,15 +1677,16 @@
               "magical_healing_receive_pct": -40.0
             },
             "form_skill": "Penguin Dash",
-            "form_skill_description": "Gain 15% Move Speed Mod while in water for 3 seconds."
+            "form_skill_description": "Gain 15% Move Speed while in water for 3 seconds."
           },
           {
             "id": "Rat",
             "name": "Rat",
-            "description": "Transform into a wild rat. Small in size and moves quickly, but has very little stamina. Lose -95% Max Health Mod, -100% Physical Reduction, -100% Magical Reduction, -95% Physical Healing Receive Mod and -95% Magical Healing Receive Mod. Your jump is [0]% higher.\n\n[Left-Click] Infected Fangs\nBites the target, inflicting 1 Physical Damage Base and spreading a plague that deals 3 Magical Damage Base for 3 seconds.\n\n[Right-Click] Squeak\nMakes a squeak.\n\n[Wild] Survival Instinct\nGain 10 Max Health Add, 20 Move Speed Add for 4 seconds. When the effect ends, lose -20% Move Speed Mod for 3 seconds.",
+            "description": "Transform into a wild rat. Small in size and moves quickly, but has very little stamina. Lose -95% Max Health, -100% Physical Damage Reduction, -100% Magical Damage Reduction, -95% Physical Healing and -95% Magical Healing. Your jump is [0]% higher.\n\n[Left-Click] Infected Fangs\nBites the target, inflicting 1 Physical Damage and spreading a plague that deals 3 Magical Damage for 3 seconds.\n\n[Right-Click] Squeak\nMakes a squeak.\n\n[Wild] Survival Instinct\nGain 10 Max Health, 20 Move Speed for 4 seconds. When the effect ends, lose -20% Move Speed for 3 seconds.",
             "casting_time": 1.0,
             "capsule_radius_scale": 0.15,
             "capsule_height_scale": 0.1,
+            "icon": "/icons/shapeshifts/Icon_ShapeShift_Rat.png",
             "stat_modifiers": {
               "max_health_pct": -95.0,
               "physical_healing_receive_pct": -95.0,
@@ -1549,10 +1695,11 @@
               "magical_reduction_flat_pct": -100.0
             },
             "form_skill": "Survival Instinct",
-            "form_skill_description": "Gain 10 Max Health Add, 20 Move Speed Add for 4 seconds. After the effect over, lose -20% Move Speed Mod for 3 seconds."
+            "form_skill_description": "Gain 10 Max Health, 20 Move Speed for 4 seconds. After the effect over, lose -20% Move Speed for 3 seconds."
           }
         ],
-        "usable_item_count": 211
+        "usable_item_count": 211,
+        "icon": "/icons/classes/ClassIcon_L_Druid.png"
       },
       {
         "slug": "fighter",
@@ -1582,122 +1729,146 @@
           "buff_duration_pct": 0.0,
           "debuff_duration_pct": 0.0,
           "regular_interaction_speed_pct": 0.0,
-          "health_recovery_bonus_pct": 0.0
+          "health_recovery_bonus_pct": 0.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": 0.0,
+          "magic_power_bonus_pct": 0.0,
+          "magical_interaction_speed_pct": 0.0,
+          "spell_recovery_bonus_pct": 65.5,
+          "persuasiveness": 15.0,
+          "cooldown_reduction_pct": 0.0
         },
         "perks": [
           {
             "id": "AdrenalineSpike",
             "name": "Adrenaline Spike",
-            "description": "When your health goes below 40%, gain 15% Action Speed, 3% Move Speed Mod, and 30% Regular Interaction Speed for 12 seconds, and suffer no penalty from using the Adrenaline Rush skill.",
-            "is_default": false
+            "description": "When your health goes below 40%, gain 15% Action Speed, 3% Move Speed, and 30% Interaction Speed for 12 seconds, and suffer no penalty from using the Adrenaline Rush skill.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_AdrenalineSpike.png"
           },
           {
             "id": "Barricade",
             "name": "Barricade",
             "description": "While in defensive stance, gain 75 Armor Rating and 75 Magic Resistance.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Barricade.png"
           },
           {
             "id": "ComboAttack",
             "name": "Combo Attack",
-            "description": "When you successfully land consecutive melee attacks within 2 seconds, gain 10% Physical Damage Mod per stack, up to 2 stacks.",
+            "description": "When you successfully land consecutive melee attacks within 2 seconds, gain 10% Physical Damage per stack, up to 2 stacks.",
             "is_default": false
           },
           {
             "id": "Counterattack",
             "name": "Counterattack",
-            "description": "When you successfully block an attack, gain 10% Move Speed Mod and 10% Action Speed for 3 seconds.",
-            "is_default": false
+            "description": "When you successfully block an attack, gain 10% Move Speed and 10% Action Speed for 3 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Counterattack.png"
           },
           {
             "id": "DefenseMastery",
             "name": "Defense Mastery",
-            "description": "Gain an additional 15% Item Armor Rating Mod from equipped armor. The maximum physical reduction limit is Increased to 75%.",
-            "is_default": true
+            "description": "Gain an additional 15% Armor Rating from equipped armor. The maximum Physical Damage Reduction limit is Increased to 75%.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_DefenseMastery.png"
           },
           {
             "id": "DualWield",
             "name": "Dual Wield",
             "description": "While you have weapons equipped in both hands, gain 10% Action Speed.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_DualWield.png"
           },
           {
             "id": "LastBastion",
             "name": "Last Bastion",
-            "description": "When your Health falls to 33% or below, you gain 150 Armor Rating, 50 Magic Resistance and 30% Projectile Reduction Mod for 8 seconds.",
-            "is_default": false
+            "description": "When your Health falls to 33% or below, you gain 150 Armor Rating, 50 Magic Resistance and 30% Projectile Damage Reduction for 8 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_LastBastion.png"
           },
           {
             "id": "ProjectileResistance",
             "name": "Projectile Resistance",
-            "description": "Gain 10% Projectile Reduction Mod. While in defensive stance, gain an additional 15% Projectile Reduction Mod.",
-            "is_default": false
+            "description": "Gain 10% Projectile Damage Reduction. While in defensive stance, gain an additional 15% Projectile Damage Reduction.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ProjectileResistance.png"
           },
           {
             "id": "ShieldMastery",
             "name": "Shield Mastery",
-            "description": "While in defensive stance, gain 10% Move Speed Mod. When you successfully block an attack, gain 50% Action Speed towards your next block.",
-            "is_default": false
+            "description": "While in defensive stance, gain 10% Move Speed. When you successfully block an attack, gain 50% Action Speed towards your next block.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ShieldMastery.png"
           },
           {
             "id": "Slayer",
             "name": "Slayer",
-            "description": "While holding a weapon in each hand, gain 5 Physical Damage Weapon Primary, 10 Move Speed Add but lose the ability to equip plate armor.",
-            "is_default": false
+            "description": "While holding a weapon in each hand, gain 5 Physical Damage, 10 Move Speed but lose the ability to equip plate armor.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Slayer.png"
           },
           {
             "id": "SurvivalistTongue",
             "name": "Survivalist Tongue",
             "description": "All consumables have a {0}% effect increase.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_SurvivalistTongue.png"
           },
           {
             "id": "Swift",
             "name": "Swift",
-            "description": "Reduces the _ by [0]%. Only applies to armor-related penalties.",
-            "is_default": false
+            "description": "Reduces the Move Speed Penalty by 30%. Only applies to armor-related penalties.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Swift.png"
           },
           {
             "id": "SwordMastery",
             "name": "Sword Mastery",
-            "description": "When using a sword-type weapon, gain 2 Physical Damage Weapon Primary and 5% Action Speed. Also gain 10 Move Speed Add when taking a defensive stance with your sword.",
-            "is_default": true
+            "description": "When using a sword-type weapon, gain 2 Physical Damage and 5% Action Speed. Also gain 10 Move Speed when taking a defensive stance with your sword.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_SwordMastery.png"
           },
           {
             "id": "VeteranInstinct",
             "name": "Veteran Instinct",
-            "description": "When you enter combat, physical reduction mod is increased by 10% of its current value and physical damage mod is increased by 10% for 4 seconds.",
-            "is_default": true
+            "description": "When you enter combat, Physical Damage Reduction is increased by 10% of its current value and Physical Damage is increased by 10% for 4 seconds.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_VeteranInstinct.png"
           },
           {
             "id": "WeaponGuard",
             "name": "Weapon Guard",
-            "description": "While blocking with a weapon, gain 1 Impact Resistance and 5% Physical Reduction. Upon a successful block, you gain 10% Physical Damage Mod for 2 seconds.",
-            "is_default": false
+            "description": "While blocking with a weapon, gain 1 Impact Resistance and 5% Physical Damage Reduction. Upon a successful block, you gain 10% Physical Damage for 2 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_WeaponGuard.png"
           },
           {
             "id": "WeaponMastery",
             "name": "Weapon Mastery",
             "description": "Gain the ability to use any weapon.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_WeaponMastery.png"
           }
         ],
         "skills": [
           {
             "id": "AdrenalineRush",
             "name": "Adrenaline Rush",
-            "description": "Gain 15% Action Speed, 5% Move Speed Mod for 8 seconds. After the duration ends, lose -8% Action Speed and -4% Move Speed Mod for 2 seconds.",
+            "description": "Gain 15% Action Speed, 5% Move Speed for 8 seconds. After the duration ends, lose -8% Action Speed and -4% Move Speed for 2 seconds.",
             "skill_type": "instant",
             "skill_tier": 6,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_AdrenalineRush.png"
           },
           {
             "id": "Breakthrough",
             "name": "Breakthrough",
-            "description": "Removes debuffs that slow move speed, grants a 7 Move Speed Add, and ignores all move speed debuff effects for 8 seconds.",
+            "description": "Removes debuffs that slow move speed, grants a 7 Move Speed, and ignores all move speed debuff effects for 8 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Breakthrough.png"
           },
           {
             "id": "Disarm",
@@ -1705,7 +1876,8 @@
             "description": "If you block a melee attack with your weapon within 8 seconds, you disarm the attacker for 1 seconds. Disarmed targets cannot use weapons. This effect can only be applied once and is consumed when you block a melee attack. Can only be used while a weapon is equipped.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Disarm.png"
           },
           {
             "id": "FortifiedGround",
@@ -1713,7 +1885,8 @@
             "description": "",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_FortifiedGround.png"
           },
           {
             "id": "PerfectBlock",
@@ -1721,68 +1894,77 @@
             "description": "Gain 5 Impact Resistance for 8 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_PerfectBlock.png"
           },
           {
             "id": "PommelStrike",
             "name": "Pommel Strike",
-            "description": "When attacking with the hilt while a one-handed weapon is equipped as your main weapon, it deals an additional 15 Physical Damage Base and silences the target. If the silence interrupts the enemy’s action, it deals an additional 10 Physical Damage Base and reduces _ by [2]% for 2 seconds.\n\nSilence: Disables skills/spells/performance abilities.",
+            "description": "When attacking with the hilt while a one-handed weapon is equipped as your main weapon, it deals an additional 15 Physical Damage and silences the target. If the silence interrupts the enemy’s action, it deals an additional 10 Physical Damage and reduces Move Speed by 50% for 2 seconds.\n\nSilence: Disables skills/spells/performance abilities.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_PommelStrike.png"
           },
           {
             "id": "SecondWind",
             "name": "Second Wind",
-            "description": "Recover 400% Add Health By Max Health Ratio over 12 seconds. Additionally, Second Wind removes the negative effects of Adrenaline Rush.",
+            "description": "Recover 400 % Max Health over 12 seconds. Additionally, Second Wind removes the negative effects of Adrenaline Rush.",
             "skill_type": "instant",
             "skill_tier": 5,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SecondWind.png"
           },
           {
             "id": "ShieldSlam",
             "name": "Shield Slam",
-            "description": "Inflicts 30 Physical Damage Base on the target, and reduces the targets _ by [1]% for 3 seconds.",
+            "description": "Inflicts 30 Physical Damage on the target, and reduces the targets Move Speed by 20% for 3 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_ShieldSlam.png"
           },
           {
             "id": "SpellReflection",
             "name": "Spell Reflection",
-            "description": "While blocking, gain the ability to reflect spells. This buff persists until triggered, lasting 5 seconds. Before activation, gain 15% Magical Reduction.",
+            "description": "While blocking, gain the ability to reflect spells. This buff persists until triggered, lasting 5 seconds. Before activation, gain 15% Magical Damage Reduction.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellReflection.png"
           },
           {
             "id": "Sprint",
             "name": "Sprint",
-            "description": "Gain 3 stacks of Momentum, granting 10 Move Speed Add per stack. Lose 1 stack every 2 seconds.",
+            "description": "Gain 3 stacks of Momentum, granting 10 Move Speed per stack. Lose 1 stack every 2 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Sprint.png"
           },
           {
             "id": "Taunt",
             "name": "Taunt",
-            "description": "Increases the aggro value to all monsters within a [0]m area by 300%. Gain 12% Physical Reduction and 12% Magical Reduction for 8 seconds",
+            "description": "Increases the aggro value to all monsters within a 7.5m area by 300%. Gain 12% Physical Damage Reduction and 12% Magical Damage Reduction for 8 seconds",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Taunt.png"
           },
           {
             "id": "VictoryStrike",
             "name": "Victory Strike",
-            "description": "Your next attack deals an additional 40% Physical Damage Mod. If this attack kills a player, the skill triggers again with no cooldown.",
+            "description": "Your next attack deals an additional 40% Physical Damage. If this attack kills a player, the skill triggers again with no cooldown.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_VictoryStrike.png"
           }
         ],
         "spells": [],
         "shapeshifts": [],
-        "usable_item_count": 244
+        "usable_item_count": 244,
+        "icon": "/icons/classes/ClassIcon_L_Fighter.png"
       },
       {
         "slug": "ranger",
@@ -1812,92 +1994,111 @@
           "buff_duration_pct": -11.0,
           "debuff_duration_pct": 12.4,
           "regular_interaction_speed_pct": 42.4,
-          "health_recovery_bonus_pct": 56.0
+          "health_recovery_bonus_pct": 56.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -6.0,
+          "magic_power_bonus_pct": -11.0,
+          "magical_interaction_speed_pct": -25.0,
+          "spell_recovery_bonus_pct": 61.0,
+          "persuasiveness": 23.0,
+          "cooldown_reduction_pct": 13.0
         },
         "perks": [
           {
             "id": "CampingMastery",
             "name": "Camping Mastery",
             "description": "Instantly place a campfire and increase its duration by 100%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_CampingMastery.png"
           },
           {
             "id": "Chase",
             "name": "Chase",
             "description": "Detect recent enemy footsteps and can hear enemy footstep sounds from farther away.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Chase.png"
           },
           {
             "id": "CripplingShot",
             "name": "Crippling Shot",
-            "description": "Hitting the target’s leg reduces their _ by [0]% for 1 seconds.",
-            "is_default": false
+            "description": "Hitting the target’s leg reduces their Move Speed by 40% for 1 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_CripplingShot.png"
           },
           {
             "id": "CrossbowMastery",
             "name": "Crossbow Mastery",
-            "description": "While using a crossbow, gain 5% Physical Damage Mod and an additional 50% Action Speed while reloading.",
-            "is_default": false
+            "description": "While using a crossbow, gain 5% Physical Damage and an additional 50% Action Speed while reloading.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_CrossbowMastery.png"
           },
           {
             "id": "Kinesthesia",
             "name": "Kinesthesia",
             "description": "When moving with the bowstring drawn, move speed bonus increases by [0]%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Kinesthesia.png"
           },
           {
             "id": "LongshotExpert",
             "name": "Longshot Expert",
-            "description": "Deals additional damage as the distance to the target increases, up to 20 Physical Damage Base.",
+            "description": "Deals additional damage as the distance to the target increases, up to 20 Physical Damage.",
             "is_default": false
           },
           {
             "id": "NimbleHands",
             "name": "Nimble Hands",
             "description": "When using a bow, increases your draw speed by 15%.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_NimbleHands.png"
           },
           {
             "id": "PointBlankExpert",
             "name": "Point-Blank Expert",
-            "description": "Deals an additional 3 Physical Damage True to targets within 30000m.",
+            "description": "Deals an additional 3 true physical damage to targets within 300m.",
             "is_default": false
           },
           {
             "id": "PurgeShot",
             "name": "Purge Shot",
             "description": "Each time you hit a target with a ranged weapon, remove one random magical buff and deal 3 Magical Damage True.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_PurgeShot.png"
           },
           {
             "id": "QuickReload",
             "name": "Quick Reload",
             "description": "When reloading a bow-type or firearm-type weapon, gain 50% Action Speed.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_QuickReload.png"
           },
           {
             "id": "RangedWeaponsMastery",
             "name": "Ranged Weapons Mastery",
-            "description": "When attacking with a ranged weapon, gain 5% Physical Damage Mod.",
-            "is_default": true
+            "description": "When attacking with a ranged weapon, gain 5% Physical Damage.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_RangedWeaponsMastery.png"
           },
           {
             "id": "Sharpshooter",
             "name": "Sharpshooter",
             "description": "When attacking with a ranged weapon, gain 15% Physical Headshot Power.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Sharpshooter.png"
           },
           {
             "id": "SpearProficiency",
             "name": "Spear Proficiency",
             "description": "Gain the ability to equip spears.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_SpearProficiency.png"
           },
           {
             "id": "TrapMastery",
             "name": "Trap Mastery",
             "description": "",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_TrapMastery.png"
           },
           {
             "id": "WindFletch",
@@ -1913,7 +2114,8 @@
             "description": "Quickly retreats a short distance. It can also be used in the air.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Backstep.png"
           },
           {
             "id": "FieldRation",
@@ -1921,7 +2123,8 @@
             "description": "Forage food and recover 40 Physical Heal Base.",
             "skill_type": "instant",
             "skill_tier": 2,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_FieldRation.png"
           },
           {
             "id": "ForcefulShot",
@@ -1929,7 +2132,8 @@
             "description": "When using a bow-type weapon, gain the ability to knock targets back for 10 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_ForcefulShot.png"
           },
           {
             "id": "MultiShot",
@@ -1937,7 +2141,8 @@
             "description": "Fire 5 arrows at once in a cone shaped dispersion.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_MultiShot.png"
           },
           {
             "id": "PenetratingShot",
@@ -1945,7 +2150,8 @@
             "description": "Gain 500% Physical Headshot Penetration and 250% Armor Penetration for 8 seconds. Bow and crossbow attacks pierce targets.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_PenetratingShot.png"
           },
           {
             "id": "QuickFire",
@@ -1953,7 +2159,8 @@
             "description": "Gain an additional 50% Action Speed for 8 seconds while using bow-type weapons.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_QuickFire.png"
           },
           {
             "id": "QuickShot",
@@ -1961,20 +2168,23 @@
             "description": "Fire arrows in a quick succession. Each bow-type will fire a different amount of arrows.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_QuickShot.png"
           },
           {
             "id": "TrueShot",
             "name": "True Shot",
-            "description": "Projectile flight speed is greatly increased, also increasing _ by [0]% for 8 seconds.",
+            "description": "Projectile flight speed is greatly increased, also increasing Physical Damage by 8% for 8 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_TrueShot.png"
           }
         ],
         "spells": [],
         "shapeshifts": [],
-        "usable_item_count": 190
+        "usable_item_count": 190,
+        "icon": "/icons/classes/ClassIcon_L_Ranger.png"
       },
       {
         "slug": "rogue",
@@ -2004,44 +2214,57 @@
           "buff_duration_pct": -11.0,
           "debuff_duration_pct": 12.4,
           "regular_interaction_speed_pct": 52.0,
-          "health_recovery_bonus_pct": 70.0
+          "health_recovery_bonus_pct": 70.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -14.0,
+          "magic_power_bonus_pct": -11.0,
+          "magical_interaction_speed_pct": -25.0,
+          "spell_recovery_bonus_pct": 58.0,
+          "persuasiveness": 25.0,
+          "cooldown_reduction_pct": 15.0
         },
         "perks": [
           {
             "id": "Ambush",
             "name": "Ambush",
-            "description": "When coming out of hide, you gain an additional 10% Move Speed Mod and 25% Physical Damage Mod for 3 seconds. If the melee attack is successful, the effect disappears.",
-            "is_default": true
+            "description": "When coming out of hide, you gain an additional 10% Move Speed and 25% Physical Damage for 3 seconds. If the melee attack is successful, the effect disappears.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Ambush.png"
           },
           {
             "id": "BackAttack",
             "name": "Back Attack",
             "description": "When attacking a target from behind, gain 300% Physical Backstab Power.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_BackAttack.png"
           },
           {
             "id": "Creep",
             "name": "Creep",
-            "description": "While crouch walking, reduce the volume of footsteps significantly and gain 10% Move Speed Mod.",
-            "is_default": false
+            "description": "While crouch walking, reduce the volume of footsteps significantly and gain 10% Move Speed.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Creep.png"
           },
           {
             "id": "DaggerMastery",
             "name": "Dagger Mastery",
-            "description": "When using a dagger, gain 10% Physical Damage Mod and 1 Physical Damage True.",
-            "is_default": true
+            "description": "When using a dagger, gain 10% Physical Damage and 1 true physical damage.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_DaggerMastery.png"
           },
           {
             "id": "DoubleJump",
             "name": "Double Jump",
             "description": "You gain the ability to jump an additional time in the air.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_DoubleJump.png"
           },
           {
             "id": "HandCrossbowMastery",
             "name": "Hand Crossbow Mastery",
-            "description": "Gain the ability to equip the Hand Crossbow, while using it gain +[0] _.",
-            "is_default": false
+            "description": "Gain the ability to equip the Hand Crossbow, while using it gain 2 Physical Damage.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_HandCrossbowMastery.png"
           },
           {
             "id": "HideMastery",
@@ -2052,44 +2275,50 @@
           {
             "id": "Jokester",
             "name": "Jokester",
-            "description": "Give all party members [0] _.",
-            "is_default": true
+            "description": "Give all party members 2 All Attributes.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Jokester.png"
           },
           {
             "id": "LethalMark",
             "name": "Lethal Mark",
-            "description": "A target hit by a throwing knife loses -15% Physical Reduction Mod for 8 seconds. This effect does not stack on the same target.",
+            "description": "A target hit by a throwing knife loses -15% Physical Damage Reduction for 8 seconds. This effect does not stack on the same target.",
             "is_default": false
           },
           {
             "id": "Pickpocket",
             "name": "Pickpocket",
             "description": "Steal items from nearby enemies. Additionally, your hide will not be revealed when you are bumped into. Items worn in utility slots do not appear on the waist.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Pickpocket.png"
           },
           {
             "id": "PoisonedWeapon",
             "name": "Poisoned Weapon",
-            "description": "A successful attack applies poison that deals 4 Magical Damage Base and reduces their _ by [1]% and _ by [1]% over 4 seconds. The poison can stack up to 5 times.",
-            "is_default": false
+            "description": "A successful attack applies poison that deals 4 Magical Damage and reduces their Physical Healing by 10% and Magical Healing by 10% over 4 seconds. The poison can stack up to 5 times.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_PoisonedWeapon.png"
           },
           {
             "id": "Stealth",
             "name": "Stealth",
-            "description": "While hiding, gain the ability to move 10 steps while crouching or slow walking. Also gain 3 Move Speed Add per remaining step.",
-            "is_default": true
+            "description": "While hiding, gain the ability to move 10 steps while crouching or slow walking. Also gain 3 Move Speed per remaining step.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Stealth.png"
           },
           {
             "id": "Thrust",
             "name": "Thrust",
             "description": "While using dagger, gain an additional 200% Armor Penetration.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Thrust.png"
           },
           {
             "id": "TrapsandLocks",
             "name": "Traps and Locks",
             "description": "You can unlock locked locks without a lockpick and detect traps within a certain range to disarm them.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_TrapsandLocks.png"
           },
           {
             "id": "Trickster",
@@ -2102,18 +2331,20 @@
           {
             "id": "Caltrop",
             "name": "Caltrops",
-            "description": "Drops Caltrops at your feet that deal 10 Physical Damage Base and slows the _ by [0]% of anything that steps on them for 3 seconds.",
+            "description": "Drops Caltrops at your feet that deal 10 Physical Damage and slows the Move Speed by 50% of anything that steps on them for 3 seconds.",
             "skill_type": "instant",
             "skill_tier": 2,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Caltrop.png"
           },
           {
             "id": "CutThroat",
             "name": "Cut Throat",
-            "description": "When you successfully hit a target, silence them for [0] seconds, disabling the targets skills/spells/performance abilities.",
+            "description": "When you successfully hit a target, silence them for 2 seconds, disabling the targets skills/spells/performance abilities.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_CutThroat.png"
           },
           {
             "id": "Hide",
@@ -2121,28 +2352,31 @@
             "description": "Become invisible for 8 seconds. It is possible to change your equipment in this state. You are revealed when you attempt an action, such as moving, attacking, or using a skill.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Hide.png"
           },
           {
             "id": "Rupture",
             "name": "Rupture",
-            "description": "The next successful attack causes the target to bleed for 20 Physical Damage Base over 5 seconds. The buff is consumed when an attack hits an object or target.",
+            "description": "The next successful attack causes the target to bleed for 20 Physical Damage over 5 seconds. The buff is consumed when an attack hits an object or target.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Rupture.png"
           },
           {
             "id": "SmokePot",
             "name": "Smoke Pot",
-            "description": "A smoke pot is deployed creating a smoke screen. The smoke screen lasts 8 seconds and covers a [0]m area.When an enemy target enters the smoke screen, reduces their _ by [1]%.",
+            "description": "A smoke pot is deployed creating a smoke screen. The smoke screen lasts 8 seconds and covers a 6m area.When an enemy target enters the smoke screen, reduces their Move Speed by 5%.",
             "skill_type": "instant",
             "skill_tier": 3,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SmokePot.png"
           },
           {
             "id": "SneakAttack",
             "name": "Sneak Attack",
-            "description": "Your next melee attack deals an additional 10 Physical Damage Base. If the target is not in combat, it deals an additional 20 Physical Damage Base.",
+            "description": "Your next melee attack deals an additional 10 Physical Damage. If the target is not in combat, it deals an additional 20 Physical Damage.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true
@@ -2153,20 +2387,23 @@
             "description": "When used, backtumbles in the opposite direction the player is facing.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Tumbling.png"
           },
           {
             "id": "WeakpointAttack",
             "name": "Weakpoint Attack",
-            "description": "When you successfully hit a target, reduce their _ by [0]% for 3 seconds. Only when melee attacking.",
+            "description": "When you successfully hit a target, reduce their Armor Rating by 40% for 3 seconds. Only when melee attacking.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_WeakpointAttack.png"
           }
         ],
         "spells": [],
         "shapeshifts": [],
-        "usable_item_count": 188
+        "usable_item_count": 188,
+        "icon": "/icons/classes/ClassIcon_L_Rogue.png"
       },
       {
         "slug": "sorcerer",
@@ -2196,80 +2433,99 @@
           "buff_duration_pct": 10.0,
           "debuff_duration_pct": -9.1,
           "regular_interaction_speed_pct": -4.5,
-          "health_recovery_bonus_pct": -9.0
+          "health_recovery_bonus_pct": -9.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -11.0,
+          "magic_power_bonus_pct": 10.0,
+          "magical_interaction_speed_pct": 70.0,
+          "spell_recovery_bonus_pct": 73.0,
+          "persuasiveness": 12.0,
+          "cooldown_reduction_pct": -6.0
         },
         "perks": [
           {
             "id": "AirMastery",
             "name": "Air Mastery",
             "description": "Gain 250% Magical Air Knockback Mod and 500% Magical Air Damage Mod.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_AirMastery.png"
           },
           {
             "id": "ApexOfSorcery",
             "name": "Apex of Sorcery",
-            "description": "While casting spells, reduce movement speed by [0]%, but gain 50% Magical Damage Mod and 50% Spell Casting Speed.",
-            "is_default": false
+            "description": "While casting spells, reduce movement speed by [0]%, but gain 50% Magical Damage and 50% Spell Casting Speed.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ApexOfSorcery.png"
           },
           {
             "id": "ElementalFury",
             "name": "Elemental Fury",
             "description": "For every 1% of health lost, gain a 0.5% cooldown reduction bonus and 0.25% magical damage bonus.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ElementalFury.png"
           },
           {
             "id": "InnateTalent",
             "name": "Innate Talent",
             "description": "When casting spells with bare hands, gain 5 Magical Power and 10% Spell Casting Speed.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_InnateTalent.png"
           },
           {
             "id": "LightningMastery",
             "name": "Lightning Mastery",
-            "description": "Gain 25% Magical Lightning Damage Mod. Once every 2 seconds while dealing lightning magical damage, inflict electric shock for [0] seconds, transferring 5 magical lightning damage base to the closest target within [0]m of the primary target.",
-            "is_default": false
+            "description": "Gain 25% Magical Lightning Damage. Once every 2 seconds while dealing lightning magical damage, inflict electric shock for [0] seconds, transferring 5 magical lightning damage to the closest target within [0]m of the primary target.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_LightningMastery.png"
           },
           {
             "id": "ManaFlow",
             "name": "Mana Flow",
-            "description": "For each successful spell cast, gain 5% Magical Damage Mod. This effect stacks up to 3 times and resets on the next successful cast.",
-            "is_default": false
+            "description": "For each successful spell cast, gain 5% Magical Damage. This effect stacks up to 3 times and resets on the next successful cast.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ManaFlow.png"
           },
           {
             "id": "ManaFold",
             "name": "Mana Fold",
             "description": "Reduce all spell cooldowns by [0]%, but lose -15% Spell Casting Speed.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_ManaFold.png"
           },
           {
             "id": "MergedMight",
             "name": "Merged Might",
-            "description": "When casting a merge spell, gain 5 Magical Power. After casting, gain a [0]% _ for 2 seconds.",
-            "is_default": false
+            "description": "When casting a merge spell, gain 5 Magical Power. After casting, gain a 5% Move Speed for 2 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_MergedMight.png"
           },
           {
             "id": "SpellMerge",
             "name": "Spell Merge",
             "description": "While using bare hands, casting two combinable spells simultaneously allows you to use a new spell.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_SpellMerge.png"
           },
           {
             "id": "SpellSculpting",
             "name": "Spell Sculpting",
             "description": "Increases the range of all spells by 25% and the area of ​​effect by 25%, but increases the cooldown time by [0]%.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_SpellSculpting.png"
           },
           {
             "id": "SpellStride",
             "name": "Spell Stride",
-            "description": "Gain 30% Move Speed Mod while casting two spells simultaneously.",
-            "is_default": true
+            "description": "Gain 30% Move Speed while casting two spells simultaneously.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_SpellStride.png"
           },
           {
             "id": "TimeDistortion",
             "name": "Time Distortion",
             "description": "Reduces cast time of all spells by 5000%, but increases cooldown time for all spells by [0]%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_TimeDistortion.png"
           }
         ],
         "skills": [
@@ -2294,74 +2550,80 @@
           {
             "id": "Eruption",
             "name": "Eruption",
-            "description": "Cause a ground explosion, dealing 20 magical earth damage base and lifting all targets within the area into the air.",
+            "description": "Cause a ground explosion, dealing 20 magical earth damage and lifting all targets within the area into the air.",
             "spell_tier": 2,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 700,
             "source_type": "earth",
             "cost_type": "cooldown",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Eruption.png"
           },
           {
             "id": "FireArrow",
             "name": "Fire Arrow",
-            "description": "Fire 3 homing arrows in a radial pattern, each dealing 7 magical fire damage base and inflicting burn over 3 seconds.\n\nBurn: The target takes 3 magical fire damage base.",
+            "description": "Fire 3 homing arrows in a radial pattern, each dealing 7 magical fire damage and inflicting burn over 3 seconds.\n\nBurn: The target takes 3 magical fire damage.",
             "spell_tier": 1,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 999999,
             "source_type": "fire",
             "cost_type": "end",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_FireArrow.png"
           },
           {
             "id": "FireOrb",
             "name": "Fire Orb",
-            "description": "Launch a fire orb forward, dealing 5 magical fire damage base per second to nearby targets. The orb lasts for 6 seconds and deals 25 magical fire damage base to targets it touches. Upon contact, it explodes, dealing 10 magical fire damage base to nearby targets and inflicting burn over 3 seconds.\n\nBurn: The target takes 5 magical fire damage base.",
+            "description": "Launch a fire orb forward, dealing 5 magical fire damage per second to nearby targets. The orb lasts for 6 seconds and deals 25 magical fire damage to targets it touches. Upon contact, it explodes, dealing 10 magical fire damage to nearby targets and inflicting burn over 3 seconds.\n\nBurn: The target takes 5 magical fire damage.",
             "spell_tier": 3,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 700,
             "source_type": "fire",
             "cost_type": "end",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_FireOrb.png"
           },
           {
             "id": "Flamestrike",
             "name": "Flamestrike",
-            "description": "Create a fire pillar lasting 3 seconds, dealing 30 magical fire damage base on creation and 10 magical fire damage base per second to enemies inside while inflicting burn over 3 seconds.\n\nBurn: The target takes 3 magical fire damage base.",
+            "description": "Create a fire pillar lasting 3 seconds, dealing 30 magical fire damage on creation and 10 magical fire damage per second to enemies inside while inflicting burn over 3 seconds.\n\nBurn: The target takes 3 magical fire damage.",
             "spell_tier": 2,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 700,
             "source_type": "fire",
             "cost_type": "cooldown",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Flamestrike.png"
           },
           {
             "id": "Glaciate",
             "name": "Glaciate",
-            "description": "Envelop your weapon in ice for 15 seconds, inflicting frostbite for 1 seconds on hit.\n\nFrostbite: The target loses -5% Move Speed Mod and -20% Action Speed.",
+            "description": "Envelop your weapon in ice for 15 seconds, inflicting frostbite for 1 seconds on hit.\n\nFrostbite: The target loses -5% Move Speed and -20% Action Speed.",
             "spell_tier": 2,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 700,
             "source_type": "ice",
             "cost_type": "buffremoved",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Glaciate.png"
           },
           {
             "id": "IceSpear",
             "name": "Ice Spear",
-            "description": "Fire an ice spear that deals 30 magical ice damage base, piercing and damaging all targets in its path.",
+            "description": "Fire an ice spear that deals 30 magical ice damage, piercing and damaging all targets in its path.",
             "spell_tier": 2,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 999999,
             "source_type": "ice",
             "cost_type": "cooldown",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_IceSpear.png"
           },
           {
             "id": "Levitation",
@@ -2373,31 +2635,34 @@
             "range": 700,
             "source_type": "air",
             "cost_type": "cooldown",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Levitation.png"
           },
           {
             "id": "LightningBolt",
             "name": "Lightning Bolt",
-            "description": "Fire a lightning beam for [0] seconds, electrifying the target and dealing 5 magical lightning damage base per second.\n\nElectrified: The target loses -20% Move Speed Mod.",
+            "description": "Fire a lightning beam for 5 seconds, electrifying the target and dealing 5 magical lightning damage per second.\n\nElectrified: The target loses -20% Move Speed.",
             "spell_tier": 3,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 700,
             "source_type": "lightning",
             "cost_type": "end",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_LightningBolt.png"
           },
           {
             "id": "LightningSphere",
             "name": "Lightning Sphere",
-            "description": "Surround yourself with an electromagnetic field for 5 seconds, shocking all nearby targets for 5 magical lightning damage base per second.\n\nElectrified: The target loses -20% Move Speed Mod.",
+            "description": "Surround yourself with an electromagnetic field for 5 seconds, shocking all nearby targets for 5 magical lightning damage per second.\n\nElectrified: The target loses -20% Move Speed.",
             "spell_tier": 4,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 700,
             "source_type": "lightning",
             "cost_type": "cooldown",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_LightningSphere.png"
           },
           {
             "id": "SorceryCombat1",
@@ -2426,19 +2691,20 @@
           {
             "id": "StoneSkin",
             "name": "Stone Skin",
-            "description": "Surround yourself with stone for 15 seconds, gaining 15% Physical Reduction and 5% Physical Damage Mod, but losing -5 Move Speed Add.",
+            "description": "Surround yourself with stone for 15 seconds, gaining 15% Physical Damage Reduction and 5% Physical Damage, but losing -5 Move Speed.",
             "spell_tier": 1,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 700,
             "source_type": "earth",
             "cost_type": "buffremoved",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_StoneSkin.png"
           },
           {
             "id": "SummonEarthElemental",
             "name": "Summon Earth Elemental",
-            "description": "Summon an Earth Elemental for 24 seconds. The Earth Elemental increases the caster's _ by [0] and hurls rocks at nearby enemies, dealing 40 Physical Damage Base.",
+            "description": "Summon an Earth Elemental for 24 seconds. The Earth Elemental increases the caster's Armor Rating by 50 and hurls rocks at nearby enemies, dealing 40 Physical Damage.",
             "spell_tier": 5,
             "casting_time": 1.0,
             "max_count": 0,
@@ -2450,42 +2716,46 @@
           {
             "id": "Vortex",
             "name": "Vortex",
-            "description": "Create a vortex centered on the caster. Targets touching the vortex take 15 magical air damage base and are pushed back.",
+            "description": "Create a vortex centered on the caster. Targets touching the vortex take 15 Magical Air Damage Base and are pushed back.",
             "spell_tier": 4,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 0,
             "source_type": "air",
             "cost_type": "cooldown",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Vortex.png"
           },
           {
             "id": "WaterBolt",
             "name": "Water Bolt",
-            "description": "Launch a condensed water orb, dealing 15 magical ice damage base to targets it touches and inflicting wet for 2 seconds. The orb stops upon hitting an object or reaching its maximum range and lasts for 12 seconds. Up to 3 water orbs can exist simultaneously.\n\nWet: The target loses -20% Move Speed Mod and jump height is reduced by [0]%.",
+            "description": "Launch a condensed water orb, dealing 15 magical ice damage to targets it touches and inflicting wet for 2 seconds. The orb stops upon hitting an object or reaching its maximum range and lasts for 12 seconds. Up to 3 water orbs can exist simultaneously.\n\nWet: The target loses -20% Move Speed and jump height is reduced by [0]%.",
             "spell_tier": 1,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 700,
             "source_type": "ice",
             "cost_type": "cooldown",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_WaterBolt.png"
           },
           {
             "id": "WindBlast",
             "name": "Windblast",
-            "description": "Deal 10 magical air damage base to the target and push them back.",
+            "description": "Deal 10 Magical Air Damage Base to the target and push them back.",
             "spell_tier": 2,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 400,
             "source_type": "air",
             "cost_type": "cooldown",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_WindBlast.png"
           }
         ],
         "shapeshifts": [],
-        "usable_item_count": 198
+        "usable_item_count": 198,
+        "icon": "/icons/classes/ClassIcon_L_Sorcerer.png"
       },
       {
         "slug": "warlock",
@@ -2515,114 +2785,137 @@
           "buff_duration_pct": 7.0,
           "debuff_duration_pct": -6.5,
           "regular_interaction_speed_pct": -1.5,
-          "health_recovery_bonus_pct": -3.0
+          "health_recovery_bonus_pct": -3.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -8.0,
+          "magic_power_bonus_pct": 7.0,
+          "magical_interaction_speed_pct": 49.0,
+          "spell_recovery_bonus_pct": 65.5,
+          "persuasiveness": 14.0,
+          "cooldown_reduction_pct": -2.0
         },
         "perks": [
           {
             "id": "Antimagic",
             "name": "Antimagic",
             "description": "Gain 200% magical damage reduction except against divine magic.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Antimagic.png"
           },
           {
             "id": "CurseMastery",
             "name": "Curse Mastery",
             "description": "Gain 30% duration towards all curses you cast.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_CurseMastery.png"
           },
           {
             "id": "DarkEnhancement",
             "name": "Dark Enhancement",
-            "description": "Gain 200% Magical Dark Damage Mod towards dark magic spells.",
-            "is_default": false
+            "description": "Gain 20% Magical Dark Damage towards dark magic spells.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_DarkEnhancement.png"
           },
           {
             "id": "DarkReflection",
             "name": "Dark Reflection",
-            "description": "While active, reflect 15 magical dark damage base to the melee attacker. Does not reflect while on cooldown.",
-            "is_default": false
+            "description": "While active, reflect 15 magical dark damage to the melee attacker. Does not reflect while on cooldown.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_DarkReflection.png"
           },
           {
             "id": "DemonArmor",
             "name": "Demon Armor",
             "description": "Gain the ability to equip plate armor, but lose -10% Spell Casting Speed.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_DemonArmor.png"
           },
           {
             "id": "ImmortalLament",
             "name": "Immortal Lament",
-            "description": "Casting spells will no longer take you below 1 health. When your health falls below 5%, gain 100% increased magical heal mod for 5 seconds.",
-            "is_default": false
+            "description": "Casting spells will no longer take you below 1 health. When your health falls below 5%, gain 100% increased Magical Heal Mod for 5 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ImmortalLament.png"
           },
           {
             "id": "InfernalPledge",
             "name": "Infernal Pledge",
             "description": "Reduces damage taken from Undead and Demons by 400%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_InfernalPledge.png"
           },
           {
             "id": "Malice",
             "name": "Malice",
-            "description": "Gain 150% Will Mod.",
-            "is_default": false
+            "description": "Gain 15% Will Mod.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Malice.png"
           },
           {
             "id": "ShadowTouch",
             "name": "Shadow Touch",
-            "description": "Dealing physical damage to an enemy with a melee weapon deals 2 true and heals you for 2 Magical Heal Base.",
-            "is_default": false
+            "description": "Dealing physical damage to an enemy with a melee weapon deals 2 magical dark damage true and heals you for 2 Magical Heal Base.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ShadowTouch.png"
           },
           {
             "id": "SoulCollector",
             "name": "Soul Collector",
-            "description": "When you deal the final blow to an enemy, one darkness shard is collected. Gain [0] _, 330% Magical Dark Damage Mod for each shard collected, up to a maximum of [0] shards. When you deal dark magic damage, consume all collected shards.",
-            "is_default": true
+            "description": "When you deal the final blow to an enemy, one darkness shard is collected. Gain 1 All Attributes, 33% Magical Dark Damage for each shard collected, up to a maximum of 0 shards. When you deal dark magic damage, consume all collected shards.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_SoulCollector.png"
           },
           {
             "id": "TortureMastery",
             "name": "Torture Mastery",
-            "description": "All curses inflicted upon enemies restores 2 Recovery Heal Base to the caster with each instance of damage dealt. All Warlock spell costs are doubled when this perk is equipped.",
-            "is_default": true
+            "description": "All curses inflicted upon enemies restores 2 Recovery Heal to the caster with each instance of damage dealt. All Warlock spell costs are doubled when this perk is equipped.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_TortureMastery.png"
           },
           {
             "id": "Vampirism",
             "name": "Vampirism",
             "description": "Gain 200% Magical Heal Mod.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Vampirism.png"
           }
         ],
         "skills": [
           {
             "id": "BloodPact",
             "name": "Blood Pact",
-            "description": "Take the form of your contracted demon, gaining an additional 50 Max Health Add, 50 Armor Rating, and 50 Magic Resistance. Your entire body is covered in Abyssal Flame, taking 10% damage per second and dealing 2 Magical Damage Base per second to nearby characters. Once activated, the effect cannot be stopped until the contract is complete. Additionally, by consuming Darkness Shards, you gain [1] _, 330% Magical Dark Damage Mod for each Darkness Shard consumed. When you become a demon your skills change to demon-only skills.\n\nLeft-Click: Use equipped item. If no item is equipped, then performs bare-handed attack. Perform up to 4 combo attacks using both hands.\n\nRight-Click: Use equipped item. If no item is equipped, then fires a bolt of darkness.",
+            "description": "Take the form of your contracted demon, gaining an additional 50 Max Health, 50 Armor Rating, and 50 Magic Resistance. Your entire body is covered in Abyssal Flame, taking 10 % damage per second and dealing 2 Magical Damage per second to nearby characters. Once activated, the effect cannot be stopped until the contract is complete. Additionally, by consuming Darkness Shards, you gain 1 All Attributes, 33% Magical Dark Damage for each Darkness Shard consumed. When you become a demon your skills change to demon-only skills.\n\nLeft-Click: Use equipped item. If no item is equipped, then performs bare-handed attack. Perform up to 4 combo attacks using both hands.\n\nRight-Click: Use equipped item. If no item is equipped, then fires a bolt of darkness.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_BloodPact.png"
           },
           {
             "id": "BlowofCorruption",
             "name": "Blow of Corruption",
-            "description": "Your next physical attack deals 12 magical evil damage base to the target and reduces their _ by [1]% and _ by [1]% for 12 seconds.",
+            "description": "Your next physical attack deals 12 magical evil damage to the target and reduces their Physical Healing by 80% and Magical Healing by 80% for 12 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_BlowofCorruption.png"
           },
           {
             "id": "DarkOffering",
             "name": "Dark Offering",
-            "description": "Channel your mind, sacrificing -100% of your max health per second to gain 5% Magical Damage Mod and 5% Physical Damage Mod. This bonus lasts for 60 seconds.",
+            "description": "Channel your mind, sacrificing -100 % of your max health per second to gain 5% Magical Damage and 5% Physical Damage. This bonus lasts for 60 seconds.",
             "skill_type": "channeling",
             "skill_tier": 1,
-            "use_moving": false
+            "use_moving": false,
+            "icon": "/icons/skills/Icon_Skill_DarkOffering.png"
           },
           {
             "id": "Phantomize",
             "name": "Phantomize",
-            "description": "Phase through melee attacks and projectiles for 4 seconds. While active, gain 5% Move Speed Mod and lose -50% Magical Reduction. During this period you can only move and do not collide with other players or monsters.",
+            "description": "Phase through melee attacks and projectiles for 4 seconds. While active, gain 5% Move Speed and lose -50% Magical Damage Reduction. During this period you can only move and do not collide with other players or monsters.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_Phantomize.png"
           },
           {
             "id": "SpellMemory1",
@@ -2645,26 +2938,28 @@
           {
             "id": "BloodstainedBlade",
             "name": "Bloodstained Blade",
-            "description": "While active, the target gains 5 Physical Damage Weapon Primary for 20 seconds. When the target swings their weapon, they take 3 magical evil damage base. Self cast if no target is found.",
+            "description": "While active, the target gains 5 Physical Damage for 20 seconds. When the target swings their weapon, they take 3 magical evil damage. Self cast if no target is found.",
             "spell_tier": 2,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 750,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_BloodstainedBlade.png"
           },
           {
             "id": "BoltofDarkness",
             "name": "Bolt of Darkness",
-            "description": "Fires a bolt that deals 20 magical dark damage base to the target.",
+            "description": "Fires a bolt that deals 20 magical dark damage to the target.",
             "spell_tier": 1,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 999999,
             "source_type": "dark",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_BoltofDarkness.png"
           },
           {
             "id": "CurseofPain",
@@ -2676,131 +2971,143 @@
             "range": 750,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_CurseofPain.png"
           },
           {
             "id": "CurseofWeakness",
             "name": "Curse of Weakness",
-            "description": "Reduce the target _ by [0]%, _ by [0]%, _ by [0]% for 12 seconds.",
+            "description": "Reduce the target All Attributes by 25%, Physical Damage Reduction by 15%, Magical Damage Reduction by 15% for 12 seconds.",
             "spell_tier": 1,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 750,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_CurseofWeakness.png"
           },
           {
             "id": "EldritchShield",
             "name": "Eldritch Shield",
-            "description": "Grants the target a shield that protects against 25 magical damage for 15 seconds. When the shield absorbs its maximum damage, gain 300% Magical Dark Damage Mod and 50% Spell Casting Speed towards the next dark spell cast within 6 seconds.",
+            "description": "Grants the target a shield that protects against 25 magical damage for 15 seconds. When the shield absorbs its maximum damage, gain 30% Magical Dark Damage and 50% Spell Casting Speed towards the next dark spell cast within 6 seconds.",
             "spell_tier": 5,
             "casting_time": 0.75,
             "max_count": 0,
             "range": 750,
             "source_type": "dark",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_EldritchShield.png"
           },
           {
             "id": "EvilEye",
             "name": "Evil Eye",
-            "description": "Channel for [0] seconds and summon an evil eye that can be possessed by the caster for [0] seconds.",
+            "description": "Channel for 1 seconds and summon an evil eye that can be possessed by the caster for 30 seconds.",
             "spell_tier": 3,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 5000,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_EvilEye.png"
           },
           {
             "id": "FlameWalker",
             "name": "Flame Walker",
-            "description": "While active, gain the ability to leave a trail of Hellfire for 6 seconds. Each step leaves a trail that lasts for 4 seconds. Targets that enter the flame area will burn, taking 5 magical fire damage base per 0.2 second.",
+            "description": "While active, gain the ability to leave a trail of Hellfire for 6 seconds. Each step leaves a trail that lasts for 4 seconds. Targets that enter the flame area will burn, taking 5 magical fire damage per 0.2 second.",
             "spell_tier": 5,
             "casting_time": 1.25,
             "max_count": 0,
             "range": 750,
             "source_type": "fire",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_FlameWalker.png"
           },
           {
             "id": "Hellfire",
             "name": "Hellfire",
-            "description": "Cast eternal hellfire and blast it towards the targets. Deal 60 magical fire damage base per second to any target within the area of effect. The hellfire does not dissipate when it reaches a target.",
+            "description": "Cast eternal hellfire and blast it towards the targets. Deal 60 magical fire damage per second to any target within the area of effect. The hellfire does not dissipate when it reaches a target.",
             "spell_tier": 4,
             "casting_time": 2.0,
             "max_count": 0,
             "range": 999999,
             "source_type": "fire",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Hellfire.png"
           },
           {
             "id": "LifeDrain",
             "name": "Life Drain",
-            "description": "Channel for [0] seconds, dealing 5 magical evil damage base to the target per second. Convert a portion of the damage dealt into health for the caster.",
+            "description": "Channel for 7.5 seconds, dealing 5 magical evil damage to the target per second. Convert a portion of the damage dealt into health for the caster.",
             "spell_tier": 4,
             "casting_time": 1.5,
             "max_count": 0,
             "range": 750,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_LifeDrain.png"
           },
           {
             "id": "PowerofSacrifice",
             "name": "Power of Sacrifice",
-            "description": "Deal 3 magical evil damage base per second to the target while increasing their _ by [1] and _ by [1] for 12 seconds. Self casts if no target is found.",
+            "description": "Deal 3 magical evil damage per second to the target while increasing their Strength by 15 and Vigor by 15 for 12 seconds. Self casts if no target is found.",
             "spell_tier": 1,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 750,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_PowerofSacrifice.png"
           },
           {
             "id": "RayOfDarkness",
             "name": "Ray of Darkness",
-            "description": "Channel a dark beam dealing 12 magical dark damage base per second to any target the beam touches. Moving and aiming are possible while channeling.",
+            "description": "Channel a dark beam dealing 12 magical dark damage per second to any target the beam touches. Moving and aiming are possible while channeling.",
             "spell_tier": 4,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 750,
             "source_type": "dark",
             "cost_type": "health",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_RayOfDarkness.png"
           },
           {
             "id": "SpellPredation",
             "name": "Spell Predation",
-            "description": "Consume up to all removable magical buffs from the enemy and gain 1 Darkness Shard per effect. Inflict 3evil Magical Damage Base per effect.\n\nDarkness Shard : Each Darkness Shard grants [0] _, 330% Magical Dark Damage Mod and can store up to [0]. This effect is consumed when casting a dark spell.",
+            "description": "Consume up to all removable magical buffs from the enemy and gain 1 Darkness Shard per effect. Inflict 3 evil Magical Damage per effect.\n\nDarkness Shard : Each Darkness Shard grants 1 All Attributes, 33% Magical Dark Damage and can store up to 0. This effect is consumed when casting a dark spell.",
             "spell_tier": 3,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 750,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_SpellPredation.png"
           },
           {
             "id": "SummonHydra",
             "name": "Summon Hydra",
-            "description": "Summon a Hydra that spits fireballs dealing 10 magical fire damage base to enemy targets for 10 seconds. The hydra can also detect hidden targets.",
+            "description": "Summon a Hydra that spits fireballs dealing 10 magical fire damage to enemy targets for 10 seconds. The hydra can also detect hidden targets.",
             "spell_tier": 6,
             "casting_time": 1.0,
             "max_count": 0,
             "range": 750,
             "source_type": "evil",
             "cost_type": "health",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_SummonHydra.png"
           }
         ],
         "shapeshifts": [],
-        "usable_item_count": 222
+        "usable_item_count": 222,
+        "icon": "/icons/classes/ClassIcon_L_Warlock.png"
       },
       {
         "slug": "wizard",
@@ -2830,106 +3137,128 @@
           "buff_duration_pct": 5.0,
           "debuff_duration_pct": -4.8,
           "regular_interaction_speed_pct": 0.0,
-          "health_recovery_bonus_pct": 0.0
+          "health_recovery_bonus_pct": 0.0,
+          "physical_damage_reduction_pct": -22.0,
+          "physical_power_bonus_pct": -25.0,
+          "magic_power_bonus_pct": 5.0,
+          "magical_interaction_speed_pct": 35.0,
+          "spell_recovery_bonus_pct": 80.5,
+          "persuasiveness": 15.0,
+          "cooldown_reduction_pct": 0.0
         },
         "perks": [
           {
             "id": "ArcaneFeedback",
             "name": "Arcane Feedback",
             "description": "When you deal damage with an arcane spell, gain a stacking bonus granting 3% Spell Casting Speed and 30% Magical Arcane Damage Mod per stack for 7 seconds. This skill can stack up to 5 times and the duration resets with each successful stack.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ArcaneFeedback.png"
           },
           {
             "id": "ArcaneMastery",
             "name": "Arcane Mastery",
-            "description": "Gain 50% Magical Arcane Damage Mod and reduce the cast time of arcane spells by 50 seconds.",
-            "is_default": false
+            "description": "Gain 50% Magical Arcane Damage Mod and reduce the cast time of arcane spells by 0.5 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ArcaneMastery.png"
           },
           {
             "id": "FireMastery",
             "name": "Fire Mastery",
-            "description": "Gain 50% Magical Fire Damage Mod. The duration of applied burns are increased by 2 seconds, and a burned target reduces _ by [1]% and _ by [1]% for 4 seconds.",
-            "is_default": false
+            "description": "Gain 5% Magical Fire Damage. The duration of applied burns are increased by 2 seconds, and a burned target reduces Physical Healing by 50% and Magical Healing by 50% for 4 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_FireMastery.png"
           },
           {
             "id": "IceMastery",
             "name": "Ice Mastery",
             "description": "Dealing damage with ice magic freezes the target's feet and prevents them from moving for 0.5 seconds.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_IceMastery.png"
           },
           {
             "id": "IceShield",
             "name": "Ice Shield",
-            "description": "Gain 20 Armor Rating. Inflict frostbite for 0.5 seconds on melee attacker. Does not inflict while on cooldown.\n\nFrostbite: The target loses -20% Move Speed Mod and -20% Action Speed.",
-            "is_default": true
+            "description": "Gain 20 Armor Rating. Inflict frostbite for 0.5 seconds on melee attacker. Does not inflict while on cooldown.\n\nFrostbite: The target loses -20% Move Speed and -20% Action Speed.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_IceShield.png"
           },
           {
             "id": "ManaSurge",
             "name": "Mana Surge",
-            "description": "Gain 10% Magical Damage Mod.",
-            "is_default": false
+            "description": "Gain 10% Magical Damage.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ManaSurge.png"
           },
           {
             "id": "Melt",
             "name": "Melt",
-            "description": "When you deal magical fire damage to a target, the target loses -15% Physical Reduction and -10% Projectile Reduction Mod for 2 seconds.",
-            "is_default": false
+            "description": "When you deal magical fire damage to a target, the target loses -15% Physical Damage Reduction and -10% Projectile Damage Reduction for 2 seconds.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_Melt.png"
           },
           {
             "id": "QuickChant",
             "name": "Quick Chant",
             "description": "Gain 15% Spell Casting Speed.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_QuickChant.png"
           },
           {
             "id": "ReactiveShield",
             "name": "Reactive Shield",
             "description": "When you take damage, gain an arcane shield that lasts for 3 seconds. The shield can absorb 15 total damage and will only reactivate after a cooldown period.",
-            "is_default": true
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_ReactiveShield.png"
           },
           {
             "id": "Sage",
             "name": "Sage",
-            "description": "Gain [0]% _.",
-            "is_default": true
+            "description": "Gain 15% Knowledge.",
+            "is_default": true,
+            "icon": "/icons/perks/Icon_Perk_Sage.png"
           },
           {
             "id": "SpellOverload",
             "name": "Spell Overload",
-            "description": "Reduces _ by [0]% and increases all spells counts by 600%.",
-            "is_default": false
+            "description": "Reduces Knowledge by 20% and increases all spells counts by 60%.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_SpellOverload.png"
           },
           {
             "id": "StaffMastery",
             "name": "Staff Mastery",
-            "description": "When using a staff-type weapon, you gain [0] _.",
-            "is_default": false
+            "description": "When using a staff-type weapon, you gain 2 Magical Damage.",
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_StaffMastery.png"
           }
         ],
         "skills": [
           {
             "id": "ArcaneShield",
             "name": "Arcane Shield",
-            "description": "Gain a shield around you that absorbs 15 damage from all damage sources for 12 seconds. When the maximum amount of absorb has been reached, the shield unleashes an Arcane Explosion, dealing 5 Magical Damage Base to enemy targets in a [0]m radius around you.",
+            "description": "Gain a shield around you that absorbs 15 damage from all damage sources for 12 seconds. When the maximum amount of absorb has been reached, the shield unleashes an Arcane Explosion, dealing 5 Magical Damage to enemy targets in a 2m radius around you.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_ArcaneShield.png"
           },
           {
             "id": "IntenseFocus",
             "name": "Intense Focus",
-            "description": "Reduce the cast time of your next spell to 10 seconds.",
+            "description": "Reduce the cast time of your next spell to 0.1 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_IntenseFocus.png"
           },
           {
             "id": "Meditation",
             "name": "Meditation",
-            "description": "Enter a meditative state and recover spells at a rate of [0] spells costs over [0] seconds.",
+            "description": "Enter a meditative state and recover spells at a rate of 0 spells costs over 24 seconds.",
             "skill_type": "channeling",
             "skill_tier": 1,
-            "use_moving": false
+            "use_moving": false,
+            "icon": "/icons/skills/Icon_Skill_Meditation.png"
           },
           {
             "id": "SpellMemory1",
@@ -2952,98 +3281,106 @@
           {
             "id": "ChainLightning",
             "name": "Chain Lightning",
-            "description": "Electrocute the target for 1 seconds, dealing 30 magical lightning damage base, and fires lightning that is transferred to targets within a [0]m area up to 3 times. It does not transfer to a target it was transferred to previously, and it transfers to the caster if you are nearby.\n\nElectrified : The target loses -20% Move Speed Mod.",
+            "description": "Electrocute the target for 1 seconds, dealing 30 magical lightning damage, and fires lightning that is transferred to targets within a 8m area up to 3 times. It does not transfer to a target it was transferred to previously, and it transfers to the caster if you are nearby.\n\nElectrified : The target loses -20% Move Speed.",
             "spell_tier": 6,
             "casting_time": 2.5,
             "max_count": 2,
             "range": 800,
             "source_type": "lightning",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_ChainLightning.png"
           },
           {
             "id": "Explosion",
             "name": "Explosion",
-            "description": "When cast, an explosion occurs in the targeted area after 3 seconds, dealing [0] _ and inflicting burn over [1] seconds within a 1m area.\n\nBurn: The target takes [1] _.",
+            "description": "When cast, an explosion occurs in the targeted area after 3 seconds, dealing 23 magical fire damage and inflicting burn over 2 seconds within a 1m area.\n\nBurn: The target takes 3 magical fire damage.",
             "spell_tier": 5,
             "casting_time": 1.75,
             "max_count": 4,
             "range": 800,
             "source_type": "fire",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Explosion.png"
           },
           {
             "id": "Fireball",
             "name": "Fireball",
-            "description": "Shoot a burning fireball, dealing 20 direct to a target and 10 splash, knocking back nearby targets and inflicting burn over 2 seconds.\n\nBurn: The target takes 3 magical fire damage base.",
+            "description": "Shoot a burning fireball, dealing 20 magical fire damage direct to a target and 10 magical fire damage splash, knocking back nearby targets and inflicting burn over 2 seconds.\n\nBurn: The target takes 3 magical fire damage.",
             "spell_tier": 4,
             "casting_time": 2.0,
             "max_count": 4,
             "range": 999999,
             "source_type": "fire",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Fireball.png"
           },
           {
             "id": "Haste",
             "name": "Haste",
-            "description": "Grants the target 5% Move Speed Mod, 10% Action Speed, 10% Spell Casting Speed for 6 seconds. Self cast if no target is found.",
+            "description": "Grants the target 5% Move Speed, 10% Action Speed, 10% Spell Casting Speed for 6 seconds. Self cast if no target is found.",
             "spell_tier": 3,
             "casting_time": 0.75,
             "max_count": 4,
             "range": 800,
             "source_type": "light",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Haste.png"
           },
           {
             "id": "IceBolt",
             "name": "Ice Bolt",
-            "description": "Deal 30 magical ice damage base to the target, inflicting frostbite for 1 seconds.\n\nFrostbite: The target loses -20% Move Speed Mod and -20% Action Speed.",
+            "description": "Deal 30 magical ice damage to the target, inflicting frostbite for 1 seconds.\n\nFrostbite: The target loses -20% Move Speed and -20% Action Speed.",
             "spell_tier": 2,
             "casting_time": 1.25,
             "max_count": 5,
             "range": 999999,
             "source_type": "ice",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_IceBolt.png"
           },
           {
             "id": "Ignite",
             "name": "Ignite",
-            "description": "Set the target's weapon on fire for 12 seconds. While active, deal 5 magical fire damage base and inflict burn over 1 seconds on successful attacks.\n\nBurn: The target takes 1 magical fire damage base.",
+            "description": "Set the target's weapon on fire for 12 seconds. While active, deal 5 magical fire damage and inflict burn over 1 seconds on successful attacks.\n\nBurn: The target takes 1 magical fire damage.",
             "spell_tier": 2,
             "casting_time": 0.75,
             "max_count": 10,
             "range": 800,
             "source_type": "fire",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Ignite.png"
           },
           {
             "id": "Invisibility",
             "name": "Invisibility",
-            "description": "Grants the target invisibility for 4 seconds. While active, the target also gains 5% Move Speed Mod. Self cast if no target is found.",
+            "description": "Grants the target invisibility for 4 seconds. While active, the target also gains 5% Move Speed. Self cast if no target is found.",
             "spell_tier": 4,
             "casting_time": 0.75,
             "max_count": 4,
             "range": 800,
             "source_type": "arcane",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Invisibility.png"
           },
           {
             "id": "Lazy",
             "name": "Slow",
-            "description": "Slows the target's _ by [0]% for 2 seconds.",
+            "description": "Slows the target's Move Speed by 40% for 2 seconds.",
             "spell_tier": 2,
             "casting_time": 1.25,
             "max_count": 3,
             "range": 800,
             "source_type": "light",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Lazy.png"
           },
           {
             "id": "Light",
@@ -3055,19 +3392,21 @@
             "range": 999999,
             "source_type": "light",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Light.png"
           },
           {
             "id": "LightningStrike",
             "name": "Lightning Strike",
-            "description": "When cast, a bolt of lightning strikes the targeted area, Electrocuting enemies for 1 seconds and dealing 30 magical lightning damage base.\n\nElectrified : The target loses -20% Move Speed Mod.",
+            "description": "When cast, a bolt of lightning strikes the targeted area, Electrocuting enemies for 1 seconds and dealing 30 magical lightning damage.\n\nElectrified : The target loses -20% Move Speed.",
             "spell_tier": 4,
             "casting_time": 2.0,
             "max_count": 5,
             "range": 800,
             "source_type": "lightning",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_LightningStrike.png"
           },
           {
             "id": "MagicLock",
@@ -3079,35 +3418,39 @@
             "range": 800,
             "source_type": "arcane",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_MagicLock.png"
           },
           {
             "id": "MagicMissile",
             "name": "Magic Missile",
-            "description": "Fire up to 10 homing missile that each deal 10 magical arcane damage base. Stops firing when you move.",
+            "description": "Fire up to 10 homing missile that each deal 10 magical arcane damage. Stops firing when you move.",
             "spell_tier": 3,
             "casting_time": 1.25,
             "max_count": 10,
             "range": 999999,
             "source_type": "arcane",
             "cost_type": "count",
-            "casting_type": "channeling"
+            "casting_type": "channeling",
+            "icon": "/icons/spells/Icon_Spell_MagicMissile.png"
           },
           {
             "id": "Zap",
             "name": "Zap",
-            "description": "Deals 18 magical light damage base and burns the target over 1 second.\n\nBurn: The target takes 1 magical fire damage base.",
+            "description": "Deals 18 Magical Light Damage Base and burns the target over 1 second.\n\nBurn: The target takes 1 magical fire damage.",
             "spell_tier": 1,
             "casting_time": 1.25,
             "max_count": 5,
             "range": 800,
             "source_type": "light",
             "cost_type": "count",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_Zap.png"
           }
         ],
         "shapeshifts": [],
-        "usable_item_count": 197
+        "usable_item_count": 197,
+        "icon": "/icons/classes/ClassIcon_L_Wizard.png"
       }
     ],
     "spell_merge_recipes": [

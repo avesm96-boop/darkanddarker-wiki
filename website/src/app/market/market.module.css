@@ -1196,11 +1196,13 @@
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
-.msPrice img {
-  vertical-align: middle;
-  margin-left: 3px;
+.msPriceInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .msStats { display: flex; gap: 5px; flex-wrap: wrap; }
@@ -1217,11 +1219,13 @@
   font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
-.msItemName img {
-  vertical-align: middle;
-  margin-right: 6px;
+.msItemNameInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .msTime {

@@ -377,12 +377,14 @@ export default function MarketSearchTab() {
                       className={previewListing?.listing_id === l.listing_id ? styles.msSelectedRow : ""}>
                       {isRarityOnly && (
                         <td className={styles.msItemName}>
-                          <img src={itemIconPath(l.item_base_name)} width={20} height={20} alt=""
-                            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                          {getItemDisplayName(l.item_base_name, itemMetadata)}
+                          <span className={styles.msItemNameInner}>
+                            <img src={itemIconPath(l.item_base_name)} width={20} height={20} alt=""
+                              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                            {getItemDisplayName(l.item_base_name, itemMetadata)}
+                          </span>
                         </td>
                       )}
-                      <td className={styles.msPrice}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></td>
+                      <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
                       {!isGenericItem && !isRarityOnly && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
                       {!isGenericItem && (
                         <td className={styles.msStats}>
@@ -428,7 +430,7 @@ export default function MarketSearchTab() {
                         {getItemDisplayName(l.item_base_name, itemMetadata)}
                       </td>
                     )}
-                    <td className={styles.msPrice}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></td>
+                    <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
                     {!isGenericItem && !isRarityOnly && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
                     {!isGenericItem && (
                       <td className={styles.msStats}>

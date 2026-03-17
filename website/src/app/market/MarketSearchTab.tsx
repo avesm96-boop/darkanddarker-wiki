@@ -342,8 +342,7 @@ export default function MarketSearchTab() {
                   labelFormatter={(label) => formatChartTime(String(label), chartTimeframe)}
                   formatter={(value) => [formatGold(Number(value)) + "g", ""]} />
                 <Area type="monotone" dataKey="avg" stroke="#c9a84c" fill="rgba(201,168,76,0.12)" strokeWidth={2} name="Avg" />
-                <Area type="monotone" dataKey="min" stroke="rgba(76,201,100,0.4)" fill="none" strokeWidth={1} strokeDasharray="4 4" name="Min" />
-                <Area type="monotone" dataKey="max" stroke="rgba(224,85,85,0.4)" fill="none" strokeWidth={1} strokeDasharray="4 4" name="Max" />
+                <Area type="monotone" dataKey="min" stroke="rgba(76,201,100,0.5)" fill="rgba(76,201,100,0.05)" strokeWidth={1.5} name="Min" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

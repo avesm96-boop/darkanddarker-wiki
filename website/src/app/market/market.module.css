@@ -1183,6 +1183,7 @@
   border-bottom: 1px solid rgba(201, 168, 76, 0.06);
   color: var(--gold-500);
   vertical-align: middle;
+  height: 36px;
 }
 
 .msTable tbody tr:hover { background: rgba(201, 168, 76, 0.04); }
@@ -1203,18 +1204,22 @@
   display: inline-flex;
   align-items: center;
   gap: 3px;
+  line-height: 1;
 }
 
-.msStats { display: inline; }
+.msStats {
+  display: inline-flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
 .msStat {
-  display: inline-block;
   background: rgba(201, 168, 76, 0.06);
   padding: 2px 6px;
   border-radius: 3px;
   font-size: 0.68rem;
   white-space: nowrap;
-  margin: 1px 2px;
 }
 
 .msItemName {
@@ -1228,6 +1233,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  line-height: 1;
 }
 
 .msItemNameInner img {
@@ -1235,6 +1241,7 @@
   height: 18px;
   object-fit: contain;
   flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .msTime {

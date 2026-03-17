@@ -8,6 +8,7 @@ Reads from:
   - extracted/classes/Id_Perk_*.json                          (perks)
   - extracted/classes/Id_Skill_*.json                         (skills)
   - raw/.../V2/Spell/Spell/Id_Spell_*.json                   (spells)
+  - raw/.../V2/Music/Music/Id_Music_*.json                   (bard songs)
   - extracted/classes/Id_ShapeShift_*.json                    (shapeshifts, Druid only)
   - raw/.../V2/Spell/SpellMergeGroup/Id_SpellMergeGroup.json  (spell merge recipes)
   - raw/.../Localization/Game/en/Game.json                    (localization strings)
@@ -307,6 +308,53 @@ def collect_spells(class_name, loc):
     return spells
 
 
+def collect_songs(class_name, loc):
+    """Collect all Bard songs for a given class from raw music files."""
+    songs = []
+    music_dir = RAW_V2 / "Music" / "Music"
+    if not music_dir.exists():
+        return songs
+    for path in sorted(music_dir.glob("Id_Music_*.json")):
+        data = load_json(path)
+        if data is None:
+            continue
+        props = data[0].get("Properties", {})
+        # Check class membership via PrimaryAssetName
+        classes = props.get("Classes", [])
+        if not class_matches(classes, class_name):
+            continue
+        music_id = data[0].get("Name", "")
+        short_name = extract_id_name(music_id, "Id_Music_")
+        # Get display name from localization or Properties.Name
+        name_obj = props.get("Name", {})
+        display_name = name_obj.get("LocalizedString", "") if isinstance(name_obj, dict) else ""
+        if not display_name:
+            loc_key = f"Text_DesignData_Music_Music_{short_name}"
+            display_name = loc.get(loc_key, to_display_name(short_name))
+        # Get description from localization
+        desc_key = f"Text_DataAsset_{short_name}_Desc_{short_name}Desc"
+        description = loc.get(desc_key, "")
+        # Extract source_type last segment
+        source_type_tag = props.get("SourceType", {}).get("TagName", "")
+        source_type = source_type_tag.split(".")[-1].lower() if source_type_tag else ""
+        # Extract casting_type from PlayType last segment
+        play_type_tag = props.get("PlayType", {}).get("TagName", "")
+        casting_type = play_type_tag.split(".")[-1].lower() if play_type_tag else ""
+        songs.append({
+            "id": short_name,
+            "name": display_name,
+            "description": description,
+            "spell_tier": props.get("MusicTier", 0),
+            "casting_time": None,
+            "max_count": None,
+            "range": None,
+            "source_type": source_type,
+            "cost_type": "music",
+            "casting_type": casting_type,
+        })
+    return songs
+
+
 def collect_shapeshifts(class_name, loc):
     """Collect shapeshifts for a class (typically Druid only)."""
     shapeshifts = []
@@ -438,6 +486,11 @@ def build_class(class_name, loc):
 
     # Spells
     spells = collect_spells(class_name, loc)
+
+    # Songs (Bard music) - merge into spells list
+    songs = collect_songs(class_name, loc)
+    if songs:
+        spells.extend(songs)
 
     # Shapeshifts
     shapeshifts = collect_shapeshifts(class_name, loc)

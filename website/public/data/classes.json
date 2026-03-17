@@ -1,6 +1,6 @@
 {
   "version": "2026-03-17",
-  "generated_at": "2026-03-17T22:09:33.343720+00:00",
+  "generated_at": "2026-03-17T22:14:46.698227+00:00",
   "data": {
     "classes": [
       {
@@ -359,7 +359,236 @@
             "use_moving": true
           }
         ],
-        "spells": [],
+        "spells": [
+          {
+            "id": "Accelerando",
+            "name": "Accelerando",
+            "description": "You and nearby allies gain <MoveSpeedAdd>[1]/[2]/[3] _</> per second for <Duration>[0] seconds</> based on your performance. Stacks up to <YellowColor>3</> times.",
+            "spell_tier": 4,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "drum",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "Allegro",
+            "name": "Allegro",
+            "description": "You and nearby allies gain <ActionSpeed>[1]/[2]/[3]% _</> and <SpellCastingSpeed>[1]/[2]/[3]% _</> per second for <Duration>[0] seconds</> based on your performance. Stacks up to <YellowColor>3</> times.",
+            "spell_tier": 4,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "drum",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "AriaOfAlacrity",
+            "name": "Aria of Alacrity",
+            "description": "The performer gains <ActionSpeed>[0]/[1]/[2]% _</> for <Duration>[0]/[1]/[2] seconds</>. Song does not stack on itself.",
+            "spell_tier": 1,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lute",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "BalladOfCourage",
+            "name": "Ballad of Courage",
+            "description": "Grants the performer <PhysicalPower>[0]/[1]/[2] _</> for <Duration>[0]/[1]/[2] seconds</>. Song does not stack on itself.",
+            "spell_tier": 1,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lyre",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "BansheesHowl",
+            "name": "Banshees Howl",
+            "description": "Reduces nearby enemy <AllAttributes>_ by [0]/[1]/[2]</> for <Duration>[0] seconds</>. Does not work on Boss or Subboss monsters.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "flute",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "BeatsOfAlacrity",
+            "name": "Beats of Alacrity",
+            "description": "The performer gains <MoveSpeedAdd>[0]/[1]/[2] _</> for <Duration>[0]/[1]/[2] seconds</>. Song does not stack on itself.",
+            "spell_tier": 1,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "drum",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "ChaoticDiscord",
+            "name": "Chaotic Discord",
+            "description": "Excites nearby monsters to attack the nearest target except the performer.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lute",
+            "cost_type": "music",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "ChoraleOfClarity",
+            "name": "Chorale of Clarity",
+            "description": "Restore <Constant Type=\"Integer\">[0]</> spell memory per second of all nearby allies who rest for <Duration>[0]/[1]/[2] seconds</>.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lyre",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "DinOfDarkness",
+            "name": "Din of Darkness",
+            "description": "Deal <Exec.MagicalDamageBase>[0]/[1]/[2]</> <MagicalDarkDamageBase>_</> to all enemies in an area around the performer, based on performance.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "drum",
+            "cost_type": "music",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "HarmonicShield",
+            "name": "Harmonic Shield",
+            "description": "The performer gains <ArmorRating>[0] _</> and <MagicResistance>[0] _</> for <Duration>[0]/[1]/[2] seconds</>.",
+            "spell_tier": 1,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lyre",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "LamentOfLanguor",
+            "name": "Lament of Languor",
+            "description": "Reduces the <MoveSpeedAdd>_ by [0]</> of all enemy targets in the area for <Duration>[0]/[1]/[2] seconds</>.",
+            "spell_tier": 2,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lute",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "Peacemaking",
+            "name": "Peacemaking",
+            "description": "All nearby players and monsters temporarily lose the will to fight when enchanted by the channeling section of the song.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lute",
+            "cost_type": "music",
+            "casting_type": "channeling"
+          },
+          {
+            "id": "PiercingShrill",
+            "name": "Piercing Shrill",
+            "description": "Deal <Exec.PhysicalDamageBase>[0]/[1]/[2] _</> to a target. Causes the echo sound effect on player targets for <Duration>[3] seconds</>.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "flute",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "RousingRhythms",
+            "name": "Rousing Rhythms",
+            "description": "Nearby allies gain <AllAttributes>[0]/[1]/[2] _</> for <Duration>[0]/[1]/[2] seconds</>.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "drum",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "ShriekOfWeakness",
+            "name": "Shriek of Weakness",
+            "description": "Nearby enemies lose <PhysicalPower>[0]/[1]/[2] _</> and <ArmorRating>[0]/[1]/[2] _</> for <Duration>[0]/[1]/[2] seconds</>.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "flute",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "SongOfShadow",
+            "name": "Song of Shadow",
+            "description": "You and all nearby allies gain invisibility for <Duration>[0]/[1]/[2] seconds</>. Invisibility breaks upon movement.",
+            "spell_tier": 3,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lyre",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "SongOfSilence",
+            "name": "Song of Silence",
+            "description": "Interrupts all skills, spells, and songs used by nearby enemies, and prevents them from using skills, casting spells, or playing songs for <Duration>[0]/[1]/[2] seconds</>. Does not work on boss or sub-boss monsters.",
+            "spell_tier": 2,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lute",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "Tranquility",
+            "name": "Tranquility",
+            "description": "Restore <Exec.RecoveryHealBase>[1] _</> of yourself and nearby allies every second while resting for <Duration>[0]/[2]/[3] seconds</>.",
+            "spell_tier": 2,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "lyre",
+            "cost_type": "music",
+            "casting_type": "playing"
+          },
+          {
+            "id": "UnchainedHarmony",
+            "name": "Unchained Harmony",
+            "description": "",
+            "spell_tier": 5,
+            "casting_time": null,
+            "max_count": null,
+            "range": null,
+            "source_type": "flute",
+            "cost_type": "music",
+            "casting_type": "playing"
+          }
+        ],
         "shapeshifts": [],
         "usable_item_count": 196
       },

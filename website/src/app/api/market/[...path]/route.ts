@@ -1,17 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const UPSTREAM = "http://5.78.190.10:8080/api/v1";
+const UPSTREAM = process.env.MARKET_API_URL ?? "";
+
+const ALLOWED_PATHS = new Set([
+  "listings", "prices/history", "items", "trending", "stats",
+  "rmt/stats", "rmt/listings", "rmt/sellers",
+]);
 
 export async function GET(
   request: NextRequest,
   { params }: { params: { path: string[] } },
 ) {
   const path = params.path.join("/");
+
+  if (!ALLOWED_PATHS.has(path)) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  if (!UPSTREAM) {
+    return NextResponse.json({ error: "Service unavailable" }, { status: 503 });
+  }
+
   const search = request.nextUrl.search;
   const url = `${UPSTREAM}/${path}${search}`;
 
   try {
-    // Skip cache for stats endpoint (needs real-time freshness indicator)
     const cacheOpts = path === "stats"
       ? { cache: "no-store" as const }
       : { next: { revalidate: 10 } };
@@ -23,16 +36,16 @@ export async function GET(
 
     if (!res.ok) {
       return NextResponse.json(
-        { error: `Upstream ${res.status}` },
+        { error: "Service error" },
         { status: res.status },
       );
     }
 
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (e) {
+  } catch {
     return NextResponse.json(
-      { error: "Marketplace API unavailable" },
+      { error: "Service unavailable" },
       { status: 502 },
     );
   }

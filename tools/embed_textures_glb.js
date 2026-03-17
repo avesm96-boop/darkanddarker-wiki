@@ -11,7 +11,7 @@ const path = require('path');
 const sharp = require('sharp');
 
 const ROOT = path.resolve(__dirname, '..');
-const TEX_DIR = path.join('C:', 'Users', 'Administrator', 'Desktop', 'New folder (2)', 'Output', 'Exports', 'DungeonCrawler', 'Content', 'DungeonCrawler', 'Characters', 'Monster', 'AncientStingray', 'Textures');
+const TEX_DIR = path.join('C:', 'Users', 'pawel', 'Desktop', 'Projects', 'Output', 'Exports', 'DungeonCrawler', 'Content', 'DungeonCrawler', 'Characters', 'Monster', 'AncientStingray', 'Textures');
 const GLB_IN = path.join(ROOT, 'website/public/monster-models/animations/ancient-stingray-raw.glb');
 const GLB_OUT = path.join(ROOT, 'website/public/monster-models/ancient-stingray.glb');
 

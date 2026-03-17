@@ -13,7 +13,7 @@ const path = require('path');
 
 // ── Config ──────────────────────────────────────────────────────────────────
 
-const ANIM_DIR = path.join('C:', 'Users', 'Administrator', 'Desktop', 'New folder (2)',
+const ANIM_DIR = path.join('C:', 'Users', 'pawel', 'Desktop', 'Projects',
   'Output', 'Exports', 'DungeonCrawler', 'Content', 'DungeonCrawler',
   'Characters', 'Monster', 'AncientStingray', 'Animations');
 

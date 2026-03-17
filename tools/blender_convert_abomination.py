@@ -28,15 +28,15 @@ print(f"PSK/PSA addon loaded: {addon_utils.check('io_scene_psk_psa')}")
 # ── Config ───────────────────────────────────────────────────────────────────
 
 # PSK and PSA source (FModel export)
-MONSTER_DIR = r"C:\Users\Administrator\Desktop\New folder (2)\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\Abomination"
+MONSTER_DIR = r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\Abomination"
 
 # Textures source (project Exports — has all variant textures)
-TEXTURE_DIR = r"C:\Users\Administrator\Desktop\DnDMainProject\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\Abomination\Textures"
+TEXTURE_DIR = r"C:\Users\pawel\Desktop\Projects\DnDMainProject\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\Abomination\Textures"
 
 PSK_FILE = os.path.join(MONSTER_DIR, "Mesh", "SK_Abomination_LOD0.psk")
 ANIM_DIR = os.path.join(MONSTER_DIR, "Animations")
 
-OUT_ROOT = r"C:\Users\Administrator\Desktop\DnDMainProject\darkanddarker-wiki\website\public\monster-models"
+OUT_ROOT = r"C:\Users\pawel\Desktop\Projects\DnDMainProject\darkanddarker-wiki\website\public\monster-models"
 
 SLUG = "abomination"
 

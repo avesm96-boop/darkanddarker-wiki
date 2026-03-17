@@ -7,11 +7,11 @@ Diagnostic script — run this first to check bone names.
 import bpy
 import os
 
-PSK_FILE = r"C:\Users\Administrator\Desktop\New folder (2)\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Meshes\SK_AncientStingray_LOD0.psk"
+PSK_FILE = r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Meshes\SK_AncientStingray_LOD0.psk"
 
-PSA_FILE = r"C:\Users\Administrator\Desktop\New folder (2)\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Animations\AS_AncientStingray_idle_Combat.psa"
+PSA_FILE = r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Animations\AS_AncientStingray_idle_Combat.psa"
 
-GLB_FILE = r"C:\Users\Administrator\Desktop\DnDMainProject\darkanddarker-wiki\website\public\monster-models\ancient-stingray.glb"
+GLB_FILE = r"C:\Users\pawel\Desktop\Projects\DnDMainProject\darkanddarker-wiki\website\public\monster-models\ancient-stingray.glb"
 
 def clear_scene():
     bpy.ops.object.select_all(action="SELECT")

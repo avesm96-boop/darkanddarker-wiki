@@ -16,7 +16,8 @@ const path = require('path');
 const MONSTERS_PATH = path.join(__dirname, '..', 'website', 'public', 'data', 'monsters.json');
 const GUIDES_DIR = path.join(__dirname, '..', 'website', 'public', 'data', 'guides');
 
-const data = JSON.parse(fs.readFileSync(MONSTERS_PATH, 'utf8'));
+const _rawData = JSON.parse(fs.readFileSync(MONSTERS_PATH, 'utf8'));
+const data = { monsters: Array.isArray(_rawData.data) ? _rawData.data : _rawData.monsters ?? _rawData };
 const args = process.argv.slice(2);
 const overwrite = args.includes('--overwrite');
 const targetSlug = args.find((a, i) => args[i - 1] === '--slug');

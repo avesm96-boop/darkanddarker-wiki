@@ -19,11 +19,11 @@ print(f"PSK/PSA addon loaded: {addon_utils.check('io_scene_psk_psa')}")
 
 # ── Config ──────────────────────────────────────────────────────────────────
 
-PSK_FILE = r"C:\Users\Administrator\Desktop\New folder (2)\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Meshes\SK_AncientStingray_LOD0.psk"
+PSK_FILE = r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Meshes\SK_AncientStingray_LOD0.psk"
 
-ANIM_DIR = r"C:\Users\Administrator\Desktop\New folder (2)\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Animations"
+ANIM_DIR = r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster\AncientStingray\Animations"
 
-OUT_DIR = r"C:\Users\Administrator\Desktop\DnDMainProject\darkanddarker-wiki\website\public\monster-models\animations\ancient-stingray"
+OUT_DIR = r"C:\Users\pawel\Desktop\Projects\DnDMainProject\darkanddarker-wiki\website\public\monster-models\animations\ancient-stingray"
 
 # [psa_filename, output_id, display_label, loops]
 # Looping animations: idles, swims, rush loops, surge loops

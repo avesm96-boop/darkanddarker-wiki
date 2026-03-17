@@ -16,7 +16,7 @@ const sharp = require('sharp');
 const ROOT = path.resolve(__dirname, '..');
 const MODELS_DIR = path.join(ROOT, 'website/public/monster-models');
 const ANIMS_DIR = path.join(MODELS_DIR, 'animations');
-const EXPORTS_ROOT = 'C:\\Users\\Administrator\\Desktop\\New folder (2)\\Output\\Exports\\DungeonCrawler\\Content\\DungeonCrawler\\Characters\\Monster';
+const EXPORTS_ROOT = 'C:\\Users\\pawel\\Desktop\\Projects\\Output\\Exports\\DungeonCrawler\\Content\\DungeonCrawler\\Characters\\Monster';
 const TEX_SIZE = 1024;
 
 // Map slug -> FModel directory name (CamelCase)

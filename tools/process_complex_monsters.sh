@@ -1,7 +1,7 @@
 #!/bin/bash
 # Process all complex monsters by mapping each sub-monster to the correct PSK + PSA + slug
 BLENDER="/c/Program Files/Blender Foundation/Blender 4.5/blender.exe"
-SCRIPT="C:/Users/Administrator/Desktop/DnDMainProject/darkanddarker-wiki/tools/blender_convert_standard.py"
+SCRIPT="C:/Users/pawel/Desktop/Projects/DnDMainProject/darkanddarker-wiki/tools/blender_convert_standard.py"
 LOGDIR="/tmp/blender_complex"
 mkdir -p "$LOGDIR"
 

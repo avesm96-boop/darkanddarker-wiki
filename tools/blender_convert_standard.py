@@ -30,9 +30,9 @@ addon_utils.enable("io_scene_psk_psa", default_set=True)
 
 # ── Config ───────────────────────────────────────────────────────────────────
 
-FMODEL_ROOT = r"C:\Users\Administrator\Desktop\New folder (2)\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster"
-PROJECT_ROOT = r"C:\Users\Administrator\Desktop\DnDMainProject\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster"
-OUT_ROOT = r"C:\Users\Administrator\Desktop\DnDMainProject\darkanddarker-wiki\website\public\monster-models"
+FMODEL_ROOT = r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster"
+PROJECT_ROOT = r"C:\Users\pawel\Desktop\Projects\DnDMainProject\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster"
+OUT_ROOT = r"C:\Users\pawel\Desktop\Projects\DnDMainProject\darkanddarker-wiki\website\public\monster-models"
 
 LOOP_PATTERNS = [
     r"idle", r"loop",

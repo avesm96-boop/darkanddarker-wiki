@@ -32,9 +32,9 @@ print(f"PSK/PSA addon loaded: {addon_utils.check('io_scene_psk_psa')}")
 
 # ── Config ───────────────────────────────────────────────────────────────────
 
-EXPORTS_ROOT = r"C:\Users\Administrator\Desktop\New folder (2)\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster"
+EXPORTS_ROOT = r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\Characters\Monster"
 
-OUT_ROOT = r"C:\Users\Administrator\Desktop\DnDMainProject\darkanddarker-wiki\website\public\monster-models"
+OUT_ROOT = r"C:\Users\pawel\Desktop\Projects\DnDMainProject\darkanddarker-wiki\website\public\monster-models"
 
 # Animation name patterns that should loop
 LOOP_PATTERNS = [

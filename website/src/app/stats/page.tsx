@@ -927,8 +927,9 @@ function LuckSection({
   const gradeNames = Object.keys(luckData.grades).sort();
 
   // Luck points × 0.001 = curve input (from game's value_ratio)
+  // Curve goes 0-5 but realistic max gear is ~1500 luck
   const LUCK_RATIO = 0.001;
-  const LUCK_MAX_POINTS = 5000;
+  const LUCK_MAX_POINTS = 2000;
 
   const gradeInfo: Record<
     string,
@@ -974,8 +975,9 @@ function LuckSection({
       <h2 className={styles.sectionTitle}>Luck & Drop Rates</h2>
       <p className={styles.sectionDesc}>
         Luck shifts which rarity of items you find. More Luck = fewer empty/common
-        drops, more epic/legendary/unique drops. Drag the slider to see how your
-        Luck stat affects each rarity tier.
+        drops, more epic/legendary/unique drops. Luck comes from gear rolls
+        (10-180 per piece), Charm of Fortune (+100-120), Wanderer&apos;s Luck perk (+100),
+        and luck potions. A full Unique luck build can reach around 1,200-1,500 total.
       </p>
 
       {/* Interactive Luck Slider */}
@@ -993,7 +995,7 @@ function LuckSection({
           className={styles.luckSlider}
         />
         <div className={styles.luckSliderTicks}>
-          {[0, 1000, 2000, 3000, 4000, 5000].map((v) => (
+          {[0, 500, 1000, 1500, 2000].map((v) => (
             <span key={v}>{v}</span>
           ))}
         </div>
@@ -1134,8 +1136,8 @@ function LuckSection({
         <thead>
           <tr>
             <th>Rarity</th>
-            {[0, 500, 1000, 2000, 3000, 4000, 5000].map((lp) => (
-              <th key={lp}>{lp} Luck</th>
+            {[0, 250, 500, 750, 1000, 1250, 1500].map((lp) => (
+              <th key={lp}>{lp}</th>
             ))}
           </tr>
         </thead>
@@ -1146,7 +1148,7 @@ function LuckSection({
             return (
               <tr key={gn}>
                 <td style={{ color: info?.color }}>{info?.short || gn}</td>
-                {[0, 500, 1000, 2000, 3000, 4000, 5000].map((lp) => {
+                {[0, 250, 500, 750, 1000, 1250, 1500].map((lp) => {
                   const val = interpolateCurve(grade.curve, lp * LUCK_RATIO);
                   const isDecrease = val < 0.999;
                   const isIncrease = val > 1.001;

@@ -122,8 +122,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "action_speed_agi",
                 "name": "Action Speed (from Agility)",
-                "description": "Action speed modifier from Agility. This is one half of your total Action Speed.",
-                "mechanic": "Action Speed controls how fast you swing weapons, draw bows, and perform actions. It comes from TWO stats: Agility and Dexterity. Both use the same curve and their bonuses ADD together. Total Action Speed = Agility bonus + Dexterity bonus. For example, a Rogue (25 AGI, 20 DEX) gets +12.5% from AGI and +6.2% from DEX = 18.8% total faster attacks.",
+                "description": "Action speed modifier from Agility. Contributes to your total Action Speed alongside Dexterity.",
+                "mechanic": "Action Speed controls how fast you swing weapons, draw bows, and perform actions. Both Agility and Dexterity contribute — the community wiki suggests the formula is 0.25 × Agility + 0.75 × Dexterity fed into the same curve. This means Dexterity has 3× more influence. The chart below shows the curve used for Agility's input portion.",
                 "curve_table": "CT_Agility",
                 "curve_row": "ActionSpeed",
                 "unit": "percent",
@@ -139,8 +139,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "action_speed_dex",
                 "name": "Action Speed (from Dexterity)",
-                "description": "Action speed modifier from Dexterity. This is the other half of your total Action Speed.",
-                "mechanic": "This uses the exact same curve as the Agility Action Speed. Both bonuses are added together for your total Action Speed. If you have 15 AGI (+0%) and 20 DEX (+6.2%), your total action speed bonus is just 6.2%. To maximize Action Speed, you want both stats high — they contribute equally.",
+                "description": "Action speed modifier from Dexterity. The dominant contributor to total Action Speed.",
+                "mechanic": "Uses the same curve as Agility's contribution, but Dexterity has significantly more weight. The community wiki gives the formula as 0.25 × Agility + 0.75 × Dexterity — so each point of Dexterity gives 3× more Action Speed than a point of Agility. Prioritize Dexterity when optimizing attack speed.",
                 "curve_table": "CT_ActionSpeed",
                 "curve_row": "ActionSpeed",
                 "unit": "percent",

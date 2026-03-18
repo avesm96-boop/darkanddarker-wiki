@@ -232,7 +232,7 @@
     <div class="section">
       <h2 class="section-title">Ceny sprzedaży wg cennika</h2>
       <p class="section-subtitle">
-        Aktualne ceny sprzedaży z cennika AX dla produktów wymienionych powyżej.
+        Aktualna cena sprzedaży z cennika AX (lub ostatnia historyczna jeśli brak aktualnej).
       </p>
       <table>
         <thead>
@@ -242,8 +242,9 @@
             <th class="text-right">Cena (EUR)</th>
             <th>Waluta</th>
             <th>Jednostka</th>
-            <th>Od</th>
-            <th>Do</th>
+            <th>Obowiązuje od</th>
+            <th>Obowiązuje do</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -258,6 +259,12 @@
               <td>@{items('Apply_to_each_sales_price')['Unit']}</td>
               <td class="nowrap">@{items('Apply_to_each_sales_price')['From_Date']}</td>
               <td class="nowrap">@{items('Apply_to_each_sales_price')['To_Date']}</td>
+              <td>
+                @{if(and(lessOrEquals(items('Apply_to_each_sales_price')['From_Date'], utcNow()), or(greaterOrEquals(items('Apply_to_each_sales_price')['To_Date'], utcNow()), empty(items('Apply_to_each_sales_price')['To_Date']))),
+                  '<span class="badge" style="background:#d5f5e3;color:#1e8449">Aktualna</span>',
+                  '<span class="badge" style="background:#fdedec;color:#c0392b">Historyczna</span>'
+                )}
+              </td>
             </tr>
           -->
         </tbody>
@@ -268,7 +275,7 @@
     <div class="section">
       <h2 class="section-title">Ceny zakupu</h2>
       <p class="section-subtitle">
-        Aktualne ceny zakupu od dostawców dla produktów wymienionych powyżej.
+        Aktualna cena zakupu od dostawcy (lub ostatnia historyczna jeśli brak aktualnej). Jedna cena per produkt + dostawca.
       </p>
       <table>
         <thead>

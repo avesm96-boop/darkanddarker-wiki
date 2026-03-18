@@ -40,22 +40,24 @@ VAR _ThreatenedItems =
         DISTINCT('04_Open_Orders'[Item number]),
         '04_Open_Orders'[Margin] < 0.05
     )
-// Wszystkie ceny sprzedaży dla zagrożonych produktów
+// Wszystkie ceny sprzedaży dla zagrożonych produktów (z kolumną Quantity = próg ilościowy)
 VAR _AllSalesPrices =
     FILTER(
         SELECTCOLUMNS(
             'BOMCalc06_item_prices_AX_sales',
-            "Item_Number",      'BOMCalc06_item_prices_AX_sales'[Item number],
-            "Price_EUR",        'BOMCalc06_item_prices_AX_sales'[Price],
-            "Currency",         'BOMCalc06_item_prices_AX_sales'[Currency],
-            "Unit",             'BOMCalc06_item_prices_AX_sales'[Unit],
-            "From_Date",        'BOMCalc06_item_prices_AX_sales'[From date],
-            "To_Date",          'BOMCalc06_item_prices_AX_sales'[To date],
-            "Customer_Account", 'BOMCalc06_item_prices_AX_sales'[Customer account]
+            "Item_Number",        'BOMCalc06_item_prices_AX_sales'[Item number],
+            "Quantity",           'BOMCalc06_item_prices_AX_sales'[Quantity],
+            "Price_EUR",          'BOMCalc06_item_prices_AX_sales'[Price],
+            "Currency",           'BOMCalc06_item_prices_AX_sales'[Currency],
+            "Unit",               'BOMCalc06_item_prices_AX_sales'[Unit],
+            "From_Date",          'BOMCalc06_item_prices_AX_sales'[From date],
+            "To_Date",            'BOMCalc06_item_prices_AX_sales'[To date],
+            "Customer_Account",   'BOMCalc06_item_prices_AX_sales'[Customer account],
+            "Specjal_Net_Price",  'BOMCalc06_item_prices_AX_sales'[Specjal net price]
         ),
         [Item_Number] IN _ThreatenedItems
     )
-// Ceny aktualnie obowiązujące
+// Ceny aktualnie obowiązujące (wszystkie progi ilościowe)
 VAR _CurrentPrices =
     FILTER(
         _AllSalesPrices,
@@ -63,20 +65,21 @@ VAR _CurrentPrices =
     )
 // Produkty, które mają aktualną cenę
 VAR _ItemsWithCurrentPrice =
-    SELECTCOLUMNS(_CurrentPrices, "Item", [Item_Number])
-// Dla produktów BEZ aktualnej ceny — ostatnia historyczna (max From_Date)
+    DISTINCT(SELECTCOLUMNS(_CurrentPrices, "Item", [Item_Number]))
+// Dla produktów BEZ aktualnej ceny — ostatnia historyczna data per item
 VAR _MaxHistoricalDates =
-    FILTER(
-        ADDCOLUMNS(
+    ADDCOLUMNS(
+        FILTER(
             _ThreatenedItems,
-            "MaxFromDate",
-                CALCULATE(
-                    MAX('BOMCalc06_item_prices_AX_sales'[From date]),
-                    'BOMCalc06_item_prices_AX_sales'[From date] < _Today
-                )
+            NOT([Item number] IN _ItemsWithCurrentPrice)
         ),
-        NOT([Item number] IN _ItemsWithCurrentPrice)
+        "MaxFromDate",
+            CALCULATE(
+                MAX('BOMCalc06_item_prices_AX_sales'[From date]),
+                'BOMCalc06_item_prices_AX_sales'[From date] < _Today
+            )
     )
+// Ostatnie historyczne ceny — WSZYSTKIE progi ilościowe dla tej daty
 VAR _HistoricalPrices =
     FILTER(
         _AllSalesPrices,
@@ -86,10 +89,10 @@ VAR _HistoricalPrices =
                 [MaxFromDate]
             )
     )
-// Wynik: aktualne + ostatnie historyczne
+// Wynik: aktualne + ostatnie historyczne (ze wszystkimi progami ilościowymi)
 RETURN
 UNION(_CurrentPrices, _HistoricalPrices)
-ORDER BY [Item_Number]
+ORDER BY [Item_Number], [Quantity] ASC
 
 
 // ----- TABELA 3: Ceny zakupu dla zagrożonych produktów -----
@@ -101,28 +104,30 @@ VAR _ThreatenedItems =
         DISTINCT('04_Open_Orders'[Item number]),
         '04_Open_Orders'[Margin] < 0.05
     )
-// Wszystkie ceny zakupu dla zagrożonych produktów
+// Wszystkie ceny zakupu dla zagrożonych produktów (z kolumną Quantity = próg ilościowy)
 VAR _AllPurchasePrices =
     FILTER(
         SELECTCOLUMNS(
             'BOMCalc06_item_prices_AX_purchase',
-            "Item_Number",      'BOMCalc06_item_prices_AX_purchase'[Item number],
-            "Price_EUR",        'BOMCalc06_item_prices_AX_purchase'[Price],
-            "Currency",         'BOMCalc06_item_prices_AX_purchase'[Currency],
-            "Unit",             'BOMCalc06_item_prices_AX_purchase'[Unit],
-            "From_Date",        'BOMCalc06_item_prices_AX_purchase'[From date],
-            "Vendor",           'BOMCalc06_item_prices_AX_purchase'[Vendor account],
-            "Vendor_Name",      'BOMCalc06_item_prices_AX_purchase'[Vendor name]
+            "Item_Number",        'BOMCalc06_item_prices_AX_purchase'[Item number],
+            "Quantity",           'BOMCalc06_item_prices_AX_purchase'[Quantity],
+            "Price_EUR",          'BOMCalc06_item_prices_AX_purchase'[Price],
+            "Currency",           'BOMCalc06_item_prices_AX_purchase'[Currency],
+            "Unit",               'BOMCalc06_item_prices_AX_purchase'[Unit],
+            "From_Date",          'BOMCalc06_item_prices_AX_purchase'[From date],
+            "Vendor",             'BOMCalc06_item_prices_AX_purchase'[Vendor account],
+            "Vendor_Name",        'BOMCalc06_item_prices_AX_purchase'[Vendor name],
+            "Specjal_Net_Price",  'BOMCalc06_item_prices_AX_purchase'[Specjal net price]
         ),
         [Item_Number] IN _ThreatenedItems
     )
-// Ceny aktualnie obowiązujące (From_Date <= dziś, brak To_Date w cenach zakupu)
+// Ceny aktualnie obowiązujące (From_Date <= dziś)
 VAR _CurrentPrices =
     FILTER(
         _AllPurchasePrices,
         [From_Date] <= _Today
     )
-// Najnowsza cena per Item + Vendor (max From_Date)
+// Najnowsza data per Item + Vendor (zachowując wszystkie progi ilościowe)
 VAR _LatestPerItemVendor =
     GROUPBY(
         _CurrentPrices,
@@ -130,7 +135,7 @@ VAR _LatestPerItemVendor =
         [Vendor],
         "MaxFromDate", MAXX(CURRENTGROUP(), [From_Date])
     )
-// Filtruj tylko wiersze z najnowszą datą per Item + Vendor
+// Filtruj wiersze z najnowszą datą per Item + Vendor — WSZYSTKIE progi ilościowe
 VAR _BestPurchasePrices =
     FILTER(
         _CurrentPrices,
@@ -143,18 +148,26 @@ VAR _BestPurchasePrices =
             )
         RETURN [From_Date] = _maxDate
     )
-// Jeśli produkt nie ma żadnej ceny z From <= dziś, weź ostatnią dostępną
+// Jeśli produkt nie ma żadnej ceny z From <= dziś, weź ostatnią dostępną (wszystkie progi)
 VAR _ItemsWithPrice =
-    SELECTCOLUMNS(_BestPurchasePrices, "Item", [Item_Number])
+    DISTINCT(SELECTCOLUMNS(_BestPurchasePrices, "Item", [Item_Number]))
+VAR _FallbackMaxDates =
+    ADDCOLUMNS(
+        FILTER(
+            _ThreatenedItems,
+            NOT([Item number] IN _ItemsWithPrice)
+        ),
+        "MaxFromDate", CALCULATE(MAX('BOMCalc06_item_prices_AX_purchase'[From date]))
+    )
 VAR _FallbackPrices =
     FILTER(
         _AllPurchasePrices,
         NOT([Item_Number] IN _ItemsWithPrice)
             && [From_Date] = MAXX(
-                FILTER(_AllPurchasePrices, [Item_Number] = EARLIER([Item_Number])),
-                [From_Date]
+                FILTER(_FallbackMaxDates, [Item number] = EARLIER([Item_Number])),
+                [MaxFromDate]
             )
     )
 RETURN
 UNION(_BestPurchasePrices, _FallbackPrices)
-ORDER BY [Item_Number]
+ORDER BY [Item_Number], [Vendor], [Quantity] ASC

@@ -233,13 +233,16 @@
       <h2 class="section-title">Ceny sprzedaży wg cennika</h2>
       <p class="section-subtitle">
         Aktualna cena sprzedaży z cennika AX (lub ostatnia historyczna jeśli brak aktualnej).
+        Uwzględniono wszystkie progi ilościowe.
       </p>
       <table>
         <thead>
           <tr>
             <th>Item</th>
             <th>Klient</th>
+            <th class="text-right">Od ilości</th>
             <th class="text-right">Cena (EUR)</th>
+            <th>Specjalna</th>
             <th>Waluta</th>
             <th>Jednostka</th>
             <th>Obowiązuje od</th>
@@ -254,7 +257,14 @@
             <tr>
               <td>@{items('Apply_to_each_sales_price')['Item_Number']}</td>
               <td>@{items('Apply_to_each_sales_price')['Customer_Account']}</td>
+              <td class="text-right">@{items('Apply_to_each_sales_price')['Quantity']}</td>
               <td class="text-right nowrap">@{items('Apply_to_each_sales_price')['Price_EUR']}</td>
+              <td>
+                @{if(equals(items('Apply_to_each_sales_price')['Specjal_Net_Price'], true),
+                  '<span class="badge" style="background:#ebf5fb;color:#2471a3">Tak</span>',
+                  'Nie'
+                )}
+              </td>
               <td>@{items('Apply_to_each_sales_price')['Currency']}</td>
               <td>@{items('Apply_to_each_sales_price')['Unit']}</td>
               <td class="nowrap">@{items('Apply_to_each_sales_price')['From_Date']}</td>
@@ -275,13 +285,16 @@
     <div class="section">
       <h2 class="section-title">Ceny zakupu</h2>
       <p class="section-subtitle">
-        Aktualna cena zakupu od dostawcy (lub ostatnia historyczna jeśli brak aktualnej). Jedna cena per produkt + dostawca.
+        Aktualna cena zakupu od dostawcy (lub ostatnia historyczna jeśli brak aktualnej).
+        Uwzględniono wszystkie progi ilościowe per produkt + dostawca.
       </p>
       <table>
         <thead>
           <tr>
             <th>Item</th>
+            <th class="text-right">Od ilości</th>
             <th class="text-right">Cena zakupu (EUR)</th>
+            <th>Specjalna</th>
             <th>Waluta</th>
             <th>Jednostka</th>
             <th>Od</th>
@@ -295,7 +308,14 @@
             Każdy wiersz:
             <tr>
               <td>@{items('Apply_to_each_purchase_price')['Item_Number']}</td>
+              <td class="text-right">@{items('Apply_to_each_purchase_price')['Quantity']}</td>
               <td class="text-right nowrap">@{items('Apply_to_each_purchase_price')['Price_EUR']}</td>
+              <td>
+                @{if(equals(items('Apply_to_each_purchase_price')['Specjal_Net_Price'], true),
+                  '<span class="badge" style="background:#ebf5fb;color:#2471a3">Tak</span>',
+                  'Nie'
+                )}
+              </td>
               <td>@{items('Apply_to_each_purchase_price')['Currency']}</td>
               <td>@{items('Apply_to_each_purchase_price')['Unit']}</td>
               <td class="nowrap">@{items('Apply_to_each_purchase_price')['From_Date']}</td>

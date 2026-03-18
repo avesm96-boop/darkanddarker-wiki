@@ -5,7 +5,7 @@ import styles from "./market.module.css";
 import { searchItems, fetchRawListings, fetchPriceHistory, fetchMarketActivity, GOLD_ICON, itemIconPath, type ItemDef, type RawListing, type PricePoint, type ActivityBucket } from "./api";
 import ItemTooltip from "./ItemTooltip";
 import { cleanStatName, formatStatValue, isPercentStat } from "./statFormat";
-import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from "recharts";
+import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const BASE_RARITIES = ["Poor", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique", "Artifact"];
 const RARITY_SECONDARY_SLOTS: Record<string, number> = {
@@ -240,7 +240,7 @@ export default function MarketSearchTab() {
       {!searched && activityData.length > 1 && (
         <div className={styles.msChartSection} style={{ marginBottom: 28 }}>
           <div className={styles.msChartHeader}>
-            <span className={styles.sectionTitle}>Market Activity — Last 14 Days</span>
+            <span className={styles.sectionTitle}>Items Listed — Last 14 Days</span>
           </div>
           <div className={styles.msChart}>
             <ResponsiveContainer width="100%" height={220}>
@@ -261,18 +261,9 @@ export default function MarketSearchTab() {
                 <Tooltip
                   contentStyle={{ background: "rgba(20,18,14,0.95)", border: "1px solid rgba(201,168,76,0.25)", borderRadius: 6, fontSize: "0.75rem" }}
                   labelFormatter={(ts) => new Date(Number(ts) * 1000).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
-                  formatter={(value: unknown, name: unknown) => [Number(value).toLocaleString(), String(name) === "listed" ? "Listed" : "Sold"]}
-                />
-                <Legend
-                  verticalAlign="top"
-                  align="right"
-                  iconType="circle"
-                  iconSize={8}
-                  wrapperStyle={{ fontSize: "0.7rem", color: "var(--text-muted)" }}
-                  formatter={(value: string) => value === "listed" ? "Listed" : "Sold"}
+                  formatter={(value: unknown) => [Number(value).toLocaleString(), "Listed"]}
                 />
                 <Area type="monotone" dataKey="listed" stroke="rgba(76,201,100,0.8)" fill="rgba(76,201,100,0.1)" strokeWidth={2} name="listed" />
-                <Area type="monotone" dataKey="sold" stroke="rgba(201,120,76,0.8)" fill="rgba(201,120,76,0.1)" strokeWidth={2} name="sold" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

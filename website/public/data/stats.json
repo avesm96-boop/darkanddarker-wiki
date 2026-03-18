@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-03-18T13:40:20.194337+00:00",
+  "generated_at": "2026-03-18T17:42:47.063690+00:00",
   "data": {
     "attributes": [
       {
@@ -269,7 +269,7 @@
               "output_max": 199.0
             },
             "baseline": 115.0,
-            "mechanic": "This is your health pool before any gear bonuses. The curve has diminishing returns \u2014 early points of Vigor give more HP than later ones. A Fighter with 15 VIG gets 115 HP, while a Barbarian with 25 VIG gets 131.5 HP \u2014 only 16.5 more HP for 10 extra points."
+            "mechanic": "This is your health pool before any gear bonuses. Verified from the game binary: MaxHealthBase = base * (1 + modifier), where the base comes from the Vigor curve and the modifier comes from gear/buffs. The curve has diminishing returns \u2014 early points of Vigor give more HP than later ones."
           },
           {
             "id": "health_recovery_mod",
@@ -521,7 +521,7 @@
               "output_max": 36.25
             },
             "baseline": 0.0,
-            "mechanic": "Your total Move Speed = Base (300) + this bonus, but hard capped at 330. A Rogue with 25 AGI gets +5 bonus = 305 move speed. A Ranger with 20 AGI gets +2.5 = 302.5. Gear can push you further toward the 330 cap. Below 15 AGI you get a penalty \u2014 at 0 AGI you'd lose 10 move speed."
+            "mechanic": "Your total Move Speed = Base (300) + this bonus, hard capped at 330. Verified from the binary: the MoveSpeed calculation reads directly from the AbilitySystemComponent, combining multiple sources in a complex formula. A Rogue with 25 AGI gets +5 bonus = 305 move speed. Below 15 AGI you get a penalty."
           },
           {
             "id": "action_speed_agi",
@@ -2422,7 +2422,7 @@
               "output_max": 94.0
             },
             "baseline": 9.0,
-            "mechanic": "Each spell has a memory cost. Your Memory Capacity limits which spells you can equip. Below 7 Knowledge you get zero capacity and cannot equip any spells. Above that, each point gives roughly 1 more capacity. A Wizard with 25 KNO gets 19 capacity, enough for several spells."
+            "mechanic": "Each spell has a memory cost. Your Memory Capacity limits which spells you can equip. Verified from the game binary: the result is rounded to a whole number using the formula round(base * (1 + modifier) + flat_bonus). Below 7 Knowledge you get zero capacity. A Wizard with 25 KNO gets 19 capacity, enough for several spells."
           },
           {
             "id": "memory_recovery_mod",
@@ -2734,7 +2734,7 @@
               "output_max": 1.52
             },
             "baseline": 0.0,
-            "mechanic": "Controls how fast you open chests, unlock doors, disarm traps, and revive teammates. A Rogue with 25 RES gets +52% \u2014 they open chests roughly 1.5\u00d7 faster than a Fighter. Combined with Dexterity's contribution, Rogues are the fastest looters."
+            "mechanic": "Controls how fast you open chests, unlock doors, disarm traps, and revive teammates. Verified from the binary: the RegularInteractionSpeedBase formula uses 1 - clamp(A/B, 0, 1), an inverse ratio. A Rogue with 25 RES gets +52% \u2014 they open chests roughly 1.5x faster than a Fighter."
           },
           {
             "id": "cooldown_reduction",

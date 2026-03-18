@@ -102,6 +102,9 @@ ICON_OVERRIDES = {
     ("skills", "Sorcery2"): "Icon_Skill_SpellMemory.png",
     ("perks", "ComboAttack"): "Icon_Perk_ComboAttack.png",
     ("spells", "SummonEarthElemental"): "Icon_Spell_SummonEarthElemental.png",
+    ("spells", "SorceryCombat"): "Icon_Spell_SorceryCombat.png",
+    ("spells", "SorceryCombat1"): "Icon_Spell_SorceryCombat.png",
+    ("spells", "SorceryCombat2"): "Icon_Spell_SorceryCombat.png",
 }
 
 PERK_DESC_DIR = RAW / "Perk"

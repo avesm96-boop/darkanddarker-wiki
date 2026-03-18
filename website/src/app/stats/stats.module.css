@@ -87,14 +87,87 @@
   line-height: 1.5;
 }
 
-/* === Attribute Cards === */
+/* === Attribute Tiles (horizontal strip) === */
 
-.attrGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 16px;
+.attrStrip {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
+.attrTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  min-width: 100px;
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  font-family: inherit;
+  color: inherit;
+}
+
+.attrTile:hover {
+  border-color: var(--gold-800);
+  box-shadow: var(--glow-sm);
+}
+
+.attrTileActive {
+  composes: attrTile;
+  border-color: var(--attr-color);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.15);
+}
+
+.attrTileIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--attr-color);
+  color: var(--attr-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.attrTileName {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-bright);
+}
+
+.attrTileDerived {
+  font-size: 0.5625rem;
+  color: var(--text-muted);
+}
+
+.attrExpandedCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.attrExpandedHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Legacy card styles kept for compatibility */
 .attrCard {
   background: var(--bg-card);
   border: 1px solid var(--border-dim);
@@ -113,6 +186,76 @@
   composes: attrCard;
   border-color: var(--gold-700);
   box-shadow: var(--glow-sm);
+}
+
+/* === Derived Stats Grid === */
+
+.derivedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.derivedCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+}
+
+.derivedCard:hover {
+  border-color: var(--gold-800);
+  box-shadow: var(--glow-sm);
+}
+
+.derivedCardActive {
+  composes: derivedCard;
+  border-color: var(--attr-color);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.12);
+}
+
+.derivedCardIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--attr-color);
+  color: var(--attr-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.derivedCardBody {
+  min-width: 0;
+}
+
+.derivedCardName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.derivedCardFrom {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .attrHeader {
@@ -917,7 +1060,16 @@
 /* === Responsive === */
 
 @media (max-width: 640px) {
-  .attrGrid {
+  .attrStrip {
+    gap: 6px;
+  }
+
+  .attrTile {
+    min-width: 80px;
+    padding: 8px 10px;
+  }
+
+  .derivedGrid {
     grid-template-columns: 1fr;
   }
 

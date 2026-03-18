@@ -118,6 +118,7 @@ interface StatsData {
 
 type TabId =
   | "attributes"
+  | "derived"
   | "calculator"
   | "defense"
   | "hitbox"
@@ -530,7 +531,6 @@ function AttributeSection({
     return mx;
   }, [attributes]);
 
-  // Build class reference dots for curve chart
   const classDotsForCurve = useMemo(() => {
     if (!attr) return [];
     return classes.map((cls, i) => ({
@@ -540,90 +540,229 @@ function AttributeSection({
     }));
   }, [attr, classes]);
 
-  // Group attributes into rows of 2 for inline panel insertion
-  const rows: Attribute[][] = [];
-  for (let i = 0; i < attributes.length; i += 2) {
-    rows.push(attributes.slice(i, i + 2));
-  }
-
-  // Find which row the selected attribute is in
-  const selectedRowIdx = selectedAttr
-    ? rows.findIndex((row) => row.some((a) => a.id === selectedAttr))
-    : -1;
-
   return (
     <div className={styles.section}>
       <h2 className={styles.sectionTitle}>Primary Attributes</h2>
       <p className={styles.sectionDesc}>
         Every character has 7 primary attributes. Click any attribute to explore
-        its scaling curves, derived stats, and per-class base values.
+        its derived stats, scaling curves, and per-class base values.
       </p>
 
-      {rows.map((row, rowIdx) => (
-        <div key={rowIdx}>
-          <div className={styles.attrGrid}>
-            {row.map((a) => (
-              <div
-                key={a.id}
-                className={
-                  selectedAttr === a.id ? styles.attrCardActive : styles.attrCard
-                }
-                onClick={() => handleAttrClick(a.id)}
-              >
-                <div className={styles.attrHeader}>
-                  <div
-                    className={styles.attrIcon}
-                    style={{
-                      borderColor: ATTR_COLORS[a.id] || "var(--gold-800)",
-                      color: ATTR_COLORS[a.id] || "var(--gold-400)",
-                    }}
-                  >
-                    {ATTR_ICONS[a.id] || "?"}
-                  </div>
-                  <div>
-                    <div className={styles.attrName}>{a.name}</div>
-                  </div>
-                </div>
-                <div className={styles.attrDesc}>{a.description}</div>
-                <div className={styles.classBarList}>
-                  {classes.map((cls) => {
-                    const val = a.class_base_values[cls.id] ?? 0;
-                    const pct = maxStatVal ? (val / maxStatVal) * 100 : 0;
-                    return (
-                      <div key={cls.id} className={styles.classBarRow}>
-                        <span className={styles.classBarName}>{cls.name}</span>
-                        <div className={styles.classBarTrack}>
-                          <div
-                            className={styles.classBarFill}
-                            style={{
-                              width: `${pct}%`,
-                              background: ATTR_COLORS[a.id] || "var(--gold-600)",
-                            }}
-                          />
-                        </div>
-                        <span className={styles.classBarValue}>{val}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
+      {/* Compact horizontal tiles */}
+      <div className={styles.attrStrip}>
+        {attributes.map((a) => (
+          <button
+            key={a.id}
+            className={
+              selectedAttr === a.id ? styles.attrTileActive : styles.attrTile
+            }
+            onClick={() => handleAttrClick(a.id)}
+            style={{
+              "--attr-color": ATTR_COLORS[a.id] || "var(--gold-600)",
+            } as React.CSSProperties}
+          >
+            <div className={styles.attrTileIcon}>
+              {ATTR_ICONS[a.id] || "?"}
+            </div>
+            <div className={styles.attrTileName}>{a.name}</div>
+            <div className={styles.attrTileDerived}>
+              {a.derived_stats.length} stat{a.derived_stats.length > 1 ? "s" : ""}
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* Expanded detail panel below the strip */}
+      {selectedAttr && attr && (
+        <div className={styles.attrExpandedCard}>
+          <div className={styles.attrExpandedHeader}>
+            <div
+              className={styles.attrIcon}
+              style={{
+                borderColor: ATTR_COLORS[attr.id] || "var(--gold-800)",
+                color: ATTR_COLORS[attr.id] || "var(--gold-400)",
+              }}
+            >
+              {ATTR_ICONS[attr.id] || "?"}
+            </div>
+            <div>
+              <div className={styles.attrName}>{attr.name}</div>
+              <div className={styles.attrDesc}>{attr.description}</div>
+            </div>
           </div>
 
-          {/* Detail panel inserted directly below the row containing the selected attribute */}
-          {selectedRowIdx === rowIdx && attr && (
-            <AttributeDetailPanel
-              attr={attr}
-              derived={derived}
-              selectedDerived={selectedDerived}
-              setSelectedDerived={setSelectedDerived}
-              onClose={handleClose}
-              classDotsForCurve={classDotsForCurve}
-              classes={classes}
-            />
-          )}
+          {/* Class base values as compact bars */}
+          <div className={styles.classBarList}>
+            {classes.map((cls) => {
+              const val = attr.class_base_values[cls.id] ?? 0;
+              const pct = maxStatVal ? (val / maxStatVal) * 100 : 0;
+              return (
+                <div key={cls.id} className={styles.classBarRow}>
+                  <span className={styles.classBarName}>{cls.name}</span>
+                  <div className={styles.classBarTrack}>
+                    <div
+                      className={styles.classBarFill}
+                      style={{
+                        width: `${pct}%`,
+                        background: ATTR_COLORS[attr.id] || "var(--gold-600)",
+                      }}
+                    />
+                  </div>
+                  <span className={styles.classBarValue}>{val}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Derived stats detail panel */}
+          <AttributeDetailPanel
+            attr={attr}
+            derived={derived}
+            selectedDerived={selectedDerived}
+            setSelectedDerived={setSelectedDerived}
+            onClose={handleClose}
+            classDotsForCurve={classDotsForCurve}
+            classes={classes}
+          />
         </div>
-      ))}
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Derived Stats Section — all 21 derived stats grouped by category
+// ---------------------------------------------------------------------------
+
+const DERIVED_CATEGORIES: { name: string; ids: string[] }[] = [
+  {
+    name: "Offense",
+    ids: [
+      "physical_power", "physical_power_bonus",
+      "magical_power", "magical_power_bonus",
+      "action_speed_agi", "action_speed_dex",
+    ],
+  },
+  {
+    name: "Defense & Health",
+    ids: [
+      "max_health_base", "health_recovery_mod",
+      "magic_resistance",
+    ],
+  },
+  {
+    name: "Speed & Interaction",
+    ids: [
+      "move_speed_base",
+      "spell_casting_speed",
+      "regular_interaction_speed",
+      "magical_interaction_speed",
+      "item_equip_speed",
+      "manual_dexterity",
+    ],
+  },
+  {
+    name: "Buffs, Debuffs & Utility",
+    ids: [
+      "buff_duration_mod", "debuff_duration_mod",
+      "cooldown_reduction", "persuasiveness",
+      "memory_capacity", "memory_recovery_mod",
+    ],
+  },
+];
+
+function DerivedStatsSection({
+  attributes,
+  classes,
+}: {
+  attributes: Attribute[];
+  classes: ClassInfo[];
+}) {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  // Build flat list of all derived stats with their parent attribute
+  const allDerived = useMemo(() => {
+    const list: { stat: DerivedStat; attr: Attribute }[] = [];
+    for (const a of attributes) {
+      for (const d of a.derived_stats) {
+        list.push({ stat: d, attr: a });
+      }
+    }
+    return list;
+  }, [attributes]);
+
+  const selected = allDerived.find((d) => d.stat.id === selectedId);
+
+  const classDotsForCurve = useMemo(() => {
+    if (!selected) return [];
+    return classes.map((cls, i) => ({
+      name: cls.name,
+      x: selected.attr.class_base_values[cls.id] ?? 15,
+      color: `hsl(${(i * 36) % 360}, 55%, 55%)`,
+    }));
+  }, [selected, classes]);
+
+  return (
+    <div className={styles.section}>
+      <h2 className={styles.sectionTitle}>Derived Stats</h2>
+      <p className={styles.sectionDesc}>
+        These stats are calculated from your primary attributes via scaling curves.
+        Click any stat to see its curve, formula, and how each class compares.
+      </p>
+
+      {DERIVED_CATEGORIES.map((cat) => {
+        const items = cat.ids
+          .map((id) => allDerived.find((d) => d.stat.id === id))
+          .filter(Boolean) as { stat: DerivedStat; attr: Attribute }[];
+        if (!items.length) return null;
+
+        return (
+          <div key={cat.name} style={{ marginBottom: 16 }}>
+            <h3 className={styles.subTitle}>{cat.name}</h3>
+            <div className={styles.derivedGrid}>
+              {items.map(({ stat, attr }) => (
+                <button
+                  key={stat.id}
+                  className={
+                    selectedId === stat.id
+                      ? styles.derivedCardActive
+                      : styles.derivedCard
+                  }
+                  onClick={() =>
+                    setSelectedId(selectedId === stat.id ? null : stat.id)
+                  }
+                  style={{
+                    "--attr-color": ATTR_COLORS[attr.id] || "var(--gold-600)",
+                  } as React.CSSProperties}
+                >
+                  <div className={styles.derivedCardIcon}>
+                    {ATTR_ICONS[attr.id] || "?"}
+                  </div>
+                  <div className={styles.derivedCardBody}>
+                    <div className={styles.derivedCardName}>{stat.name}</div>
+                    <div className={styles.derivedCardFrom}>
+                      from {attr.name}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Show detail panel below the category if a stat from this category is selected */}
+            {selected && cat.ids.includes(selected.stat.id) && (
+              <AttributeDetailPanel
+                attr={selected.attr}
+                derived={selected.stat}
+                selectedDerived={selected.stat.id}
+                setSelectedDerived={(id) => setSelectedId(id)}
+                onClose={() => setSelectedId(null)}
+                classDotsForCurve={classDotsForCurve}
+                classes={classes}
+              />
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -1292,6 +1431,7 @@ function CapsSection({ constants }: { constants: Constants }) {
 
 const TABS: { id: TabId; label: string }[] = [
   { id: "attributes", label: "Attributes" },
+  { id: "derived", label: "Derived Stats" },
   { id: "calculator", label: "Calculator" },
   { id: "defense", label: "Defense" },
   { id: "hitbox", label: "Hitbox" },
@@ -1362,6 +1502,9 @@ export default function StatsPage() {
 
         {activeTab === "attributes" && (
           <AttributeSection attributes={attributes} classes={classes} />
+        )}
+        {activeTab === "derived" && (
+          <DerivedStatsSection attributes={attributes} classes={classes} />
         )}
         {activeTab === "calculator" && (
           <CalculatorSection attributes={attributes} classes={classes} />

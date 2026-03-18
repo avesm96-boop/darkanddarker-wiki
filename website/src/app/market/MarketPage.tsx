@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./market.module.css";
 import MarketSearchTab from "./MarketSearchTab";
 import MarketTrendsTab from "./MarketTrendsTab";
+import MarketRmtTab from "./MarketRmtTab";
 
 const OUR_API = "/api/market";
 
@@ -39,7 +40,7 @@ function useDataAge() {
   return agoText;
 }
 
-type Tab = "search" | "trends";
+type Tab = "search" | "trends" | "rmt";
 
 export default function MarketPage() {
   const dataAge = useDataAge();
@@ -105,11 +106,18 @@ export default function MarketPage() {
           >
             Trends
           </button>
+          <button
+            className={tab === "rmt" ? styles.msTabActive : styles.msTab}
+            onClick={() => setTab("rmt")}
+          >
+            RMT
+          </button>
         </div>
 
         {/* Tab Content */}
         {tab === "search" && <MarketSearchTab />}
         {tab === "trends" && <MarketTrendsTab />}
+        {tab === "rmt" && <MarketRmtTab />}
       </div>
     </div>
   );

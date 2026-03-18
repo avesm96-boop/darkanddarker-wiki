@@ -4,7 +4,7 @@ const UPSTREAM = process.env.MARKET_API_URL ?? "";
 
 const ALLOWED_PATHS = new Set([
   "listings", "prices/history", "items", "trending", "stats",
-  "market/activity",
+  "market/activity", "market/trends",
   "rmt/stats", "rmt/listings", "rmt/sellers",
 ]);
 

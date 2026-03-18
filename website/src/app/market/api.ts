@@ -409,6 +409,31 @@ export async function fetchMarketActivity(
 }
 
 // ---------------------------------------------------------------------------
+// Market Trends — from our API
+// ---------------------------------------------------------------------------
+
+export interface TrendItem {
+  item_marketplace_id: string;
+  name: string;
+  current_min: number;
+  previous_min: number;
+  active_count: number;
+  change_pct: number;
+}
+
+interface OurTrendsResponse {
+  rising: TrendItem[];
+  falling: TrendItem[];
+}
+
+export async function fetchMarketTrends(
+  hours: number = 24,
+  signal?: AbortSignal,
+): Promise<OurTrendsResponse> {
+  return ourGet<OurTrendsResponse>(`/market/trends?hours=${hours}`, signal);
+}
+
+// ---------------------------------------------------------------------------
 // Trending — from our API
 // ---------------------------------------------------------------------------
 

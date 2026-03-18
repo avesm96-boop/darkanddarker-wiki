@@ -27,6 +27,7 @@ interface DerivedStat {
   id: string;
   name: string;
   description: string;
+  mechanic?: string;
   unit: string;
   curve: CurvePoint[];
   curve_full: CurvePoint[];
@@ -400,6 +401,14 @@ function AttributeDetailPanel({
       {derived && formulaInfo && (
         <>
           <p className={styles.derivedDesc}>{derived.description}</p>
+
+          {/* Plain-English Mechanic Explanation */}
+          {derived.mechanic && (
+            <div className={styles.mechanicCallout}>
+              <span className={styles.mechanicIcon}>💡</span>
+              <p className={styles.mechanicText}>{derived.mechanic}</p>
+            </div>
+          )}
 
           {/* Formula & Range Info */}
           <div className={styles.formulaBox}>

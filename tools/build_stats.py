@@ -62,6 +62,7 @@ ATTRIBUTE_DEFS = [
                 "id": "physical_power",
                 "name": "Physical Power",
                 "description": "Raw physical power rating. Maps 1:1 from Strength.",
+                "mechanic": "Your Physical Power equals your Strength, point for point. This rating is then converted to a damage bonus % via the Physical Power Bonus curve below.",
                 "curve_table": "CT_Strength",
                 "curve_row": "PhysicalPower",
                 "unit": "flat",
@@ -70,6 +71,7 @@ ATTRIBUTE_DEFS = [
                 "id": "physical_power_bonus",
                 "name": "Physical Power Bonus",
                 "description": "Percentage modifier applied to physical damage. Derived from Physical Power rating via a scaling curve.",
+                "mechanic": "Your weapon's base damage is multiplied by (1 + this bonus). For example, a Barbarian with 20 STR gets Physical Power 20, which gives roughly +5% bonus. A weapon dealing 30 base damage would deal 30 × 1.05 = 31.5. Below 15 STR the bonus goes negative, reducing your damage.",
                 "curve_table": "CT_PhysicalPower",
                 "curve_row": "PhysicalDamageMod",
                 "unit": "percent",
@@ -86,6 +88,7 @@ ATTRIBUTE_DEFS = [
                 "id": "max_health_base",
                 "name": "Max Health",
                 "description": "Base maximum health points. Scales with Vigor via a nonlinear curve.",
+                "mechanic": "This is your health pool before any gear bonuses. The curve has diminishing returns — early points of Vigor give more HP than later ones. A Fighter with 15 VIG gets 115 HP, while a Barbarian with 25 VIG gets 131.5 HP — only 16.5 more HP for 10 extra points.",
                 "curve_table": "CT_MaxHealthBase",
                 "curve_row": "MaxHealthBase",
                 "unit": "flat",
@@ -93,7 +96,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "health_recovery_mod",
                 "name": "Health Recovery",
-                "description": "Modifier to health regeneration rate while resting. Formula: HP per tick = Base Recovery × (1 + Recovery Mod).",
+                "description": "Modifier to health regeneration rate while resting.",
+                "mechanic": "When you sit down to rest, your HP regenerates each tick. This modifier changes how fast: HP per tick = Base Recovery × (1 + this value). At +70% (Barbarian, 25 VIG), you heal 1.7× as fast. Below 15 VIG, recovery becomes slower — a Rogue with 6 VIG has -27%, making resting almost twice as slow.",
                 "curve_table": "CT_RecoveryMod",
                 "curve_row": "HealthRecoveryMod",
                 "unit": "percent",
@@ -109,7 +113,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "move_speed_base",
                 "name": "Move Speed Bonus",
-                "description": "Bonus added to base movement speed. Subject to a hard move speed cap.",
+                "description": "Flat bonus added to your base movement speed.",
+                "mechanic": "Your total Move Speed = Base (300) + this bonus, but hard capped at 330. A Rogue with 25 AGI gets +5 bonus = 305 move speed. A Ranger with 20 AGI gets +2.5 = 302.5. Gear can push you further toward the 330 cap. Below 15 AGI you get a penalty — at 0 AGI you'd lose 10 move speed.",
                 "curve_table": "CT_Agility",
                 "curve_row": "MoveSpeedBase",
                 "unit": "flat",
@@ -117,7 +122,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "action_speed_agi",
                 "name": "Action Speed (from Agility)",
-                "description": "Action speed modifier from Agility. Affects weapon attack animations and interactions.",
+                "description": "Action speed modifier from Agility. This is one half of your total Action Speed.",
+                "mechanic": "Action Speed controls how fast you swing weapons, draw bows, and perform actions. It comes from TWO stats: Agility and Dexterity. Both use the same curve and their bonuses ADD together. Total Action Speed = Agility bonus + Dexterity bonus. For example, a Rogue (25 AGI, 20 DEX) gets +12.5% from AGI and +6.2% from DEX = 18.8% total faster attacks.",
                 "curve_table": "CT_Agility",
                 "curve_row": "ActionSpeed",
                 "unit": "percent",
@@ -133,7 +139,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "action_speed_dex",
                 "name": "Action Speed (from Dexterity)",
-                "description": "Action speed modifier from Dexterity. Combined with Agility's action speed for total.",
+                "description": "Action speed modifier from Dexterity. This is the other half of your total Action Speed.",
+                "mechanic": "This uses the exact same curve as the Agility Action Speed. Both bonuses are added together for your total Action Speed. If you have 15 AGI (+0%) and 20 DEX (+6.2%), your total action speed bonus is just 6.2%. To maximize Action Speed, you want both stats high — they contribute equally.",
                 "curve_table": "CT_ActionSpeed",
                 "curve_row": "ActionSpeed",
                 "unit": "percent",
@@ -141,7 +148,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "manual_dexterity",
                 "name": "Manual Dexterity",
-                "description": "Affects Bard instrument playing speed. Plateaus at high values with diminishing returns.",
+                "description": "Affects Bard instrument playing speed.",
+                "mechanic": "Bard-specific stat that controls how quickly you can play instruments. Scales well up to about 45 DEX, then heavily plateaus — going from 45 to 100 DEX barely improves it. Most classes won't notice this stat.",
                 "curve_table": "CT_Dexterity",
                 "curve_row": "ManualDexterity",
                 "unit": "percent",
@@ -149,7 +157,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "item_equip_speed",
                 "name": "Item Equip Speed",
-                "description": "Speed modifier for equipping armor and ranged weapons. Wide range from heavy penalties to large bonuses.",
+                "description": "Speed modifier for equipping armor and ranged weapons.",
+                "mechanic": "Controls how long it takes to put on armor pieces and equip ranged weapons during a match. At very low DEX (0-1), equipping is nearly frozen (-95%). At 15 DEX it's normal speed. Higher DEX dramatically speeds it up — at 35 DEX you equip at 2× normal speed. This matters most for classes that swap gear mid-fight.",
                 "curve_table": "CT_Dexterity",
                 "curve_row": "ItemEquipSpeed",
                 "unit": "percent",
@@ -166,6 +175,7 @@ ATTRIBUTE_DEFS = [
                 "id": "magical_power",
                 "name": "Magical Power",
                 "description": "Raw magical power rating. Maps 1:1 from Will.",
+                "mechanic": "Works exactly like Physical Power but for spells. Your Magical Power equals your Will stat point for point. This rating then converts to a damage bonus % via the Magical Power Bonus curve.",
                 "curve_table": "CT_Will",
                 "curve_row": "MagicalPower",
                 "unit": "flat",
@@ -173,7 +183,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "magical_power_bonus",
                 "name": "Magical Power Bonus",
-                "description": "Percentage modifier applied to magical damage. Uses the same curve shape as Physical Power Bonus.",
+                "description": "Percentage modifier applied to magical/spell damage.",
+                "mechanic": "Spell damage is multiplied by (1 + this bonus). Uses the same curve shape as Physical Power Bonus. A Sorcerer with 25 WIL gets +10% spell damage, while a Rogue with 10 WIL takes a -8% penalty to any magical damage they deal.",
                 "curve_table": "CT_MagicalPower",
                 "curve_row": "MagicalDamageMod",
                 "unit": "percent",
@@ -181,7 +192,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "magic_resistance",
                 "name": "Magic Resistance",
-                "description": "Magic resistance rating. Feeds into Magical Damage Reduction via a separate defense curve.",
+                "description": "Magic resistance rating that reduces incoming spell damage.",
+                "mechanic": "This rating feeds into the Magical Damage Reduction curve (see Defense tab). Higher Will gives higher resistance, which means less spell damage taken. A Sorcerer with 25 WIL gets 54 Magic Resistance. This is separate from Armor Rating — you can be well-protected against spells but vulnerable to weapons, or vice versa.",
                 "curve_table": "CT_Will",
                 "curve_row": "MagicResistance",
                 "unit": "flat",
@@ -189,7 +201,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "buff_duration_mod",
                 "name": "Buff Duration",
-                "description": "Modifier to the duration of beneficial effects (buffs). Higher Will extends positive spell effects.",
+                "description": "Modifier to how long beneficial effects (buffs) last on you.",
+                "mechanic": "Buff duration = Base Duration × (1 + this modifier). A Cleric with 23 WIL gets about +9.6% — their Protection spell lasts ~10% longer. Uses the same curve shape as Physical Power Bonus. Below 15 WIL, your buffs expire faster.",
                 "curve_table": "CT_Will",
                 "curve_row": "BuffDurationMod",
                 "unit": "percent",
@@ -197,7 +210,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "debuff_duration_mod",
                 "name": "Debuff Duration",
-                "description": "Modifier to debuff duration received. Extremely punishing at low Will values. Above the baseline, reduces incoming debuff duration.",
+                "description": "Modifier to how long negative effects (debuffs) last on you.",
+                "mechanic": "This curve is inverted — positive values mean debuffs last LONGER. At low Will, debuffs are devastating: a Rogue with 10 WIL has +12.4%, meaning poison/slow effects last ~12% longer. At high Will, debuffs are shortened. The penalty is extreme at 0 Will — debuffs would last 5× normal duration.",
                 "curve_table": "CT_Will",
                 "curve_row": "DebuffDurationMod",
                 "unit": "percent",
@@ -207,6 +221,7 @@ ATTRIBUTE_DEFS = [
                 "id": "magical_interaction_speed",
                 "name": "Magical Interaction Speed",
                 "description": "Speed modifier for magical interactions like opening shrines and portals.",
+                "mechanic": "Controls how quickly you can activate shrines, open portals, and interact with magical objects. Uses the same curve as Health Recovery. A Wizard with 20 WIL opens shrines about 35% faster than baseline.",
                 "curve_table": "CT_Will",
                 "curve_row": "MagicalInteractionSpeed",
                 "unit": "percent",
@@ -222,7 +237,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "spell_casting_speed",
                 "name": "Spell Casting Speed",
-                "description": "Modifier to spell casting time. Subject to both a floor and ceiling cap defined in game constants.",
+                "description": "Modifier to how fast you cast spells.",
+                "mechanic": "Cast time = Base Cast Time / (1 + this modifier). A Wizard with 25 KNO gets +21% — a spell with 2s base cast time takes 2 / 1.21 = 1.65s. This is critical for spell classes. Barbarian at 5 KNO gets -35%, making their rare spell casts painfully slow.",
                 "curve_table": "CT_Knowledge",
                 "curve_row": "SpellCastingSpeed",
                 "unit": "percent",
@@ -230,7 +246,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "memory_capacity",
                 "name": "Memory Capacity",
-                "description": "Determines how many spell slots are available. Has a minimum threshold before any capacity is granted.",
+                "description": "Determines how many spell slots are available.",
+                "mechanic": "Each spell has a memory cost. Your Memory Capacity limits which spells you can equip. Below 7 Knowledge you get zero capacity and cannot equip any spells. Above that, each point gives roughly 1 more capacity. A Wizard with 25 KNO gets 19 capacity, enough for several spells.",
                 "curve_table": "CT_Knowledge",
                 "curve_row": "MemoryCapacity",
                 "unit": "flat",
@@ -238,7 +255,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "memory_recovery_mod",
                 "name": "Memory Recovery",
-                "description": "Modifier to spell memory recharge rate. Unlike other recovery modifiers, this is always positive even at zero.",
+                "description": "Multiplier for how fast spent spell slots recharge.",
+                "mechanic": "When you rest at a campfire or meditate, your spent spell slots recover. This multiplier speeds that up. Unlike Health Recovery, this never goes negative — even at 0 Knowledge you still recover at 0.43× rate. At 25 KNO you get about 0.85× rate, and it climbs steeply above 30.",
                 "curve_table": "CT_RecoveryMod",
                 "curve_row": "MemoryRecoveryMod",
                 "unit": "multiplier",
@@ -255,6 +273,7 @@ ATTRIBUTE_DEFS = [
                 "id": "regular_interaction_speed",
                 "name": "Regular Interaction Speed",
                 "description": "Speed modifier for non-magical interactions like opening chests, doors, and reviving.",
+                "mechanic": "Controls how fast you open chests, unlock doors, disarm traps, and revive teammates. A Rogue with 25 RES gets +52% — they open chests roughly 1.5× faster than a Fighter. Combined with Dexterity's contribution, Rogues are the fastest looters.",
                 "curve_table": "CT_RegularInteractionSpeedBase",
                 "curve_row": "RegularInteractionSpeed",
                 "unit": "percent",
@@ -262,7 +281,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "cooldown_reduction",
                 "name": "Cooldown Reduction",
-                "description": "Reduces skill and spell cooldowns. Subject to a hard cap defined in game constants.",
+                "description": "Reduces the cooldown time on your skills and spells.",
+                "mechanic": "Effective Cooldown = Base Cooldown × (1 - this value). A Rogue with 25 RES gets about +20% CDR — a 30s cooldown becomes 30 × 0.8 = 24s. This is hard capped at 65% reduction, so cooldowns can never be reduced below 35% of their base value.",
                 "curve_table": "CT_Resourcefulness",
                 "curve_row": "CooldownReduction",
                 "unit": "percent",
@@ -270,7 +290,8 @@ ATTRIBUTE_DEFS = [
             {
                 "id": "persuasiveness",
                 "name": "Persuasiveness",
-                "description": "Affects Bard buff/debuff effectiveness. Shows diminishing returns and eventually plateaus.",
+                "description": "Affects Bard buff/debuff effectiveness.",
+                "mechanic": "Bard-only stat. Increases the potency of your songs' buff and debuff effects on allies and enemies. Scales linearly up to about 35 RES, then hits diminishing returns and eventually plateaus. Most non-Bard classes can ignore this stat.",
                 "curve_table": "CT_Resourcefulness",
                 "curve_row": "Persuasiveness",
                 "unit": "flat",
@@ -426,6 +447,8 @@ def build_attributes(curves: dict, classes: list[dict]) -> list[dict]:
                 },
                 "baseline": interpolate_curve(raw_keys, 15),
             }
+            if ds_def.get("mechanic"):
+                ds["mechanic"] = ds_def["mechanic"]
             if ds_def.get("inverted"):
                 ds["inverted"] = True
             attr["derived_stats"].append(ds)

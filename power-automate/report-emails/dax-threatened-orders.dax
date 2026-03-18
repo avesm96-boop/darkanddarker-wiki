@@ -1,0 +1,79 @@
+// ============================================================
+// DAX Query: Zagrożone zamówienia (marża < 5%)
+// Użycie: Power Automate → Power BI connector → "Run a query"
+// ============================================================
+
+// ----- TABELA 1: Zagrożone zamówienia per Key_Sales_CuS -----
+EVALUATE
+VAR _MarginThreshold = 0.05
+RETURN
+FILTER(
+    SELECTCOLUMNS(
+        '04_Open_Orders',
+        "Key_Sales_CuS",       '04_Open_Orders'[Key_Sales_CuS],
+        "Sales_Order",         '04_Open_Orders'[Sales order],
+        "Line_No",             '04_Open_Orders'[Line No],
+        "Item_Number",         '04_Open_Orders'[Item number],
+        "Name",                '04_Open_Orders'[Name],
+        "Customer_Account",    '04_Open_Orders'[Customer account],
+        "Quantity",            '04_Open_Orders'[Quantity],
+        "Unit_Price",          '04_Open_Orders'[Unit price],
+        "Net_Amount",          '04_Open_Orders'[Net amount],
+        "Amount_EUR",          '04_Open_Orders'[Amount in EUR],
+        "COGS_EUR",            '04_Open_Orders'[COGS in EUR],
+        "Margin",              '04_Open_Orders'[Margin],
+        "Vendor",              '04_Open_Orders'[Vendor],
+        "Confirmed_Ship_Date", '04_Open_Orders'[Confirmed ship date],
+        "Requested_Ship_Date", '04_Open_Orders'[Requested ship date]
+    ),
+    [Margin] < _MarginThreshold
+)
+ORDER BY [Key_Sales_CuS], [Margin] ASC
+
+
+// ----- TABELA 2: Ceny sprzedaży wg cennika dla zagrożonych produktów -----
+EVALUATE
+VAR _ThreatenedItems =
+    CALCULATETABLE(
+        DISTINCT('04_Open_Orders'[Item number]),
+        '04_Open_Orders'[Margin] < 0.05
+    )
+RETURN
+FILTER(
+    SELECTCOLUMNS(
+        'BOMCalc06_item_prices_AX_sales',
+        "Item_Number",      'BOMCalc06_item_prices_AX_sales'[Item number],
+        "Price_EUR",        'BOMCalc06_item_prices_AX_sales'[Price],
+        "Currency",         'BOMCalc06_item_prices_AX_sales'[Currency],
+        "Unit",             'BOMCalc06_item_prices_AX_sales'[Unit],
+        "From_Date",        'BOMCalc06_item_prices_AX_sales'[From date],
+        "To_Date",          'BOMCalc06_item_prices_AX_sales'[To date],
+        "Customer_Account", 'BOMCalc06_item_prices_AX_sales'[Customer account]
+    ),
+    [Item_Number] IN _ThreatenedItems
+)
+ORDER BY [Item_Number], [From_Date] DESC
+
+
+// ----- TABELA 3: Ceny zakupu dla zagrożonych produktów -----
+EVALUATE
+VAR _ThreatenedItems =
+    CALCULATETABLE(
+        DISTINCT('04_Open_Orders'[Item number]),
+        '04_Open_Orders'[Margin] < 0.05
+    )
+RETURN
+FILTER(
+    SELECTCOLUMNS(
+        'BOMCalc06_item_prices_AX_purchase',
+        "Item_Number",      'BOMCalc06_item_prices_AX_purchase'[Item number],
+        "Price_EUR",        'BOMCalc06_item_prices_AX_purchase'[Price],
+        "Currency",         'BOMCalc06_item_prices_AX_purchase'[Currency],
+        "Unit",             'BOMCalc06_item_prices_AX_purchase'[Unit],
+        "From_Date",        'BOMCalc06_item_prices_AX_purchase'[From date],
+        "Vendor",           'BOMCalc06_item_prices_AX_purchase'[Vendor account],
+        "Vendor_Name",      'BOMCalc06_item_prices_AX_purchase'[Vendor name]
+    ),
+    [Item_Number] IN _ThreatenedItems
+)
+ORDER BY [Item_Number], [From_Date] DESC

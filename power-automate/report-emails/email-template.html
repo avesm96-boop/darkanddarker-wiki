@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raport zagrożonych zamówień</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #c0392b, #e74c3c);
+      color: #fff;
+      padding: 24px 32px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .header p {
+      margin: 6px 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .section {
+      padding: 24px 32px;
+      border-bottom: 1px solid #eee;
+    }
+    .section:last-child {
+      border-bottom: none;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e74c3c;
+      display: inline-block;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      color: #7f8c8d;
+      margin: 0 0 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      background-color: #34495e;
+      color: #fff;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #ecf0f1;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #ffeaa7;
+    }
+    .margin-critical {
+      color: #c0392b;
+      font-weight: 700;
+    }
+    .margin-warning {
+      color: #e67e22;
+      font-weight: 600;
+    }
+    .margin-negative {
+      color: #c0392b;
+      font-weight: 700;
+      background-color: #fdedec;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-danger {
+      background-color: #fdedec;
+      color: #c0392b;
+    }
+    .badge-warning {
+      background-color: #fef9e7;
+      color: #d68910;
+    }
+    .summary-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .summary-card {
+      background: #f8f9fa;
+      border-radius: 6px;
+      padding: 12px 20px;
+      border-left: 4px solid #e74c3c;
+      flex: 1;
+      min-width: 180px;
+    }
+    .summary-card .label {
+      font-size: 11px;
+      color: #7f8c8d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .summary-card .value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-top: 4px;
+    }
+    .footer {
+      padding: 16px 32px;
+      background: #f8f9fa;
+      font-size: 12px;
+      color: #95a5a6;
+      text-align: center;
+    }
+    .text-right {
+      text-align: right;
+    }
+    .nowrap {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ============ NAGŁÓWEK ============ -->
+    <div class="header">
+      <h1>⚠ Raport zagrożonych zamówień</h1>
+      <p>
+        Key_Sales_CuS: <strong>@{variables('currentKeySalesCuS')}</strong>
+        &nbsp;|&nbsp;
+        Data raportu: <strong>@{utcNow('dd.MM.yyyy')}</strong>
+      </p>
+    </div>
+
+    <!-- ============ PODSUMOWANIE ============ -->
+    <div class="section">
+      <div class="summary-row">
+        <div class="summary-card">
+          <div class="label">Zagrożone pozycje</div>
+          <div class="value">@{variables('threatenedCount')}</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">Najniższa marża</div>
+          <div class="value">@{variables('minMargin')}%</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">Wartość zagrożona (EUR)</div>
+          <div class="value">@{variables('totalAmountEUR')}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TABELA 1: ZAGROŻONE ZAMÓWIENIA ============ -->
+    <div class="section">
+      <h2 class="section-title">Zagrożone zamówienia (marża &lt; 5%)</h2>
+      <p class="section-subtitle">
+        Zamówienia z marżą poniżej progu 5% wymagające uwagi handlowca.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Zamówienie</th>
+            <th>Linia</th>
+            <th>Item</th>
+            <th>Nazwa</th>
+            <th>Klient</th>
+            <th class="text-right">Ilość</th>
+            <th class="text-right">Cena j. (EUR)</th>
+            <th class="text-right">Kwota (EUR)</th>
+            <th class="text-right">COGS (EUR)</th>
+            <th class="text-right">Marża</th>
+            <th>Dostawca</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Power Automate: Apply to each → threatenedOrders -->
+          @{variables('threatenedOrdersHTML')}
+          <!--
+            Każdy wiersz generowany przez Power Automate w pętli:
+            <tr>
+              <td>@{items('Apply_to_each_order')['Sales_Order']}</td>
+              <td>@{items('Apply_to_each_order')['Line_No']}</td>
+              <td>@{items('Apply_to_each_order')['Item_Number']}</td>
+              <td>@{items('Apply_to_each_order')['Name']}</td>
+              <td>@{items('Apply_to_each_order')['Customer_Account']}</td>
+              <td class="text-right">@{items('Apply_to_each_order')['Quantity']}</td>
+              <td class="text-right nowrap">@{items('Apply_to_each_order')['Unit_Price']}</td>
+              <td class="text-right nowrap">@{items('Apply_to_each_order')['Amount_EUR']}</td>
+              <td class="text-right nowrap">@{items('Apply_to_each_order')['COGS_EUR']}</td>
+              <td class="text-right">
+                <span class="@{if(less(items('Apply_to_each_order')['Margin'], 0), 'margin-negative', 'margin-warning')}">
+                  @{formatNumber(items('Apply_to_each_order')['Margin'] * 100, 'N1')}%
+                </span>
+              </td>
+              <td>@{items('Apply_to_each_order')['Vendor']}</td>
+            </tr>
+          -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============ TABELA 2: CENY SPRZEDAŻY WG CENNIKA ============ -->
+    <div class="section">
+      <h2 class="section-title">Ceny sprzedaży wg cennika</h2>
+      <p class="section-subtitle">
+        Aktualne ceny sprzedaży z cennika AX dla produktów wymienionych powyżej.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Klient</th>
+            <th class="text-right">Cena (EUR)</th>
+            <th>Waluta</th>
+            <th>Jednostka</th>
+            <th>Od</th>
+            <th>Do</th>
+          </tr>
+        </thead>
+        <tbody>
+          @{variables('salesPricesHTML')}
+          <!--
+            Każdy wiersz:
+            <tr>
+              <td>@{items('Apply_to_each_sales_price')['Item_Number']}</td>
+              <td>@{items('Apply_to_each_sales_price')['Customer_Account']}</td>
+              <td class="text-right nowrap">@{items('Apply_to_each_sales_price')['Price_EUR']}</td>
+              <td>@{items('Apply_to_each_sales_price')['Currency']}</td>
+              <td>@{items('Apply_to_each_sales_price')['Unit']}</td>
+              <td class="nowrap">@{items('Apply_to_each_sales_price')['From_Date']}</td>
+              <td class="nowrap">@{items('Apply_to_each_sales_price')['To_Date']}</td>
+            </tr>
+          -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============ TABELA 3: CENY ZAKUPU ============ -->
+    <div class="section">
+      <h2 class="section-title">Ceny zakupu</h2>
+      <p class="section-subtitle">
+        Aktualne ceny zakupu od dostawców dla produktów wymienionych powyżej.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-right">Cena zakupu (EUR)</th>
+            <th>Waluta</th>
+            <th>Jednostka</th>
+            <th>Od</th>
+            <th>Dostawca</th>
+            <th>Nazwa dostawcy</th>
+          </tr>
+        </thead>
+        <tbody>
+          @{variables('purchasePricesHTML')}
+          <!--
+            Każdy wiersz:
+            <tr>
+              <td>@{items('Apply_to_each_purchase_price')['Item_Number']}</td>
+              <td class="text-right nowrap">@{items('Apply_to_each_purchase_price')['Price_EUR']}</td>
+              <td>@{items('Apply_to_each_purchase_price')['Currency']}</td>
+              <td>@{items('Apply_to_each_purchase_price')['Unit']}</td>
+              <td class="nowrap">@{items('Apply_to_each_purchase_price')['From_Date']}</td>
+              <td>@{items('Apply_to_each_purchase_price')['Vendor']}</td>
+              <td>@{items('Apply_to_each_purchase_price')['Vendor_Name']}</td>
+            </tr>
+          -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============ STOPKA ============ -->
+    <div class="footer">
+      Raport wygenerowany automatycznie przez Power Automate
+      &nbsp;|&nbsp;
+      Próg marży: &lt;5%
+      &nbsp;|&nbsp;
+      Źródło: Power BI &mdash; 04_Open_Orders
+    </div>
+
+  </div>
+</body>
+</html>

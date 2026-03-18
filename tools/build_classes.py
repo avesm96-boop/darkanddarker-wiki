@@ -2048,8 +2048,13 @@ def collect_shapeshifts(class_name, loc):
     return shapeshifts
 
 
-def collect_spell_merge_recipes(loc):
-    """Collect spell merge recipes from the SpellMergeGroup data."""
+def collect_spell_merge_recipes(loc, derived_stats=None):
+    """Collect spell merge recipes from the SpellMergeGroup data.
+
+    Args:
+        loc: Localization dictionary from Game.json.
+        derived_stats: Sorcerer derived stats dict for scaling example values.
+    """
     path = RAW_V2 / "Spell" / "SpellMergeGroup" / "Id_SpellMergeGroup.json"
     data = load_json(path)
     if data is None:
@@ -2065,20 +2070,38 @@ def collect_spell_merge_recipes(loc):
         # Get display name from localization
         loc_key = f"Text_DesignData_Spell_Spell_{merge_short}"
         merge_display = loc.get(loc_key, merge_display)
+        # Result spell icon
+        result_icon = _find_icon("spells", merge_short)
+        # Result spell description
+        desc_path = _find_desc_path_spell(merge_short)
+        result_description = get_description(merge_short, loc, desc_path)
+        # Result spell scaling
+        result_scaling = extract_spell_scaling(merge_short, derived_stats)
         sources = entry.get("SourceSpells", [])
-        source_names = []
+        source_list = []
         for src in sources:
             src_name_raw = src.get("PrimaryAssetName", "")
             src_short = extract_id_name(src_name_raw, "Id_Spell_")
             src_display = to_display_name(src_short)
             src_loc_key = f"Text_DesignData_Spell_Spell_{src_short}"
             src_display = loc.get(src_loc_key, src_display)
-            source_names.append(src_display)
-        recipes.append({
+            src_icon = _find_icon("spells", src_short)
+            src_entry = {"name": src_display}
+            if src_icon:
+                src_entry["icon"] = src_icon
+            source_list.append(src_entry)
+        recipe = {
             "result": merge_display,
             "result_slug": to_slug(merge_display),
-            "sources": source_names,
-        })
+            "sources": source_list,
+        }
+        if result_icon:
+            recipe["result_icon"] = result_icon
+        if result_description:
+            recipe["result_description"] = result_description
+        if result_scaling is not None:
+            recipe["result_scaling"] = result_scaling
+        recipes.append(recipe)
     return recipes
 
 
@@ -2265,8 +2288,13 @@ def main():
         if class_data is not None:
             classes.append(class_data)
 
-    # Spell merge recipes
-    spell_merge_recipes = collect_spell_merge_recipes(loc)
+    # Spell merge recipes — use Sorcerer derived stats for scaling examples
+    sorcerer_derived = None
+    for c in classes:
+        if c["name"] == "Sorcerer":
+            sorcerer_derived = c["derived_stats"]
+            break
+    spell_merge_recipes = collect_spell_merge_recipes(loc, sorcerer_derived)
     print(f"  Collected {len(spell_merge_recipes)} spell merge recipes")
 
     # Build output

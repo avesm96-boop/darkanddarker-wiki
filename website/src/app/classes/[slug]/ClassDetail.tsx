@@ -112,7 +112,10 @@ interface ClassData {
 interface SpellMergeRecipe {
   result: string;
   result_slug: string;
-  sources: string[];
+  result_icon?: string;
+  result_description?: string;
+  result_scaling?: ScalingInfo | null;
+  sources: Array<{ name: string; icon?: string }>;
 }
 
 interface ClassesJson {
@@ -247,6 +250,7 @@ export default function ClassDetail({ slug }: { slug: string }) {
   const [expandedPerks, setExpandedPerks] = useState<Set<string>>(new Set());
   const [expandedSkills, setExpandedSkills] = useState<Set<string>>(new Set());
   const [expandedSpells, setExpandedSpells] = useState<Set<string>>(new Set());
+  const [expandedMerge, setExpandedMerge] = useState<Set<string>>(new Set());
 
   // ── Load class data ──────────────────────────────────────────────────
   const loadData = useCallback(() => {
@@ -294,6 +298,15 @@ export default function ClassDetail({ slug }: { slug: string }) {
 
   const toggleSpell = useCallback((id: string) => {
     setExpandedSpells((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }, []);
+
+  const toggleMerge = useCallback((id: string) => {
+    setExpandedMerge((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
@@ -791,22 +804,79 @@ export default function ClassDetail({ slug }: { slug: string }) {
             {sorcererRecipes.length > 0 && (
               <div className={styles.mergeSection}>
                 <h3 className={styles.sectionTitle}>Spell Merge Recipes</h3>
-                {sorcererRecipes.map((recipe) => (
-                  <div key={recipe.result_slug} className={styles.mergeCard}>
-                    <span className={styles.mergeResult}>
-                      {recipe.result}
-                    </span>
-                    <span className={styles.mergeArrow}>&larr;</span>
-                    {recipe.sources.map((src, i) => (
-                      <span key={i}>
-                        {i > 0 && (
-                          <span className={styles.mergePlus}> + </span>
-                        )}
-                        <span className={styles.mergeSource}>{src}</span>
-                      </span>
-                    ))}
-                  </div>
-                ))}
+                <div className={styles.cardList}>
+                  {sorcererRecipes.map((recipe) => {
+                    const open = expandedMerge.has(recipe.result_slug);
+                    return (
+                      <div
+                        key={recipe.result_slug}
+                        className={open ? styles.mergeRecipeCardOpen : styles.mergeRecipeCard}
+                      >
+                        <div
+                          className={styles.mergeFormula}
+                          onClick={() => toggleMerge(recipe.result_slug)}
+                        >
+                          <div className={styles.mergeFormulaSources}>
+                            {recipe.sources.map((src, i) => (
+                              <span key={i} className={styles.mergeFormulaItem}>
+                                {i > 0 && (
+                                  <span className={styles.mergeOperator}>+</span>
+                                )}
+                                {src.icon && (
+                                  <img
+                                    src={src.icon}
+                                    alt=""
+                                    width={24}
+                                    height={24}
+                                    className={styles.abilityIcon}
+                                  />
+                                )}
+                                <span className={styles.mergeSpellName}>{src.name}</span>
+                              </span>
+                            ))}
+                            <span className={styles.mergeOperator}>=</span>
+                            {recipe.result_icon && (
+                              <img
+                                src={recipe.result_icon}
+                                alt=""
+                                width={28}
+                                height={28}
+                                className={styles.abilityIcon}
+                              />
+                            )}
+                            <span className={styles.mergeResultName}>{recipe.result}</span>
+                          </div>
+                          <span
+                            className={
+                              open
+                                ? styles.expandCardChevronOpen
+                                : styles.expandCardChevron
+                            }
+                          >
+                            &#9660;
+                          </span>
+                        </div>
+                        <div
+                          className={
+                            open ? styles.expandCardBodyOpen : styles.expandCardBody
+                          }
+                        >
+                          <div className={styles.expandCardContent}>
+                            {recipe.result_description && (
+                              <p>{cleanDescription(recipe.result_description)}</p>
+                            )}
+                            {recipe.result_scaling && (
+                              <ScalingDisplay
+                                scaling={recipe.result_scaling}
+                                className={classData.name}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </>

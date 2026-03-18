@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T10:33:51.800245+00:00",
+  "generated_at": "2026-03-18T10:47:29.456560+00:00",
   "data": {
     "classes": [
       {
@@ -3997,121 +3997,315 @@
         "result": "Flamefrost Spear",
         "result_slug": "flamefrost-spear",
         "sources": [
-          "Ice Spear",
-          "Flamestrike"
-        ]
+          {
+            "name": "Ice Spear",
+            "icon": "/icons/spells/Icon_Spell_IceSpear.png"
+          },
+          {
+            "name": "Flamestrike",
+            "icon": "/icons/spells/Icon_Spell_Flamestrike.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_FlamefrostSpear.png"
       },
       {
         "result": "Lightning Vortex",
         "result_slug": "lightning-vortex",
         "sources": [
-          "Vortex",
-          "Lightning Sphere"
-        ]
+          {
+            "name": "Vortex",
+            "icon": "/icons/spells/Icon_Spell_Vortex.png"
+          },
+          {
+            "name": "Lightning Sphere",
+            "icon": "/icons/spells/Icon_Spell_LightningSphere.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_LightningVortex.png",
+        "result_description": "Deal 20 Lightning/Air Magical Damage to all targets within the area, push them back, and electrify them for 2 seconds.\n\nElectrified: The target loses -20% Move Speed.",
+        "result_scaling": {
+          "base_damage": 20,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "formula": "20 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 20 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 20 + 25 = 45 damage"
+        }
       },
       {
         "result": "Elemental Bolt",
         "result_slug": "elemental-bolt",
         "sources": [
-          "Water Bolt",
-          "Fire Arrow"
-        ]
+          {
+            "name": "Water Bolt",
+            "icon": "/icons/spells/Icon_Spell_WaterBolt.png"
+          },
+          {
+            "name": "Fire Arrow",
+            "icon": "/icons/spells/Icon_Spell_FireArrow.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_ElementalBolt.png",
+        "result_description": "Deal 50 magical ice damage Fire/ to the target, inflicting burn over 3 seconds and frostbite for 2 seconds.\n\nBurn: The target takes 3 magical fire damage.\nFrostbite: The target loses -20% Move Speed and -20% Action Speed.",
+        "result_scaling": {
+          "base_damage": 50,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "impact_power": 4,
+          "formula": "50 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 50 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 50 + 25 = 75 damage"
+        }
       },
       {
         "result": "Flamethrower",
         "result_slug": "flamethrower",
         "sources": [
-          "Fire Arrow",
-          "Windblast"
-        ]
+          {
+            "name": "Fire Arrow",
+            "icon": "/icons/spells/Icon_Spell_FireArrow.png"
+          },
+          {
+            "name": "Windblast",
+            "icon": "/icons/spells/Icon_Spell_WindBlast.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_Flamethrower.png",
+        "result_description": "Blast radial flames forward for 5 seconds, dealing 20 magical fire damage per second and inflicting burn over 3 seconds on targets.\n\nBurn: The target takes 3 magical fire damage."
       },
       {
         "result": "Summon Lava Elemental",
         "result_slug": "summon-lava-elemental",
         "sources": [
-          "Fire Orb",
-          "Summon Earth Elemental"
-        ]
+          {
+            "name": "Fire Orb",
+            "icon": "/icons/spells/Icon_Spell_FireOrb.png"
+          },
+          {
+            "name": "Summon Earth Elemental",
+            "icon": "/icons/spells/Icon_Spell_SummonEarthElemental.png"
+          }
+        ],
+        "result_description": "Summon a Lava Elemental for 24 seconds. The Lava Elemental deals 10 magical fire damage per second to nearby enemies and leaves a trail of lava that deals 10 magical fire damage per second."
       },
       {
         "result": "Thorn of Earth",
         "result_slug": "thorn-of-earth",
         "sources": [
-          "Eruption",
-          "Levitation"
-        ]
+          {
+            "name": "Eruption",
+            "icon": "/icons/spells/Icon_Spell_Eruption.png"
+          },
+          {
+            "name": "Levitation",
+            "icon": "/icons/spells/Icon_Spell_Levitation.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_ThornofEarth.png",
+        "result_description": "Erupts a thorn of earth, dealing 30 magical earth damage to all targets within the area.",
+        "result_scaling": {
+          "base_damage": 30,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "impact_power": 4,
+          "formula": "30 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 30 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 30 + 25 = 55 damage"
+        }
       },
       {
         "result": "Lightning Storm",
         "result_slug": "lightning-storm",
         "sources": [
-          "Lightning Sphere",
-          "Levitation"
-        ]
+          {
+            "name": "Lightning Sphere",
+            "icon": "/icons/spells/Icon_Spell_LightningSphere.png"
+          },
+          {
+            "name": "Levitation",
+            "icon": "/icons/spells/Icon_Spell_Levitation.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_LightningStorm.png",
+        "result_description": "Channel for 6 seconds to summon a lightning storm, dealing 10 magical lightning damage per second and electrifying all targets within the area.\n\nElectrified: The target loses -20% Move Speed.",
+        "result_scaling": {
+          "base_damage": 10,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "formula": "10 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 10 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 10 + 25 = 35 damage"
+        }
       },
       {
         "result": "Mud Shield",
         "result_slug": "mud-shield",
         "sources": [
-          "Water Bolt",
-          "Stone Skin"
-        ]
+          {
+            "name": "Water Bolt",
+            "icon": "/icons/spells/Icon_Spell_WaterBolt.png"
+          },
+          {
+            "name": "Stone Skin",
+            "icon": "/icons/spells/Icon_Spell_StoneSkin.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_MudShield.png",
+        "result_description": "Create a mud shield in front of the caster for 6 seconds, blocking all damage. The shield remains fixed in its initial direction."
       },
       {
         "result": "Wall of Fire",
         "result_slug": "wall-of-fire",
         "sources": [
-          "Eruption",
-          "Flamestrike"
-        ]
+          {
+            "name": "Eruption",
+            "icon": "/icons/spells/Icon_Spell_Eruption.png"
+          },
+          {
+            "name": "Flamestrike",
+            "icon": "/icons/spells/Icon_Spell_Flamestrike.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_WallofFire.png",
+        "result_description": "Erupt a wall of fire for 10 seconds, dealing 20 magical fire damage Earth/ instantly and 10 magical fire damage per second to all targets it touches and inflicting burn over 3 seconds.\n\nBurn: The target takes 3 magical fire damage.",
+        "result_scaling": {
+          "base_damage": 20,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "impact_power": 4,
+          "formula": "20 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 20 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 20 + 25 = 45 damage"
+        }
       },
       {
         "result": "Icebound",
         "result_slug": "icebound",
         "sources": [
-          "Glaciate",
-          "Stone Skin"
-        ]
+          {
+            "name": "Glaciate",
+            "icon": "/icons/spells/Icon_Spell_Glaciate.png"
+          },
+          {
+            "name": "Stone Skin",
+            "icon": "/icons/spells/Icon_Spell_StoneSkin.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_IceBound.png",
+        "result_description": "Upon casting, become frozen for 6 seconds, becoming immune to all damage and gaining a 50% Cooldown. The ice can be shattered by a powerful impact."
       },
       {
         "result": "Electric Dash",
         "result_slug": "electric-dash",
         "sources": [
-          "Lightning Bolt",
-          "Vortex"
-        ]
+          {
+            "name": "Lightning Bolt",
+            "icon": "/icons/spells/Icon_Spell_LightningBolt.png"
+          },
+          {
+            "name": "Vortex",
+            "icon": "/icons/spells/Icon_Spell_Vortex.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_ElectricDash.png",
+        "result_description": "Transform into a lightning orb and quickly move to the selected location, electrifying all targets along the path and dealing 10 magical lightning damage. Upon reaching the destination, unleash a lightning strike, dealing 15 magical lightning damage to nearby targets. The caster is immune to physical attacks while moving but remains affected by area magic.\n\nElectrified: The target loses -20% Move Speed.",
+        "result_scaling": {
+          "base_damage": 10,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "formula": "10 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 10 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 10 + 25 = 35 damage"
+        }
       },
       {
         "result": "Aqua Prison",
         "result_slug": "aqua-prison",
         "sources": [
-          "Water Bolt",
-          "Levitation"
-        ]
+          {
+            "name": "Water Bolt",
+            "icon": "/icons/spells/Icon_Spell_WaterBolt.png"
+          },
+          {
+            "name": "Levitation",
+            "icon": "/icons/spells/Icon_Spell_Levitation.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_AquaPrison.png",
+        "result_description": "Launch a water orb that engulfs the target, dealing 15 magical ice damage, trapping them, and lifting them into the air for 3 seconds. The orb bursts instantly upon taking physical damage, inflicting wet for 2 seconds.\n\nWet: The target loses -20% Move Speed and jump height is reduced by 30%.",
+        "result_scaling": {
+          "base_damage": 15,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "formula": "15 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 15 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 15 + 25 = 40 damage"
+        }
       },
       {
         "result": "Plasma Blast",
         "result_slug": "plasma-blast",
         "sources": [
-          "Fire Orb",
-          "Lightning Sphere"
-        ]
+          {
+            "name": "Fire Orb",
+            "icon": "/icons/spells/Icon_Spell_FireOrb.png"
+          },
+          {
+            "name": "Lightning Sphere",
+            "icon": "/icons/spells/Icon_Spell_LightningSphere.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_PlasmaBlast.png",
+        "result_description": "After 4 seconds, self-detonate a plasma blast dealing 40 fire/lightning Magical Damage to any targets in range, including the caster. All targets are electrified for a further 2 seconds.\n\nElectrified : The target loses -20% Move Speed.",
+        "result_scaling": {
+          "base_damage": 40,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "impact_power": 6,
+          "formula": "40 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 40 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 40 + 25 = 65 damage"
+        }
       },
       {
         "result": "Frost Breath",
         "result_slug": "frost-breath",
         "sources": [
-          "Glaciate",
-          "Windblast"
-        ]
+          {
+            "name": "Glaciate",
+            "icon": "/icons/spells/Icon_Spell_Glaciate.png"
+          },
+          {
+            "name": "Windblast",
+            "icon": "/icons/spells/Icon_Spell_WindBlast.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_FrostBreath.png",
+        "result_description": "Exhale an icy gust of breath forward, dealing 20 magical ice damage to all targets and inflicting frostbite for 2 seconds. The affected area remains frozen for 3 seconds, causing targets on the ice to lose -10% Move Speed.\n\nFrostbite: The target loses -20% Move Speed and -20% Action Speed.",
+        "result_scaling": {
+          "base_damage": 20,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "formula": "20 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 20 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 20 + 25 = 45 damage"
+        }
       },
       {
         "result": "Frost Lightning",
         "result_slug": "frost-lightning",
         "sources": [
-          "Lightning Bolt",
-          "Ice Spear"
-        ]
+          {
+            "name": "Lightning Bolt",
+            "icon": "/icons/spells/Icon_Spell_LightningBolt.png"
+          },
+          {
+            "name": "Ice Spear",
+            "icon": "/icons/spells/Icon_Spell_IceSpear.png"
+          }
+        ],
+        "result_icon": "/icons/spells/Icon_Spell_FrostLightning.png",
+        "result_description": "Fires a lightning bolt, dealing 15magical lightning damage and electrifying for 1 seconds. The bolt freezes shortly after, inflicting 15magical ice damage and immobilizing the target for 1.75 seconds.\n\nElectrified: The target loses -20% Move Speed."
       }
     ]
   }

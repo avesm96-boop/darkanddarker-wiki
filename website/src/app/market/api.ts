@@ -383,6 +383,32 @@ export async function searchItems(
 }
 
 // ---------------------------------------------------------------------------
+// Market Activity — from our API
+// ---------------------------------------------------------------------------
+
+export interface ActivityBucket {
+  day_ts: number;
+  listed: number;
+  sold: number;
+}
+
+interface OurActivityResponse {
+  buckets: ActivityBucket[];
+  count: number;
+}
+
+export async function fetchMarketActivity(
+  days: number = 14,
+  signal?: AbortSignal,
+): Promise<ActivityBucket[]> {
+  const data = await ourGet<OurActivityResponse>(
+    `/market/activity?days=${days}`,
+    signal,
+  );
+  return data.buckets;
+}
+
+// ---------------------------------------------------------------------------
 // Trending — from our API
 // ---------------------------------------------------------------------------
 

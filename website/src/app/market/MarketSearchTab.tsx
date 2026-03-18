@@ -2,10 +2,10 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./market.module.css";
-import { searchItems, fetchRawListings, fetchPriceHistory, GOLD_ICON, itemIconPath, type ItemDef, type RawListing, type PricePoint } from "./api";
+import { searchItems, fetchRawListings, fetchPriceHistory, fetchMarketActivity, GOLD_ICON, itemIconPath, type ItemDef, type RawListing, type PricePoint, type ActivityBucket } from "./api";
 import ItemTooltip from "./ItemTooltip";
 import { cleanStatName, formatStatValue, isPercentStat } from "./statFormat";
-import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from "recharts";
 
 const BASE_RARITIES = ["Poor", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Unique", "Artifact"];
 const RARITY_SECONDARY_SLOTS: Record<string, number> = {
@@ -93,6 +93,8 @@ export default function MarketSearchTab() {
   const [isGenericItem, setIsGenericItem] = useState(false);
   const [availableProps, setAvailableProps] = useState<string[]>([]);
   const [itemMetadata, setItemMetadata] = useState<Record<string, ItemMeta>>({});
+  const [activityData, setActivityData] = useState<ActivityBucket[]>([]);
+  const [activityLoading, setActivityLoading] = useState(true);
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -100,6 +102,14 @@ export default function MarketSearchTab() {
 
   useEffect(() => {
     fetch("/data/item_metadata.json").then((r) => r.json()).then((d) => setItemMetadata(d)).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const ac = new AbortController();
+    fetchMarketActivity(14, ac.signal)
+      .then((buckets) => { if (!ac.signal.aborted) { setActivityData(buckets); setActivityLoading(false); } })
+      .catch(() => { if (!ac.signal.aborted) setActivityLoading(false); });
+    return () => ac.abort();
   }, []);
 
   useEffect(() => {
@@ -226,6 +236,52 @@ export default function MarketSearchTab() {
 
   return (
     <div className={styles.dashboard}>
+      {/* ── Market Activity (landing state) ── */}
+      {!searched && activityData.length > 1 && (
+        <div className={styles.msChartSection} style={{ marginBottom: 28 }}>
+          <div className={styles.msChartHeader}>
+            <span className={styles.sectionTitle}>Market Activity — Last 14 Days</span>
+          </div>
+          <div className={styles.msChart}>
+            <ResponsiveContainer width="100%" height={220}>
+              <AreaChart data={activityData} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(201,168,76,0.08)" />
+                <XAxis
+                  dataKey="day_ts"
+                  tickFormatter={(ts) => new Date(ts * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                  tick={{ fontSize: 10, fill: "#666" }}
+                  interval="preserveStartEnd"
+                  minTickGap={60}
+                />
+                <YAxis
+                  tick={{ fontSize: 10, fill: "#666" }}
+                  width={50}
+                  tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(1)}k` : String(v)}
+                />
+                <Tooltip
+                  contentStyle={{ background: "rgba(20,18,14,0.95)", border: "1px solid rgba(201,168,76,0.25)", borderRadius: 6, fontSize: "0.75rem" }}
+                  labelFormatter={(ts) => new Date(Number(ts) * 1000).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
+                  formatter={(value: number, name: string) => [value.toLocaleString(), name === "listed" ? "Listed" : "Sold"]}
+                />
+                <Legend
+                  verticalAlign="top"
+                  align="right"
+                  iconType="circle"
+                  iconSize={8}
+                  wrapperStyle={{ fontSize: "0.7rem", color: "var(--text-muted)" }}
+                  formatter={(value: string) => value === "listed" ? "Listed" : "Sold"}
+                />
+                <Area type="monotone" dataKey="listed" stroke="rgba(76,201,100,0.8)" fill="rgba(76,201,100,0.1)" strokeWidth={2} name="listed" />
+                <Area type="monotone" dataKey="sold" stroke="rgba(201,120,76,0.8)" fill="rgba(201,120,76,0.1)" strokeWidth={2} name="sold" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      )}
+      {!searched && activityLoading && (
+        <div className={styles.msEmpty} style={{ marginBottom: 28 }}>Loading market activity...</div>
+      )}
+
       {/* ── Search Bar ── */}
       <div className={styles.msSearchBar} ref={wrapperRef}>
         <div className={styles.msSearchInputWrap}>

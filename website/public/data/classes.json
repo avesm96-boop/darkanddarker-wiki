@@ -1,6 +1,6 @@
 {
-  "version": "2026-03-17",
-  "generated_at": "2026-03-17T23:25:53.678382+00:00",
+  "version": "2026-03-18",
+  "generated_at": "2026-03-18T00:19:46.252795+00:00",
   "data": {
     "classes": [
       {
@@ -79,7 +79,7 @@
           {
             "id": "HeavySwing",
             "name": "Heavy Swing",
-            "description": "Hitting a target with a two-handed weapon reduces their move speed by [0]%.",
+            "description": "Hitting a target with a two-handed weapon reduces their move speed by 10%.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_HeavySwing.png"
           },
@@ -100,7 +100,7 @@
           {
             "id": "PotionChugger",
             "name": "Potion Chugger",
-            "description": "Gain [1]% increased potency towards all drinks, while reducing the duration by [0]%.",
+            "description": "Gain 20% increased potency towards all drinks, while reducing the duration by 50%.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_PotionChugger.png"
           },
@@ -128,7 +128,7 @@
           {
             "id": "TreacherousLungs",
             "name": "Treacherous Lungs",
-            "description": "Increases the duration of all shouting abilities by [0]% and reduces their cooldown by 10%.",
+            "description": "Increases the duration of all shouting abilities by 50% and reduces their cooldown by 10%.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_TreacherousLungs.png"
           },
@@ -234,7 +234,7 @@
           {
             "id": "Whirlwind",
             "name": "Whirlwind",
-            "description": "Spin rapidly with a two-handed weapon, dealing [0]% of weapon damage to all nearby enemies. While spinning, your weapon cannot be interrupted by any impact.",
+            "description": "Spin rapidly with a two-handed weapon, dealing 80% of weapon damage to all nearby enemies. While spinning, your weapon cannot be interrupted by any impact.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
@@ -1411,7 +1411,7 @@
           {
             "id": "ShapeshiftMastery",
             "name": "Shapeshift Mastery",
-            "description": "Reduces shapeshifting time by 25% and reduces the cooldown of Wild skills by [0]%, but prevents the use of spirit spells.",
+            "description": "Reduces shapeshifting time by 25% and reduces the cooldown of Wild skills by 25%, but prevents the use of spirit spells.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_ShapeshiftMastery.png"
           },
@@ -1614,7 +1614,7 @@
           {
             "id": "Bear",
             "name": "Bear",
-            "description": "Transform into a wild bear. Slow and too large to pass through single doors. Gain 50% Physical Damage Reduction, 10% Projectile Damage Reduction and 50% Max Health. Lose -20% Move Speed and -30% Action Speed. Your jump lowered by [0]%.\n\n[Left-Click] Swipe\nClaws the target with your right hand, inflicting Strength curve * [1]% + [1] Physical Damage and pushing the target away.\n\n[Right-Click] Bash\nRaise your body and deal Strength curve * [2]% + [2] Physical Damage with both hands, and gain the ability to push targets away and destroy unreinforced doors and containers.\n\n[Wild] Wild Fury\nFor 8 seconds, Physical Damage Reduction increases by 20% and Magical Damage Reduction increases by 20%.",
+            "description": "Transform into a wild bear. Slow and too large to pass through single doors. Gain 50% Physical Damage Reduction, 10% Projectile Damage Reduction and 50% Max Health. Lose -20% Move Speed and -30% Action Speed. Your jump lowered by 30%.\n\n[Left-Click] Swipe\nClaws the target with your right hand, inflicting Strength curve* 1000%+ 27 Physical Damage and pushing the target away.\n\n[Right-Click] Bash\nRaise your body and deal Strength curve* 1000%+ 41 Physical Damage with both hands, and gain the ability to push targets away and destroy unreinforced doors and containers.\n\n[Wild] Wild Fury\nFor 8 seconds, Physical Damage Reduction increases by 20% and Magical Damage Reduction increases by 20%.",
             "casting_time": 1.0,
             "capsule_radius_scale": 2.05,
             "capsule_height_scale": 1.0,
@@ -1632,7 +1632,7 @@
           {
             "id": "Chicken",
             "name": "Chicken",
-            "description": "Transform into a chicken. Able to fly for a while by spreading wings. Lose -60% Max Health, -60% Physical Healing and -60% Magical Healing.\n\n[Left-Click] Pecking\nPecks the target with its beak, inflicting Resourcefulness curve * [1]% + [1] Physical Damage. This attack penetrate 300 % of target’s armor.\n\n[Right-Click] Clucking\nThe chicken clucks loudly.\n\n[Wild] Insect Predation\nEats crawling insects and heals Resourcefulness curve * [2]% Physical Heal Base.",
+            "description": "Transform into a chicken. Able to fly for a while by spreading wings. Lose -60% Max Health, -60% Physical Healing and -60% Magical Healing.\n\n[Left-Click] Pecking\nPecks the target with its beak, inflicting Resourcefulness curve* 1000%+ 23 Physical Damage. This attack penetrate 300 % of target’s armor.\n\n[Right-Click] Clucking\nThe chicken clucks loudly.\n\n[Wild] Insect Predation\nEats crawling insects and heals Resourcefulness curve* 4000% Physical Heal Base.",
             "casting_time": 1.0,
             "capsule_radius_scale": 0.5,
             "capsule_height_scale": 0.3,
@@ -1648,7 +1648,7 @@
           {
             "id": "Panther",
             "name": "Panther",
-            "description": "Transform into a wild panther. Very quick and agile. Gain 5 Move Speed. Lose -30% Physical Damage Reduction, -10% Physical Healing and -10% Magical Healing. Your jump is [0]% higher.\n\n[Left-Click] Scratch\nClaws the target with his right hand, inflicting Agility curve * [1]% + [1] Physical Damage and causing the target to bleed, inflicting 5 Physical Damage for 3 seconds.\n\n[Right-Click] Neckbite\nBite the target's neck, inflicting Agility curve * [3]% + [3] Physical Damage. While you are frenzied, Neckbite silences the target for 0.1 seconds.\n\n[Wild] Rush\nRush forward, entering a frenzied state for 2 seconds after initiating the rush. You can use attacks while jumping, and this can be used in the air.",
+            "description": "Transform into a wild panther. Very quick and agile. Gain 5 Move Speed. Lose -30% Physical Damage Reduction, -10% Physical Healing and -10% Magical Healing. Your jump is 20% higher.\n\n[Left-Click] Scratch\nClaws the target with his right hand, inflicting Agility curve* 1000%+ 23 Physical Damage and causing the target to bleed, inflicting 5 Physical Damage for 3 seconds.\n\n[Right-Click] Neckbite\nBite the target's neck, inflicting Agility curve* 1000%+ 25 Physical Damage. While you are frenzied, Neckbite silences the target for 0.1 seconds.\n\n[Wild] Rush\nRush forward, entering a frenzied state for 2 seconds after initiating the rush. You can use attacks while jumping, and this can be used in the air.",
             "casting_time": 1.0,
             "capsule_radius_scale": 1.0,
             "capsule_height_scale": 1.0,
@@ -1665,7 +1665,7 @@
           {
             "id": "Penguin",
             "name": "Penguin",
-            "description": "Transforms into a penguin. Slow on land, but very fast in water. Lose -40% Max Health, -40% Physical Healing and -40% Magical Healing.\n\n[Left-Click] Sharp Beak\nBites the target with its beak, dealing Will curve * [2]% + [2] Physical Damage and causing bleeding, inflicting 3 Physical Damage over 3 seconds\n\n[Right-Click] Water Cannon\nAfter casting, spit a stream of water forward, dealing Will curve * 100% + [0] magical ice damage.\n\n[Wild] Penguin Dash\nGain 15% Move Speed while in water for 3 seconds.",
+            "description": "Transforms into a penguin. Slow on land, but very fast in water. Lose -40% Max Health, -40% Physical Healing and -40% Magical Healing.\n\n[Left-Click] Sharp Beak\nBites the target with its beak, dealing Will curve* 1000%+ 17 Physical Damage and causing bleeding, inflicting 3 Physical Damage over 3 seconds\n\n[Right-Click] Water Cannon\nAfter casting, spit a stream of water forward, dealing Will curve * 100%+ 15 magical ice damage.\n\n[Wild] Penguin Dash\nGain 15% Move Speed while in water for 3 seconds.",
             "casting_time": 1.0,
             "capsule_radius_scale": 0.52,
             "capsule_height_scale": 0.42,
@@ -1682,7 +1682,7 @@
           {
             "id": "Rat",
             "name": "Rat",
-            "description": "Transform into a wild rat. Small in size and moves quickly, but has very little stamina. Lose -95% Max Health, -100% Physical Damage Reduction, -100% Magical Damage Reduction, -95% Physical Healing and -95% Magical Healing. Your jump is [0]% higher.\n\n[Left-Click] Infected Fangs\nBites the target, inflicting 1 Physical Damage and spreading a plague that deals 3 Magical Damage for 3 seconds.\n\n[Right-Click] Squeak\nMakes a squeak.\n\n[Wild] Survival Instinct\nGain 10 Max Health, 20 Move Speed for 4 seconds. When the effect ends, lose -20% Move Speed for 3 seconds.",
+            "description": "Transform into a wild rat. Small in size and moves quickly, but has very little stamina. Lose -95% Max Health, -100% Physical Damage Reduction, -100% Magical Damage Reduction, -95% Physical Healing and -95% Magical Healing. Your jump is 10% higher.\n\n[Left-Click] Infected Fangs\nBites the target, inflicting 1 Physical Damage and spreading a plague that deals 3 Magical Damage for 3 seconds.\n\n[Right-Click] Squeak\nMakes a squeak.\n\n[Wild] Survival Instinct\nGain 10 Max Health, 20 Move Speed for 4 seconds. When the effect ends, lose -20% Move Speed for 3 seconds.",
             "casting_time": 1.0,
             "capsule_radius_scale": 0.15,
             "capsule_height_scale": 0.1,
@@ -2035,7 +2035,7 @@
           {
             "id": "Kinesthesia",
             "name": "Kinesthesia",
-            "description": "When moving with the bowstring drawn, move speed bonus increases by [0]%.",
+            "description": "When moving with the bowstring drawn, move speed bonus increases by 15%.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_Kinesthesia.png"
           },
@@ -2269,7 +2269,7 @@
           {
             "id": "HideMastery",
             "name": "Hide Mastery",
-            "description": "Increases the duration of the hide skill by [0] times and reduces its cooldown time by [1]%.",
+            "description": "Increases the duration of the hide skill by 1.5 times and reduces its cooldown time by 30%.",
             "is_default": false
           },
           {
@@ -2453,7 +2453,7 @@
           {
             "id": "ApexOfSorcery",
             "name": "Apex of Sorcery",
-            "description": "While casting spells, reduce movement speed by [0]%, but gain 50% Magical Damage and 50% Spell Casting Speed.",
+            "description": "While casting spells, reduce movement speed by 99%, but gain 50% Magical Damage and 50% Spell Casting Speed.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_ApexOfSorcery.png"
           },
@@ -2474,7 +2474,7 @@
           {
             "id": "LightningMastery",
             "name": "Lightning Mastery",
-            "description": "Gain 25% Magical Lightning Damage. Once every 2 seconds while dealing lightning magical damage, inflict electric shock for [0] seconds, transferring 5 magical lightning damage to the closest target within [0]m of the primary target.",
+            "description": "Gain 25% Magical Lightning Damage. Once every 2 seconds while dealing lightning magical damage, inflict electric shock for 2 seconds, transferring 5 magical lightning damage to the closest target within 2m of the primary target.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_LightningMastery.png"
           },
@@ -2488,7 +2488,7 @@
           {
             "id": "ManaFold",
             "name": "Mana Fold",
-            "description": "Reduce all spell cooldowns by [0]%, but lose -15% Spell Casting Speed.",
+            "description": "Reduce all spell cooldowns by 25%, but lose -15% Spell Casting Speed.",
             "is_default": true,
             "icon": "/icons/perks/Icon_Perk_ManaFold.png"
           },
@@ -2509,7 +2509,7 @@
           {
             "id": "SpellSculpting",
             "name": "Spell Sculpting",
-            "description": "Increases the range of all spells by 25% and the area of ​​effect by 25%, but increases the cooldown time by [0]%.",
+            "description": "Increases the range of all spells by 25% and the area of ​​effect by 25%, but increases the cooldown time by 25%.",
             "is_default": true,
             "icon": "/icons/perks/Icon_Perk_SpellSculpting.png"
           },
@@ -2523,7 +2523,7 @@
           {
             "id": "TimeDistortion",
             "name": "Time Distortion",
-            "description": "Reduces cast time of all spells by 5000%, but increases cooldown time for all spells by [0]%.",
+            "description": "Reduces cast time of all spells by 5000%, but increases cooldown time for all spells by 200%.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_TimeDistortion.png"
           }
@@ -2729,7 +2729,7 @@
           {
             "id": "WaterBolt",
             "name": "Water Bolt",
-            "description": "Launch a condensed water orb, dealing 15 magical ice damage to targets it touches and inflicting wet for 2 seconds. The orb stops upon hitting an object or reaching its maximum range and lasts for 12 seconds. Up to 3 water orbs can exist simultaneously.\n\nWet: The target loses -20% Move Speed and jump height is reduced by [0]%.",
+            "description": "Launch a condensed water orb, dealing 15 magical ice damage to targets it touches and inflicting wet for 2 seconds. The orb stops upon hitting an object or reaching its maximum range and lasts for 12 seconds. Up to 3 water orbs can exist simultaneously.\n\nWet: The target loses -20% Move Speed and jump height is reduced by 30%.",
             "spell_tier": 1,
             "casting_time": 0.75,
             "max_count": 0,

@@ -42,6 +42,32 @@ OUTPUT_FILE = ROOT / "website" / "public" / "data" / "classes.json"
 ICONS_SRC = Path(r"C:\Users\pawel\Desktop\Projects\Output\Exports\DungeonCrawler\Content\DungeonCrawler\UI\Resources")
 ICONS_DST = ROOT / "website" / "public" / "icons"
 
+MOVEMENT_MODIFIER_DIR = RAW_V2 / "MovementModifier" / "MovementModifier"
+MELEE_ATTACK_DIR = RAW_V2 / "MeleeAttack" / "MeleeAttack"
+
+# GEModifier float values extracted from binary .uexp files.
+# The JSON exports have corrupted float fields; these are the correct values.
+GEMODIFIER_VALUES = {
+    "Id_GEModifier_HeavySwing": -0.1,
+    "Id_GEModifier_PotionChugger_Duration": 0.5,
+    "Id_GEModifier_PotionChugger_HealingPotion": 1.2,
+    "Id_GEModifier_PotionChugger_MagicalProtection": 1.2,
+    "Id_GEModifier_PotionChugger_ProtectionPotion": 1.2,
+    "Id_GEModifier_TreacherousLungs_Buff": 1.5,
+    "Id_GEModifier_TreacherousLungs_Debuff": 1.5,
+    "Id_GEModifier_HideMastery": 1.5,
+    "Id_GEModifier_HideMastery_CooldownReduction": 0.7,
+    "Id_GEModifier_LightningMastery": 1.0,
+    "Id_GEModifier_ManaFold": 0.75,
+    "Id_GEModifier_ShapeShiftMastery": 0.75,
+    "Id_GEModifier_ShapeShiftMastery_ShapeShift": 0.5,
+    "Id_GEModifier_SpellSculpting": 1.25,
+    "Id_GEModifier_TimeDistortion": 2.0,
+    "Id_GEModifier_TortureMastery": 2.0,
+    "Id_GEModifier_CampingMastery": 2.0,
+    "Id_GEModifier_BrewMaster": 1.5,
+}
+
 PERK_DESC_DIR = RAW / "Perk"
 SKILL_DESC_DIR = RAW / "Data" / "DataAsset" / "Skill"
 SPELL_DESC_DIR = RAW / "Data" / "DataAsset" / "Spell"
@@ -406,17 +432,28 @@ def _load_effect_file(object_path):
     return None
 
 
+def _extract_asset_name(ref):
+    """Extract the asset ID name from a _Desc.json ObjectName field.
+
+    ObjectName looks like: "DCGEModifierDataAsset'Id_GEModifier_HeavySwing'"
+    Returns: "Id_GEModifier_HeavySwing"
+    """
+    obj_name = ref.get("ObjectName", "")
+    m = re.search(r"'([^']+)'", obj_name)
+    return m.group(1) if m else ""
+
+
 def _load_desc_file(desc_path):
-    """Load a _Desc.json file and return (effects_list, constants_list, gemodifiers_list, skill_spell_data_list)."""
+    """Load a _Desc.json file and return (effects, constants, gemodifiers, skill_spell_data, movementmodifiers)."""
     data = load_json_silent(desc_path)
     if data is None:
-        return [], [], [], []
+        return [], [], [], [], [], []
     if isinstance(data, list) and len(data) > 0:
         props = data[0].get("Properties", {})
     elif isinstance(data, dict):
         props = data.get("Properties", {})
     else:
-        return [], [], [], []
+        return [], [], [], [], [], []
 
     effects = []
     for ref in props.get("DCGameplayEffectDataAssetArray", []):
@@ -430,11 +467,13 @@ def _load_desc_file(desc_path):
         const_props = _load_effect_file(obj_path)
         constants.append(const_props if const_props else {})
 
+    # GEModifiers: store (asset_name, props) tuples so we can look up values
     gemodifiers = []
     for ref in props.get("GEModifierDataAssetArray", []):
+        asset_name = _extract_asset_name(ref)
         obj_path = ref.get("ObjectPath", "")
         gemod_props = _load_effect_file(obj_path)
-        gemodifiers.append(gemod_props if gemod_props else {})
+        gemodifiers.append((asset_name, gemod_props if gemod_props else {}))
 
     # Skill/Spell metadata (range, casting time, channeling duration)
     skill_spell_data = []
@@ -444,7 +483,66 @@ def _load_desc_file(desc_path):
             ss_props = _load_effect_file(obj_path)
             skill_spell_data.append(ss_props if ss_props else {})
 
-    return effects, constants, gemodifiers, skill_spell_data
+    # MovementModifiers: load the JSON data directly (not binary)
+    movementmodifiers = []
+    for ref in props.get("MovementModifierDataAssetArray", []):
+        obj_path = ref.get("ObjectPath", "")
+        mm_props = _load_effect_file(obj_path)
+        movementmodifiers.append(mm_props if mm_props else {})
+
+    # Perk metadata (Radius / AreaRadius)
+    perk_data = []
+    for ref in props.get("PerkDataAssetArray", []):
+        obj_path = ref.get("ObjectPath", "")
+        perk_props = _load_effect_file(obj_path)
+        perk_data.append(perk_props if perk_props else {})
+
+    return effects, constants, gemodifiers, skill_spell_data, movementmodifiers, perk_data
+
+
+def _get_gemod_value(gemodifiers, index):
+    """Get the float value for a GEModifier at the given index.
+
+    Uses GEMODIFIER_VALUES dict (extracted from binary .uexp) because the
+    JSON exports have corrupted float fields.
+    """
+    if index < 0 or index >= len(gemodifiers):
+        return None
+    asset_name, _props = gemodifiers[index]
+    if asset_name in GEMODIFIER_VALUES:
+        return GEMODIFIER_VALUES[asset_name]
+    return None
+
+
+def _apply_gemod_format(value, fmt, mod_type):
+    """Apply GEMod/MovementMod format conversion to a float value.
+
+    For Type="Add", the value is an additive modifier (effective = 1.0 + value).
+    For Type="Multiply", the value is a direct multiplier.
+
+    Format rules:
+      AbsFromZero:  |value| * 100
+      AbsFromOne:   |effective - 1| * 100
+      FromOne:      (effective - 1) * 100
+      FromZero:     effective * 100
+      (no format):  return value as-is (e.g., seconds or multiplier)
+    """
+    if mod_type == "Add":
+        effective = 1.0 + value
+    else:
+        effective = value
+
+    if not fmt:
+        return effective
+    if fmt == "AbsFromZero":
+        return abs(value) * 100
+    if fmt == "AbsFromOne":
+        return abs(effective - 1.0) * 100
+    if fmt == "FromOne":
+        return (effective - 1.0) * 100
+    if fmt == "FromZero":
+        return effective * 100
+    return effective
 
 
 def _format_number(value):
@@ -514,13 +612,13 @@ def resolve_description(raw_desc, desc_path):
       <PropertyName>[N] _</>                            -> effects[N].PropertyName scaled
       <PropertyName>_ by [N]%</>                        -> display_name by value%
       <PropertyName>[N1]/[N2]/[N3] _</>                 -> val1/val2/val3
-      <GEMod Type="..." Format="...">[N]%</>            -> gemodifiers (best-effort strip)
+      <GEMod Type="..." Format="...">[N]%</>            -> gemodifiers[N] with format conversion
       <Exec.PropertyName>[N]</>                         -> effects[N].ExecPropertyName
       <Exec.PropertyName>[N] _</>                       -> value + display name
-      <Skill Type="Range">[N]m</>                       -> strip tags, keep content
-      <Spell Type="AreaRadius">[N]m</>                  -> strip tags, keep content
-      <MeleeAttack Type="..." Format="...">[N]%</>      -> strip tags, keep content
-      <MovementMod Type="..." Format="...">[N]%</>      -> strip tags, keep content
+      <Skill Type="Range">[N]m</>                       -> skill/spell metadata
+      <Spell Type="AreaRadius">[N]m</>                  -> skill/spell metadata
+      <MeleeAttack Type="..." Format="...">[N]%</>      -> melee attack data
+      <MovementMod Type="..." Format="...">[N]%</>      -> movementmodifiers[N] with format conversion
       <YellowColor>text</>                              -> text (just strip tags)
       <BurnEffect>text</>                               -> text
       <PropertyName>_</>                                -> display name of property
@@ -529,7 +627,7 @@ def resolve_description(raw_desc, desc_path):
     if not raw_desc:
         return raw_desc
 
-    effects, constants, gemodifiers, skill_spell_data = _load_desc_file(desc_path)
+    effects, constants, gemodifiers, skill_spell_data, movementmodifiers, perk_data = _load_desc_file(desc_path)
 
     text = raw_desc
 
@@ -543,23 +641,35 @@ def resolve_description(raw_desc, desc_path):
         "CastingTime": ("CastingTime", 1.0),  # seconds as-is
         "ChannelingDuration": ("ChannelingDuration", 1.0),
     }
+    # Perk data uses different property names
+    _perk_field_map = {
+        "AreaRadius": ("Radius", 100.0),    # Perk "Radius" -> AreaRadius, divide by 100
+        "Range": ("Radius", 100.0),
+    }
 
     def replace_skill_spell_meta(m):
+        tag_type = m.group("tag")
         field = m.group("field")
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
-        if field in _metadata_field_map:
-            prop_key, divisor = _metadata_field_map[field]
-            # Look up in skill_spell_data array
-            if idx < len(skill_spell_data) and skill_spell_data[idx]:
-                val = skill_spell_data[idx].get(prop_key)
+        if tag_type == "Perk":
+            # Look up in perk_data array
+            field_map = _perk_field_map
+            data_array = perk_data
+        else:
+            field_map = _metadata_field_map
+            data_array = skill_spell_data
+        if field in field_map:
+            prop_key, divisor = field_map[field]
+            if idx < len(data_array) and data_array[idx]:
+                val = data_array[idx].get(prop_key)
                 if val is not None:
                     scaled = val / divisor if divisor != 1.0 else val
                     return _format_number(scaled) + suffix
         return "[" + str(idx) + "]" + suffix
 
     text = re.sub(
-        r'<(?:Skill|Spell)\s+Type="(?P<field>[^"]+)">\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        r'<(?P<tag>Skill|Spell|Perk)\s+Type="(?P<field>[^"]+)">\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
         replace_skill_spell_meta, text
     )
 
@@ -665,13 +775,88 @@ def resolve_description(raw_desc, desc_path):
         replace_duration_multi, text
     )
 
-    # --- GEMod tags (best-effort: strip tags, keep [N]% content) ---
+    # --- GEMod tags: resolve using GEMODIFIER_VALUES ---
+    def replace_gemod(m):
+        attrs = m.group("attrs")
+        idx = int(m.group("idx"))
+        suffix = m.group("suffix")
+        # Parse Type and Format from attributes
+        type_m = re.search(r'Type="([^"]+)"', attrs)
+        fmt_m = re.search(r'Format="([^"]+)"', attrs)
+        mod_type = type_m.group(1) if type_m else "Multiply"
+        fmt = fmt_m.group(1) if fmt_m else ""
+        value = _get_gemod_value(gemodifiers, idx)
+        if value is not None:
+            display = _apply_gemod_format(value, fmt, mod_type)
+            return _format_number(display) + suffix
+        return "[" + str(idx) + "]" + suffix
+
+    text = re.sub(
+        r'<GEMod\s+(?P<attrs>[^>]*)>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        replace_gemod, text
+    )
+    # Fallback: strip any remaining GEMod tags that didn't match the pattern
     text = re.sub(
         r'<GEMod\s+[^>]*>([^<]*)</>',
         r'\1', text
     )
 
-    # --- Remaining metadata tags: Perk/MeleeAttack/MovementMod Type="..." ---
+    # --- MovementMod tags: resolve using MovementModifier JSON data ---
+    def replace_movementmod(m):
+        attrs = m.group("attrs")
+        idx = int(m.group("idx"))
+        suffix = m.group("suffix")
+        # Parse Type (Multiply/JumpZMultiply) and Format from attributes
+        type_m = re.search(r'Type="([^"]+)"', attrs)
+        fmt_m = re.search(r'Format="([^"]+)"', attrs)
+        prop_type = type_m.group(1) if type_m else "Multiply"
+        fmt = fmt_m.group(1) if fmt_m else ""
+        if idx < len(movementmodifiers) and movementmodifiers[idx]:
+            value = movementmodifiers[idx].get(prop_type)
+            if value is not None:
+                # MovementMod values are always direct multipliers (not additive)
+                display = _apply_gemod_format(value, fmt, "Multiply")
+                return _format_number(display) + suffix
+        return "[" + str(idx) + "]" + suffix
+
+    text = re.sub(
+        r'<MovementMod\s+(?P<attrs>[^>]*)>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        replace_movementmod, text
+    )
+
+    # --- MeleeAttack tags: resolve DamageRatio from MeleeAttack data ---
+    def replace_meleeattack(m):
+        attrs = m.group("attrs")
+        idx = int(m.group("idx"))
+        suffix = m.group("suffix")
+        type_m = re.search(r'Type="([^"]+)"', attrs)
+        fmt_m = re.search(r'Format="([^"]+)"', attrs)
+        prop_type = type_m.group(1) if type_m else ""
+        fmt = fmt_m.group(1) if fmt_m else ""
+        # Look for MeleeAttack data in skill_spell_data or search known files
+        # Whirlwind uses DamageRatio=0.8 uniformly across all weapon types
+        if prop_type == "DamageRatio":
+            # Search for a MeleeAttack file matching the desc file name
+            desc_stem = desc_path.stem.replace("_Desc", "")
+            melee_pattern = f"Id_MeleeAttack_GA_*{desc_stem}*.json"
+            value = None
+            for melee_file in MELEE_ATTACK_DIR.glob(melee_pattern):
+                melee_data = load_json_silent(melee_file)
+                if melee_data and isinstance(melee_data, list) and melee_data:
+                    value = melee_data[0].get("Properties", {}).get("DamageRatio")
+                    if value is not None:
+                        break
+            if value is not None:
+                display = _apply_gemod_format(value, fmt, "Multiply")
+                return _format_number(display) + suffix
+        return "[" + str(idx) + "]" + suffix
+
+    text = re.sub(
+        r'<MeleeAttack\s+(?P<attrs>[^>]*)>\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        replace_meleeattack, text
+    )
+
+    # --- Remaining metadata tags: Perk Type="..." ---
     # Strip tags, keep content (Skill/Spell metadata already handled above)
     text = re.sub(
         r'<(?:Skill|Spell|Perk|MeleeAttack|MovementMod)\s+[^>]*>([^<]*)</>',
@@ -718,6 +903,32 @@ def resolve_description(raw_desc, desc_path):
     text = re.sub(
         r'<Exec\.(?P<prop>\w+)>(?P<indices>(?:\[\d+\]/)+\[\d+\])(?P<suffix>[^<]*)</>',
         replace_exec_multi, text
+    )
+
+    # 4b-pre. <Exec.PropertyName>prefix [N]suffix</> (prefix text before index, e.g., " * [1]%")
+    def replace_exec_with_prefix(m):
+        prop_name = m.group("prop")
+        prefix = m.group("prefix")
+        idx = int(m.group("idx"))
+        suffix = m.group("suffix")
+        exec_key = "Exec" + prop_name
+        val = _get_effect_value(effects, idx, exec_key)
+        if val is None:
+            val = _get_effect_value(effects, idx, prop_name)
+        if val is None:
+            fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
+            for fb in fallbacks:
+                val = _get_effect_value(effects, idx, fb)
+                if val is not None:
+                    break
+        if val is not None:
+            formatted = _format_number(val)
+            return prefix.strip() + " " + formatted + suffix
+        return m.group(0)
+
+    text = re.sub(
+        r'<Exec\.(?P<prop>\w+)>(?P<prefix>[^<\[]+)\[(?P<idx>\d+)\](?P<suffix>[^<]*)</>',
+        replace_exec_with_prefix, text
     )
 
     # 4b. <Exec.PropertyName>[N] suffix</> (single index exec)

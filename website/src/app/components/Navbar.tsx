@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { href: "/items",    label: "Item Finder" },
   { href: "/monsters", label: "Monsters" },
   { href: "/classes",  label: "Classes" },
+  { href: "/stats",   label: "Stats" },
   { href: "/quests", label: "Quests" },
   { href: "/market", label: "Market" },
 ];

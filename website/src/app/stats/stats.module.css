@@ -1,0 +1,718 @@
+/* === Page Layout === */
+
+.page {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  background: var(--bg-deep);
+}
+
+.pageInner {
+  padding-block: 48px;
+}
+
+.headerDivider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-700), transparent);
+  margin: 20px auto 0;
+}
+
+/* === Navigation Tabs === */
+
+.tabBar {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding: 4px;
+  background: var(--bg-stone);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.tab {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--text-mid);
+  background: var(--bg-raised);
+}
+
+.tabActive {
+  composes: tab;
+  color: var(--gold-400);
+  background: var(--bg-raised);
+  border-color: var(--gold-800);
+}
+
+/* === Section Layout === */
+
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold-400);
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.sectionDesc {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8125rem;
+  margin-bottom: 28px;
+  max-width: 600px;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+/* === Attribute Cards === */
+
+.attrGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.attrCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 20px;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  cursor: pointer;
+}
+
+.attrCard:hover {
+  border-color: var(--gold-800);
+  box-shadow: var(--glow-sm);
+}
+
+.attrCardActive {
+  composes: attrCard;
+  border-color: var(--gold-700);
+  box-shadow: var(--glow-sm);
+}
+
+.attrHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.attrIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-950);
+  border: 1px solid var(--gold-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gold-400);
+  flex-shrink: 0;
+}
+
+.attrName {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.attrDesc {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Class base values mini-bar */
+.classBarList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.classBarRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.classBarName {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  width: 72px;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.classBarTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--bg-stone);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.classBarFill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width var(--t-base);
+}
+
+.classBarValue {
+  font-size: 0.625rem;
+  color: var(--text-mid);
+  width: 20px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Derived Stats Detail Panel === */
+
+.detailPanel {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-800);
+  border-radius: 3px;
+  padding: 28px;
+  margin-bottom: 32px;
+  animation: fadeIn 200ms var(--ease);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.detailTitle {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gold-400);
+}
+
+.closeBtn {
+  padding: 4px 12px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-dim);
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: color var(--t-fast), border-color var(--t-fast);
+}
+
+.closeBtn:hover {
+  color: var(--text-mid);
+  border-color: var(--gold-800);
+}
+
+/* Derived stat selector tabs within detail panel */
+.derivedTabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.derivedTab {
+  padding: 7px 14px;
+  background: var(--bg-stone);
+  border: 1px solid var(--border-dim);
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.derivedTab:hover {
+  color: var(--text-mid);
+  border-color: var(--gold-800);
+}
+
+.derivedTabActive {
+  composes: derivedTab;
+  color: var(--gold-400);
+  background: var(--gold-950);
+  border-color: var(--gold-700);
+}
+
+.derivedDesc {
+  font-size: 0.8125rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Chart container */
+.chartWrap {
+  background: var(--bg-stone);
+  border: 1px solid var(--border-dim);
+  border-radius: 2px;
+  padding: 20px 16px 8px 8px;
+  margin-bottom: 16px;
+}
+
+/* Data points table under chart */
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  margin-top: 12px;
+}
+
+.dataTable th {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.625rem;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-mid);
+  text-align: left;
+}
+
+.dataTable td {
+  padding: 5px 10px;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--border-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.dataTable tr:hover td {
+  color: var(--text-bright);
+  background: var(--bg-raised);
+}
+
+/* === Calculator === */
+
+.calcGrid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .calcGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calcInputs {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.calcInputsTitle {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.calcRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.calcLabel {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  width: 100px;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.calcSlider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--bg-stone);
+  border-radius: 2px;
+  outline: none;
+}
+
+.calcSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  border: 2px solid var(--bg-deep);
+  cursor: pointer;
+}
+
+.calcSlider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  border: 2px solid var(--bg-deep);
+  cursor: pointer;
+}
+
+.calcValue {
+  font-size: 0.75rem;
+  color: var(--gold-400);
+  width: 32px;
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.calcPresets {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-dim);
+}
+
+.calcPreset {
+  padding: 5px 10px;
+  background: var(--bg-stone);
+  border: 1px solid var(--border-dim);
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.calcPreset:hover {
+  color: var(--text-mid);
+  border-color: var(--gold-800);
+}
+
+/* Calculator results */
+.calcResults {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.calcResultsTitle {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.resultGroup {
+  margin-bottom: 20px;
+}
+
+.resultGroupLabel {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.resultRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 4px 0;
+}
+
+.resultLabel {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.resultValue {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+.resultPositive {
+  color: #4caf50;
+}
+
+.resultNegative {
+  color: var(--red-300);
+}
+
+.resultNeutral {
+  color: var(--text-mid);
+}
+
+/* === Constants / Caps Table === */
+
+.capsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.capsCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.capsCardTitle {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.capsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.04);
+}
+
+.capsRow:last-child {
+  border-bottom: none;
+}
+
+.capsLabel {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.capsValue {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Hitbox Table === */
+
+.hitboxGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hitboxItem {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 14px;
+  text-align: center;
+  transition: border-color var(--t-fast);
+}
+
+.hitboxItem:hover {
+  border-color: var(--gold-800);
+}
+
+.hitboxLabel {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.hitboxValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+.hitboxHigh {
+  color: var(--red-300);
+}
+
+.hitboxLow {
+  color: #4caf50;
+}
+
+/* === Luck Grade Table === */
+
+.luckTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.luckTable th {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.625rem;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-mid);
+  text-align: center;
+}
+
+.luckTable th:first-child {
+  text-align: left;
+}
+
+.luckTable td {
+  padding: 6px 10px;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--border-dim);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.luckTable td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+.luckTable tr:hover td {
+  background: var(--bg-raised);
+}
+
+.luckDecrease {
+  color: var(--red-300);
+}
+
+.luckIncrease {
+  color: #4caf50;
+}
+
+.luckNeutral {
+  color: var(--text-dim);
+}
+
+/* === Loading / Error States === */
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: var(--text-dim);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.error {
+  composes: loading;
+  color: var(--red-300);
+}
+
+/* === Responsive === */
+
+@media (max-width: 640px) {
+  .attrGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabBar {
+    gap: 2px;
+  }
+
+  .tab, .tabActive {
+    padding: 8px 12px;
+    font-size: 0.625rem;
+  }
+
+  .detailPanel {
+    padding: 16px;
+  }
+
+  .capsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hitboxGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

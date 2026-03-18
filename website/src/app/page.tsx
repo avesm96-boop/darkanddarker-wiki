@@ -71,6 +71,21 @@ function ChestIcon() {
   );
 }
 
+function StatsIcon() {
+  return (
+    <svg className="tool-card-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="30" width="8" height="14" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.12"/>
+      <rect x="22" y="18" width="8" height="26" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.18"/>
+      <rect x="36" y="8" width="8" height="36" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.25"/>
+      <path d="M8 38h36" stroke="currentColor" strokeWidth="1" opacity="0.3" strokeDasharray="2 2"/>
+      <circle cx="12" cy="30" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="26" cy="18" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="40" cy="8" r="2" fill="currentColor" opacity="0.5"/>
+      <path d="M12 30L26 18L40 8" stroke="currentColor" strokeWidth="1" opacity="0.3"/>
+    </svg>
+  );
+}
+
 function ArrowRightIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -117,6 +132,15 @@ const TOOLS = [
     Icon: ScrollIcon,
     status: "live" as const,
     count: "553 quests",
+  },
+  {
+    href: "/stats",
+    label: "Mechanics",
+    title: "Stats",
+    desc: "Interactive stat calculator, scaling curves, defense mechanics, hitbox multipliers, and luck grades — from game files.",
+    Icon: StatsIcon,
+    status: "live" as const,
+    count: "21 curves",
   },
   {
     href: "/market",

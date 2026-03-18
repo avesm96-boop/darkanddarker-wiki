@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T03:21:18.577642+00:00",
+  "generated_at": "2026-03-18T10:33:51.800245+00:00",
   "data": {
     "classes": [
       {
@@ -2288,7 +2288,8 @@
             "id": "LongshotExpert",
             "name": "Longshot Expert",
             "description": "Deals additional damage as the distance to the target increases, up to 20 Physical Damage.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_LongshotExpert.png"
           },
           {
             "id": "NimbleHands",
@@ -2301,7 +2302,8 @@
             "id": "PointBlankExpert",
             "name": "Point-Blank Expert",
             "description": "Deals an additional 3 true physical damage to targets within 300m.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_PointBlankExpert.png"
           },
           {
             "id": "PurgeShot",
@@ -2362,7 +2364,8 @@
             "id": "WindFletch",
             "name": "Windfletch",
             "description": "Increases projectile speed of arrows and bolts by 25%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_WindFletch.png"
           }
         ],
         "skills": [
@@ -2550,7 +2553,8 @@
             "id": "LethalMark",
             "name": "Lethal Mark",
             "description": "A target hit by a throwing knife loses -15% Physical Damage Reduction for 8 seconds. This effect does not stack on the same target.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_LethalMark.png"
           },
           {
             "id": "Pickpocket",
@@ -2597,7 +2601,8 @@
             "is_default": false,
             "conditions": [
               "Active during thrown attack"
-            ]
+            ],
+            "icon": "/icons/perks/Icon_Perk_Trickster.png"
           }
         ],
         "skills": [
@@ -2666,7 +2671,8 @@
               "damage_type": "physical",
               "formula": "10 base physical damage",
               "formula_text": "Flat 10 physical damage (no scaling)"
-            }
+            },
+            "icon": "/icons/skills/Icon_Skill_SneakAttack.png"
           },
           {
             "id": "Tumbling",

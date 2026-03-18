@@ -907,7 +907,7 @@ function msToDuration(ms: number): string {
 const TIER_EFFECT_DISPLAY_NAMES: Record<string, string> = {
   ExecMagicalDamageBase: "Magical Damage",
   ExecPhysicalDamageBase: "Physical Damage",
-  ExecAttributeBonusRatio: "Attribute Scaling",
+  ExecAttributeBonusRatio: "Power Scaling",
   ExecRecoveryHealBase: "Recovery Heal",
   ActionSpeed: "Action Speed",
   SpellCastingSpeed: "Spell Casting Speed",

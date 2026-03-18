@@ -766,7 +766,7 @@ def resolve_description(raw_desc, desc_path):
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
         if idx < len(constants) and constants[idx]:
-            val = constants[idx].get("IntValue", constants[idx].get("FloatValue", 0))
+            val = constants[idx].get("Int32Value", constants[idx].get("IntValue", constants[idx].get("FloatValue", 0)))
             formatted = _format_number(int(val) if isinstance(val, float) else val)
             return formatted + suffix
         return m.group(0)

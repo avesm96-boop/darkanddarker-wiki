@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T01:31:04.939463+00:00",
+  "generated_at": "2026-03-18T01:41:45.623807+00:00",
   "data": {
     "classes": [
       {
@@ -651,7 +651,7 @@
           {
             "id": "ChoraleOfClarity",
             "name": "Chorale of Clarity",
-            "description": "Restore 0 spell memory per second of all nearby allies who rest for 8/16/24 seconds.",
+            "description": "Restore 8 spell memory per second of all nearby allies who rest for 8/16/24 seconds.",
             "spell_tier": 3,
             "casting_time": null,
             "max_count": null,
@@ -1475,7 +1475,7 @@
           {
             "id": "SpiritBond",
             "name": "Spirit Bond",
-            "description": "Once every 1 second, You will receive 20% of damage received by party members instead. Can receive damage up to 0.",
+            "description": "Once every 1 second, You will receive 20% of damage received by party members instead. Can receive damage up to 20.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_SpiritBond.png"
           },
@@ -2928,7 +2928,7 @@
           {
             "id": "SoulCollector",
             "name": "Soul Collector",
-            "description": "When you deal the final blow to an enemy, one darkness shard is collected. Gain 1 All Attributes, 33% Magical Dark Damage for each shard collected, up to a maximum of 0 shards. When you deal dark magic damage, consume all collected shards.",
+            "description": "When you deal the final blow to an enemy, one darkness shard is collected. Gain 1 All Attributes, 33% Magical Dark Damage for each shard collected, up to a maximum of 3 shards. When you deal dark magic damage, consume all collected shards.",
             "is_default": true,
             "icon": "/icons/perks/Icon_Perk_SoulCollector.png"
           },
@@ -3150,7 +3150,7 @@
           {
             "id": "SpellPredation",
             "name": "Spell Predation",
-            "description": "Consume up to all removable magical buffs from the enemy and gain 1 Darkness Shard per effect. Inflict 3 evil Magical Damage per effect.\n\nDarkness Shard : Each Darkness Shard grants 1 All Attributes, 33% Magical Dark Damage and can store up to 0. This effect is consumed when casting a dark spell.",
+            "description": "Consume up to all removable magical buffs from the enemy and gain 1 Darkness Shard per effect. Inflict 3 evil Magical Damage per effect.\n\nDarkness Shard : Each Darkness Shard grants 1 All Attributes, 33% Magical Dark Damage and can store up to 3. This effect is consumed when casting a dark spell.",
             "spell_tier": 3,
             "casting_time": 1.0,
             "max_count": 0,
@@ -3323,7 +3323,7 @@
           {
             "id": "Meditation",
             "name": "Meditation",
-            "description": "Enter a meditative state and recover spells at a rate of 0 spells costs over 24 seconds.",
+            "description": "Enter a meditative state and recover spells at a rate of 34 spells costs over 24 seconds.",
             "skill_type": "channeling",
             "skill_tier": 1,
             "use_moving": false,

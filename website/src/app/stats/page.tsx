@@ -926,28 +926,33 @@ function LuckSection({
   const [selectedLuck, setSelectedLuck] = useState(0);
   const gradeNames = Object.keys(luckData.grades).sort();
 
+  // Luck points × 0.001 = curve input (from game's value_ratio)
+  const LUCK_RATIO = 0.001;
+  const LUCK_MAX_POINTS = 5000;
+
   const gradeInfo: Record<
     string,
-    { label: string; short: string; color: string; rarity: string }
+    { label: string; short: string; color: string }
   > = {
-    LuckGrade00: { label: "Grade 0 — Junk", short: "Junk", color: "#888888", rarity: "Junk" },
-    LuckGrade01: { label: "Grade 1 — Poor", short: "Poor", color: "#9d9d9d", rarity: "Poor" },
-    LuckGrade02: { label: "Grade 2 — Common", short: "Common", color: "#c8b88a", rarity: "Common" },
-    LuckGrade03: { label: "Grade 3 — Standard", short: "Standard", color: "#4caf50", rarity: "Standard" },
-    LuckGrade04: { label: "Grade 4 — Uncommon", short: "Uncommon", color: "#66bb6a", rarity: "Uncommon" },
-    LuckGrade05: { label: "Grade 5 — Rare", short: "Rare", color: "#42a5f5", rarity: "Rare" },
-    LuckGrade06: { label: "Grade 6 — Epic", short: "Epic", color: "#ab47bc", rarity: "Epic" },
-    LuckGrade07: { label: "Grade 7 — Legendary", short: "Legendary", color: "#ffa726", rarity: "Legendary" },
-    LuckGrade08: { label: "Grade 8 — Unique", short: "Unique", color: "#ef5350", rarity: "Unique" },
+    LuckGrade00: { label: "Nothing (Empty)", short: "Nothing", color: "#555555" },
+    LuckGrade01: { label: "Poor", short: "Poor", color: "#888888" },
+    LuckGrade02: { label: "Common", short: "Common", color: "#c8b88a" },
+    LuckGrade03: { label: "Uncommon", short: "Uncommon", color: "#4caf50" },
+    LuckGrade04: { label: "Rare", short: "Rare", color: "#42a5f5" },
+    LuckGrade05: { label: "Epic", short: "Epic", color: "#ab47bc" },
+    LuckGrade06: { label: "Legendary", short: "Legendary", color: "#ffa726" },
+    LuckGrade07: { label: "Unique", short: "Unique", color: "#ef5350" },
+    LuckGrade08: { label: "Artifact", short: "Artifact", color: "#e6d44d" },
   };
 
-  // Build chart data: sample the curves at 0.1 increments from 0-5
+  // Build chart data: sample at every 50 luck points from 0-5000
   const chartData = useMemo(() => {
     const points: Record<string, number>[] = [];
-    for (let luck = 0; luck <= 5; luck += 0.1) {
-      const point: Record<string, number> = { luck: Math.round(luck * 10) / 10 };
+    for (let lp = 0; lp <= LUCK_MAX_POINTS; lp += 50) {
+      const curveInput = lp * LUCK_RATIO;
+      const point: Record<string, number> = { luck: lp };
       for (const gn of gradeNames) {
-        const val = interpolateCurve(luckData.grades[gn].curve, luck);
+        const val = interpolateCurve(luckData.grades[gn].curve, curveInput);
         point[gn] = Math.round(val * 1000) / 10; // as percentage (100 = baseline)
       }
       points.push(point);
@@ -957,8 +962,9 @@ function LuckSection({
 
   // Compute the multiplier at the selected luck value for each grade
   const selectedValues = useMemo(() => {
+    const curveInput = selectedLuck * LUCK_RATIO;
     return gradeNames.map((gn) => {
-      const val = interpolateCurve(luckData.grades[gn].curve, selectedLuck);
+      const val = interpolateCurve(luckData.grades[gn].curve, curveInput);
       return { grade: gn, multiplier: val };
     });
   }, [luckData, gradeNames, selectedLuck]);
@@ -967,26 +973,27 @@ function LuckSection({
     <div className={styles.section}>
       <h2 className={styles.sectionTitle}>Luck & Drop Rates</h2>
       <p className={styles.sectionDesc}>
-        Luck shifts which rarity of items you find. More Luck = fewer junk/common
-        drops, more rare/epic/legendary drops. The chart shows how each grade&apos;s
-        drop weight changes from 0 to 5 Luck.
+        Luck shifts which rarity of items you find. More Luck = fewer empty/common
+        drops, more epic/legendary/unique drops. Drag the slider to see how your
+        Luck stat affects each rarity tier.
       </p>
 
       {/* Interactive Luck Slider */}
       <div className={styles.luckSliderBox}>
         <div className={styles.luckSliderLabel}>
-          Your Luck: <strong>{selectedLuck.toFixed(1)}</strong>
+          Your Luck: <strong>{selectedLuck}</strong>
         </div>
         <input
           type="range"
           min={0}
-          max={50}
-          value={selectedLuck * 10}
-          onChange={(e) => setSelectedLuck(Number(e.target.value) / 10)}
+          max={LUCK_MAX_POINTS}
+          step={10}
+          value={selectedLuck}
+          onChange={(e) => setSelectedLuck(Number(e.target.value))}
           className={styles.luckSlider}
         />
         <div className={styles.luckSliderTicks}>
-          {[0, 1, 2, 3, 4, 5].map((v) => (
+          {[0, 1000, 2000, 3000, 4000, 5000].map((v) => (
             <span key={v}>{v}</span>
           ))}
         </div>
@@ -1037,7 +1044,7 @@ function LuckSection({
             <XAxis
               dataKey="luck"
               tick={{ fill: "#8a7048", fontSize: 11 }}
-              label={{ value: "Luck", position: "bottom", offset: 10, fill: "#8a7048", fontSize: 12 }}
+              label={{ value: "Luck (points)", position: "bottom", offset: 10, fill: "#8a7048", fontSize: 12 }}
             />
             <YAxis
               tick={{ fill: "#8a7048", fontSize: 11 }}
@@ -1058,7 +1065,7 @@ function LuckSection({
                     }}
                   >
                     <div style={{ color: "#8a7048", marginBottom: 4 }}>
-                      Luck: {label}
+                      {label} Luck
                     </div>
                     {payload.map((p) => {
                       const info = gradeInfo[p.dataKey as string];
@@ -1078,7 +1085,7 @@ function LuckSection({
               stroke="rgba(201,168,76,0.5)"
               strokeDasharray="4 4"
               label={{
-                value: `Luck ${selectedLuck.toFixed(1)}`,
+                value: `${selectedLuck} Luck`,
                 position: "top",
                 fill: "#c9a84c",
                 fontSize: 11,
@@ -1126,9 +1133,9 @@ function LuckSection({
       <table className={styles.luckTable}>
         <thead>
           <tr>
-            <th>Grade</th>
-            {[0, 1, 2, 3, 4, 5].map((lv) => (
-              <th key={lv}>Luck {lv}</th>
+            <th>Rarity</th>
+            {[0, 500, 1000, 2000, 3000, 4000, 5000].map((lp) => (
+              <th key={lp}>{lp} Luck</th>
             ))}
           </tr>
         </thead>
@@ -1138,14 +1145,14 @@ function LuckSection({
             const info = gradeInfo[gn];
             return (
               <tr key={gn}>
-                <td style={{ color: info?.color }}>{info?.label || gn}</td>
-                {[0, 1, 2, 3, 4, 5].map((lv) => {
-                  const val = interpolateCurve(grade.curve, lv);
+                <td style={{ color: info?.color }}>{info?.short || gn}</td>
+                {[0, 500, 1000, 2000, 3000, 4000, 5000].map((lp) => {
+                  const val = interpolateCurve(grade.curve, lp * LUCK_RATIO);
                   const isDecrease = val < 0.999;
                   const isIncrease = val > 1.001;
                   return (
                     <td
-                      key={lv}
+                      key={lp}
                       className={
                         isDecrease
                           ? styles.luckDecrease
@@ -1154,7 +1161,7 @@ function LuckSection({
                             : styles.luckNeutral
                       }
                     >
-                      {val.toFixed(3)}x
+                      {val.toFixed(2)}x
                     </td>
                   );
                 })}

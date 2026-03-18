@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const UPSTREAM = process.env.MARKET_API_URL ?? "";
+const API_SECRET = process.env.MARKET_API_SECRET ?? "";
 
 const ALLOWED_PATHS = new Set([
   "listings", "prices/history", "items", "trending", "stats",
@@ -12,6 +13,11 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { path: string[] } },
 ) {
+  // Block external API access — require internal secret header
+  if (API_SECRET && request.headers.get("x-market-key") !== API_SECRET) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+  }
+
   const path = params.path.join("/");
 
   if (!ALLOWED_PATHS.has(path)) {

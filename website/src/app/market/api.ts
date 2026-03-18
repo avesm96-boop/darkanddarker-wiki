@@ -156,11 +156,12 @@ export const GOLD_ICON = "/item-icons/Item_Icon_GoldCoin.png";
 // Fetch helpers
 // ---------------------------------------------------------------------------
 
+const MARKET_KEY = process.env.NEXT_PUBLIC_MARKET_KEY ?? "";
+
 async function ourGet<T>(path: string, signal?: AbortSignal): Promise<T> {
-  const res = await fetch(`${OUR_API}${path}`, {
-    signal,
-    headers: { Accept: "application/json" },
-  });
+  const headers: Record<string, string> = { Accept: "application/json" };
+  if (MARKET_KEY) headers["x-market-key"] = MARKET_KEY;
+  const res = await fetch(`${OUR_API}${path}`, { signal, headers });
   if (!res.ok) throw new Error(`API ${res.status}: ${res.statusText}`);
   return res.json() as Promise<T>;
 }

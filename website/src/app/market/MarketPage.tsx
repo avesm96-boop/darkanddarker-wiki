@@ -5,14 +5,17 @@ import styles from "./market.module.css";
 import MarketSearchTab from "./MarketSearchTab";
 
 const OUR_API = "/api/market";
+const MARKET_KEY = process.env.NEXT_PUBLIC_MARKET_KEY ?? "";
 
 function useDataAge() {
   const [lastSeen, setLastSeen] = useState<number | null>(null);
   const [agoText, setAgoText] = useState("—");
 
   useEffect(() => {
+    const headers: Record<string, string> = {};
+    if (MARKET_KEY) headers["x-market-key"] = MARKET_KEY;
     const fetchAge = () => {
-      fetch(`${OUR_API}/stats?_t=${Date.now()}`, { cache: "no-store" })
+      fetch(`${OUR_API}/stats?_t=${Date.now()}`, { cache: "no-store", headers })
         .then((r) => r.json())
         .then((d) => { if (d?.last_data_at) setLastSeen(d.last_data_at); })
         .catch(() => {});

@@ -83,6 +83,7 @@ DESCRIPTION_KEY_OVERRIDES = {
     "FortifiedGround": "Text_DataAsset_FortifiedGround_Desc_FortifiedGroudDesc",
     "TrapMastery": "Text_DataAsset_TrapMasteryt_Desc_TrapMasteryDesc",
     "CurseofPain": "Text_DataAsset_CurseofPain_Desc_CurseofPain",
+    "FlamefrostSpear": "Text_DataAsset_FlameFrostSpear_Desc_FlameFrostSpearDesc",
 }
 
 # Hardcoded descriptions for abilities with no localization entry
@@ -109,6 +110,7 @@ ICON_OVERRIDES = {
     ("spells", "SorceryCombat1"): "Icon_Spell_SorceryCombat.png",
     ("spells", "SorceryCombat2"): "Icon_Spell_SorceryCombat.png",
     ("perks", "HideMastery"): "Icon_Perk_HideMastery.png",
+    ("spells", "SummonLavaElemental"): "Icon_Spell_LavaElemental.png",
 }
 
 PERK_GE_DIR = RAW / "ActorStatus" / "Buff" / "Perk"
@@ -1721,6 +1723,12 @@ def extract_spell_scaling(spell_id, derived_stats=None):
             result = _extract_scaling_from_effect(path, derived_stats)
             if result is not None:
                 return result
+    # Try variant names like FlamefrostSpearHit_FireDamage, _IceDamage, etc.
+    import glob as _glob
+    for variant in sorted(_glob.glob(str(SPELL_EFFECT_DIR / f"Id_SpellEffect_{spell_id}Hit_*.json"))):
+        result = _extract_scaling_from_effect(Path(variant), derived_stats)
+        if result is not None:
+            return result
     return None
 
 

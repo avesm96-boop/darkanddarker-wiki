@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T10:47:29.456560+00:00",
+  "generated_at": "2026-03-18T10:56:53.149244+00:00",
   "data": {
     "classes": [
       {
@@ -1377,6 +1377,15 @@
             "source_type": "divine",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 35,
+              "damage_type": "magical",
+              "is_heal": true,
+              "scaling_pct": 100.0,
+              "formula": "35 base magical healing + 100% Power Scaling",
+              "formula_text": "Total = 35 + (100% x Magic Power)",
+              "example": "With 23 Magic Power: 35 + 23 = 58 healing"
+            },
             "icon": "/icons/spells/Icon_Spell_HolyLight.png"
           },
           {
@@ -1472,6 +1481,15 @@
             "source_type": "divine",
             "cost_type": "count",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 5,
+              "damage_type": "magical",
+              "is_heal": true,
+              "scaling_pct": 50.0,
+              "formula": "5 base magical healing + 50% Power Scaling",
+              "formula_text": "Total = 5 + (50% x Magic Power)",
+              "example": "With 23 Magic Power: 5 + 12 = 17 healing"
+            },
             "icon": "/icons/spells/Icon_Spell_Sanctuary.png"
           }
         ],
@@ -4006,7 +4024,17 @@
             "icon": "/icons/spells/Icon_Spell_Flamestrike.png"
           }
         ],
-        "result_icon": "/icons/spells/Icon_Spell_FlamefrostSpear.png"
+        "result_icon": "/icons/spells/Icon_Spell_FlamefrostSpear.png",
+        "result_description": "Throw a Flamefrost Spear, dealing 30 magical fire damage and 30 magical ice damage to the target, inflicting burn over 3 seconds and frostbite for 3 seconds. The spear pierces through targets, dealing damage to all it hits.\n\nBurn: The target takes 3 magical fire damage.\nFrostbite: The target loses -20% Move Speed and -20% Action Speed.",
+        "result_scaling": {
+          "base_damage": 30,
+          "damage_type": "magical",
+          "scaling_pct": 100.0,
+          "impact_power": 4,
+          "formula": "30 base magical damage + 100% Power Scaling",
+          "formula_text": "Total = 30 + (100% x Magic Power)",
+          "example": "With 25 Magic Power: 30 + 25 = 55 damage"
+        }
       },
       {
         "result": "Lightning Vortex",
@@ -4086,6 +4114,7 @@
             "icon": "/icons/spells/Icon_Spell_SummonEarthElemental.png"
           }
         ],
+        "result_icon": "/icons/spells/Icon_Spell_LavaElemental.png",
         "result_description": "Summon a Lava Elemental for 24 seconds. The Lava Elemental deals 10 magical fire damage per second to nearby enemies and leaves a trail of lava that deals 10 magical fire damage per second."
       },
       {

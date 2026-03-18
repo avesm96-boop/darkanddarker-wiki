@@ -218,7 +218,7 @@ export default function MarketSearchTab() {
     }
     return true;
   };
-  const filteredActive = activeListings.filter(applyPropFilters);
+  const filteredActive = activeListings.filter(applyPropFilters).sort((a, b) => a.price_per_unit - b.price_per_unit);
   const filteredSold = soldListings.filter(applyPropFilters).slice(0, 10);
   const handleKeyDown = (e: React.KeyboardEvent) => { if (e.key === "Enter" && canSearch) doSearch(); };
 

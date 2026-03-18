@@ -249,6 +249,12 @@ export default function ClassesPage() {
             All {filtered.length} adventurer classes with base stats, perks, and skills.
           </p>
           <div className={styles.headerDivider} />
+          <Link
+            href="/classes/compare"
+            className={styles.compareLink}
+          >
+            Compare Classes
+          </Link>
         </div>
 
         {/* Filter Bar */}

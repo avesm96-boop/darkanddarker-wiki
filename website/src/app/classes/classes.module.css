@@ -19,6 +19,31 @@
   margin: 20px auto 0;
 }
 
+.compareLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: var(--bg-raised);
+  border: 1px solid var(--gold-800);
+  border-radius: 2px;
+  color: var(--gold-500);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+}
+
+.compareLink:hover {
+  border-color: var(--gold-600);
+  color: var(--gold-300);
+  background: var(--gold-950);
+}
+
 /* === Filter Bar === */
 
 .filterBar {

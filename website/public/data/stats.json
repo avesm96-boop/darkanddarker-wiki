@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-03-18T13:06:48.975909+00:00",
+  "generated_at": "2026-03-18T13:27:53.613457+00:00",
   "data": {
     "attributes": [
       {
@@ -659,7 +659,7 @@
               "output_max": 0.63
             },
             "baseline": 0.0,
-            "mechanic": "Action Speed controls how fast you swing weapons, draw bows, and perform actions. Both Agility and Dexterity contribute \u2014 the community wiki suggests the formula is 0.25 \u00d7 Agility + 0.75 \u00d7 Dexterity fed into the same curve. This means Dexterity has 3\u00d7 more influence. The chart below shows the curve used for Agility's input portion."
+            "mechanic": "Action Speed controls how fast you swing weapons, draw bows, and block. Both Agility and Dexterity contribute, but the game describes Agility's contribution as 'slight' while Dexterity is the primary driver. The formula is 0.25 \u00d7 Agility + 0.75 \u00d7 Dexterity, meaning Dexterity has 3\u00d7 more influence per point. Both stats use the same curve (shown below)."
           }
         ],
         "class_base_values": {
@@ -817,7 +817,7 @@
               "output_max": 0.63
             },
             "baseline": 0.0,
-            "mechanic": "Uses the same curve as Agility's contribution, but Dexterity has significantly more weight. The community wiki gives the formula as 0.25 \u00d7 Agility + 0.75 \u00d7 Dexterity \u2014 so each point of Dexterity gives 3\u00d7 more Action Speed than a point of Agility. Prioritize Dexterity when optimizing attack speed."
+            "mechanic": "Dexterity is the primary Action Speed stat \u2014 the game itself says it directly 'increases your action speed' while Agility only 'slightly' increases it. The formula is 0.25 \u00d7 Agility + 0.75 \u00d7 Dexterity, both fed into this curve. Prioritize Dexterity when optimizing attack speed."
           },
           {
             "id": "manual_dexterity",

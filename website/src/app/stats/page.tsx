@@ -224,12 +224,16 @@ function StatCurveChart({
   baseline,
   classValues,
   attrColors,
+  inputLabel,
+  outputLabel,
 }: {
   data: CurvePoint[];
   unit: string;
   baseline?: number;
   classValues?: { name: string; x: number; color: string }[];
   attrColors?: string;
+  inputLabel?: string;
+  outputLabel?: string;
 }) {
   const yDomain = useMemo(() => {
     const ys = data.map((p) => p.y);
@@ -243,8 +247,8 @@ function StatCurveChart({
 
   return (
     <div className={styles.chartWrap}>
-      <ResponsiveContainer width="100%" height={260}>
-        <LineChart data={data} margin={{ top: 10, right: 20, bottom: 5, left: 10 }}>
+      <ResponsiveContainer width="100%" height={280}>
+        <LineChart data={data} margin={{ top: 10, right: 20, bottom: 20, left: 10 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(201,168,76,0.06)" />
           <XAxis
             dataKey="x"
@@ -253,6 +257,7 @@ function StatCurveChart({
             tick={{ fontSize: 10, fill: "#8a7048" }}
             tickLine={{ stroke: "#4a3a22" }}
             axisLine={{ stroke: "#4a3a22" }}
+            label={inputLabel ? { value: inputLabel, position: "bottom", offset: 0, fill: "#4a3a22", fontSize: 10 } : undefined}
           />
           <YAxis
             domain={yDomain}
@@ -262,6 +267,7 @@ function StatCurveChart({
             tickFormatter={(v: number) =>
               unit === "percent" ? `${(v * 100).toFixed(0)}%` : String(Math.round(v))
             }
+            label={outputLabel ? { value: outputLabel, angle: -90, position: "insideLeft", offset: 10, fill: "#4a3a22", fontSize: 10 } : undefined}
           />
           <RechartsTooltip
             content={<CurveTooltip unit={unit} />}
@@ -305,6 +311,21 @@ function StatCurveChart({
           ))}
         </LineChart>
       </ResponsiveContainer>
+      {/* Chart Legend */}
+      {classValues && classValues.length > 0 && (
+        <div className={styles.chartLegend}>
+          <span className={styles.legendItem}>
+            <span className={styles.legendLine} style={{ background: lineColor }} />
+            Scaling Curve
+          </span>
+          {classValues.map((cv) => (
+            <span key={cv.name} className={styles.legendItem}>
+              <span className={styles.legendDot} style={{ background: cv.color }} />
+              {cv.name}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -312,6 +333,151 @@ function StatCurveChart({
 // ---------------------------------------------------------------------------
 // Attribute Section
 // ---------------------------------------------------------------------------
+
+function AttributeDetailPanel({
+  attr,
+  derived,
+  selectedDerived,
+  setSelectedDerived,
+  onClose,
+  classDotsForCurve,
+  classes,
+}: {
+  attr: Attribute;
+  derived: DerivedStat | undefined;
+  selectedDerived: string;
+  setSelectedDerived: (id: string) => void;
+  onClose: () => void;
+  classDotsForCurve: { name: string; x: number; color: string }[];
+  classes: ClassInfo[];
+}) {
+  const panelRef = useCallback((node: HTMLDivElement | null) => {
+    if (node) node.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, []);
+
+  // Build formula explanation from curve data
+  const formulaInfo = useMemo(() => {
+    if (!derived) return null;
+    const c = derived.curve_full;
+    if (!c.length) return null;
+    const inMin = c[0].x;
+    const inMax = c[c.length - 1].x;
+    const outMin = Math.min(...c.map((p) => p.y));
+    const outMax = Math.max(...c.map((p) => p.y));
+    const baseVal = derived.baseline;
+    const isLinear = c.length === 2;
+
+    return { inMin, inMax, outMin, outMax, baseVal, isLinear, points: c.length };
+  }, [derived]);
+
+  return (
+    <div className={styles.detailPanel} ref={panelRef}>
+      <div className={styles.detailHeader}>
+        <h3 className={styles.detailTitle}>
+          {attr.name} — Derived Stats
+        </h3>
+        <button className={styles.closeBtn} onClick={onClose}>
+          ✕ Close
+        </button>
+      </div>
+
+      <div className={styles.derivedTabs}>
+        {attr.derived_stats.map((ds) => (
+          <button
+            key={ds.id}
+            className={
+              selectedDerived === ds.id
+                ? styles.derivedTabActive
+                : styles.derivedTab
+            }
+            onClick={() => setSelectedDerived(ds.id)}
+          >
+            {ds.name}
+          </button>
+        ))}
+      </div>
+
+      {derived && formulaInfo && (
+        <>
+          <p className={styles.derivedDesc}>{derived.description}</p>
+
+          {/* Formula & Range Info */}
+          <div className={styles.formulaBox}>
+            <div className={styles.formulaTitle}>How it works</div>
+            <div className={styles.formulaGrid}>
+              <div className={styles.formulaItem}>
+                <span className={styles.formulaLabel}>Input Range</span>
+                <span className={styles.formulaValue}>
+                  {formulaInfo.inMin} — {formulaInfo.inMax} {attr.name}
+                </span>
+              </div>
+              <div className={styles.formulaItem}>
+                <span className={styles.formulaLabel}>Output Range</span>
+                <span className={styles.formulaValue}>
+                  {fmtVal(formulaInfo.outMin, derived.unit)} to{" "}
+                  {fmtVal(formulaInfo.outMax, derived.unit)}
+                </span>
+              </div>
+              <div className={styles.formulaItem}>
+                <span className={styles.formulaLabel}>At Baseline (15)</span>
+                <span className={styles.formulaValue}>
+                  {fmtVal(formulaInfo.baseVal, derived.unit)}
+                </span>
+              </div>
+              <div className={styles.formulaItem}>
+                <span className={styles.formulaLabel}>Scaling</span>
+                <span className={styles.formulaValue}>
+                  {formulaInfo.isLinear
+                    ? "Linear (constant rate)"
+                    : `Nonlinear (${formulaInfo.points} data points with interpolation)`}
+                </span>
+              </div>
+            </div>
+            <p className={styles.formulaNote}>
+              The game uses piecewise linear interpolation between {formulaInfo.points} data
+              points defined in the curve table. Values between points are calculated
+              proportionally. The chart below shows the exact curve from game files.
+            </p>
+          </div>
+
+          <StatCurveChart
+            data={derived.curve}
+            unit={derived.unit}
+            baseline={derived.baseline}
+            classValues={classDotsForCurve}
+            attrColors={ATTR_COLORS[attr.id]}
+            inputLabel={`${attr.name} Points`}
+            outputLabel={derived.name}
+          />
+
+          {/* Class values for this derived stat */}
+          <table className={styles.dataTable}>
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Base {attr.name}</th>
+                <th>{derived.name}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {classes.map((cls) => {
+                const base = attr.class_base_values[cls.id] ?? 15;
+                const val = interpolateCurve(derived.curve_full, base);
+                return (
+                  <tr key={cls.id}>
+                    <td>{cls.name}</td>
+                    <td>{base}</td>
+                    <td>{fmtVal(val, derived.unit)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </>
+      )}
+    </div>
+  );
+}
 
 function AttributeSection({
   attributes,
@@ -340,6 +506,11 @@ function AttributeSection({
     [selectedAttr, attributes]
   );
 
+  const handleClose = useCallback(() => {
+    setSelectedAttr(null);
+    setSelectedDerived("");
+  }, []);
+
   const maxStatVal = useMemo(() => {
     let mx = 0;
     for (const a of attributes) {
@@ -360,6 +531,17 @@ function AttributeSection({
     }));
   }, [attr, classes]);
 
+  // Group attributes into rows of 2 for inline panel insertion
+  const rows: Attribute[][] = [];
+  for (let i = 0; i < attributes.length; i += 2) {
+    rows.push(attributes.slice(i, i + 2));
+  }
+
+  // Find which row the selected attribute is in
+  const selectedRowIdx = selectedAttr
+    ? rows.findIndex((row) => row.some((a) => a.id === selectedAttr))
+    : -1;
+
   return (
     <div className={styles.section}>
       <h2 className={styles.sectionTitle}>Primary Attributes</h2>
@@ -368,126 +550,71 @@ function AttributeSection({
         its scaling curves, derived stats, and per-class base values.
       </p>
 
-      <div className={styles.attrGrid}>
-        {attributes.map((a) => (
-          <div
-            key={a.id}
-            className={
-              selectedAttr === a.id ? styles.attrCardActive : styles.attrCard
-            }
-            onClick={() => handleAttrClick(a.id)}
-          >
-            <div className={styles.attrHeader}>
+      {rows.map((row, rowIdx) => (
+        <div key={rowIdx}>
+          <div className={styles.attrGrid}>
+            {row.map((a) => (
               <div
-                className={styles.attrIcon}
-                style={{
-                  borderColor: ATTR_COLORS[a.id] || "var(--gold-800)",
-                  color: ATTR_COLORS[a.id] || "var(--gold-400)",
-                }}
-              >
-                {ATTR_ICONS[a.id] || "?"}
-              </div>
-              <div>
-                <div className={styles.attrName}>{a.name}</div>
-              </div>
-            </div>
-            <div className={styles.attrDesc}>{a.description}</div>
-            <div className={styles.classBarList}>
-              {classes.map((cls) => {
-                const val = a.class_base_values[cls.id] ?? 0;
-                const pct = maxStatVal ? (val / maxStatVal) * 100 : 0;
-                return (
-                  <div key={cls.id} className={styles.classBarRow}>
-                    <span className={styles.classBarName}>{cls.name}</span>
-                    <div className={styles.classBarTrack}>
-                      <div
-                        className={styles.classBarFill}
-                        style={{
-                          width: `${pct}%`,
-                          background: ATTR_COLORS[a.id] || "var(--gold-600)",
-                        }}
-                      />
-                    </div>
-                    <span className={styles.classBarValue}>{val}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Detail Panel */}
-      {attr && (
-        <div className={styles.detailPanel}>
-          <div className={styles.detailHeader}>
-            <h3 className={styles.detailTitle}>
-              {attr.name} — Derived Stats
-            </h3>
-            <button
-              className={styles.closeBtn}
-              onClick={() => {
-                setSelectedAttr(null);
-                setSelectedDerived("");
-              }}
-            >
-              Close
-            </button>
-          </div>
-
-          <div className={styles.derivedTabs}>
-            {attr.derived_stats.map((ds) => (
-              <button
-                key={ds.id}
+                key={a.id}
                 className={
-                  selectedDerived === ds.id
-                    ? styles.derivedTabActive
-                    : styles.derivedTab
+                  selectedAttr === a.id ? styles.attrCardActive : styles.attrCard
                 }
-                onClick={() => setSelectedDerived(ds.id)}
+                onClick={() => handleAttrClick(a.id)}
               >
-                {ds.name}
-              </button>
+                <div className={styles.attrHeader}>
+                  <div
+                    className={styles.attrIcon}
+                    style={{
+                      borderColor: ATTR_COLORS[a.id] || "var(--gold-800)",
+                      color: ATTR_COLORS[a.id] || "var(--gold-400)",
+                    }}
+                  >
+                    {ATTR_ICONS[a.id] || "?"}
+                  </div>
+                  <div>
+                    <div className={styles.attrName}>{a.name}</div>
+                  </div>
+                </div>
+                <div className={styles.attrDesc}>{a.description}</div>
+                <div className={styles.classBarList}>
+                  {classes.map((cls) => {
+                    const val = a.class_base_values[cls.id] ?? 0;
+                    const pct = maxStatVal ? (val / maxStatVal) * 100 : 0;
+                    return (
+                      <div key={cls.id} className={styles.classBarRow}>
+                        <span className={styles.classBarName}>{cls.name}</span>
+                        <div className={styles.classBarTrack}>
+                          <div
+                            className={styles.classBarFill}
+                            style={{
+                              width: `${pct}%`,
+                              background: ATTR_COLORS[a.id] || "var(--gold-600)",
+                            }}
+                          />
+                        </div>
+                        <span className={styles.classBarValue}>{val}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             ))}
           </div>
 
-          {derived && (
-            <>
-              <p className={styles.derivedDesc}>{derived.description}</p>
-              <StatCurveChart
-                data={derived.curve}
-                unit={derived.unit}
-                baseline={derived.baseline}
-                classValues={classDotsForCurve}
-                attrColors={ATTR_COLORS[attr.id]}
-              />
-              {/* Class values for this derived stat */}
-              <table className={styles.dataTable}>
-                <thead>
-                  <tr>
-                    <th>Class</th>
-                    <th>{attr.name}</th>
-                    <th>{derived.name}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {classes.map((cls) => {
-                    const base = attr.class_base_values[cls.id] ?? 15;
-                    const val = interpolateCurve(derived.curve_full, base);
-                    return (
-                      <tr key={cls.id}>
-                        <td>{cls.name}</td>
-                        <td>{base}</td>
-                        <td>{fmtVal(val, derived.unit)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </>
+          {/* Detail panel inserted directly below the row containing the selected attribute */}
+          {selectedRowIdx === rowIdx && attr && (
+            <AttributeDetailPanel
+              attr={attr}
+              derived={derived}
+              selectedDerived={selectedDerived}
+              setSelectedDerived={setSelectedDerived}
+              onClose={handleClose}
+              classDotsForCurve={classDotsForCurve}
+              classes={classes}
+            />
           )}
         </div>
-      )}
+      ))}
     </div>
   );
 }

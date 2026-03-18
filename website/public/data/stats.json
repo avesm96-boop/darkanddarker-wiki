@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-03-18T17:42:47.063690+00:00",
+  "generated_at": "2026-03-18T17:45:37.223244+00:00",
   "data": {
     "attributes": [
       {
@@ -269,7 +269,7 @@
               "output_max": 199.0
             },
             "baseline": 115.0,
-            "mechanic": "This is your health pool before any gear bonuses. Verified from the game binary: MaxHealthBase = base * (1 + modifier), where the base comes from the Vigor curve and the modifier comes from gear/buffs. The curve has diminishing returns \u2014 early points of Vigor give more HP than later ones."
+            "mechanic": "This is your health pool before any gear bonuses. Your base HP from the Vigor curve gets multiplied by any % HP modifiers from gear \u2014 so a +10% Max Health ring applies on top of this value. The curve has diminishing returns: early Vigor points give more HP than later ones. A Fighter (15 VIG) gets 115 HP, a Barbarian (25 VIG) gets 131.5 HP."
           },
           {
             "id": "health_recovery_mod",
@@ -521,7 +521,7 @@
               "output_max": 36.25
             },
             "baseline": 0.0,
-            "mechanic": "Your total Move Speed = Base (300) + this bonus, hard capped at 330. Verified from the binary: the MoveSpeed calculation reads directly from the AbilitySystemComponent, combining multiple sources in a complex formula. A Rogue with 25 AGI gets +5 bonus = 305 move speed. Below 15 AGI you get a penalty."
+            "mechanic": "Your total Move Speed = Base (300) + this bonus, hard capped at 330. The game combines your Agility curve bonus with gear and buff bonuses to get the final speed. A Rogue with 25 AGI gets +5 bonus = 305 move speed. A Ranger with 20 AGI gets +2.5 = 302.5. Below 15 AGI you get a penalty \u2014 at 0 AGI you'd lose 10 move speed."
           },
           {
             "id": "action_speed_agi",
@@ -659,7 +659,7 @@
               "output_max": 0.63
             },
             "baseline": 0.0,
-            "mechanic": "Action Speed controls how fast you swing weapons, draw bows, and block. Both Agility and Dexterity contribute, but Dexterity has 3\u00d7 more weight. Verified from the game binary: the formula is exactly 0.25 \u00d7 Agility + 0.75 \u00d7 Dexterity, which is then fed into the curve shown below. For example, a Rogue (25 AGI, 20 DEX) uses input 0.25\u00d725 + 0.75\u00d720 = 21.25, giving +7.8% Action Speed."
+            "mechanic": "Action Speed controls how fast you swing weapons, draw bows, and block. Both Agility and Dexterity contribute, but Dexterity matters 3x more. The game combines them as: (0.25 x Agility) + (0.75 x Dexterity), then looks up the result on the curve below. Example: a Rogue (25 AGI, 20 DEX) gets input = 0.25x25 + 0.75x20 = 21.25, which gives about +7.8% faster attacks."
           }
         ],
         "class_base_values": {
@@ -817,7 +817,7 @@
               "output_max": 0.63
             },
             "baseline": 0.0,
-            "mechanic": "Dexterity is the primary Action Speed stat \u2014 verified from the game binary: the formula is 0.25 \u00d7 Agility + 0.75 \u00d7 Dexterity. Each point of Dexterity gives 3\u00d7 more Action Speed than a point of Agility. The weighted sum is the input to this curve. Prioritize Dexterity when optimizing attack speed."
+            "mechanic": "Dexterity is the main Action Speed stat \u2014 each point of DEX gives 3x more Action Speed than a point of AGI. The game uses the same curve for both, but weights them differently: (0.25 x Agility) + (0.75 x Dexterity). If you want faster attacks, DEX is what you stack."
           },
           {
             "id": "manual_dexterity",
@@ -2422,7 +2422,7 @@
               "output_max": 94.0
             },
             "baseline": 9.0,
-            "mechanic": "Each spell has a memory cost. Your Memory Capacity limits which spells you can equip. Verified from the game binary: the result is rounded to a whole number using the formula round(base * (1 + modifier) + flat_bonus). Below 7 Knowledge you get zero capacity. A Wizard with 25 KNO gets 19 capacity, enough for several spells."
+            "mechanic": "Each spell has a memory cost. Your Memory Capacity limits which spells you can equip. The game rounds the final result to a whole number \u2014 so gear with +Memory Capacity adds flat slots on top of your Knowledge-based capacity. Below 7 Knowledge you get zero capacity and can't equip any spells. A Wizard with 25 KNO gets 19 capacity."
           },
           {
             "id": "memory_recovery_mod",
@@ -2734,7 +2734,7 @@
               "output_max": 1.52
             },
             "baseline": 0.0,
-            "mechanic": "Controls how fast you open chests, unlock doors, disarm traps, and revive teammates. Verified from the binary: the RegularInteractionSpeedBase formula uses 1 - clamp(A/B, 0, 1), an inverse ratio. A Rogue with 25 RES gets +52% \u2014 they open chests roughly 1.5x faster than a Fighter."
+            "mechanic": "Controls how fast you open chests, unlock doors, disarm traps, and revive teammates. The bonus scales as an inverse ratio with diminishing returns at very high values. A Rogue with 25 RES gets +52% \u2014 they open chests roughly 1.5x faster than a Fighter at baseline."
           },
           {
             "id": "cooldown_reduction",

@@ -261,7 +261,7 @@ export default function MarketSearchTab() {
                 <Tooltip
                   contentStyle={{ background: "rgba(20,18,14,0.95)", border: "1px solid rgba(201,168,76,0.25)", borderRadius: 6, fontSize: "0.75rem" }}
                   labelFormatter={(ts) => new Date(Number(ts) * 1000).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
-                  formatter={(value: number, name: string) => [value.toLocaleString(), name === "listed" ? "Listed" : "Sold"]}
+                  formatter={(value: unknown, name: unknown) => [Number(value).toLocaleString(), String(name) === "listed" ? "Listed" : "Sold"]}
                 />
                 <Legend
                   verticalAlign="top"

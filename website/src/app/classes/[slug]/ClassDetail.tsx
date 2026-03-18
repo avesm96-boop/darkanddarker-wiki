@@ -8,12 +8,22 @@ import styles from "./ClassDetail.module.css";
 // Types
 // ---------------------------------------------------------------------------
 
+interface ScalingInfo {
+  base_damage: number;
+  damage_type: string;
+  scaling_pct: number;
+  impact_power: number | null;
+  formula: string;
+}
+
 interface Perk {
   id: string;
   name: string;
   icon?: string;
   description: string;
   is_default: boolean;
+  conditions?: string[];
+  scaling?: ScalingInfo | null;
 }
 
 interface Skill {
@@ -24,6 +34,7 @@ interface Skill {
   skill_type: string;
   skill_tier: number;
   use_moving: boolean;
+  scaling?: ScalingInfo | null;
 }
 
 interface Spell {
@@ -48,6 +59,7 @@ interface Spell {
   };
   note_count?: number;
   channeling_notes?: number;
+  scaling?: ScalingInfo | null;
 }
 
 interface Shapeshift {
@@ -448,6 +460,15 @@ export default function ClassDetail({ slug }: { slug: string }) {
                     &#9660;
                   </span>
                 </div>
+                {perk.conditions && perk.conditions.length > 0 && (
+                  <div className={styles.conditionRow}>
+                    {perk.conditions.map((cond, i) => (
+                      <span key={i} className={styles.conditionTag}>
+                        {cond}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div
                   className={
                     open ? styles.expandCardBodyOpen : styles.expandCardBody
@@ -455,6 +476,17 @@ export default function ClassDetail({ slug }: { slug: string }) {
                 >
                   <div className={styles.expandCardContent}>
                     {cleanDescription(perk.description)}
+                    {perk.scaling && (
+                      <div className={styles.scalingBox}>
+                        <span className={styles.scalingLabel}>Scaling:</span>{" "}
+                        {perk.scaling.formula}
+                        {perk.scaling.impact_power != null && (
+                          <div className={styles.impactPower}>
+                            Impact Power: {perk.scaling.impact_power}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -523,6 +555,17 @@ export default function ClassDetail({ slug }: { slug: string }) {
                           Can use while moving
                         </span>
                       </p>
+                    )}
+                    {skill.scaling && (
+                      <div className={styles.scalingBox}>
+                        <span className={styles.scalingLabel}>Scaling:</span>{" "}
+                        {skill.scaling.formula}
+                        {skill.scaling.impact_power != null && (
+                          <div className={styles.impactPower}>
+                            Impact Power: {skill.scaling.impact_power}
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -649,6 +692,18 @@ export default function ClassDetail({ slug }: { slug: string }) {
                                   )}
                               </div>
                               <p>{cleanDescription(spell.description)}</p>
+
+                              {spell.scaling && (
+                                <div className={styles.scalingBox}>
+                                  <span className={styles.scalingLabel}>Scaling:</span>{" "}
+                                  {spell.scaling.formula}
+                                  {spell.scaling.impact_power != null && (
+                                    <div className={styles.impactPower}>
+                                      Impact Power: {spell.scaling.impact_power}
+                                    </div>
+                                  )}
+                                </div>
+                              )}
 
                               {/* Bard Song Tier Effects */}
                               {spell.tier_effects && (

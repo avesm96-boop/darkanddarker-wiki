@@ -923,33 +923,211 @@ function LuckSection({
 }: {
   luckData: { description: string; grades: Record<string, LuckGrade> };
 }) {
+  const [selectedLuck, setSelectedLuck] = useState(0);
   const gradeNames = Object.keys(luckData.grades).sort();
-  const luckValues = [0, 1, 2, 3, 4, 5];
 
-  const gradeLabels: Record<string, string> = {
-    LuckGrade00: "Grade 0 (Junk)",
-    LuckGrade01: "Grade 1 (Poor)",
-    LuckGrade02: "Grade 2 (Common)",
-    LuckGrade03: "Grade 3 (Standard)",
-    LuckGrade04: "Grade 4 (Uncommon)",
-    LuckGrade05: "Grade 5 (Rare)",
-    LuckGrade06: "Grade 6 (Epic)",
-    LuckGrade07: "Grade 7 (Legendary)",
-    LuckGrade08: "Grade 8 (Unique)",
+  const gradeInfo: Record<
+    string,
+    { label: string; short: string; color: string; rarity: string }
+  > = {
+    LuckGrade00: { label: "Grade 0 — Junk", short: "Junk", color: "#888888", rarity: "Junk" },
+    LuckGrade01: { label: "Grade 1 — Poor", short: "Poor", color: "#9d9d9d", rarity: "Poor" },
+    LuckGrade02: { label: "Grade 2 — Common", short: "Common", color: "#c8b88a", rarity: "Common" },
+    LuckGrade03: { label: "Grade 3 — Standard", short: "Standard", color: "#4caf50", rarity: "Standard" },
+    LuckGrade04: { label: "Grade 4 — Uncommon", short: "Uncommon", color: "#66bb6a", rarity: "Uncommon" },
+    LuckGrade05: { label: "Grade 5 — Rare", short: "Rare", color: "#42a5f5", rarity: "Rare" },
+    LuckGrade06: { label: "Grade 6 — Epic", short: "Epic", color: "#ab47bc", rarity: "Epic" },
+    LuckGrade07: { label: "Grade 7 — Legendary", short: "Legendary", color: "#ffa726", rarity: "Legendary" },
+    LuckGrade08: { label: "Grade 8 — Unique", short: "Unique", color: "#ef5350", rarity: "Unique" },
   };
+
+  // Build chart data: sample the curves at 0.1 increments from 0-5
+  const chartData = useMemo(() => {
+    const points: Record<string, number>[] = [];
+    for (let luck = 0; luck <= 5; luck += 0.1) {
+      const point: Record<string, number> = { luck: Math.round(luck * 10) / 10 };
+      for (const gn of gradeNames) {
+        const val = interpolateCurve(luckData.grades[gn].curve, luck);
+        point[gn] = Math.round(val * 1000) / 10; // as percentage (100 = baseline)
+      }
+      points.push(point);
+    }
+    return points;
+  }, [luckData, gradeNames]);
+
+  // Compute the multiplier at the selected luck value for each grade
+  const selectedValues = useMemo(() => {
+    return gradeNames.map((gn) => {
+      const val = interpolateCurve(luckData.grades[gn].curve, selectedLuck);
+      return { grade: gn, multiplier: val };
+    });
+  }, [luckData, gradeNames, selectedLuck]);
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.sectionTitle}>Luck Grades</h2>
+      <h2 className={styles.sectionTitle}>Luck & Drop Rates</h2>
       <p className={styles.sectionDesc}>
-        {luckData.description} Each Luck point shifts drop weight multipliers — common
-        items become rarer while high-grade loot becomes more frequent.
+        Luck shifts which rarity of items you find. More Luck = fewer junk/common
+        drops, more rare/epic/legendary drops. The chart shows how each grade&apos;s
+        drop weight changes from 0 to 5 Luck.
       </p>
+
+      {/* Interactive Luck Slider */}
+      <div className={styles.luckSliderBox}>
+        <div className={styles.luckSliderLabel}>
+          Your Luck: <strong>{selectedLuck.toFixed(1)}</strong>
+        </div>
+        <input
+          type="range"
+          min={0}
+          max={50}
+          value={selectedLuck * 10}
+          onChange={(e) => setSelectedLuck(Number(e.target.value) / 10)}
+          className={styles.luckSlider}
+        />
+        <div className={styles.luckSliderTicks}>
+          {[0, 1, 2, 3, 4, 5].map((v) => (
+            <span key={v}>{v}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Drop Weight Cards at Selected Luck */}
+      <div className={styles.luckCards}>
+        {selectedValues.map(({ grade, multiplier }) => {
+          const info = gradeInfo[grade];
+          if (!info) return null;
+          const pct = ((multiplier - 1) * 100);
+          const isUp = multiplier > 1.001;
+          const isDown = multiplier < 0.999;
+          return (
+            <div
+              key={grade}
+              className={styles.luckCard}
+              style={{ borderColor: info.color + "60" }}
+            >
+              <div className={styles.luckCardDot} style={{ background: info.color }} />
+              <div className={styles.luckCardName}>{info.short}</div>
+              <div
+                className={styles.luckCardValue}
+                style={{
+                  color: isUp ? "#4caf50" : isDown ? "#e04848" : "var(--text-dim)",
+                }}
+              >
+                {multiplier.toFixed(2)}x
+              </div>
+              <div
+                className={styles.luckCardPct}
+                style={{
+                  color: isUp ? "#4caf5099" : isDown ? "#e0484899" : "var(--text-muted)",
+                }}
+              >
+                {pct >= 0 ? "+" : ""}{pct.toFixed(1)}%
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Chart */}
+      <div className={styles.chartWrap} style={{ height: 360 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={chartData} margin={{ top: 10, right: 20, bottom: 30, left: 20 }}>
+            <CartesianGrid stroke="rgba(201,168,76,0.08)" />
+            <XAxis
+              dataKey="luck"
+              tick={{ fill: "#8a7048", fontSize: 11 }}
+              label={{ value: "Luck", position: "bottom", offset: 10, fill: "#8a7048", fontSize: 12 }}
+            />
+            <YAxis
+              tick={{ fill: "#8a7048", fontSize: 11 }}
+              label={{ value: "Drop Weight %", angle: -90, position: "insideLeft", offset: -5, fill: "#8a7048", fontSize: 12 }}
+              domain={[40, 440]}
+            />
+            <RechartsTooltip
+              content={({ active, payload, label }) => {
+                if (!active || !payload?.length) return null;
+                return (
+                  <div
+                    style={{
+                      background: "#14110b",
+                      border: "1px solid rgba(201,168,76,0.3)",
+                      borderRadius: 2,
+                      padding: "8px 12px",
+                      fontSize: "0.75rem",
+                    }}
+                  >
+                    <div style={{ color: "#8a7048", marginBottom: 4 }}>
+                      Luck: {label}
+                    </div>
+                    {payload.map((p) => {
+                      const info = gradeInfo[p.dataKey as string];
+                      if (!info) return null;
+                      return (
+                        <div key={String(p.dataKey)} style={{ color: info.color, marginBottom: 1 }}>
+                          {info.short}: {(Number(p.value) / 100).toFixed(3)}x ({Number(p.value).toFixed(1)}%)
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              }}
+            />
+            <ReferenceLine
+              x={selectedLuck}
+              stroke="rgba(201,168,76,0.5)"
+              strokeDasharray="4 4"
+              label={{
+                value: `Luck ${selectedLuck.toFixed(1)}`,
+                position: "top",
+                fill: "#c9a84c",
+                fontSize: 11,
+              }}
+            />
+            <ReferenceLine y={100} stroke="rgba(201,168,76,0.15)" />
+            {gradeNames.map((gn) => {
+              const info = gradeInfo[gn];
+              if (!info) return null;
+              return (
+                <Line
+                  key={gn}
+                  type="monotone"
+                  dataKey={gn}
+                  name={info.short}
+                  stroke={info.color}
+                  strokeWidth={1.5}
+                  dot={false}
+                  activeDot={{ r: 3 }}
+                />
+              );
+            })}
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Chart Legend */}
+      <div className={styles.chartLegend}>
+        {gradeNames.map((gn) => {
+          const info = gradeInfo[gn];
+          if (!info) return null;
+          return (
+            <span key={gn} className={styles.legendItem}>
+              <span className={styles.legendDot} style={{ background: info.color }} />
+              {info.label}
+            </span>
+          );
+        })}
+      </div>
+
+      {/* Data Table */}
+      <h3 className={styles.subTitle} style={{ marginTop: 24 }}>
+        Drop Weight Table
+      </h3>
       <table className={styles.luckTable}>
         <thead>
           <tr>
             <th>Grade</th>
-            {luckValues.map((lv) => (
+            {[0, 1, 2, 3, 4, 5].map((lv) => (
               <th key={lv}>Luck {lv}</th>
             ))}
           </tr>
@@ -957,10 +1135,11 @@ function LuckSection({
         <tbody>
           {gradeNames.map((gn) => {
             const grade = luckData.grades[gn];
+            const info = gradeInfo[gn];
             return (
               <tr key={gn}>
-                <td>{gradeLabels[gn] || gn}</td>
-                {luckValues.map((lv) => {
+                <td style={{ color: info?.color }}>{info?.label || gn}</td>
+                {[0, 1, 2, 3, 4, 5].map((lv) => {
                   const val = interpolateCurve(grade.curve, lv);
                   const isDecrease = val < 0.999;
                   const isIncrease = val > 1.001;

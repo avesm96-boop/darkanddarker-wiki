@@ -727,6 +727,119 @@
   color: #4caf50;
 }
 
+/* === Luck Slider & Cards === */
+
+.luckSliderBox {
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.luckSliderLabel {
+  font-size: 0.875rem;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+}
+
+.luckSliderLabel strong {
+  color: var(--gold-400);
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.luckSlider {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-stone);
+  border: 1px solid var(--border-dim);
+  outline: none;
+  cursor: pointer;
+}
+
+.luckSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  border: 2px solid var(--bg-deep);
+  cursor: pointer;
+}
+
+.luckSlider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  border: 2px solid var(--bg-deep);
+  cursor: pointer;
+}
+
+.luckSliderTicks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  padding: 0 2px;
+}
+
+.luckCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.luckCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 6px;
+  background: var(--bg-stone);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  text-align: center;
+}
+
+.luckCardDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+.luckCardName {
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.luckCardValue {
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.luckCardPct {
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.subTitle {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 /* === Luck Grade Table === */
 
 .luckTable {

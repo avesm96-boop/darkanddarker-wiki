@@ -1,6 +1,13 @@
 """
 build_classes.py - Compile all class data into website/public/data/classes.json
 
+GAME UPDATE WORKFLOW:
+  1. Re-export from FModel (see docs/pipeline/game-update-workflow.md)
+  2. Run: py -3 -m pipeline.extract_all --force
+  3. Run: py -3 tools/build_classes.py
+  4. Check for new missing icons or descriptions
+  5. If GEModifier values changed, re-scan .uexp files (see GEMODIFIER_VALUES section)
+
 Reads from:
   - extracted/classes/Id_PlayerCharacterEffect_[Class].json   (base stats)
   - raw/.../V2/PlayerCharacter/PlayerCharacter/Id_PlayerCharacter_[Class].json  (flavor text, default perks)
@@ -27,6 +34,11 @@ Reads from:
   - raw/.../V2/Skill/SkillEffect/Id_SkillEffect_*.json       (skill scaling formulas)
 """
 
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Imports & Constants
+# Standard library imports and directory path constants.
+# ═══════════════════════════════════════════════════════════════════════
+
 import json
 import re
 import shutil
@@ -47,6 +59,12 @@ ICONS_DST = ROOT / "website" / "public" / "icons"
 
 MOVEMENT_MODIFIER_DIR = RAW_V2 / "MovementModifier" / "MovementModifier"
 MELEE_ATTACK_DIR = RAW_V2 / "MeleeAttack" / "MeleeAttack"
+
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Hardcoded Values
+# These values couldn't be extracted from JSON and require manual updates.
+# See docs/pipeline/game-update-workflow.md for re-extraction instructions.
+# ═══════════════════════════════════════════════════════════════════════
 
 # GEModifier float values extracted from binary .uexp files.
 # The JSON exports have corrupted float fields; these are the correct values.
@@ -306,6 +324,12 @@ PROPERTY_DISPLAY_NAMES = {
 }
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Core Utilities
+# JSON loading, localization, slugification, and display name conversion.
+# ═══════════════════════════════════════════════════════════════════════
+
+
 def load_json(path):
     """Load a JSON file, returning None on error."""
     try:
@@ -331,6 +355,13 @@ def load_localization():
     if data is None:
         return {}
     return data.get("DC", {})
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Curve Table Interpolation
+# Loads CT_*.json curve tables and linearly interpolates derived stats
+# (health, move speed, action speed, etc.) from base attribute values.
+# ═══════════════════════════════════════════════════════════════════════
 
 
 def load_curve_table(filename, row_name):
@@ -473,9 +504,13 @@ def to_slug(name):
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
-# ---------------------------------------------------------------------------
-# Enhancement 1: Description placeholder resolution
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Description Resolution
+# Resolves placeholder tags in ability descriptions (e.g., <Duration>,
+# <Constant>, <PropertyName>, <GEMod>, <Exec.PropertyName>) by loading
+# _Desc.json files and their referenced effect/constant/modifier data.
+# ═══════════════════════════════════════════════════════════════════════
+
 
 def _load_effect_file(object_path):
     """Load an effect file from an ObjectPath reference in a _Desc.json.
@@ -1312,9 +1347,12 @@ def strip_description_tags(desc):
     return text.strip()
 
 
-# ---------------------------------------------------------------------------
-# Enhancement 2: Rich ShapeShift data
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Shapeshift Data Helpers
+# Reads stat modifiers and form skills from ShapeShift StatusEffect and
+# raw ShapeShift V2 files for Druid forms.
+# ═══════════════════════════════════════════════════════════════════════
+
 
 def _read_shapeshift_stat_modifiers(short_name):
     """Read stat modifiers from the ShapeShift StatusEffect file."""
@@ -1398,9 +1436,12 @@ def _read_shapeshift_form_skill(short_name, loc):
     return display_name, description
 
 
-# ---------------------------------------------------------------------------
-# Enhancement 3: Bard song performance tiers
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Bard Song Performance Tiers
+# Reads tier-specific effects (Bad/Good/Perfect) from ActorStatusEffect
+# and MusicEffect files. Scales property values for display.
+# ═══════════════════════════════════════════════════════════════════════
+
 
 def _scale_tier_property(prop_name, raw_value):
     """Apply the correct scale conversion to a tier effect property value.
@@ -1492,13 +1533,11 @@ def _read_song_tier_effects(short_name):
     return tier_effects if tier_effects else None
 
 
-# ---------------------------------------------------------------------------
-# Existing collection functions (enhanced with description resolution)
-# ---------------------------------------------------------------------------
-
-# ---------------------------------------------------------------------------
-# Enhancement: Perk activation conditions from GE files
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Perk Conditions
+# Extracts activation conditions from GE_*.json files (tag requirements
+# like "Requires sword equipped") and maps gameplay tags to readable text.
+# ═══════════════════════════════════════════════════════════════════════
 
 TAG_TO_CONDITION = {
     "Type.Item.Weapon.Sword": "Requires sword equipped",
@@ -1601,9 +1640,12 @@ def extract_perk_conditions(perk_id):
     return conditions
 
 
-# ---------------------------------------------------------------------------
-# Enhancement: Scaling formulas for spells/skills/songs
-# ---------------------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Scaling Formulas
+# Extracts damage/healing scaling from SpellEffect, SkillEffect, and
+# MusicEffect files. Builds formula text and worked examples using the
+# class's own base power stats.
+# ═══════════════════════════════════════════════════════════════════════
 
 SKILL_EFFECT_DIR_V2 = RAW_V2 / "Skill" / "SkillEffect"
 
@@ -1763,6 +1805,14 @@ def extract_song_scaling(song_id, derived_stats=None):
     if path.exists():
         return _extract_scaling_from_effect(path, derived_stats)
     return None
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Data Collection
+# Collects perks, skills, spells, songs, shapeshifts, and spell merge
+# recipes for each class. Each collector reads extracted/raw files,
+# resolves descriptions, and attaches icons/scaling/conditions.
+# ═══════════════════════════════════════════════════════════════════════
 
 
 def get_default_perk_ids(class_name):
@@ -2213,6 +2263,14 @@ def build_class(class_name, loc):
     return result
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Icon Management
+# Copies icon PNGs from FModel export directory to website/public/icons/
+# and resolves icon web paths for each ability type. Handles overrides
+# for non-standard icon filenames via ICON_OVERRIDES.
+# ═══════════════════════════════════════════════════════════════════════
+
+
 def copy_icons():
     """Copy icon PNGs from export directory to website/public/icons/."""
     icon_mappings = {
@@ -2273,6 +2331,13 @@ def _find_icon(subdir, pattern_name):
         if (ICONS_DST / subdir / fname).exists():
             return f"/icons/{subdir}/{fname}"
     return None
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# SECTION: Main Entry Point
+# Orchestrates the full build: copies icons, loads localization, builds
+# all 10 classes, collects spell merge recipes, writes classes.json.
+# ═══════════════════════════════════════════════════════════════════════
 
 
 def main():

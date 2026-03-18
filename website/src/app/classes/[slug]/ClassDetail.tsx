@@ -878,16 +878,43 @@ function gameUnitsToMeters(units: number): string {
   return `${parseFloat(meters.toFixed(2))}m`;
 }
 
-/** Convert milliseconds to a human-friendly duration string */
+/** Convert milliseconds to a duration string (always seconds, 2 decimal places) */
 function msToDuration(ms: number): string {
   const seconds = ms / 1000;
-  if (seconds >= 60 && seconds % 60 === 0) {
-    return `${seconds / 60}min`;
-  }
-  return `${parseFloat(seconds.toFixed(1))}s`;
+  return `${seconds.toFixed(2)}s`;
 }
 
-/** Summarise a tier_effects entry into a single human-readable string */
+/** Property key -> human-readable display name for tier effects */
+const TIER_EFFECT_DISPLAY_NAMES: Record<string, string> = {
+  ActionSpeed: "Action Speed",
+  PhysicalPower: "Physical Power",
+  StrengthBase: "Strength",
+  VigorBase: "Vigor",
+  AgilityBase: "Agility",
+  DexterityBase: "Dexterity",
+  WillBase: "Will",
+  KnowledgeBase: "Knowledge",
+  ResourcefulnessBase: "Resourcefulness",
+  MoveSpeedMod: "Move Speed",
+  MoveSpeedAdd: "Move Speed",
+  MaxHealthMod: "Max Health",
+  PhysicalReductionMod: "Physical Reduction",
+  MagicResistance: "Magic Resistance",
+  SpellCastingSpeed: "Spell Casting Speed",
+  PhysicalDamageWeapon: "Physical Damage",
+  MagicalDamageMod: "Magical Damage",
+  ArmorRating: "Armor Rating",
+};
+
+function tierEffectDisplayName(key: string): string {
+  if (key in TIER_EFFECT_DISPLAY_NAMES) return TIER_EFFECT_DISPLAY_NAMES[key];
+  // Fallback: CamelCase to spaced words
+  return key
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2");
+}
+
+/** Summarise a tier_effects entry into duration + human-readable effect string */
 function summarizeTierEffect(effect: Record<string, any>): {
   duration: string | null;
   description: string;
@@ -896,20 +923,25 @@ function summarizeTierEffect(effect: Record<string, any>): {
   let duration: string | null = null;
 
   for (const [k, v] of Object.entries(effect)) {
+    // Extract duration_ms separately for the Duration column
+    if (k === "duration_ms" && typeof v === "number") {
+      duration = msToDuration(v);
+      continue;
+    }
+    // Legacy key check (in case data uses "duration" directly)
     if (k === "duration" && typeof v === "number") {
       duration = msToDuration(v);
       continue;
     }
-    // Format the key the same way as stat modifiers
-    const label = formatStatModKey(k);
+    const label = tierEffectDisplayName(k);
     if (typeof v === "number") {
       const sign = v > 0 ? "+" : "";
-      const suffix = k.endsWith("_pct") ? "%" : "";
-      parts.push(`${sign}${v}${suffix} ${label}`);
+      const suffix = k.endsWith("Mod") || k === "ActionSpeed" || k === "SpellCastingSpeed" ? "" : "";
+      parts.push(`${sign}${v} ${label}`);
     } else {
       parts.push(`${label}: ${String(v)}`);
     }
   }
 
-  return { duration, description: parts.join(", ") || "--" };
+  return { duration, description: parts.join(", ") || "\u2014" };
 }

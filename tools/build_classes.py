@@ -74,6 +74,36 @@ BLUEPRINT_HARDCODED = {
     "ExecExecutionHealthRatioThreshold": 20,  # FinishingBlow: 20% health threshold
 }
 
+# Localization key overrides for abilities with typos in Game.json keys
+DESCRIPTION_KEY_OVERRIDES = {
+    "UnchainedHarmony": "Text_DataAsset_UnchaninedHarmony_Desc_UnchaninedHarmonyDesc",
+    "FortifiedGround": "Text_DataAsset_FortifiedGround_Desc_FortifiedGroudDesc",
+    "TrapMastery": "Text_DataAsset_TrapMasteryt_Desc_TrapMasteryDesc",
+    "CurseofPain": "Text_DataAsset_CurseofPain_Desc_CurseofPain",
+}
+
+# Hardcoded descriptions for abilities with no localization entry
+DESCRIPTION_HARDCODES = {
+    "SorceryCombat": "Suppresses the caster's sorcery abilities.",
+    "SorceryCombat1": "Suppresses the caster's sorcery abilities.",
+    "SorceryCombat2": "Suppresses the caster's sorcery abilities.",
+    "SuppressSorcery": "Suppresses the caster's sorcery abilities.",
+}
+
+# Icon filename overrides for abilities whose icons don't follow standard naming
+ICON_OVERRIDES = {
+    ("skills", "MusicMemory1"): "Icon_Skill_MusicMemory.png",
+    ("skills", "MusicMemory2"): "Icon_Skill_MusicMemory.png",
+    ("skills", "SpellMemory1"): "Icon_Skill_SpellMemory.png",
+    ("skills", "SpellMemory2"): "Icon_Skill_SpellMemory.png",
+    ("skills", "ShapeShiftMemory1"): "Icon_Skill_ShapeShiftMemory.png",
+    ("skills", "ShapeShiftMemory2"): "Icon_Skill_ShapeShiftMemory.png",
+    ("skills", "Sorcery1"): "Icon_Skill_SpellMemory.png",
+    ("skills", "Sorcery2"): "Icon_Skill_SpellMemory.png",
+    ("perks", "ComboAttack"): "Icon_Perk_ComboAttack.png",
+    ("spells", "SummonEarthElemental"): "Icon_Spell_SummonEarthElemental.png",
+}
+
 PERK_DESC_DIR = RAW / "Perk"
 SKILL_DESC_DIR = RAW / "Data" / "DataAsset" / "Skill"
 SPELL_DESC_DIR = RAW / "Data" / "DataAsset" / "Spell"
@@ -1191,6 +1221,30 @@ def _find_desc_path_shapeshift(short_name):
     return SHAPESHIFT_DESC_DIR / f"ShapeShift{short_name}_Desc.json"
 
 
+def get_description(short_name, loc, desc_path):
+    """Get the localized description for an ability, handling typos and hardcodes.
+
+    Checks DESCRIPTION_HARDCODES first (for abilities with no localization entry),
+    then DESCRIPTION_KEY_OVERRIDES (for abilities whose Game.json keys have typos),
+    then falls back to the standard key pattern.
+    """
+    # Check hardcoded descriptions first (no localization entry at all)
+    if short_name in DESCRIPTION_HARDCODES:
+        return DESCRIPTION_HARDCODES[short_name]
+
+    # Check key overrides for typos in Game.json
+    if short_name in DESCRIPTION_KEY_OVERRIDES:
+        override_key = DESCRIPTION_KEY_OVERRIDES[short_name]
+        raw_desc = loc.get(override_key, "")
+        if raw_desc:
+            return try_resolve_description(raw_desc, desc_path)
+
+    # Standard key pattern
+    desc_key = f"Text_DataAsset_{short_name}_Desc_{short_name}Desc"
+    raw_desc = loc.get(desc_key, "")
+    return try_resolve_description(raw_desc, desc_path)
+
+
 def try_resolve_description(raw_desc, desc_path):
     """Try to resolve description placeholders. Fall back to simple tag stripping on failure."""
     if not raw_desc:
@@ -1386,12 +1440,9 @@ def collect_perks(class_name, loc):
         perk_id = data["id"]
         short_name = extract_id_name(perk_id, "Id_Perk_")
         display_name = data.get("name") or to_display_name(short_name)
-        # Get description from localization
-        desc_key = f"Text_DataAsset_{short_name}_Desc_{short_name}Desc"
-        raw_description = loc.get(desc_key, "")
-        # Resolve description placeholders
+        # Get description using override-aware lookup
         desc_path = _find_desc_path_perk(short_name)
-        description = try_resolve_description(raw_description, desc_path)
+        description = get_description(short_name, loc, desc_path)
         is_default = perk_id in default_ids
         perk_entry = {
             "id": short_name,
@@ -1419,12 +1470,9 @@ def collect_skills(class_name, loc):
         skill_id = data["id"]
         short_name = extract_id_name(skill_id, "Id_Skill_")
         display_name = data.get("name") or to_display_name(short_name)
-        # Get description from localization
-        desc_key = f"Text_DataAsset_{short_name}_Desc_{short_name}Desc"
-        raw_description = loc.get(desc_key, "")
-        # Resolve description placeholders
+        # Get description using override-aware lookup
         desc_path = _find_desc_path_skill(short_name)
-        description = try_resolve_description(raw_description, desc_path)
+        description = get_description(short_name, loc, desc_path)
         # Extract skill_type last segment (e.g., "Type.Skill.Instant" -> "instant")
         raw_type = data.get("skill_type", "")
         skill_type = raw_type.split(".")[-1].lower() if raw_type else ""
@@ -1466,12 +1514,9 @@ def collect_spells(class_name, loc):
         if not display_name:
             loc_key = f"Text_DesignData_Spell_Spell_{short_name}"
             display_name = loc.get(loc_key, to_display_name(short_name))
-        # Get description from localization
-        desc_key = f"Text_DataAsset_{short_name}_Desc_{short_name}Desc"
-        raw_description = loc.get(desc_key, "")
-        # Resolve description placeholders
+        # Get description using override-aware lookup
         desc_path = _find_desc_path_spell(short_name)
-        description = try_resolve_description(raw_description, desc_path)
+        description = get_description(short_name, loc, desc_path)
         # Extract source_type last segment
         source_type_tag = props.get("SourceType", {}).get("TagName", "")
         source_type = source_type_tag.split(".")[-1].lower() if source_type_tag else ""
@@ -1523,12 +1568,9 @@ def collect_songs(class_name, loc):
         if not display_name:
             loc_key = f"Text_DesignData_Music_Music_{short_name}"
             display_name = loc.get(loc_key, to_display_name(short_name))
-        # Get description from localization
-        desc_key = f"Text_DataAsset_{short_name}_Desc_{short_name}Desc"
-        raw_description = loc.get(desc_key, "")
-        # Resolve description placeholders
+        # Get description using override-aware lookup
         desc_path = _find_desc_path_music(short_name)
-        description = try_resolve_description(raw_description, desc_path)
+        description = get_description(short_name, loc, desc_path)
         # Extract source_type last segment
         source_type_tag = props.get("SourceType", {}).get("TagName", "")
         source_type = source_type_tag.split(".")[-1].lower() if source_type_tag else ""
@@ -1790,6 +1832,13 @@ def copy_icons():
 
 def _find_icon(subdir, pattern_name):
     """Check if an icon file exists and return its web path, or None."""
+    # Check ICON_OVERRIDES first for non-standard icon filenames
+    override_key = (subdir, pattern_name)
+    if override_key in ICON_OVERRIDES:
+        override_fname = ICON_OVERRIDES[override_key]
+        if (ICONS_DST / subdir / override_fname).exists():
+            return f"/icons/{subdir}/{override_fname}"
+
     # Build candidate filenames based on subdirectory
     candidates = []
     if subdir == "perks":

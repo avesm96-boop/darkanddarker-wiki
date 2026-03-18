@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T00:25:53.860637+00:00",
+  "generated_at": "2026-03-18T00:44:25.364053+00:00",
   "data": {
     "classes": [
       {
@@ -394,7 +394,8 @@
             "description": "Gain the ability to store up to 5 sheets of music.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_MusicMemory.png"
           },
           {
             "id": "MusicMemory2",
@@ -402,7 +403,8 @@
             "description": "Gain the ability to store up to 5 sheets of music.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_MusicMemory.png"
           },
           {
             "id": "PartyMaker",
@@ -957,7 +959,7 @@
           {
             "id": "UnchainedHarmony",
             "name": "Unchained Harmony",
-            "description": "",
+            "description": "Open all nearby doors/containers, including locked containers. It does not work for doors that require a special key.",
             "spell_tier": 5,
             "casting_time": null,
             "max_count": null,
@@ -1141,7 +1143,8 @@
             "description": "Gain the ability to memorize spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           },
           {
             "id": "SpellMemory2",
@@ -1149,7 +1152,8 @@
             "description": "Gain the ability to memorize additional spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           }
         ],
         "spells": [
@@ -1451,7 +1455,8 @@
             "description": "Transforms into the selected creature. Tools cannot be used in a non-human state.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_ShapeShiftMemory.png"
           },
           {
             "id": "ShapeShiftMemory2",
@@ -1459,7 +1464,8 @@
             "description": "Transforms into the selected creature. Tools cannot be used in a non-human state.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_ShapeShiftMemory.png"
           },
           {
             "id": "SpellMemory1",
@@ -1467,7 +1473,8 @@
             "description": "Gain the ability to memorize spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           },
           {
             "id": "SpellMemory2",
@@ -1475,7 +1482,8 @@
             "description": "Gain the ability to memorize additional spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           }
         ],
         "spells": [
@@ -1757,7 +1765,8 @@
             "id": "ComboAttack",
             "name": "Combo Attack",
             "description": "When you successfully land consecutive melee attacks within 2 seconds, gain 10% Physical Damage per stack, up to 2 stacks.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_ComboAttack.png"
           },
           {
             "id": "Counterattack",
@@ -1882,7 +1891,7 @@
           {
             "id": "FortifiedGround",
             "name": "Fortified Ground",
-            "description": "",
+            "description": "Deploys a rallying banner for 45 seconds. Allies within 33m of the banner have All Attributes increased by 3.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
@@ -2096,7 +2105,7 @@
           {
             "id": "TrapMastery",
             "name": "Trap Mastery",
-            "description": "",
+            "description": "Instantly place trap items and recover them when disarmed.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_TrapMastery.png"
           },
@@ -2535,7 +2544,8 @@
             "description": "Gain the ability to use sorcery in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           },
           {
             "id": "Sorcery2",
@@ -2543,7 +2553,8 @@
             "description": "Gain the ability to use sorcery in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           }
         ],
         "spells": [
@@ -2667,7 +2678,7 @@
           {
             "id": "SorceryCombat1",
             "name": "Suppress Sorcery",
-            "description": "",
+            "description": "Suppresses the caster's sorcery abilities.",
             "spell_tier": 0,
             "casting_time": 0.0,
             "max_count": 0,
@@ -2679,7 +2690,7 @@
           {
             "id": "SorceryCombat2",
             "name": "Suppress Sorcery",
-            "description": "",
+            "description": "Suppresses the caster's sorcery abilities.",
             "spell_tier": 0,
             "casting_time": 0.0,
             "max_count": 0,
@@ -2711,7 +2722,8 @@
             "range": 700,
             "source_type": "earth",
             "cost_type": "end",
-            "casting_type": "casting"
+            "casting_type": "casting",
+            "icon": "/icons/spells/Icon_Spell_SummonEarthElemental.png"
           },
           {
             "id": "Vortex",
@@ -2923,7 +2935,8 @@
             "description": "Gain the ability to memorize spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           },
           {
             "id": "SpellMemory2",
@@ -2931,7 +2944,8 @@
             "description": "Gain the ability to memorize additional spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           }
         ],
         "spells": [
@@ -2964,7 +2978,7 @@
           {
             "id": "CurseofPain",
             "name": "Curse of Pain",
-            "description": "",
+            "description": "Deal 15 magical evil damage to the target instantly. Additionally, deal 15 magical evil damage distributed over 8 seconds.",
             "spell_tier": 2,
             "casting_time": 1.0,
             "max_count": 0,
@@ -3266,7 +3280,8 @@
             "description": "Gain the ability to memorize spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           },
           {
             "id": "SpellMemory2",
@@ -3274,7 +3289,8 @@
             "description": "Gain the ability to memorize additional spells to use in the dungeon.",
             "skill_type": "memory",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "icon": "/icons/skills/Icon_Skill_SpellMemory.png"
           }
         ],
         "spells": [

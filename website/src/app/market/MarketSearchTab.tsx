@@ -227,7 +227,7 @@ export default function MarketSearchTab() {
     const p = soldListings.filter((l) => l.sold_at && l.sold_at > since).map((l) => l.price / Math.max(l.item_count, 1));
     return p.length ? Math.round(p.reduce((a, b) => a + b, 0) / p.length) : 0;
   };
-  const lowestNow = activeListings.length > 0 ? activeListings[0].price / Math.max(activeListings[0].item_count, 1) : 0;
+  const lowestNow = activeListings.length > 0 ? Math.min(...activeListings.map((l) => l.price_per_unit)) : 0;
 
   const showHero = searched && selectedItem;
   const isRarityOnly = searched && !selectedItem && selectedRarity !== "";

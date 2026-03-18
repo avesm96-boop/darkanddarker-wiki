@@ -113,41 +113,6 @@
   color: var(--text-muted);
 }
 
-/* === Tabs === */
-
-.msTabs {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
-  padding-bottom: 0;
-}
-
-.msTab, .msTabActive {
-  padding: 10px 24px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: all 0.15s;
-}
-
-.msTab:hover {
-  color: var(--gold-500);
-}
-
-.msTabActive {
-  color: var(--gold-400);
-  border-bottom-color: var(--gold-400);
-}
-
 /* === Market Search === */
 
 /* Search bar */
@@ -505,8 +470,6 @@
   .msSearchInputWrap { min-width: 100%; }
   .msPriceCards { grid-template-columns: repeat(2, 1fr); }
   .msHeroName { font-size: 1rem; }
-  .msTabs { gap: 0; }
-  .msTab, .msTabActive { padding: 10px 16px; font-size: 0.72rem; }
 }
 
 /* === Responsive === */

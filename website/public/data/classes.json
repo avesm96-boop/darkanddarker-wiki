@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T00:19:46.252795+00:00",
+  "generated_at": "2026-03-18T00:25:53.860637+00:00",
   "data": {
     "classes": [
       {
@@ -162,7 +162,7 @@
           {
             "id": "FinishingBlow",
             "name": "Finishing Blow",
-            "description": "Your next attack deals an additional 5 true physical damage. If the target’s health is [0]% or lower after the attack, they are instantly killed.",
+            "description": "Your next attack deals an additional 5 true physical damage. If the target’s health is 20 % or lower after the attack, they are instantly killed.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
@@ -2523,7 +2523,7 @@
           {
             "id": "TimeDistortion",
             "name": "Time Distortion",
-            "description": "Reduces cast time of all spells by 5000%, but increases cooldown time for all spells by 200%.",
+            "description": "Reduces cast time of all spells by 50%, but increases cooldown time for all spells by 200%.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_TimeDistortion.png"
           }

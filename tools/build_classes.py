@@ -68,6 +68,12 @@ GEMODIFIER_VALUES = {
     "Id_GEModifier_BrewMaster": 1.5,
 }
 
+# Values stored in compiled Blueprints, not accessible from JSON exports.
+# These are verified against community wiki data.
+BLUEPRINT_HARDCODED = {
+    "ExecExecutionHealthRatioThreshold": 20,  # FinishingBlow: 20% health threshold
+}
+
 PERK_DESC_DIR = RAW / "Perk"
 SKILL_DESC_DIR = RAW / "Data" / "DataAsset" / "Skill"
 SPELL_DESC_DIR = RAW / "Data" / "DataAsset" / "Spell"
@@ -557,7 +563,8 @@ def _format_number(value):
 def _get_effect_value(effects, index, prop_name):
     """Get a property value from an effect at the given index."""
     if index < 0 or index >= len(effects):
-        return None
+        # Fallback to hardcoded Blueprint values
+        return BLUEPRINT_HARDCODED.get(prop_name)
     val = effects[index].get(prop_name)
     if val is not None:
         return val
@@ -573,7 +580,8 @@ def _get_effect_value(effects, index, prop_name):
             real_vals = [v for v in vals if v is not None]
             if real_vals and all(v == real_vals[0] for v in real_vals):
                 return real_vals[0]
-    return None
+    # Fallback to hardcoded Blueprint values
+    return BLUEPRINT_HARDCODED.get(prop_name)
 
 
 def _scale_property(prop_name, raw_value):
@@ -735,14 +743,16 @@ def resolve_description(raw_desc, desc_path):
         replace_constant_normal, text
     )
 
-    # 1e. Generic <Constant Type="Float">[N]...</> (no format, assume * 100 for %)
+    # 1e. Generic <Constant Type="Float">[N]...</> (no format)
     def replace_constant_plain(m):
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
         if idx < len(constants) and constants[idx]:
             val = constants[idx].get("FloatValue", 0)
             if "%" in suffix:
-                formatted = _format_number(abs(val) * 100)
+                # If value > 1, it's already a percentage (e.g., 50.0 = 50%)
+                # If value <= 1, it's a ratio (e.g., 0.4 = 40%)
+                formatted = _format_number(abs(val) if abs(val) > 1 else abs(val) * 100)
             else:
                 formatted = _format_number(val)
             return formatted + suffix

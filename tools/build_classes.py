@@ -22,6 +22,9 @@ Reads from:
   - raw/.../V2/Constant/Constant/Id_Constant_*.json          (constant values)
   - raw/.../V2/ShapeShift/ShapeShift/Id_ShapeShift_*.json    (raw shapeshift data)
   - raw/.../V2/Music/MusicEffect/Id_MusicEffect_*.json       (music damage effects)
+  - raw/.../ActorStatus/Buff/Perk/[Name]/GE_*.json           (perk activation conditions)
+  - raw/.../V2/Spell/SpellEffect/Id_SpellEffect_*.json       (spell scaling formulas)
+  - raw/.../V2/Skill/SkillEffect/Id_SkillEffect_*.json       (skill scaling formulas)
 """
 
 import json
@@ -106,6 +109,8 @@ ICON_OVERRIDES = {
     ("spells", "SorceryCombat1"): "Icon_Spell_SorceryCombat.png",
     ("spells", "SorceryCombat2"): "Icon_Spell_SorceryCombat.png",
 }
+
+PERK_GE_DIR = RAW / "ActorStatus" / "Buff" / "Perk"
 
 PERK_DESC_DIR = RAW / "Perk"
 SKILL_DESC_DIR = RAW / "Data" / "DataAsset" / "Skill"
@@ -1484,6 +1489,219 @@ def _read_song_tier_effects(short_name):
 # Existing collection functions (enhanced with description resolution)
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Enhancement: Perk activation conditions from GE files
+# ---------------------------------------------------------------------------
+
+TAG_TO_CONDITION = {
+    "Type.Item.Weapon.Sword": "Requires sword equipped",
+    "Type.Item.Weapon.Axe": "Requires axe equipped",
+    "Type.Item.Weapon.Crossbow": "Requires crossbow equipped",
+    "Type.Item.Weapon.Bow": "Requires bow equipped",
+    "Type.Item.Weapon.Staff": "Requires staff equipped",
+    "Type.Item.Weapon.Dagger": "Requires dagger equipped",
+    "Type.Item.Weapon.Mace": "Requires mace equipped",
+    "Type.Item.Weapon.Polearm": "Requires polearm equipped",
+    "Type.Item.Weapon": "Requires weapon equipped",
+    "Type.Item.Shield": "Requires shield equipped",
+    "Type.Item.Armor": "Requires armor equipped",
+    "Type.Item.Hand.TwoHanded": "Requires two-handed weapon",
+    "Type.Item.Slot.Primary": "Requires primary slot",
+    "Type.Item.Utility.MusicalInstrument": "Requires musical instrument equipped",
+    "Type.Item.Utility.Installable.CampfireKit": "Requires campfire kit",
+    "Type.Item.Utility.Installable.Trap": "Requires trap equipped",
+    "Id.Item.Rapier": "Requires Rapier equipped",
+    "Id.Item.DemonsGlee": "Requires Demon's Glee equipped",
+    "Id.Item.HandCrossbow": "Requires Hand Crossbow equipped",
+    "State.Character.Act.Defending": "Active while blocking",
+    "State.Character.Act.Defending.Weapon": "Active while weapon blocking",
+    "State.Character.Act.Defending.Weapon.Sword": "Active while sword blocking",
+    "State.Character.Act.Attack.Melee": "Active during melee attack",
+    "State.Character.Act.Attack.Melee.Dagger": "Active during dagger melee attack",
+    "State.Character.Act.Attack.Melee.Axe": "Active during axe melee attack",
+    "State.Character.Act.Attack.Melee.MusicalInstrument": "Active during instrument melee attack",
+    "State.Character.Act.Attack.Ranged": "Active during ranged attack",
+    "State.Character.Act.Attack.Ranged.Axe": "Active during axe ranged attack",
+    "State.Character.Act.Attack.Ranged.Dagger": "Active during dagger ranged attack",
+    "State.Character.Act.Attack.Ranged.MusicalInstrument": "Active during instrument ranged attack",
+    "State.Character.Act.Attack.Ranged.Throwable": "Active during thrown attack",
+    "State.Character.Act.Attack.Special": "Active during special attack",
+    "State.Character.Act.SpellCast": "Active while casting",
+    "State.Character.Act.SpellDualCast": "Active while dual casting",
+    "State.Character.Act.SpellDualCast.Merge": "Active while merge casting",
+    "State.Character.Act.SpellDualCast.Primary": "Active while primary casting",
+    "State.Character.Act.SpellDualCast.Secondary": "Active while secondary casting",
+    "State.Character.Act.PlayMusic": "Active while playing music",
+    "State.Character.Act.Hide": "Active while hidden",
+    "State.Character.Act.Interact.Install": "Active while installing",
+    "State.Character.Act.React.Block": "Active on block reaction",
+    "State.ActorStatus.Buff.ShapeShift.Animal": "Active in animal form",
+    "State.ActorStatus.Buff.SacredWater": "Active with Sacred Water buff",
+    "State.Special.WeaponMasteryBasedAct": "Active during weapon mastery action",
+    "Type.Spell.Source.Divine.Resurrection": "Active with resurrection spell",
+    "Type.Spell.Source.Spirit": "Active with spirit spell",
+}
+
+
+def _tag_to_condition(tag):
+    """Convert a gameplay tag to a human-readable condition string."""
+    if tag in TAG_TO_CONDITION:
+        return TAG_TO_CONDITION[tag]
+    # Fallback: extract last 2 segments
+    parts = tag.split(".")
+    if len(parts) >= 2:
+        return f"Requires: {'.'.join(parts[-2:])}"
+    return f"Requires: {tag}"
+
+
+def extract_perk_conditions(perk_id):
+    """Extract activation conditions from GE_*.json files for a perk.
+
+    Looks in the perk's GE directory for OngoingTagRequirements -> RequireTags,
+    both in the main Properties and in TargetTagRequirementsGameplayEffectComponent entries.
+
+    Returns a deduplicated list of human-readable condition strings.
+    """
+    perk_dir = PERK_GE_DIR / perk_id
+    if not perk_dir.exists():
+        return []
+
+    all_tags = set()
+
+    # Try all GE_*.json files in the perk directory
+    for ge_file in perk_dir.glob("GE_*.json"):
+        data = load_json_silent(ge_file)
+        if data is None or not isinstance(data, list):
+            continue
+        for obj in data:
+            props = obj.get("Properties", {})
+            # Check direct OngoingTagRequirements in Properties
+            otr = props.get("OngoingTagRequirements", {})
+            for tag in otr.get("RequireTags", []):
+                if tag:
+                    all_tags.add(tag)
+            # Check TargetTagRequirementsGameplayEffectComponent entries
+            if obj.get("Type") == "TargetTagRequirementsGameplayEffectComponent":
+                otr2 = props.get("OngoingTagRequirements", {})
+                for tag in otr2.get("RequireTags", []):
+                    if tag:
+                        all_tags.add(tag)
+
+    if not all_tags:
+        return []
+
+    conditions = sorted(set(_tag_to_condition(tag) for tag in all_tags))
+    return conditions
+
+
+# ---------------------------------------------------------------------------
+# Enhancement: Scaling formulas for spells/skills/songs
+# ---------------------------------------------------------------------------
+
+SKILL_EFFECT_DIR_V2 = RAW_V2 / "Skill" / "SkillEffect"
+
+
+def _extract_scaling_from_effect(effect_path):
+    """Extract scaling data from a SpellEffect/SkillEffect/MusicEffect file.
+
+    Returns a dict with base_damage, damage_type, scaling_pct, impact_power,
+    and a human-readable formula string, or None if no scaling data found.
+    """
+    data = load_json_silent(effect_path)
+    if data is None:
+        return None
+    if not isinstance(data, list) or not data:
+        return None
+
+    props = data[0].get("Properties", {})
+
+    magical_base = props.get("ExecMagicalDamageBase")
+    physical_base = props.get("ExecPhysicalDamageBase")
+    bonus_ratio = props.get("ExecAttributeBonusRatio")
+    impact_power = props.get("ExecImpactPower")
+
+    # Must have at least a damage base or bonus ratio to be meaningful scaling
+    if magical_base is None and physical_base is None and bonus_ratio is None:
+        return None
+
+    base_damage = magical_base if magical_base is not None else physical_base
+    damage_type = "magical" if magical_base is not None else "physical"
+
+    scaling_pct = bonus_ratio / 10.0 if bonus_ratio is not None else None
+
+    # Build formula string
+    parts = []
+    if base_damage is not None:
+        parts.append(f"{base_damage} base {damage_type} damage")
+    if scaling_pct is not None:
+        parts.append(f"{_format_number(scaling_pct)}% Power Scaling")
+
+    result = {}
+    if base_damage is not None:
+        result["base_damage"] = base_damage
+        result["damage_type"] = damage_type
+    if scaling_pct is not None:
+        result["scaling_pct"] = scaling_pct
+    if impact_power is not None:
+        result["impact_power"] = impact_power
+    if parts:
+        result["formula"] = " + ".join(parts)
+
+    return result if result else None
+
+
+def extract_spell_scaling(spell_id):
+    """Extract scaling formula from SpellEffect files for a spell.
+
+    Tries multiple naming patterns:
+      Id_SpellEffect_{spell_id}Hit.json
+      Id_SpellEffect_{spell_id}_Hit.json
+    """
+    candidates = [
+        SPELL_EFFECT_DIR / f"Id_SpellEffect_{spell_id}Hit.json",
+        SPELL_EFFECT_DIR / f"Id_SpellEffect_{spell_id}_Hit.json",
+    ]
+    for path in candidates:
+        if path.exists():
+            result = _extract_scaling_from_effect(path)
+            if result is not None:
+                return result
+    return None
+
+
+def extract_skill_scaling(skill_id):
+    """Extract scaling formula from SkillEffect files for a skill.
+
+    Tries multiple naming patterns:
+      Id_SkillEffect_{skill_id}_Hit.json
+      Id_SkillEffect_{skill_id}_HitDamage.json
+      Id_SkillEffect_{skill_id}Hit.json
+    """
+    candidates = [
+        SKILL_EFFECT_DIR_V2 / f"Id_SkillEffect_{skill_id}_Hit.json",
+        SKILL_EFFECT_DIR_V2 / f"Id_SkillEffect_{skill_id}_HitDamage.json",
+        SKILL_EFFECT_DIR_V2 / f"Id_SkillEffect_{skill_id}Hit.json",
+    ]
+    for path in candidates:
+        if path.exists():
+            result = _extract_scaling_from_effect(path)
+            if result is not None:
+                return result
+    return None
+
+
+def extract_song_scaling(song_id):
+    """Extract scaling formula from MusicEffect files for a Bard song.
+
+    Uses the Perfect tier for the displayed formula:
+      Id_MusicEffect_{song_id}_Perfect.json
+    """
+    path = MUSIC_EFFECT_DIR / f"Id_MusicEffect_{song_id}_Perfect.json"
+    if path.exists():
+        return _extract_scaling_from_effect(path)
+    return None
+
+
 def get_default_perk_ids(class_name):
     """Get the set of default perk IDs from the raw PlayerCharacter data."""
     path = RAW_V2 / "PlayerCharacter" / "PlayerCharacter" / f"Id_PlayerCharacter_{class_name}.json"
@@ -1520,12 +1738,15 @@ def collect_perks(class_name, loc):
         desc_path = _find_desc_path_perk(short_name)
         description = get_description(short_name, loc, desc_path)
         is_default = perk_id in default_ids
+        conditions = extract_perk_conditions(short_name)
         perk_entry = {
             "id": short_name,
             "name": display_name,
             "description": description,
             "is_default": is_default,
         }
+        if conditions:
+            perk_entry["conditions"] = conditions
         icon_path = _find_icon("perks", short_name)
         if icon_path:
             perk_entry["icon"] = icon_path
@@ -1552,6 +1773,7 @@ def collect_skills(class_name, loc):
         # Extract skill_type last segment (e.g., "Type.Skill.Instant" -> "instant")
         raw_type = data.get("skill_type", "")
         skill_type = raw_type.split(".")[-1].lower() if raw_type else ""
+        scaling = extract_skill_scaling(short_name)
         skill_entry = {
             "id": short_name,
             "name": display_name,
@@ -1560,6 +1782,8 @@ def collect_skills(class_name, loc):
             "skill_tier": data.get("skill_tier", 1),
             "use_moving": data.get("use_moving", False),
         }
+        if scaling is not None:
+            skill_entry["scaling"] = scaling
         icon_path = _find_icon("skills", short_name)
         if icon_path:
             skill_entry["icon"] = icon_path
@@ -1602,6 +1826,7 @@ def collect_spells(class_name, loc):
         # Extract casting_type last segment
         casting_type_tag = props.get("CastingType", {}).get("TagName", "")
         casting_type = casting_type_tag.split(".")[-1].lower() if casting_type_tag else ""
+        scaling = extract_spell_scaling(short_name)
         spell_entry = {
             "id": short_name,
             "name": display_name,
@@ -1614,6 +1839,8 @@ def collect_spells(class_name, loc):
             "cost_type": cost_type,
             "casting_type": casting_type,
         }
+        if scaling is not None:
+            spell_entry["scaling"] = scaling
         icon_path = _find_icon("spells", short_name)
         if icon_path:
             spell_entry["icon"] = icon_path
@@ -1671,6 +1898,7 @@ def collect_songs(class_name, loc):
         play_type_tag = props.get("PlayType", {}).get("TagName", "")
         casting_type = play_type_tag.split(".")[-1].lower() if play_type_tag else ""
 
+        scaling = extract_song_scaling(short_name)
         song_entry = {
             "id": short_name,
             "name": display_name,
@@ -1683,6 +1911,8 @@ def collect_songs(class_name, loc):
             "cost_type": "music",
             "casting_type": casting_type,
         }
+        if scaling is not None:
+            song_entry["scaling"] = scaling
         icon_path = _find_icon("music", short_name)
         if icon_path:
             song_entry["icon"] = icon_path

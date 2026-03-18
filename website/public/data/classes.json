@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T01:41:45.623807+00:00",
+  "generated_at": "2026-03-18T02:22:47.126591+00:00",
   "data": {
     "classes": [
       {
@@ -46,6 +46,9 @@
             "name": "Axe Specialization",
             "description": "While using axes, gain 3 Physical Damage.",
             "is_default": false,
+            "conditions": [
+              "Requires axe equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_AxeSpecialization.png"
           },
           {
@@ -67,6 +70,10 @@
             "name": "Crush",
             "description": "While equipped with a two-handed weapon, gain the ability to destroy unreinforced containers. Also gain 0.1 Impact Power on your two-handed weapon attacks, making it easier to break blocks and parries.",
             "is_default": true,
+            "conditions": [
+              "Requires primary slot",
+              "Requires two-handed weapon"
+            ],
             "icon": "/icons/perks/Icon_Perk_Crush.png"
           },
           {
@@ -74,6 +81,10 @@
             "name": "Executioner",
             "description": "While using axes, gain 20% Physical Headshot Power.",
             "is_default": false,
+            "conditions": [
+              "Active during axe melee attack",
+              "Active during axe ranged attack"
+            ],
             "icon": "/icons/perks/Icon_Perk_Executioner.png"
           },
           {
@@ -81,6 +92,10 @@
             "name": "Heavy Swing",
             "description": "Hitting a target with a two-handed weapon reduces their move speed by 10%.",
             "is_default": false,
+            "conditions": [
+              "Requires two-handed weapon",
+              "Requires weapon equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_HeavySwing.png"
           },
           {
@@ -137,6 +152,10 @@
             "name": "Two-Hander",
             "description": "When attacking with a two-handed weapon, gain 5% Physical Damage and 10% Armor Penetration.",
             "is_default": false,
+            "conditions": [
+              "Requires two-handed weapon",
+              "Requires weapon equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_TwoHander.png"
           }
         ],
@@ -148,6 +167,10 @@
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
+            "scaling": {
+              "scaling_pct": 100.0,
+              "formula": "100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_AchillesStrike.png"
           },
           {
@@ -296,6 +319,9 @@
             "name": "Dancing Feet",
             "description": "While holding an instrument, gain 10 Move Speed.",
             "is_default": false,
+            "conditions": [
+              "Requires musical instrument equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_DancingFeet.png"
           },
           {
@@ -324,6 +350,9 @@
             "name": "Melodic Protection",
             "description": "While playing music, gain 25% Physical Damage Reduction and 25% Magical Damage Reduction.",
             "is_default": false,
+            "conditions": [
+              "Active while playing music"
+            ],
             "icon": "/icons/perks/Icon_Perk_MelodicProtection.png"
           },
           {
@@ -331,6 +360,10 @@
             "name": "Rapier Mastery",
             "description": "While using a Rapier, gain 3 Physical Damage and 5% Action Speed.",
             "is_default": true,
+            "conditions": [
+              "Requires Demon's Glee equipped",
+              "Requires Rapier equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_RapierMastery.png"
           },
           {
@@ -338,6 +371,10 @@
             "name": "Reinforced Instruments",
             "description": "When attacking with an instrument, gain 50% Physical Damage.",
             "is_default": false,
+            "conditions": [
+              "Active during instrument melee attack",
+              "Active during instrument ranged attack"
+            ],
             "icon": "/icons/perks/Icon_Perk_ReinforcedInstruments.png"
           },
           {
@@ -688,6 +725,12 @@
             "source_type": "drum",
             "cost_type": "music",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 5,
+              "damage_type": "magical",
+              "scaling_pct": 50.0,
+              "formula": "5 base magical damage + 50% Power Scaling"
+            },
             "icon": "/icons/music/Icon_Music_DinOfDarkness.png",
             "bad_range": 450,
             "good_range": 450,
@@ -805,6 +848,12 @@
             "source_type": "flute",
             "cost_type": "music",
             "casting_type": "playing",
+            "scaling": {
+              "base_damage": 30,
+              "damage_type": "physical",
+              "scaling_pct": 50.0,
+              "formula": "30 base physical damage + 50% Power Scaling"
+            },
             "icon": "/icons/music/Icon_Music_PiercingShrill.png",
             "bad_range": 450,
             "good_range": 450,
@@ -1080,6 +1129,9 @@
             "name": "Blunt Weapon Mastery",
             "description": "While using a blunt weapon, gain 10% Physical Damage.",
             "is_default": true,
+            "conditions": [
+              "Requires mace equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_BluntWeaponMastery.png"
           },
           {
@@ -1087,6 +1139,9 @@
             "name": "Brewmaster",
             "description": "When you drink alcohol, you no longer exhibit the detrimental drunk effects and gain 10 Strength. The duration of the drunk effect is increased by 50%.",
             "is_default": false,
+            "conditions": [
+              "Active with Sacred Water buff"
+            ],
             "icon": "/icons/perks/Icon_Perk_Brewmaster.png"
           },
           {
@@ -1143,6 +1198,9 @@
             "name": "Requiem",
             "description": "Resurrecting an ally revives them with 50% HP instead of a sliver of life. When reviving an ally at the Altar of Sacrifice, you do not need to sacrifice any of your own health. Using the Resurrection spell also grants 100% Spell Casting Speed.",
             "is_default": false,
+            "conditions": [
+              "Active with resurrection spell"
+            ],
             "icon": "/icons/perks/Icon_Perk_Requiem.png"
           },
           {
@@ -1170,6 +1228,12 @@
             "skill_type": "casting",
             "skill_tier": 1,
             "use_moving": false,
+            "scaling": {
+              "base_damage": 100,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "100 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_HolyPurification.png"
           },
           {
@@ -1179,6 +1243,12 @@
             "skill_type": "casting",
             "skill_tier": 1,
             "use_moving": false,
+            "scaling": {
+              "base_damage": 25,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "25 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_Judgement.png"
           },
           {
@@ -1188,6 +1258,12 @@
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
+            "scaling": {
+              "base_damage": 10,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "10 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_Smite.png"
           },
           {
@@ -1299,6 +1375,12 @@
             "source_type": "divine",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 20,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "20 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_HolyStrike.png"
           },
           {
@@ -1312,6 +1394,10 @@
             "source_type": "divine",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "scaling_pct": 100.0,
+              "formula": "100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_LesserHeal.png"
           },
           {
@@ -1428,6 +1514,9 @@
             "name": "Enhanced Wildness",
             "description": "While you are in animal form, you gain 5% Physical Damage and 20 Armor Rating.",
             "is_default": true,
+            "conditions": [
+              "Active in animal form"
+            ],
             "icon": "/icons/perks/Icon_Perk_EnhancedWildness.png"
           },
           {
@@ -1484,6 +1573,9 @@
             "name": "Spirit Magic Mastery",
             "description": "When you cast spirit magic, you gain 10 Magical Power.",
             "is_default": false,
+            "conditions": [
+              "Active with spirit spell"
+            ],
             "icon": "/icons/perks/Icon_Perk_SpiritMagicMastery.png"
           },
           {
@@ -1564,6 +1656,12 @@
             "source_type": "spirit",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 15,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "15 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Dreamfire.png"
           },
           {
@@ -1616,6 +1714,12 @@
             "source_type": "spirit",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 15,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "15 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_OrbofNature.png"
           },
           {
@@ -1833,6 +1937,9 @@
             "name": "Defense Mastery",
             "description": "Gain an additional 15% Armor Rating from equipped armor. The maximum Physical Damage Reduction limit is Increased to 75%.",
             "is_default": true,
+            "conditions": [
+              "Requires armor equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_DefenseMastery.png"
           },
           {
@@ -1854,6 +1961,9 @@
             "name": "Projectile Resistance",
             "description": "Gain 10% Projectile Damage Reduction. While in defensive stance, gain an additional 15% Projectile Damage Reduction.",
             "is_default": false,
+            "conditions": [
+              "Active while blocking"
+            ],
             "icon": "/icons/perks/Icon_Perk_ProjectileResistance.png"
           },
           {
@@ -1861,6 +1971,10 @@
             "name": "Shield Mastery",
             "description": "While in defensive stance, gain 10% Move Speed. When you successfully block an attack, gain 50% Action Speed towards your next block.",
             "is_default": false,
+            "conditions": [
+              "Active on block reaction",
+              "Active while blocking"
+            ],
             "icon": "/icons/perks/Icon_Perk_ShieldMastery.png"
           },
           {
@@ -1882,6 +1996,9 @@
             "name": "Swift",
             "description": "Reduces the Move Speed Penalty by 30%. Only applies to armor-related penalties.",
             "is_default": false,
+            "conditions": [
+              "Requires armor equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_Swift.png"
           },
           {
@@ -1889,6 +2006,10 @@
             "name": "Sword Mastery",
             "description": "When using a sword-type weapon, gain 2 Physical Damage and 5% Action Speed. Also gain 10 Move Speed when taking a defensive stance with your sword.",
             "is_default": true,
+            "conditions": [
+              "Active while sword blocking",
+              "Requires sword equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_SwordMastery.png"
           },
           {
@@ -1903,6 +2024,9 @@
             "name": "Weapon Guard",
             "description": "While blocking with a weapon, gain 1 Impact Resistance and 5% Physical Damage Reduction. Upon a successful block, you gain 10% Physical Damage for 2 seconds.",
             "is_default": false,
+            "conditions": [
+              "Active while weapon blocking"
+            ],
             "icon": "/icons/perks/Icon_Perk_WeaponGuard.png"
           },
           {
@@ -1910,6 +2034,9 @@
             "name": "Weapon Mastery",
             "description": "Gain the ability to use any weapon.",
             "is_default": true,
+            "conditions": [
+              "Active during weapon mastery action"
+            ],
             "icon": "/icons/perks/Icon_Perk_WeaponMastery.png"
           }
         ],
@@ -1966,6 +2093,12 @@
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
+            "scaling": {
+              "base_damage": 15,
+              "damage_type": "physical",
+              "scaling_pct": 100.0,
+              "formula": "15 base physical damage + 100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_PommelStrike.png"
           },
           {
@@ -1984,6 +2117,12 @@
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
+            "scaling": {
+              "base_damage": 30,
+              "damage_type": "physical",
+              "scaling_pct": 100.0,
+              "formula": "30 base physical damage + 100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_ShieldSlam.png"
           },
           {
@@ -2071,6 +2210,10 @@
             "name": "Camping Mastery",
             "description": "Instantly place a campfire and increase its duration by 100%.",
             "is_default": false,
+            "conditions": [
+              "Active while installing",
+              "Requires campfire kit"
+            ],
             "icon": "/icons/perks/Icon_Perk_CampingMastery.png"
           },
           {
@@ -2092,6 +2235,10 @@
             "name": "Crossbow Mastery",
             "description": "While using a crossbow, gain 5% Physical Damage and an additional 50% Action Speed while reloading.",
             "is_default": false,
+            "conditions": [
+              "Active during special attack",
+              "Requires crossbow equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_CrossbowMastery.png"
           },
           {
@@ -2099,6 +2246,9 @@
             "name": "Kinesthesia",
             "description": "When moving with the bowstring drawn, move speed bonus increases by 15%.",
             "is_default": false,
+            "conditions": [
+              "Requires bow equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_Kinesthesia.png"
           },
           {
@@ -2139,6 +2289,9 @@
             "name": "Ranged Weapons Mastery",
             "description": "When attacking with a ranged weapon, gain 5% Physical Damage.",
             "is_default": true,
+            "conditions": [
+              "Active during ranged attack"
+            ],
             "icon": "/icons/perks/Icon_Perk_RangedWeaponsMastery.png"
           },
           {
@@ -2146,6 +2299,9 @@
             "name": "Sharpshooter",
             "description": "When attacking with a ranged weapon, gain 15% Physical Headshot Power.",
             "is_default": false,
+            "conditions": [
+              "Active during ranged attack"
+            ],
             "icon": "/icons/perks/Icon_Perk_Sharpshooter.png"
           },
           {
@@ -2153,6 +2309,9 @@
             "name": "Spear Proficiency",
             "description": "Gain the ability to equip spears.",
             "is_default": false,
+            "conditions": [
+              "Requires polearm equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_SpearProficiency.png"
           },
           {
@@ -2160,6 +2319,10 @@
             "name": "Trap Mastery",
             "description": "Instantly place trap items and recover them when disarmed.",
             "is_default": false,
+            "conditions": [
+              "Active while installing",
+              "Requires trap equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_TrapMastery.png"
           },
           {
@@ -2312,6 +2475,10 @@
             "name": "Dagger Mastery",
             "description": "When using a dagger, gain 10% Physical Damage and 1 true physical damage.",
             "is_default": true,
+            "conditions": [
+              "Active during dagger melee attack",
+              "Active during dagger ranged attack"
+            ],
             "icon": "/icons/perks/Icon_Perk_DaggerMastery.png"
           },
           {
@@ -2326,6 +2493,9 @@
             "name": "Hand Crossbow Mastery",
             "description": "Gain the ability to equip the Hand Crossbow, while using it gain 2 Physical Damage.",
             "is_default": false,
+            "conditions": [
+              "Requires Hand Crossbow equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_HandCrossbowMastery.png"
           },
           {
@@ -2373,6 +2543,9 @@
             "name": "Thrust",
             "description": "While using dagger, gain an additional 20% Armor Penetration.",
             "is_default": false,
+            "conditions": [
+              "Active during melee attack"
+            ],
             "icon": "/icons/perks/Icon_Perk_Thrust.png"
           },
           {
@@ -2386,7 +2559,10 @@
             "id": "Trickster",
             "name": "Trickster",
             "description": "While using throwing weapons, gain 25% Action Speed.",
-            "is_default": false
+            "is_default": false,
+            "conditions": [
+              "Active during thrown attack"
+            ]
           }
         ],
         "skills": [
@@ -2397,6 +2573,12 @@
             "skill_type": "instant",
             "skill_tier": 2,
             "use_moving": true,
+            "scaling": {
+              "base_damage": 10,
+              "damage_type": "physical",
+              "scaling_pct": 100.0,
+              "formula": "10 base physical damage + 100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_Caltrop.png"
           },
           {
@@ -2441,7 +2623,12 @@
             "description": "Your next melee attack deals an additional 10 Physical Damage. If the target is not in combat, it deals an additional 20 Physical Damage.",
             "skill_type": "instant",
             "skill_tier": 1,
-            "use_moving": true
+            "use_moving": true,
+            "scaling": {
+              "base_damage": 10,
+              "damage_type": "physical",
+              "formula": "10 base physical damage"
+            }
           },
           {
             "id": "Tumbling",
@@ -2517,6 +2704,9 @@
             "name": "Apex of Sorcery",
             "description": "While casting spells, reduce movement speed by 99%, but gain 50% Magical Damage and 50% Spell Casting Speed.",
             "is_default": false,
+            "conditions": [
+              "Active while casting"
+            ],
             "icon": "/icons/perks/Icon_Perk_ApexOfSorcery.png"
           },
           {
@@ -2531,6 +2721,9 @@
             "name": "Innate Talent",
             "description": "When casting spells with bare hands, gain 5 Magical Power and 10% Spell Casting Speed.",
             "is_default": false,
+            "conditions": [
+              "Active while dual casting"
+            ],
             "icon": "/icons/perks/Icon_Perk_InnateTalent.png"
           },
           {
@@ -2545,6 +2738,9 @@
             "name": "Mana Flow",
             "description": "For each successful spell cast, gain 5% Magical Damage. This effect stacks up to 3 times and resets on the next successful cast.",
             "is_default": false,
+            "conditions": [
+              "Active while dual casting"
+            ],
             "icon": "/icons/perks/Icon_Perk_ManaFlow.png"
           },
           {
@@ -2559,6 +2755,10 @@
             "name": "Merged Might",
             "description": "When casting a merge spell, gain 5 Magical Power. After casting, gain a 5% Move Speed for 2 seconds.",
             "is_default": false,
+            "conditions": [
+              "Active while casting",
+              "Active while merge casting"
+            ],
             "icon": "/icons/perks/Icon_Perk_MergedMight.png"
           },
           {
@@ -2566,6 +2766,9 @@
             "name": "Spell Merge",
             "description": "While using bare hands, casting two combinable spells simultaneously allows you to use a new spell.",
             "is_default": true,
+            "conditions": [
+              "Active while casting"
+            ],
             "icon": "/icons/perks/Icon_Perk_SpellMerge.png"
           },
           {
@@ -2573,6 +2776,9 @@
             "name": "Spell Sculpting",
             "description": "Increases the range of all spells by 25% and the area of ​​effect by 25%, but increases the cooldown time by 25%.",
             "is_default": true,
+            "conditions": [
+              "Active while casting"
+            ],
             "icon": "/icons/perks/Icon_Perk_SpellSculpting.png"
           },
           {
@@ -2580,6 +2786,10 @@
             "name": "Spell Stride",
             "description": "Gain 30% Move Speed while casting two spells simultaneously.",
             "is_default": true,
+            "conditions": [
+              "Active while primary casting",
+              "Active while secondary casting"
+            ],
             "icon": "/icons/perks/Icon_Perk_SpellStride.png"
           },
           {
@@ -2622,6 +2832,13 @@
             "source_type": "earth",
             "cost_type": "cooldown",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 20,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 4,
+              "formula": "20 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Eruption.png"
           },
           {
@@ -2635,6 +2852,13 @@
             "source_type": "fire",
             "cost_type": "end",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 7,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 4,
+              "formula": "7 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_FireArrow.png"
           },
           {
@@ -2648,6 +2872,13 @@
             "source_type": "fire",
             "cost_type": "end",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 25,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 12,
+              "formula": "25 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_FireOrb.png"
           },
           {
@@ -2661,6 +2892,13 @@
             "source_type": "fire",
             "cost_type": "cooldown",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 30,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 6,
+              "formula": "30 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Flamestrike.png"
           },
           {
@@ -2687,6 +2925,13 @@
             "source_type": "ice",
             "cost_type": "cooldown",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 30,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 4,
+              "formula": "30 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_IceSpear.png"
           },
           {
@@ -2713,6 +2958,12 @@
             "source_type": "lightning",
             "cost_type": "end",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 5,
+              "damage_type": "magical",
+              "scaling_pct": 50.0,
+              "formula": "5 base magical damage + 50% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_LightningBolt.png"
           },
           {
@@ -2726,6 +2977,12 @@
             "source_type": "lightning",
             "cost_type": "cooldown",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 5,
+              "damage_type": "magical",
+              "scaling_pct": 50.0,
+              "formula": "5 base magical damage + 50% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_LightningSphere.png"
           },
           {
@@ -2791,6 +3048,12 @@
             "source_type": "air",
             "cost_type": "cooldown",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 15,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "15 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Vortex.png"
           },
           {
@@ -2804,6 +3067,13 @@
             "source_type": "ice",
             "cost_type": "cooldown",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 15,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 4,
+              "formula": "15 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_WaterBolt.png"
           },
           {
@@ -2817,6 +3087,12 @@
             "source_type": "air",
             "cost_type": "cooldown",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 10,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "10 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_WindBlast.png"
           }
         ],
@@ -2964,6 +3240,12 @@
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
+            "scaling": {
+              "base_damage": 12,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "12 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/skills/Icon_Skill_BlowofCorruption.png"
           },
           {
@@ -3015,6 +3297,11 @@
             "source_type": "evil",
             "cost_type": "health",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 3,
+              "damage_type": "magical",
+              "formula": "3 base magical damage"
+            },
             "icon": "/icons/spells/Icon_Spell_BloodstainedBlade.png"
           },
           {
@@ -3028,6 +3315,12 @@
             "source_type": "dark",
             "cost_type": "health",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 20,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "20 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_BoltofDarkness.png"
           },
           {
@@ -3041,6 +3334,12 @@
             "source_type": "evil",
             "cost_type": "health",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 15,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "15 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_CurseofPain.png"
           },
           {
@@ -3119,6 +3418,12 @@
             "source_type": "evil",
             "cost_type": "health",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 5,
+              "damage_type": "magical",
+              "scaling_pct": 25.0,
+              "formula": "5 base magical damage + 25% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_LifeDrain.png"
           },
           {
@@ -3145,6 +3450,12 @@
             "source_type": "dark",
             "cost_type": "health",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 12,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "12 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_RayOfDarkness.png"
           },
           {
@@ -3158,6 +3469,12 @@
             "source_type": "evil",
             "cost_type": "health",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 3,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "3 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_SpellPredation.png"
           },
           {
@@ -3298,6 +3615,9 @@
             "name": "Staff Mastery",
             "description": "When using a staff-type weapon, you gain 2 Magical Damage.",
             "is_default": false,
+            "conditions": [
+              "Requires staff equipped"
+            ],
             "icon": "/icons/perks/Icon_Perk_StaffMastery.png"
           }
         ],
@@ -3360,6 +3680,12 @@
             "source_type": "lightning",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 30,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "30 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_ChainLightning.png"
           },
           {
@@ -3373,6 +3699,13 @@
             "source_type": "fire",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 23,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 6,
+              "formula": "23 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Explosion.png"
           },
           {
@@ -3386,6 +3719,13 @@
             "source_type": "fire",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 20,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 6,
+              "formula": "20 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Fireball.png"
           },
           {
@@ -3412,6 +3752,13 @@
             "source_type": "ice",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 30,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "impact_power": 4,
+              "formula": "30 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_IceBolt.png"
           },
           {
@@ -3425,6 +3772,12 @@
             "source_type": "fire",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 5,
+              "damage_type": "magical",
+              "scaling_pct": 50.0,
+              "formula": "5 base magical damage + 50% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Ignite.png"
           },
           {
@@ -3477,6 +3830,12 @@
             "source_type": "lightning",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 30,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "30 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_LightningStrike.png"
           },
           {
@@ -3503,6 +3862,13 @@
             "source_type": "arcane",
             "cost_type": "count",
             "casting_type": "channeling",
+            "scaling": {
+              "base_damage": 10,
+              "damage_type": "magical",
+              "scaling_pct": 50.0,
+              "impact_power": 2,
+              "formula": "10 base magical damage + 50% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_MagicMissile.png"
           },
           {
@@ -3516,6 +3882,12 @@
             "source_type": "light",
             "cost_type": "count",
             "casting_type": "casting",
+            "scaling": {
+              "base_damage": 18,
+              "damage_type": "magical",
+              "scaling_pct": 100.0,
+              "formula": "18 base magical damage + 100% Power Scaling"
+            },
             "icon": "/icons/spells/Icon_Spell_Zap.png"
           }
         ],

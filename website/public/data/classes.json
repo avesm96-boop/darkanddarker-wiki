@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T00:56:28.929907+00:00",
+  "generated_at": "2026-03-18T01:31:04.939463+00:00",
   "data": {
     "classes": [
       {
@@ -93,7 +93,7 @@
           {
             "id": "MoraleBoost",
             "name": "Morale Boost",
-            "description": "Recover 250 % Max Health after killing a player.",
+            "description": "Recover 25 % Max Health after killing a player.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_MoraleBoost.png"
           },
@@ -135,7 +135,7 @@
           {
             "id": "TwoHander",
             "name": "Two-Hander",
-            "description": "When attacking with a two-handed weapon, gain 5% Physical Damage and 100% Armor Penetration.",
+            "description": "When attacking with a two-handed weapon, gain 5% Physical Damage and 10% Armor Penetration.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_TwoHander.png"
           }
@@ -153,7 +153,7 @@
           {
             "id": "BloodExchange",
             "name": "Blood Exchange",
-            "description": "Lose -100 % of Max Health, but gain 15% Action Speed for 8 seconds and heal for 10% of damage dealt while active.",
+            "description": "Lose -10 % of Max Health, but gain 15% Action Speed for 8 seconds and heal for 10% of damage dealt while active.",
             "skill_type": "instant",
             "skill_tier": 5,
             "use_moving": true,
@@ -198,7 +198,7 @@
           {
             "id": "RecklessAttack",
             "name": "Reckless Attack",
-            "description": "Grants an additional 600% Armor Penetration on your next attack, but reduces your Armor Rating by 100 while active. The effect is consumed when you hit a target or object with a melee attack.",
+            "description": "Grants an additional 60% Armor Penetration on your next attack, but reduces your Armor Rating by 100 while active. The effect is consumed when you hit a target or object with a melee attack.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
@@ -225,7 +225,7 @@
           {
             "id": "WarSacrifice",
             "name": "War Sacrifice",
-            "description": "While active, gain 8 All Attributes. In exchange, lose -100 % of your Max Health over 8 seconds.",
+            "description": "While active, gain 8 All Attributes. In exchange, lose -10 % of your Max Health over 8 seconds.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
@@ -434,15 +434,20 @@
             "perfect_range": 600,
             "tier_effects": {
               "bad": {
-                "duration_ms": 6000
+                "duration_ms": 6000,
+                "MoveSpeedAdd": 1
               },
               "good": {
-                "duration_ms": 6000
+                "duration_ms": 6000,
+                "MoveSpeedAdd": 3
               },
               "perfect": {
-                "duration_ms": 6000
+                "duration_ms": 6000,
+                "MoveSpeedAdd": 5
               }
-            }
+            },
+            "note_count": 6,
+            "channeling_notes": 0
           },
           {
             "id": "Allegro",
@@ -461,15 +466,23 @@
             "perfect_range": 600,
             "tier_effects": {
               "bad": {
-                "duration_ms": 6000
+                "duration_ms": 6000,
+                "ActionSpeed": 3.0,
+                "SpellCastingSpeed": 3.0
               },
               "good": {
-                "duration_ms": 6000
+                "duration_ms": 6000,
+                "ActionSpeed": 4.5,
+                "SpellCastingSpeed": 4.5
               },
               "perfect": {
-                "duration_ms": 6000
+                "duration_ms": 6000,
+                "ActionSpeed": 6.0,
+                "SpellCastingSpeed": 6.0
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "AriaOfAlacrity",
@@ -489,17 +502,19 @@
             "tier_effects": {
               "bad": {
                 "duration_ms": 60000,
-                "ActionSpeed": 40
+                "ActionSpeed": 4.0
               },
               "good": {
                 "duration_ms": 120000,
-                "ActionSpeed": 60
+                "ActionSpeed": 6.0
               },
               "perfect": {
                 "duration_ms": 240000,
-                "ActionSpeed": 80
+                "ActionSpeed": 8.0
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "BalladOfCourage",
@@ -529,7 +544,9 @@
                 "duration_ms": 240000,
                 "PhysicalPower": 10
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "BansheesHowl",
@@ -577,7 +594,9 @@
                 "KnowledgeBase": -3,
                 "ResourcefulnessBase": -3
               }
-            }
+            },
+            "note_count": 6,
+            "channeling_notes": 0
           },
           {
             "id": "BeatsOfAlacrity",
@@ -607,7 +626,9 @@
                 "duration_ms": 240000,
                 "MoveSpeedAdd": 6
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "ChaoticDiscord",
@@ -623,7 +644,9 @@
             "icon": "/icons/music/Icon_Music_ChaoticDiscord.png",
             "bad_range": 300,
             "good_range": 450,
-            "perfect_range": 600
+            "perfect_range": 600,
+            "note_count": 8,
+            "channeling_notes": 8
           },
           {
             "id": "ChoraleOfClarity",
@@ -650,7 +673,9 @@
               "perfect": {
                 "duration_ms": 24000
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "DinOfDarkness",
@@ -670,17 +695,19 @@
             "tier_effects": {
               "bad": {
                 "ExecMagicalDamageBase": 1,
-                "ExecAttributeBonusRatio": 160
+                "ExecAttributeBonusRatio": 16.0
               },
               "good": {
                 "ExecMagicalDamageBase": 3,
-                "ExecAttributeBonusRatio": 330
+                "ExecAttributeBonusRatio": 33.0
               },
               "perfect": {
                 "ExecMagicalDamageBase": 5,
-                "ExecAttributeBonusRatio": 500
+                "ExecAttributeBonusRatio": 50.0
               }
-            }
+            },
+            "note_count": 8,
+            "channeling_notes": 8
           },
           {
             "id": "HarmonicShield",
@@ -713,7 +740,9 @@
                 "ArmorRating": 25,
                 "MagicResistance": 25
               }
-            }
+            },
+            "note_count": 7,
+            "channeling_notes": 0
           },
           {
             "id": "LamentOfLanguor",
@@ -743,7 +772,9 @@
                 "duration_ms": 18000,
                 "MoveSpeedAdd": -10
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "Peacemaking",
@@ -759,7 +790,9 @@
             "icon": "/icons/music/Icon_Music_Peacemaking.png",
             "bad_range": 300,
             "good_range": 450,
-            "perfect_range": 600
+            "perfect_range": 600,
+            "note_count": 5,
+            "channeling_notes": 5
           },
           {
             "id": "PiercingShrill",
@@ -780,19 +813,21 @@
               "bad": {
                 "duration_ms": 3000,
                 "ExecPhysicalDamageBase": 20,
-                "ExecAttributeBonusRatio": 100
+                "ExecAttributeBonusRatio": 10.0
               },
               "good": {
                 "duration_ms": 3000,
                 "ExecPhysicalDamageBase": 25,
-                "ExecAttributeBonusRatio": 300
+                "ExecAttributeBonusRatio": 30.0
               },
               "perfect": {
                 "duration_ms": 3000,
                 "ExecPhysicalDamageBase": 30,
-                "ExecAttributeBonusRatio": 500
+                "ExecAttributeBonusRatio": 50.0
               }
-            }
+            },
+            "note_count": 7,
+            "channeling_notes": 0
           },
           {
             "id": "RousingRhythms",
@@ -840,7 +875,9 @@
                 "KnowledgeBase": 2,
                 "ResourcefulnessBase": 2
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "ShriekOfWeakness",
@@ -873,7 +910,9 @@
                 "PhysicalPower": -5,
                 "ArmorRating": -30
               }
-            }
+            },
+            "note_count": 4,
+            "channeling_notes": 0
           },
           {
             "id": "SongOfShadow",
@@ -900,7 +939,9 @@
               "perfect": {
                 "duration_ms": 30000
               }
-            }
+            },
+            "note_count": 8,
+            "channeling_notes": 0
           },
           {
             "id": "SongOfSilence",
@@ -927,7 +968,9 @@
               "perfect": {
                 "duration_ms": 2000
               }
-            }
+            },
+            "note_count": 5,
+            "channeling_notes": 0
           },
           {
             "id": "Tranquility",
@@ -946,15 +989,23 @@
             "perfect_range": 600,
             "tier_effects": {
               "bad": {
-                "duration_ms": 10000
+                "duration_ms": 10000,
+                "ExecRecoveryHealBase": 2,
+                "ExecAttributeBonusRatio": 25.0
               },
               "good": {
-                "duration_ms": 15000
+                "duration_ms": 15000,
+                "ExecRecoveryHealBase": 2,
+                "ExecAttributeBonusRatio": 25.0
               },
               "perfect": {
-                "duration_ms": 20000
+                "duration_ms": 20000,
+                "ExecRecoveryHealBase": 2,
+                "ExecAttributeBonusRatio": 25.0
               }
-            }
+            },
+            "note_count": 6,
+            "channeling_notes": 0
           },
           {
             "id": "UnchainedHarmony",
@@ -970,7 +1021,9 @@
             "icon": "/icons/music/Icon_Music_UnchainedHarmony.png",
             "bad_range": 300,
             "good_range": 300,
-            "perfect_range": 300
+            "perfect_range": 300,
+            "note_count": 7,
+            "channeling_notes": 0
           }
         ],
         "shapeshifts": [],
@@ -1067,7 +1120,7 @@
           {
             "id": "Overhealing",
             "name": "Over Healing",
-            "description": "Even if the target's health is at full health, additional healing can be done by 20% of the target's maximum health. ^ degenerates at -20 % per second.",
+            "description": "Even if the target's health is at full health, additional healing can be done by 20% of the target's maximum health. ^ degenerates at -2 % per second.",
             "is_default": true,
             "icon": "/icons/perks/Icon_Perk_Overhealing.png"
           },
@@ -1095,7 +1148,7 @@
           {
             "id": "UndeadSlaying",
             "name": "Undead Slaying",
-            "description": "Gain 200% Undead Damage Mod against undead monsters.",
+            "description": "Gain 20% Undead Damage against undead monsters.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_UndeadSlaying.png"
           }
@@ -1918,7 +1971,7 @@
           {
             "id": "SecondWind",
             "name": "Second Wind",
-            "description": "Recover 400 % Max Health over 12 seconds. Additionally, Second Wind removes the negative effects of Adrenaline Rush.",
+            "description": "Recover 40 % Max Health over 12 seconds. Additionally, Second Wind removes the negative effects of Adrenaline Rush.",
             "skill_type": "instant",
             "skill_tier": 5,
             "use_moving": true,
@@ -2156,7 +2209,7 @@
           {
             "id": "PenetratingShot",
             "name": "Penetrating Shot",
-            "description": "Gain 500% Physical Headshot Penetration and 250% Armor Penetration for 8 seconds. Bow and crossbow attacks pierce targets.",
+            "description": "Gain 50% Headshot Penetration and 25% Armor Penetration for 8 seconds. Bow and crossbow attacks pierce targets.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
@@ -2243,7 +2296,7 @@
           {
             "id": "BackAttack",
             "name": "Back Attack",
-            "description": "When attacking a target from behind, gain 300% Physical Backstab Power.",
+            "description": "When attacking a target from behind, gain 30% Backstab Damage.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_BackAttack.png"
           },
@@ -2318,7 +2371,7 @@
           {
             "id": "Thrust",
             "name": "Thrust",
-            "description": "While using dagger, gain an additional 200% Armor Penetration.",
+            "description": "While using dagger, gain an additional 20% Armor Penetration.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_Thrust.png"
           },
@@ -2847,7 +2900,7 @@
           {
             "id": "ImmortalLament",
             "name": "Immortal Lament",
-            "description": "Casting spells will no longer take you below 1 health. When your health falls below 5%, gain 100% increased Magical Heal Mod for 5 seconds.",
+            "description": "Casting spells will no longer take you below 1 health. When your health falls below 5%, gain 100% increased Magical Healing for 5 seconds.",
             "is_default": false,
             "icon": "/icons/perks/Icon_Perk_ImmortalLament.png"
           },
@@ -2889,7 +2942,7 @@
           {
             "id": "Vampirism",
             "name": "Vampirism",
-            "description": "Gain 200% Magical Heal Mod.",
+            "description": "Gain 20% Magical Healing.",
             "is_default": true,
             "icon": "/icons/perks/Icon_Perk_Vampirism.png"
           }
@@ -2898,7 +2951,7 @@
           {
             "id": "BloodPact",
             "name": "Blood Pact",
-            "description": "Take the form of your contracted demon, gaining an additional 50 Max Health, 50 Armor Rating, and 50 Magic Resistance. Your entire body is covered in Abyssal Flame, taking 10 % damage per second and dealing 2 Magical Damage per second to nearby characters. Once activated, the effect cannot be stopped until the contract is complete. Additionally, by consuming Darkness Shards, you gain 1 All Attributes, 33% Magical Dark Damage for each Darkness Shard consumed. When you become a demon your skills change to demon-only skills.\n\nLeft-Click: Use equipped item. If no item is equipped, then performs bare-handed attack. Perform up to 4 combo attacks using both hands.\n\nRight-Click: Use equipped item. If no item is equipped, then fires a bolt of darkness.",
+            "description": "Take the form of your contracted demon, gaining an additional 50 Max Health, 50 Armor Rating, and 50 Magic Resistance. Your entire body is covered in Abyssal Flame, taking 1 % damage per second and dealing 2 Magical Damage per second to nearby characters. Once activated, the effect cannot be stopped until the contract is complete. Additionally, by consuming Darkness Shards, you gain 1 All Attributes, 33% Magical Dark Damage for each Darkness Shard consumed. When you become a demon your skills change to demon-only skills.\n\nLeft-Click: Use equipped item. If no item is equipped, then performs bare-handed attack. Perform up to 4 combo attacks using both hands.\n\nRight-Click: Use equipped item. If no item is equipped, then fires a bolt of darkness.",
             "skill_type": "instant",
             "skill_tier": 1,
             "use_moving": true,
@@ -2916,7 +2969,7 @@
           {
             "id": "DarkOffering",
             "name": "Dark Offering",
-            "description": "Channel your mind, sacrificing -100 % of your max health per second to gain 5% Magical Damage and 5% Physical Damage. This bonus lasts for 60 seconds.",
+            "description": "Channel your mind, sacrificing -10 % of your max health per second to gain 5% Magical Damage and 5% Physical Damage. This bonus lasts for 60 seconds.",
             "skill_type": "channeling",
             "skill_tier": 1,
             "use_moving": false,

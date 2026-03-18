@@ -111,6 +111,7 @@ PERK_DESC_DIR = RAW / "Perk"
 SKILL_DESC_DIR = RAW / "Data" / "DataAsset" / "Skill"
 SPELL_DESC_DIR = RAW / "Data" / "DataAsset" / "Spell"
 MUSIC_DESC_DIR = RAW / "Data" / "DataAsset" / "Music"
+MUSIC_PLAY_DIR = RAW / "Data" / "DataAsset" / "Music"
 SHAPESHIFT_DESC_DIR = RAW / "Data" / "DataAsset" / "ShapeShift"
 STATUS_EFFECT_DIR = RAW_V2 / "ActorStatus" / "StatusEffect"
 CONSTANT_DIR = RAW_V2 / "Constant" / "Constant"
@@ -152,6 +153,16 @@ DIV10_PROPERTIES = {
     "MagicalReductionMod", "PhysicalReductionMod",
     "StrengthMod", "VigorMod", "AgilityMod", "DexterityMod",
     "WillMod", "KnowledgeMod", "ResourcefulnessMod",
+    # Health ratio properties (raw 400 = 40%, raw -100 = -10%)
+    "ExecAddHealthByMaxHealthRatio", "ExecAddHealthbyMaxHealthRatio",
+    "ExecHealthCostByMaxHealthRatio",
+    # Headshot/backstab/penetration properties (raw 500 = 50%, etc.)
+    "PhysicalHeadshotPenetration", "PhysicalBackstabPower",
+    "ArmorPenetration",
+    # Damage modifier properties (raw 200 = 20%)
+    "UndeadDamageMod", "MagicalHealMod",
+    # Attribute scaling ratio (raw 250 = 25%)
+    "ExecAttributeBonusRatio",
 }
 
 # Properties that are used as-is (no division)
@@ -162,8 +173,7 @@ RAW_PROPERTIES = {
     "AgilityBase", "DexterityBase", "WillBase", "KnowledgeBase",
     "ResourcefulnessBase", "AllAttributes", "PhysicalPower",
     "MaxHealthAdd", "ExecPhysicalHealBase", "ExecMagicalDamageTrue",
-    "ExecAddRecoverableHealth", "ExecAddHealthByMaxHealthRatio",
-    "ExecAddHealthbyMaxHealthRatio", "ExecHealthCostByMaxHealthRatio",
+    "ExecAddRecoverableHealth",
     "MagicalDamageWeaponPrimary", "MaxTotalShield",
     "ExecExecutionHealthRatioThreshold", "ExecPhysicalDamageTrue",
     "ExecRecoveryHealBase", "ExecMagicalHealBase",
@@ -280,6 +290,11 @@ PROPERTY_DISPLAY_NAMES = {
     "ExecutionHealthRatioThreshold": "Health Threshold",
     "PhysicalDamageTrue": "true physical damage",
     "RecoveryHealBase": "Recovery Heal",
+    "PhysicalHeadshotPenetration": "Headshot Penetration",
+    "PhysicalBackstabPower": "Backstab Damage",
+    "UndeadDamageMod": "Undead Damage",
+    "MagicalHealMod": "Magical Healing",
+    "ExecAttributeBonusRatio": "Attribute Scaling",
 }
 
 
@@ -917,8 +932,10 @@ def resolve_description(raw_desc, desc_path):
         indices = [int(x) for x in re.findall(r'\[(\d+)\]', indices_str)]
         values = []
         for idx in indices:
+            found_key = exec_key
             val = _get_effect_value(effects, idx, exec_key)
             if val is None:
+                found_key = prop_name
                 val = _get_effect_value(effects, idx, prop_name)
                 # Also try fallbacks
                 if val is None:
@@ -926,9 +943,11 @@ def resolve_description(raw_desc, desc_path):
                     for fb in fallbacks:
                         val = _get_effect_value(effects, idx, fb)
                         if val is not None:
+                            found_key = fb
                             break
             if val is not None:
-                values.append(_format_number(val))
+                scaled = _scale_property(found_key, val)
+                values.append(_format_number(scaled))
             else:
                 values.append(f"[{idx}]")
         result = "/".join(values)
@@ -955,17 +974,21 @@ def resolve_description(raw_desc, desc_path):
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
         exec_key = "Exec" + prop_name
+        found_key = exec_key
         val = _get_effect_value(effects, idx, exec_key)
         if val is None:
+            found_key = prop_name
             val = _get_effect_value(effects, idx, prop_name)
         if val is None:
             fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
             for fb in fallbacks:
                 val = _get_effect_value(effects, idx, fb)
                 if val is not None:
+                    found_key = fb
                     break
         if val is not None:
-            formatted = _format_number(val)
+            scaled = _scale_property(found_key, val)
+            formatted = _format_number(scaled)
             return prefix.strip() + " " + formatted + suffix
         return m.group(0)
 
@@ -980,17 +1003,21 @@ def resolve_description(raw_desc, desc_path):
         idx = int(m.group("idx"))
         suffix = m.group("suffix")
         exec_key = "Exec" + prop_name
+        found_key = exec_key
         val = _get_effect_value(effects, idx, exec_key)
         if val is None:
+            found_key = prop_name
             val = _get_effect_value(effects, idx, prop_name)
         if val is None:
             fallbacks = PROPERTY_NAME_FALLBACKS.get(prop_name, [])
             for fb in fallbacks:
                 val = _get_effect_value(effects, idx, fb)
                 if val is not None:
+                    found_key = fb
                     break
         if val is not None:
-            formatted = _format_number(val)
+            scaled = _scale_property(found_key, val)
+            formatted = _format_number(scaled)
             has_label = "_" in suffix
             clean_suffix = suffix.replace(" _", "").replace("_", "").strip()
             if has_label:
@@ -1363,11 +1390,49 @@ def _read_shapeshift_form_skill(short_name, loc):
 # Enhancement 3: Bard song performance tiers
 # ---------------------------------------------------------------------------
 
+def _scale_tier_property(prop_name, raw_value):
+    """Apply the correct scale conversion to a tier effect property value.
+
+    Uses the same DIV10_PROPERTIES set as description scaling.
+    Duration is kept as-is in ms (frontend formats it).
+    """
+    if raw_value is None:
+        return None
+    if prop_name == "duration_ms":
+        return raw_value
+    if prop_name in DIV10_PROPERTIES:
+        return raw_value / 10.0
+    return raw_value
+
+
+def _collect_effect_props(data):
+    """Extract gameplay properties from an effect data file, skipping metadata keys."""
+    if data is None:
+        return {}
+    props = data[0].get("Properties", {}) if isinstance(data, list) and data else {}
+    skip_keys = {"EffectClass", "EventTag", "TargetType", "Duration",
+                 "AssetTags", "V1Data"}
+    result = {}
+    duration = props.get("Duration")
+    if duration is not None:
+        result["duration_ms"] = duration
+    for key, val in props.items():
+        if key not in skip_keys and not isinstance(val, (dict, list)):
+            result[key] = val
+    return result
+
+
 def _read_song_tier_effects(short_name):
     """Read tier-specific effects for a Bard song.
 
     For buff songs: look for ActorStatusEffect_{short_name}_{Bad|Good|Perfect}
+    Also merges "{short_name}Granted_{tier}" variants which contain the actual
+    gameplay properties (e.g., AllegroGranted_Bad has ActionSpeed/SpellCastingSpeed
+    while Allegro_Bad only has Duration).
+
     For damage songs: look for MusicEffect_{short_name}_{Bad|Good|Perfect}
+
+    All properties are scaled using _scale_tier_property (DIV10 for %, raw for flat).
     """
     tier_effects = {}
     tiers = ["Bad", "Good", "Perfect"]
@@ -1375,21 +1440,22 @@ def _read_song_tier_effects(short_name):
     for tier in tiers:
         tier_data = {}
 
-        # Try ActorStatusEffect (buff songs)
+        # Try ActorStatusEffect (buff songs) - base file has duration
         se_path = STATUS_EFFECT_DIR / f"Id_ActorStatusEffect_{short_name}_{tier}.json"
         se_data = load_json_silent(se_path)
         if se_data is not None:
-            props = se_data[0].get("Properties", {}) if isinstance(se_data, list) and se_data else {}
-            duration = props.get("Duration")
-            if duration is not None:
-                tier_data["duration_ms"] = duration
+            tier_data.update(_collect_effect_props(se_data))
 
-            # Capture all gameplay properties (skip metadata keys)
-            skip_keys = {"EffectClass", "EventTag", "TargetType", "Duration",
-                         "AssetTags", "V1Data"}
-            for key, val in props.items():
-                if key not in skip_keys and not isinstance(val, (dict, list)):
-                    tier_data[key] = val
+        # Merge Granted variant (has the actual gameplay properties)
+        granted_path = STATUS_EFFECT_DIR / f"Id_ActorStatusEffect_{short_name}Granted_{tier}.json"
+        granted_data = load_json_silent(granted_path)
+        if granted_data is not None:
+            granted_props = _collect_effect_props(granted_data)
+            # Merge: granted properties override base, but keep duration from base
+            for key, val in granted_props.items():
+                if key == "duration_ms" and "duration_ms" in tier_data:
+                    continue  # Keep the duration from the base effect
+                tier_data[key] = val
 
         # Try MusicEffect (damage songs)
         me_path = MUSIC_EFFECT_DIR / f"Id_MusicEffect_{short_name}_{tier}.json"
@@ -1401,8 +1467,15 @@ def _read_song_tier_effects(short_name):
                 if key not in skip_keys and not isinstance(val, (dict, list)):
                     tier_data[key] = val
 
+        # Scale all properties
         if tier_data:
-            tier_effects[tier.lower()] = tier_data
+            scaled = {}
+            for key, val in tier_data.items():
+                if isinstance(val, (int, float)):
+                    scaled[key] = _scale_tier_property(key, val)
+                else:
+                    scaled[key] = val
+            tier_effects[tier.lower()] = scaled
 
     return tier_effects if tier_effects else None
 
@@ -1548,6 +1621,23 @@ def collect_spells(class_name, loc):
     return spells
 
 
+def _read_song_note_count(short_name):
+    """Read note count from PlayMusicData file for a Bard song.
+
+    Returns (note_count, channeling_notes) tuple.
+    """
+    play_path = MUSIC_PLAY_DIR / f"{short_name}_PlayMusic.json"
+    data = load_json_silent(play_path)
+    if data is None:
+        return None, None
+    props = data[0].get("Properties", {}) if isinstance(data, list) and data else {}
+    play_datas = props.get("PlayMusicDatas", [])
+    note_count = len(play_datas) if play_datas else None
+    channeling_datas = props.get("ChannelingPlayMusicDatas", [])
+    channeling_notes = len(channeling_datas) if channeling_datas else 0
+    return note_count, channeling_notes
+
+
 def collect_songs(class_name, loc):
     """Collect all Bard songs for a given class from raw music files."""
     songs = []
@@ -1612,6 +1702,12 @@ def collect_songs(class_name, loc):
         tier_effects = _read_song_tier_effects(short_name)
         if tier_effects:
             song_entry["tier_effects"] = tier_effects
+
+        # Enhancement 4: Add note count from PlayMusicData
+        note_count, channeling_notes = _read_song_note_count(short_name)
+        if note_count is not None:
+            song_entry["note_count"] = note_count
+            song_entry["channeling_notes"] = channeling_notes or 0
 
         songs.append(song_entry)
     return songs

@@ -46,6 +46,8 @@ interface Spell {
     good?: Record<string, any>;
     perfect?: Record<string, any>;
   };
+  note_count?: number;
+  channeling_notes?: number;
 }
 
 interface Shapeshift {
@@ -633,6 +635,18 @@ export default function ClassDetail({ slug }: { slug: string }) {
                                     {spell.casting_type}
                                   </span>
                                 </span>
+                                {spell.note_count != null &&
+                                  spell.note_count > 0 && (
+                                    <span className={styles.spellMetaItem}>
+                                      Notes:{" "}
+                                      <span className={styles.spellMetaValue}>
+                                        {spell.note_count}
+                                        {spell.channeling_notes != null &&
+                                          spell.channeling_notes > 0 &&
+                                          ` (+${spell.channeling_notes} channeling)`}
+                                      </span>
+                                    </span>
+                                  )}
                               </div>
                               <p>{cleanDescription(spell.description)}</p>
 
@@ -661,7 +675,12 @@ export default function ClassDetail({ slug }: { slug: string }) {
                                             ? spell.good_range
                                             : spell.perfect_range;
                                       const { duration, description } =
-                                        summarizeTierEffect(fx);
+                                        summarizeTierEffect(
+                                          fx,
+                                          cleanDescription(
+                                            spell.description
+                                          )
+                                        );
                                       const tierClass =
                                         tier === "bad"
                                           ? styles.tierBad
@@ -886,7 +905,16 @@ function msToDuration(ms: number): string {
 
 /** Property key -> human-readable display name for tier effects */
 const TIER_EFFECT_DISPLAY_NAMES: Record<string, string> = {
+  ExecMagicalDamageBase: "Magical Damage",
+  ExecPhysicalDamageBase: "Physical Damage",
+  ExecAttributeBonusRatio: "Attribute Scaling",
+  ExecRecoveryHealBase: "Recovery Heal",
   ActionSpeed: "Action Speed",
+  SpellCastingSpeed: "Spell Casting Speed",
+  MoveSpeedAdd: "Move Speed",
+  MoveSpeedMod: "Move Speed",
+  ArmorRating: "Armor Rating",
+  MagicResistance: "Magic Resistance",
   PhysicalPower: "Physical Power",
   StrengthBase: "Strength",
   VigorBase: "Vigor",
@@ -895,16 +923,19 @@ const TIER_EFFECT_DISPLAY_NAMES: Record<string, string> = {
   WillBase: "Will",
   KnowledgeBase: "Knowledge",
   ResourcefulnessBase: "Resourcefulness",
-  MoveSpeedMod: "Move Speed",
-  MoveSpeedAdd: "Move Speed",
   MaxHealthMod: "Max Health",
   PhysicalReductionMod: "Physical Reduction",
-  MagicResistance: "Magic Resistance",
-  SpellCastingSpeed: "Spell Casting Speed",
   PhysicalDamageWeapon: "Physical Damage",
   MagicalDamageMod: "Magical Damage",
-  ArmorRating: "Armor Rating",
+  ExecImpactPower: "Impact Power",
 };
+
+/** Properties that display with % suffix (percentage-based values) */
+const PERCENT_PROPERTIES = new Set([
+  "ActionSpeed", "SpellCastingSpeed", "MoveSpeedMod",
+  "MaxHealthMod", "PhysicalReductionMod", "MagicalDamageMod",
+  "ExecAttributeBonusRatio",
+]);
 
 function tierEffectDisplayName(key: string): string {
   if (key in TIER_EFFECT_DISPLAY_NAMES) return TIER_EFFECT_DISPLAY_NAMES[key];
@@ -914,8 +945,25 @@ function tierEffectDisplayName(key: string): string {
     .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2");
 }
 
-/** Summarise a tier_effects entry into duration + human-readable effect string */
-function summarizeTierEffect(effect: Record<string, any>): {
+/** Format a tier effect value with appropriate suffix */
+function formatTierValue(key: string, value: number): string {
+  const sign = value > 0 ? "+" : "";
+  if (PERCENT_PROPERTIES.has(key)) {
+    // Values already scaled by build_classes.py (÷10)
+    return `${sign}${value}%`;
+  }
+  // Flat values: no suffix
+  return `${sign}${value}`;
+}
+
+/** Summarise a tier_effects entry into duration + human-readable effect string.
+ *  If only duration is present (e.g., Song of Shadow), returns the
+ *  song description summary from the parent spell instead of "--".
+ */
+function summarizeTierEffect(
+  effect: Record<string, any>,
+  songDescription?: string
+): {
   duration: string | null;
   description: string;
 } {
@@ -935,12 +983,17 @@ function summarizeTierEffect(effect: Record<string, any>): {
     }
     const label = tierEffectDisplayName(k);
     if (typeof v === "number") {
-      const sign = v > 0 ? "+" : "";
-      const suffix = k.endsWith("Mod") || k === "ActionSpeed" || k === "SpellCastingSpeed" ? "" : "";
-      parts.push(`${sign}${v} ${label}`);
+      parts.push(`${formatTierValue(k, v)} ${label}`);
     } else {
       parts.push(`${label}: ${String(v)}`);
     }
+  }
+
+  // If no gameplay properties (only duration), use song description as summary
+  if (parts.length === 0 && songDescription) {
+    // Take first sentence of the song description as a brief summary
+    const firstSentence = songDescription.split(".")[0];
+    return { duration, description: firstSentence || "\u2014" };
   }
 
   return { duration, description: parts.join(", ") || "\u2014" };

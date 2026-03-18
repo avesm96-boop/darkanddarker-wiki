@@ -108,6 +108,7 @@ ICON_OVERRIDES = {
     ("spells", "SorceryCombat"): "Icon_Spell_SorceryCombat.png",
     ("spells", "SorceryCombat1"): "Icon_Spell_SorceryCombat.png",
     ("spells", "SorceryCombat2"): "Icon_Spell_SorceryCombat.png",
+    ("perks", "HideMastery"): "Icon_Perk_HideMastery.png",
 }
 
 PERK_GE_DIR = RAW / "ActorStatus" / "Buff" / "Perk"
@@ -1540,7 +1541,7 @@ TAG_TO_CONDITION = {
     "State.Character.Act.Interact.Install": "Active while installing",
     "State.Character.Act.React.Block": "Active on block reaction",
     "State.ActorStatus.Buff.ShapeShift.Animal": "Active in animal form",
-    "State.ActorStatus.Buff.SacredWater": "Active with Sacred Water buff",
+    "State.ActorStatus.Buff.SacredWater": "Active with Holy Water buff",
     "State.Special.WeaponMasteryBasedAct": "Active during weapon mastery action",
     "Type.Spell.Source.Divine.Resurrection": "Active with resurrection spell",
     "Type.Spell.Source.Spirit": "Active with spirit spell",

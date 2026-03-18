@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T02:42:45.520617+00:00",
+  "generated_at": "2026-03-18T03:21:18.577642+00:00",
   "data": {
     "classes": [
       {
@@ -1149,7 +1149,7 @@
             "description": "When you drink alcohol, you no longer exhibit the detrimental drunk effects and gain 10 Strength. The duration of the drunk effect is increased by 50%.",
             "is_default": false,
             "conditions": [
-              "Active with Sacred Water buff"
+              "Active with Holy Water buff"
             ],
             "icon": "/icons/perks/Icon_Perk_Brewmaster.png"
           },
@@ -2536,7 +2536,8 @@
             "id": "HideMastery",
             "name": "Hide Mastery",
             "description": "Increases the duration of the hide skill by 1.5 times and reduces its cooldown time by 30%.",
-            "is_default": false
+            "is_default": false,
+            "icon": "/icons/perks/Icon_Perk_HideMastery.png"
           },
           {
             "id": "Jokester",

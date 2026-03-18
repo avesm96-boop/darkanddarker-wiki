@@ -441,21 +441,22 @@ export default function MarketSearchTab() {
             <div className={styles.msTableWrap}>
               <table className={styles.msTable}>
                 <thead><tr>
-                  {isRarityOnly && <th>Item</th>}
-                  {!isGenericItem && <th style={{ width: 80 }}>Rarity</th>}
+                  <th>Item</th>
+                  <th style={{ width: 80 }}>Rarity</th>
+                  <th style={{ width: 90 }}>Total</th>
                   <th style={{ width: 90 }}>Price / 1</th>
-                  {isGenericItem && <th style={{ width: 50 }}>Qty</th>}
-                  {isGenericItem && <th style={{ width: 90 }}>Total</th>}
-                  {!isGenericItem && <th>Stats</th>}
+                  <th>Stats</th>
+                  <th style={{ width: 50 }}>Qty</th>
                   <th style={{ width: 70 }}>Listed</th>
                 </tr></thead>
                 <tbody>
-                  {filteredActive.slice(0, 50).map((l) => (
-                    <tr key={l.listing_id}
-                      onClick={() => !isGenericItem && !isRarityOnly && setPreviewListing(previewListing?.listing_id === l.listing_id ? null : l)}
-                      style={!isGenericItem && !isRarityOnly ? { cursor: "pointer" } : undefined}
-                      className={previewListing?.listing_id === l.listing_id ? styles.msSelectedRow : ""}>
-                      {isRarityOnly && (
+                  {filteredActive.slice(0, 50).map((l) => {
+                    const secondary = l.properties.filter((p) => !p.is_primary);
+                    return (
+                      <tr key={l.listing_id}
+                        onClick={() => setPreviewListing(previewListing?.listing_id === l.listing_id ? null : l)}
+                        style={{ cursor: "pointer" }}
+                        className={previewListing?.listing_id === l.listing_id ? styles.msSelectedRow : ""}>
                         <td className={styles.msItemName}>
                           <span className={styles.msItemNameInner}>
                             <img src={itemIconPath(l.item_base_name)} alt=""
@@ -463,22 +464,21 @@ export default function MarketSearchTab() {
                             {getItemDisplayName(l.item_base_name, itemMetadata)}
                           </span>
                         </td>
-                      )}
-                      {!isGenericItem && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
-                      <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price_per_unit)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
-                      {isGenericItem && <td style={{ textAlign: "center", fontSize: "0.72rem", color: "var(--text-muted)" }}>×{l.item_count}</td>}
-                      {isGenericItem && <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>}
-                      {!isGenericItem && (
+                        <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>
+                        <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
+                        <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price_per_unit)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
                         <td className={styles.msStats}>
-                          {l.properties.filter((p) => !p.is_primary).map((p, i) => (
-                            <span key={i} className={styles.msStat}>{cleanStatName(p.property_type)}: {formatStatValue(p.property_type, p.property_value)}</span>
-                          ))}
-                          {l.properties.filter((p) => !p.is_primary).length === 0 && <span style={{ color: "var(--text-muted)" }}>—</span>}
+                          {secondary.length > 0
+                            ? secondary.map((p, i) => (
+                                <span key={i} className={styles.msStat}>{cleanStatName(p.property_type)}: {formatStatValue(p.property_type, p.property_value)}</span>
+                              ))
+                            : <span style={{ color: "var(--text-muted)" }}>—</span>}
                         </td>
-                      )}
-                      <td className={styles.msTime}>{timeAgo(l.first_seen_at)}</td>
-                    </tr>
-                  ))}
+                        <td style={{ textAlign: "center", fontSize: "0.72rem", color: "var(--text-muted)" }}>{l.item_count}</td>
+                        <td className={styles.msTime}>{timeAgo(l.first_seen_at)}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
               {filteredActive.length > 50 && <div className={styles.msEmpty} style={{ padding: 8 }}>Showing 50 of {filteredActive.length}</div>}
@@ -494,20 +494,21 @@ export default function MarketSearchTab() {
           <div className={styles.msTableWrap}>
             <table className={styles.msTable}>
               <thead><tr>
-                {isRarityOnly && <th>Item</th>}
-                {!isGenericItem && <th style={{ width: 80 }}>Rarity</th>}
+                <th>Item</th>
+                <th style={{ width: 80 }}>Rarity</th>
+                <th style={{ width: 90 }}>Total</th>
                 <th style={{ width: 90 }}>Price / 1</th>
-                {isGenericItem && <th style={{ width: 50 }}>Qty</th>}
-                {isGenericItem && <th style={{ width: 90 }}>Total</th>}
-                {!isGenericItem && <th>Stats</th>}
+                <th>Stats</th>
+                <th style={{ width: 50 }}>Qty</th>
                 <th style={{ width: 70 }}>Sold</th>
               </tr></thead>
               <tbody>
                 {filteredSold.length === 0 ? (
-                  <tr><td colSpan={isRarityOnly ? 6 : isGenericItem ? 5 : 4} className={styles.msEmpty}>No sold items match filters.</td></tr>
-                ) : filteredSold.map((l) => (
-                  <tr key={l.listing_id} className={styles.msSoldRow}>
-                    {isRarityOnly && (
+                  <tr><td colSpan={7} className={styles.msEmpty}>No sold items match filters.</td></tr>
+                ) : filteredSold.map((l) => {
+                  const secondary = l.properties.filter((p) => !p.is_primary);
+                  return (
+                    <tr key={l.listing_id} className={styles.msSoldRow}>
                       <td className={styles.msItemName}>
                         <span className={styles.msItemNameInner}>
                           <img src={itemIconPath(l.item_base_name)} width={20} height={20} alt=""
@@ -515,22 +516,21 @@ export default function MarketSearchTab() {
                           {getItemDisplayName(l.item_base_name, itemMetadata)}
                         </span>
                       </td>
-                    )}
-                    {!isGenericItem && <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>}
-                    <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price_per_unit)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
-                    {isGenericItem && <td style={{ textAlign: "center", fontSize: "0.72rem", color: "var(--text-muted)" }}>×{l.item_count}</td>}
-                    {isGenericItem && <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>}
-                    {!isGenericItem && (
+                      <td><span className={styles[`rarity${l.base_rarity}`] || ""}>{l.base_rarity}</span></td>
+                      <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
+                      <td className={styles.msPrice}><span className={styles.msPriceInner}>{formatGold(l.price_per_unit)}<img src={GOLD_ICON} alt="" width={12} height={12} /></span></td>
                       <td className={styles.msStats}>
-                        {l.properties.filter((p) => !p.is_primary).map((p, i) => (
-                          <span key={i} className={styles.msStat}>{cleanStatName(p.property_type)}: {formatStatValue(p.property_type, p.property_value)}</span>
-                        ))}
-                        {l.properties.filter((p) => !p.is_primary).length === 0 && <span style={{ color: "var(--text-muted)" }}>—</span>}
+                        {secondary.length > 0
+                          ? secondary.map((p, i) => (
+                              <span key={i} className={styles.msStat}>{cleanStatName(p.property_type)}: {formatStatValue(p.property_type, p.property_value)}</span>
+                            ))
+                          : <span style={{ color: "var(--text-muted)" }}>—</span>}
                       </td>
-                    )}
-                    <td className={styles.msTime}>{l.sold_at ? timeAgo(l.sold_at) : "—"}</td>
-                  </tr>
-                ))}
+                      <td style={{ textAlign: "center", fontSize: "0.72rem", color: "var(--text-muted)" }}>{l.item_count}</td>
+                      <td className={styles.msTime}>{l.sold_at ? timeAgo(l.sold_at) : "—"}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

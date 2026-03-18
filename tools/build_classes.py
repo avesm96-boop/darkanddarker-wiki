@@ -405,6 +405,9 @@ def compute_derived_stats(base_stats):
     phys_dmg_reduction_raw = lerp_curve(ct_armor_reduction, 0)
     phys_dmg_reduction_pct = round(phys_dmg_reduction_raw * 100, 1)
 
+    # Magic Power: Will -> MagicalPower via CT_Will.json (1:1 linear curve)
+    ct_magic_power = load_curve_table("CT_Will.json", "MagicalPower")
+
     return {
         "health": round(health, 1),
         "move_speed": round(move_speed, 1),
@@ -414,6 +417,7 @@ def compute_derived_stats(base_stats):
         "memory_capacity": round(lerp_curve(ct_mem_cap, knowledge)),
         "magic_resistance_pct": round(lerp_curve(ct_magic_res, will), 1),
         "physical_power": round(lerp_curve(ct_phys_power, strength), 1),
+        "magic_power": round(lerp_curve(ct_magic_power, will), 1),
         "manual_dexterity_pct": round(lerp_curve(ct_manual_dex, dexterity) * 100, 1),
         "equip_speed_pct": round(lerp_curve(ct_equip_speed, dexterity) * 100, 1),
         "buff_duration_pct": round(lerp_curve(ct_buff_dur, will) * 100, 1),
@@ -1601,11 +1605,11 @@ def extract_perk_conditions(perk_id):
 SKILL_EFFECT_DIR_V2 = RAW_V2 / "Skill" / "SkillEffect"
 
 
-def _extract_scaling_from_effect(effect_path):
+def _extract_scaling_from_effect(effect_path, derived_stats=None):
     """Extract scaling data from a SpellEffect/SkillEffect/MusicEffect file.
 
     Returns a dict with base_damage, damage_type, scaling_pct, impact_power,
-    and a human-readable formula string, or None if no scaling data found.
+    formula, formula_text, and example, or None if no scaling data found.
     """
     data = load_json_silent(effect_path)
     if data is None:
@@ -1617,22 +1621,37 @@ def _extract_scaling_from_effect(effect_path):
 
     magical_base = props.get("ExecMagicalDamageBase")
     physical_base = props.get("ExecPhysicalDamageBase")
+    magical_heal_base = props.get("ExecMagicalHealBase")
     bonus_ratio = props.get("ExecAttributeBonusRatio")
     impact_power = props.get("ExecImpactPower")
 
-    # Must have at least a damage base or bonus ratio to be meaningful scaling
-    if magical_base is None and physical_base is None and bonus_ratio is None:
+    # Determine if this is a heal effect
+    is_heal = magical_heal_base is not None and magical_base is None and physical_base is None
+
+    # Must have at least a damage/heal base or bonus ratio to be meaningful scaling
+    if magical_base is None and physical_base is None and magical_heal_base is None and bonus_ratio is None:
         return None
 
-    base_damage = magical_base if magical_base is not None else physical_base
-    damage_type = "magical" if magical_base is not None else "physical"
+    if is_heal:
+        base_damage = magical_heal_base
+        damage_type = "magical"
+    else:
+        base_damage = magical_base if magical_base is not None else physical_base
+        damage_type = "magical" if magical_base is not None else "physical"
 
     scaling_pct = bonus_ratio / 10.0 if bonus_ratio is not None else None
 
-    # Build formula string
+    # Effect label: "healing" for heals, "damage" for everything else
+    effect_word = "healing" if is_heal else "damage"
+
+    # Power type label
+    is_magical = damage_type == "magical"
+    power_label = "Magic" if is_magical else "Physical"
+
+    # Build legacy formula string (backward-compatible)
     parts = []
     if base_damage is not None:
-        parts.append(f"{base_damage} base {damage_type} damage")
+        parts.append(f"{base_damage} base {damage_type} {effect_word}")
     if scaling_pct is not None:
         parts.append(f"{_format_number(scaling_pct)}% Power Scaling")
 
@@ -1640,6 +1659,8 @@ def _extract_scaling_from_effect(effect_path):
     if base_damage is not None:
         result["base_damage"] = base_damage
         result["damage_type"] = damage_type
+    if is_heal:
+        result["is_heal"] = True
     if scaling_pct is not None:
         result["scaling_pct"] = scaling_pct
     if impact_power is not None:
@@ -1647,10 +1668,43 @@ def _extract_scaling_from_effect(effect_path):
     if parts:
         result["formula"] = " + ".join(parts)
 
+    # Build formula_text and example
+    if base_damage is not None and scaling_pct is not None:
+        result["formula_text"] = (
+            f"Total = {base_damage} + ({_format_number(scaling_pct)}% x {power_label} Power)"
+        )
+    elif scaling_pct is not None and base_damage is None:
+        result["formula_text"] = (
+            f"Total = {power_label} Power x {_format_number(scaling_pct)}%"
+        )
+    elif base_damage is not None and scaling_pct is None:
+        result["formula_text"] = (
+            f"Flat {base_damage} {damage_type} {effect_word} (no scaling)"
+        )
+
+    # Compute worked example using the class's own base stats
+    if derived_stats is not None:
+        power = derived_stats.get("magic_power", 0) if is_magical else derived_stats.get("physical_power", 0)
+        power_val = round(power, 1)
+        if base_damage is not None and scaling_pct is not None:
+            scaled_rounded = int(round(scaling_pct / 100.0 * power_val))
+            total_display = base_damage + scaled_rounded
+            result["example"] = (
+                f"With {_format_number(power_val)} {power_label} Power: "
+                f"{base_damage} + {scaled_rounded} = {total_display} {effect_word}"
+            )
+        elif scaling_pct is not None and base_damage is None:
+            total = int(round(scaling_pct / 100.0 * power_val))
+            result["example"] = (
+                f"With {_format_number(power_val)} {power_label} Power: "
+                f"{total} {effect_word}"
+            )
+        # No example needed for flat damage (no scaling)
+
     return result if result else None
 
 
-def extract_spell_scaling(spell_id):
+def extract_spell_scaling(spell_id, derived_stats=None):
     """Extract scaling formula from SpellEffect files for a spell.
 
     Tries multiple naming patterns:
@@ -1663,13 +1717,13 @@ def extract_spell_scaling(spell_id):
     ]
     for path in candidates:
         if path.exists():
-            result = _extract_scaling_from_effect(path)
+            result = _extract_scaling_from_effect(path, derived_stats)
             if result is not None:
                 return result
     return None
 
 
-def extract_skill_scaling(skill_id):
+def extract_skill_scaling(skill_id, derived_stats=None):
     """Extract scaling formula from SkillEffect files for a skill.
 
     Tries multiple naming patterns:
@@ -1684,13 +1738,13 @@ def extract_skill_scaling(skill_id):
     ]
     for path in candidates:
         if path.exists():
-            result = _extract_scaling_from_effect(path)
+            result = _extract_scaling_from_effect(path, derived_stats)
             if result is not None:
                 return result
     return None
 
 
-def extract_song_scaling(song_id):
+def extract_song_scaling(song_id, derived_stats=None):
     """Extract scaling formula from MusicEffect files for a Bard song.
 
     Uses the Perfect tier for the displayed formula:
@@ -1698,7 +1752,7 @@ def extract_song_scaling(song_id):
     """
     path = MUSIC_EFFECT_DIR / f"Id_MusicEffect_{song_id}_Perfect.json"
     if path.exists():
-        return _extract_scaling_from_effect(path)
+        return _extract_scaling_from_effect(path, derived_stats)
     return None
 
 
@@ -1754,7 +1808,7 @@ def collect_perks(class_name, loc):
     return perks
 
 
-def collect_skills(class_name, loc):
+def collect_skills(class_name, loc, derived_stats=None):
     """Collect all skills for a given class."""
     skills = []
     for path in sorted(EXTRACTED_CLASSES.glob("Id_Skill_*.json")):
@@ -1773,7 +1827,7 @@ def collect_skills(class_name, loc):
         # Extract skill_type last segment (e.g., "Type.Skill.Instant" -> "instant")
         raw_type = data.get("skill_type", "")
         skill_type = raw_type.split(".")[-1].lower() if raw_type else ""
-        scaling = extract_skill_scaling(short_name)
+        scaling = extract_skill_scaling(short_name, derived_stats)
         skill_entry = {
             "id": short_name,
             "name": display_name,
@@ -1791,7 +1845,7 @@ def collect_skills(class_name, loc):
     return skills
 
 
-def collect_spells(class_name, loc):
+def collect_spells(class_name, loc, derived_stats=None):
     """Collect all spells for a given class from raw spell files."""
     spells = []
     spell_dir = RAW_V2 / "Spell" / "Spell"
@@ -1826,7 +1880,7 @@ def collect_spells(class_name, loc):
         # Extract casting_type last segment
         casting_type_tag = props.get("CastingType", {}).get("TagName", "")
         casting_type = casting_type_tag.split(".")[-1].lower() if casting_type_tag else ""
-        scaling = extract_spell_scaling(short_name)
+        scaling = extract_spell_scaling(short_name, derived_stats)
         spell_entry = {
             "id": short_name,
             "name": display_name,
@@ -1865,7 +1919,7 @@ def _read_song_note_count(short_name):
     return note_count, channeling_notes
 
 
-def collect_songs(class_name, loc):
+def collect_songs(class_name, loc, derived_stats=None):
     """Collect all Bard songs for a given class from raw music files."""
     songs = []
     music_dir = RAW_V2 / "Music" / "Music"
@@ -1898,7 +1952,7 @@ def collect_songs(class_name, loc):
         play_type_tag = props.get("PlayType", {}).get("TagName", "")
         casting_type = play_type_tag.split(".")[-1].lower() if play_type_tag else ""
 
-        scaling = extract_song_scaling(short_name)
+        scaling = extract_song_scaling(short_name, derived_stats)
         song_entry = {
             "id": short_name,
             "name": display_name,
@@ -2090,13 +2144,13 @@ def build_class(class_name, loc):
     perks = collect_perks(class_name, loc)
 
     # Skills
-    skills = collect_skills(class_name, loc)
+    skills = collect_skills(class_name, loc, derived_stats)
 
     # Spells
-    spells = collect_spells(class_name, loc)
+    spells = collect_spells(class_name, loc, derived_stats)
 
     # Songs (Bard music) - merge into spells list
-    songs = collect_songs(class_name, loc)
+    songs = collect_songs(class_name, loc, derived_stats)
     if songs:
         spells.extend(songs)
 

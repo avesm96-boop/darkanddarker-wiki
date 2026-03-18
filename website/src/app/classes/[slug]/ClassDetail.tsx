@@ -13,7 +13,10 @@ interface ScalingInfo {
   damage_type: string;
   scaling_pct: number;
   impact_power: number | null;
+  is_heal?: boolean;
   formula: string;
+  formula_text?: string;
+  example?: string;
 }
 
 interface Perk {
@@ -91,6 +94,7 @@ interface ClassData {
     memory_capacity: number;
     magic_resistance_pct: number;
     physical_power: number;
+    magic_power: number;
     manual_dexterity_pct: number;
     equip_speed_pct: number;
     buff_duration_pct: number;
@@ -143,6 +147,7 @@ const DERIVED_STAT_META: { key: string; label: string; pct: boolean }[] = [
   { key: "spell_casting_speed_pct", label: "Spell Casting Speed", pct: true },
   { key: "magic_resistance_pct", label: "Magic Resistance", pct: true },
   { key: "physical_power", label: "Physical Power", pct: false },
+  { key: "magic_power", label: "Magic Power", pct: false },
   { key: "manual_dexterity_pct", label: "Manual Dexterity", pct: true },
   { key: "equip_speed_pct", label: "Equip Speed", pct: true },
   { key: "buff_duration_pct", label: "Buff Duration", pct: true },
@@ -478,8 +483,24 @@ export default function ClassDetail({ slug }: { slug: string }) {
                     {cleanDescription(perk.description)}
                     {perk.scaling && (
                       <div className={styles.scalingBox}>
-                        <span className={styles.scalingLabel}>Scaling:</span>{" "}
-                        {perk.scaling.formula}
+                        {perk.scaling.formula_text ? (
+                          <>
+                            <div className={styles.scalingFormulaRow}>
+                              <span className={styles.scalingLabel}>Formula:</span>{" "}
+                              <span className={styles.scalingFormula}>{perk.scaling.formula_text}</span>
+                            </div>
+                            {perk.scaling.example && (
+                              <div className={styles.scalingExample}>
+                                Example ({classData.name} base stats): {perk.scaling.example}
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <span className={styles.scalingLabel}>Scaling:</span>{" "}
+                            {perk.scaling.formula}
+                          </>
+                        )}
                         {perk.scaling.impact_power != null && (
                           <div className={styles.impactPower}>
                             Impact Power: {perk.scaling.impact_power}
@@ -558,8 +579,24 @@ export default function ClassDetail({ slug }: { slug: string }) {
                     )}
                     {skill.scaling && (
                       <div className={styles.scalingBox}>
-                        <span className={styles.scalingLabel}>Scaling:</span>{" "}
-                        {skill.scaling.formula}
+                        {skill.scaling.formula_text ? (
+                          <>
+                            <div className={styles.scalingFormulaRow}>
+                              <span className={styles.scalingLabel}>Formula:</span>{" "}
+                              <span className={styles.scalingFormula}>{skill.scaling.formula_text}</span>
+                            </div>
+                            {skill.scaling.example && (
+                              <div className={styles.scalingExample}>
+                                Example ({classData.name} base stats): {skill.scaling.example}
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <span className={styles.scalingLabel}>Scaling:</span>{" "}
+                            {skill.scaling.formula}
+                          </>
+                        )}
                         {skill.scaling.impact_power != null && (
                           <div className={styles.impactPower}>
                             Impact Power: {skill.scaling.impact_power}
@@ -695,8 +732,24 @@ export default function ClassDetail({ slug }: { slug: string }) {
 
                               {spell.scaling && (
                                 <div className={styles.scalingBox}>
-                                  <span className={styles.scalingLabel}>Scaling:</span>{" "}
-                                  {spell.scaling.formula}
+                                  {spell.scaling.formula_text ? (
+                                    <>
+                                      <div className={styles.scalingFormulaRow}>
+                                        <span className={styles.scalingLabel}>Formula:</span>{" "}
+                                        <span className={styles.scalingFormula}>{spell.scaling.formula_text}</span>
+                                      </div>
+                                      {spell.scaling.example && (
+                                        <div className={styles.scalingExample}>
+                                          Example ({classData.name} base stats): {spell.scaling.example}
+                                        </div>
+                                      )}
+                                    </>
+                                  ) : (
+                                    <>
+                                      <span className={styles.scalingLabel}>Scaling:</span>{" "}
+                                      {spell.scaling.formula}
+                                    </>
+                                  )}
                                   {spell.scaling.impact_power != null && (
                                     <div className={styles.impactPower}>
                                       Impact Power: {spell.scaling.impact_power}

@@ -1,6 +1,6 @@
 {
   "version": "2026-03-18",
-  "generated_at": "2026-03-18T02:22:47.126591+00:00",
+  "generated_at": "2026-03-18T02:42:45.520617+00:00",
   "data": {
     "classes": [
       {
@@ -26,6 +26,7 @@
           "memory_capacity": 0,
           "magic_resistance_pct": 42.0,
           "physical_power": 20.0,
+          "magic_power": 18.0,
           "manual_dexterity_pct": -3.0,
           "equip_speed_pct": -21.0,
           "buff_duration_pct": 3.0,
@@ -169,7 +170,9 @@
             "use_moving": true,
             "scaling": {
               "scaling_pct": 100.0,
-              "formula": "100% Power Scaling"
+              "formula": "100% Power Scaling",
+              "formula_text": "Total = Physical Power x 100%",
+              "example": "With 20 Physical Power: 20 damage"
             },
             "icon": "/icons/skills/Icon_Skill_AchillesStrike.png"
           },
@@ -292,6 +295,7 @@
           "memory_capacity": 14,
           "magic_resistance_pct": 18.0,
           "physical_power": 13.0,
+          "magic_power": 11.0,
           "manual_dexterity_pct": 15.0,
           "equip_speed_pct": 25.0,
           "buff_duration_pct": -8.0,
@@ -729,7 +733,9 @@
               "base_damage": 5,
               "damage_type": "magical",
               "scaling_pct": 50.0,
-              "formula": "5 base magical damage + 50% Power Scaling"
+              "formula": "5 base magical damage + 50% Power Scaling",
+              "formula_text": "Total = 5 + (50% x Magic Power)",
+              "example": "With 11 Magic Power: 5 + 6 = 11 damage"
             },
             "icon": "/icons/music/Icon_Music_DinOfDarkness.png",
             "bad_range": 450,
@@ -852,7 +858,9 @@
               "base_damage": 30,
               "damage_type": "physical",
               "scaling_pct": 50.0,
-              "formula": "30 base physical damage + 50% Power Scaling"
+              "formula": "30 base physical damage + 50% Power Scaling",
+              "formula_text": "Total = 30 + (50% x Physical Power)",
+              "example": "With 13 Physical Power: 30 + 6 = 36 damage"
             },
             "icon": "/icons/music/Icon_Music_PiercingShrill.png",
             "bad_range": 450,
@@ -1102,6 +1110,7 @@
           "memory_capacity": 14,
           "magic_resistance_pct": 62.0,
           "physical_power": 11.0,
+          "magic_power": 23.0,
           "manual_dexterity_pct": -1.0,
           "equip_speed_pct": -7.0,
           "buff_duration_pct": 8.0,
@@ -1232,7 +1241,9 @@
               "base_damage": 100,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "100 base magical damage + 100% Power Scaling"
+              "formula": "100 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 100 + (100% x Magic Power)",
+              "example": "With 23 Magic Power: 100 + 23 = 123 damage"
             },
             "icon": "/icons/skills/Icon_Skill_HolyPurification.png"
           },
@@ -1247,7 +1258,9 @@
               "base_damage": 25,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "25 base magical damage + 100% Power Scaling"
+              "formula": "25 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 25 + (100% x Magic Power)",
+              "example": "With 23 Magic Power: 25 + 23 = 48 damage"
             },
             "icon": "/icons/skills/Icon_Skill_Judgement.png"
           },
@@ -1262,7 +1275,9 @@
               "base_damage": 10,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "10 base magical damage + 100% Power Scaling"
+              "formula": "10 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 10 + (100% x Magic Power)",
+              "example": "With 23 Magic Power: 10 + 23 = 33 damage"
             },
             "icon": "/icons/skills/Icon_Skill_Smite.png"
           },
@@ -1379,7 +1394,9 @@
               "base_damage": 20,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "20 base magical damage + 100% Power Scaling"
+              "formula": "20 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 20 + (100% x Magic Power)",
+              "example": "With 23 Magic Power: 20 + 23 = 43 damage"
             },
             "icon": "/icons/spells/Icon_Spell_HolyStrike.png"
           },
@@ -1395,8 +1412,13 @@
             "cost_type": "count",
             "casting_type": "casting",
             "scaling": {
+              "base_damage": 20,
+              "damage_type": "magical",
+              "is_heal": true,
               "scaling_pct": 100.0,
-              "formula": "100% Power Scaling"
+              "formula": "20 base magical healing + 100% Power Scaling",
+              "formula_text": "Total = 20 + (100% x Magic Power)",
+              "example": "With 23 Magic Power: 20 + 23 = 43 healing"
             },
             "icon": "/icons/spells/Icon_Spell_LesserHeal.png"
           },
@@ -1480,6 +1502,7 @@
           "memory_capacity": 14,
           "magic_resistance_pct": 42.0,
           "physical_power": 12.0,
+          "magic_power": 18.0,
           "manual_dexterity_pct": -3.0,
           "equip_speed_pct": -21.0,
           "buff_duration_pct": 3.0,
@@ -1660,7 +1683,9 @@
               "base_damage": 15,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "15 base magical damage + 100% Power Scaling"
+              "formula": "15 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 15 + (100% x Magic Power)",
+              "example": "With 18 Magic Power: 15 + 18 = 33 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Dreamfire.png"
           },
@@ -1718,7 +1743,9 @@
               "base_damage": 15,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "15 base magical damage + 100% Power Scaling"
+              "formula": "15 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 15 + (100% x Magic Power)",
+              "example": "With 18 Magic Power: 15 + 18 = 33 damage"
             },
             "icon": "/icons/spells/Icon_Spell_OrbofNature.png"
           },
@@ -1889,6 +1916,7 @@
           "memory_capacity": 9,
           "magic_resistance_pct": 30.0,
           "physical_power": 15.0,
+          "magic_power": 15.0,
           "manual_dexterity_pct": 0.0,
           "equip_speed_pct": 0.0,
           "buff_duration_pct": 0.0,
@@ -2097,7 +2125,9 @@
               "base_damage": 15,
               "damage_type": "physical",
               "scaling_pct": 100.0,
-              "formula": "15 base physical damage + 100% Power Scaling"
+              "formula": "15 base physical damage + 100% Power Scaling",
+              "formula_text": "Total = 15 + (100% x Physical Power)",
+              "example": "With 15 Physical Power: 15 + 15 = 30 damage"
             },
             "icon": "/icons/skills/Icon_Skill_PommelStrike.png"
           },
@@ -2121,7 +2151,9 @@
               "base_damage": 30,
               "damage_type": "physical",
               "scaling_pct": 100.0,
-              "formula": "30 base physical damage + 100% Power Scaling"
+              "formula": "30 base physical damage + 100% Power Scaling",
+              "formula_text": "Total = 30 + (100% x Physical Power)",
+              "example": "With 15 Physical Power: 30 + 15 = 45 damage"
             },
             "icon": "/icons/skills/Icon_Skill_ShieldSlam.png"
           },
@@ -2190,6 +2222,7 @@
           "memory_capacity": 6,
           "magic_resistance_pct": 15.0,
           "physical_power": 12.0,
+          "magic_power": 10.0,
           "manual_dexterity_pct": 9.0,
           "equip_speed_pct": 15.0,
           "buff_duration_pct": -11.0,
@@ -2434,6 +2467,7 @@
           "memory_capacity": 4,
           "magic_resistance_pct": 15.0,
           "physical_power": 9.0,
+          "magic_power": 10.0,
           "manual_dexterity_pct": 15.0,
           "equip_speed_pct": 25.0,
           "buff_duration_pct": -11.0,
@@ -2577,7 +2611,9 @@
               "base_damage": 10,
               "damage_type": "physical",
               "scaling_pct": 100.0,
-              "formula": "10 base physical damage + 100% Power Scaling"
+              "formula": "10 base physical damage + 100% Power Scaling",
+              "formula_text": "Total = 10 + (100% x Physical Power)",
+              "example": "With 9 Physical Power: 10 + 9 = 19 damage"
             },
             "icon": "/icons/skills/Icon_Skill_Caltrop.png"
           },
@@ -2627,7 +2663,8 @@
             "scaling": {
               "base_damage": 10,
               "damage_type": "physical",
-              "formula": "10 base physical damage"
+              "formula": "10 base physical damage",
+              "formula_text": "Flat 10 physical damage (no scaling)"
             }
           },
           {
@@ -2677,6 +2714,7 @@
           "memory_capacity": 14,
           "magic_resistance_pct": 70.0,
           "physical_power": 10.0,
+          "magic_power": 25.0,
           "manual_dexterity_pct": 9.0,
           "equip_speed_pct": 15.0,
           "buff_duration_pct": 10.0,
@@ -2837,7 +2875,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 4,
-              "formula": "20 base magical damage + 100% Power Scaling"
+              "formula": "20 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 20 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 20 + 25 = 45 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Eruption.png"
           },
@@ -2857,7 +2897,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 4,
-              "formula": "7 base magical damage + 100% Power Scaling"
+              "formula": "7 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 7 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 7 + 25 = 32 damage"
             },
             "icon": "/icons/spells/Icon_Spell_FireArrow.png"
           },
@@ -2877,7 +2919,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 12,
-              "formula": "25 base magical damage + 100% Power Scaling"
+              "formula": "25 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 25 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 25 + 25 = 50 damage"
             },
             "icon": "/icons/spells/Icon_Spell_FireOrb.png"
           },
@@ -2897,7 +2941,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 6,
-              "formula": "30 base magical damage + 100% Power Scaling"
+              "formula": "30 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 30 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 30 + 25 = 55 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Flamestrike.png"
           },
@@ -2930,7 +2976,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 4,
-              "formula": "30 base magical damage + 100% Power Scaling"
+              "formula": "30 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 30 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 30 + 25 = 55 damage"
             },
             "icon": "/icons/spells/Icon_Spell_IceSpear.png"
           },
@@ -2962,7 +3010,9 @@
               "base_damage": 5,
               "damage_type": "magical",
               "scaling_pct": 50.0,
-              "formula": "5 base magical damage + 50% Power Scaling"
+              "formula": "5 base magical damage + 50% Power Scaling",
+              "formula_text": "Total = 5 + (50% x Magic Power)",
+              "example": "With 25 Magic Power: 5 + 12 = 17 damage"
             },
             "icon": "/icons/spells/Icon_Spell_LightningBolt.png"
           },
@@ -2981,7 +3031,9 @@
               "base_damage": 5,
               "damage_type": "magical",
               "scaling_pct": 50.0,
-              "formula": "5 base magical damage + 50% Power Scaling"
+              "formula": "5 base magical damage + 50% Power Scaling",
+              "formula_text": "Total = 5 + (50% x Magic Power)",
+              "example": "With 25 Magic Power: 5 + 12 = 17 damage"
             },
             "icon": "/icons/spells/Icon_Spell_LightningSphere.png"
           },
@@ -3052,7 +3104,9 @@
               "base_damage": 15,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "15 base magical damage + 100% Power Scaling"
+              "formula": "15 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 15 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 15 + 25 = 40 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Vortex.png"
           },
@@ -3072,7 +3126,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 4,
-              "formula": "15 base magical damage + 100% Power Scaling"
+              "formula": "15 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 15 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 15 + 25 = 40 damage"
             },
             "icon": "/icons/spells/Icon_Spell_WaterBolt.png"
           },
@@ -3091,7 +3147,9 @@
               "base_damage": 10,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "10 base magical damage + 100% Power Scaling"
+              "formula": "10 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 10 + (100% x Magic Power)",
+              "example": "With 25 Magic Power: 10 + 25 = 35 damage"
             },
             "icon": "/icons/spells/Icon_Spell_WindBlast.png"
           }
@@ -3123,6 +3181,7 @@
           "memory_capacity": 9,
           "magic_resistance_pct": 58.0,
           "physical_power": 11.0,
+          "magic_power": 22.0,
           "manual_dexterity_pct": 0.0,
           "equip_speed_pct": 0.0,
           "buff_duration_pct": 7.0,
@@ -3244,7 +3303,9 @@
               "base_damage": 12,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "12 base magical damage + 100% Power Scaling"
+              "formula": "12 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 12 + (100% x Magic Power)",
+              "example": "With 22 Magic Power: 12 + 22 = 34 damage"
             },
             "icon": "/icons/skills/Icon_Skill_BlowofCorruption.png"
           },
@@ -3300,7 +3361,8 @@
             "scaling": {
               "base_damage": 3,
               "damage_type": "magical",
-              "formula": "3 base magical damage"
+              "formula": "3 base magical damage",
+              "formula_text": "Flat 3 magical damage (no scaling)"
             },
             "icon": "/icons/spells/Icon_Spell_BloodstainedBlade.png"
           },
@@ -3319,7 +3381,9 @@
               "base_damage": 20,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "20 base magical damage + 100% Power Scaling"
+              "formula": "20 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 20 + (100% x Magic Power)",
+              "example": "With 22 Magic Power: 20 + 22 = 42 damage"
             },
             "icon": "/icons/spells/Icon_Spell_BoltofDarkness.png"
           },
@@ -3338,7 +3402,9 @@
               "base_damage": 15,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "15 base magical damage + 100% Power Scaling"
+              "formula": "15 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 15 + (100% x Magic Power)",
+              "example": "With 22 Magic Power: 15 + 22 = 37 damage"
             },
             "icon": "/icons/spells/Icon_Spell_CurseofPain.png"
           },
@@ -3422,7 +3488,9 @@
               "base_damage": 5,
               "damage_type": "magical",
               "scaling_pct": 25.0,
-              "formula": "5 base magical damage + 25% Power Scaling"
+              "formula": "5 base magical damage + 25% Power Scaling",
+              "formula_text": "Total = 5 + (25% x Magic Power)",
+              "example": "With 22 Magic Power: 5 + 6 = 11 damage"
             },
             "icon": "/icons/spells/Icon_Spell_LifeDrain.png"
           },
@@ -3454,7 +3522,9 @@
               "base_damage": 12,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "12 base magical damage + 100% Power Scaling"
+              "formula": "12 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 12 + (100% x Magic Power)",
+              "example": "With 22 Magic Power: 12 + 22 = 34 damage"
             },
             "icon": "/icons/spells/Icon_Spell_RayOfDarkness.png"
           },
@@ -3473,7 +3543,9 @@
               "base_damage": 3,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "3 base magical damage + 100% Power Scaling"
+              "formula": "3 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 3 + (100% x Magic Power)",
+              "example": "With 22 Magic Power: 3 + 22 = 25 damage"
             },
             "icon": "/icons/spells/Icon_Spell_SpellPredation.png"
           },
@@ -3518,6 +3590,7 @@
           "memory_capacity": 19,
           "magic_resistance_pct": 50.0,
           "physical_power": 6.0,
+          "magic_power": 20.0,
           "manual_dexterity_pct": 6.0,
           "equip_speed_pct": 10.0,
           "buff_duration_pct": 5.0,
@@ -3684,7 +3757,9 @@
               "base_damage": 30,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "30 base magical damage + 100% Power Scaling"
+              "formula": "30 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 30 + (100% x Magic Power)",
+              "example": "With 20 Magic Power: 30 + 20 = 50 damage"
             },
             "icon": "/icons/spells/Icon_Spell_ChainLightning.png"
           },
@@ -3704,7 +3779,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 6,
-              "formula": "23 base magical damage + 100% Power Scaling"
+              "formula": "23 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 23 + (100% x Magic Power)",
+              "example": "With 20 Magic Power: 23 + 20 = 43 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Explosion.png"
           },
@@ -3724,7 +3801,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 6,
-              "formula": "20 base magical damage + 100% Power Scaling"
+              "formula": "20 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 20 + (100% x Magic Power)",
+              "example": "With 20 Magic Power: 20 + 20 = 40 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Fireball.png"
           },
@@ -3757,7 +3836,9 @@
               "damage_type": "magical",
               "scaling_pct": 100.0,
               "impact_power": 4,
-              "formula": "30 base magical damage + 100% Power Scaling"
+              "formula": "30 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 30 + (100% x Magic Power)",
+              "example": "With 20 Magic Power: 30 + 20 = 50 damage"
             },
             "icon": "/icons/spells/Icon_Spell_IceBolt.png"
           },
@@ -3776,7 +3857,9 @@
               "base_damage": 5,
               "damage_type": "magical",
               "scaling_pct": 50.0,
-              "formula": "5 base magical damage + 50% Power Scaling"
+              "formula": "5 base magical damage + 50% Power Scaling",
+              "formula_text": "Total = 5 + (50% x Magic Power)",
+              "example": "With 20 Magic Power: 5 + 10 = 15 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Ignite.png"
           },
@@ -3834,7 +3917,9 @@
               "base_damage": 30,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "30 base magical damage + 100% Power Scaling"
+              "formula": "30 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 30 + (100% x Magic Power)",
+              "example": "With 20 Magic Power: 30 + 20 = 50 damage"
             },
             "icon": "/icons/spells/Icon_Spell_LightningStrike.png"
           },
@@ -3867,7 +3952,9 @@
               "damage_type": "magical",
               "scaling_pct": 50.0,
               "impact_power": 2,
-              "formula": "10 base magical damage + 50% Power Scaling"
+              "formula": "10 base magical damage + 50% Power Scaling",
+              "formula_text": "Total = 10 + (50% x Magic Power)",
+              "example": "With 20 Magic Power: 10 + 10 = 20 damage"
             },
             "icon": "/icons/spells/Icon_Spell_MagicMissile.png"
           },
@@ -3886,7 +3973,9 @@
               "base_damage": 18,
               "damage_type": "magical",
               "scaling_pct": 100.0,
-              "formula": "18 base magical damage + 100% Power Scaling"
+              "formula": "18 base magical damage + 100% Power Scaling",
+              "formula_text": "Total = 18 + (100% x Magic Power)",
+              "example": "With 20 Magic Power: 18 + 20 = 38 damage"
             },
             "icon": "/icons/spells/Icon_Spell_Zap.png"
           }

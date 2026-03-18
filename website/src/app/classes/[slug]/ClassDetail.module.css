@@ -594,6 +594,28 @@
   color: #68a8e0;
 }
 
+.scalingFormulaRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.scalingFormula {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  letter-spacing: 0.02em;
+}
+
+.scalingExample {
+  margin-top: 3px;
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
 .impactPower {
   margin-top: 3px;
   font-family: var(--font-heading);

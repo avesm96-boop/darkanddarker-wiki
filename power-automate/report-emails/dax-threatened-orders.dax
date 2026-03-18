@@ -1,6 +1,10 @@
 // ============================================================
 // DAX Query: Zagrożone zamówienia (marża < 5%)
 // Użycie: Power Automate → Power BI connector → "Run a query"
+// TABELA 1: Zagrożone zamówienia
+// TABELA 2: Ceny sprzedaży
+// TABELA 3: Ceny zakupu
+// TABELA 4: Kontakty e-mail (Webasto + CuS)
 // ============================================================
 
 // ----- TABELA 1: Zagrożone zamówienia per Key_Sales_CuS -----
@@ -171,3 +175,41 @@ VAR _FallbackPrices =
 RETURN
 UNION(_BestPurchasePrices, _FallbackPrices)
 ORDER BY [Item_Number], [Vendor], [Quantity] ASC
+
+
+// ----- TABELA 4: Kontakty e-mail dla zagrożonych Key_Sales_CuS -----
+// Źródła: 00_Webasto_contacts (kontakt wewnętrzny) + 00_Webasto_contacts_CuS (kontakt klienta)
+// Wynik: jedna tabela z Key_Sales_CuS, źródłem kontaktu i adresem e-mail
+EVALUATE
+VAR _ThreatenedKeys =
+    CALCULATETABLE(
+        DISTINCT('04_Open_Orders'[Key_Sales_CuS]),
+        '04_Open_Orders'[Margin] < 0.05
+    )
+// Kontakty Webasto (wewnętrzne)
+VAR _WebastoContacts =
+    FILTER(
+        SELECTCOLUMNS(
+            '00_Webasto_contacts',
+            "Key_Sales_CuS",    RELATED('04_Open_Orders'[Key_Sales_CuS]),
+            "Email",            '00_Webasto_contacts'[E-mail],
+            "Name",             '00_Webasto_contacts'[Name],
+            "Source",           "Webasto"
+        ),
+        [Key_Sales_CuS] IN _ThreatenedKeys && NOT(ISBLANK([Email]))
+    )
+// Kontakty CuS (klienta)
+VAR _CuSContacts =
+    FILTER(
+        SELECTCOLUMNS(
+            '00_Webasto_contacts_CuS',
+            "Key_Sales_CuS",    RELATED('04_Open_Orders'[Key_Sales_CuS]),
+            "Email",            '00_Webasto_contacts_CuS'[E-mail],
+            "Name",             '00_Webasto_contacts_CuS'[Name],
+            "Source",           "CuS"
+        ),
+        [Key_Sales_CuS] IN _ThreatenedKeys && NOT(ISBLANK([Email]))
+    )
+RETURN
+UNION(_WebastoContacts, _CuSContacts)
+ORDER BY [Key_Sales_CuS], [Source]

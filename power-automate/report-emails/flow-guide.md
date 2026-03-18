@@ -79,9 +79,22 @@ Użyj sekcji **TABELA 3** z pliku DAX.
 
 ---
 
-### 5. Parse JSON (x3)
+### 5. Run a query — Kontakty e-mail
 
-Dla każdego wyniku zapytania dodaj akcję **Parse JSON**:
+Użyj sekcji **TABELA 4** z pliku DAX.
+Zwraca adresy e-mail z dwóch tabel kontaktów:
+- `00_Webasto_contacts` — kontakt wewnętrzny Webasto
+- `00_Webasto_contacts_CuS` — kontakt po stronie klienta
+
+Każdy wiersz zawiera: `Key_Sales_CuS`, `Email`, `Name`, `Source` (`"Webasto"` lub `"CuS"`).
+
+> Nazwij ten krok: `queryContacts`
+
+---
+
+### 6. Parse JSON (x4)
+
+Dla każdego wyniku zapytania dodaj akcję **Parse JSON** (4 akcje: zamówienia, ceny sprzedaży, ceny zakupu, kontakty).
 
 **Schema** (przykład dla zagrożonych zamówień):
 ```json
@@ -115,9 +128,30 @@ Dla każdego wyniku zapytania dodaj akcję **Parse JSON**:
 }
 ```
 
+**Schema dla kontaktów** (`parseContacts`):
+```json
+{
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Key_Sales_CuS": { "type": "string" },
+          "Email":          { "type": "string" },
+          "Name":           { "type": "string" },
+          "Source":          { "type": "string" }
+        }
+      }
+    }
+  }
+}
+```
+
 ---
 
-### 6. Select distinct Key_Sales_CuS
+### 7. Select distinct Key_Sales_CuS
 
 - **Action**: Select
 - **From**: `body('parseThreatenedOrders')?['results']`
@@ -133,34 +167,34 @@ union(body('Select'), body('Select'))
 
 ---
 
-### 7. Apply to each — Per Key_Sales_CuS
+### 8. Apply to each — Per Key_Sales_CuS
 
 **Input**: `outputs('distinctKeys')`
 
 Wewnątrz pętli:
 
-#### 7a. Initialize variable `currentKeySalesCuS`
+#### 8a. Initialize variable `currentKeySalesCuS`
 ```
 items('Apply_to_each_key')['Key_Sales_CuS']
 ```
 
-#### 7b. Filter array — zamówienia dla bieżącego klucza
+#### 8b. Filter array — zamówienia dla bieżącego klucza
 - **From**: `body('parseThreatenedOrders')?['results']`
 - **Condition**: `item()?['Key_Sales_CuS']` is equal to `variables('currentKeySalesCuS')`
 
 > Nazwij: `filteredOrders`
 
-#### 7c. Filter array — unikalne Item numbers
+#### 8c. Filter array — unikalne Item numbers
 Wyciągnij unikalne `Item_Number` z `filteredOrders`.
 
-#### 7d. Filter array — ceny sprzedaży dla tych produktów
+#### 8d. Filter array — ceny sprzedaży dla tych produktów
 - **From**: `body('parseSalesPrices')?['results']`
 - **Condition**: `item()?['Item_Number']` is in lista unikalnych items
 
-#### 7e. Filter array — ceny zakupu dla tych produktów
+#### 8e. Filter array — ceny zakupu dla tych produktów
 Analogicznie jak 7d, ale z `parsePurchasePrices`.
 
-#### 7f. Compose HTML — zamówienia
+#### 8f. Compose HTML — zamówienia
 Użyj akcji **Select** + **Join** lub pętli **Apply to each** do zbudowania wierszy HTML:
 
 ```
@@ -183,31 +217,61 @@ Użyj akcji **Select** + **Join** lub pętli **Apply to each** do zbudowania wie
 </tr>
 ```
 
-#### 7g. Compose HTML — ceny sprzedaży i zakupu
+#### 8g. Compose HTML — ceny sprzedaży i zakupu
 Analogicznie jak 7f, dla tabel cen.
 
-#### 7h. Compose — Podsumowanie
+#### 8h. Compose — Podsumowanie
 Oblicz:
 - `threatenedCount` — `length(body('filteredOrders'))`
 - `minMargin` — `min(...)` z filtrowanych zamówień
 - `totalAmountEUR` — `sum(...)` z Amount_EUR
 
-#### 7i. Send an email (V2) — Outlook
-- **To**: Adres e-mail powiązany z `Key_Sales_CuS` (z tabeli mapowania lub Bridge_Customer)
+#### 8i. Filter array — kontakty e-mail dla bieżącego klucza
+- **From**: `body('parseContacts')?['results']`
+- **Condition**: `item()?['Key_Sales_CuS']` is equal to `variables('currentKeySalesCuS')`
+
+> Nazwij: `filteredContacts`
+
+Wynik zawiera adresy z obu tabel (`Source`: `"Webasto"` i `"CuS"`).
+
+#### 8j. Compose — lista adresów e-mail
+Zbierz adresy w formacie rozdzielonym średnikiem (`;`):
+```
+join(body('filteredContacts'), ';')
+```
+Wyrażenie:
+```
+join(
+  map(body('filteredContacts'), item()?['Email']),
+  ';'
+)
+```
+Lub użyj **Select** → mapuj na `item()?['Email']` → **Join** z separatorem `;`.
+
+> Nazwij: `recipientEmails`
+
+#### 8k. Send an email (V2) — Outlook
+- **To**: `outputs('recipientEmails')` (adresy z `00_Webasto_contacts` + `00_Webasto_contacts_CuS`, oddzielone `;`)
 - **Subject**: `⚠ Zagrożone zamówienia — @{variables('currentKeySalesCuS')} — @{utcNow('dd.MM.yyyy')}`
 - **Body**: Wklej zawartość `email-template.html` z podstawionymi zmiennymi
 - **Is HTML**: Yes
+
+> **Uwaga**: E-mail trafia na dwa adresy — jeden z tabeli `00_Webasto_contacts` (kontakt wewnętrzny), drugi z `00_Webasto_contacts_CuS` (kontakt klienta). Jeśli dla danego `Key_Sales_CuS` istnieje tylko jeden kontakt, e-mail zostanie wysłany tylko na ten jeden adres.
 
 ---
 
 ## Mapowanie e-mail → Key_Sales_CuS
 
-Potrzebujesz tabeli mapującej `Key_Sales_CuS` na adres e-mail odbiorcy.
+Adresy e-mail pobierane są z **dwóch tabel Power BI** (zapytanie DAX — TABELA 4):
 
-**Opcje**:
-1. **Dodatkowa tabela w Power BI** z kolumnami: `Key_Sales_CuS`, `Email`
-2. **SharePoint List** jako źródło mapowania
-3. **Excel Online** w OneDrive/SharePoint
+| Tabela | Rola | Kolumna |
+|---|---|---|
+| `00_Webasto_contacts` | Kontakt wewnętrzny Webasto | `E-mail` |
+| `00_Webasto_contacts_CuS` | Kontakt po stronie klienta | `E-mail` |
+
+Obie tabele muszą mieć relację z `04_Open_Orders` w modelu Power BI (przez `Key_Sales_CuS` lub powiązany klucz), tak aby `RELATED()` w DAX poprawnie zwrócił `Key_Sales_CuS`.
+
+Każdy e-mail jest wysyłany na **oba adresy** (pole "To" z separatorem `;`).
 
 ---
 
@@ -222,12 +286,13 @@ Potrzebujesz tabeli mapującej `Key_Sales_CuS` na adres e-mail odbiorcy.
 ┌──────────────────────────────────┐
 │  Power BI: Query zagrożone zam. │──┐
 │  Power BI: Query ceny sprzedaży │  │  (równolegle)
-│  Power BI: Query ceny zakupu    │──┘
+│  Power BI: Query ceny zakupu    │  │
+│  Power BI: Query kontakty email │──┘
 └──────────────┬───────────────────┘
                │
                ▼
 ┌──────────────────────────────────┐
-│  Parse JSON (x3)                │
+│  Parse JSON (x4)                │
 └──────────────┬───────────────────┘
                │
                ▼
@@ -242,9 +307,11 @@ Potrzebujesz tabeli mapującej `Key_Sales_CuS` na adres e-mail odbiorcy.
 │  │ Filter zamówienia per klucz       │  │
 │  │ Filter ceny sprzedaży per items   │  │
 │  │ Filter ceny zakupu per items      │  │
+│  │ Filter kontakty per klucz         │  │
 │  │ Build HTML tables                 │  │
 │  │ Calculate summary                 │  │
-│  │ Send email                        │  │
+│  │ Build recipient list (;)          │  │
+│  │ Send email → oba adresy           │  │
 │  └────────────────────────────────────┘  │
 └──────────────────────────────────────────┘
 ```
@@ -255,6 +322,6 @@ Potrzebujesz tabeli mapującej `Key_Sales_CuS` na adres e-mail odbiorcy.
 
 | Plik | Opis |
 |---|---|
-| `dax-threatened-orders.dax` | 3 zapytania DAX (zamówienia, ceny sprzedaży, ceny zakupu) |
+| `dax-threatened-orders.dax` | 4 zapytania DAX (zamówienia, ceny sprzedaży, ceny zakupu, kontakty) |
 | `email-template.html` | Szablon HTML e-maila z placeholderami Power Automate |
 | `flow-guide.md` | Ten dokument — instrukcja budowy flow |

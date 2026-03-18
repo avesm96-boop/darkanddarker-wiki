@@ -203,6 +203,42 @@ function cleanDescription(raw: string): string {
 // Component
 // ---------------------------------------------------------------------------
 
+function ScalingDisplay({ scaling, className }: { scaling: ScalingInfo; className: string }) {
+  const powerType = scaling.damage_type === "physical" ? "Physical" : "Magical";
+  const scalingLabel = scaling.scaling_pct
+    ? `${scaling.scaling_pct}% ${powerType} Power Scaling`
+    : "No scaling";
+
+  return (
+    <div className={styles.scalingContainer}>
+      {scaling.scaling_pct > 0 && (
+        <div className={styles.scalingItem}>
+          <span className={styles.scalingItemLabel}>Scaling</span>
+          <span className={styles.scalingItemValue}>{scalingLabel}</span>
+        </div>
+      )}
+      {scaling.formula_text && (
+        <div className={styles.scalingItem}>
+          <span className={styles.scalingItemLabel}>Formula</span>
+          <span className={styles.scalingItemValue}>{scaling.formula_text}</span>
+        </div>
+      )}
+      {scaling.example && (
+        <div className={styles.scalingItem}>
+          <span className={styles.scalingItemLabel}>Example ({className})</span>
+          <span className={styles.scalingItemValue}>{scaling.example}</span>
+        </div>
+      )}
+      {scaling.impact_power != null && (
+        <div className={styles.scalingItem}>
+          <span className={styles.scalingItemLabel}>Impact Power</span>
+          <span className={styles.scalingItemValue}>{scaling.impact_power}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ClassDetail({ slug }: { slug: string }) {
   const [classData, setClassData] = useState<ClassData | null>(null);
   const [mergeRecipes, setMergeRecipes] = useState<SpellMergeRecipe[]>([]);
@@ -482,31 +518,7 @@ export default function ClassDetail({ slug }: { slug: string }) {
                   <div className={styles.expandCardContent}>
                     {cleanDescription(perk.description)}
                     {perk.scaling && (
-                      <div className={styles.scalingBox}>
-                        {perk.scaling.formula_text ? (
-                          <>
-                            <div className={styles.scalingFormulaRow}>
-                              <span className={styles.scalingLabel}>Formula:</span>{" "}
-                              <span className={styles.scalingFormula}>{perk.scaling.formula_text}</span>
-                            </div>
-                            {perk.scaling.example && (
-                              <div className={styles.scalingExample}>
-                                Example ({classData.name} base stats): {perk.scaling.example}
-                              </div>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            <span className={styles.scalingLabel}>Scaling:</span>{" "}
-                            {perk.scaling.formula}
-                          </>
-                        )}
-                        {perk.scaling.impact_power != null && (
-                          <div className={styles.impactPower}>
-                            Impact Power: {perk.scaling.impact_power}
-                          </div>
-                        )}
-                      </div>
+                      <ScalingDisplay scaling={perk.scaling} className={classData.name} />
                     )}
                   </div>
                 </div>
@@ -578,31 +590,7 @@ export default function ClassDetail({ slug }: { slug: string }) {
                       </p>
                     )}
                     {skill.scaling && (
-                      <div className={styles.scalingBox}>
-                        {skill.scaling.formula_text ? (
-                          <>
-                            <div className={styles.scalingFormulaRow}>
-                              <span className={styles.scalingLabel}>Formula:</span>{" "}
-                              <span className={styles.scalingFormula}>{skill.scaling.formula_text}</span>
-                            </div>
-                            {skill.scaling.example && (
-                              <div className={styles.scalingExample}>
-                                Example ({classData.name} base stats): {skill.scaling.example}
-                              </div>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            <span className={styles.scalingLabel}>Scaling:</span>{" "}
-                            {skill.scaling.formula}
-                          </>
-                        )}
-                        {skill.scaling.impact_power != null && (
-                          <div className={styles.impactPower}>
-                            Impact Power: {skill.scaling.impact_power}
-                          </div>
-                        )}
-                      </div>
+                      <ScalingDisplay scaling={skill.scaling} className={classData.name} />
                     )}
                   </div>
                 </div>
@@ -731,31 +719,7 @@ export default function ClassDetail({ slug }: { slug: string }) {
                               <p>{cleanDescription(spell.description)}</p>
 
                               {spell.scaling && (
-                                <div className={styles.scalingBox}>
-                                  {spell.scaling.formula_text ? (
-                                    <>
-                                      <div className={styles.scalingFormulaRow}>
-                                        <span className={styles.scalingLabel}>Formula:</span>{" "}
-                                        <span className={styles.scalingFormula}>{spell.scaling.formula_text}</span>
-                                      </div>
-                                      {spell.scaling.example && (
-                                        <div className={styles.scalingExample}>
-                                          Example ({classData.name} base stats): {spell.scaling.example}
-                                        </div>
-                                      )}
-                                    </>
-                                  ) : (
-                                    <>
-                                      <span className={styles.scalingLabel}>Scaling:</span>{" "}
-                                      {spell.scaling.formula}
-                                    </>
-                                  )}
-                                  {spell.scaling.impact_power != null && (
-                                    <div className={styles.impactPower}>
-                                      Impact Power: {spell.scaling.impact_power}
-                                    </div>
-                                  )}
-                                </div>
+                                <ScalingDisplay scaling={spell.scaling} className={classData.name} />
                               )}
 
                               {/* Bard Song Tier Effects */}
